@@ -1,4 +1,4 @@
-﻿using BadmintonManagement.Forms.AdminForm;
+﻿using BadmintonManagement.Forms;
 using BadmintonManagement.Forms.Report;
 using BadmintonManagement.Forms.Service;
 using System;
