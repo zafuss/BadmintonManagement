@@ -1,4 +1,5 @@
-﻿using BadmintonManagement.Models;
+﻿using BadmintonManagement.Forms.AuthorizationForms;
+using BadmintonManagement.Models;
 using FireSharp.Config;
 using FireSharp.Interfaces;
 using FireSharp.Response;
@@ -6,6 +7,7 @@ using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -36,6 +38,29 @@ namespace BadmintonManagement.Database
             {
                 MessageBox.Show(ex.Message, "Check your connection!");
             }
+        }
+
+        public static List<User> UserList()
+        {
+            List<User> users = new List<User>();
+            FirebaseResponse response = client.Get("Users/");
+            Dictionary<string, User> result = response.ResultAs<Dictionary<string, User>>();
+            if (result != null)
+                foreach (var get in result)
+                {
+                    User user = new User()
+                    {
+                        Username = get.Value.Username,
+                        Password = get.Value.Password,
+                        Email = get.Value.Email,
+                        PhoneNumber = get.Value.PhoneNumber,
+                        Role = get.Value.Role,
+
+                    };
+                    users.Add(user);
+
+                }
+            return users;
         }
 
         public static void RegisterUser(User user)
@@ -72,10 +97,24 @@ namespace BadmintonManagement.Database
             }
         }
 
+        private static void SaveCurrentUser(string username)
+        {
+            var userList = UserList();
+            foreach (var item in userList)
+            {
+                if (username == item.Username)
+                {
+                    Properties.Settings.Default.Username = item.Username;
+                    Properties.Settings.Default.Email = item.Email;
+                    Properties.Settings.Default.PhoneNumber = item.PhoneNumber;
+                    Properties.Settings.Default.Role = item.Role;
+                }
+            }
+        }
+
+
         public static void LoginUser(string username, string password)
         {
-            try
-            {
                 if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
                 {
                     throw new Exception("Fields cannot be empty!");
@@ -94,26 +133,25 @@ namespace BadmintonManagement.Database
                             string passwordres = get.Value.Password;
                             if (username == usernameres || password == passwordres)
                             {
-                                MessageBox.Show("Welcome " + username);
+                                //MessageBox.Show("Welcome " + username);
+
                                 isSuccess = true;
-                            } 
+                                SaveCurrentUser(username);
+
+                            }
 
 
                         }
                         if (!isSuccess) throw new Exception("Sai tên tài khoản hoặc mật khẩu");
                     }
-                    
+
                     else
                     {
                         throw new Exception("Không tìm thấy user");
                     }
                 }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Thông báo");
-
-            }
+            
+         
 
         }
     }

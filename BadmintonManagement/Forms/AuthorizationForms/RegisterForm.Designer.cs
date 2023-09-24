@@ -44,24 +44,33 @@
             // 
             // btnReg
             // 
+            this.btnReg.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.btnReg.Location = new System.Drawing.Point(103, 541);
             this.btnReg.Name = "btnReg";
             this.btnReg.Size = new System.Drawing.Size(333, 45);
-            this.btnReg.TabIndex = 9;
+            this.btnReg.TabIndex = 4;
             this.btnReg.Text = "Đăng Ký";
             this.btnReg.UseVisualStyleBackColor = true;
             this.btnReg.Click += new System.EventHandler(this.btnReg_Click);
             // 
             // txtRegPassword
             // 
+            this.txtRegPassword.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtRegPassword.Location = new System.Drawing.Point(220, 359);
             this.txtRegPassword.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtRegPassword.Name = "txtRegPassword";
             this.txtRegPassword.Size = new System.Drawing.Size(216, 29);
-            this.txtRegPassword.TabIndex = 7;
+            this.txtRegPassword.TabIndex = 1;
             // 
             // label2
             // 
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(99, 362);
@@ -73,14 +82,20 @@
             // 
             // txtRegUsername
             // 
+            this.txtRegUsername.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtRegUsername.Location = new System.Drawing.Point(220, 297);
             this.txtRegUsername.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtRegUsername.Name = "txtRegUsername";
             this.txtRegUsername.Size = new System.Drawing.Size(216, 29);
-            this.txtRegUsername.TabIndex = 8;
+            this.txtRegUsername.TabIndex = 0;
             // 
             // label1
             // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(99, 300);
@@ -92,14 +107,20 @@
             // 
             // txtRegPhoneNumber
             // 
+            this.txtRegPhoneNumber.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtRegPhoneNumber.Location = new System.Drawing.Point(220, 483);
             this.txtRegPhoneNumber.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtRegPhoneNumber.Name = "txtRegPhoneNumber";
             this.txtRegPhoneNumber.Size = new System.Drawing.Size(216, 29);
-            this.txtRegPhoneNumber.TabIndex = 12;
+            this.txtRegPhoneNumber.TabIndex = 3;
             // 
             // label3
             // 
+            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(99, 486);
@@ -111,14 +132,20 @@
             // 
             // txtRegEmail
             // 
+            this.txtRegEmail.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtRegEmail.Location = new System.Drawing.Point(220, 421);
             this.txtRegEmail.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtRegEmail.Name = "txtRegEmail";
             this.txtRegEmail.Size = new System.Drawing.Size(216, 29);
-            this.txtRegEmail.TabIndex = 13;
+            this.txtRegEmail.TabIndex = 2;
             // 
             // label4
             // 
+            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(99, 424);
@@ -130,17 +157,23 @@
             // 
             // lblBackToLogin
             // 
+            this.lblBackToLogin.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.lblBackToLogin.AutoSize = true;
             this.lblBackToLogin.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblBackToLogin.Location = new System.Drawing.Point(180, 589);
             this.lblBackToLogin.Name = "lblBackToLogin";
             this.lblBackToLogin.Size = new System.Drawing.Size(186, 21);
-            this.lblBackToLogin.TabIndex = 14;
+            this.lblBackToLogin.TabIndex = 5;
             this.lblBackToLogin.Text = "Quay lại trang đăng nhập";
             this.lblBackToLogin.Click += new System.EventHandler(this.lblBackToLogin_Click);
             // 
             // pictureBox1
             // 
+            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox1.Image = global::BadmintonManagement.Properties.Resources.register_images;
             this.pictureBox1.Location = new System.Drawing.Point(181, 71);
             this.pictureBox1.Name = "pictureBox1";

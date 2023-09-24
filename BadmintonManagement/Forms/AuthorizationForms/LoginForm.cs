@@ -1,4 +1,5 @@
 ﻿using BadmintonManagement.Database;
+using BadmintonManagement.Forms.AuthorizationForms;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -20,6 +21,9 @@ namespace BadmintonManagement
         }
 
         
+        
+ 
+
         private void lblForgotPass_Click(object sender, EventArgs e)
         {
 
@@ -31,7 +35,18 @@ namespace BadmintonManagement
             {
                 if (txtUser.Text == "Username" || txtPassword.Text == "Password")
                     throw new Exception("Vui lòng nhập đầy đủ thông tin!");
-                FirebaseHelper.LoginUser(txtUser.Text, txtPassword.Text);   
+                try
+                {
+                    FirebaseHelper.LoginUser(txtUser.Text, txtPassword.Text);
+                    HomePage homePage = new HomePage();
+                    this.Hide();
+                    homePage.Show();
+
+                } catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+
             } catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Thông báo");

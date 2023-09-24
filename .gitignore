@@ -381,3 +381,5 @@ InteropTests/NativeTests/out
 **/ScratchProject/
 *.vsidx
 *.cache
+BadmintonManagement/obj/Debug/BadmintonManagement.csproj.AssemblyReference.cache
+.vs/BadmintonManagement/v17/.suo
