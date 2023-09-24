@@ -96,6 +96,41 @@ namespace BadmintonManagement.Database
                 MessageBox.Show(ex.Message, "Thông báo");
             }
         }
+        public static void UpdateUser(User user, string selectedUsername, string selectedEmail)
+        {
+            try
+            {
+                if (user is null)
+                {
+                    throw new ArgumentNullException(nameof(user));
+                }
+                FirebaseResponse response = client.Get("Users/");
+                Dictionary<string, User> result = response.ResultAs<Dictionary<string, User>>();
+                if (result != null)
+                    foreach (var get in result)
+                    {
+                        string usernameres = get.Value.Username;
+                        string useremailres = get.Value.Email;
+                        if (user.Username == usernameres && user.Username != selectedUsername)
+                            throw new Exception("Username này đã tồn tại trong hệ thống!");
+                        if (user.Email == useremailres && user.Email != selectedEmail)
+                            throw new Exception("Email này đã tồn tại trong hệ thống!");
+
+                    }
+
+                FirebaseResponse regResponse = client.Update("Users/" + user.Username, user);
+                User res = regResponse.ResultAs<User>();
+
+
+                MessageBox.Show("Cập nhật thông tin user thành công!");
+
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông báo");
+            }
+        }
 
         private static void SaveCurrentUser(string username)
         {
@@ -115,44 +150,56 @@ namespace BadmintonManagement.Database
 
         public static void LoginUser(string username, string password)
         {
-                if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
+            if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
+            {
+                throw new Exception("Fields cannot be empty!");
+            }
+            else
+            {
+                bool isSuccess = false;
+                FirebaseResponse response = client.Get("Users/");
+
+                Dictionary<string, User> result = response.ResultAs<Dictionary<string, User>>();
+                if (result != null)
                 {
-                    throw new Exception("Fields cannot be empty!");
-                }
-                else
-                {
-                    bool isSuccess = false;
-                    FirebaseResponse response = client.Get("Users/");
-                    Dictionary<string, User> result = response.ResultAs<Dictionary<string, User>>();
-                    if (result != null)
+
+                    foreach (var get in result)
                     {
-
-                        foreach (var get in result)
+                        string usernameres = get.Value.Username;
+                        string passwordres = get.Value.Password;
+                        if (username == usernameres || password == passwordres)
                         {
-                            string usernameres = get.Value.Username;
-                            string passwordres = get.Value.Password;
-                            if (username == usernameres || password == passwordres)
-                            {
-                                //MessageBox.Show("Welcome " + username);
+                            //MessageBox.Show("Welcome " + username);
 
-                                isSuccess = true;
-                                SaveCurrentUser(username);
-
-                            }
-
+                            isSuccess = true;
+                            SaveCurrentUser(username);
 
                         }
-                        if (!isSuccess) throw new Exception("Sai tên tài khoản hoặc mật khẩu");
-                    }
 
-                    else
-                    {
-                        throw new Exception("Không tìm thấy user");
+
                     }
+                    if (!isSuccess) throw new Exception("Sai tên tài khoản hoặc mật khẩu");
                 }
-            
-         
 
+                else
+                {
+                    throw new Exception("Không tìm thấy user");
+                }
+            }
+
+        }
+
+        public static void DeleteUser(string username)
+        {
+            try
+            {
+                FirebaseResponse response = client.Delete("Users/" + username);
+                
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message, "Thông báo");
+            }
         }
     }
 }
