@@ -77,6 +77,7 @@
             // btnLogin
             // 
             this.btnLogin.BackColor = System.Drawing.SystemColors.Highlight;
+            this.btnLogin.FlatAppearance.BorderSize = 0;
             this.btnLogin.Location = new System.Drawing.Point(132, 512);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(312, 45);

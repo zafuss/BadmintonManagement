@@ -88,6 +88,12 @@
     <Compile Include="Forms\AuthorizationForms\ManageUser.Designer.cs">
       <DependentUpon>ManageUser.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Report\IncomeReportForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Report\IncomeReportForm.Designer.cs">
+      <DependentUpon>IncomeReportForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\User.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -143,7 +149,28 @@
     <None Include="Images\auth_images\padlock.png" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Forms\AdminForm\" />
+    <None Include="Images\home_images\court.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\home_images\customer %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\home_images\service.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\home_images\reservation.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\home_images\prices.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\home_images\paper.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\home_images\report.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\home_images\logout.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" />
