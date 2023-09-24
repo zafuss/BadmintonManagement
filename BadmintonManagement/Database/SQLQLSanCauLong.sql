@@ -48,8 +48,8 @@ create table RESERVATION
 	BookingDate		datetime,
 
 	constraint  RESERVATION_PK primary key(ReservationNo),
-	constraint CUSTOMER foreign key (PhoneNumber) references CUSTOMER(PhoneNumber),
-	constraint _User foreign key (Username) references _User(Username)
+	constraint CUSTOMER_FK foreign key (PhoneNumber) references CUSTOMER(PhoneNumber),
+	constraint _User_FK foreign key (Username) references _User(Username)
 )
 go
 
@@ -130,7 +130,7 @@ create table RECEIPT(
 	ServiceReceiptNo	nvarchar(20)
 
 	constraint PK_ReceiptNo primary key (ReceiptNo),
-	constraint FK_ReservationNo foreign key (ReservationNo) references RESERVATION(ReservationNo),
+	constraint FK_ReservationNo_ foreign key (ReservationNo) references RESERVATION(ReservationNo),
 	constraint FK_ServiceReceiptNo foreign key (ServiceReceiptNo) references SERVICE_RECEIPT(ServiceReceiptNo)
 )
 go
