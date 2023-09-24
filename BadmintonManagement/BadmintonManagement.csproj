@@ -70,6 +70,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Database\FirebaseHelper.cs" />
+    <Compile Include="Forms\Court\CourtForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Court\CourtForm.Designer.cs">
+      <DependentUpon>CourtForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Customer\CustomerForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Customer\CustomerForm.Designer.cs">
+      <DependentUpon>CustomerForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\HomePage.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -88,11 +100,29 @@
     <Compile Include="Forms\AuthorizationForms\ManageUser.Designer.cs">
       <DependentUpon>ManageUser.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Price\PriceForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Price\PriceForm.Designer.cs">
+      <DependentUpon>PriceForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Receipt\ReceiptForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Receipt\ReceiptForm.Designer.cs">
+      <DependentUpon>ReceiptForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Report\IncomeReportForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\Report\IncomeReportForm.Designer.cs">
       <DependentUpon>IncomeReportForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ReservationCourt\ReservationForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ReservationCourt\ReservationForm.Designer.cs">
+      <DependentUpon>ReservationForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Service\ServiceForm.cs">
       <SubType>Form</SubType>
@@ -103,6 +133,12 @@
     <Compile Include="Models\User.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Forms\Court\CourtForm.resx">
+      <DependentUpon>CourtForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Customer\CustomerForm.resx">
+      <DependentUpon>CustomerForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\HomePage.resx">
       <DependentUpon>HomePage.cs</DependentUpon>
     </EmbeddedResource>
@@ -112,8 +148,17 @@
     <EmbeddedResource Include="Forms\AuthorizationForms\ManageUser.resx">
       <DependentUpon>ManageUser.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Price\PriceForm.resx">
+      <DependentUpon>PriceForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Receipt\ReceiptForm.resx">
+      <DependentUpon>ReceiptForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Report\IncomeReportForm.resx">
       <DependentUpon>IncomeReportForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ReservationCourt\ReservationForm.resx">
+      <DependentUpon>ReservationForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Service\ServiceForm.resx">
       <DependentUpon>ServiceForm.cs</DependentUpon>

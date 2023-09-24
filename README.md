@@ -1,2 +1,69 @@
 # BadmintonManagement
- 
+lbl	    Label
+llbl	LinkLabel
+btn	    Button
+txt	    Textbox
+mnu	    MainMenu
+chk	    CheckBox
+rdo	    RadioButton
+grp	    GroupBox
+pic	    PictureBox
+grd	    Grid
+lst	    ListBox
+cbo	    ComboBox
+lstv	ListView
+tre	    TreeView
+tab	    TabControl
+dtm	    DateTimePicker
+mon	    MonthCalendar
+sbr	    ScrollBar
+tmr	    Timer
+spl	    Splitter
+dud	    DomainUpDown
+nud	    NumericUpDown
+trk	    TrackBar
+pro	    ProgressBar
+rtxt	RichTextBox
+img	    ImageList
+hlp	    HelpProvider
+tip	    ToolTip
+cmnu	ContextMenu
+tbr	    ToolBar
+frm	    Form
+bar	    StatusBar
+nico	NotifyIcon
+ofd	    OpenFileDialog
+sfd	    SaveFileDialog
+fd	    FontDialog
+cd	    ColorDialog
+pd	    PrintDialog
+ppd	    PrintPreviewDialog
+ppc	    PrintPreviewControl
+err	    ErrorProvider
+pdoc	PrintDocument
+psd	    PageSetupDialog
+crv	    CrystalReportViewer
+pd	    PrintDialog
+fsw	    FileSystemWatcher
+log	    EventLog
+dire	DirectoryEntry
+dirs	DirectorySearcher
+msq	    MessageQueue
+pco	    PerformanceCounter
+pro	    Process
+ser	    ServiceController
+rpt	    ReportDocument
+ds	    DataSet
+olea	OleDbDataAdapter
+olec	OleDbConnection
+oled	OleDbCommand
+sqla	SqlDbDataAdapter
+sqlc	SqlDbConnection
+sqld	SqlDbCommand
+dvw	    DataView
+
+-	Sử dụng English Đặt tên tường minh dễ hiểu không viết tắt .
+-	Biến : Viết thường từ đầu tiên và viết hoa chữ cái đầu tiên của những từ tiếp theo.
+-	Hàm : Viết hoa chữ cái đầu tiên của mỗi từ.
+-	Không đặt tên biến bằng một ký tự  Khó hiểu.
+
