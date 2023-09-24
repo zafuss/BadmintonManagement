@@ -29,7 +29,7 @@ namespace BadmintonManagement
         {
             try
             {
-                if (txtUser.Text == "" || txtPassword.Text == "")
+                if (txtUser.Text == "Username" || txtPassword.Text == "Password")
                     throw new Exception("Vui lòng nhập đầy đủ thông tin!");
                 FirebaseHelper.LoginUser(txtUser.Text, txtPassword.Text);   
             } catch (Exception ex)
@@ -56,6 +56,7 @@ namespace BadmintonManagement
                 txtUser.ForeColor = Color.DarkGray;
                 txtUser.Text = "Username";
             }
+           
         }
 
         private void txtPassword_Enter(object sender, EventArgs e)
@@ -89,6 +90,13 @@ namespace BadmintonManagement
         {
             txtPassword.PasswordChar = '●';
             picShowPassword.Image = Properties.Resources.visibale_password;
+            if (txtPassword.Text == "Password")
+                txtPassword.PasswordChar = '\0';
+        }
+
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

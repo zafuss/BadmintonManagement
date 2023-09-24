@@ -48,5 +48,7 @@ namespace BadmintonManagement.Forms.AuthorizationForms
             LoginForm loginForm = new LoginForm();
             loginForm.Show();
         }
+
+     
     }
 }

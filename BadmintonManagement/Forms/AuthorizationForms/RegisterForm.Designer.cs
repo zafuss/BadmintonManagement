@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnReg = new System.Windows.Forms.Button();
             this.txtRegPassword = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -39,18 +38,9 @@
             this.txtRegEmail = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.lblBackToLogin = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::BadmintonManagement.Properties.Resources.register_images;
-            this.pictureBox1.Location = new System.Drawing.Point(181, 71);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(185, 185);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
             // 
             // btnReg
             // 
@@ -148,6 +138,16 @@
             this.lblBackToLogin.TabIndex = 14;
             this.lblBackToLogin.Text = "Quay lại trang đăng nhập";
             this.lblBackToLogin.Click += new System.EventHandler(this.lblBackToLogin_Click);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::BadmintonManagement.Properties.Resources.register_images;
+            this.pictureBox1.Location = new System.Drawing.Point(181, 71);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(185, 185);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
             // 
             // RegisterForm
             // 
