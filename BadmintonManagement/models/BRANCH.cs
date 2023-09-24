@@ -12,7 +12,7 @@ namespace BadmintonManagement.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public BRANCH()
         {
-            COURT = new HashSet<COURT>();
+            COURTs = new HashSet<COURT>();
         }
 
         [StringLength(20)]
@@ -28,6 +28,6 @@ namespace BadmintonManagement.Models
         public string C_Address { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<COURT> COURT { get; set; }
+        public virtual ICollection<COURT> COURTs { get; set; }
     }
 }

@@ -139,7 +139,6 @@
     <Compile Include="Forms\Service\ServiceForm.Designer.cs">
       <DependentUpon>ServiceForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Models\Model1.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

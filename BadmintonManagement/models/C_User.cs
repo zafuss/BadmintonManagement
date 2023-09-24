@@ -12,7 +12,7 @@ namespace BadmintonManagement.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public C_User()
         {
-            RESERVATION = new HashSet<RESERVATION>();
+            RESERVATIONs = new HashSet<RESERVATION>();
         }
 
         [Key]
@@ -38,6 +38,6 @@ namespace BadmintonManagement.Models
         public string PhoneNumber { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<RESERVATION> RESERVATION { get; set; }
+        public virtual ICollection<RESERVATION> RESERVATIONs { get; set; }
     }
 }
