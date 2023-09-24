@@ -1,4 +1,5 @@
 ﻿using BadmintonManagement.Forms.AdminForm;
+using BadmintonManagement.Forms.Report;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -41,6 +42,20 @@ namespace BadmintonManagement.Forms.AuthorizationForms
                 btnAdminManageUser.Enabled = false;
             }
 
+        }
+
+        private void toolStripButton10_Click(object sender, EventArgs e)
+        {
+            DialogResult dialogResult = MessageBox.Show("Bạn có muốn thoát không?","Xác nhận",MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+                this.Close();
+        }
+
+        private void toolStripButton9_Click(object sender, EventArgs e)
+        {
+            IncomeReportForm incomeReportForm = new IncomeReportForm();
+            incomeReportForm.MdiParent = this;
+            incomeReportForm.Show();
         }
     }
 }
