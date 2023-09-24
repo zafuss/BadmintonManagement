@@ -121,6 +121,18 @@
   <ItemGroup>
     <None Include="Images\auth_images\register_images.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\auth_images\visibale_password.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\auth_images\hidden_password.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\auth_images\user.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\auth_images\padlock.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" />
   <Target Name="EnsureBclBuildImported" BeforeTargets="BeforeBuild" Condition="'$(BclBuildImported)' == ''">
