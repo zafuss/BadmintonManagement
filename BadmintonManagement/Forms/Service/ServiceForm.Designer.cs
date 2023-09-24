@@ -1,6 +1,6 @@
-﻿namespace BadmintonManagement.Forms.Report
+﻿namespace BadmintonManagement.Forms.Service
 {
-    partial class IncomeReportForm
+    partial class ServiceForm
     {
         /// <summary>
         /// Required designer variable.
@@ -34,21 +34,21 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(630, 194);
+            this.label1.Location = new System.Drawing.Point(418, 170);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(53, 13);
+            this.label1.Size = new System.Drawing.Size(44, 13);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Thống kê";
+            this.label1.Text = "Dich vu";
             // 
-            // IncomeReportForm
+            // ServiceForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1168, 554);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "IncomeReportForm";
-            this.Text = "income_report";
+            this.Name = "ServiceForm";
+            this.Text = "ServicForm";
             this.ResumeLayout(false);
             this.PerformLayout();
 
