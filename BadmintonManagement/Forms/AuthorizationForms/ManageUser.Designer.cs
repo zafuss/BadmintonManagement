@@ -51,11 +51,9 @@
             // 
             // btnReg
             // 
-            this.btnReg.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
             this.btnReg.Location = new System.Drawing.Point(57, 543);
             this.btnReg.Name = "btnReg";
-            this.btnReg.Size = new System.Drawing.Size(109, 45);
+            this.btnReg.Size = new System.Drawing.Size(109, 46);
             this.btnReg.TabIndex = 4;
             this.btnReg.Text = "Thêm user";
             this.btnReg.UseVisualStyleBackColor = true;
@@ -155,12 +153,10 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
             this.pictureBox1.Image = global::BadmintonManagement.Properties.Resources.register_images;
             this.pictureBox1.Location = new System.Drawing.Point(133, 75);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(185, 185);
+            this.pictureBox1.Size = new System.Drawing.Size(185, 186);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
@@ -212,11 +208,9 @@
             // 
             // btnUpdate
             // 
-            this.btnUpdate.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
             this.btnUpdate.Location = new System.Drawing.Point(172, 543);
             this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.Size = new System.Drawing.Size(108, 45);
+            this.btnUpdate.Size = new System.Drawing.Size(108, 46);
             this.btnUpdate.TabIndex = 4;
             this.btnUpdate.Text = "Sửa user";
             this.btnUpdate.UseVisualStyleBackColor = true;
@@ -224,11 +218,9 @@
             // 
             // btnDelUser
             // 
-            this.btnDelUser.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
             this.btnDelUser.Location = new System.Drawing.Point(286, 543);
             this.btnDelUser.Name = "btnDelUser";
-            this.btnDelUser.Size = new System.Drawing.Size(108, 45);
+            this.btnDelUser.Size = new System.Drawing.Size(108, 46);
             this.btnDelUser.TabIndex = 4;
             this.btnDelUser.Text = "Xoá user";
             this.btnDelUser.UseVisualStyleBackColor = true;
@@ -238,7 +230,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1200, 776);
+            this.ClientSize = new System.Drawing.Size(1168, 650);
             this.Controls.Add(this.dgvUsers);
             this.Controls.Add(this.txtRegPhoneNumber);
             this.Controls.Add(this.label3);
@@ -253,6 +245,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pictureBox1);
             this.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "ManageUser";
             this.Text = "RegisterForm";

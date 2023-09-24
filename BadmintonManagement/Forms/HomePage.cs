@@ -1,5 +1,10 @@
 ﻿using BadmintonManagement.Forms;
+using BadmintonManagement.Forms.Court;
+using BadmintonManagement.Forms.Customer;
+using BadmintonManagement.Forms.Price;
+using BadmintonManagement.Forms.Receipt;
 using BadmintonManagement.Forms.Report;
+using BadmintonManagement.Forms.ReservationCourt;
 using BadmintonManagement.Forms.Service;
 using System;
 using System.Collections.Generic;
@@ -55,15 +60,8 @@ namespace BadmintonManagement.Forms.AuthorizationForms
         }
 
 
-        private void btnReport_Click(object sender, EventArgs e)
-        {
-            AddTabPages(new IncomeReportForm());
-        }
-
-        private void btnService_Click(object sender, EventArgs e)
-        {
-            AddTabPages(new ServiceForm());
-        }
+       
+       
 
         private int CheckExist(Form form)
         {
@@ -126,6 +124,55 @@ namespace BadmintonManagement.Forms.AuthorizationForms
             closeImage = btm2;
             tabControl.Padding = new Point(30);
 
+        }
+
+       
+
+        
+
+        private void btnUser_Click(object sender, EventArgs e)
+        {
+            AddTabPages(new ManageUser());
+        }
+
+        private void btnCourt_Click(object sender, EventArgs e)
+        {
+            AddTabPages(new CourtForm());
+        }
+
+        private void btnCustomer_Click(object sender, EventArgs e)
+        {
+            AddTabPages(new CustomerForm());
+        }
+
+        private void btnService_Click_1(object sender, EventArgs e)
+        {
+            AddTabPages(new ServiceForm());
+        }
+
+        private void btnReservation_Click(object sender, EventArgs e)
+        {
+            AddTabPages(new ReservationForm());
+        }
+
+        private void btnReceipt_Click(object sender, EventArgs e)
+        {
+            AddTabPages(new ReceiptForm());
+        }
+
+        private void btnPrice_Click(object sender, EventArgs e)
+        {
+            AddTabPages(new PriceForm());
+        }
+
+        private void btnReport_Click_1(object sender, EventArgs e)
+        {
+            AddTabPages(new IncomeReportForm());
+        }
+
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
 
         private void tabControl_DrawItem(object sender, DrawItemEventArgs e)
