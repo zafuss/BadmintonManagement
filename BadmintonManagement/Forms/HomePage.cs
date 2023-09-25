@@ -130,7 +130,7 @@ namespace BadmintonManagement.Forms.AuthorizationForms
                 btnUser.Visible = false;
                 btnUser.Enabled = false;
             }
-
+            lblEmployeeName.Text =  "Nhân viên: " + Properties.Settings.Default._Name;
 
         }
 
@@ -181,6 +181,11 @@ namespace BadmintonManagement.Forms.AuthorizationForms
             UserServices.DeleteCurrentUser();
             LoginForm form = new LoginForm();
             form.Show();
+        }
+
+        private void lblEmployeeName_Click(object sender, EventArgs e)
+        {
+
         }
 
         private void tabControl_DrawItem(object sender, DrawItemEventArgs e)

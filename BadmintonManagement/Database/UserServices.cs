@@ -35,7 +35,8 @@ namespace BadmintonManagement.Database
         }
         public static void CreateAdminAccount()
         {
-            C_User user = new C_User() {
+            C_User user = new C_User()
+            {
                 Username = "admin",
                 C_Password = Security.Encrypt("admin"),
                 C_Name = "admin",
@@ -43,12 +44,17 @@ namespace BadmintonManagement.Database
                 PhoneNumber = "1234567890",
                 C_Role = "Admin",
                 Status = "Kích hoạt"
-                
-                
+
+
             };
-        
-            context.C_User.AddOrUpdate(user);
-            context.SaveChanges();
+            C_User tmp = GetUser(user.Username);
+            if (tmp == null)
+            {
+
+                context.C_User.AddOrUpdate(user);
+                context.SaveChanges();
+            }
+
 
         }
         public static void AddUser(C_User user)
@@ -108,6 +114,8 @@ namespace BadmintonManagement.Database
                     Properties.Settings.Default.Email = item.Email;
                     Properties.Settings.Default.PhoneNumber = item.PhoneNumber;
                     Properties.Settings.Default.Role = item.C_Role;
+                    Properties.Settings.Default._Name = item.C_Name;
+
                 }
             }
         }
@@ -118,7 +126,7 @@ namespace BadmintonManagement.Database
             Properties.Settings.Default.Email = "";
             Properties.Settings.Default.PhoneNumber = "";
             Properties.Settings.Default.Role = "";
-
+            Properties.Settings.Default._Name = "";
         }
 
         public static void LoginUser(string username, string password)

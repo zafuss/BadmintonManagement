@@ -70,5 +70,17 @@ namespace BadmintonManagement.Properties {
                 this["Role"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string _Name {
+            get {
+                return ((string)(this["_Name"]));
+            }
+            set {
+                this["_Name"] = value;
+            }
+        }
     }
 }
