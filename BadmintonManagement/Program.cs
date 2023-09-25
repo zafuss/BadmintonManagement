@@ -16,11 +16,10 @@ namespace BadmintonManagement
         [STAThread]
         static void Main()
         {
-            FirebaseHelper.FirebaseInit();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            //Application.Run(new LoginForm());
-            Application.Run(new HomePage());
+            Application.Run(new LoginForm());
+            //Application.Run(new HomePage());
             //Application.Run(new ManageUser());
 
         }

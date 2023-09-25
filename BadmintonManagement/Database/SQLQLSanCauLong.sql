@@ -134,3 +134,5 @@ create table RECEIPT(
 	constraint FK_ServiceReceiptNo foreign key (ServiceReceiptNo) references SERVICE_RECEIPT(ServiceReceiptNo)
 )
 go
+
+alter table _User add Status nvarchar(30)

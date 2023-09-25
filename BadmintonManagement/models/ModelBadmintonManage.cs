@@ -44,6 +44,10 @@ namespace BadmintonManagement.Models
                 .Property(e => e.PhoneNumber)
                 .IsUnicode(false);
 
+            modelBuilder.Entity<C_User>()
+             .Property(e => e.Status)
+             .IsUnicode(false);
+
             modelBuilder.Entity<BRANCH>()
                 .HasMany(e => e.COURTs)
                 .WithRequired(e => e.BRANCH)

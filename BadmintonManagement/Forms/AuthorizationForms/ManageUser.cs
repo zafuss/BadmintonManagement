@@ -17,24 +17,27 @@ namespace BadmintonManagement.Forms.AuthorizationForms
         string selectedUsername = "";
         string selectedEmail = "";
         string selectedRole = "";
-        List<User> userList;
+        List<C_User> userList;
         public ManageUser()
         {
             InitializeComponent();
-
+            btnDelUser.Enabled = false;
+            btnDelUser.Text = "Kích hoạt / Vô hiệu hoá";
         }
 
         private void BindGrid()
         {
             dgvUsers.Rows.Clear();
-            userList = FirebaseHelper.UserList();
+            //userList = FirebaseHelper.UserList();
+            userList = UserServices.GetAllUser();
             foreach (var item in userList)
             {
                 int index = dgvUsers.Rows.Add();
                 dgvUsers.Rows[index].Cells[0].Value = item.Username;
                 dgvUsers.Rows[index].Cells[1].Value = item.Email;
                 dgvUsers.Rows[index].Cells[2].Value = item.PhoneNumber;
-                dgvUsers.Rows[index].Cells[3].Value = item.Role;
+                dgvUsers.Rows[index].Cells[3].Value = item.C_Role;
+                dgvUsers.Rows[index].Cells[4].Value = item.Status;
 
 
             }
@@ -46,16 +49,20 @@ namespace BadmintonManagement.Forms.AuthorizationForms
             {
                 if (txtRegUsername.Text == "" || txtRegPassword.Text == "" || txtRegPhoneNumber.Text == "" || txtRegEmail.Text == "")
                     throw new Exception("Vui lòng nhập đầy đủ thông tin!");
-                User user = new User()
+                C_User user = new C_User()
                 {
                     Username = txtRegUsername.Text,
-                    Password = txtRegPassword.Text,
+                    C_Password = txtRegPassword.Text,
                     PhoneNumber = txtRegPhoneNumber.Text,
                     Email = txtRegEmail.Text,
-                    Role = "Staff"
+                    C_Role = "Staff",
+                    Status = "Enable"
 
                 };
-                FirebaseHelper.RegisterUser(user);
+                //FirebaseHelper.RegisterUser(user);
+                UserServices.AddUser(user);
+                MessageBox.Show("Thêm user thành công!", "Thông báo");
+                BindGrid();
             }
             catch (Exception ex)
             {
@@ -86,6 +93,11 @@ namespace BadmintonManagement.Forms.AuthorizationForms
                 selectedUsername = txtRegUsername.Text;
                 selectedEmail = txtRegEmail.Text;
                 selectedRole = dgvUsers.Rows[selectedRow].Cells[3].Value.ToString();
+                btnDelUser.Enabled = true;
+                if (dgvUsers.Rows[selectedRow].Cells[4].Value.ToString() == "Vô hiệu hoá")
+                    btnDelUser.Text = "Kích hoạt";
+                else
+                    btnDelUser.Text = "Vô hiệu hoá";
             }
         }
 
@@ -95,17 +107,21 @@ namespace BadmintonManagement.Forms.AuthorizationForms
             {
                 if (txtRegUsername.Text == "" || txtRegPassword.Text == "" || txtRegPhoneNumber.Text == "" || txtRegEmail.Text == "")
                     throw new Exception("Vui lòng nhập đầy đủ thông tin!");
-                User user = new User()
+                if (txtRegUsername.Text != selectedUsername)
+                    throw new Exception("Không thể thay đổi username!");
+                C_User user = new C_User()
                 {
                     Username = txtRegUsername.Text,
-                    Password = txtRegPassword.Text,
+                    C_Password = txtRegPassword.Text,
                     PhoneNumber = txtRegPhoneNumber.Text,
                     Email = txtRegEmail.Text,
-                    Role = selectedRole,
+                    C_Role = selectedRole,
+                    Status = "Kích hoạt"
 
                 };
-                FirebaseHelper.UpdateUser(user, selectedUsername, selectedEmail);
-       
+                //FirebaseHelper.UpdateUser(user, selectedUsername, selectedEmail);
+                UserServices.UpdateUser(user, selectedEmail);
+                MessageBox.Show("Cập nhật user thành công!", "Thông báo");
                 BindGrid();
             }
             catch (Exception ex)
@@ -118,10 +134,12 @@ namespace BadmintonManagement.Forms.AuthorizationForms
         {
             try
             {
-                FirebaseHelper.DeleteUser(selectedUsername);
-                MessageBox.Show("Xoá user thành công!");
+                //FirebaseHelper.DeleteUser(selectedUsername);
+                UserServices.DisableUser(selectedUsername);
+                MessageBox.Show("Thay đổi trạng thái user thành công!");
                 BindGrid();
-            } catch (Exception ex)
+            }
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Thông báo");
             }

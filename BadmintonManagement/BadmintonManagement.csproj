@@ -78,7 +78,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Database\FirebaseHelper.cs" />
+    <Compile Include="Database\UserServices.cs" />
     <Compile Include="Forms\Court\CourtForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -155,6 +155,7 @@
     <Compile Include="Models\User.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Security.cs" />
     <EmbeddedResource Include="Forms\Court\CourtForm.resx">
       <DependentUpon>CourtForm.cs</DependentUpon>
     </EmbeddedResource>

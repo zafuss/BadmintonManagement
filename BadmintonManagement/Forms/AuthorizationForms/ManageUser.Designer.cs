@@ -43,6 +43,7 @@
             this.clnEmail = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clnPhoneNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clnRole = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clnStaus = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnUpdate = new System.Windows.Forms.Button();
             this.btnDelUser = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -66,7 +67,7 @@
             this.txtRegPassword.Location = new System.Drawing.Point(179, 296);
             this.txtRegPassword.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtRegPassword.Name = "txtRegPassword";
-            this.txtRegPassword.Size = new System.Drawing.Size(220, 39);
+            this.txtRegPassword.Size = new System.Drawing.Size(220, 34);
             this.txtRegPassword.TabIndex = 1;
             // 
             // label2
@@ -78,7 +79,7 @@
             this.label2.Location = new System.Drawing.Point(58, 299);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(111, 32);
+            this.label2.Size = new System.Drawing.Size(93, 28);
             this.label2.TabIndex = 5;
             this.label2.Text = "Password";
             // 
@@ -89,7 +90,7 @@
             this.txtRegUsername.Location = new System.Drawing.Point(179, 234);
             this.txtRegUsername.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtRegUsername.Name = "txtRegUsername";
-            this.txtRegUsername.Size = new System.Drawing.Size(220, 39);
+            this.txtRegUsername.Size = new System.Drawing.Size(220, 34);
             this.txtRegUsername.TabIndex = 0;
             // 
             // label1
@@ -101,7 +102,7 @@
             this.label1.Location = new System.Drawing.Point(58, 237);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(121, 32);
+            this.label1.Size = new System.Drawing.Size(99, 28);
             this.label1.TabIndex = 6;
             this.label1.Text = "Username";
             // 
@@ -112,7 +113,7 @@
             this.txtRegPhoneNumber.Location = new System.Drawing.Point(179, 420);
             this.txtRegPhoneNumber.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtRegPhoneNumber.Name = "txtRegPhoneNumber";
-            this.txtRegPhoneNumber.Size = new System.Drawing.Size(220, 39);
+            this.txtRegPhoneNumber.Size = new System.Drawing.Size(220, 34);
             this.txtRegPhoneNumber.TabIndex = 3;
             // 
             // label3
@@ -124,7 +125,7 @@
             this.label3.Location = new System.Drawing.Point(58, 423);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(173, 32);
+            this.label3.Size = new System.Drawing.Size(140, 28);
             this.label3.TabIndex = 10;
             this.label3.Text = "Phone number";
             // 
@@ -135,7 +136,7 @@
             this.txtRegEmail.Location = new System.Drawing.Point(179, 358);
             this.txtRegEmail.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtRegEmail.Name = "txtRegEmail";
-            this.txtRegEmail.Size = new System.Drawing.Size(220, 39);
+            this.txtRegEmail.Size = new System.Drawing.Size(220, 34);
             this.txtRegEmail.TabIndex = 2;
             // 
             // label4
@@ -147,7 +148,7 @@
             this.label4.Location = new System.Drawing.Point(58, 361);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(71, 32);
+            this.label4.Size = new System.Drawing.Size(59, 28);
             this.label4.TabIndex = 11;
             this.label4.Text = "Email";
             // 
@@ -170,7 +171,8 @@
             this.clnUsername,
             this.clnEmail,
             this.clnPhoneNumber,
-            this.clnRole});
+            this.clnRole,
+            this.clnStaus});
             this.dgvUsers.Location = new System.Drawing.Point(432, 12);
             this.dgvUsers.Name = "dgvUsers";
             this.dgvUsers.ReadOnly = true;
@@ -212,6 +214,14 @@
             this.clnRole.ReadOnly = true;
             this.clnRole.Width = 150;
             // 
+            // clnStaus
+            // 
+            this.clnStaus.HeaderText = "Trạng thái";
+            this.clnStaus.MinimumWidth = 6;
+            this.clnStaus.Name = "clnStaus";
+            this.clnStaus.ReadOnly = true;
+            this.clnStaus.Width = 125;
+            // 
             // btnUpdate
             // 
             this.btnUpdate.Location = new System.Drawing.Point(177, 480);
@@ -228,13 +238,13 @@
             this.btnDelUser.Name = "btnDelUser";
             this.btnDelUser.Size = new System.Drawing.Size(108, 46);
             this.btnDelUser.TabIndex = 4;
-            this.btnDelUser.Text = "Xoá user";
+            this.btnDelUser.Text = "Vô hiệu hoá user";
             this.btnDelUser.UseVisualStyleBackColor = true;
             this.btnDelUser.Click += new System.EventHandler(this.btnDelUser_Click);
             // 
             // ManageUser
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 32F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 28F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1176, 551);
             this.Controls.Add(this.dgvUsers);
@@ -282,5 +292,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn clnPhoneNumber;
         private System.Windows.Forms.DataGridViewTextBoxColumn clnRole;
         private System.Windows.Forms.Button btnDelUser;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clnStaus;
     }
 }

@@ -1,4 +1,5 @@
-﻿using BadmintonManagement.Forms;
+﻿using BadmintonManagement.Database;
+using BadmintonManagement.Forms;
 using BadmintonManagement.Forms.Court;
 using BadmintonManagement.Forms.Customer;
 using BadmintonManagement.Forms.Price;
@@ -119,6 +120,17 @@ namespace BadmintonManagement.Forms.AuthorizationForms
             Bitmap btm2 = new Bitmap(bitmap1, mySize);
             closeImage = btm2;
             tabControl.Padding = new Point(30);
+            if (Properties.Settings.Default.Role == "Admin")
+            {
+                btnUser.Visible = true;
+                btnUser.Enabled = true;
+            }
+            else
+            {
+                btnUser.Visible = false;
+                btnUser.Enabled = false;
+            }
+
 
         }
 
@@ -165,7 +177,10 @@ namespace BadmintonManagement.Forms.AuthorizationForms
 
         private void btnExit_Click(object sender, EventArgs e)
         {
-            this.Close();
+            this.Hide();
+            UserServices.DeleteCurrentUser();
+            LoginForm form = new LoginForm();
+            form.Show();
         }
 
         private void tabControl_DrawItem(object sender, DrawItemEventArgs e)

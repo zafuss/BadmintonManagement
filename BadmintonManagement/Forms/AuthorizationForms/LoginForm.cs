@@ -14,15 +14,11 @@ namespace BadmintonManagement
 {
     public partial class LoginForm : Form
     {
-       
+
         public LoginForm()
         {
             InitializeComponent();
         }
-
-        
-        
- 
 
         private void lblForgotPass_Click(object sender, EventArgs e)
         {
@@ -35,29 +31,27 @@ namespace BadmintonManagement
             {
                 if (txtUser.Text == "Username" || txtPassword.Text == "Password")
                     throw new Exception("Vui lòng nhập đầy đủ thông tin!");
-                try
-                {
-                    FirebaseHelper.LoginUser(txtUser.Text, txtPassword.Text);
-                    HomePage homePage = new HomePage();
-                    this.Hide();
-                    homePage.Show();
 
-                } catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
+                UserServices.LoginUser(txtUser.Text, txtPassword.Text);
+                //FirebaseHelper.LoginUser(txtUser.Text, txtPassword.Text);
+                HomePage homePage = new HomePage();
+                this.Hide();
+                homePage.Show();
 
-            } catch (Exception ex)
+
+
+            }
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Thông báo");
             }
-                
+
         }
 
         // Change text in textbox  
         private void txtUser_Enter(object sender, EventArgs e)
         {
-            if(txtUser.Text == "Username")
+            if (txtUser.Text == "Username")
             {
                 txtUser.ForeColor = Color.Black;
                 txtUser.Text = "";
@@ -66,12 +60,12 @@ namespace BadmintonManagement
 
         private void txtUser_Leave(object sender, EventArgs e)
         {
-            if( txtUser.Text == "")
+            if (txtUser.Text == "")
             {
                 txtUser.ForeColor = Color.DarkGray;
                 txtUser.Text = "Username";
             }
-           
+
         }
 
         private void txtPassword_Enter(object sender, EventArgs e)
