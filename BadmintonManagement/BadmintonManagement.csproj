@@ -79,6 +79,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Database\FirebaseHelper.cs" />
+    <Compile Include="Forms\Court\AddCourtForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Court\AddCourtForm.Designer.cs">
+      <DependentUpon>AddCourtForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Court\CourtForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -155,6 +161,9 @@
     <Compile Include="Models\User.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Forms\Court\AddCourtForm.resx">
+      <DependentUpon>AddCourtForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Court\CourtForm.resx">
       <DependentUpon>CourtForm.cs</DependentUpon>
     </EmbeddedResource>

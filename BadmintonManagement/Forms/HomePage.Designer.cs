@@ -67,12 +67,13 @@
             // 
             // menuStrip1
             // 
+            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.hệThốngToolStripMenuItem,
             this.quảnLýToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1184, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1184, 28);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -89,72 +90,73 @@
             this.thốngKêToolStripMenuItem,
             this.thoátToolStripMenuItem});
             this.hệThốngToolStripMenuItem.Name = "hệThốngToolStripMenuItem";
-            this.hệThốngToolStripMenuItem.Size = new System.Drawing.Size(71, 20);
+            this.hệThốngToolStripMenuItem.Size = new System.Drawing.Size(88, 26);
             this.hệThốngToolStripMenuItem.Text = "Hệ Thống";
             // 
             // tàiKhoảnToolStripMenuItem
             // 
             this.tàiKhoảnToolStripMenuItem.Name = "tàiKhoảnToolStripMenuItem";
-            this.tàiKhoảnToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
+            this.tàiKhoảnToolStripMenuItem.Size = new System.Drawing.Size(180, 26);
             this.tàiKhoảnToolStripMenuItem.Text = "Tài khoản";
             // 
             // sânToolStripMenuItem
             // 
             this.sânToolStripMenuItem.Name = "sânToolStripMenuItem";
-            this.sânToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
+            this.sânToolStripMenuItem.Size = new System.Drawing.Size(180, 26);
             this.sânToolStripMenuItem.Text = "Sân";
             // 
             // kháchHàngToolStripMenuItem
             // 
             this.kháchHàngToolStripMenuItem.Name = "kháchHàngToolStripMenuItem";
-            this.kháchHàngToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
+            this.kháchHàngToolStripMenuItem.Size = new System.Drawing.Size(180, 26);
             this.kháchHàngToolStripMenuItem.Text = "Khách hàng";
             // 
             // dịchVụToolStripMenuItem
             // 
             this.dịchVụToolStripMenuItem.Name = "dịchVụToolStripMenuItem";
-            this.dịchVụToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
+            this.dịchVụToolStripMenuItem.Size = new System.Drawing.Size(180, 26);
             this.dịchVụToolStripMenuItem.Text = "dịch vụ";
             // 
             // phiếuĐặtSânToolStripMenuItem
             // 
             this.phiếuĐặtSânToolStripMenuItem.Name = "phiếuĐặtSânToolStripMenuItem";
-            this.phiếuĐặtSânToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
+            this.phiếuĐặtSânToolStripMenuItem.Size = new System.Drawing.Size(180, 26);
             this.phiếuĐặtSânToolStripMenuItem.Text = "Phiếu đặt sân";
             // 
             // hóaĐơnToolStripMenuItem
             // 
             this.hóaĐơnToolStripMenuItem.Name = "hóaĐơnToolStripMenuItem";
-            this.hóaĐơnToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
+            this.hóaĐơnToolStripMenuItem.Size = new System.Drawing.Size(180, 26);
             this.hóaĐơnToolStripMenuItem.Text = "Hóa đơn";
             // 
             // bảngGiáToolStripMenuItem
             // 
             this.bảngGiáToolStripMenuItem.Name = "bảngGiáToolStripMenuItem";
-            this.bảngGiáToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
+            this.bảngGiáToolStripMenuItem.Size = new System.Drawing.Size(180, 26);
             this.bảngGiáToolStripMenuItem.Text = "Bảng giá";
             // 
             // thốngKêToolStripMenuItem
             // 
             this.thốngKêToolStripMenuItem.Name = "thốngKêToolStripMenuItem";
-            this.thốngKêToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
+            this.thốngKêToolStripMenuItem.Size = new System.Drawing.Size(180, 26);
             this.thốngKêToolStripMenuItem.Text = "Thống kê";
             // 
             // thoátToolStripMenuItem
             // 
             this.thoátToolStripMenuItem.Name = "thoátToolStripMenuItem";
-            this.thoátToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
+            this.thoátToolStripMenuItem.Size = new System.Drawing.Size(180, 26);
             this.thoátToolStripMenuItem.Text = "Thoát";
             // 
             // quảnLýToolStripMenuItem
             // 
             this.quảnLýToolStripMenuItem.Name = "quảnLýToolStripMenuItem";
-            this.quảnLýToolStripMenuItem.Size = new System.Drawing.Size(62, 20);
+            this.quảnLýToolStripMenuItem.Size = new System.Drawing.Size(75, 26);
             this.quảnLýToolStripMenuItem.Text = "Quản Lý";
             // 
             // toolStrip1
             // 
             this.toolStrip1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.toolStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.btnUser,
             this.toolStripSeparator1,
@@ -173,9 +175,9 @@
             this.btnReport,
             this.toolStripSeparator7,
             this.btnExit});
-            this.toolStrip1.Location = new System.Drawing.Point(0, 24);
+            this.toolStrip1.Location = new System.Drawing.Point(0, 28);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(1184, 44);
+            this.toolStrip1.Size = new System.Drawing.Size(1184, 55);
             this.toolStrip1.TabIndex = 2;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -184,7 +186,7 @@
             this.btnUser.Image = global::BadmintonManagement.Properties.Resources.user;
             this.btnUser.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnUser.Name = "btnUser";
-            this.btnUser.Size = new System.Drawing.Size(80, 41);
+            this.btnUser.Size = new System.Drawing.Size(100, 52);
             this.btnUser.Text = "Tài Khoản";
             this.btnUser.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnUser.Click += new System.EventHandler(this.btnUser_Click);
@@ -192,14 +194,14 @@
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 44);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 55);
             // 
             // btnCourt
             // 
             this.btnCourt.Image = global::BadmintonManagement.Properties.Resources.court;
             this.btnCourt.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnCourt.Name = "btnCourt";
-            this.btnCourt.Size = new System.Drawing.Size(40, 41);
+            this.btnCourt.Size = new System.Drawing.Size(48, 52);
             this.btnCourt.Text = "Sân";
             this.btnCourt.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnCourt.Click += new System.EventHandler(this.btnCourt_Click);
@@ -207,14 +209,14 @@
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 44);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 55);
             // 
             // btnCustomer
             // 
             this.btnCustomer.Image = global::BadmintonManagement.Properties.Resources.customer__1_;
             this.btnCustomer.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnCustomer.Name = "btnCustomer";
-            this.btnCustomer.Size = new System.Drawing.Size(97, 41);
+            this.btnCustomer.Size = new System.Drawing.Size(121, 52);
             this.btnCustomer.Text = "Khách Hàng";
             this.btnCustomer.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnCustomer.Click += new System.EventHandler(this.btnCustomer_Click);
@@ -222,14 +224,14 @@
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 44);
+            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 55);
             // 
             // btnService
             // 
             this.btnService.Image = global::BadmintonManagement.Properties.Resources.service;
             this.btnService.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnService.Name = "btnService";
-            this.btnService.Size = new System.Drawing.Size(68, 41);
+            this.btnService.Size = new System.Drawing.Size(83, 52);
             this.btnService.Text = "Dịch Vụ";
             this.btnService.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnService.Click += new System.EventHandler(this.btnService_Click_1);
@@ -237,14 +239,14 @@
             // toolStripSeparator4
             // 
             this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(6, 44);
+            this.toolStripSeparator4.Size = new System.Drawing.Size(6, 55);
             // 
             // btnReservation
             // 
             this.btnReservation.Image = global::BadmintonManagement.Properties.Resources.reservation;
             this.btnReservation.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnReservation.Name = "btnReservation";
-            this.btnReservation.Size = new System.Drawing.Size(106, 41);
+            this.btnReservation.Size = new System.Drawing.Size(130, 52);
             this.btnReservation.Text = "Phiếu Đặ Sân";
             this.btnReservation.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnReservation.ToolTipText = "Phiếu Đặt Sân";
@@ -253,14 +255,14 @@
             // toolStripButton6
             // 
             this.toolStripButton6.Name = "toolStripButton6";
-            this.toolStripButton6.Size = new System.Drawing.Size(6, 44);
+            this.toolStripButton6.Size = new System.Drawing.Size(6, 55);
             // 
             // btnReceipt
             // 
             this.btnReceipt.Image = global::BadmintonManagement.Properties.Resources.paper;
             this.btnReceipt.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnReceipt.Name = "btnReceipt";
-            this.btnReceipt.Size = new System.Drawing.Size(76, 41);
+            this.btnReceipt.Size = new System.Drawing.Size(94, 52);
             this.btnReceipt.Text = "Hóa Đơn";
             this.btnReceipt.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
             this.btnReceipt.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
@@ -269,14 +271,14 @@
             // toolStripSeparator5
             // 
             this.toolStripSeparator5.Name = "toolStripSeparator5";
-            this.toolStripSeparator5.Size = new System.Drawing.Size(6, 44);
+            this.toolStripSeparator5.Size = new System.Drawing.Size(6, 55);
             // 
             // btnPrice
             // 
             this.btnPrice.Image = global::BadmintonManagement.Properties.Resources.prices1;
             this.btnPrice.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnPrice.Name = "btnPrice";
-            this.btnPrice.Size = new System.Drawing.Size(76, 41);
+            this.btnPrice.Size = new System.Drawing.Size(94, 52);
             this.btnPrice.Text = "Bảng Giá";
             this.btnPrice.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnPrice.Click += new System.EventHandler(this.btnPrice_Click);
@@ -284,14 +286,14 @@
             // toolStripSeparator6
             // 
             this.toolStripSeparator6.Name = "toolStripSeparator6";
-            this.toolStripSeparator6.Size = new System.Drawing.Size(6, 44);
+            this.toolStripSeparator6.Size = new System.Drawing.Size(6, 55);
             // 
             // btnReport
             // 
             this.btnReport.Image = global::BadmintonManagement.Properties.Resources.report;
             this.btnReport.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnReport.Name = "btnReport";
-            this.btnReport.Size = new System.Drawing.Size(79, 41);
+            this.btnReport.Size = new System.Drawing.Size(99, 52);
             this.btnReport.Text = "Thống Kê";
             this.btnReport.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnReport.Click += new System.EventHandler(this.btnReport_Click_1);
@@ -299,7 +301,7 @@
             // toolStripSeparator7
             // 
             this.toolStripSeparator7.Name = "toolStripSeparator7";
-            this.toolStripSeparator7.Size = new System.Drawing.Size(6, 44);
+            this.toolStripSeparator7.Size = new System.Drawing.Size(6, 55);
             // 
             // btnExit
             // 
@@ -307,7 +309,7 @@
             this.btnExit.Image = global::BadmintonManagement.Properties.Resources.logout;
             this.btnExit.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(53, 41);
+            this.btnExit.Size = new System.Drawing.Size(66, 52);
             this.btnExit.Text = "Thoát";
             this.btnExit.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
@@ -316,9 +318,9 @@
             // 
             this.pnlChildForm.Controls.Add(this.tabControl);
             this.pnlChildForm.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlChildForm.Location = new System.Drawing.Point(0, 68);
+            this.pnlChildForm.Location = new System.Drawing.Point(0, 83);
             this.pnlChildForm.Name = "pnlChildForm";
-            this.pnlChildForm.Size = new System.Drawing.Size(1184, 659);
+            this.pnlChildForm.Size = new System.Drawing.Size(1184, 644);
             this.pnlChildForm.TabIndex = 4;
             // 
             // tabControl
@@ -328,14 +330,14 @@
             this.tabControl.Location = new System.Drawing.Point(0, 0);
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
-            this.tabControl.Size = new System.Drawing.Size(1184, 659);
+            this.tabControl.Size = new System.Drawing.Size(1184, 644);
             this.tabControl.TabIndex = 0;
             this.tabControl.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.tabControl_DrawItem);
             this.tabControl.MouseClick += new System.Windows.Forms.MouseEventHandler(this.tabControl_MouseClick);
             // 
             // HomePage
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 28F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1184, 727);
             this.Controls.Add(this.pnlChildForm);
