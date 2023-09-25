@@ -33,7 +33,24 @@ namespace BadmintonManagement.Database
         {
             return context.C_User.Any(x => x.Email == email);
         }
+        public static void CreateAdminAccount()
+        {
+            C_User user = new C_User() {
+                Username = "admin",
+                C_Password = Security.Encrypt("admin"),
+                C_Name = "admin",
+                Email = "email",
+                PhoneNumber = "1234567890",
+                C_Role = "Admin",
+                Status = "Kích hoạt"
+                
+                
+            };
+        
+            context.C_User.AddOrUpdate(user);
+            context.SaveChanges();
 
+        }
         public static void AddUser(C_User user)
         {
             string password = Security.Encrypt(user.C_Password);

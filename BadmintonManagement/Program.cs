@@ -16,6 +16,7 @@ namespace BadmintonManagement
         [STAThread]
         static void Main()
         {
+            UserServices.CreateAdminAccount();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new LoginForm());
