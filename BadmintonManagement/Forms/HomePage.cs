@@ -26,7 +26,7 @@ namespace BadmintonManagement.Forms.AuthorizationForms
         {
             InitializeComponent();
         }
-
+       
         private void btnAdminManageUser_Click(object sender, EventArgs e)
         {
             ManageUser manageUser = new ManageUser();
