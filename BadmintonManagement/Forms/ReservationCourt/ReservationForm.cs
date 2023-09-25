@@ -16,5 +16,7 @@ namespace BadmintonManagement.Forms.ReservationCourt
         {
             InitializeComponent();
         }
+
+       
     }
 }

@@ -59,10 +59,6 @@ namespace BadmintonManagement.Forms.AuthorizationForms
                 this.Close();
         }
 
-
-       
-       
-
         private int CheckExist(Form form)
         {
             for(int i = 0;i < tabControl.TabCount; i++)
@@ -126,9 +122,6 @@ namespace BadmintonManagement.Forms.AuthorizationForms
 
         }
 
-       
-
-        
 
         private void btnUser_Click(object sender, EventArgs e)
         {
@@ -186,15 +179,15 @@ namespace BadmintonManagement.Forms.AuthorizationForms
             if (tabControl.SelectedTab == tabControl.TabPages[e.Index])
             {
                 e.Graphics.DrawImage(closeImage, imageRect);
-                font = new Font("Arial",10,FontStyle.Bold);
+                font = new Font("Segoe UI", 12,FontStyle.Bold);
                 e.Graphics.DrawString(tabControl.TabPages[e.Index].Text, font,brush, rect,strFormat);
             }
             else
             {
                 e.Graphics.DrawImage(closeImage, imageRect);
-                font = new Font("Arial", 9, FontStyle.Strikeout);
+                //font = new Font("Arial", 9, FontStyle.Strikeout);
+                font = new Font("Segoe UI", 11, FontStyle.Regular);
                 e.Graphics.DrawString(tabControl.TabPages[e.Index].Text, font, brush, rect, strFormat);
-
             }
 
         }

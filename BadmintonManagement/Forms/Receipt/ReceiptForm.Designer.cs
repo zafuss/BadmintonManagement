@@ -32,12 +32,13 @@
             // 
             // ReceiptForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1152, 611);
+            this.ClientSize = new System.Drawing.Size(1176, 551);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "ReceiptForm";
-            this.Text = "ReceiptForm";
+            this.Text = "Hóa Đơn";
             this.ResumeLayout(false);
 
         }
