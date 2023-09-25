@@ -16,5 +16,10 @@ namespace BadmintonManagement.Forms.Service
         {
             InitializeComponent();
         }
+
+        private void ServiceForm_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

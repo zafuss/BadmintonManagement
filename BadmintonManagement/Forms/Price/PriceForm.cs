@@ -16,5 +16,10 @@ namespace BadmintonManagement.Forms.Price
         {
             InitializeComponent();
         }
+
+        private void PriceForm_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
