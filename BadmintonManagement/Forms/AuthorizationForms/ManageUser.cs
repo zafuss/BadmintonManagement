@@ -116,6 +116,7 @@ namespace BadmintonManagement.Forms.AuthorizationForms
                     Username = txtRegUsername.Text,
                     C_Password = txtRegPassword.Text,
                     PhoneNumber = txtRegPhoneNumber.Text,
+                    C_Name = txtName.Text,  
                     Email = txtRegEmail.Text,
                     C_Role = selectedRole,
                     Status = "Enabled"

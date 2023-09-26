@@ -12,12 +12,10 @@ namespace BadmintonManagement
 {
     class OTPService
     {
-        private static string sendEmail = "giaphu12382@gmail.com";
-        private static string appPassword = "bfcsfevcogghilgd";
-        public static string forgotPasswordMailBody = "Xin chào,\n\n"
-                                                    + "Để cập nhật mật khẩu mới cho tài khoản, hãy nhập mã dưới đây:\n\n"
-                                                    + RandomOTPCode().ToString();
+        private static string sendEmail = "todreamscompany@gmail.com";
+        private static string appPassword = "jjxhyssvqdczhhdb";
 
+        public static string mailTrailing = "\n--------------------------------------------------------------------------\r\nCông Ty Cổ Phần TOD\r\nPhone: 0823 216 213\r\nEmail: todreamscompany@gmail.com";
 
         private static int RandomOTPCode()
         {
@@ -40,7 +38,9 @@ namespace BadmintonManagement
                 int code = RandomOTPCode();
                 mail.Body = "Xin chào,\n\n"
                             + "Để hoàn tất việc trở thành thành viên của Công ty TOD, hãy nhập mã ở dưới để kích hoạt tài khoản của bạn:\n\n"
-                            + RandomOTPCode().ToString(); ;
+                            + RandomOTPCode().ToString()
+                            + mailTrailing;
+                
                 SmtpServer.EnableSsl = true;
                 SmtpServer.Port = 587;
                 SmtpServer.DeliveryMethod = SmtpDeliveryMethod.Network;
@@ -70,7 +70,8 @@ namespace BadmintonManagement
                 int code = RandomOTPCode();
                 mail.Body = "Xin chào,\n\n"
                             + "Để cập nhật mật khẩu mới cho tài khoản, hãy nhập mã dưới đây:\n\n"
-                            + RandomOTPCode().ToString();
+                            + RandomOTPCode().ToString()
+                            + mailTrailing;
                 SmtpServer.EnableSsl = true;
                 SmtpServer.Port = 587;
                 SmtpServer.DeliveryMethod = SmtpDeliveryMethod.Network;
