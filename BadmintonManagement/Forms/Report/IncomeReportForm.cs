@@ -26,15 +26,26 @@ namespace BadmintonManagement.Forms.Report
             chilForm.TopLevel = false;
             chilForm.FormBorderStyle = FormBorderStyle.None;    
             chilForm.Dock = DockStyle.Fill;
-            pnlIncome.Controls.Add(chilForm);
-            pnlIncome.Tag = chilForm;
+            pnlViewreport.Controls.Add(chilForm);
+            pnlViewreport.Tag = chilForm;
             chilForm.BringToFront();
             chilForm.Show();
 
         }
-        private void button1_Click(object sender, EventArgs e)
+
+        
+        private void btnIncome_Click(object sender, EventArgs e)
         {
             OpenChilForm(new IncomeForm());
+            btnIncome.BackColor = Color.LightGray;
+            btnReceipt.BackColor = SystemColors.Control;
+        }
+
+        private void btnReceipt_Click(object sender, EventArgs e)
+        {
+            OpenChilForm(new ReceiptReportForm());
+            btnReceipt.BackColor = Color.LightGray;
+            btnIncome.BackColor = SystemColors.Control;
         }
     }
 }

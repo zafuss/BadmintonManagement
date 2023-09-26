@@ -111,6 +111,12 @@
       <DependentUpon>IncomeForm.cs</DependentUpon>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
+    <Compile Include="Forms\Report\ReceiptReportForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Report\ReceiptReportForm.Designer.cs">
+      <DependentUpon>ReceiptReportForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Services\OTP\EnterOTP.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -223,7 +229,13 @@
       <DependentUpon>IncomeForm.cs</DependentUpon>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Report\ReceiptReportForm.resx">
+      <DependentUpon>ReceiptReportForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="IncomeReport.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReportReceipt.rdlc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="Services\OTP\EnterOTP.resx">
