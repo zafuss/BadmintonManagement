@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace BadmintonManagement.Forms.Report
 {
-    public partial class IncomeReportDate : Form
+    public partial class InComeChart : Form
     {
-        public IncomeReportDate()
+        public InComeChart()
         {
             InitializeComponent();
         }
