@@ -1,6 +1,6 @@
 ﻿namespace BadmintonManagement.Forms.Report
 {
-    partial class IncomeReportDate
+    partial class IncomeForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,34 +28,34 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
+            this.rptIncome = new Microsoft.Reporting.WinForms.ReportViewer();
             this.SuspendLayout();
             // 
-            // label1
+            // rptIncome
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(190, 183);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(51, 20);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "label1";
+            this.rptIncome.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rptIncome.DocumentMapWidth = 41;
+            this.rptIncome.Location = new System.Drawing.Point(0, 0);
+            this.rptIncome.Name = "rptIncome";
+            this.rptIncome.ServerReport.BearerToken = null;
+            this.rptIncome.Size = new System.Drawing.Size(800, 450);
+            this.rptIncome.TabIndex = 0;
             // 
-            // IncomeReportDate
+            // IncomeForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(941, 551);
-            this.Controls.Add(this.label1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "IncomeReportDate";
-            this.Text = "IncomeReportDate";
+            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.rptIncome);
+            this.Name = "IncomeForm";
+            this.Text = "IncomeForm";
+            this.Load += new System.EventHandler(this.IncomeForm_Load);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
+        private Microsoft.Reporting.WinForms.ReportViewer rptIncome;
     }
 }

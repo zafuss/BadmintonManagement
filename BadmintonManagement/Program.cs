@@ -1,5 +1,6 @@
 ﻿using BadmintonManagement.Database;
 using BadmintonManagement.Forms.AuthorizationForms;
+using BadmintonManagement.Forms.Report;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,9 +20,10 @@ namespace BadmintonManagement
             UserServices.CreateTestAccounts();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new LoginForm());
-            //Application.Run(new HomePage());
+            //Application.Run(new LoginForm());
+            Application.Run(new HomePage());
             //Application.Run(new ManageUser());
+            //Application.Run(new IncomeForm());
 
         }
     }
