@@ -88,6 +88,13 @@ namespace BadmintonManagement
 
         }
 
+        private void EnterOTP_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            btnEnterOTP.Enabled = true;
+            btnSendAgain.Enabled = false;
+            timer.Stop();
+            validityOTPperiod = 60;
 
+        }
     }
 }
