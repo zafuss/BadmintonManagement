@@ -32,7 +32,7 @@
             this.button1 = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
-            this.panel2 = new System.Windows.Forms.Panel();
+            this.pnlIncome = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.SuspendLayout();
@@ -59,6 +59,7 @@
             this.button1.TabIndex = 2;
             this.button1.Text = "Thống kê doanh thu";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // panel3
             // 
@@ -80,21 +81,21 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Các loại thống kê";
             // 
-            // panel2
+            // pnlIncome
             // 
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(111, 0);
-            this.panel2.Margin = new System.Windows.Forms.Padding(2);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(673, 358);
-            this.panel2.TabIndex = 1;
+            this.pnlIncome.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlIncome.Location = new System.Drawing.Point(111, 0);
+            this.pnlIncome.Margin = new System.Windows.Forms.Padding(2);
+            this.pnlIncome.Name = "pnlIncome";
+            this.pnlIncome.Size = new System.Drawing.Size(673, 358);
+            this.pnlIncome.TabIndex = 1;
             // 
             // IncomeReportForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(784, 358);
-            this.Controls.Add(this.panel2);
+            this.Controls.Add(this.pnlIncome);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "IncomeReportForm";
@@ -111,7 +112,7 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel pnlIncome;
         private System.Windows.Forms.Button button1;
     }
 }

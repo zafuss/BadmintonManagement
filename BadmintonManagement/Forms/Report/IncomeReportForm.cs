@@ -17,9 +17,24 @@ namespace BadmintonManagement.Forms.Report
             InitializeComponent();
             
         }
+        Form activeForm = null;
+        private void OpenChilForm(Form chilForm)
+        {
+            if (activeForm != null)
+                activeForm.Close();
+            activeForm = chilForm;
+            chilForm.TopLevel = false;
+            chilForm.FormBorderStyle = FormBorderStyle.None;    
+            chilForm.Dock = DockStyle.Fill;
+            pnlIncome.Controls.Add(chilForm);
+            pnlIncome.Tag = chilForm;
+            chilForm.BringToFront();
+            chilForm.Show();
 
-       
-
-        
+        }
+        private void button1_Click(object sender, EventArgs e)
+        {
+            OpenChilForm(new IncomeForm());
+        }
     }
 }

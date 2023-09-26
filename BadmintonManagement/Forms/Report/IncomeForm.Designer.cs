@@ -1,6 +1,6 @@
 ﻿namespace BadmintonManagement.Forms.Report
 {
-    partial class InComeChart
+    partial class IncomeForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,26 +28,34 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.reportAction1 = new Microsoft.AnalysisServices.ReportAction();
-            this.directoryEntry1 = new System.DirectoryServices.DirectoryEntry();
+            this.rptIncome = new Microsoft.Reporting.WinForms.ReportViewer();
             this.SuspendLayout();
-          
             // 
-            // InComeChart
+            // rptIncome
+            // 
+            this.rptIncome.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rptIncome.DocumentMapWidth = 41;
+            this.rptIncome.Location = new System.Drawing.Point(0, 0);
+            this.rptIncome.Name = "rptIncome";
+            this.rptIncome.ServerReport.BearerToken = null;
+            this.rptIncome.Size = new System.Drawing.Size(800, 450);
+            this.rptIncome.TabIndex = 0;
+            // 
+            // IncomeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(793, 464);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "InComeChart";
-            this.Text = "InComeChart";
+            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.rptIncome);
+            this.Name = "IncomeForm";
+            this.Text = "IncomeForm";
+            this.Load += new System.EventHandler(this.IncomeForm_Load);
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private Microsoft.AnalysisServices.ReportAction reportAction1;
-        private System.DirectoryServices.DirectoryEntry directoryEntry1;
+        private Microsoft.Reporting.WinForms.ReportViewer rptIncome;
     }
 }

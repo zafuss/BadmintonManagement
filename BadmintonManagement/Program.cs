@@ -1,5 +1,6 @@
 ﻿using BadmintonManagement.Database;
 using BadmintonManagement.Forms.AuthorizationForms;
+using BadmintonManagement.Forms.Report;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,6 +23,7 @@ namespace BadmintonManagement
             //Application.Run(new LoginForm());
             Application.Run(new HomePage());
             //Application.Run(new ManageUser());
+            //Application.Run(new IncomeForm());
 
         }
     }
