@@ -1,5 +1,6 @@
 ﻿using BadmintonManagement.Database;
 using BadmintonManagement.Forms.AuthorizationForms;
+using BadmintonManagement.Function.CourtService;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,6 +17,8 @@ namespace BadmintonManagement
         [STAThread]
         static void Main()
         {
+            new CourtService().createBranch();
+            new CourtService().createCourt();
             UserServices.CreateAdminAccount();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);

@@ -15,6 +15,126 @@ namespace BadmintonManagement.Function.CourtService
         private List<COURT> _courts = new ModelBadmintonManage().COURTs.ToList();
         private List<BRANCH> _branchs = new ModelBadmintonManage().BRANCHes.ToList();
 
+        public void createCourt()
+        {
+            DateTime dateTime = new DateTime(2023,10,15);
+            COURT courtSTD001 = new COURT()
+            {
+                CourtID = "STD001",
+                CourtName = "Sân 1",
+                C_Status = "Use",
+                BranchID = "TD001",
+                StartDate = new DateTime(2023, 10, 15),
+            };
+            COURT courtSTD002 = new COURT()
+            {
+                CourtID = "STD002",
+                CourtName = "Sân 2",
+                C_Status = "Used",
+                BranchID = "TD001",
+                StartDate = new DateTime(2023, 11, 15),
+            };
+            COURT courtSTD003 = new COURT()
+            {
+                CourtID = "STD003",
+                CourtName = "Sân 3",
+                C_Status = "Maintaince",
+                BranchID = "TD001",
+                StartDate = new DateTime(2023, 12, 15),
+            };
+
+
+            COURT courtSBT001 = new COURT()
+            {
+                CourtID = "SBT001",
+                CourtName = "Sân 1",
+                C_Status = "Use",
+                BranchID = "BT001",
+                StartDate = new DateTime(2023, 12, 17),
+            };
+            COURT courtSBT002 = new COURT()
+            {
+                CourtID = "SBT002",
+                CourtName = "Sân 2",
+                C_Status = "Used",
+                BranchID = "BT001",
+                StartDate = new DateTime(2023, 12, 27),
+            };
+            COURT courtSBT003 = new COURT()
+            {
+                CourtID = "SBT003",
+                CourtName = "Sân 3",
+                C_Status = "Disable",
+                BranchID = "BT001",
+                StartDate = new DateTime(2023, 12, 25),
+            };
+
+            if (!checkCourtID(courtSBT001.CourtID))
+            {
+                _modelBadmintonManage.COURTs.Add(courtSBT001);
+                _modelBadmintonManage.SaveChanges();
+            }
+
+            if (!checkCourtID(courtSBT002.CourtID))
+            {
+                _modelBadmintonManage.COURTs.Add(courtSBT002);
+                _modelBadmintonManage.SaveChanges();
+            }
+
+            if (!checkCourtID(courtSBT003.CourtID))
+            {
+                _modelBadmintonManage.COURTs.Add(courtSBT003);
+                _modelBadmintonManage.SaveChanges();
+            }
+
+            if (!checkCourtID(courtSTD001.CourtID))
+            {
+                _modelBadmintonManage.COURTs.Add(courtSTD001);
+                _modelBadmintonManage.SaveChanges();
+            }
+
+            if (!checkCourtID(courtSTD002.CourtID))
+            {
+                _modelBadmintonManage.COURTs.Add(courtSTD002);
+                _modelBadmintonManage.SaveChanges();
+            }
+
+            if (!checkCourtID(courtSTD003.CourtID))
+            {
+                _modelBadmintonManage.COURTs.Add(courtSTD003);
+                _modelBadmintonManage.SaveChanges();
+            }
+        }
+
+        public void createBranch()
+        {
+            BRANCH branchTD = new BRANCH()
+            {
+                BranchID = "TD001",
+                BranchName = "Thủ Đức",
+                C_Address = "Long Trường Quận 9 ",
+            };
+
+            BRANCH branchBT = new BRANCH()
+            {
+                BranchID = "BT001",
+                BranchName = "Bình Thạnh",
+                C_Address = "Gần Hutech",
+            };
+
+            if (!checkBranchID(branchTD.BranchID))
+            {
+                _modelBadmintonManage.BRANCHes.Add(branchTD);
+                _modelBadmintonManage.SaveChanges();
+            }
+
+            if (!checkBranchID(branchBT.BranchID))
+            {
+                _modelBadmintonManage.BRANCHes.Add(branchBT);
+                _modelBadmintonManage.SaveChanges();
+            }
+        }
+
         public ModelBadmintonManage getModelBadmintonManage()
         {
             return _modelBadmintonManage;
@@ -71,6 +191,13 @@ namespace BadmintonManagement.Function.CourtService
                 return false;
             return true;
         }
+        public bool checkBranchID(string courtID)
+        {
+            BRANCH branch = _modelBadmintonManage.BRANCHes.FirstOrDefault(p => p.BranchID.ToLower().Contains(courtID.ToLower()));
+            if (branch == null)
+                return false;
+            return true;
+        }
 
         public COURT FindCourtByID(string id)
         {
@@ -78,5 +205,10 @@ namespace BadmintonManagement.Function.CourtService
             return court;
         }
 
+        public BRANCH FindBranchByID(string id)
+        {
+            BRANCH branch = _modelBadmintonManage.BRANCHes.FirstOrDefault(p => p.BranchID.ToLower().Contains(id.ToLower()));
+            return branch;
+        }
     }
 }
