@@ -39,9 +39,9 @@ namespace BadmintonManagement.Database
         {
             return context.C_User.Any(x => x.Email == email);
         }
-        public static void CreateAdminAccount()
+        public static void CreateTestAccounts()
         {
-            C_User user = new C_User()
+            C_User admin = new C_User()
             {
                 Username = "admin",
                 C_Password = Security.Encrypt("admin"),
@@ -53,11 +53,30 @@ namespace BadmintonManagement.Database
 
 
             };
-            C_User tmp = GetUser(user.Username);
+            C_User tmp = GetUser(admin.Username);
             if (tmp == null)
             {
 
-                context.C_User.AddOrUpdate(user);
+                context.C_User.AddOrUpdate(admin);
+                context.SaveChanges();
+            }
+            C_User staff = new C_User()
+            {
+                Username = "staff",
+                C_Password = Security.Encrypt("staff"),
+                C_Name = "staff",
+                Email = "staff",
+                PhoneNumber = "1234567890",
+                C_Role = "Staff",
+                Status = "Enabled"
+
+
+            };
+            C_User tmp1 = GetUser(admin.Username);
+            if (tmp1 == null)
+            {
+
+                context.C_User.AddOrUpdate(admin);
                 context.SaveChanges();
             }
 
@@ -168,7 +187,7 @@ namespace BadmintonManagement.Database
                 {
                     string usernameres = get.Username;
                     string passwordres = get.C_Password;
-                    if (username == usernameres || Security.Encrypt(password) == passwordres)
+                    if (username == usernameres && Security.Encrypt(password) == passwordres)
                     {
                         if (get.Status == "Disabled") throw new Exception("Tài khoản đã bị vô hiệu hoá, vui lòng liên hệ admin để biết thêm chi tiết");
                         isSuccess = true;

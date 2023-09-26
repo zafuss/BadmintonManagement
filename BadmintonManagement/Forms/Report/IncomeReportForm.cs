@@ -15,49 +15,26 @@ namespace BadmintonManagement.Forms.Report
         public IncomeReportForm()
         {
             InitializeComponent();
-            customizeDesign();
+            
         }
-
-        private void customizeDesign()
+        Form activeForm = null;
+        private void OpenChilForm(Form chilForm)
         {
-            pnlIncomeDate.Visible = false;
-            pnlCustomerReport.Visible = false;
+            if (activeForm != null)
+                activeForm.Close();
+            activeForm = chilForm;
+            chilForm.TopLevel = false;
+            chilForm.FormBorderStyle = FormBorderStyle.None;    
+            chilForm.Dock = DockStyle.Fill;
+            pnlIncome.Controls.Add(chilForm);
+            pnlIncome.Tag = chilForm;
+            chilForm.BringToFront();
+            chilForm.Show();
+
         }
-
-        private void HideDateTime()
+        private void button1_Click(object sender, EventArgs e)
         {
-            if (pnlIncomeDate.Visible == true)
-                pnlIncomeDate.Visible = false;
-            if (pnlCustomerReport.Visible == true)
-                pnlCustomerReport.Visible = false;
-        }
-
-        private void ShowDateTime(Panel panel)
-        {
-            if(panel.Visible == false)
-            {
-                HideDateTime();
-                panel.Visible = true;
-            }
-            else
-            {
-                panel.Visible = false;
-            }
-        }
-
-        private void btnIncomeReport_Click(object sender, EventArgs e)
-        {
-            ShowDateTime(pnlIncomeDate);
-        }
-
-        private void btnCustomerReport_Click(object sender, EventArgs e)
-        {
-            ShowDateTime(pnlCustomerReport);
-        }
-
-        private void btnDateIncome_Click(object sender, EventArgs e)
-        {
-
+            OpenChilForm(new IncomeForm());
         }
     }
 }
