@@ -145,6 +145,7 @@
     <Compile Include="Forms\Service\ServiceForm.Designer.cs">
       <DependentUpon>ServiceForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Function\CourtService\CourtService.cs" />
     <Compile Include="Models\BRANCH.cs" />
     <Compile Include="Models\COURT.cs" />
     <Compile Include="Models\CUSTOMER.cs" />

@@ -73,7 +73,7 @@
             this.quảnLýToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1184, 28);
+            this.menuStrip1.Size = new System.Drawing.Size(1184, 30);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -175,7 +175,7 @@
             this.btnReport,
             this.toolStripSeparator7,
             this.btnExit});
-            this.toolStrip1.Location = new System.Drawing.Point(0, 28);
+            this.toolStrip1.Location = new System.Drawing.Point(0, 30);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(1184, 55);
             this.toolStrip1.TabIndex = 2;
@@ -318,9 +318,9 @@
             // 
             this.pnlChildForm.Controls.Add(this.tabControl);
             this.pnlChildForm.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlChildForm.Location = new System.Drawing.Point(0, 83);
+            this.pnlChildForm.Location = new System.Drawing.Point(0, 85);
             this.pnlChildForm.Name = "pnlChildForm";
-            this.pnlChildForm.Size = new System.Drawing.Size(1184, 644);
+            this.pnlChildForm.Size = new System.Drawing.Size(1184, 642);
             this.pnlChildForm.TabIndex = 4;
             // 
             // tabControl
@@ -330,7 +330,7 @@
             this.tabControl.Location = new System.Drawing.Point(0, 0);
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
-            this.tabControl.Size = new System.Drawing.Size(1184, 644);
+            this.tabControl.Size = new System.Drawing.Size(1184, 642);
             this.tabControl.TabIndex = 0;
             this.tabControl.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.tabControl_DrawItem);
             this.tabControl.MouseClick += new System.Windows.Forms.MouseEventHandler(this.tabControl_MouseClick);

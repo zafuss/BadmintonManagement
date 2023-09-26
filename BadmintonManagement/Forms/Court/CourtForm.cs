@@ -15,10 +15,18 @@ namespace BadmintonManagement.Forms.Court
         public CourtForm()
         {
             InitializeComponent();
+            fill();
             customizeDesign();
         }
 
-        //private void fill()
+        private void fill()
+        {
+            AddCourtForm addCourtForm = new AddCourtForm();
+            addCourtForm.TopLevel = false;
+            addCourtForm.AutoScroll = true;
+            pnlAdmin.Controls.Add(addCourtForm);
+            addCourtForm.Show();
+        }
         private void customizeDesign()
         {
             pnlUser.Visible = false;

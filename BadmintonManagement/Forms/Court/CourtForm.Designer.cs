@@ -29,17 +29,15 @@
         private void InitializeComponent()
         {
             this.pnlInformation = new System.Windows.Forms.Panel();
+            this.pnlAdmin = new System.Windows.Forms.Panel();
+            this.btnAdmin = new System.Windows.Forms.Button();
+            this.pnlUser = new System.Windows.Forms.Panel();
+            this.btnUser = new System.Windows.Forms.Button();
             this.pnlFunction = new System.Windows.Forms.Panel();
             this.lblfunction = new System.Windows.Forms.Label();
             this.pnlDisplayCourt = new System.Windows.Forms.Panel();
-            this.btnUser = new System.Windows.Forms.Button();
-            this.pnlUser = new System.Windows.Forms.Panel();
-            this.btnAdmin = new System.Windows.Forms.Button();
-            this.pnlAdmin = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
             this.pnlInformation.SuspendLayout();
             this.pnlFunction.SuspendLayout();
-            this.pnlAdmin.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlInformation
@@ -54,6 +52,44 @@
             this.pnlInformation.Name = "pnlInformation";
             this.pnlInformation.Size = new System.Drawing.Size(414, 635);
             this.pnlInformation.TabIndex = 1;
+            // 
+            // pnlAdmin
+            // 
+            this.pnlAdmin.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlAdmin.Location = new System.Drawing.Point(0, 322);
+            this.pnlAdmin.Name = "pnlAdmin";
+            this.pnlAdmin.Size = new System.Drawing.Size(414, 313);
+            this.pnlAdmin.TabIndex = 4;
+            // 
+            // btnAdmin
+            // 
+            this.btnAdmin.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnAdmin.Location = new System.Drawing.Point(0, 289);
+            this.btnAdmin.Name = "btnAdmin";
+            this.btnAdmin.Size = new System.Drawing.Size(414, 33);
+            this.btnAdmin.TabIndex = 3;
+            this.btnAdmin.Text = "ADMIN";
+            this.btnAdmin.UseVisualStyleBackColor = true;
+            this.btnAdmin.Click += new System.EventHandler(this.btnAdmin_Click);
+            // 
+            // pnlUser
+            // 
+            this.pnlUser.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlUser.Location = new System.Drawing.Point(0, 78);
+            this.pnlUser.Name = "pnlUser";
+            this.pnlUser.Size = new System.Drawing.Size(414, 211);
+            this.pnlUser.TabIndex = 2;
+            // 
+            // btnUser
+            // 
+            this.btnUser.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnUser.Location = new System.Drawing.Point(0, 45);
+            this.btnUser.Name = "btnUser";
+            this.btnUser.Size = new System.Drawing.Size(414, 33);
+            this.btnUser.TabIndex = 1;
+            this.btnUser.Text = "USER";
+            this.btnUser.UseVisualStyleBackColor = true;
+            this.btnUser.Click += new System.EventHandler(this.btnUser_Click);
             // 
             // pnlFunction
             // 
@@ -81,54 +117,6 @@
             this.pnlDisplayCourt.Size = new System.Drawing.Size(850, 635);
             this.pnlDisplayCourt.TabIndex = 2;
             // 
-            // btnUser
-            // 
-            this.btnUser.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnUser.Location = new System.Drawing.Point(0, 45);
-            this.btnUser.Name = "btnUser";
-            this.btnUser.Size = new System.Drawing.Size(414, 33);
-            this.btnUser.TabIndex = 1;
-            this.btnUser.Text = "button1";
-            this.btnUser.UseVisualStyleBackColor = true;
-            this.btnUser.Click += new System.EventHandler(this.btnUser_Click);
-            // 
-            // pnlUser
-            // 
-            this.pnlUser.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlUser.Location = new System.Drawing.Point(0, 78);
-            this.pnlUser.Name = "pnlUser";
-            this.pnlUser.Size = new System.Drawing.Size(414, 211);
-            this.pnlUser.TabIndex = 2;
-            // 
-            // btnAdmin
-            // 
-            this.btnAdmin.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnAdmin.Location = new System.Drawing.Point(0, 289);
-            this.btnAdmin.Name = "btnAdmin";
-            this.btnAdmin.Size = new System.Drawing.Size(414, 33);
-            this.btnAdmin.TabIndex = 3;
-            this.btnAdmin.Text = "button2";
-            this.btnAdmin.UseVisualStyleBackColor = true;
-            this.btnAdmin.Click += new System.EventHandler(this.btnAdmin_Click);
-            // 
-            // pnlAdmin
-            // 
-            this.pnlAdmin.Controls.Add(this.label1);
-            this.pnlAdmin.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlAdmin.Location = new System.Drawing.Point(0, 322);
-            this.pnlAdmin.Name = "pnlAdmin";
-            this.pnlAdmin.Size = new System.Drawing.Size(414, 313);
-            this.pnlAdmin.TabIndex = 4;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(152, 35);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(76, 16);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "asdasdasd";
-            // 
             // CourtForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -143,8 +131,6 @@
             this.pnlInformation.ResumeLayout(false);
             this.pnlFunction.ResumeLayout(false);
             this.pnlFunction.PerformLayout();
-            this.pnlAdmin.ResumeLayout(false);
-            this.pnlAdmin.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -159,6 +145,5 @@
         private System.Windows.Forms.Button btnAdmin;
         private System.Windows.Forms.Panel pnlUser;
         private System.Windows.Forms.Button btnUser;
-        private System.Windows.Forms.Label label1;
     }
 }

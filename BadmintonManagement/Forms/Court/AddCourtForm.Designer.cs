@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.grpInformation = new System.Windows.Forms.GroupBox();
+            this.cboCourtID = new System.Windows.Forms.ComboBox();
             this.btnChange = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
@@ -41,12 +42,12 @@
             this.cboBranchID = new System.Windows.Forms.ComboBox();
             this.cboStatus = new System.Windows.Forms.ComboBox();
             this.txtCourtName = new System.Windows.Forms.TextBox();
-            this.txtCourtID = new System.Windows.Forms.TextBox();
             this.grpInformation.SuspendLayout();
             this.SuspendLayout();
             // 
             // grpInformation
             // 
+            this.grpInformation.Controls.Add(this.cboCourtID);
             this.grpInformation.Controls.Add(this.btnChange);
             this.grpInformation.Controls.Add(this.btnDelete);
             this.grpInformation.Controls.Add(this.btnAdd);
@@ -59,7 +60,6 @@
             this.grpInformation.Controls.Add(this.cboBranchID);
             this.grpInformation.Controls.Add(this.cboStatus);
             this.grpInformation.Controls.Add(this.txtCourtName);
-            this.grpInformation.Controls.Add(this.txtCourtID);
             this.grpInformation.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.grpInformation.Location = new System.Drawing.Point(3, 12);
             this.grpInformation.Name = "grpInformation";
@@ -67,6 +67,17 @@
             this.grpInformation.TabIndex = 0;
             this.grpInformation.TabStop = false;
             this.grpInformation.Text = "Thông Tin Sân";
+            // 
+            // cboCourtID
+            // 
+            this.cboCourtID.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cboCourtID.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cboCourtID.FormattingEnabled = true;
+            this.cboCourtID.Location = new System.Drawing.Point(186, 44);
+            this.cboCourtID.Name = "cboCourtID";
+            this.cboCourtID.Size = new System.Drawing.Size(197, 36);
+            this.cboCourtID.TabIndex = 15;
+            this.cboCourtID.SelectedIndexChanged += new System.EventHandler(this.cboCourtID_SelectedIndexChanged);
             // 
             // btnChange
             // 
@@ -76,6 +87,7 @@
             this.btnChange.TabIndex = 14;
             this.btnChange.Text = "Sửa";
             this.btnChange.UseVisualStyleBackColor = true;
+            this.btnChange.Click += new System.EventHandler(this.btnChange_Click);
             // 
             // btnDelete
             // 
@@ -85,6 +97,7 @@
             this.btnDelete.TabIndex = 13;
             this.btnDelete.Text = "Xóa";
             this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // btnAdd
             // 
@@ -94,6 +107,7 @@
             this.btnAdd.TabIndex = 12;
             this.btnAdd.Text = "Thêm";
             this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // lblStatus
             // 
@@ -150,6 +164,7 @@
             // 
             // cboBranchID
             // 
+            this.cboBranchID.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboBranchID.FormattingEnabled = true;
             this.cboBranchID.Location = new System.Drawing.Point(186, 325);
             this.cboBranchID.Name = "cboBranchID";
@@ -158,6 +173,7 @@
             // 
             // cboStatus
             // 
+            this.cboStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboStatus.FormattingEnabled = true;
             this.cboStatus.Location = new System.Drawing.Point(186, 178);
             this.cboStatus.Name = "cboStatus";
@@ -170,19 +186,13 @@
             this.txtCourtName.Name = "txtCourtName";
             this.txtCourtName.Size = new System.Drawing.Size(200, 34);
             this.txtCourtName.TabIndex = 1;
-            // 
-            // txtCourtID
-            // 
-            this.txtCourtID.Location = new System.Drawing.Point(186, 38);
-            this.txtCourtID.Name = "txtCourtID";
-            this.txtCourtID.Size = new System.Drawing.Size(200, 34);
-            this.txtCourtID.TabIndex = 0;
+            this.txtCourtName.TextChanged += new System.EventHandler(this.txtCourtName_TextChanged);
             // 
             // AddCourtForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(398, 459);
+            this.ClientSize = new System.Drawing.Size(398, 460);
             this.Controls.Add(this.grpInformation);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(4);
@@ -207,14 +217,14 @@
         private System.Windows.Forms.Label lblCourtName;
         private System.Windows.Forms.Label lblBranchID;
         private System.Windows.Forms.Label lblStartDate;
-        private System.Windows.Forms.Label lblCourtID;
         private System.Windows.Forms.DateTimePicker dtmStartDate;
         private System.Windows.Forms.ComboBox cboBranchID;
         private System.Windows.Forms.ComboBox cboStatus;
         private System.Windows.Forms.TextBox txtCourtName;
-        private System.Windows.Forms.TextBox txtCourtID;
         private System.Windows.Forms.Button btnChange;
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button btnAdd;
+        private System.Windows.Forms.Label lblCourtID;
+        private System.Windows.Forms.ComboBox cboCourtID;
     }
 }
