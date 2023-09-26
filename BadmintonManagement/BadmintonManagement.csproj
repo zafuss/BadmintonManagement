@@ -96,6 +96,7 @@
     </Compile>
     <Compile Include="Forms\AuthorizationForms\ResetPasswordForm.Designer.cs">
       <DependentUpon>ResetPasswordForm.cs</DependentUpon>
+    </Compile>  
     <Compile Include="Forms\Court\AddCourtForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -196,6 +197,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\AuthorizationForms\ResetPasswordForm.resx">
       <DependentUpon>ResetPasswordForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Court\AddCourtForm.resx">
       <DependentUpon>AddCourtForm.cs</DependentUpon>
     </EmbeddedResource>
