@@ -17,8 +17,26 @@ namespace BadmintonManagement.Forms.Court
             InitializeComponent();
             fill();
             customizeDesign();
+
+            if (Properties.Settings.Default.Role != "Admin")
+            {
+                btnAdmin.Visible = false;
+                //btnAdmin.Enabled = false;
+            }
+            customPanel();   
         }
 
+        private Panel CreatePanel()
+        {
+            Panel panel = new Panel();
+
+            return panel;
+        }
+        private void customPanel()
+        {
+            pnlDisplayCourt.AutoScroll = true;
+            
+        }
         private void fill()
         {
             AddCourtForm addCourtForm = new AddCourtForm();

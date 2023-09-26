@@ -63,7 +63,7 @@
             this.grpInformation.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.grpInformation.Location = new System.Drawing.Point(3, 12);
             this.grpInformation.Name = "grpInformation";
-            this.grpInformation.Size = new System.Drawing.Size(394, 448);
+            this.grpInformation.Size = new System.Drawing.Size(393, 418);
             this.grpInformation.TabIndex = 0;
             this.grpInformation.TabStop = false;
             this.grpInformation.Text = "Thông Tin Sân";
@@ -81,7 +81,7 @@
             // 
             // btnChange
             // 
-            this.btnChange.Location = new System.Drawing.Point(299, 405);
+            this.btnChange.Location = new System.Drawing.Point(300, 367);
             this.btnChange.Name = "btnChange";
             this.btnChange.Size = new System.Drawing.Size(87, 37);
             this.btnChange.TabIndex = 14;
@@ -91,7 +91,7 @@
             // 
             // btnDelete
             // 
-            this.btnDelete.Location = new System.Drawing.Point(164, 405);
+            this.btnDelete.Location = new System.Drawing.Point(165, 367);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(87, 37);
             this.btnDelete.TabIndex = 13;
@@ -101,7 +101,7 @@
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(26, 405);
+            this.btnAdd.Location = new System.Drawing.Point(27, 367);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(87, 37);
             this.btnAdd.TabIndex = 12;
@@ -192,7 +192,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(398, 460);
+            this.ClientSize = new System.Drawing.Size(398, 434);
             this.Controls.Add(this.grpInformation);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(4);
