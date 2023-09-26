@@ -79,6 +79,24 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Database\UserServices.cs" />
+    <Compile Include="EnterActiveOTP.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EnterActiveOTP.Designer.cs">
+      <DependentUpon>EnterActiveOTP.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\AuthorizationForms\ForgotPasswordForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AuthorizationForms\ForgotPasswordForm.Designer.cs">
+      <DependentUpon>ForgotPasswordForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\AuthorizationForms\ResetPasswordForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AuthorizationForms\ResetPasswordForm.Designer.cs">
+      <DependentUpon>ResetPasswordForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Court\CourtForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -159,9 +177,20 @@
     <Compile Include="Models\SERVICE_RECEIPT.cs" />
     <Compile Include="Models\sysdiagram.cs" />
     <Compile Include="Models\User.cs" />
+    <Compile Include="OTPService.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Validator.cs" />
     <Compile Include="Security.cs" />
+    <EmbeddedResource Include="EnterActiveOTP.resx">
+      <DependentUpon>EnterActiveOTP.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\AuthorizationForms\ForgotPasswordForm.resx">
+      <DependentUpon>ForgotPasswordForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\AuthorizationForms\ResetPasswordForm.resx">
+      <DependentUpon>ResetPasswordForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Court\CourtForm.resx">
       <DependentUpon>CourtForm.cs</DependentUpon>
     </EmbeddedResource>

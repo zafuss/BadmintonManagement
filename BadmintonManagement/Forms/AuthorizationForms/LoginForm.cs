@@ -22,7 +22,8 @@ namespace BadmintonManagement
 
         private void lblForgotPass_Click(object sender, EventArgs e)
         {
-
+            ForgotPasswordForm form = new ForgotPasswordForm(); 
+            form.Show();  
         }
 
         private void btnLogin_Click(object sender, EventArgs e)

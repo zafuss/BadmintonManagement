@@ -22,7 +22,6 @@ namespace BadmintonManagement.Forms.AuthorizationForms
         {
             InitializeComponent();
             btnDelUser.Enabled = false;
-            btnDelUser.Text = "Kích hoạt / Vô hiệu hoá";
         }
 
         private void BindGrid()
@@ -34,35 +33,37 @@ namespace BadmintonManagement.Forms.AuthorizationForms
             {
                 int index = dgvUsers.Rows.Add();
                 dgvUsers.Rows[index].Cells[0].Value = item.Username;
-                dgvUsers.Rows[index].Cells[1].Value = item.Email;
-                dgvUsers.Rows[index].Cells[2].Value = item.PhoneNumber;
-                dgvUsers.Rows[index].Cells[3].Value = item.C_Role;
-                dgvUsers.Rows[index].Cells[4].Value = item.Status;
+                dgvUsers.Rows[index].Cells[1].Value = item.C_Name;
+                dgvUsers.Rows[index].Cells[2].Value = item.Email;
+                dgvUsers.Rows[index].Cells[3].Value = item.PhoneNumber;
+                dgvUsers.Rows[index].Cells[4].Value = item.C_Role;
+                dgvUsers.Rows[index].Cells[5].Value = item.Status;
 
 
             }
         }
 
-        private void btnReg_Click(object sender, EventArgs e)
+        private async void  btnReg_Click(object sender, EventArgs e)
         {
             try
             {
                 if (txtRegUsername.Text == "" || txtRegPassword.Text == "" || txtRegPhoneNumber.Text == "" || txtRegEmail.Text == "")
                     throw new Exception("Vui lòng nhập đầy đủ thông tin!");
+
                 C_User user = new C_User()
                 {
                     Username = txtRegUsername.Text,
+                    C_Name = txtName.Text,
                     C_Password = txtRegPassword.Text,
                     PhoneNumber = txtRegPhoneNumber.Text,
                     Email = txtRegEmail.Text,
                     C_Role = "Staff",
-                    Status = "Enable"
+                    Status = "Kích hoạt"
 
                 };
                 //FirebaseHelper.RegisterUser(user);
-                UserServices.AddUser(user);
-                MessageBox.Show("Thêm user thành công!", "Thông báo");
-                BindGrid();
+                UserServices.AddUser(user, () => BindGrid());
+                
             }
             catch (Exception ex)
             {

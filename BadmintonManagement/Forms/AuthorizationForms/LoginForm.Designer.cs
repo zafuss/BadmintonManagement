@@ -69,7 +69,7 @@
             this.txtPassword.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.Size = new System.Drawing.Size(216, 22);
-            this.txtPassword.TabIndex = 1;
+            this.txtPassword.TabIndex = 0;
             this.txtPassword.Text = "Password";
             this.txtPassword.Enter += new System.EventHandler(this.txtPassword_Enter);
             this.txtPassword.Leave += new System.EventHandler(this.txtPassword_Leave);
@@ -81,7 +81,7 @@
             this.btnLogin.Location = new System.Drawing.Point(132, 512);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(312, 45);
-            this.btnLogin.TabIndex = 3;
+            this.btnLogin.TabIndex = 1;
             this.btnLogin.Text = "Đăng Nhập";
             this.btnLogin.UseVisualStyleBackColor = false;
             this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
@@ -93,7 +93,7 @@
             this.lblForgotPass.Location = new System.Drawing.Point(320, 458);
             this.lblForgotPass.Name = "lblForgotPass";
             this.lblForgotPass.Size = new System.Drawing.Size(124, 21);
-            this.lblForgotPass.TabIndex = 2;
+            this.lblForgotPass.TabIndex = 0;
             this.lblForgotPass.Text = "Quên mật khẩu?";
             this.lblForgotPass.Click += new System.EventHandler(this.lblForgotPass_Click);
             // 
@@ -158,7 +158,7 @@
             this.btnExit.Location = new System.Drawing.Point(132, 563);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(312, 45);
-            this.btnExit.TabIndex = 6;
+            this.btnExit.TabIndex = 2;
             this.btnExit.Text = "Thoát";
             this.btnExit.UseVisualStyleBackColor = true;
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);

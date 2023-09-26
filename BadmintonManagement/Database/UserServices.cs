@@ -6,6 +6,7 @@ using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace BadmintonManagement.Database
 {
@@ -23,6 +24,11 @@ namespace BadmintonManagement.Database
         {
 
             return context.C_User.FirstOrDefault(x => x.Username == username);
+        }
+        public static C_User GetUserByEmail(string email)
+        {
+
+            return context.C_User.FirstOrDefault(x => x.Email == email);
         }
 
         public static bool IS_UsernameExist(string username)
@@ -57,25 +63,44 @@ namespace BadmintonManagement.Database
 
 
         }
-        public static void AddUser(C_User user)
+        public static void AddUser(C_User user, Action bindGrid)
         {
-            string password = Security.Encrypt(user.C_Password);
-            user.C_Password = password;
-            if (IS_UsernameExist(user.Username))
+            try
             {
-                throw new Exception("User đã tồn tại trong hệ thống");
+
+                Validator.UserValidator(user);
+                string password = Security.Encrypt(user.C_Password);
+                user.C_Password = password;
+                if (IS_UsernameExist(user.Username))
+                {
+                    throw new Exception("User đã tồn tại trong hệ thống");
+                }
+                if (IS_UsernameExist(user.Email))
+                {
+                    throw new Exception("Email đã tồn tại trong hệ thống");
+                }
+                OTPService.SendActiveOTP(user.Email, () =>
+                {
+                    // Hàm callback này được gọi khi SendActiveOTP đã hoàn thành.
+                    context.C_User.AddOrUpdate(user);
+                    context.SaveChanges();
+                    MessageBox.Show("Thêm user thành công!", "Thông báo");
+
+                    bindGrid();
+                });
+
+
             }
-            if (IS_UsernameExist(user.Email))
+            catch (Exception ex)
             {
-                throw new Exception("Email đã tồn tại trong hệ thống");
+                MessageBox.Show(ex.Message, "Thông báo");
             }
-            context.C_User.AddOrUpdate(user);
-            context.SaveChanges();
 
         }
 
         public static void UpdateUser(C_User user, string currentEmail)
         {
+            Validator.UserValidator(user);
             if (IS_UsernameExist(user.Email) && user.Email != currentEmail)
             {
                 throw new Exception("Email đã tồn tại trong hệ thống");

@@ -36,7 +36,7 @@ create table _User(
 	constraint Username_PK primary key (Username)	
 )
 go
-
+drop database QLSanCauLong
 create table RESERVATION
 (
 	ReservationNo	nvarchar(20),
