@@ -49,7 +49,7 @@ namespace BadmintonManagement.Database
                 Email = "email",
                 PhoneNumber = "1234567890",
                 C_Role = "Admin",
-                Status = "Kích hoạt"
+                Status = "Enabled"
 
 
             };
@@ -114,16 +114,16 @@ namespace BadmintonManagement.Database
         public static void DisableUser(string username)
         {
             C_User tmpUser = GetUser(username);
-            if (tmpUser.Status == "Kích hoạt")
-                tmpUser.Status = "Vô hiệu hoá";
-            else tmpUser.Status = "Kích hoạt";
+            if (tmpUser.Status == "Enabled")
+                tmpUser.Status = "Disabled";
+            else tmpUser.Status = "Enabled";
             context.C_User.AddOrUpdate(tmpUser);
             context.SaveChanges();
         }
         public static void EnableUser(C_User user)
         {
             C_User tmpUser = GetUser(user.Username);
-            tmpUser.Status = "Kích hoạt";
+            tmpUser.Status = "Enabled";
             context.C_User.AddOrUpdate(tmpUser);
             context.SaveChanges();
         }
@@ -170,6 +170,7 @@ namespace BadmintonManagement.Database
                     string passwordres = get.C_Password;
                     if (username == usernameres || Security.Encrypt(password) == passwordres)
                     {
+                        if (get.Status == "Disabled") throw new Exception("Tài khoản đã bị vô hiệu hoá, vui lòng liên hệ admin để biết thêm chi tiết");
                         isSuccess = true;
                         SaveCurrentUser(username);
                     }

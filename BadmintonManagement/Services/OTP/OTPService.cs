@@ -47,7 +47,7 @@ namespace BadmintonManagement
                 SmtpServer.Credentials = new System.Net.NetworkCredential(sendEmail, appPassword);
 
                 SmtpServer.Send(mail);
-                EnterActiveOTP enterActiveOTP = new EnterActiveOTP(receiveEmail, code.ToString(), callback);
+                EnterOTP enterActiveOTP = new EnterOTP(receiveEmail, code.ToString(), callback);
                 enterActiveOTP.Show();
             }
             catch (Exception ex)
@@ -79,7 +79,7 @@ namespace BadmintonManagement
                 SmtpServer.Send(mail);
                 var user = UserServices.GetUserByEmail(receiveEmail);
 
-                EnterActiveOTP enterActiveOTP = new EnterActiveOTP(receiveEmail, code.ToString(), () =>
+                EnterOTP enterActiveOTP = new EnterOTP(receiveEmail, code.ToString(), () =>
                 {
                     ResetPasswordForm resetPasswordForm = new ResetPasswordForm(user, receiveEmail);
                     resetPasswordForm.Show();

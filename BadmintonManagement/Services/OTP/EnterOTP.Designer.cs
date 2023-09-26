@@ -37,7 +37,7 @@
             // lblTitle
             // 
             this.lblTitle.AutoSize = true;
-            this.lblTitle.Location = new System.Drawing.Point(79, 31);
+            this.lblTitle.Location = new System.Drawing.Point(53, 24);
             this.lblTitle.Name = "lblTitle";
             this.lblTitle.Size = new System.Drawing.Size(0, 21);
             this.lblTitle.TabIndex = 0;

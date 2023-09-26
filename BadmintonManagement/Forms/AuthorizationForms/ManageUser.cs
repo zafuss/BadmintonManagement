@@ -37,7 +37,7 @@ namespace BadmintonManagement.Forms.AuthorizationForms
                 dgvUsers.Rows[index].Cells[2].Value = item.Email;
                 dgvUsers.Rows[index].Cells[3].Value = item.PhoneNumber;
                 dgvUsers.Rows[index].Cells[4].Value = item.C_Role;
-                dgvUsers.Rows[index].Cells[5].Value = item.Status;
+                dgvUsers.Rows[index].Cells[5].Value = item.Status == "Enabled" ? "Kích hoạt" : "Vô hiệu hoá";
 
 
             }
@@ -58,7 +58,7 @@ namespace BadmintonManagement.Forms.AuthorizationForms
                     PhoneNumber = txtRegPhoneNumber.Text,
                     Email = txtRegEmail.Text,
                     C_Role = "Staff",
-                    Status = "Kích hoạt"
+                    Status = "Enabled"
 
                 };
                 //FirebaseHelper.RegisterUser(user);
@@ -89,11 +89,12 @@ namespace BadmintonManagement.Forms.AuthorizationForms
             {
                 int selectedRow = e.RowIndex;
                 txtRegUsername.Text = dgvUsers.Rows[selectedRow].Cells[0].Value.ToString();
-                txtRegEmail.Text = dgvUsers.Rows[selectedRow].Cells[1].Value.ToString();
-                txtRegPhoneNumber.Text = dgvUsers.Rows[selectedRow].Cells[2].Value.ToString();
+                txtName.Text = dgvUsers.Rows[selectedRow].Cells[1].Value.ToString();
+                txtRegEmail.Text = dgvUsers.Rows[selectedRow].Cells[2].Value.ToString();
+                txtRegPhoneNumber.Text = dgvUsers.Rows[selectedRow].Cells[3].Value.ToString();
                 selectedUsername = txtRegUsername.Text;
                 selectedEmail = txtRegEmail.Text;
-                selectedRole = dgvUsers.Rows[selectedRow].Cells[3].Value.ToString();
+                selectedRole = dgvUsers.Rows[selectedRow].Cells[5].Value.ToString();
                 btnDelUser.Enabled = true;
                 if (dgvUsers.Rows[selectedRow].Cells[4].Value.ToString() == "Vô hiệu hoá")
                     btnDelUser.Text = "Kích hoạt";
@@ -117,7 +118,7 @@ namespace BadmintonManagement.Forms.AuthorizationForms
                     PhoneNumber = txtRegPhoneNumber.Text,
                     Email = txtRegEmail.Text,
                     C_Role = selectedRole,
-                    Status = "Kích hoạt"
+                    Status = "Enabled"
 
                 };
                 //FirebaseHelper.UpdateUser(user, selectedUsername, selectedEmail);

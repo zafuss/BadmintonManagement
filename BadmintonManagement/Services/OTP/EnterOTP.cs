@@ -12,7 +12,7 @@ using static System.Net.WebRequestMethods;
 
 namespace BadmintonManagement
 {
-    public partial class EnterActiveOTP : Form
+    public partial class EnterOTP : Form
     {
         string receiveEmail;
         string otpCode;
@@ -24,9 +24,9 @@ namespace BadmintonManagement
         {
             lblTitle.Text = "Mã xác nhận đã được gửi vào email " + receiveEmail + "\nHãy nhập mã xác nhận vào ô bên dưới: \n";
             TimerInit();
-            btnSendAgain.Enabled = false;   
+            btnSendAgain.Enabled = false;
         }
-        public EnterActiveOTP(string receiveEmail, string otpCode, Action callback)
+        public EnterOTP(string receiveEmail, string otpCode, Action callback)
         {
             this.receiveEmail = receiveEmail;
             this.otpCode = otpCode;
@@ -47,15 +47,15 @@ namespace BadmintonManagement
         {
             this.Hide();
             validityOTPperiod = 60;
-            OTPService.SendForgotPasswordOTP(receiveEmail);
+            OTPService.SendActiveOTP(receiveEmail, callback);
         }
 
         private void Timer_Tick(object sender, EventArgs e)// hàm đếm ngược thời gian
 
         {
-            
+
             validityOTPperiod--;
-            if (validityOTPperiod <= 0)
+            if (validityOTPperiod == 0)
             {
                 btnEnterOTP.Enabled = false;
                 btnSendAgain.Enabled = true;
@@ -63,7 +63,7 @@ namespace BadmintonManagement
                 btnSendAgain.Text = "Gửi lại";
             }
 
-            btnSendAgain.Text = "Gửi lại ("  + validityOTPperiod.ToString() + ")";
+            btnSendAgain.Text = "Gửi lại (" + validityOTPperiod.ToString() + ")";
 
         }
 

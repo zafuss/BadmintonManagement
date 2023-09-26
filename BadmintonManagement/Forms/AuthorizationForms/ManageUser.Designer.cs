@@ -39,16 +39,16 @@
             this.label4 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.dgvUsers = new System.Windows.Forms.DataGridView();
-            this.btnUpdate = new System.Windows.Forms.Button();
-            this.btnDelUser = new System.Windows.Forms.Button();
-            this.label5 = new System.Windows.Forms.Label();
-            this.txtName = new System.Windows.Forms.TextBox();
             this.clnUsername = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clnName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clnEmail = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clnPhoneNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clnRole = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clnStaus = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnUpdate = new System.Windows.Forms.Button();
+            this.btnDelUser = new System.Windows.Forms.Button();
+            this.label5 = new System.Windows.Forms.Label();
+            this.txtName = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUsers)).BeginInit();
             this.SuspendLayout();
@@ -58,7 +58,7 @@
             this.btnReg.Location = new System.Drawing.Point(62, 480);
             this.btnReg.Name = "btnReg";
             this.btnReg.Size = new System.Drawing.Size(109, 46);
-            this.btnReg.TabIndex = 4;
+            this.btnReg.TabIndex = 5;
             this.btnReg.Text = "Thêm user";
             this.btnReg.UseVisualStyleBackColor = true;
             this.btnReg.Click += new System.EventHandler(this.btnReg_Click);
@@ -71,7 +71,7 @@
             this.txtRegPassword.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtRegPassword.Name = "txtRegPassword";
             this.txtRegPassword.Size = new System.Drawing.Size(220, 29);
-            this.txtRegPassword.TabIndex = 1;
+            this.txtRegPassword.TabIndex = 2;
             // 
             // label2
             // 
@@ -117,7 +117,7 @@
             this.txtRegPhoneNumber.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtRegPhoneNumber.Name = "txtRegPhoneNumber";
             this.txtRegPhoneNumber.Size = new System.Drawing.Size(220, 29);
-            this.txtRegPhoneNumber.TabIndex = 3;
+            this.txtRegPhoneNumber.TabIndex = 4;
             // 
             // label3
             // 
@@ -140,7 +140,7 @@
             this.txtRegEmail.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtRegEmail.Name = "txtRegEmail";
             this.txtRegEmail.Size = new System.Drawing.Size(220, 29);
-            this.txtRegEmail.TabIndex = 2;
+            this.txtRegEmail.TabIndex = 3;
             // 
             // label4
             // 
@@ -185,49 +185,6 @@
             this.dgvUsers.Size = new System.Drawing.Size(720, 513);
             this.dgvUsers.TabIndex = 12;
             this.dgvUsers.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvUsers_CellClick);
-            // 
-            // btnUpdate
-            // 
-            this.btnUpdate.Location = new System.Drawing.Point(177, 480);
-            this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.Size = new System.Drawing.Size(108, 46);
-            this.btnUpdate.TabIndex = 4;
-            this.btnUpdate.Text = "Sửa user";
-            this.btnUpdate.UseVisualStyleBackColor = true;
-            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
-            // 
-            // btnDelUser
-            // 
-            this.btnDelUser.Location = new System.Drawing.Point(291, 480);
-            this.btnDelUser.Name = "btnDelUser";
-            this.btnDelUser.Size = new System.Drawing.Size(108, 46);
-            this.btnDelUser.TabIndex = 4;
-            this.btnDelUser.Text = "...";
-            this.btnDelUser.UseVisualStyleBackColor = true;
-            this.btnDelUser.Click += new System.EventHandler(this.btnDelUser_Click);
-            // 
-            // label5
-            // 
-            this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(58, 286);
-            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(56, 21);
-            this.label5.TabIndex = 6;
-            this.label5.Text = "Họ tên";
-            // 
-            // txtName
-            // 
-            this.txtName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.txtName.Location = new System.Drawing.Point(179, 283);
-            this.txtName.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(220, 29);
-            this.txtName.TabIndex = 0;
             // 
             // clnUsername
             // 
@@ -275,6 +232,49 @@
             this.clnStaus.Name = "clnStaus";
             this.clnStaus.ReadOnly = true;
             this.clnStaus.Width = 125;
+            // 
+            // btnUpdate
+            // 
+            this.btnUpdate.Location = new System.Drawing.Point(177, 480);
+            this.btnUpdate.Name = "btnUpdate";
+            this.btnUpdate.Size = new System.Drawing.Size(108, 46);
+            this.btnUpdate.TabIndex = 6;
+            this.btnUpdate.Text = "Sửa user";
+            this.btnUpdate.UseVisualStyleBackColor = true;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
+            // 
+            // btnDelUser
+            // 
+            this.btnDelUser.Location = new System.Drawing.Point(291, 480);
+            this.btnDelUser.Name = "btnDelUser";
+            this.btnDelUser.Size = new System.Drawing.Size(108, 46);
+            this.btnDelUser.TabIndex = 7;
+            this.btnDelUser.Text = "...";
+            this.btnDelUser.UseVisualStyleBackColor = true;
+            this.btnDelUser.Click += new System.EventHandler(this.btnDelUser_Click);
+            // 
+            // label5
+            // 
+            this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(58, 286);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(56, 21);
+            this.label5.TabIndex = 6;
+            this.label5.Text = "Họ tên";
+            // 
+            // txtName
+            // 
+            this.txtName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.txtName.Location = new System.Drawing.Point(179, 283);
+            this.txtName.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtName.Name = "txtName";
+            this.txtName.Size = new System.Drawing.Size(220, 29);
+            this.txtName.TabIndex = 1;
             // 
             // ManageUser
             // 
