@@ -168,7 +168,7 @@ namespace BadmintonManagement.Database
                 {
                     string usernameres = get.Username;
                     string passwordres = get.C_Password;
-                    if (username == usernameres || Security.Encrypt(password) == passwordres)
+                    if (username == usernameres && Security.Encrypt(password) == passwordres)
                     {
                         if (get.Status == "Disabled") throw new Exception("Tài khoản đã bị vô hiệu hoá, vui lòng liên hệ admin để biết thêm chi tiết");
                         isSuccess = true;
