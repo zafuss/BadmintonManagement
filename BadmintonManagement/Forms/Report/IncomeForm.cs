@@ -23,9 +23,9 @@ namespace BadmintonManagement.Forms.Report
             
             rptIncome.LocalReport.ReportPath = "IncomeReport.rdlc";
             this.rptIncome.RefreshReport();
-           
+
         }
 
-        
+
     }
 }

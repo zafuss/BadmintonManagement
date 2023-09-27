@@ -108,5 +108,10 @@ namespace BadmintonManagement
         {
             this.Close();
         }
+
+        private void LoginForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }
