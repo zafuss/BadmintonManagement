@@ -24,6 +24,11 @@ namespace BadmintonManagement.Forms.AuthorizationForms
             btnDelUser.Enabled = false;
         }
 
+        private void refreshTextBox()
+        {
+            txtName.Text = txtRegEmail.Text = txtRegPassword.Text = txtRegPhoneNumber.Text = txtRegRepeatPass.Text = txtRegUsername.Text = "";
+        }
+
         private void BindGrid()
         {
             dgvUsers.Rows.Clear();
@@ -41,6 +46,7 @@ namespace BadmintonManagement.Forms.AuthorizationForms
 
 
             }
+            refreshTextBox();
         }
 
         private async void  btnReg_Click(object sender, EventArgs e)
@@ -49,7 +55,8 @@ namespace BadmintonManagement.Forms.AuthorizationForms
             {
                 if (txtRegUsername.Text == "" || txtRegPassword.Text == "" || txtRegPhoneNumber.Text == "" || txtRegEmail.Text == "")
                     throw new Exception("Vui lòng nhập đầy đủ thông tin!");
-
+                if (txtRegPassword.Text != txtRegRepeatPass.Text)
+                    throw new Exception("Mật khẩu không trùng khớp!");
                 C_User user = new C_User()
                 {
                     Username = txtRegUsername.Text,
@@ -92,11 +99,13 @@ namespace BadmintonManagement.Forms.AuthorizationForms
                 txtName.Text = dgvUsers.Rows[selectedRow].Cells[1].Value.ToString();
                 txtRegEmail.Text = dgvUsers.Rows[selectedRow].Cells[2].Value.ToString();
                 txtRegPhoneNumber.Text = dgvUsers.Rows[selectedRow].Cells[3].Value.ToString();
+                txtRegPassword.Text = "";
+                txtRegRepeatPass.Text = "";
                 selectedUsername = txtRegUsername.Text;
                 selectedEmail = txtRegEmail.Text;
-                selectedRole = dgvUsers.Rows[selectedRow].Cells[5].Value.ToString();
+                selectedRole = dgvUsers.Rows[selectedRow].Cells[4].Value.ToString();
                 btnDelUser.Enabled = true;
-                if (dgvUsers.Rows[selectedRow].Cells[4].Value.ToString() == "Vô hiệu hoá")
+                if (dgvUsers.Rows[selectedRow].Cells[5].Value.ToString() == "Vô hiệu hoá")
                     btnDelUser.Text = "Kích hoạt";
                 else
                     btnDelUser.Text = "Vô hiệu hoá";
@@ -111,6 +120,8 @@ namespace BadmintonManagement.Forms.AuthorizationForms
                     throw new Exception("Vui lòng nhập đầy đủ thông tin!");
                 if (txtRegUsername.Text != selectedUsername)
                     throw new Exception("Không thể thay đổi username!");
+                if (txtRegPassword.Text != txtRegRepeatPass.Text)
+                    throw new Exception("Mật khẩu không trùng khớp!");
                 C_User user = new C_User()
                 {
                     Username = txtRegUsername.Text,
@@ -123,7 +134,7 @@ namespace BadmintonManagement.Forms.AuthorizationForms
 
                 };
                 //FirebaseHelper.UpdateUser(user, selectedUsername, selectedEmail);
-                UserServices.UpdateUser(user, selectedEmail);
+                UserServices.UpdateUser(user, selectedEmail, selectedUsername);
                 MessageBox.Show("Cập nhật user thành công!", "Thông báo");
                 BindGrid();
             }

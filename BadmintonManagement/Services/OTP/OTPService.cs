@@ -18,7 +18,7 @@ namespace BadmintonManagement
         public static string mailTrailing = "\n--------------------------------------------------------------------------\r\nCông Ty Cổ Phần TOD\r\nPhone: 0823 216 213\r\nEmail: todreamscompany@gmail.com";
 
         private static int RandomOTPCode()
-        {
+       {
             Random random = new Random();
             return random.Next(100000, 999999);
         }
@@ -26,9 +26,9 @@ namespace BadmintonManagement
 
         public static void SendActiveOTP(string receiveEmail, Action callback)
         {
-
             try
             {
+
                 MailMessage mail = new MailMessage();
                 SmtpClient SmtpServer = new SmtpClient("smtp.gmail.com");
 
@@ -40,7 +40,7 @@ namespace BadmintonManagement
                             + "Để hoàn tất việc trở thành thành viên của Công ty TOD, hãy nhập mã ở dưới để kích hoạt tài khoản của bạn:\n\n"
                             + RandomOTPCode().ToString()
                             + mailTrailing;
-                
+
                 SmtpServer.EnableSsl = true;
                 SmtpServer.Port = 587;
                 SmtpServer.DeliveryMethod = SmtpDeliveryMethod.Network;
@@ -58,7 +58,6 @@ namespace BadmintonManagement
         }
         public static void SendForgotPasswordOTP(string receiveEmail)
         {
-
             try
             {
                 MailMessage mail = new MailMessage();

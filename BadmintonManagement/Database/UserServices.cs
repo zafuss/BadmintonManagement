@@ -39,6 +39,10 @@ namespace BadmintonManagement.Database
         {
             return context.C_User.Any(x => x.Email == email);
         }
+        public static bool IS_PhoneNumberExist(string phoneNumber)
+        {
+            return context.C_User.Any(x => x.PhoneNumber == phoneNumber);
+        }
         public static void CreateTestAccounts()
         {
             C_User admin = new C_User()
@@ -46,12 +50,10 @@ namespace BadmintonManagement.Database
                 Username = "admin",
                 C_Password = Security.Encrypt("admin"),
                 C_Name = "admin",
-                Email = "email",
-                PhoneNumber = "1234567890",
+                Email = "todsdreamcompany@gmail.com",
+                PhoneNumber = "0823216213",
                 C_Role = "Admin",
                 Status = "Enabled"
-
-
             };
             C_User tmp = GetUser(admin.Username);
             if (tmp == null)
@@ -72,11 +74,11 @@ namespace BadmintonManagement.Database
 
 
             };
-            C_User tmp1 = GetUser(admin.Username);
+            C_User tmp1 = GetUser(staff.Username);
             if (tmp1 == null)
             {
 
-                context.C_User.AddOrUpdate(admin);
+                context.C_User.AddOrUpdate(staff);
                 context.SaveChanges();
             }
 
@@ -90,11 +92,16 @@ namespace BadmintonManagement.Database
                 Validator.UserValidator(user);
                 string password = Security.Encrypt(user.C_Password);
                 user.C_Password = password;
+
+                if (IS_PhoneNumberExist(user.PhoneNumber))
+                {
+                    throw new Exception("Số điện thoại này đã tồn tại trong hệ thống");
+                }
                 if (IS_UsernameExist(user.Username))
                 {
                     throw new Exception("User đã tồn tại trong hệ thống");
                 }
-                if (IS_UsernameExist(user.Email))
+                if (IS_EmailExist(user.Email))
                 {
                     throw new Exception("Email đã tồn tại trong hệ thống");
                 }
@@ -117,10 +124,17 @@ namespace BadmintonManagement.Database
 
         }
 
-        public static void UpdateUser(C_User user, string currentEmail)
+        public static void UpdateUser(C_User user, string currentEmail, string? currentUsername)
         {
+            if (currentUsername != null)
+                if (currentUsername != user.Username)
+                    throw new Exception("Không thể thay đổi username!");
             Validator.UserValidator(user);
-            if (IS_UsernameExist(user.Email) && user.Email != currentEmail)
+            if (IS_PhoneNumberExist(user.PhoneNumber))
+            {
+                throw new Exception("Số điện thoại này đã tồn tại trong hệ thống");
+            }
+            if (IS_EmailExist(user.Email) && user.Email != currentEmail)
             {
                 throw new Exception("Email đã tồn tại trong hệ thống");
             }
