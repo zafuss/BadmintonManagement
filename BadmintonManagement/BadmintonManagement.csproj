@@ -119,6 +119,18 @@
     <Compile Include="Forms\Report\ReceiptReportForm.Designer.cs">
       <DependentUpon>ReceiptReportForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\ReservationCourt\BookingForm\BookingForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ReservationCourt\BookingForm\BookingForm.Designer.cs">
+      <DependentUpon>BookingForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ReservationCourt\BookingForm\GetCustomerInformation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ReservationCourt\BookingForm\GetCustomerInformation.Designer.cs">
+      <DependentUpon>GetCustomerInformation.cs</DependentUpon>
+    </Compile>
     <Compile Include="Services\OTP\EnterOTP.cs">
       <SubType>Form</SubType>
     </Compile>
