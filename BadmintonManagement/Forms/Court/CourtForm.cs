@@ -23,8 +23,25 @@ namespace BadmintonManagement.Forms.Court
                 btnAdmin.Visible = false;
                 //btnAdmin.Enabled = false;
             }
-            CreatePanel();
+            //CreatePanel();
             customPanel();
+            Test();
+        }
+        private void Test()
+        {
+            double x = (this.pnlDisplayCourt.Width) / (3.4);
+            double y = (this.pnlDisplayCourt.Height) / (3.4);
+            String tmp = "pnl" + "001";
+            Type controlType = typeof(Panel);
+            Control newControl = (Control)Activator.CreateInstance(controlType);
+
+            newControl.Name = tmp;
+            
+            newControl.Size  = new Size(Convert.ToInt32(x), Convert.ToInt32(y));
+            newControl.Location = new Point(0, 0);
+            newControl.BackColor = Color.Black;
+
+            pnlDisplayCourt.Controls.Add(newControl);
         }
 
         private void CreatePanel()
@@ -161,7 +178,8 @@ namespace BadmintonManagement.Forms.Court
         private void pnlDisplayCourt_SizeChanged(object sender, EventArgs e)
         {
             pnlDisplayCourt.Controls.Clear();
-            CreatePanel();
+            //CreatePanel();
+            Test();
         }
     }
 }
