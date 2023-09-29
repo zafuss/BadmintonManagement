@@ -18,7 +18,7 @@ namespace BadmintonManagement.Forms.Court
 {
     public partial class AddCourtForm : Form
     {
-        private List<string> _status = new List<string>()
+        private List<string> status = new List<string>()
         {
            "Chưa Được Sử Dụng","Đang Sử Dụng","Bảo Trì"
         };
@@ -39,7 +39,7 @@ namespace BadmintonManagement.Forms.Court
         }
         private void Loading()
         {
-            FillcboStatus(_status);
+            FillcboStatus(status);
             FillcboBranch(new CourtService().getBranch());
             FillcboCourt(new CourtService().getListCourt());
         }

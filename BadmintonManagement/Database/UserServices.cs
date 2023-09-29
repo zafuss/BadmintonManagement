@@ -15,37 +15,37 @@ namespace BadmintonManagement.Database
     {
         static ModelBadmintonManage context = new ModelBadmintonManage();
 
-        public static List<C_User> GetAllUser()
+        public static List<C_USER> GetAllUser()
         {
-            return context.C_User.ToList();
+            return context.C_USER.ToList();
         }
 
-        public static C_User GetUser(string username)
+        public static C_USER GetUser(string username)
         {
 
-            return context.C_User.FirstOrDefault(x => x.Username == username);
+            return context.C_USER.FirstOrDefault(x => x.Username == username);
         }
-        public static C_User GetUserByEmail(string email)
+        public static C_USER GetUserByEmail(string email)
         {
 
-            return context.C_User.FirstOrDefault(x => x.Email == email);
+            return context.C_USER.FirstOrDefault(x => x.Email == email);
         }
 
         public static bool IS_UsernameExist(string username)
         {
-            return context.C_User.Any(x => x.Username == username);
+            return context.C_USER.Any(x => x.Username == username);
         }
         public static bool IS_EmailExist(string email)
         {
-            return context.C_User.Any(x => x.Email == email);
+            return context.C_USER.Any(x => x.Email == email);
         }
         public static bool IS_PhoneNumberExist(string phoneNumber)
         {
-            return context.C_User.Any(x => x.PhoneNumber == phoneNumber);
+            return context.C_USER.Any(x => x.PhoneNumber == phoneNumber);
         }
         public static void CreateTestAccounts()
         {
-            C_User admin = new C_User()
+            C_USER admin = new C_USER()
             {
                 Username = "admin",
                 C_Password = Security.Encrypt("admin"),
@@ -53,16 +53,16 @@ namespace BadmintonManagement.Database
                 Email = "todsdreamcompany@gmail.com",
                 PhoneNumber = "0823216213",
                 C_Role = "Admin",
-                Status = "Enabled"
+                C_Status = "Enabled"
             };
-            C_User tmp = GetUser(admin.Username);
+            C_USER tmp = GetUser(admin.Username);
             if (tmp == null)
             {
 
-                context.C_User.AddOrUpdate(admin);
+                context.C_USER.AddOrUpdate(admin);
                 context.SaveChanges();
             }
-            C_User staff = new C_User()
+            C_USER staff = new C_USER()
             {
                 Username = "staff",
                 C_Password = Security.Encrypt("staff"),
@@ -70,21 +70,21 @@ namespace BadmintonManagement.Database
                 Email = "staff",
                 PhoneNumber = "1234567890",
                 C_Role = "Staff",
-                Status = "Enabled"
+                C_Status = "Enabled"
 
 
             };
-            C_User tmp1 = GetUser(staff.Username);
+            C_USER tmp1 = GetUser(staff.Username);
             if (tmp1 == null)
             {
 
-                context.C_User.AddOrUpdate(staff);
+                context.C_USER.AddOrUpdate(staff);
                 context.SaveChanges();
             }
 
 
         }
-        public static void AddUser(C_User user, Action bindGrid)
+        public static void AddUser(C_USER user, Action bindGrid)
         {
             try
             {
@@ -108,7 +108,7 @@ namespace BadmintonManagement.Database
                 OTPService.SendActiveOTP(user.Email, () =>
                 {
                     // Hàm callback này được gọi khi SendActiveOTP đã hoàn thành.
-                    context.C_User.AddOrUpdate(user);
+                    context.C_USER.AddOrUpdate(user);
                     context.SaveChanges();
                     MessageBox.Show("Thêm user thành công!", "Thông báo");
 
@@ -124,7 +124,7 @@ namespace BadmintonManagement.Database
 
         }
 
-        public static void UpdateUser(C_User user, string currentEmail, string? currentUsername)
+        public static void UpdateUser(C_USER user, string currentEmail, string? currentUsername)
         {
             if (currentUsername != null)
                 if (currentUsername != user.Username)
@@ -140,24 +140,24 @@ namespace BadmintonManagement.Database
             }
             var password = Security.Encrypt(user.C_Password);
             user.C_Password = password;
-            context.C_User.AddOrUpdate(user);
+            context.C_USER.AddOrUpdate(user);
             context.SaveChanges();
         }
 
         public static void DisableUser(string username)
         {
-            C_User tmpUser = GetUser(username);
-            if (tmpUser.Status == "Enabled")
-                tmpUser.Status = "Disabled";
-            else tmpUser.Status = "Enabled";
-            context.C_User.AddOrUpdate(tmpUser);
+            C_USER tmpUser = GetUser(username);
+            if (tmpUser.C_Status == "Enabled")
+                tmpUser.C_Status = "Disabled";
+            else tmpUser.C_Status = "Enabled";
+            context.C_USER.AddOrUpdate(tmpUser);
             context.SaveChanges();
         }
-        public static void EnableUser(C_User user)
+        public static void EnableUser(C_USER user)
         {
-            C_User tmpUser = GetUser(user.Username);
-            tmpUser.Status = "Enabled";
-            context.C_User.AddOrUpdate(tmpUser);
+            C_USER tmpUser = GetUser(user.Username);
+            tmpUser.C_Status = "Enabled";
+            context.C_USER.AddOrUpdate(tmpUser);
             context.SaveChanges();
         }
 
@@ -203,7 +203,7 @@ namespace BadmintonManagement.Database
                     string passwordres = get.C_Password;
                     if (username == usernameres && Security.Encrypt(password) == passwordres)
                     {
-                        if (get.Status == "Disabled") throw new Exception("Tài khoản đã bị vô hiệu hoá, vui lòng liên hệ admin để biết thêm chi tiết");
+                        if (get.C_Status == "Disabled") throw new Exception("Tài khoản đã bị vô hiệu hoá, vui lòng liên hệ admin để biết thêm chi tiết");
                         isSuccess = true;
                         SaveCurrentUser(username);
                     }

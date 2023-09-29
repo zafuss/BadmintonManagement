@@ -22,7 +22,7 @@ namespace BadmintonManagement.Forms.ReservationCourt.BookingForm
         private void GetCustomerInformation_Load(object sender, EventArgs e)
         {
            ModelBadmintonManage context = new ModelBadmintonManage();
-            List<CUSTOMER> listCus = context.CUSTOMERs.ToList();
+            List<CUSTOMER> listCus = context.CUSTOMER.ToList();
             fillAutoCompleteSourcebyPhone(listCus);
         }
 

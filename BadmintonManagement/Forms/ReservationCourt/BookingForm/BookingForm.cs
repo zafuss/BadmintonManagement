@@ -26,7 +26,7 @@ namespace BadmintonManagement.Forms.ReservationCourt.BookingForm
             dtpEndTime.Value = new DateTime(dtpDate.Value.Year, dtpDate.Value.Month, dtpDate.Value.Day, 0, 0, 0);
             dtpStartTime.Value = new DateTime(dtpDate.Value.Year, dtpDate.Value.Month, dtpDate.Value.Day, 0, 0, 0);
             ModelBadmintonManage context = new ModelBadmintonManage();
-            List<COURT> listCourt = context.COURTs.ToList();
+            List<COURT> listCourt = context.COURT.ToList();
             fillcboCourtName(listCourt);
         }
 
