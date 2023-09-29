@@ -79,7 +79,9 @@
     <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
-    <Reference Include="System" />
+    <Reference Include="System">
+      <HintPath>C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\System.dll</HintPath>
+    </Reference>
     <Reference Include="System.Activities" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -149,6 +151,12 @@
     </Compile>
     <Compile Include="Forms\Court\CourtForm.Designer.cs">
       <DependentUpon>CourtForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Customer\AddCustomerForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Customer\AddCustomerForm.Designer.cs">
+      <DependentUpon>AddCustomerForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Customer\CustomerForm.cs">
       <SubType>Form</SubType>
@@ -255,6 +263,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Court\CourtForm.resx">
       <DependentUpon>CourtForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Customer\AddCustomerForm.resx">
+      <DependentUpon>AddCustomerForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Customer\CustomerForm.resx">
       <DependentUpon>CustomerForm.cs</DependentUpon>
