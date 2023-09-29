@@ -7,6 +7,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using BadmintonManagement.Models;
+using BadmintonManagement.Forms.ReservationCourt;
 
 namespace BadmintonManagement
 {
@@ -23,7 +25,7 @@ namespace BadmintonManagement
             UserServices.CreateTestAccounts();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new LoginForm());
+            Application.Run(new ReservationForm());
             //Application.Run(new ManageUser());
             //Application.Run(new IncomeForm());
 
