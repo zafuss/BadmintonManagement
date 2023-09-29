@@ -14,9 +14,9 @@ namespace BadmintonManagement.Forms.AuthorizationForms
 {
     public partial class ResetPasswordForm : Form
     {
-        C_User user;
+        C_USER user;
         string currentEmail;
-        public ResetPasswordForm(C_User user, string currentEmail)
+        public ResetPasswordForm(C_USER user, string currentEmail)
             
         {
             this.currentEmail = currentEmail;

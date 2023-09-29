@@ -6,13 +6,14 @@ namespace BadmintonManagement.Models
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    [Table("_User")]
-    public partial class C_User
+    [Table("_USER")]
+    public partial class C_USER
+
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public C_User()
+        public C_USER()
         {
-            RESERVATIONs = new HashSet<RESERVATION>();
+            RESERVATION = new HashSet<RESERVATION>();
         }
 
         [Key]
@@ -37,10 +38,11 @@ namespace BadmintonManagement.Models
         [StringLength(13)]
         public string PhoneNumber { get; set; }
 
+        [Column("_Status")]
         [StringLength(30)]
-        public string Status { get; set; }
+        public string C_Status { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<RESERVATION> RESERVATIONs { get; set; }
+        public virtual ICollection<RESERVATION> RESERVATION { get; set; }
     }
 }

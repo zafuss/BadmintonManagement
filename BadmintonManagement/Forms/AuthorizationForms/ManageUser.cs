@@ -17,7 +17,7 @@ namespace BadmintonManagement.Forms.AuthorizationForms
         string selectedUsername = "";
         string selectedEmail = "";
         string selectedRole = "";
-        List<C_User> userList;
+        List<C_USER> userList;
         public ManageUser()
         {
             InitializeComponent();
@@ -42,7 +42,7 @@ namespace BadmintonManagement.Forms.AuthorizationForms
                 dgvUsers.Rows[index].Cells[2].Value = item.Email;
                 dgvUsers.Rows[index].Cells[3].Value = item.PhoneNumber;
                 dgvUsers.Rows[index].Cells[4].Value = item.C_Role;
-                dgvUsers.Rows[index].Cells[5].Value = item.Status == "Enabled" ? "Kích hoạt" : "Vô hiệu hoá";
+                dgvUsers.Rows[index].Cells[5].Value = item.C_Status == "Enabled" ? "Kích hoạt" : "Vô hiệu hoá";
 
 
             }
@@ -57,7 +57,7 @@ namespace BadmintonManagement.Forms.AuthorizationForms
                     throw new Exception("Vui lòng nhập đầy đủ thông tin!");
                 if (txtRegPassword.Text != txtRegRepeatPass.Text)
                     throw new Exception("Mật khẩu không trùng khớp!");
-                C_User user = new C_User()
+                C_USER user = new C_USER()
                 {
                     Username = txtRegUsername.Text,
                     C_Name = txtName.Text,
@@ -65,7 +65,7 @@ namespace BadmintonManagement.Forms.AuthorizationForms
                     PhoneNumber = txtRegPhoneNumber.Text,
                     Email = txtRegEmail.Text,
                     C_Role = "Staff",
-                    Status = "Enabled"
+                    C_Status = "Enabled"
 
                 };
                 //FirebaseHelper.RegisterUser(user);
@@ -122,7 +122,7 @@ namespace BadmintonManagement.Forms.AuthorizationForms
                     throw new Exception("Không thể thay đổi username!");
                 if (txtRegPassword.Text != txtRegRepeatPass.Text)
                     throw new Exception("Mật khẩu không trùng khớp!");
-                C_User user = new C_User()
+                C_USER user = new C_USER()
                 {
                     Username = txtRegUsername.Text,
                     C_Password = txtRegPassword.Text,
@@ -130,7 +130,7 @@ namespace BadmintonManagement.Forms.AuthorizationForms
                     C_Name = txtName.Text,  
                     Email = txtRegEmail.Text,
                     C_Role = selectedRole,
-                    Status = "Enabled"
+                    C_Status = "Enabled"
 
                 };
                 //FirebaseHelper.UpdateUser(user, selectedUsername, selectedEmail);

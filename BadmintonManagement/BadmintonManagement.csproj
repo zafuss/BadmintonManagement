@@ -134,6 +134,18 @@
     <Compile Include="Forms\ReservationCourt\BookingForm\GetCustomerInformation.Designer.cs">
       <DependentUpon>GetCustomerInformation.cs</DependentUpon>
     </Compile>
+    <Compile Include="Models\BRANCH.cs" />
+    <Compile Include="Models\COURT.cs" />
+    <Compile Include="Models\CUSTOMER.cs" />
+    <Compile Include="Models\C_SERVICE.cs" />
+    <Compile Include="Models\C_USER.cs" />
+    <Compile Include="Models\ModelBadmintonManage.cs" />
+    <Compile Include="Models\PRICE.cs" />
+    <Compile Include="Models\RECEIPT.cs" />
+    <Compile Include="Models\RESERVATION.cs" />
+    <Compile Include="Models\RF_DETAIL.cs" />
+    <Compile Include="Models\SERVICE_DETAIL.cs" />
+    <Compile Include="Models\SERVICE_RECEIPT.cs" />
     <Compile Include="Services\OTP\EnterOTP.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -229,20 +241,6 @@
       <DependentUpon>ServiceForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Function\CourtService\CourtService.cs" />
-    <Compile Include="Models\BRANCH.cs" />
-    <Compile Include="Models\COURT.cs" />
-    <Compile Include="Models\CUSTOMER.cs" />
-    <Compile Include="Models\C_SERVICE.cs" />
-    <Compile Include="Models\C_User.cs" />
-    <Compile Include="Models\ModelBadmintonManage.cs" />
-    <Compile Include="Models\PRICE.cs" />
-    <Compile Include="Models\RECEIPT.cs" />
-    <Compile Include="Models\RESERVATION.cs" />
-    <Compile Include="Models\RF_DETAIL.cs" />
-    <Compile Include="Models\SERVICE_DETAIL.cs" />
-    <Compile Include="Models\SERVICE_RECEIPT.cs" />
-    <Compile Include="Models\sysdiagram.cs" />
-    <Compile Include="Models\User.cs" />
     <Compile Include="Services\OTP\OTPService.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -12,7 +12,8 @@ namespace BadmintonManagement.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public CUSTOMER()
         {
-            RESERVATIONs = new HashSet<RESERVATION>();
+            RESERVATION = new HashSet<RESERVATION>();
+            SERVICE_DETAIL = new HashSet<SERVICE_DETAIL>();
         }
 
         [Key]
@@ -26,6 +27,9 @@ namespace BadmintonManagement.Models
         public string Email { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<RESERVATION> RESERVATIONs { get; set; }
+        public virtual ICollection<RESERVATION> RESERVATION { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<SERVICE_DETAIL> SERVICE_DETAIL { get; set; }
     }
 }

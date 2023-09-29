@@ -18,18 +18,15 @@ namespace BadmintonManagement.Models
         [StringLength(20)]
         public string CourtID { get; set; }
 
-        [Required]
         [StringLength(50)]
         public string CourtName { get; set; }
 
         [Column("_Status")]
-        [Required]
         [StringLength(30)]
         public string C_Status { get; set; }
 
-        public DateTime StartDate { get; set; }
+        public DateTime? StartDate { get; set; }
 
-        [Required]
         [StringLength(20)]
         public string BranchID { get; set; }
 

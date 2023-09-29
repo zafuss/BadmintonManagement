@@ -18,16 +18,11 @@ namespace BadmintonManagement.Models
 
         public decimal? Total { get; set; }
 
-        public DateTime? ExtraTime { get; set; }
+        public double? ExtraTime { get; set; }
 
         [StringLength(20)]
         public string ReservationNo { get; set; }
 
-        [StringLength(20)]
-        public string ServiceReceiptNo { get; set; }
-
         public virtual RESERVATION RESERVATION { get; set; }
-
-        public virtual SERVICE_RECEIPT SERVICE_RECEIPT { get; set; }
     }
 }

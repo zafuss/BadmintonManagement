@@ -20,7 +20,12 @@ namespace BadmintonManagement.Models
 
         public int? Quantity { get; set; }
 
+        [StringLength(13)]
+        public string PhoneNumber { get; set; }
+
         public virtual C_SERVICE C_SERVICE { get; set; }
+
+        public virtual CUSTOMER CUSTOMER { get; set; }
 
         public virtual SERVICE_RECEIPT SERVICE_RECEIPT { get; set; }
     }

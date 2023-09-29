@@ -13,17 +13,16 @@ namespace BadmintonManagement.Models
         }
 
         public virtual DbSet<C_SERVICE> C_SERVICE { get; set; }
-        public virtual DbSet<C_User> C_User { get; set; }
-        public virtual DbSet<BRANCH> BRANCHes { get; set; }
-        public virtual DbSet<COURT> COURTs { get; set; }
-        public virtual DbSet<CUSTOMER> CUSTOMERs { get; set; }
-        public virtual DbSet<PRICE> PRICEs { get; set; }
-        public virtual DbSet<RECEIPT> RECEIPTs { get; set; }
-        public virtual DbSet<RESERVATION> RESERVATIONs { get; set; }
+        public virtual DbSet<C_USER> C_USER { get; set; }
+        public virtual DbSet<BRANCH> BRANCH { get; set; }
+        public virtual DbSet<COURT> COURT { get; set; }
+        public virtual DbSet<CUSTOMER> CUSTOMER { get; set; }
+        public virtual DbSet<PRICE> PRICE { get; set; }
+        public virtual DbSet<RECEIPT> RECEIPT { get; set; }
+        public virtual DbSet<RESERVATION> RESERVATION { get; set; }
         public virtual DbSet<RF_DETAIL> RF_DETAIL { get; set; }
         public virtual DbSet<SERVICE_DETAIL> SERVICE_DETAIL { get; set; }
         public virtual DbSet<SERVICE_RECEIPT> SERVICE_RECEIPT { get; set; }
-        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -36,22 +35,13 @@ namespace BadmintonManagement.Models
                 .WithRequired(e => e.C_SERVICE)
                 .WillCascadeOnDelete(false);
 
-            modelBuilder.Entity<C_User>()
+            modelBuilder.Entity<C_USER>()
                 .Property(e => e.Email)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<C_User>()
+            modelBuilder.Entity<C_USER>()
                 .Property(e => e.PhoneNumber)
                 .IsUnicode(false);
-
-            modelBuilder.Entity<C_User>()
-             .Property(e => e.Status)
-             .IsUnicode(false);
-
-            modelBuilder.Entity<BRANCH>()
-                .HasMany(e => e.COURTs)
-                .WithRequired(e => e.BRANCH)
-                .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<COURT>()
                 .HasMany(e => e.RF_DETAIL)
@@ -89,6 +79,10 @@ namespace BadmintonManagement.Models
 
             modelBuilder.Entity<RF_DETAIL>()
                 .Property(e => e.PriceID)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<SERVICE_DETAIL>()
+                .Property(e => e.PhoneNumber)
                 .IsUnicode(false);
 
             modelBuilder.Entity<SERVICE_RECEIPT>()

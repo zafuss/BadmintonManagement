@@ -12,8 +12,8 @@ namespace BadmintonManagement.Function.CourtService
     public class CourtService
     {
         private ModelBadmintonManage _modelBadmintonManage = new ModelBadmintonManage();
-        private List<COURT> _courts = new ModelBadmintonManage().COURTs.ToList();
-        private List<BRANCH> _branchs = new ModelBadmintonManage().BRANCHes.ToList();
+        private List<COURT> _courts = new ModelBadmintonManage().COURT.ToList();
+        private List<BRANCH> _branchs = new ModelBadmintonManage().BRANCH.ToList();
 
         public void createCourt()
         {
@@ -71,37 +71,37 @@ namespace BadmintonManagement.Function.CourtService
 
             if (!checkCourtID(courtSBT001.CourtID))
             {
-                _modelBadmintonManage.COURTs.Add(courtSBT001);
+                _modelBadmintonManage.COURT.Add(courtSBT001);
                 _modelBadmintonManage.SaveChanges();
             }
 
             if (!checkCourtID(courtSBT002.CourtID))
             {
-                _modelBadmintonManage.COURTs.Add(courtSBT002);
+                _modelBadmintonManage.COURT.Add(courtSBT002);
                 _modelBadmintonManage.SaveChanges();
             }
 
             if (!checkCourtID(courtSBT003.CourtID))
             {
-                _modelBadmintonManage.COURTs.Add(courtSBT003);
+                _modelBadmintonManage.COURT.Add(courtSBT003);
                 _modelBadmintonManage.SaveChanges();
             }
 
             if (!checkCourtID(courtSTD001.CourtID))
             {
-                _modelBadmintonManage.COURTs.Add(courtSTD001);
+                _modelBadmintonManage.COURT.Add(courtSTD001);
                 _modelBadmintonManage.SaveChanges();
             }
 
             if (!checkCourtID(courtSTD002.CourtID))
             {
-                _modelBadmintonManage.COURTs.Add(courtSTD002);
+                _modelBadmintonManage.COURT.Add(courtSTD002);
                 _modelBadmintonManage.SaveChanges();
             }
 
             if (!checkCourtID(courtSTD003.CourtID))
             {
-                _modelBadmintonManage.COURTs.Add(courtSTD003);
+                _modelBadmintonManage.COURT.Add(courtSTD003);
                 _modelBadmintonManage.SaveChanges();
             }
         }
@@ -124,13 +124,13 @@ namespace BadmintonManagement.Function.CourtService
 
             if (!checkBranchID(branchTD.BranchID))
             {
-                _modelBadmintonManage.BRANCHes.Add(branchTD);
+                _modelBadmintonManage.BRANCH.Add(branchTD);
                 _modelBadmintonManage.SaveChanges();
             }
 
             if (!checkBranchID(branchBT.BranchID))
             {
-                _modelBadmintonManage.BRANCHes.Add(branchBT);
+                _modelBadmintonManage.BRANCH.Add(branchBT);
                 _modelBadmintonManage.SaveChanges();
             }
         }
@@ -142,7 +142,7 @@ namespace BadmintonManagement.Function.CourtService
 
         public void InsertCourt(COURT newCourt)
         {
-            _modelBadmintonManage.COURTs.AddOrUpdate(newCourt);
+            _modelBadmintonManage.COURT.AddOrUpdate(newCourt);
             _modelBadmintonManage.SaveChanges();
         }
 
@@ -186,14 +186,14 @@ namespace BadmintonManagement.Function.CourtService
 
         public bool checkCourtID(string courtID)
         {
-            COURT court = _modelBadmintonManage.COURTs.FirstOrDefault(p => p.CourtID.ToLower().Contains(courtID.ToLower()));
+            COURT court = _modelBadmintonManage.COURT.FirstOrDefault(p => p.CourtID.ToLower().Contains(courtID.ToLower()));
             if (court == null)
                 return false;
             return true;
         }
         public bool checkBranchID(string courtID)
         {
-            BRANCH branch = _modelBadmintonManage.BRANCHes.FirstOrDefault(p => p.BranchID.ToLower().Contains(courtID.ToLower()));
+            BRANCH branch = _modelBadmintonManage.BRANCH.FirstOrDefault(p => p.BranchID.ToLower().Contains(courtID.ToLower()));
             if (branch == null)
                 return false;
             return true;
@@ -201,13 +201,13 @@ namespace BadmintonManagement.Function.CourtService
 
         public COURT FindCourtByID(string id)
         {
-            COURT court = _modelBadmintonManage.COURTs.FirstOrDefault(p => p.CourtID.ToLower().Contains(id.ToLower()));
+            COURT court = _modelBadmintonManage.COURT.FirstOrDefault(p => p.CourtID.ToLower().Contains(id.ToLower()));
             return court;
         }
 
         public BRANCH FindBranchByID(string id)
         {
-            BRANCH branch = _modelBadmintonManage.BRANCHes.FirstOrDefault(p => p.BranchID.ToLower().Contains(id.ToLower()));
+            BRANCH branch = _modelBadmintonManage.BRANCH.FirstOrDefault(p => p.BranchID.ToLower().Contains(id.ToLower()));
             return branch;
         }
     }

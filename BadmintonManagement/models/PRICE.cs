@@ -20,11 +20,9 @@ namespace BadmintonManagement.Models
 
         public decimal? PriceTag { get; set; }
 
-        [Column(TypeName = "date")]
-        public DateTime? TimeFactor { get; set; }
+        public double? TimeFactor { get; set; }
 
-        [Column(TypeName = "date")]
-        public DateTime? DateFactor { get; set; }
+        public double? DateFactor { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<RF_DETAIL> RF_DETAIL { get; set; }

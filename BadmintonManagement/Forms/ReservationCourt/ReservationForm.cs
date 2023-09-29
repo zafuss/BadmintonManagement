@@ -22,7 +22,7 @@ namespace BadmintonManagement.Forms.ReservationCourt
             dtpStartDay.Value = DateTime.Now;
             dtpEndDay.Value = DateTime.Now;
            ModelBadmintonManage context = new ModelBadmintonManage();
-            List<RESERVATION> listRev = context.RESERVATIONs.ToList();
+            List<RESERVATION> listRev = context.RESERVATION.ToList();
             bindGrid(listRev);
             pnlFunction.Visible = true;
         }
@@ -39,10 +39,10 @@ namespace BadmintonManagement.Forms.ReservationCourt
                     dgvReservation.Rows[i].Cells[2].Value = item.PhoneNumber;
                     dgvReservation.Rows[i].Cells[3].Value = item.CUSTOMER.FullName;
                 }
-                dgvReservation.Rows[i].Cells[4].Value = item.CourtID;
-                dgvReservation.Rows[i].Cells[5].Value = item.Deposite;
-                dgvReservation.Rows[i].Cells[6].Value = item.CreateDate;
-                dgvReservation.Rows[i].Cells[7].Value = item.BookingDate;
+        
+                dgvReservation.Rows[i].Cells[4].Value = item.Deposite;
+                dgvReservation.Rows[i].Cells[5].Value = item.CreateDate;
+                dgvReservation.Rows[i].Cells[6].Value = item.BookingDate;
             }
         }
 
@@ -53,11 +53,11 @@ namespace BadmintonManagement.Forms.ReservationCourt
             rev.ReservationNo = revNo;
             rev.Username = userName;
             rev.PhoneNumber = phoneNumber;
-            rev.CourtID = courtID;
+     
             rev.Deposite = deposite;
             rev.BookingDate = bookingDate;
             rev.CreateDate = createDate;
-            context.RESERVATIONs.Add(rev);
+            context.RESERVATION.Add(rev);
             context.SaveChanges();
 
         }
