@@ -5,14 +5,25 @@
     <ReportSection>
       <Body>
         <ReportItems>
-          <Textbox Name="Textbox1">
+          <Textbox Name="Textbox2">
             <CanGrow>true</CanGrow>
             <KeepTogether>true</KeepTogether>
             <Paragraphs>
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>dau van nghia</Value>
+                    <Value>SÂN CẦU LÔNG TOD BÌNH THẠNH</Value>
+                    <Style>
+                      <FontWeight>Bold</FontWeight>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>Địa chỉ: 475A, Điện Biên Phủ, P.25, Q. Bình Thạnh, TP. HCM</Value>
                     <Style />
                   </TextRun>
                 </TextRuns>
@@ -21,18 +32,67 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value />
+                    <Value>Email: </Value>
                     <Style />
+                  </TextRun>
+                  <TextRun>
+                    <Value>todreamscompany@gmail.com</Value>
+                    <Style>
+                      <TextDecoration>Underline</TextDecoration>
+                      <Color>Blue</Color>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>SDT : 0337514097</Value>
+                    <Style>
+                      <TextDecoration>None</TextDecoration>
+                    </Style>
                   </TextRun>
                 </TextRuns>
                 <Style />
               </Paragraph>
             </Paragraphs>
-            <rd:DefaultName>Textbox1</rd:DefaultName>
-            <Top>0.63417in</Top>
-            <Left>1.68625in</Left>
-            <Height>0.25in</Height>
-            <Width>1in</Width>
+            <rd:DefaultName>Textbox2</rd:DefaultName>
+            <Height>0.79167in</Height>
+            <Width>3.84375in</Width>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="Textbox4">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>THỐNG KÊ DOANH THU</Value>
+                    <Style>
+                      <FontSize>18pt</FontSize>
+                      <FontWeight>Bold</FontWeight>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox4</rd:DefaultName>
+            <Top>1.47792in</Top>
+            <Left>3.00917in</Left>
+            <Height>0.66667in</Height>
+            <Width>2.96875in</Width>
+            <ZIndex>1</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -44,10 +104,10 @@
             </Style>
           </Textbox>
         </ReportItems>
-        <Height>2.72917in</Height>
+        <Height>5.06125in</Height>
         <Style />
       </Body>
-      <Width>7.94792in</Width>
+      <Width>8.90625in</Width>
       <Page>
         <LeftMargin>1in</LeftMargin>
         <RightMargin>1in</RightMargin>

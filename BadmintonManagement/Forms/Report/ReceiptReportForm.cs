@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Activities.Expressions;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -19,53 +20,24 @@ namespace BadmintonManagement.Forms.Report
 
         private void ReceiptFormReport_Load(object sender, EventArgs e)
         {
-            rptReciept.LocalReport.ReportPath = "ReportReceipt.rdlc";
-            this.rptReciept.RefreshReport();
+            rptReceipt.Visible = false;
         }
 
-        private void rptReciept_Load(object sender, EventArgs e)
+        private void btnShowReport_Click(object sender, EventArgs e)
         {
-
+            rptReceipt.Visible = true;
+            Microsoft.Reporting.WinForms.ReportParameter[] param = new Microsoft.Reporting.WinForms.ReportParameter[1]
+            {
+                new Microsoft.Reporting.WinForms.ReportParameter("DeliveryDateStr","Tháng "+dtpMonth.Text)
+            };
+            rptReceipt.LocalReport.ReportPath = "ReportReceipt.rdlc";
+            rptReceipt.LocalReport.SetParameters(param);
+            this.rptReceipt.RefreshReport();
         }
 
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void radioButton2_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void radioButton1_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtMonth_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void dateTimePicker2_ValueChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
+       
     }
+
+        
+    
 }
