@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Reporting.WinForms;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,37 +16,22 @@ namespace BadmintonManagement.Forms.Report
         public IncomeReportForm()
         {
             InitializeComponent();
+        }
+
+        private void IncomeForm_Load(object sender, EventArgs e)
+        {
+
+            //rptIncome.LocalReport.ReportPath = "IncomeReport.rdlc";
+            //this.rptIncome.RefreshReport();
+            rptIncome.Visible = false;
             
         }
-        Form activeForm = null;
-        private void OpenChilForm(Form chilForm)
-        {
-            if (activeForm != null)
-                activeForm.Close();
-            activeForm = chilForm;
-            chilForm.TopLevel = false;
-            chilForm.FormBorderStyle = FormBorderStyle.None;    
-            chilForm.Dock = DockStyle.Fill;
-            pnlViewreport.Controls.Add(chilForm);
-            pnlViewreport.Tag = chilForm;
-            chilForm.BringToFront();
-            chilForm.Show();
 
-        }
-
-        
-        private void btnIncome_Click(object sender, EventArgs e)
+        private void btnShowReport_Click(object sender, EventArgs e)
         {
-            OpenChilForm(new IncomeForm());
-            btnIncome.BackColor = Color.LightGray;
-            btnReceipt.BackColor = SystemColors.Control;
-        }
-
-        private void btnReceipt_Click(object sender, EventArgs e)
-        {
-            OpenChilForm(new ReceiptReportForm());
-            btnReceipt.BackColor = Color.LightGray;
-            btnIncome.BackColor = SystemColors.Control;
+            rptIncome.Visible=true;
+            rptIncome.LocalReport.ReportPath = "IncomeReport.rdlc";
+            this.rptIncome.RefreshReport();
         }
     }
 }

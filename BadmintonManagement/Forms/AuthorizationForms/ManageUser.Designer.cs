@@ -73,7 +73,7 @@
             this.txtRegPassword.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtRegPassword.Name = "txtRegPassword";
             this.txtRegPassword.PasswordChar = '●';
-            this.txtRegPassword.Size = new System.Drawing.Size(222, 34);
+            this.txtRegPassword.Size = new System.Drawing.Size(222, 29);
             this.txtRegPassword.TabIndex = 4;
             // 
             // label2
@@ -85,7 +85,7 @@
             this.label2.Location = new System.Drawing.Point(32, 384);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(94, 28);
+            this.label2.Size = new System.Drawing.Size(75, 21);
             this.label2.TabIndex = 5;
             this.label2.Text = "Mật khẩu";
             // 
@@ -96,7 +96,7 @@
             this.txtRegUsername.Location = new System.Drawing.Point(177, 182);
             this.txtRegUsername.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtRegUsername.Name = "txtRegUsername";
-            this.txtRegUsername.Size = new System.Drawing.Size(222, 34);
+            this.txtRegUsername.Size = new System.Drawing.Size(222, 29);
             this.txtRegUsername.TabIndex = 0;
             // 
             // label1
@@ -108,7 +108,7 @@
             this.label1.Location = new System.Drawing.Point(32, 185);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(140, 28);
+            this.label1.Size = new System.Drawing.Size(111, 21);
             this.label1.TabIndex = 6;
             this.label1.Text = "Tên đăng nhập";
             // 
@@ -119,7 +119,7 @@
             this.txtRegPhoneNumber.Location = new System.Drawing.Point(177, 331);
             this.txtRegPhoneNumber.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtRegPhoneNumber.Name = "txtRegPhoneNumber";
-            this.txtRegPhoneNumber.Size = new System.Drawing.Size(222, 34);
+            this.txtRegPhoneNumber.Size = new System.Drawing.Size(222, 29);
             this.txtRegPhoneNumber.TabIndex = 3;
             // 
             // label3
@@ -131,7 +131,7 @@
             this.label3.Location = new System.Drawing.Point(32, 334);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(128, 28);
+            this.label3.Size = new System.Drawing.Size(101, 21);
             this.label3.TabIndex = 10;
             this.label3.Text = "Số điện thoại";
             // 
@@ -142,7 +142,7 @@
             this.txtRegEmail.Location = new System.Drawing.Point(177, 282);
             this.txtRegEmail.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtRegEmail.Name = "txtRegEmail";
-            this.txtRegEmail.Size = new System.Drawing.Size(222, 34);
+            this.txtRegEmail.Size = new System.Drawing.Size(222, 29);
             this.txtRegEmail.TabIndex = 2;
             // 
             // label4
@@ -154,7 +154,7 @@
             this.label4.Location = new System.Drawing.Point(32, 285);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(59, 28);
+            this.label4.Size = new System.Drawing.Size(48, 21);
             this.label4.TabIndex = 11;
             this.label4.Text = "Email";
             // 
@@ -172,6 +172,8 @@
             // 
             this.dgvUsers.AllowUserToAddRows = false;
             this.dgvUsers.AllowUserToDeleteRows = false;
+            this.dgvUsers.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvUsers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvUsers.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.clnUsername,
@@ -267,7 +269,7 @@
             this.label5.Location = new System.Drawing.Point(32, 234);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(71, 28);
+            this.label5.Size = new System.Drawing.Size(56, 21);
             this.label5.TabIndex = 6;
             this.label5.Text = "Họ tên";
             // 
@@ -278,7 +280,7 @@
             this.txtName.Location = new System.Drawing.Point(177, 231);
             this.txtName.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(222, 34);
+            this.txtName.Size = new System.Drawing.Size(222, 29);
             this.txtName.TabIndex = 1;
             // 
             // label6
@@ -290,7 +292,7 @@
             this.label6.Location = new System.Drawing.Point(32, 433);
             this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(177, 28);
+            this.label6.Size = new System.Drawing.Size(142, 21);
             this.label6.TabIndex = 5;
             this.label6.Text = "Xác nhận mật khẩu";
             // 
@@ -302,12 +304,12 @@
             this.txtRegRepeatPass.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtRegRepeatPass.Name = "txtRegRepeatPass";
             this.txtRegRepeatPass.PasswordChar = '●';
-            this.txtRegRepeatPass.Size = new System.Drawing.Size(222, 34);
+            this.txtRegRepeatPass.Size = new System.Drawing.Size(222, 29);
             this.txtRegRepeatPass.TabIndex = 5;
             // 
             // ManageUser
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 28F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1176, 551);
             this.Controls.Add(this.dgvUsers);

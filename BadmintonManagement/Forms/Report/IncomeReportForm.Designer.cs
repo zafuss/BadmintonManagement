@@ -28,121 +28,150 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.btnReceipt = new System.Windows.Forms.Button();
-            this.btnIncome = new System.Windows.Forms.Button();
-            this.panel3 = new System.Windows.Forms.Panel();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.rdbMonth = new System.Windows.Forms.RadioButton();
+            this.rdbDay = new System.Windows.Forms.RadioButton();
+            this.dtbStart = new System.Windows.Forms.DateTimePicker();
+            this.dtpEnd = new System.Windows.Forms.DateTimePicker();
+            this.dtpMonth = new System.Windows.Forms.DateTimePicker();
             this.label1 = new System.Windows.Forms.Label();
-            this.pnlIncome = new System.Windows.Forms.Panel();
-            this.pnlViewreport = new System.Windows.Forms.Panel();
-            this.panel1.SuspendLayout();
-            this.panel3.SuspendLayout();
-            this.pnlIncome.SuspendLayout();
+            this.label2 = new System.Windows.Forms.Label();
+            this.rptIncome = new Microsoft.Reporting.WinForms.ReportViewer();
+            this.btnShowReport = new System.Windows.Forms.Button();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // panel1
+            // groupBox1
             // 
-            this.panel1.Controls.Add(this.btnReceipt);
-            this.panel1.Controls.Add(this.btnIncome);
-            this.panel1.Controls.Add(this.panel3);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(111, 403);
-            this.panel1.TabIndex = 0;
+            this.groupBox1.Controls.Add(this.btnShowReport);
+            this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Controls.Add(this.dtpMonth);
+            this.groupBox1.Controls.Add(this.dtpEnd);
+            this.groupBox1.Controls.Add(this.dtbStart);
+            this.groupBox1.Controls.Add(this.rdbDay);
+            this.groupBox1.Controls.Add(this.rdbMonth);
+            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.groupBox1.Location = new System.Drawing.Point(0, 0);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(720, 70);
+            this.groupBox1.TabIndex = 0;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Thời gian";
             // 
-            // btnReceipt
+            // rdbMonth
             // 
-            this.btnReceipt.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnReceipt.FlatAppearance.BorderSize = 0;
-            this.btnReceipt.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnReceipt.Location = new System.Drawing.Point(0, 60);
-            this.btnReceipt.Name = "btnReceipt";
-            this.btnReceipt.Size = new System.Drawing.Size(111, 31);
-            this.btnReceipt.TabIndex = 3;
-            this.btnReceipt.Text = "Thống kê hóa đơn";
-            this.btnReceipt.UseVisualStyleBackColor = true;
-            this.btnReceipt.Click += new System.EventHandler(this.btnReceipt_Click);
+            this.rdbMonth.AutoSize = true;
+            this.rdbMonth.Location = new System.Drawing.Point(52, 19);
+            this.rdbMonth.Name = "rdbMonth";
+            this.rdbMonth.Size = new System.Drawing.Size(125, 17);
+            this.rdbMonth.TabIndex = 0;
+            this.rdbMonth.TabStop = true;
+            this.rdbMonth.Text = "Thống kê theo tháng";
+            this.rdbMonth.UseVisualStyleBackColor = true;
             // 
-            // btnIncome
+            // rdbDay
             // 
-            this.btnIncome.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnIncome.FlatAppearance.BorderSize = 0;
-            this.btnIncome.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnIncome.Location = new System.Drawing.Point(0, 29);
-            this.btnIncome.Name = "btnIncome";
-            this.btnIncome.Size = new System.Drawing.Size(111, 31);
-            this.btnIncome.TabIndex = 2;
-            this.btnIncome.Text = "Thống kê doanh thu";
-            this.btnIncome.UseVisualStyleBackColor = true;
-            this.btnIncome.Click += new System.EventHandler(this.btnIncome_Click);
+            this.rdbDay.AutoSize = true;
+            this.rdbDay.Location = new System.Drawing.Point(52, 43);
+            this.rdbDay.Name = "rdbDay";
+            this.rdbDay.Size = new System.Drawing.Size(121, 17);
+            this.rdbDay.TabIndex = 1;
+            this.rdbDay.TabStop = true;
+            this.rdbDay.Text = "Thống kê theo ngày";
+            this.rdbDay.UseVisualStyleBackColor = true;
             // 
-            // panel3
+            // dtbStart
             // 
-            this.panel3.BackColor = System.Drawing.Color.Gainsboro;
-            this.panel3.Controls.Add(this.label1);
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel3.Location = new System.Drawing.Point(0, 0);
-            this.panel3.Margin = new System.Windows.Forms.Padding(2);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(111, 29);
-            this.panel3.TabIndex = 1;
+            this.dtbStart.CustomFormat = "dd/MM/yyyy";
+            this.dtbStart.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtbStart.Location = new System.Drawing.Point(243, 40);
+            this.dtbStart.Name = "dtbStart";
+            this.dtbStart.Size = new System.Drawing.Size(137, 20);
+            this.dtbStart.TabIndex = 2;
+            // 
+            // dtpEnd
+            // 
+            this.dtpEnd.CustomFormat = "dd/MM/yyyy";
+            this.dtpEnd.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpEnd.Location = new System.Drawing.Point(453, 40);
+            this.dtpEnd.Name = "dtpEnd";
+            this.dtpEnd.Size = new System.Drawing.Size(137, 20);
+            this.dtpEnd.TabIndex = 3;
+            // 
+            // dtpMonth
+            // 
+            this.dtpMonth.CustomFormat = "MM/yyyy";
+            this.dtpMonth.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpMonth.Location = new System.Drawing.Point(243, 16);
+            this.dtpMonth.Name = "dtpMonth";
+            this.dtpMonth.Size = new System.Drawing.Size(137, 20);
+            this.dtpMonth.TabIndex = 4;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(2, 9);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Location = new System.Drawing.Point(191, 44);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(104, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Danh sách thống kê";
+            this.label1.Size = new System.Drawing.Size(46, 13);
+            this.label1.TabIndex = 5;
+            this.label1.Text = "Từ ngày";
             // 
-            // pnlIncome
+            // label2
             // 
-            this.pnlIncome.Controls.Add(this.pnlViewreport);
-            this.pnlIncome.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlIncome.Location = new System.Drawing.Point(111, 0);
-            this.pnlIncome.Margin = new System.Windows.Forms.Padding(2);
-            this.pnlIncome.Name = "pnlIncome";
-            this.pnlIncome.Size = new System.Drawing.Size(666, 403);
-            this.pnlIncome.TabIndex = 1;
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(394, 44);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(53, 13);
+            this.label2.TabIndex = 6;
+            this.label2.Text = "Đến ngày";
             // 
-            // pnlViewreport
+            // rptIncome
             // 
-            this.pnlViewreport.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlViewreport.Location = new System.Drawing.Point(0, 0);
-            this.pnlViewreport.Name = "pnlViewreport";
-            this.pnlViewreport.Size = new System.Drawing.Size(666, 403);
-            this.pnlViewreport.TabIndex = 1;
+            this.rptIncome.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rptIncome.Location = new System.Drawing.Point(0, 70);
+            this.rptIncome.Name = "rptIncome";
+            this.rptIncome.ServerReport.BearerToken = null;
+            this.rptIncome.Size = new System.Drawing.Size(720, 380);
+            this.rptIncome.TabIndex = 1;
+            // 
+            // btnShowReport
+            // 
+            this.btnShowReport.Location = new System.Drawing.Point(608, 40);
+            this.btnShowReport.Name = "btnShowReport";
+            this.btnShowReport.Size = new System.Drawing.Size(63, 20);
+            this.btnShowReport.TabIndex = 7;
+            this.btnShowReport.Text = "Thống kê";
+            this.btnShowReport.UseVisualStyleBackColor = true;
+            this.btnShowReport.Click += new System.EventHandler(this.btnShowReport_Click);
             // 
             // IncomeReportForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(777, 403);
-            this.Controls.Add(this.pnlIncome);
-            this.Controls.Add(this.panel1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.ClientSize = new System.Drawing.Size(720, 450);
+            this.Controls.Add(this.rptIncome);
+            this.Controls.Add(this.groupBox1);
             this.Name = "IncomeReportForm";
-            this.Text = "Thống Kê";
-            this.panel1.ResumeLayout(false);
-            this.panel3.ResumeLayout(false);
-            this.panel3.PerformLayout();
-            this.pnlIncome.ResumeLayout(false);
+            this.Text = "IncomeForm";
+            this.Load += new System.EventHandler(this.IncomeForm_Load);
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Panel pnlIncome;
-        private System.Windows.Forms.Button btnIncome;
-        private System.Windows.Forms.Panel pnlViewreport;
-        private System.Windows.Forms.Button btnReceipt;
+        private System.Windows.Forms.DateTimePicker dtpMonth;
+        private System.Windows.Forms.DateTimePicker dtpEnd;
+        private System.Windows.Forms.DateTimePicker dtbStart;
+        private System.Windows.Forms.RadioButton rdbDay;
+        private System.Windows.Forms.RadioButton rdbMonth;
+        private Microsoft.Reporting.WinForms.ReportViewer rptIncome;
+        private System.Windows.Forms.Button btnShowReport;
     }
 }
