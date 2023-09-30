@@ -32,7 +32,7 @@ namespace BadmintonManagement.Forms.AuthorizationForms
                     throw new Exception("Vui lòng nhập đầy đủ thông tin!");
                 Validator.ResetPasswordValidator(txtNewPassword.Text, txtConfirmNewPassword.Text);
                 user.C_Password = txtNewPassword.Text;
-                UserServices.UpdateUser(user, currentEmail, null);
+                UserServices.UpdateUser(user, currentEmail, null, null);
                 Close();
                 MessageBox.Show("Thay đổi mật khẩu thành công!");
             }
