@@ -156,6 +156,11 @@ namespace BadmintonManagement.Function.CourtService
             return _branchs;
         }
 
+        public int getCountCourt()
+        {
+            return _courts.Count();
+        }
+
         public string GetBranchID(string branchName)
         {
             BRANCH tmp = _branchs.FirstOrDefault(p => p.BranchName.Equals(branchName));
