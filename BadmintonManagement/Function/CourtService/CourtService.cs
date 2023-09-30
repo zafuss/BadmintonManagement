@@ -151,6 +151,17 @@ namespace BadmintonManagement.Function.CourtService
             return _courts;
         }
 
+        public List<COURT> getListCourtWithOutDisable()
+        {
+            List<COURT> tmp = _modelBadmintonManage.COURT.Where(p => p.C_Status != "Disable").ToList();
+            //List<COURT> tmp = new List<COURT>();
+            //foreach (var item in _courts)
+            //{
+            //    if(item.C_Status != "Disable")
+            //        tmp.Add(item);
+            //}
+            return tmp;
+        }
         public List<BRANCH> getBranch()
         {
             return _branchs;
@@ -159,6 +170,10 @@ namespace BadmintonManagement.Function.CourtService
         public int getCountCourt()
         {
             return _courts.Count();
+        }
+        public int getCountCourtDisable()
+        {
+            return getListCourtWithOutDisable().Count();
         }
 
         public string GetBranchID(string branchName)
