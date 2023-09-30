@@ -122,6 +122,12 @@
     <Compile Include="Forms\Report\ReceiptReportForm.Designer.cs">
       <DependentUpon>ReceiptReportForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Report\ServiceReceiptForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Report\ServiceReceiptForm.Designer.cs">
+      <DependentUpon>ServiceReceiptForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\ReservationCourt\BookingForm\BookingForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -253,10 +259,16 @@
     <EmbeddedResource Include="Forms\Report\ReceiptReportForm.resx">
       <DependentUpon>ReceiptReportForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Report\ServiceReceiptForm.resx">
+      <DependentUpon>ServiceReceiptForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="IncomeReport.rdlc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="ReportReceipt.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ServiceReceiptReport.rdlc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="Services\OTP\EnterOTP.resx">
@@ -317,6 +329,7 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\BadmintonManagement.Models.RECEIPT.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

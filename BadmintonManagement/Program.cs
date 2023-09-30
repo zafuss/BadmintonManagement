@@ -25,9 +25,12 @@ namespace BadmintonManagement
             UserServices.CreateTestAccounts();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new LoginForm());
+            //Application.Run(new LoginForm());
             //Application.Run(new ManageUser());
-            //Application.Run(new IncomeForm());
+            Application.Run(new HomePage());
+
+            
+            
 
         }
     }

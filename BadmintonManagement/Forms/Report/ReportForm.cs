@@ -15,6 +15,7 @@ namespace BadmintonManagement.Forms.Report
         public ReportForm()
         {
             InitializeComponent();
+            pnlReceiptReport.Visible = false;
             
         }
         Form activeForm = null;
@@ -37,15 +38,31 @@ namespace BadmintonManagement.Forms.Report
         private void btnIncome_Click(object sender, EventArgs e)
         {
             OpenChilForm(new IncomeReportForm());
-            btnIncome.BackColor = Color.LightGray;
-            btnReceipt.BackColor = SystemColors.Control;
+            btnIncome.BackColor = SystemColors.ButtonShadow;
+            btnReceipt.BackColor = Color.LightGray;
+            pnlReceiptReport.Visible=false;
         }
 
         private void btnReceipt_Click(object sender, EventArgs e)
         {
-            OpenChilForm(new ReceiptReportForm());
-            btnReceipt.BackColor = Color.LightGray;
-            btnIncome.BackColor = SystemColors.Control;
+            pnlReceiptReport.Visible = true;
+            btnReceipt.BackColor = SystemColors.ButtonShadow;
+            btnIncome.BackColor = Color.LightGray;
+        }
+
+        private void btnCourtReceipt_Click(object sender, EventArgs e)
+        {
+            btnCourtReceipt.BackColor = SystemColors.ButtonShadow;
+            btnServiceReceipt.BackColor = Color.LightGray;
+            OpenChilForm(new ReceiptReportForm()); 
+        }
+
+        private void btnServiceReceipt_Click(object sender, EventArgs e)
+        {
+            btnServiceReceipt.BackColor = SystemColors.ButtonShadow;
+            btnCourtReceipt.BackColor = Color.LightGray;
+            OpenChilForm(new ServiceReceiptForm());
+            
         }
     }
 }
