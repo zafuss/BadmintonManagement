@@ -18,6 +18,7 @@ namespace BadmintonManagement.Forms.Court
 {
     public partial class AddCourtForm : Form
     {
+        public static AddCourtForm Instance; 
         private List<string> status = new List<string>()
         {
            "Chưa Được Sử Dụng","Đang Sử Dụng","Bảo Trì"
@@ -25,6 +26,7 @@ namespace BadmintonManagement.Forms.Court
 
         public AddCourtForm()
         {
+            Instance = this;
             InitializeComponent();
             Loading();
             Reset();
@@ -129,6 +131,10 @@ namespace BadmintonManagement.Forms.Court
                     MessageBox.Show("Them Thanh Cong");
                     Loading();
                     Reset();
+                    if (Application.OpenForms["CourtForm"] != null && !Application.OpenForms["CourtForm"].IsDisposed)
+                    {
+                        CourtForm.Instance.ShowCourt();
+                    }
                 }
                 else
                 {
@@ -159,6 +165,11 @@ namespace BadmintonManagement.Forms.Court
                     MessageBox.Show("Xoa Thanh Cong");
                     Loading();
                     Reset();
+                    if(Application.OpenForms["CourtForm"] != null && !Application.OpenForms["CourtForm"].IsDisposed)
+                    {
+                        CourtForm.Instance.ShowCourt();
+
+                    }
                 }
 
             }
@@ -187,6 +198,10 @@ namespace BadmintonManagement.Forms.Court
                     MessageBox.Show("Sua Thanh Cong");
                     Loading();
                     Reset();
+                    if(Application.OpenForms["CourtForm"] != null && !Application.OpenForms["CourtForm"].IsDisposed)
+                    {
+                        CourtForm.Instance.ShowCourt();
+                    }
                 }
             }
             catch (Exception ex)
