@@ -15,6 +15,7 @@ namespace BadmintonManagement.Forms.Court
     public partial class CourtForm : Form
     {
         public static CourtForm Instance;
+        public bool flag = false;
         public CourtForm()
         {
             InitializeComponent();
@@ -25,9 +26,63 @@ namespace BadmintonManagement.Forms.Court
             {
                 btnAdmin.Visible = false;
             }
-            pnlDisplayCourt.AutoScroll = true; 
+            pnlDisplayCourt.AutoScroll = true;
+
+            //Test();
         }
-   
+
+        private void Test()
+        {
+            double x = (this.pnlDisplayCourt.Width) / (3.4);
+            double y = (this.pnlDisplayCourt.Height) / (3.4);
+            Panel panel = new Panel();
+            PictureBox pictureBox = new PictureBox();
+            Label lbl = new Label();
+            lbl.Text = DateTime.Now.ToString("dd/MM/yyyy");
+            lbl.Location = new Point(Convert.ToInt32(x * 1 / 10), Convert.ToInt32(y * 9 / 10));
+
+            Label lbl2 = new Label();
+            lbl2.Text = DateTime.Now.ToString("dd/MM/yyyy");
+            lbl2.Location = new Point(Convert.ToInt32(x * 6 / 10), Convert.ToInt32(y * 9 / 10));
+            panel.Location = new Point(0, 0);
+            panel.Size = new Size(Convert.ToInt32(x), Convert.ToInt32(y));
+            pictureBox.Size = new Size(Convert.ToInt32(x * 3 / 5), Convert.ToInt32(y * 3 / 5));
+            pictureBox.Location = new Point(Convert.ToInt32(x * 1 / 5), Convert.ToInt32(y * 1 / 5));
+            pictureBox.Image = Properties.Resources.Use;
+            pictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
+
+            panel.Controls.Add(lbl2);
+            panel.Controls.Add(lbl);
+            panel.Controls.Add(pictureBox);
+            pnlDisplayCourt.Controls.Add(panel);
+        }
+
+        private void Control_MouseEnter(object sender, EventArgs e)
+        {
+            
+            MessageBox.Show("Test");
+        }
+
+        private void Control_MouseLeave(object sender, EventArgs e)
+        {
+            
+            
+        }
+        private void ControlClickHandler(object sender, EventArgs e)
+        {
+            hideSubMenu();
+            pnlAdmin.Visible = true;
+            PictureBox clickedPictureBox = sender as PictureBox;
+            if (clickedPictureBox != null)
+            {
+                string pictureBoxName = clickedPictureBox.Name;
+                COURT court = new CourtService().FindCourtByID(pictureBoxName);
+                AddCourtForm.Instance.FillCourt(court);
+            }
+            
+        }
+
+
         private void fill()
         {
             AddCourtForm addCourtForm = new AddCourtForm();
@@ -62,11 +117,11 @@ namespace BadmintonManagement.Forms.Court
 
             double width = this.pnlDisplayCourt.Width;
             double heigth = this.pnlDisplayCourt.Height;
-
             pnlDisplayCourt.Controls.Clear();
             for (int i = 0; i < count; i++)
             {
-                pnlDisplayCourt.Controls.Add(new CourtService().DisplayCourt(i, newCourt[i],width,heigth));
+                pnlDisplayCourt.Controls.Add(new CourtService().DisplayCourtAdmin(i, newCourt[i],width,heigth));
+                pnlDisplayCourt.Controls[i].Controls[2].Click += ControlClickHandler;
             }
         }
 
@@ -91,11 +146,11 @@ namespace BadmintonManagement.Forms.Court
             showSubMenu(pnlAdmin);
         }
 
-        
 
         private void pnlDisplayCourt_SizeChanged(object sender, EventArgs e)
         {
-            ShowCourt();
+            //pnlDisplayCourt.Controls.Clear();
+            //ShowCourt();
         }
     }
 }
