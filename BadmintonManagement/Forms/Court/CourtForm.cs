@@ -149,8 +149,8 @@ namespace BadmintonManagement.Forms.Court
 
         private void pnlDisplayCourt_SizeChanged(object sender, EventArgs e)
         {
-            //pnlDisplayCourt.Controls.Clear();
-            //ShowCourt();
+            pnlDisplayCourt.Controls.Clear();
+            ShowCourt();
         }
     }
 }
