@@ -39,7 +39,7 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(43, 36);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(93, 21);
+            this.label1.Size = new System.Drawing.Size(116, 28);
             this.label1.TabIndex = 0;
             this.label1.Text = "Nhập email:";
             // 
@@ -47,7 +47,7 @@
             // 
             this.txtEmail.Location = new System.Drawing.Point(47, 69);
             this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(238, 29);
+            this.txtEmail.Size = new System.Drawing.Size(238, 34);
             this.txtEmail.TabIndex = 1;
             // 
             // btnSendOTP
@@ -66,12 +66,12 @@
             this.lblError.ForeColor = System.Drawing.Color.Crimson;
             this.lblError.Location = new System.Drawing.Point(43, 111);
             this.lblError.Name = "lblError";
-            this.lblError.Size = new System.Drawing.Size(0, 21);
+            this.lblError.Size = new System.Drawing.Size(0, 28);
             this.lblError.TabIndex = 0;
             // 
             // ForgotPasswordForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 28F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(419, 162);
             this.Controls.Add(this.btnSendOTP);
@@ -81,7 +81,7 @@
             this.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "ForgotPasswordForm";
-            this.Text = "ForgotPasswordForm";
+            this.Text = "Quên mật khẩu";
             this.Load += new System.EventHandler(this.ForgotPasswordForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

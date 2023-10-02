@@ -1,4 +1,6 @@
-﻿using System;
+﻿using BadmintonManagement.Function.CourtService;
+using BadmintonManagement.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,120 +14,75 @@ namespace BadmintonManagement.Forms.Court
 {
     public partial class CourtForm : Form
     {
+        public static CourtForm Instance;
+        public bool flag = false;
         public CourtForm()
         {
             InitializeComponent();
             fill();
             customizeDesign();
-
+            Instance = this;
             if (Properties.Settings.Default.Role != "Admin")
             {
                 btnAdmin.Visible = false;
-                //btnAdmin.Enabled = false;
             }
-            //CreatePanel();
-            customPanel();
-            Test();
+            pnlDisplayCourt.AutoScroll = true;
+
+            //Test();
         }
+
         private void Test()
         {
             double x = (this.pnlDisplayCourt.Width) / (3.4);
             double y = (this.pnlDisplayCourt.Height) / (3.4);
-            String tmp = "pnl" + "001";
-            Type controlType = typeof(Panel);
-            Control newControl = (Control)Activator.CreateInstance(controlType);
-
-            newControl.Name = tmp;
-            
-            newControl.Size  = new Size(Convert.ToInt32(x), Convert.ToInt32(y));
-            newControl.Location = new Point(0, 0);
-            newControl.BackColor = Color.Black;
-
-            pnlDisplayCourt.Controls.Add(newControl);
-        }
-
-        private void CreatePanel()
-        {
-            double x = (this.pnlDisplayCourt.Width) / (3.4);
-            double y = (this.pnlDisplayCourt.Height) / (3.4);
             Panel panel = new Panel();
+            PictureBox pictureBox = new PictureBox();
+            Label lbl = new Label();
+            lbl.Text = DateTime.Now.ToString("dd/MM/yyyy");
+            lbl.Location = new Point(Convert.ToInt32(x * 1 / 10), Convert.ToInt32(y * 9 / 10));
+
+            Label lbl2 = new Label();
+            lbl2.Text = DateTime.Now.ToString("dd/MM/yyyy");
+            lbl2.Location = new Point(Convert.ToInt32(x * 6 / 10), Convert.ToInt32(y * 9 / 10));
+            panel.Location = new Point(0, 0);
             panel.Size = new Size(Convert.ToInt32(x), Convert.ToInt32(y));
-            panel.Location = new Point(0,0);
-            panel.BackColor = Color.Black;
+            pictureBox.Size = new Size(Convert.ToInt32(x * 3 / 5), Convert.ToInt32(y * 3 / 5));
+            pictureBox.Location = new Point(Convert.ToInt32(x * 1 / 5), Convert.ToInt32(y * 1 / 5));
+            pictureBox.Image = Properties.Resources.Use;
+            pictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
+
+            panel.Controls.Add(lbl2);
+            panel.Controls.Add(lbl);
+            panel.Controls.Add(pictureBox);
             pnlDisplayCourt.Controls.Add(panel);
-
-            Panel panel1 = new Panel();
-            panel1.Size = new Size(Convert.ToInt32(x), Convert.ToInt32(y));
-            panel1.BackColor = Color.Orange;
-            panel1.Location = new Point(Convert.ToInt32(x + x*0.2), Convert.ToInt32(0));
-            pnlDisplayCourt.Controls.Add(panel1);
-
-            Panel panel2 = new Panel();
-            panel2.Size = new Size(Convert.ToInt32(x), Convert.ToInt32(y));
-            panel2.BackColor = Color.Blue;
-            panel2.Location = new Point(Convert.ToInt32(x*2 + x * 0.2*2), Convert.ToInt32(0));
-            pnlDisplayCourt.Controls.Add(panel2);
-
-            Panel panel3 = new Panel();
-            panel3.Size = new Size(Convert.ToInt32(x), Convert.ToInt32(y));
-            panel3.Location = new Point(0, Convert.ToInt32(y + y * 0.2));
-            panel3.BackColor = Color.Black;
-            pnlDisplayCourt.Controls.Add(panel3);
-
-            Panel panel4 = new Panel();
-            panel4.Size = new Size(Convert.ToInt32(x), Convert.ToInt32(y));
-            panel4.BackColor = Color.Orange;
-            panel4.Location = new Point(Convert.ToInt32(x + x * 0.2 ), Convert.ToInt32(y + y * 0.2));
-            pnlDisplayCourt.Controls.Add(panel4);
-
-            Panel panel5 = new Panel();
-            panel5.Size = new Size(Convert.ToInt32(x), Convert.ToInt32(y));
-            panel5.BackColor = Color.Blue;
-            panel5.Location = new Point(Convert.ToInt32(x * 2 + x * 0.2 * 2), Convert.ToInt32(y + y * 0.2));
-            pnlDisplayCourt.Controls.Add(panel5);
-
-            Panel panel6 = new Panel();
-            panel6.Size = new Size(Convert.ToInt32(x), Convert.ToInt32(y));
-            panel6.Location = new Point(0, Convert.ToInt32(y *2 + y * 0.2*2));
-            panel6.BackColor = Color.Black;
-            pnlDisplayCourt.Controls.Add(panel6);
-
-            Panel panel7 = new Panel();
-            panel7.Size = new Size(Convert.ToInt32(x), Convert.ToInt32(y));
-            panel7.BackColor = Color.Orange;
-            panel7.Location = new Point(Convert.ToInt32(x + x * 0.2), Convert.ToInt32(y*2 + y * 0.2*2));
-            pnlDisplayCourt.Controls.Add(panel7);
-
-            Panel panel8 = new Panel();
-            panel8.Size = new Size(Convert.ToInt32(x), Convert.ToInt32(y));
-            panel8.BackColor = Color.Blue;
-            panel8.Location = new Point(Convert.ToInt32(x * 2 + x * 0.2 * 2), Convert.ToInt32(y*2 + y * 0.2 * 2));
-            pnlDisplayCourt.Controls.Add(panel8);
-
-
-            Panel panel9 = new Panel();
-            panel9.Size = new Size(Convert.ToInt32(x), Convert.ToInt32(y));
-            panel9.Location = new Point(0, Convert.ToInt32(y * 3 + y * 0.2 * 3));
-            panel9.BackColor = Color.Black;
-            pnlDisplayCourt.Controls.Add(panel9);
-
-            Panel panel10 = new Panel();
-            panel10.Size = new Size(Convert.ToInt32(x), Convert.ToInt32(y));
-            panel10.BackColor = Color.Orange;
-            panel10.Location = new Point(Convert.ToInt32(x + x * 0.2), Convert.ToInt32(y * 3 + y * 0.2 * 3));
-            pnlDisplayCourt.Controls.Add(panel10);
-
-            Panel panel11 = new Panel();
-            panel11.Size = new Size(Convert.ToInt32(x), Convert.ToInt32(y));
-            panel11.BackColor = Color.Blue;
-            panel11.Location = new Point(Convert.ToInt32(x * 2 + x * 0.2 * 2), Convert.ToInt32(y * 3 + y * 0.2 * 3));
-            pnlDisplayCourt.Controls.Add(panel11);
         }
-        private void customPanel()
+
+        private void Control_MouseEnter(object sender, EventArgs e)
         {
-            pnlDisplayCourt.AutoScroll = true;
-     
+            
+            MessageBox.Show("Test");
         }
+
+        private void Control_MouseLeave(object sender, EventArgs e)
+        {
+            
+            
+        }
+        private void ControlClickHandler(object sender, EventArgs e)
+        {
+            hideSubMenu();
+            pnlAdmin.Visible = true;
+            PictureBox clickedPictureBox = sender as PictureBox;
+            if (clickedPictureBox != null)
+            {
+                string pictureBoxName = clickedPictureBox.Name;
+                COURT court = new CourtService().FindCourtByID(pictureBoxName);
+                AddCourtForm.Instance.FillCourt(court);
+            }
+            
+        }
+
+
         private void fill()
         {
             AddCourtForm addCourtForm = new AddCourtForm();
@@ -152,7 +109,22 @@ namespace BadmintonManagement.Forms.Court
                 pnlAdmin.Visible = false;
             }
         }
-        
+
+        public void ShowCourt()
+        {
+            List<COURT> newCourt = new CourtService().getListCourtWithOutDisable();
+            int count = new CourtService().getCountCourtDisable();
+
+            double width = this.pnlDisplayCourt.Width;
+            double heigth = this.pnlDisplayCourt.Height;
+            pnlDisplayCourt.Controls.Clear();
+            for (int i = 0; i < count; i++)
+            {
+                pnlDisplayCourt.Controls.Add(new CourtService().DisplayCourtAdmin(i, newCourt[i],width,heigth));
+                pnlDisplayCourt.Controls[i].Controls[2].Click += ControlClickHandler;
+            }
+        }
+
         private void showSubMenu(Panel panel) {
 
             if (panel.Visible == false)
@@ -178,8 +150,7 @@ namespace BadmintonManagement.Forms.Court
         private void pnlDisplayCourt_SizeChanged(object sender, EventArgs e)
         {
             pnlDisplayCourt.Controls.Clear();
-            //CreatePanel();
-            Test();
+            ShowCourt();
         }
     }
 }

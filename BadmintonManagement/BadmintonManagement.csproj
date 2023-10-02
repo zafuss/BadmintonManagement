@@ -123,6 +123,13 @@
       <DependentUpon>ReceiptReportForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\ReservationCourt\BookingForm\Booking.cs">
+    <Compile Include="Forms\Report\ServiceReceiptForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Report\ServiceReceiptForm.Designer.cs">
+      <DependentUpon>ServiceReceiptForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ReservationCourt\BookingForm\BookingForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\ReservationCourt\BookingForm\Booking.Designer.cs">
@@ -246,6 +253,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Validator.cs" />
     <Compile Include="Security.cs" />
+    <EmbeddedResource Include="Forms\AuthorizationForms\LoginForm.resx">
+      <DependentUpon>LoginForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Report\IncomeReportForm.resx">
       <DependentUpon>IncomeReportForm.cs</DependentUpon>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -259,10 +269,16 @@
     <EmbeddedResource Include="Forms\ReservationCourt\BookingForm\GetCustomerInformation.resx">
       <DependentUpon>GetCustomerInformation.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Report\ServiceReceiptForm.resx">
+      <DependentUpon>ServiceReceiptForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="IncomeReport.rdlc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="ReportReceipt.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ServiceReceiptReport.rdlc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="Services\OTP\EnterOTP.resx">
@@ -289,9 +305,6 @@
     <EmbeddedResource Include="Forms\HomePage.resx">
       <DependentUpon>HomePage.cs</DependentUpon>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\AuthorizationForms\LoginForm.resx">
-      <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\AuthorizationForms\ManageUser.resx">
       <DependentUpon>ManageUser.cs</DependentUpon>
@@ -323,6 +336,7 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\BadmintonManagement.Models.RECEIPT.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

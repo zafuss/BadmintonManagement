@@ -29,6 +29,10 @@ namespace BadmintonManagement
             //Application.Run(new ManageUser());
             //Application.Run(new IncomeForm());
             Application.Run(new ReservationForm());
+            //Application.Run(new HomePage());
+
+            
+            
 
         }
     }
