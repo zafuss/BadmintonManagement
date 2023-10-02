@@ -51,7 +51,6 @@
             this.txtName = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.txtRegRepeatPass = new System.Windows.Forms.TextBox();
-            this.label8 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label7 = new System.Windows.Forms.Label();
             this.txtSearch = new System.Windows.Forms.TextBox();
@@ -196,7 +195,6 @@
             this.dgvUsers.Size = new System.Drawing.Size(750, 388);
             this.dgvUsers.TabIndex = 9;
             this.dgvUsers.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvUsers_CellClick);
-         
             // 
             // clnUsername
             // 
@@ -313,18 +311,6 @@
             this.txtRegRepeatPass.Size = new System.Drawing.Size(222, 34);
             this.txtRegRepeatPass.TabIndex = 5;
             // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.label8.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(188, 42);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(416, 54);
-            this.label8.TabIndex = 15;
-            this.label8.Text = "Danh Sách Tài Khoản";
-            this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // panel1
             // 
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
@@ -354,7 +340,6 @@
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.label8);
             this.panel2.Controls.Add(this.label7);
             this.panel2.Controls.Add(this.txtSearch);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
@@ -362,6 +347,7 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(750, 163);
             this.panel2.TabIndex = 16;
+            this.panel2.SizeChanged += new System.EventHandler(this.panel2_SizeChanged);
             // 
             // ManageUser
             // 
@@ -427,7 +413,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn clnStaus;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox txtRegRepeatPass;
-        private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox txtSearch;

@@ -19,6 +19,8 @@ namespace BadmintonManagement.Forms.Court
         public static CourtForm Instance;
         public bool flagUser = false;
         public bool flagAdmin = false;
+        public List<COURT> newCourt = new CourtService().getListCourtWithOutDisable();
+        public List<RF_DETAIL> listRF = new RFDetailService().getRFDetail();
 
         public CourtForm()
         {
@@ -104,12 +106,11 @@ namespace BadmintonManagement.Forms.Court
             }
         }
 
-        public void UserShow()
+        public void UserShow(List<RF_DETAIL> listRF,int count)
         {
             flagUser = true;
             flagAdmin = false;
-            List<RF_DETAIL> listRF = new RFDetailService().getRFDetail();
-            int count = listRF.Count();
+            
 
             double width = this.pnlDisplayCourt.Width;
             double heigth = this.pnlDisplayCourt.Height;
@@ -122,13 +123,12 @@ namespace BadmintonManagement.Forms.Court
             
         }
 
-        public void ShowCourt()
+        int count = new CourtService().getCountCourtDisable();
+        public void ShowCourt(List<COURT> newCourt, int count)
         {
             flagAdmin = true;
             flagUser = false;
-            List<COURT> newCourt = new CourtService().getListCourtWithOutDisable();
-            int count = new CourtService().getCountCourtDisable();
-
+            
             double width = this.pnlDisplayCourt.Width;
             double heigth = this.pnlDisplayCourt.Height;
             pnlDisplayCourt.Controls.Clear();
@@ -156,7 +156,9 @@ namespace BadmintonManagement.Forms.Court
             pnlDisplayCourt.Controls.Clear();
             pnlDisplayCourt.Refresh();
             showSubMenu(pnlUser);
-            UserShow();
+            listRF = new RFDetailService().getRFDetail();
+            count = listRF.Count();
+            UserShow(listRF,count);
         }
 
         private void btnAdmin_Click(object sender, EventArgs e)
@@ -164,16 +166,29 @@ namespace BadmintonManagement.Forms.Court
             pnlDisplayCourt.Controls.Clear();
             pnlDisplayCourt.Refresh();
             showSubMenu(pnlAdmin);
-            ShowCourt();
+            newCourt = new CourtService().getListCourtWithOutDisable();
+            count = newCourt.Count();
+            ShowCourt(newCourt,count);
         }
 
+    
 
         private void pnlDisplayCourt_SizeChanged(object sender, EventArgs e)
         {
             pnlDisplayCourt.Controls.Clear();
             pnlDisplayCourt.Refresh();
-            if(flagAdmin == true) { ShowCourt(); }
-            else { UserShow(); }
+            if(flagAdmin == true)
+            {
+                newCourt = new CourtService().getListCourtWithOutDisable();
+                count = newCourt.Count();
+                ShowCourt(newCourt, count); 
+            }
+            else 
+            {
+                listRF = new RFDetailService().getRFDetail();
+                count = listRF.Count();
+                UserShow(listRF, count);
+            }
 
         }
     }

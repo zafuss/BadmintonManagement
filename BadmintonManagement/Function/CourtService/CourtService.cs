@@ -8,6 +8,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Linq;
 
 namespace BadmintonManagement.Function.CourtService
 {
@@ -124,18 +125,38 @@ namespace BadmintonManagement.Function.CourtService
         {
             _modelBadmintonManage = new ModelBadmintonManage();
             List<COURT> tmp = _modelBadmintonManage.COURT.Where(p => p.C_Status != "Disable").ToList();
-            //List<COURT> tmp = new List<COURT>();
-            //foreach (var item in _courts)
-            //{
-            //    if(item.C_Status != "Disable")
-            //        tmp.Add(item);
-            //}
             return tmp;
         }
+
+        public List<COURT> getListNameCourt(string name)
+        {
+            _modelBadmintonManage = new ModelBadmintonManage();
+            List<COURT> tmp = _courts.Where(p => p.C_Status != "Disable" && p.CourtName.IndexOf(name, StringComparison.OrdinalIgnoreCase) >=0 ).ToList();
+            return tmp;
+        }
+
+        public List<COURT> getBranchName(string name)
+        {
+            _modelBadmintonManage = new ModelBadmintonManage();
+            List<COURT> tmp = _courts.Where(p => p.C_Status != "Disable" && p.BRANCH.BranchName.Equals(name,StringComparison.OrdinalIgnoreCase)).ToList();
+            return tmp;
+        }
+
         public List<BRANCH> getBranch()
         {
             _branchs = new ModelBadmintonManage().BRANCH.ToList();
             return _branchs;
+        }
+
+        public List<String> getBrachName()
+        {
+            List<String> tmp = new List<String>();
+            foreach ( BRANCH item in _branchs )
+            {
+                tmp.Add(item.BranchName);
+
+            }
+            return tmp;
         }
 
         public int getCountCourt()
