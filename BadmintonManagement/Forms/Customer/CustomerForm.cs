@@ -45,11 +45,13 @@ namespace BadmintonManagement.Forms.Customer
         }
         private void dgrv_Customer_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            
             index = e.RowIndex;
             DataGridViewRow row = dataGridView.Rows[index];
             AddCustomerForm.instance.textbox1.Text = row.Cells[0].Value.ToString();
             AddCustomerForm.instance.textbox2.Text = row.Cells[1].Value.ToString();
             AddCustomerForm.instance.textbox3.Text = row.Cells[2].Value.ToString();
+            
         }
         private void Custom()
         {
