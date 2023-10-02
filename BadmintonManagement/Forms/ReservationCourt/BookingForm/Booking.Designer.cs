@@ -1,6 +1,6 @@
 ﻿namespace BadmintonManagement.Forms.ReservationCourt.BookingForm
 {
-    partial class BookingForm
+    partial class Booking
     {
         /// <summary>
         /// Required designer variable.
@@ -28,11 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "BookingForm";
-
             this.dtpEndTime = new System.Windows.Forms.DateTimePicker();
             this.dtpDate = new System.Windows.Forms.DateTimePicker();
             this.dtpStartTime = new System.Windows.Forms.DateTimePicker();
@@ -45,6 +40,14 @@
             this.label8 = new System.Windows.Forms.Label();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
+            this.btnAcept = new System.Windows.Forms.Button();
+            this.dgvRF_Detail = new System.Windows.Forms.DataGridView();
+            this.clnRevNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clnCourtName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clnStartTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clnEndTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clnPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvRF_Detail)).BeginInit();
             this.SuspendLayout();
             // 
             // dtpEndTime
@@ -83,7 +86,7 @@
             this.cboCourt.FormattingEnabled = true;
             this.cboCourt.Location = new System.Drawing.Point(242, 185);
             this.cboCourt.Name = "cboCourt";
-            this.cboCourt.Size = new System.Drawing.Size(332, 28);
+            this.cboCourt.Size = new System.Drawing.Size(314, 28);
             this.cboCourt.TabIndex = 3;
             // 
             // label1
@@ -148,9 +151,9 @@
             // btnSave
             // 
             this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSave.Location = new System.Drawing.Point(242, 326);
+            this.btnSave.Location = new System.Drawing.Point(170, 329);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(70, 70);
+            this.btnSave.Size = new System.Drawing.Size(113, 70);
             this.btnSave.TabIndex = 17;
             this.btnSave.Text = "Lưu ";
             this.btnSave.UseVisualStyleBackColor = true;
@@ -159,18 +162,80 @@
             // btnCancel
             // 
             this.btnCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancel.Location = new System.Drawing.Point(372, 326);
+            this.btnCancel.Location = new System.Drawing.Point(342, 329);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(70, 70);
+            this.btnCancel.Size = new System.Drawing.Size(113, 70);
             this.btnCancel.TabIndex = 19;
             this.btnCancel.Text = "Hủy";
             this.btnCancel.UseVisualStyleBackColor = true;
             // 
-            // BookingForm
+            // btnAcept
+            // 
+            this.btnAcept.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAcept.Location = new System.Drawing.Point(510, 329);
+            this.btnAcept.Name = "btnAcept";
+            this.btnAcept.Size = new System.Drawing.Size(113, 70);
+            this.btnAcept.TabIndex = 20;
+            this.btnAcept.Text = "Xác nhận";
+            this.btnAcept.UseVisualStyleBackColor = true;
+            this.btnAcept.Click += new System.EventHandler(this.btnAcept_Click);
+            // 
+            // dgvRF_Detail
+            // 
+            this.dgvRF_Detail.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvRF_Detail.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.clnRevNo,
+            this.clnCourtName,
+            this.clnStartTime,
+            this.clnEndTime,
+            this.clnPrice});
+            this.dgvRF_Detail.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.dgvRF_Detail.Location = new System.Drawing.Point(0, 435);
+            this.dgvRF_Detail.Name = "dgvRF_Detail";
+            this.dgvRF_Detail.Size = new System.Drawing.Size(1017, 244);
+            this.dgvRF_Detail.TabIndex = 21;
+            // 
+            // clnRevNo
+            // 
+            this.clnRevNo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.clnRevNo.HeaderText = "Số phiếu đặt sân";
+            this.clnRevNo.Name = "clnRevNo";
+            this.clnRevNo.ReadOnly = true;
+            // 
+            // clnCourtName
+            // 
+            this.clnCourtName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.clnCourtName.HeaderText = "Tên sân";
+            this.clnCourtName.Name = "clnCourtName";
+            this.clnCourtName.ReadOnly = true;
+            // 
+            // clnStartTime
+            // 
+            this.clnStartTime.HeaderText = "Bắt đầu";
+            this.clnStartTime.Name = "clnStartTime";
+            this.clnStartTime.ReadOnly = true;
+            this.clnStartTime.Width = 150;
+            // 
+            // clnEndTime
+            // 
+            this.clnEndTime.HeaderText = "Kết thúc";
+            this.clnEndTime.Name = "clnEndTime";
+            this.clnEndTime.ReadOnly = true;
+            this.clnEndTime.Width = 150;
+            // 
+            // clnPrice
+            // 
+            this.clnPrice.HeaderText = "Giá cơ sở";
+            this.clnPrice.Name = "clnPrice";
+            this.clnPrice.ReadOnly = true;
+            // 
+            // Booking
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(900, 526);
+            this.ClientSize = new System.Drawing.Size(1017, 679);
+            this.Controls.Add(this.dgvRF_Detail);
+            this.Controls.Add(this.btnAcept);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.label8);
@@ -183,11 +248,13 @@
             this.Controls.Add(this.dtpStartTime);
             this.Controls.Add(this.dtpDate);
             this.Controls.Add(this.dtpEndTime);
-            this.Name = "BookingForm";
+            this.Name = "Booking";
             this.Text = "Đặt sân";
             this.Load += new System.EventHandler(this.BookingForm_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvRF_Detail)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
+
         }
 
         #endregion
@@ -203,5 +270,12 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnCancel;
+        private System.Windows.Forms.Button btnAcept;
+        private System.Windows.Forms.DataGridView dgvRF_Detail;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clnRevNo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clnCourtName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clnStartTime;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clnEndTime;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clnPrice;
     }
 }

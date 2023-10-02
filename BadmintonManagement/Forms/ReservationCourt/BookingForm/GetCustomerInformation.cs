@@ -7,6 +7,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 using System.Windows.Forms;
 
 namespace BadmintonManagement.Forms.ReservationCourt.BookingForm
@@ -17,22 +18,64 @@ namespace BadmintonManagement.Forms.ReservationCourt.BookingForm
         {
             InitializeComponent();
         }
-
-
+        ModelBadmintonManage context = new ModelBadmintonManage();
         private void GetCustomerInformation_Load(object sender, EventArgs e)
         {
-           ModelBadmintonManage context = new ModelBadmintonManage();
+          
             List<CUSTOMER> listCus = context.CUSTOMER.ToList();
             fillAutoCompleteSourcebyPhone(listCus);
         }
-
         private void fillAutoCompleteSourcebyPhone(List<CUSTOMER> listCus)
         {
             foreach (CUSTOMER customer in listCus)
             {
                 txtPhoneNumber.AutoCompleteCustomSource.Add(customer.PhoneNumber);
             }
+           
         }
 
+        private void txtFullName_TextChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+        private bool CheckExistPhoneNumber()
+        {
+            if (context.CUSTOMER.Any(p => p.PhoneNumber == txtPhoneNumber.Text))
+                return true;
+            return false;            
+        }
+
+        private void txtPhoneNumber_TextChanged(object sender, EventArgs e)
+        {
+            if (CheckExistPhoneNumber())
+            {
+                txtFullName.Text = context.CUSTOMER.FirstOrDefault(p => p.PhoneNumber == txtPhoneNumber.Text).FullName;
+                txtFullName.ReadOnly = true;
+                txtEmail.Text = context.CUSTOMER.FirstOrDefault(p => p.PhoneNumber == txtPhoneNumber.Text).Email;
+                txtEmail.ReadOnly = true;
+            }
+            else
+            {
+               
+                txtFullName.ReadOnly = false;
+                txtEmail.ReadOnly = false;
+            }
+                
+        }
+
+        private void btnSelect_Click(object sender, EventArgs e)
+        {
+            if(CheckExistPhoneNumber())
+            {
+                Booking frm = new Booking(txtPhoneNumber.Text,txtFullName.Text,txtEmail.Text);
+                frm.Show();
+                this.Close();
+            }
+            else
+            {
+                //Chọn lưu mới
+            }
+        }
     }
 }

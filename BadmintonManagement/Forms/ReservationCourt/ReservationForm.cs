@@ -1,4 +1,5 @@
-﻿using BadmintonManagement.Models;
+﻿using BadmintonManagement.Forms.ReservationCourt.BookingForm;
+using BadmintonManagement.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -27,6 +28,21 @@ namespace BadmintonManagement.Forms.ReservationCourt
             pnlFunction.Visible = true;
         }
 
+        private string PickStatus(RESERVATION rev)
+        {
+            int d = rev._Status.Value;
+            if (rev.Deposite==0)
+                return "Chưa đặt cọc";
+            if (d == 0)
+                return "Đã nhận sân";
+            if (d == 1)
+                return "Đã thanh toán";
+            if (d == 2)
+                return "Quá giờ nhận sân";
+            if (d == 3)
+                return "Đã hủy";
+            return "Đã đặt cọc";
+        }
         private void bindGrid(List<RESERVATION> listRev)
         {
             foreach (RESERVATION item in listRev)
@@ -39,21 +55,23 @@ namespace BadmintonManagement.Forms.ReservationCourt
                     dgvReservation.Rows[i].Cells[2].Value = item.PhoneNumber;
                     dgvReservation.Rows[i].Cells[3].Value = item.CUSTOMER.FullName;
                 }
-        
                 dgvReservation.Rows[i].Cells[4].Value = item.Deposite;
+                DateTime d = item.CreateDate.Value;
+                
                 dgvReservation.Rows[i].Cells[5].Value = item.CreateDate;
                 dgvReservation.Rows[i].Cells[6].Value = item.BookingDate;
+                dgvReservation.Rows[i].Cells[7].Value = PickStatus(item);
+
             }
         }
 
         private void loadRevData(string revNo, string userName, string phoneNumber, string courtID, decimal deposite, DateTime createDate, DateTime bookingDate)
         {
-           ModelBadmintonManage context = new ModelBadmintonManage();
+            ModelBadmintonManage context = new ModelBadmintonManage();
             RESERVATION rev = new RESERVATION();
             rev.ReservationNo = revNo;
             rev.Username = userName;
             rev.PhoneNumber = phoneNumber;
-     
             rev.Deposite = deposite;
             rev.BookingDate = bookingDate;
             rev.CreateDate = createDate;
@@ -123,20 +141,38 @@ namespace BadmintonManagement.Forms.ReservationCourt
 
             }
         }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void txtSearchByPhoneNumber_Click(object sender, EventArgs e)
         {
             txtSearchByPhoneNumber.SelectAll();
         }
 
-        private void qLSanCauLongDataSetBindingSource1_CurrentChanged(object sender, EventArgs e)
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            GetCustomerInformation frm = new GetCustomerInformation();
+            frm.Show();
+        }
+
+        private void btnDetailRF_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void btnUpdate_Click(object sender, EventArgs e)
         {
 
+            try
+            {
+                if (dgvReservation.Rows.Count < 2)
+                    throw new Exception("No data");
+                if (dgvReservation.SelectedRows.Count == 0)
+                    throw new Exception("Please pick a RevNo to view");
+                Booking frm = new Booking(dgvReservation.SelectedRows[0].Cells[0].Value.ToString());
+                frm.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }
