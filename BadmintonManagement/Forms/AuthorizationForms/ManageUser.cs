@@ -160,5 +160,26 @@ namespace BadmintonManagement.Forms.AuthorizationForms
                 MessageBox.Show(ex.Message, "Thông báo");
             }
         }
+
+        private void txtSearch_TextChanged(object sender, EventArgs e)
+        {
+            dgvUsers.CurrentCell = null;
+
+            foreach (DataGridViewRow row in dgvUsers.Rows)
+            {
+                if (row.Cells["clnName"].Value != null)
+                {
+                    if (row.Cells["clnName"].Value.ToString().ToLower().Contains(txtSearch.Text.ToLower()))
+                    {
+                        row.Visible = true;
+                        row.Selected = false;
+                    }
+                    else
+                    {
+                        row.Visible = false;
+                    }
+                }
+            }
+        }
     }
 }

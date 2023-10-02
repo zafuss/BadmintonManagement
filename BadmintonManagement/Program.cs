@@ -9,6 +9,11 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using BadmintonManagement.Models;
 using BadmintonManagement.Forms.ReservationCourt;
+using System.IO;
+using System.Data.SqlClient;
+using System.Text.RegularExpressions;
+using System.Configuration;
+using BadmintonManagement.Properties;
 
 namespace BadmintonManagement
 {
@@ -20,9 +25,22 @@ namespace BadmintonManagement
         [STAThread]
         static void Main()
         {
+            Settings.Default.isDBInited = DatabaseInitial.CheckDBExists();
+            Settings.Default.Save();
+            if (Settings.Default.isDBInited != true)
+            {
+                DatabaseInitial.CreateDatabase();
+                DatabaseInitial.RunSqlScriptFile("DBInsertQuery.sql");
+                Settings.Default.isDBInited = true;
+                Settings.Default.Save();
+            }
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new LoginForm());
         }
+
+
+
+ 
     }
 }
