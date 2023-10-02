@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LoginForm));
             this.txtUser = new System.Windows.Forms.TextBox();
             this.txtPassword = new System.Windows.Forms.TextBox();
             this.btnLogin = new System.Windows.Forms.Button();
@@ -80,9 +79,11 @@
             // 
             this.btnLogin.BackColor = System.Drawing.SystemColors.Highlight;
             this.btnLogin.FlatAppearance.BorderSize = 0;
+            this.btnLogin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnLogin.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnLogin.Location = new System.Drawing.Point(132, 512);
             this.btnLogin.Name = "btnLogin";
-            this.btnLogin.Size = new System.Drawing.Size(312, 45);
+            this.btnLogin.Size = new System.Drawing.Size(312, 58);
             this.btnLogin.TabIndex = 1;
             this.btnLogin.Text = "Đăng Nhập";
             this.btnLogin.UseVisualStyleBackColor = false;
@@ -111,7 +112,7 @@
             // 
             // picUsername
             // 
-            this.picUsername.Image = ((System.Drawing.Image)(resources.GetObject("picUsername.Image")));
+            this.picUsername.Image = global::BadmintonManagement.Properties.Resources.user;
             this.picUsername.InitialImage = null;
             this.picUsername.Location = new System.Drawing.Point(16, 17);
             this.picUsername.Name = "picUsername";
@@ -146,7 +147,7 @@
             // 
             // picPassword
             // 
-            this.picPassword.Image = ((System.Drawing.Image)(resources.GetObject("picPassword.Image")));
+            this.picPassword.Image = global::BadmintonManagement.Properties.Resources.padlock;
             this.picPassword.InitialImage = null;
             this.picPassword.Location = new System.Drawing.Point(16, 16);
             this.picPassword.Name = "picPassword";
@@ -157,12 +158,15 @@
             // 
             // btnExit
             // 
-            this.btnExit.Location = new System.Drawing.Point(132, 563);
+            this.btnExit.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnExit.FlatAppearance.BorderSize = 0;
+            this.btnExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnExit.Location = new System.Drawing.Point(132, 576);
             this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(312, 45);
+            this.btnExit.Size = new System.Drawing.Size(312, 58);
             this.btnExit.TabIndex = 2;
             this.btnExit.Text = "Thoát";
-            this.btnExit.UseVisualStyleBackColor = true;
+            this.btnExit.UseVisualStyleBackColor = false;
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
             // pictureBox1
@@ -188,7 +192,7 @@
             this.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "LoginForm";
-            this.Text = "Login";
+            this.Text = "Đăng nhập";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.LoginForm_FormClosing);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

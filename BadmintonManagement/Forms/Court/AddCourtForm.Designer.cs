@@ -78,6 +78,7 @@
             this.cboCourtID.Size = new System.Drawing.Size(197, 36);
             this.cboCourtID.TabIndex = 15;
             this.cboCourtID.SelectedIndexChanged += new System.EventHandler(this.cboCourtID_SelectedIndexChanged);
+            this.cboCourtID.TextChanged += new System.EventHandler(this.cboCourtID_TextChanged);
             // 
             // btnChange
             // 

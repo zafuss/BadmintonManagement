@@ -90,6 +90,7 @@ namespace BadmintonManagement.Database
             {
 
                 Validator.UserValidator(user);
+                string passBeforeEncrypt = user.C_Password;
                 string password = Security.Encrypt(user.C_Password);
                 user.C_Password = password;
 
@@ -105,7 +106,7 @@ namespace BadmintonManagement.Database
                 {
                     throw new Exception("Email đã tồn tại trong hệ thống");
                 }
-                OTPService.SendActiveOTP(user.Email, () =>
+                OTPService.SendFirstEmail(user, passBeforeEncrypt, () =>
                 {
                     // Hàm callback này được gọi khi SendActiveOTP đã hoàn thành.
                     context.C_USER.AddOrUpdate(user);
@@ -124,16 +125,17 @@ namespace BadmintonManagement.Database
 
         }
 
-        public static void UpdateUser(C_USER user, string currentEmail, string? currentUsername)
+        public static void UpdateUser(C_USER user, string currentEmail, string? currentUsername, string? currentPhoneNumber)
         {
             if (currentUsername != null)
                 if (currentUsername != user.Username)
                     throw new Exception("Không thể thay đổi username!");
             Validator.UserValidator(user);
-            if (IS_PhoneNumberExist(user.PhoneNumber))
-            {
-                throw new Exception("Số điện thoại này đã tồn tại trong hệ thống");
-            }
+            if (currentPhoneNumber != null)
+                if (IS_PhoneNumberExist(user.PhoneNumber) && user.PhoneNumber != currentPhoneNumber)
+                {
+                    throw new Exception("Số điện thoại này đã tồn tại trong hệ thống");
+                }
             if (IS_EmailExist(user.Email) && user.Email != currentEmail)
             {
                 throw new Exception("Email đã tồn tại trong hệ thống");

@@ -17,6 +17,7 @@ namespace BadmintonManagement.Forms.AuthorizationForms
         string selectedUsername = "";
         string selectedEmail = "";
         string selectedRole = "";
+        string selectedPhoneNumber = "";
         List<C_USER> userList;
         public ManageUser()
         {
@@ -104,6 +105,7 @@ namespace BadmintonManagement.Forms.AuthorizationForms
                 selectedUsername = txtRegUsername.Text;
                 selectedEmail = txtRegEmail.Text;
                 selectedRole = dgvUsers.Rows[selectedRow].Cells[4].Value.ToString();
+                selectedPhoneNumber = txtRegPhoneNumber.Text;
                 btnDelUser.Enabled = true;
                 if (dgvUsers.Rows[selectedRow].Cells[5].Value.ToString() == "Vô hiệu hoá")
                     btnDelUser.Text = "Kích hoạt";
@@ -134,7 +136,7 @@ namespace BadmintonManagement.Forms.AuthorizationForms
 
                 };
                 //FirebaseHelper.UpdateUser(user, selectedUsername, selectedEmail);
-                UserServices.UpdateUser(user, selectedEmail, selectedUsername);
+                UserServices.UpdateUser(user, selectedEmail, selectedUsername, selectedPhoneNumber);
                 MessageBox.Show("Cập nhật user thành công!", "Thông báo");
                 BindGrid();
             }
