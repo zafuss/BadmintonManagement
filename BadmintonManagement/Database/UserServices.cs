@@ -134,7 +134,7 @@ namespace BadmintonManagement.Database
                     Properties.Settings.Default.PhoneNumber = item.PhoneNumber;
                     Properties.Settings.Default.Role = item.C_Role;
                     Properties.Settings.Default._Name = item.C_Name;
-
+                    Properties.Settings.Default.Save();
                 }
             }
         }
@@ -146,6 +146,7 @@ namespace BadmintonManagement.Database
             Properties.Settings.Default.PhoneNumber = "";
             Properties.Settings.Default.Role = "";
             Properties.Settings.Default._Name = "";
+            Properties.Settings.Default.Save();
         }
 
         public static void LoginUser(string username, string password)

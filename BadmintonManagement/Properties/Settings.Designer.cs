@@ -82,5 +82,16 @@ namespace BadmintonManagement.Properties {
                 this["_Name"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        public bool isDBInited {
+            get {
+                return ((bool)(this["isDBInited"]));
+            }
+            set {
+                this["isDBInited"] = value;
+            }
+        }
     }
 }
