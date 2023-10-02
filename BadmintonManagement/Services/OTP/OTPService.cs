@@ -104,6 +104,7 @@ namespace BadmintonManagement
         {
             try
             {
+                var forgotUser = UserServices.GetUserByEmail(receiveEmail);
                 MailMessage mail = new MailMessage();
                 SmtpClient SmtpServer = new SmtpClient("smtp.gmail.com");
 
@@ -111,10 +112,21 @@ namespace BadmintonManagement
                 mail.To.Add(receiveEmail);
                 mail.Subject = "[TOD] Công ty Theatre Of Dreams";
                 int code = RandomOTPCode();
-                mail.Body = "Xin chào,\n\n"
-                            + "Để cập nhật mật khẩu mới cho tài khoản, hãy nhập mã dưới đây:\n\n"
-                            + RandomOTPCode().ToString()
-                            + mailTrailing;
+                mail.IsBodyHtml = true;
+                mail.Body = @$"Chào {forgotUser.C_Name}, <br></br>
+
+                Chúng tôi đã nhận được yêu cầu của bạn để cập nhật mật khẩu cho tài khoản của mình. Để tiếp tục quá trình này, vui lòng sử dụng mã <strong>OTP (One-Time Password)</strong> sau đây để xác thực tài khoản của bạn:<br></br>
+
+                Mã OTP: <strong>{RandomOTPCode()} </strong><br></br>
+
+                Mã OTP này chỉ có giá trị trong một thời gian ngắn và sẽ hết hạn sau <strong>1 phút</strong>. Vui lòng không chia sẻ mã OTP này với bất kỳ ai khác và không điền nó trên bất kỳ trang web hoặc ứng dùng nào khác ngoài ứng dụng Badminton Management.<br></br>
+
+                Sau khi nhập mã OTP, bạn sẽ được định hướng đến cửa sổ khác để đặt lại mật khẩu mới cho tài khoản của bạn. Xin lưu ý rằng bạn sẽ cần tuân theo các hướng dẫn trên ứng dụng để hoàn tất quá trình cập nhật mật khẩu.<br></br>
+
+                Nếu bạn không yêu cầu cập nhật mật khẩu hoặc có bất kỳ câu hỏi hoặc thắc mắc nào, xin vui lòng liên hệ với bộ phận hỗ trợ của chúng tôi tại {sendEmail}.<br></br>
+
+                Xin cảm ơn bạn đã duy trì an toàn cho tài khoản của mình.<br></br> {htmlMailTrailing}
+                ";
                 SmtpServer.EnableSsl = true;
                 SmtpServer.Port = 587;
                 SmtpServer.DeliveryMethod = SmtpDeliveryMethod.Network;
