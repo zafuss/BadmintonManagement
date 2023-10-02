@@ -140,6 +140,7 @@
     <Compile Include="Forms\ReservationCourt\BookingForm\GetCustomerInformation.Designer.cs">
       <DependentUpon>GetCustomerInformation.cs</DependentUpon>
     </Compile>
+    <Compile Include="Function\RFDetailService\RFDetailService.cs" />
     <Compile Include="Models\BRANCH.cs" />
     <Compile Include="Models\COURT.cs" />
     <Compile Include="Models\CUSTOMER.cs" />

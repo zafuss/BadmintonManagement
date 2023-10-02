@@ -152,20 +152,45 @@ insert into _USER values (N'cauvang', N'XRzJdOMLLZLn1vXjWu7kiQ==', N'Nguyễn B�
 insert into _USER values (N'staff', N'50clNoCb9AMObQO+OKsiBA==', N'staff', N'Staff', 'todstaff@gmail.com', '963788077' , N'Enabled')		
 insert into _USER values (N'vannghia', N'CbsPi4IZBrPiEj0EvRLllQ==', N'Đậu Văn Nghĩa', N'Staff', 'nghiadauvan@gmail.com', '337514097' , N'Enabled')	
 
-insert into BRANCH values (N'BT001',N'Bình Thạnh',N'Gần Hutech')
-insert into BRANCH values (N'TD001',N'Thủ Đức',N'Long Trường Quận 9')
-
-insert into COURT values (N'SBT001',N'Sân Bình Thạnh 1',N'Used','17/10/2023' , N'BT001')
-insert into COURT values (N'SBT002',N'Sân Bình Thạnh 2',N'Use','20/10/2023' , N'BT001')
-insert into COURT values (N'SBT003',N'Sân Bình Thạnh 3',N'Disable','25/10/2023' , N'BT001')
-insert into COURT values (N'SBT004',N'Sân Bình Thạnh 4',N'Used','10/12/2023' , N'BT001')
-insert into COURT values (N'SBT005',N'Sân Bình Thạnh 5',N'Maintaince','11/12/2023' , N'BT001')
-insert into COURT values (N'SBT006',N'Sân Bình Thạnh 6',N'Used','12/12/2023' , N'BT001')
-insert into COURT values (N'STD001',N'Sân Thủ Đức 1',N'Used','15/10/2023' , N'TD001')
-insert into COURT values (N'STD002',N'Sân Thủ Đức 2',N'Used','15/11/2023' , N'TD001')
-insert into COURT values (N'STD003',N'Sân Thủ Đức 3',N'Maintaince','15/12/2023' , N'TD001')
-
 insert into _SERVICE values (N'SV01',	N'Nước lọc Là vì e',N'Lon'	,10.000	,1)
 insert into _SERVICE values (N'SV02',	N'Thuê vợt',N'Cái '	,100.000	,1)
 insert into _SERVICE values (N'SV03',	N'CoCaCola',N'chai'	,10000	,1)
 insert into _SERVICE values (N'SV04',	N'Mua cầu',N'Quả'	,20000	,1)
+
+insert into BRANCH values (N'BT001',N'Bình Thạnh',N'Gần Hutech')
+insert into BRANCH values (N'TD001',N'Thủ Đức',N'Long Trường Quận 9')
+
+insert into COURT values (N'SBT001',N'Sân Bình Thạnh 1',N'Used',CONVERT(datetime ,'17-10-23 10:34:09 AM',5 ) , N'BT001')
+insert into COURT values (N'SBT002',N'Sân Bình Thạnh 2',N'Use',CONVERT(datetime ,'20-10-23 09:34:09 AM',5 ) , N'BT001')
+insert into COURT values (N'SBT003',N'Sân Bình Thạnh 3',N'Disable',CONVERT(datetime ,'25-10-23 08:34:09 AM',5 )  , N'BT001')
+insert into COURT values (N'SBT004',N'Sân Bình Thạnh 4',N'Used',CONVERT(datetime ,'12-11-23 12:34:09 AM',5 ) , N'BT001')
+insert into COURT values (N'SBT005',N'Sân Bình Thạnh 5',N'Maintaince',CONVERT(datetime ,'12-11-23 10:34:09 AM',5 ) , N'BT001')
+insert into COURT values (N'SBT006',N'Sân Bình Thạnh 6',N'Used',CONVERT(datetime ,'12-11-23 07:34:09 AM',5 ) , N'BT001')
+insert into COURT values (N'STD001',N'Sân Thủ Đức 1',N'Used',CONVERT(datetime ,'7-12-24 06:34:09 AM',5 ) , N'TD001')
+insert into COURT values (N'STD002',N'Sân Thủ Đức 2',N'Used',CONVERT(datetime ,'11-12-24 15:34:09 PM',5 ) , N'TD001')
+insert into COURT values (N'STD003',N'Sân Thủ Đức 3',N'Maintaince',CONVERT(datetime ,'15-12-24 16:34:09 PM',5 ) , N'TD001')
+
+
+insert into RESERVATION values (N'6761'	,N'admin'	,'337514097'	,0	,CONVERT(datetime ,'2023-10-02 09:32:25 AM',5)	,CONVERT(datetime ,'2023-10-02 09:31:16 AM',5)	,0)
+insert into RESERVATION values (N'7105'	,N'admin'	,'984263841'	,0	,CONVERT(datetime ,'2023-10-01 23:28:54 PM',5)	,CONVERT(datetime ,'2023-10-01 23:28:46 PM',5)	,0)
+insert into RESERVATION values (N'8773'	,N'admin'	,'912371232'	,0	,CONVERT(datetime ,'2023-10-02 09:34:04 PM ',5)	,CONVERT(datetime ,'2023-10-02 09:33:53 AM',5)	,0)
+
+insert into RF_DETAIL values (N'6761',	N'SBT001',	CONVERT(datetime ,'2023-10-02 07:00:00 AM',5),	CONVERT(datetime ,'2023-10-02 08:00:00 AM',5),	'P001')
+insert into RF_DETAIL values (N'6761',	N'SBT002',	CONVERT(datetime ,'2023-10-02 09:00:00 AM',5),	CONVERT(datetime ,'2023-10-02 10:00:00 AM',5),	'P001')
+insert into RF_DETAIL values (N'7105',	N'SBT001',	CONVERT(datetime ,'2023-10-02 13:00:00 PM',5),	CONVERT(datetime ,'2023-10-01 14:00:00 AM',5),	'P001')
+insert into RF_DETAIL values (N'8773',	N'SBT003',	CONVERT(datetime ,'2023-10-02 15:00:00 PM',5),	CONVERT(datetime ,'2023-10-02 16:00:00 AM',5),	'P001')
+
+
+create table RF_DETAIL(
+	ReservationNo	nvarchar(20),
+	CourtID			nvarchar(20),
+	StartTime		DateTime,
+	EndTime			DateTime,
+	PriceID			varchar(20),
+
+	constraint PK_RF_DETAIL primary key(ReservationNo, CourtID) ,
+	constraint FK_ReservationNo foreign key (ReservationNo) references RESERVATION(ReservationNo),
+	constraint FK_CourtID foreign key (CourtID) references COURT(CourtID),
+	constraint FK_CourtID_PRICE foreign key (PriceID) references PRICE(PriceID)
+)
+go
