@@ -59,6 +59,12 @@ namespace BadmintonManagement.Forms.ReservationCourt.BookingForm
             {
                 List<RF_DETAIL> listRFD = context.RF_DETAIL.Where(p=>p.ReservationNo == revNo).ToList();
                 BindGrid(listRFD);
+                if(context.RESERVATION.FirstOrDefault(p=>p.ReservationNo == revNo).C_Status==5)
+                {
+                    btnAcept.Enabled = false;
+                    btnCancel.Enabled = false;
+                    btnSave.Enabled = false;
+                }    
                 isNew = false;
             }
             dtpDate.Value = DateTime.Now;
