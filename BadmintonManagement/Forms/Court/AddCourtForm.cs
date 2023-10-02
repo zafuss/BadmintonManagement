@@ -13,11 +13,14 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using System.Web;
+using System.Activities.Expressions;
 
 namespace BadmintonManagement.Forms.Court
 {
     public partial class AddCourtForm : Form
     {
+        public static AddCourtForm Instance; 
         private List<string> status = new List<string>()
         {
            "Chưa Được Sử Dụng","Đang Sử Dụng","Bảo Trì"
@@ -25,6 +28,7 @@ namespace BadmintonManagement.Forms.Court
 
         public AddCourtForm()
         {
+            Instance = this;
             InitializeComponent();
             Loading();
             Reset();
@@ -65,23 +69,14 @@ namespace BadmintonManagement.Forms.Court
             this.cboBranchID.ValueMember = "BranchID";
         }
 
-
-        private void txtCourtName_TextChanged(object sender, EventArgs e)
+        public void FillCourt(COURT newCourt)
         {
-            string pattern = @"[@#$%^~&`|'""{}\[\]\-\\_\\()!*+=?.,><:;//]";
-            if (Regex.IsMatch(txtCourtName.Text, pattern))
-            {
-                if (txtCourtName.TextLength == 0)
-                {
-                    txtCourtName.Text = "";
-                }
-                else
-                {
-                    txtCourtName.Text = txtCourtName.Text.Remove(txtCourtName.TextLength - 1);
-                    txtCourtName.SelectionStart = txtCourtName.Text.Length;
-                }
-            }
-        }
+            cboCourtID.Text = newCourt.CourtID;
+            cboStatus.Text = newCourt.C_Status;
+            txtCourtName.Text = newCourt.CourtName;
+            dtmStartDate.Value = (DateTime)newCourt.StartDate;
+            cboBranchID.Text = newCourt.BRANCH.BranchName;
+        } 
 
         private COURT SetCourt()
         {
@@ -92,7 +87,7 @@ namespace BadmintonManagement.Forms.Court
             }
             else
             {
-               newCourt.CourtID = cboCourtID.Text;
+                newCourt.CourtID = cboCourtID.Text;
             }
 
             if (cboStatus.SelectedIndex == 0)
@@ -114,7 +109,24 @@ namespace BadmintonManagement.Forms.Court
             return newCourt;
         }
 
- 
+        private void txtCourtName_TextChanged(object sender, EventArgs e)
+        {
+            string pattern = @"[@#$%^~&`|'""{}\[\]\-\\_\\()!*+=?.,><:;//]";
+            if (Regex.IsMatch(txtCourtName.Text, pattern))
+            {
+                if (txtCourtName.TextLength == 0)
+                {
+                    txtCourtName.Text = "";
+                }
+                else
+                {
+                    txtCourtName.Text = txtCourtName.Text.Remove(txtCourtName.TextLength - 1);
+                    txtCourtName.SelectionStart = txtCourtName.Text.Length;
+                }
+            }
+        }
+
+        
        
         private void btnAdd_Click(object sender, EventArgs e)
         {
@@ -124,11 +136,23 @@ namespace BadmintonManagement.Forms.Court
                     return;
                 if (cboCourtID.Text == string.Empty || !new CourtService().checkCourtID(cboCourtID.Text))
                 {
-                    COURT tmpCourt = SetCourt();
-                    new CourtService().InsertCourt(tmpCourt);
-                    MessageBox.Show("Them Thanh Cong");
-                    Loading();
-                    Reset();
+                    if(dtmStartDate.Value < DateTime.Now)
+                    {
+                        throw new Exception("Them Khong Thanh Cong");
+                    }
+                    else
+                    {
+                        COURT tmpCourt = SetCourt();
+                        new CourtService().InsertCourt(tmpCourt);
+                        MessageBox.Show("Them Thanh Cong");
+                        Loading();
+                        Reset();
+                        if (Application.OpenForms["CourtForm"] != null && !Application.OpenForms["CourtForm"].IsDisposed)
+                        {
+                            CourtForm.Instance.ShowCourt();
+                        }
+                    }
+                    
                 }
                 else
                 {
@@ -159,6 +183,11 @@ namespace BadmintonManagement.Forms.Court
                     MessageBox.Show("Xoa Thanh Cong");
                     Loading();
                     Reset();
+                    if(Application.OpenForms["CourtForm"] != null && !Application.OpenForms["CourtForm"].IsDisposed)
+                    {
+                        CourtForm.Instance.ShowCourt();
+
+                    }
                 }
 
             }
@@ -182,11 +211,25 @@ namespace BadmintonManagement.Forms.Court
                 }
                 else
                 {
-                    tmp = SetCourt();
-                    new CourtService().InsertCourt(tmp);
-                    MessageBox.Show("Sua Thanh Cong");
-                    Loading();
-                    Reset();
+                    DateTime dateTime = DateTime.Now;
+                    if (tmp.StartDate > dtmStartDate.Value && tmp.StartDate > dateTime)
+                    {
+                        throw new Exception("San Da Di Vao Hoat Dong");
+                    }
+                    else
+                    {
+                        tmp = SetCourt();
+                        new CourtService().InsertCourt(tmp);
+                        MessageBox.Show("Sua Thanh Cong");
+                        Loading();
+                        Reset();
+                        if (Application.OpenForms["CourtForm"] != null && !Application.OpenForms["CourtForm"].IsDisposed)
+                        {
+                            CourtForm.Instance.ShowCourt();
+                        }
+                    }
+                        
+                    
                 }
             }
             catch (Exception ex)
@@ -222,9 +265,26 @@ namespace BadmintonManagement.Forms.Court
             }
             else if( cboCourtID.Text == "")
             {
+                cboBranchID.Enabled = true;
                 Reset();
             }
             
+        }
+
+        private void cboCourtID_TextChanged(object sender, EventArgs e)
+        {
+            if (cboCourtID.Text != "")
+            {
+                COURT court = new CourtService().FindCourtByID(cboCourtID.Text);
+                if (court != null)
+                {
+                    cboBranchID.Enabled = false;
+                }
+                else
+                {
+                    cboBranchID.Enabled = true;
+                }
+            }
         }
     }
 }
