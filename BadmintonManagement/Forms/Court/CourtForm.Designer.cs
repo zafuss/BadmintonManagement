@@ -44,6 +44,10 @@
             this.pnlFunction = new System.Windows.Forms.Panel();
             this.lblfunction = new System.Windows.Forms.Label();
             this.pnlDisplayCourt = new System.Windows.Forms.Panel();
+            this.lblNameCustom = new System.Windows.Forms.Label();
+            this.txtNameCustom = new System.Windows.Forms.TextBox();
+            this.lblPhoneNumber = new System.Windows.Forms.Label();
+            this.txtPhoneNumber = new System.Windows.Forms.TextBox();
             this.pnlInformation.SuspendLayout();
             this.pnlUser.SuspendLayout();
             this.pnlFunction.SuspendLayout();
@@ -65,16 +69,16 @@
             // pnlAdmin
             // 
             this.pnlAdmin.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlAdmin.Location = new System.Drawing.Point(0, 322);
+            this.pnlAdmin.Location = new System.Drawing.Point(0, 411);
             this.pnlAdmin.Name = "pnlAdmin";
-            this.pnlAdmin.Size = new System.Drawing.Size(414, 313);
+            this.pnlAdmin.Size = new System.Drawing.Size(414, 224);
             this.pnlAdmin.TabIndex = 4;
             // 
             // btnAdmin
             // 
             this.btnAdmin.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnAdmin.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAdmin.Location = new System.Drawing.Point(0, 289);
+            this.btnAdmin.Location = new System.Drawing.Point(0, 378);
             this.btnAdmin.Name = "btnAdmin";
             this.btnAdmin.Size = new System.Drawing.Size(414, 33);
             this.btnAdmin.TabIndex = 3;
@@ -84,6 +88,11 @@
             // 
             // pnlUser
             // 
+            this.pnlUser.AutoScroll = true;
+            this.pnlUser.Controls.Add(this.txtPhoneNumber);
+            this.pnlUser.Controls.Add(this.lblPhoneNumber);
+            this.pnlUser.Controls.Add(this.txtNameCustom);
+            this.pnlUser.Controls.Add(this.lblNameCustom);
             this.pnlUser.Controls.Add(this.dtmEndTime);
             this.pnlUser.Controls.Add(this.dtmStartTime);
             this.pnlUser.Controls.Add(this.lblEndTime);
@@ -95,7 +104,7 @@
             this.pnlUser.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlUser.Location = new System.Drawing.Point(0, 78);
             this.pnlUser.Name = "pnlUser";
-            this.pnlUser.Size = new System.Drawing.Size(414, 211);
+            this.pnlUser.Size = new System.Drawing.Size(414, 300);
             this.pnlUser.TabIndex = 2;
             // 
             // dtmEndTime
@@ -103,7 +112,7 @@
             this.dtmEndTime.Enabled = false;
             this.dtmEndTime.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtmEndTime.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.dtmEndTime.Location = new System.Drawing.Point(208, 162);
+            this.dtmEndTime.Location = new System.Drawing.Point(208, 258);
             this.dtmEndTime.Name = "dtmEndTime";
             this.dtmEndTime.Size = new System.Drawing.Size(109, 34);
             this.dtmEndTime.TabIndex = 8;
@@ -113,7 +122,7 @@
             this.dtmStartTime.Enabled = false;
             this.dtmStartTime.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtmStartTime.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.dtmStartTime.Location = new System.Drawing.Point(208, 117);
+            this.dtmStartTime.Location = new System.Drawing.Point(208, 213);
             this.dtmStartTime.Name = "dtmStartTime";
             this.dtmStartTime.Size = new System.Drawing.Size(109, 34);
             this.dtmStartTime.TabIndex = 7;
@@ -122,7 +131,7 @@
             // 
             this.lblEndTime.AutoSize = true;
             this.lblEndTime.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblEndTime.Location = new System.Drawing.Point(12, 168);
+            this.lblEndTime.Location = new System.Drawing.Point(12, 264);
             this.lblEndTime.Name = "lblEndTime";
             this.lblEndTime.Size = new System.Drawing.Size(175, 28);
             this.lblEndTime.TabIndex = 6;
@@ -132,7 +141,7 @@
             // 
             this.lblStartTime.AutoSize = true;
             this.lblStartTime.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblStartTime.Location = new System.Drawing.Point(12, 123);
+            this.lblStartTime.Location = new System.Drawing.Point(12, 219);
             this.lblStartTime.Name = "lblStartTime";
             this.lblStartTime.Size = new System.Drawing.Size(168, 28);
             this.lblStartTime.TabIndex = 4;
@@ -217,6 +226,44 @@
             this.pnlDisplayCourt.TabIndex = 2;
             this.pnlDisplayCourt.SizeChanged += new System.EventHandler(this.pnlDisplayCourt_SizeChanged);
             // 
+            // lblNameCustom
+            // 
+            this.lblNameCustom.AutoSize = true;
+            this.lblNameCustom.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNameCustom.Location = new System.Drawing.Point(12, 118);
+            this.lblNameCustom.Name = "lblNameCustom";
+            this.lblNameCustom.Size = new System.Drawing.Size(151, 28);
+            this.lblNameCustom.TabIndex = 9;
+            this.lblNameCustom.Text = "Tên Khách Hàng";
+            // 
+            // txtNameCustom
+            // 
+            this.txtNameCustom.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNameCustom.Location = new System.Drawing.Point(160, 112);
+            this.txtNameCustom.Name = "txtNameCustom";
+            this.txtNameCustom.ReadOnly = true;
+            this.txtNameCustom.Size = new System.Drawing.Size(209, 34);
+            this.txtNameCustom.TabIndex = 10;
+            // 
+            // lblPhoneNumber
+            // 
+            this.lblPhoneNumber.AutoSize = true;
+            this.lblPhoneNumber.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPhoneNumber.Location = new System.Drawing.Point(12, 165);
+            this.lblPhoneNumber.Name = "lblPhoneNumber";
+            this.lblPhoneNumber.Size = new System.Drawing.Size(133, 28);
+            this.lblPhoneNumber.TabIndex = 11;
+            this.lblPhoneNumber.Text = "Số Điện Thoại";
+            // 
+            // txtPhoneNumber
+            // 
+            this.txtPhoneNumber.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPhoneNumber.Location = new System.Drawing.Point(160, 159);
+            this.txtPhoneNumber.Name = "txtPhoneNumber";
+            this.txtPhoneNumber.ReadOnly = true;
+            this.txtPhoneNumber.Size = new System.Drawing.Size(209, 34);
+            this.txtPhoneNumber.TabIndex = 12;
+            // 
             // CourtForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -256,5 +303,9 @@
         private System.Windows.Forms.DateTimePicker dtmEndTime;
         private System.Windows.Forms.DateTimePicker dtmStartTime;
         private System.Windows.Forms.Panel pnlDisplayCourt;
+        private System.Windows.Forms.TextBox txtNameCustom;
+        private System.Windows.Forms.Label lblNameCustom;
+        private System.Windows.Forms.TextBox txtPhoneNumber;
+        private System.Windows.Forms.Label lblPhoneNumber;
     }
 }

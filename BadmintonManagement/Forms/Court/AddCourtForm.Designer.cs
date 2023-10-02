@@ -60,10 +60,11 @@
             this.grpInformation.Controls.Add(this.cboBranchID);
             this.grpInformation.Controls.Add(this.cboStatus);
             this.grpInformation.Controls.Add(this.txtCourtName);
+            this.grpInformation.Dock = System.Windows.Forms.DockStyle.Fill;
             this.grpInformation.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.grpInformation.Location = new System.Drawing.Point(3, 12);
+            this.grpInformation.Location = new System.Drawing.Point(0, 0);
             this.grpInformation.Name = "grpInformation";
-            this.grpInformation.Size = new System.Drawing.Size(393, 418);
+            this.grpInformation.Size = new System.Drawing.Size(398, 434);
             this.grpInformation.TabIndex = 0;
             this.grpInformation.TabStop = false;
             this.grpInformation.Text = "Thông Tin Sân";

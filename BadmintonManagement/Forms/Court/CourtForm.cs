@@ -1,4 +1,5 @@
 ﻿using BadmintonManagement.Function.CourtService;
+using BadmintonManagement.Function.RFDetailService;
 using BadmintonManagement.Models;
 using System;
 using System.Collections.Generic;
@@ -7,6 +8,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -15,7 +17,9 @@ namespace BadmintonManagement.Forms.Court
     public partial class CourtForm : Form
     {
         public static CourtForm Instance;
-        public bool flag = false;
+        public bool flagUser = false;
+        public bool flagAdmin = false;
+
         public CourtForm()
         {
             InitializeComponent();
@@ -27,48 +31,10 @@ namespace BadmintonManagement.Forms.Court
                 btnAdmin.Visible = false;
             }
             pnlDisplayCourt.AutoScroll = true;
-
             //Test();
         }
 
-        private void Test()
-        {
-            double x = (this.pnlDisplayCourt.Width) / (3.4);
-            double y = (this.pnlDisplayCourt.Height) / (3.4);
-            Panel panel = new Panel();
-            PictureBox pictureBox = new PictureBox();
-            Label lbl = new Label();
-            lbl.Text = DateTime.Now.ToString("dd/MM/yyyy");
-            lbl.Location = new Point(Convert.ToInt32(x * 1 / 10), Convert.ToInt32(y * 9 / 10));
-
-            Label lbl2 = new Label();
-            lbl2.Text = DateTime.Now.ToString("dd/MM/yyyy");
-            lbl2.Location = new Point(Convert.ToInt32(x * 6 / 10), Convert.ToInt32(y * 9 / 10));
-            panel.Location = new Point(0, 0);
-            panel.Size = new Size(Convert.ToInt32(x), Convert.ToInt32(y));
-            pictureBox.Size = new Size(Convert.ToInt32(x * 3 / 5), Convert.ToInt32(y * 3 / 5));
-            pictureBox.Location = new Point(Convert.ToInt32(x * 1 / 5), Convert.ToInt32(y * 1 / 5));
-            pictureBox.Image = Properties.Resources.Use;
-            pictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
-
-            panel.Controls.Add(lbl2);
-            panel.Controls.Add(lbl);
-            panel.Controls.Add(pictureBox);
-            pnlDisplayCourt.Controls.Add(panel);
-        }
-
-        private void Control_MouseEnter(object sender, EventArgs e)
-        {
-            
-            MessageBox.Show("Test");
-        }
-
-        private void Control_MouseLeave(object sender, EventArgs e)
-        {
-            
-            
-        }
-        private void ControlClickHandler(object sender, EventArgs e)
+        private void ControlAdminClickHandler(object sender, EventArgs e)
         {
             hideSubMenu();
             pnlAdmin.Visible = true;
@@ -79,9 +45,37 @@ namespace BadmintonManagement.Forms.Court
                 COURT court = new CourtService().FindCourtByID(pictureBoxName);
                 AddCourtForm.Instance.FillCourt(court);
             }
-            
         }
 
+        private void displayUser(RF_DETAIL rfdetail)
+        {
+            txtNameCustom.Text = rfdetail.RESERVATION.CUSTOMER.FullName;
+            txtCourtName.Text = rfdetail.COURT.CourtName;
+            txtBranchName.Text = rfdetail.COURT.BRANCH.BranchName;
+            txtPhoneNumber.Text = 0+rfdetail.RESERVATION.CUSTOMER.PhoneNumber;
+            dtmStartTime.Text = rfdetail.StartTime.ToString();
+            dtmEndTime.Text = rfdetail.EndTime.ToString();
+        }
+
+        private void ControlClickHandler(object sender, EventArgs e)
+        {
+            hideSubMenu();
+            string pattern = "[^+]+";
+
+            pnlUser.Visible = true;
+            PictureBox clickedPictureBox = sender as PictureBox;
+            if(clickedPictureBox != null)
+            {
+                string pictureBoxName = clickedPictureBox.Name;
+                List<string> listid = new List<string>();
+                foreach(Match var in Regex.Matches(pictureBoxName, pattern))
+                {
+                    listid.Add(var.Value);
+                }
+                RF_DETAIL rf_detail = new RFDetailService().FindRFDetailByID(listid[0], listid[1]);
+                displayUser(rf_detail);
+            }
+        }
 
         private void fill()
         {
@@ -110,8 +104,28 @@ namespace BadmintonManagement.Forms.Court
             }
         }
 
+        public void UserShow()
+        {
+            flagUser = true;
+            flagAdmin = false;
+            List<RF_DETAIL> listRF = new RFDetailService().getRFDetail();
+            int count = listRF.Count();
+
+            double width = this.pnlDisplayCourt.Width;
+            double heigth = this.pnlDisplayCourt.Height;
+
+            for (int i = 0; i < count; i++)
+            {
+                pnlDisplayCourt.Controls.Add(new RFDetailService().DisplayRFDetailUser(i, listRF[i], width, heigth));
+                pnlDisplayCourt.Controls[i].Controls[3].Click += ControlClickHandler;
+            }
+            
+        }
+
         public void ShowCourt()
         {
+            flagAdmin = true;
+            flagUser = false;
             List<COURT> newCourt = new CourtService().getListCourtWithOutDisable();
             int count = new CourtService().getCountCourtDisable();
 
@@ -121,8 +135,9 @@ namespace BadmintonManagement.Forms.Court
             for (int i = 0; i < count; i++)
             {
                 pnlDisplayCourt.Controls.Add(new CourtService().DisplayCourtAdmin(i, newCourt[i],width,heigth));
-                pnlDisplayCourt.Controls[i].Controls[2].Click += ControlClickHandler;
+                pnlDisplayCourt.Controls[i].Controls[2].Click += ControlAdminClickHandler;
             }
+            
         }
 
         private void showSubMenu(Panel panel) {
@@ -138,19 +153,28 @@ namespace BadmintonManagement.Forms.Court
 
         private void btnUser_Click(object sender, EventArgs e)
         {
+            pnlDisplayCourt.Controls.Clear();
+            pnlDisplayCourt.Refresh();
             showSubMenu(pnlUser);
+            UserShow();
         }
 
         private void btnAdmin_Click(object sender, EventArgs e)
         {
+            pnlDisplayCourt.Controls.Clear();
+            pnlDisplayCourt.Refresh();
             showSubMenu(pnlAdmin);
+            ShowCourt();
         }
 
 
         private void pnlDisplayCourt_SizeChanged(object sender, EventArgs e)
         {
             pnlDisplayCourt.Controls.Clear();
-            ShowCourt();
+            pnlDisplayCourt.Refresh();
+            if(flagAdmin == true) { ShowCourt(); }
+            else { UserShow(); }
+
         }
     }
 }
