@@ -182,12 +182,6 @@
     <Compile Include="Forms\Court\CourtForm.Designer.cs">
       <DependentUpon>CourtForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Customer\AddCustomerForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\Customer\AddCustomerForm.Designer.cs">
-      <DependentUpon>AddCustomerForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="Forms\Customer\CustomerForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -294,9 +288,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Court\CourtForm.resx">
       <DependentUpon>CourtForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Customer\AddCustomerForm.resx">
-      <DependentUpon>AddCustomerForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Customer\CustomerForm.resx">
       <DependentUpon>CustomerForm.cs</DependentUpon>
