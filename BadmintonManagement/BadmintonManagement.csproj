@@ -111,6 +111,12 @@
   <ItemGroup>
     <Compile Include="Database\DatabaseInitial.cs" />
     <Compile Include="Database\UserServices.cs" />
+    <Compile Include="Forms\Report\CustomerReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Report\CustomerReport.Designer.cs">
+      <DependentUpon>CustomerReport.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Report\IncomeReportForm.cs">
       <SubType>Form</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -251,8 +257,14 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Validator.cs" />
     <Compile Include="Security.cs" />
+    <EmbeddedResource Include="CustomerReport.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\AuthorizationForms\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Report\CustomerReport.resx">
+      <DependentUpon>CustomerReport.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Report\IncomeReportForm.resx">
       <DependentUpon>IncomeReportForm.cs</DependentUpon>
@@ -276,7 +288,7 @@
     <EmbeddedResource Include="ReportReceipt.rdlc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
-    <EmbeddedResource Include="ServiceReceiptReport.rdlc">
+    <EmbeddedResource Include="ServiceReport.rdlc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="Services\OTP\EnterOTP.resx">
@@ -331,7 +343,10 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\BadmintonManagement.Models.CUSTOMER.datasource" />
     <None Include="Properties\DataSources\BadmintonManagement.Models.RECEIPT.datasource" />
+    <None Include="Properties\DataSources\BadmintonManagement.Models.SERVICE_DETAIL.datasource" />
+    <None Include="Properties\DataSources\BadmintonManagement.Models.SERVICE_RECEIPT.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

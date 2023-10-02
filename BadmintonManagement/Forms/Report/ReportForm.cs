@@ -34,20 +34,37 @@ namespace BadmintonManagement.Forms.Report
 
         }
 
+        private void HiddenReceipt()
+        {
+            if (pnlReceiptReport.Visible)
+                pnlReceiptReport.Visible = false;
+        }
         
+        
+
+        private void HiddenButom()
+        {
+            if (pnlReceiptReport.Visible)
+                pnlReceiptReport.Visible = false;
+            else
+                pnlReceiptReport.Visible = true;
+        }
+
+       
         private void btnIncome_Click(object sender, EventArgs e)
         {
+            HiddenReceipt();
             OpenChilForm(new IncomeReportForm());
             btnIncome.BackColor = SystemColors.ButtonShadow;
             btnReceipt.BackColor = Color.LightGray;
-            pnlReceiptReport.Visible=false;
+            btnCustomerReport.BackColor = Color.LightGray;
         }
-
         private void btnReceipt_Click(object sender, EventArgs e)
         {
-            pnlReceiptReport.Visible = true;
+            HiddenButom();
             btnReceipt.BackColor = SystemColors.ButtonShadow;
             btnIncome.BackColor = Color.LightGray;
+            btnCustomerReport.BackColor = Color.LightGray;
         }
 
         private void btnCourtReceipt_Click(object sender, EventArgs e)
@@ -63,6 +80,15 @@ namespace BadmintonManagement.Forms.Report
             btnCourtReceipt.BackColor = Color.LightGray;
             OpenChilForm(new ServiceReceiptForm());
             
+        }
+
+        private void btnCustomerReport_Click(object sender, EventArgs e)
+        {
+            HiddenReceipt();
+            btnCustomerReport.BackColor = SystemColors.ButtonShadow;
+            btnIncome.BackColor = Color.LightGray;
+            btnReceipt.BackColor = Color.LightGray;
+            OpenChilForm(new CustomerReport());
         }
     }
 }

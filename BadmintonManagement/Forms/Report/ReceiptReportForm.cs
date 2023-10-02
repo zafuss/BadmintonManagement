@@ -58,7 +58,7 @@ namespace BadmintonManagement.Forms.Report
                     };
 
                     List<RECEIPT> receipts = context.RECEIPT.ToList();
-                    receipts = receipts.Where(x => x.C_Date.Value > dtbStart.Value && x.C_Date.Value < dtpEnd.Value).ToList();
+                    receipts = receipts.Where(x => x.C_Date.Value >= dtbStart.Value && x.C_Date.Value <= dtpEnd.Value).ToList();
                     rptReceipt.LocalReport.ReportPath = "ReportReceipt.rdlc";
                     var soure = new ReportDataSource("DataSetReceipt", receipts);
                     rptReceipt.LocalReport.DataSources.Clear();

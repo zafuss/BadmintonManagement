@@ -97,6 +97,7 @@ namespace BadmintonManagement.Forms.Customer
         
         private void dataGridViewCustomer_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            
             index = e.RowIndex;
             DataGridViewRow dataGridViewRow = dataGridViewCustomer.Rows[index];
             txtPhoneNumber.Text = dataGridViewRow.Cells[0].Value.ToString();
