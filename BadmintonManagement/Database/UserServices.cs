@@ -43,47 +43,6 @@ namespace BadmintonManagement.Database
         {
             return context.C_USER.Any(x => x.PhoneNumber == phoneNumber);
         }
-        public static void CreateTestAccounts()
-        {
-            C_USER admin = new C_USER()
-            {
-                Username = "admin",
-                C_Password = Security.Encrypt("admin"),
-                C_Name = "admin",
-                Email = "todsdreamcompany@gmail.com",
-                PhoneNumber = "0823216213",
-                C_Role = "Admin",
-                C_Status = "Enabled"
-            };
-            C_USER tmp = GetUser(admin.Username);
-            if (tmp == null)
-            {
-
-                context.C_USER.AddOrUpdate(admin);
-                context.SaveChanges();
-            }
-            C_USER staff = new C_USER()
-            {
-                Username = "staff",
-                C_Password = Security.Encrypt("staff"),
-                C_Name = "staff",
-                Email = "staff",
-                PhoneNumber = "1234567890",
-                C_Role = "Staff",
-                C_Status = "Enabled"
-
-
-            };
-            C_USER tmp1 = GetUser(staff.Username);
-            if (tmp1 == null)
-            {
-
-                context.C_USER.AddOrUpdate(staff);
-                context.SaveChanges();
-            }
-
-
-        }
         public static void AddUser(C_USER user, Action bindGrid)
         {
             try

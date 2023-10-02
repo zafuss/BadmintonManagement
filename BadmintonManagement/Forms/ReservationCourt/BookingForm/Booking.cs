@@ -116,7 +116,7 @@ namespace BadmintonManagement.Forms.ReservationCourt.BookingForm
                 rev.CreateDate = DateTime.Now;
                 rev.BookingDate = dtpDate.Value;
                 rev.Deposite = 0;
-                rev._Status = 0;
+                rev.C_Status = 0;
                 context.RESERVATION.Add(rev);
                 context.SaveChanges();
             }

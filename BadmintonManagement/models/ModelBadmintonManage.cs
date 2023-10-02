@@ -81,13 +81,13 @@ namespace BadmintonManagement.Models
                 .Property(e => e.PriceID)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<SERVICE_DETAIL>()
-                .Property(e => e.PhoneNumber)
-                .IsUnicode(false);
-
             modelBuilder.Entity<SERVICE_RECEIPT>()
                 .Property(e => e.Total)
                 .HasPrecision(18, 0);
+
+            modelBuilder.Entity<SERVICE_RECEIPT>()
+                .Property(e => e.PhoneNumber)
+                .IsUnicode(false);
 
             modelBuilder.Entity<SERVICE_RECEIPT>()
                 .HasMany(e => e.SERVICE_DETAIL)

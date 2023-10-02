@@ -30,7 +30,7 @@ namespace BadmintonManagement.Forms.ReservationCourt
 
         private string PickStatus(RESERVATION rev)
         {
-            int d = rev._Status.Value;
+            int d = rev.C_Status.Value;
             if (rev.Deposite==0)
                 return "Chưa đặt cọc";
             if (d == 0)

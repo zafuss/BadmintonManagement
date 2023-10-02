@@ -8,7 +8,6 @@ namespace BadmintonManagement.Models
 
     [Table("_USER")]
     public partial class C_USER
-
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public C_USER()

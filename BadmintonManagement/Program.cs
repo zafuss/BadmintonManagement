@@ -20,18 +20,9 @@ namespace BadmintonManagement
         [STAThread]
         static void Main()
         {
-            new CourtService().createBranch();
-            new CourtService().createCourt();
-            UserServices.CreateTestAccounts();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            //Application.Run(new LoginForm());
-            //Application.Run(new ManageUser());
             Application.Run(new LoginForm());
-
-            
-            
-
         }
     }
 }

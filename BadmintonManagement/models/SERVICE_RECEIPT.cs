@@ -22,6 +22,11 @@ namespace BadmintonManagement.Models
 
         public decimal? Total { get; set; }
 
+        [StringLength(13)]
+        public string PhoneNumber { get; set; }
+
+        public virtual CUSTOMER CUSTOMER { get; set; }
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SERVICE_DETAIL> SERVICE_DETAIL { get; set; }
     }

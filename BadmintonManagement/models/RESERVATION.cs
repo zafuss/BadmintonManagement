@@ -33,7 +33,7 @@ namespace BadmintonManagement.Models
         public DateTime? BookingDate { get; set; }
 
         [Column("_Status")]
-        public int? _Status { get; set; }
+        public int? C_Status { get; set; }
 
         public virtual C_USER C_USER { get; set; }
 
