@@ -59,6 +59,7 @@
             this.dtpEndTime.ShowUpDown = true;
             this.dtpEndTime.Size = new System.Drawing.Size(200, 26);
             this.dtpEndTime.TabIndex = 0;
+            this.dtpEndTime.ValueChanged += new System.EventHandler(this.dtpStartTime_ValueChanged);
             // 
             // dtpDate
             // 
@@ -67,6 +68,7 @@
             this.dtpDate.Name = "dtpDate";
             this.dtpDate.Size = new System.Drawing.Size(200, 26);
             this.dtpDate.TabIndex = 1;
+            this.dtpDate.ValueChanged += new System.EventHandler(this.dtpDate_ValueChanged);
             // 
             // dtpStartTime
             // 
@@ -77,6 +79,7 @@
             this.dtpStartTime.ShowUpDown = true;
             this.dtpStartTime.Size = new System.Drawing.Size(200, 26);
             this.dtpStartTime.TabIndex = 2;
+            this.dtpStartTime.ValueChanged += new System.EventHandler(this.dtpStartTime_ValueChanged);
             // 
             // cboCourt
             // 

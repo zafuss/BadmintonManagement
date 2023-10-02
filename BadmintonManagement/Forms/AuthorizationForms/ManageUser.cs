@@ -160,5 +160,7 @@ namespace BadmintonManagement.Forms.AuthorizationForms
                 MessageBox.Show(ex.Message, "Thông báo");
             }
         }
+
+        
     }
 }
