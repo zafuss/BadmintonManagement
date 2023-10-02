@@ -21,14 +21,14 @@ namespace BadmintonManagement.Forms.Customer
             InitializeComponent();
             instance = this;
             dataGridView = dgrv_Customer;
+            Custom();
         }
-
         private void btn_Add_Click(object sender, EventArgs e)
         {
             AddCustomerForm addCustomerForm = new AddCustomerForm();
             addCustomerForm.ShowDialog();
+            HideSubmenu();
         }
-
         private void btn_Delete_Click(object sender, EventArgs e)
         {
             foreach (DataGridViewRow item in this.dataGridView.SelectedRows)
@@ -41,8 +41,8 @@ namespace BadmintonManagement.Forms.Customer
                 }
                 
             }
+            HideSubmenu();
         }
-
         private void dgrv_Customer_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             index = e.RowIndex;
@@ -51,17 +51,34 @@ namespace BadmintonManagement.Forms.Customer
             AddCustomerForm.instance.textbox2.Text = row.Cells[1].Value.ToString();
             AddCustomerForm.instance.textbox3.Text = row.Cells[2].Value.ToString();
         }
-
-        private void btn_Update_Click(object sender, EventArgs e)
+        private void Custom()
         {
-            AddCustomerForm addCustomerForm1 = new AddCustomerForm();
-            addCustomerForm1.ShowDialog();
-            DataGridViewRow dataGridViewRow = dataGridView.Rows[index];
-            dataGridViewRow.Cells[0].Value = AddCustomerForm.instance.textbox1.Text;
-            dataGridViewRow.Cells[1].Value = AddCustomerForm.instance.textbox2.Text;
-            dataGridViewRow.Cells[2].Value = AddCustomerForm.instance.textbox3.Text;
-            MessageBox.Show("Cập nhật dữ liệu thành công!", "Thông báo", MessageBoxButtons.OK);
+            panel_SubMenu.Visible = false;
 
+        }
+        private void HideSubmenu()
+        {
+            if(panel_SubMenu.Visible == true)
+            {
+                panel_SubMenu.Visible = false;
+            }
+        }
+        private void ShowSubmenu(Panel submenu)
+        {
+            if(submenu.Visible == false)
+            {
+                HideSubmenu();
+                submenu.Visible = true;
+            }
+            else
+            {
+                submenu.Visible = false;
+
+            }
+        }
+        private void btn_Menu_Click(object sender, EventArgs e)
+        {
+            ShowSubmenu(panel_SubMenu);
 
         }
     }
