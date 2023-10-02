@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgvReservation = new System.Windows.Forms.DataGridView();
             this.clnRevNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clnUserName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -90,10 +90,13 @@
             this.clnStatus});
             this.dgvReservation.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvReservation.Location = new System.Drawing.Point(3, 16);
+            this.dgvReservation.MultiSelect = false;
             this.dgvReservation.Name = "dgvReservation";
+            this.dgvReservation.ReadOnly = true;
             this.dgvReservation.Size = new System.Drawing.Size(934, 574);
             this.dgvReservation.TabIndex = 0;
             this.dgvReservation.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvReservation_CellContentClick);
+            this.dgvReservation.SelectionChanged += new System.EventHandler(this.dgvReservation_SelectionChanged);
             // 
             // clnRevNo
             // 
@@ -130,16 +133,16 @@
             // 
             // clnCreateDate
             // 
-            dataGridViewCellStyle1.Format = "dd/MM/yyyy";
-            this.clnCreateDate.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle5.Format = "dd/MM/yyyy";
+            this.clnCreateDate.DefaultCellStyle = dataGridViewCellStyle5;
             this.clnCreateDate.HeaderText = "Ngày đặt";
             this.clnCreateDate.Name = "clnCreateDate";
             this.clnCreateDate.ReadOnly = true;
             // 
             // clnBookingDate
             // 
-            dataGridViewCellStyle2.Format = "dd/MM/yyyy";
-            this.clnBookingDate.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle6.Format = "dd/MM/yyyy";
+            this.clnBookingDate.DefaultCellStyle = dataGridViewCellStyle6;
             this.clnBookingDate.HeaderText = "Ngày nhận";
             this.clnBookingDate.Name = "clnBookingDate";
             this.clnBookingDate.ReadOnly = true;
@@ -274,6 +277,7 @@
             // btnCancel
             // 
             this.btnCancel.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnCancel.Enabled = false;
             this.btnCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancel.Location = new System.Drawing.Point(0, 80);
             this.btnCancel.Name = "btnCancel";
@@ -281,6 +285,7 @@
             this.btnCancel.TabIndex = 2;
             this.btnCancel.Text = "Hủy";
             this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // btnUpdate
             // 

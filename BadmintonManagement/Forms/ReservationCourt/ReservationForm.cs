@@ -4,8 +4,10 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Entity.Migrations;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.Remoting.Contexts;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -22,26 +24,28 @@ namespace BadmintonManagement.Forms.ReservationCourt
         {
             dtpStartDay.Value = DateTime.Now;
             dtpEndDay.Value = DateTime.Now;
-           ModelBadmintonManage context = new ModelBadmintonManage();
+           
             List<RESERVATION> listRev = context.RESERVATION.ToList();
             bindGrid(listRev);
             pnlFunction.Visible = true;
         }
-
+        ModelBadmintonManage context = new ModelBadmintonManage();
         private string PickStatus(RESERVATION rev)
         {
             int d = rev.C_Status.Value;
-            if (rev.Deposite==0)
-                return "Chưa đặt cọc";
             if (d == 0)
-                return "Đã nhận sân";
-            if (d == 1)
-                return "Đã thanh toán";
+                return "Chưa đặt cọc";
+            if (d == 1) 
+                return "Đã đặt cọc";
             if (d == 2)
-                return "Quá giờ nhận sân";
+                return "Đã nhận sân";
             if (d == 3)
+                return "Đã thanh toán";
+            if (d == 4)
+                return "Quá giờ nhận sân";
+            if (d == 5)
                 return "Đã hủy";
-            return "Đã đặt cọc";
+            return "Cannot get the Status";
         }
         private void bindGrid(List<RESERVATION> listRev)
         {
@@ -91,16 +95,7 @@ namespace BadmintonManagement.Forms.ReservationCourt
         }
 
         private void dtpEndDay_ValueChanged(object sender, EventArgs e)
-        {/*
-            for(int i=0;i<dgvReservation.Rows.Count;i++)
-            {
-                DateTime d = new DateTime();
-                d = DateTime.Parse(dgvReservation.Rows[i].Cells[5].Value.ToString());
-                if (DateTime.Compare(d, dtpEndDay.Value) <= 0 && DateTime.Compare(d, dtpStartDay.Value) >= 0)
-                    dgvReservation.Rows[i].Visible = true;
-                else
-                    dgvReservation.Rows[i].Visible=false;
-            }*/
+        {
         }
 
         private void btnFunction_Click(object sender, EventArgs e)
@@ -173,6 +168,40 @@ namespace BadmintonManagement.Forms.ReservationCourt
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            if(MessageBox.Show("Có thật sự muốn hủy","Caution",MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                dgvReservation.SelectedRows[0].Cells[7].Value = "Đã hủy";
+                string str = dgvReservation.SelectedRows[0].Cells[0].Value.ToString();
+                RESERVATION rev = context.RESERVATION.FirstOrDefault(p => p.ReservationNo == str);
+                rev.C_Status = 5;
+                List<RF_DETAIL> listrf = context.RF_DETAIL.ToList(); 
+                foreach(RF_DETAIL rf in listrf)
+                {
+                    if(rf.ReservationNo == rev.ReservationNo)
+                        context.RF_DETAIL.Remove(rf);
+                    context.SaveChanges();
+                }
+                context.RESERVATION.AddOrUpdate(rev);
+                context.SaveChanges();
+                btnCancel.Enabled = false;
+                MessageBox.Show("Đã hủy");
+            }
+        }
+
+        private void dgvReservation_SelectionChanged(object sender, EventArgs e)
+        {
+            if (dgvReservation.SelectedRows.Count < 1)
+                return;
+            if (dgvReservation.Rows[dgvReservation.Rows.Count-1].Selected)
+                btnCancel.Enabled = false;
+            else if (dgvReservation.SelectedRows[0].Cells[7].Value.ToString() == "Chưa đặt cọc")
+                btnCancel.Enabled = true;
+            else
+                btnCancel.Enabled = false;
         }
     }
 }

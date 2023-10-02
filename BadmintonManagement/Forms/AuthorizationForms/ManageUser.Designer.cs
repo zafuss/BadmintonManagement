@@ -196,6 +196,7 @@
             this.dgvUsers.Size = new System.Drawing.Size(750, 388);
             this.dgvUsers.TabIndex = 9;
             this.dgvUsers.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvUsers_CellClick);
+         
             // 
             // clnUsername
             // 
