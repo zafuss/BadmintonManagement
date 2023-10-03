@@ -29,6 +29,10 @@ namespace BadmintonManagement.Models
 
         public int? Quantity { get; set; }
 
+        [Column("_Status")]
+        [StringLength(30)]
+        public string C_Status { get; set; }
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SERVICE_DETAIL> SERVICE_DETAIL { get; set; }
     }

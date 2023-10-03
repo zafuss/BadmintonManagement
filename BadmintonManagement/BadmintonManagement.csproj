@@ -119,6 +119,7 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Database\DatabaseInitial.cs" />
+    <Compile Include="Database\ServiceServices.cs" />
     <Compile Include="Database\UserServices.cs" />
     <Compile Include="Forms\Report\CustomerReport.cs">
       <SubType>Form</SubType>
@@ -433,6 +434,9 @@
   <ItemGroup>
     <Folder Include="SqlServerTypes\x64\" />
     <Folder Include="SqlServerTypes\x86\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\service_images\service_icon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" />

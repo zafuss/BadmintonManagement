@@ -82,7 +82,7 @@ create table _SERVICE
 	Unit			nvarchar(20),
 	Price			decimal,
 	Quantity		int,
-
+	_Status			varchar(30)
 	constraint PK_SERVICE_DETAIL_ServiceID primary key (ServiceID)
 )
 go
@@ -194,3 +194,4 @@ create table RF_DETAIL(
 	constraint FK_CourtID_PRICE foreign key (PriceID) references PRICE(PriceID)
 )
 go
+
