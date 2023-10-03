@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgvReservation = new System.Windows.Forms.DataGridView();
             this.clnRevNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clnUserName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -133,16 +133,16 @@
             // 
             // clnCreateDate
             // 
-            dataGridViewCellStyle5.Format = "dd/MM/yyyy";
-            this.clnCreateDate.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.Format = "dd/MM/yyyy";
+            this.clnCreateDate.DefaultCellStyle = dataGridViewCellStyle1;
             this.clnCreateDate.HeaderText = "Ngày đặt";
             this.clnCreateDate.Name = "clnCreateDate";
             this.clnCreateDate.ReadOnly = true;
             // 
             // clnBookingDate
             // 
-            dataGridViewCellStyle6.Format = "dd/MM/yyyy";
-            this.clnBookingDate.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle2.Format = "dd/MM/yyyy";
+            this.clnBookingDate.DefaultCellStyle = dataGridViewCellStyle2;
             this.clnBookingDate.HeaderText = "Ngày nhận";
             this.clnBookingDate.Name = "clnBookingDate";
             this.clnBookingDate.ReadOnly = true;
@@ -151,6 +151,7 @@
             // 
             this.clnStatus.HeaderText = "Tình trạng";
             this.clnStatus.Name = "clnStatus";
+            this.clnStatus.ReadOnly = true;
             // 
             // dtpEndDay
             // 
@@ -379,7 +380,7 @@
             this.Controls.Add(this.groupBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "ReservationForm";
-            this.Text = "ReservationForm";
+            this.Text = "Phiếu Đặt Sân";
             this.Load += new System.EventHandler(this.ReservationForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvReservation)).EndInit();
             this.groupBox1.ResumeLayout(false);

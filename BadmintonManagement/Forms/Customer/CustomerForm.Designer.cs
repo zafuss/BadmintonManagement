@@ -256,7 +256,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "CustomerForm";
-            this.Text = "Số điện thoại khách hàng";
+            this.Text = "Khách Hàng";
             this.Load += new System.EventHandler(this.CustomerForm_Load_1);
             this.panelFeatures.ResumeLayout(false);
             this.panelFeatures.PerformLayout();
