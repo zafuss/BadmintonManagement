@@ -78,13 +78,24 @@ namespace BadmintonManagement.Forms.ReservationCourt.BookingForm
         {
             foreach(RF_DETAIL item in listRFD)
             {
-                int i = dgvRF_Detail.Rows.Add();
                 int d = 0;
-                dgvRF_Detail.Rows[i].Cells[d++].Value = item.ReservationNo;
-                dgvRF_Detail.Rows[i].Cells[d++].Value = item.COURT.CourtName;
-                dgvRF_Detail.Rows[i].Cells[d++].Value = item.StartTime;
-                dgvRF_Detail.Rows[i].Cells[d++].Value = item.EndTime;
-                dgvRF_Detail.Rows[i].Cells[d++].Value = context.PRICE.FirstOrDefault().PriceTag;
+                if (dgvRF_Detail.Rows.Count ==1)
+                {
+                    dgvRF_Detail.Rows[0].Cells[d++].Value = item.ReservationNo;
+                    dgvRF_Detail.Rows[0].Cells[d++].Value = item.COURT.CourtName;
+                    dgvRF_Detail.Rows[0].Cells[d++].Value = item.StartTime;
+                    dgvRF_Detail.Rows[0].Cells[d++].Value = item.EndTime;
+                    dgvRF_Detail.Rows[0].Cells[d++].Value = context.PRICE.FirstOrDefault().PriceTag;
+                }
+                else
+                {
+                    int i = dgvRF_Detail.Rows.Add();
+                    dgvRF_Detail.Rows[i].Cells[d++].Value = item.ReservationNo;
+                    dgvRF_Detail.Rows[i].Cells[d++].Value = item.COURT.CourtName;
+                    dgvRF_Detail.Rows[i].Cells[d++].Value = item.StartTime;
+                    dgvRF_Detail.Rows[i].Cells[d++].Value = item.EndTime;
+                    dgvRF_Detail.Rows[i].Cells[d++].Value = context.PRICE.FirstOrDefault().PriceTag;
+                }
             }
         }
         private bool Check_dgvRF_DETAIL_Time_For_Court(COURT c)
