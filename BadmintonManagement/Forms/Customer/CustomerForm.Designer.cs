@@ -38,15 +38,15 @@
             this.label3 = new System.Windows.Forms.Label();
             this.panelFeatures = new System.Windows.Forms.Panel();
             this.label6 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.panelDataGrid = new System.Windows.Forms.Panel();
             this.dataGridViewCustomer = new System.Windows.Forms.DataGridView();
-            this.label1 = new System.Windows.Forms.Label();
-            this.panelInfo = new System.Windows.Forms.Panel();
-            this.label4 = new System.Windows.Forms.Label();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label1 = new System.Windows.Forms.Label();
+            this.panelInfo = new System.Windows.Forms.Panel();
             this.panelFeatures.SuspendLayout();
             this.panelDataGrid.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCustomer)).BeginInit();
@@ -56,73 +56,74 @@
             // txtSearchFullName
             // 
             this.txtSearchFullName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtSearchFullName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSearchFullName.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtSearchFullName.Location = new System.Drawing.Point(555, 120);
             this.txtSearchFullName.Name = "txtSearchFullName";
-            this.txtSearchFullName.Size = new System.Drawing.Size(153, 26);
+            this.txtSearchFullName.Size = new System.Drawing.Size(153, 29);
             this.txtSearchFullName.TabIndex = 2;
             // 
             // btnDelete
             // 
-            this.btnDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDelete.Location = new System.Drawing.Point(278, 298);
+            this.btnDelete.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDelete.Location = new System.Drawing.Point(277, 298);
             this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(106, 37);
+            this.btnDelete.Size = new System.Drawing.Size(119, 46);
             this.btnDelete.TabIndex = 3;
             this.btnDelete.Text = "Xóa";
             this.btnDelete.UseVisualStyleBackColor = true;
             // 
             // btnUpdate
             // 
-            this.btnUpdate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUpdate.Location = new System.Drawing.Point(166, 298);
+            this.btnUpdate.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnUpdate.Location = new System.Drawing.Point(153, 298);
             this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.Size = new System.Drawing.Size(106, 37);
+            this.btnUpdate.Size = new System.Drawing.Size(119, 46);
             this.btnUpdate.TabIndex = 2;
             this.btnUpdate.Text = "Cập nhật";
             this.btnUpdate.UseVisualStyleBackColor = true;
             // 
             // btnAdd
             // 
-            this.btnAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAdd.Location = new System.Drawing.Point(51, 298);
+            this.btnAdd.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAdd.Location = new System.Drawing.Point(28, 298);
             this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(109, 37);
+            this.btnAdd.Size = new System.Drawing.Size(119, 46);
             this.btnAdd.TabIndex = 2;
             this.btnAdd.Text = "Thêm";
             this.btnAdd.UseVisualStyleBackColor = true;
             // 
             // txtEmail
             // 
-            this.txtEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtEmail.Location = new System.Drawing.Point(159, 254);
+            this.txtEmail.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtEmail.Location = new System.Drawing.Point(171, 254);
             this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(225, 26);
+            this.txtEmail.Size = new System.Drawing.Size(225, 29);
             this.txtEmail.TabIndex = 1;
             // 
             // txtFullName
             // 
-            this.txtFullName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtFullName.Location = new System.Drawing.Point(159, 206);
+            this.txtFullName.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtFullName.Location = new System.Drawing.Point(171, 206);
             this.txtFullName.Name = "txtFullName";
-            this.txtFullName.Size = new System.Drawing.Size(225, 26);
+            this.txtFullName.Size = new System.Drawing.Size(225, 29);
             this.txtFullName.TabIndex = 1;
             // 
             // txtPhoneNumber
             // 
-            this.txtPhoneNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPhoneNumber.Location = new System.Drawing.Point(159, 163);
+            this.txtPhoneNumber.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPhoneNumber.Location = new System.Drawing.Point(171, 163);
             this.txtPhoneNumber.Name = "txtPhoneNumber";
-            this.txtPhoneNumber.Size = new System.Drawing.Size(225, 26);
+            this.txtPhoneNumber.Size = new System.Drawing.Size(225, 29);
             this.txtPhoneNumber.TabIndex = 1;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(47, 260);
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(31, 257);
+            this.label3.Margin = new System.Windows.Forms.Padding(3);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(48, 20);
+            this.label3.Size = new System.Drawing.Size(48, 21);
             this.label3.TabIndex = 0;
             this.label3.Text = "Email";
             // 
@@ -142,20 +143,30 @@
             // 
             this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(446, 123);
+            this.label6.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(432, 123);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(103, 16);
+            this.label6.Size = new System.Drawing.Size(117, 21);
             this.label6.TabIndex = 1;
             this.label6.Text = "Tên khách hàng";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(152, 25);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(0, 29);
+            this.label4.TabIndex = 0;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(47, 212);
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(31, 209);
+            this.label2.Margin = new System.Windows.Forms.Padding(3);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(61, 20);
+            this.label2.Size = new System.Drawing.Size(60, 21);
             this.label2.TabIndex = 0;
             this.label2.Text = "Họ tên ";
             // 
@@ -185,42 +196,6 @@
             this.dataGridViewCustomer.Size = new System.Drawing.Size(749, 388);
             this.dataGridViewCustomer.TabIndex = 0;
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(47, 163);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(106, 20);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Số điện thoại ";
-            // 
-            // panelInfo
-            // 
-            this.panelInfo.Controls.Add(this.btnDelete);
-            this.panelInfo.Controls.Add(this.btnUpdate);
-            this.panelInfo.Controls.Add(this.label3);
-            this.panelInfo.Controls.Add(this.txtPhoneNumber);
-            this.panelInfo.Controls.Add(this.btnAdd);
-            this.panelInfo.Controls.Add(this.label2);
-            this.panelInfo.Controls.Add(this.txtFullName);
-            this.panelInfo.Controls.Add(this.txtEmail);
-            this.panelInfo.Controls.Add(this.label1);
-            this.panelInfo.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panelInfo.Location = new System.Drawing.Point(0, 0);
-            this.panelInfo.Name = "panelInfo";
-            this.panelInfo.Size = new System.Drawing.Size(426, 551);
-            this.panelInfo.TabIndex = 6;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(152, 25);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(0, 29);
-            this.label4.TabIndex = 0;
-            // 
             // Column1
             // 
             this.Column1.HeaderText = "Số điện thoại";
@@ -241,6 +216,34 @@
             this.Column3.HeaderText = "Email";
             this.Column3.Name = "Column3";
             this.Column3.ReadOnly = true;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(31, 165);
+            this.label1.Margin = new System.Windows.Forms.Padding(3);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(105, 21);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Số điện thoại ";
+            // 
+            // panelInfo
+            // 
+            this.panelInfo.Controls.Add(this.btnDelete);
+            this.panelInfo.Controls.Add(this.btnUpdate);
+            this.panelInfo.Controls.Add(this.label3);
+            this.panelInfo.Controls.Add(this.txtPhoneNumber);
+            this.panelInfo.Controls.Add(this.btnAdd);
+            this.panelInfo.Controls.Add(this.label2);
+            this.panelInfo.Controls.Add(this.txtFullName);
+            this.panelInfo.Controls.Add(this.txtEmail);
+            this.panelInfo.Controls.Add(this.label1);
+            this.panelInfo.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panelInfo.Location = new System.Drawing.Point(0, 0);
+            this.panelInfo.Name = "panelInfo";
+            this.panelInfo.Size = new System.Drawing.Size(426, 551);
+            this.panelInfo.TabIndex = 6;
             // 
             // CustomerForm
             // 
