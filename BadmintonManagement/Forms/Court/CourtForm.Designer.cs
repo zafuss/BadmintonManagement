@@ -32,6 +32,10 @@
             this.pnlAdmin = new System.Windows.Forms.Panel();
             this.btnAdmin = new System.Windows.Forms.Button();
             this.pnlUser = new System.Windows.Forms.Panel();
+            this.txtPhoneNumber = new System.Windows.Forms.TextBox();
+            this.lblPhoneNumber = new System.Windows.Forms.Label();
+            this.txtNameCustom = new System.Windows.Forms.TextBox();
+            this.lblNameCustom = new System.Windows.Forms.Label();
             this.dtmEndTime = new System.Windows.Forms.DateTimePicker();
             this.dtmStartTime = new System.Windows.Forms.DateTimePicker();
             this.lblEndTime = new System.Windows.Forms.Label();
@@ -44,10 +48,6 @@
             this.pnlFunction = new System.Windows.Forms.Panel();
             this.lblfunction = new System.Windows.Forms.Label();
             this.pnlDisplayCourt = new System.Windows.Forms.Panel();
-            this.lblNameCustom = new System.Windows.Forms.Label();
-            this.txtNameCustom = new System.Windows.Forms.TextBox();
-            this.lblPhoneNumber = new System.Windows.Forms.Label();
-            this.txtPhoneNumber = new System.Windows.Forms.TextBox();
             this.pnlInformation.SuspendLayout();
             this.pnlUser.SuspendLayout();
             this.pnlFunction.SuspendLayout();
@@ -68,7 +68,9 @@
             // 
             // pnlAdmin
             // 
+            this.pnlAdmin.BackColor = System.Drawing.SystemColors.Control;
             this.pnlAdmin.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlAdmin.ForeColor = System.Drawing.SystemColors.ControlText;
             this.pnlAdmin.Location = new System.Drawing.Point(0, 411);
             this.pnlAdmin.Name = "pnlAdmin";
             this.pnlAdmin.Size = new System.Drawing.Size(414, 224);
@@ -106,6 +108,44 @@
             this.pnlUser.Name = "pnlUser";
             this.pnlUser.Size = new System.Drawing.Size(414, 300);
             this.pnlUser.TabIndex = 2;
+            // 
+            // txtPhoneNumber
+            // 
+            this.txtPhoneNumber.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPhoneNumber.Location = new System.Drawing.Point(160, 159);
+            this.txtPhoneNumber.Name = "txtPhoneNumber";
+            this.txtPhoneNumber.ReadOnly = true;
+            this.txtPhoneNumber.Size = new System.Drawing.Size(209, 34);
+            this.txtPhoneNumber.TabIndex = 12;
+            // 
+            // lblPhoneNumber
+            // 
+            this.lblPhoneNumber.AutoSize = true;
+            this.lblPhoneNumber.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPhoneNumber.Location = new System.Drawing.Point(12, 165);
+            this.lblPhoneNumber.Name = "lblPhoneNumber";
+            this.lblPhoneNumber.Size = new System.Drawing.Size(133, 28);
+            this.lblPhoneNumber.TabIndex = 11;
+            this.lblPhoneNumber.Text = "Số Điện Thoại";
+            // 
+            // txtNameCustom
+            // 
+            this.txtNameCustom.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNameCustom.Location = new System.Drawing.Point(160, 112);
+            this.txtNameCustom.Name = "txtNameCustom";
+            this.txtNameCustom.ReadOnly = true;
+            this.txtNameCustom.Size = new System.Drawing.Size(209, 34);
+            this.txtNameCustom.TabIndex = 10;
+            // 
+            // lblNameCustom
+            // 
+            this.lblNameCustom.AutoSize = true;
+            this.lblNameCustom.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNameCustom.Location = new System.Drawing.Point(12, 118);
+            this.lblNameCustom.Name = "lblNameCustom";
+            this.lblNameCustom.Size = new System.Drawing.Size(151, 28);
+            this.lblNameCustom.TabIndex = 9;
+            this.lblNameCustom.Text = "Tên Khách Hàng";
             // 
             // dtmEndTime
             // 
@@ -226,44 +266,6 @@
             this.pnlDisplayCourt.TabIndex = 2;
             this.pnlDisplayCourt.SizeChanged += new System.EventHandler(this.pnlDisplayCourt_SizeChanged);
             // 
-            // lblNameCustom
-            // 
-            this.lblNameCustom.AutoSize = true;
-            this.lblNameCustom.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNameCustom.Location = new System.Drawing.Point(12, 118);
-            this.lblNameCustom.Name = "lblNameCustom";
-            this.lblNameCustom.Size = new System.Drawing.Size(151, 28);
-            this.lblNameCustom.TabIndex = 9;
-            this.lblNameCustom.Text = "Tên Khách Hàng";
-            // 
-            // txtNameCustom
-            // 
-            this.txtNameCustom.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNameCustom.Location = new System.Drawing.Point(160, 112);
-            this.txtNameCustom.Name = "txtNameCustom";
-            this.txtNameCustom.ReadOnly = true;
-            this.txtNameCustom.Size = new System.Drawing.Size(209, 34);
-            this.txtNameCustom.TabIndex = 10;
-            // 
-            // lblPhoneNumber
-            // 
-            this.lblPhoneNumber.AutoSize = true;
-            this.lblPhoneNumber.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPhoneNumber.Location = new System.Drawing.Point(12, 165);
-            this.lblPhoneNumber.Name = "lblPhoneNumber";
-            this.lblPhoneNumber.Size = new System.Drawing.Size(133, 28);
-            this.lblPhoneNumber.TabIndex = 11;
-            this.lblPhoneNumber.Text = "Số Điện Thoại";
-            // 
-            // txtPhoneNumber
-            // 
-            this.txtPhoneNumber.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPhoneNumber.Location = new System.Drawing.Point(160, 159);
-            this.txtPhoneNumber.Name = "txtPhoneNumber";
-            this.txtPhoneNumber.ReadOnly = true;
-            this.txtPhoneNumber.Size = new System.Drawing.Size(209, 34);
-            this.txtPhoneNumber.TabIndex = 12;
-            // 
             // CourtForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -274,7 +276,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "CourtForm";
-            this.Text = "CourtForm";
+            this.Text = "Quản Lý Sân";
             this.pnlInformation.ResumeLayout(false);
             this.pnlUser.ResumeLayout(false);
             this.pnlUser.PerformLayout();

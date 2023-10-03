@@ -11,6 +11,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using BadmintonManagement.Custom;
 
 namespace BadmintonManagement.Forms.Court
 {
@@ -36,11 +37,48 @@ namespace BadmintonManagement.Forms.Court
             //Test();
         }
 
+        private void ControlHoverEnterHandler(object sender, EventArgs e)
+        {
+            CustomPanel hoverPanel = sender as CustomPanel;
+            if (hoverPanel != null)
+            {
+                hoverPanel.BorderStyle = BorderStyle.FixedSingle;
+                hoverPanel.BorderColor = Color.Red;
+            }
+        }
+
+        private void ControlHoverLeaveHandler(object sender, EventArgs e)
+        {
+            CustomPanel hoverPanel = sender as CustomPanel;
+            if (hoverPanel != null )
+            {
+                hoverPanel.BorderStyle = BorderStyle.None;
+                hoverPanel.BorderColor = System.Drawing.Color.Transparent;
+            } 
+        }
+
+        private void PicMouseHoverHandler(object sender, EventArgs e)
+        {
+            CustomPicBox customPicBox = sender as CustomPicBox;
+            if( customPicBox != null)
+            {
+                foreach (CustomPanel item in pnlDisplayCourt.Controls)
+                {
+                    if(item.Name == customPicBox.Name)
+                    {
+                        item.BorderStyle = BorderStyle.FixedSingle;
+                        item.BorderColor = Color.Red;
+                        break;
+                    }
+                }
+            }
+        }
+
         private void ControlAdminClickHandler(object sender, EventArgs e)
         {
             hideSubMenu();
             pnlAdmin.Visible = true;
-            PictureBox clickedPictureBox = sender as PictureBox;
+            CustomPicBox clickedPictureBox = sender as CustomPicBox;
             if (clickedPictureBox != null)
             {
                 string pictureBoxName = clickedPictureBox.Name;
@@ -48,6 +86,7 @@ namespace BadmintonManagement.Forms.Court
                 AddCourtForm.Instance.FillCourt(court);
             }
         }
+
 
         private void displayUser(RF_DETAIL rfdetail)
         {
@@ -119,6 +158,10 @@ namespace BadmintonManagement.Forms.Court
             {
                 pnlDisplayCourt.Controls.Add(new RFDetailService().DisplayRFDetailUser(i, listRF[i], width, heigth));
                 pnlDisplayCourt.Controls[i].Controls[3].Click += ControlClickHandler;
+                pnlDisplayCourt.Controls[i].Controls[3].MouseHover += PicMouseHoverHandler;
+
+                pnlDisplayCourt.Controls[i].MouseHover += ControlHoverEnterHandler;
+                pnlDisplayCourt.Controls[i].MouseLeave += ControlHoverLeaveHandler;
             }
             
         }
@@ -136,8 +179,11 @@ namespace BadmintonManagement.Forms.Court
             {
                 pnlDisplayCourt.Controls.Add(new CourtService().DisplayCourtAdmin(i, newCourt[i],width,heigth));
                 pnlDisplayCourt.Controls[i].Controls[2].Click += ControlAdminClickHandler;
+                pnlDisplayCourt.Controls[i].Controls[2].MouseHover += PicMouseHoverHandler;
+                pnlDisplayCourt.Controls[i].MouseHover += ControlHoverEnterHandler;
+                pnlDisplayCourt.Controls[i].MouseLeave += ControlHoverLeaveHandler;
             }
-            
+
         }
 
         private void showSubMenu(Panel panel) {

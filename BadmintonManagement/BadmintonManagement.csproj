@@ -109,6 +109,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Custom\CustomControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Custom\CustomPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Custom\CustomPicBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Database\DatabaseInitial.cs" />
     <Compile Include="Database\UserServices.cs" />
     <Compile Include="Forms\Report\CustomerReport.cs">
