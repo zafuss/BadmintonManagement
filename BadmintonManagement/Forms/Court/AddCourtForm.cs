@@ -1,5 +1,5 @@
 ﻿using BadmintonManagement.Models;
-using BadmintonManagement.Function.CourtService;
+using BadmintonManagement.Database;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -41,7 +41,7 @@ namespace BadmintonManagement.Forms.Court
 
             //txtCourtName.Text = acsc[1].ToString();
         }
-        private void Reset()
+        public void Reset()
         {
             txtCourtName.Text = "";
             dtmStartDate.Text = DateTime.Now.ToString("dd/MM/yyyy");

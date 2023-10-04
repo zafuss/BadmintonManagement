@@ -24,6 +24,9 @@ namespace BadmintonManagement.Models
 
         public double? DateFactor { get; set; }
 
+        [Column("_Status")]
+        public int? C_Status { get; set; }
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<RF_DETAIL> RF_DETAIL { get; set; }
     }
