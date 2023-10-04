@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using BadmintonManagement.Custom;
 
-namespace BadmintonManagement.Function.RFDetailService
+namespace BadmintonManagement.Database
 {
     public class RFDetailService
     {

@@ -11,7 +11,7 @@ using System.Windows.Forms;
 using System.Xml.Linq;
 using BadmintonManagement.Custom;
 
-namespace BadmintonManagement.Function.CourtService
+namespace BadmintonManagement.Database
 {
     public class CourtService
     {

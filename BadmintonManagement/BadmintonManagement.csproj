@@ -159,7 +159,7 @@
     <Compile Include="Forms\ReservationCourt\BookingForm\GetCustomerInformation.Designer.cs">
       <DependentUpon>GetCustomerInformation.cs</DependentUpon>
     </Compile>
-    <Compile Include="Function\RFDetailService\RFDetailService.cs" />
+    <Compile Include="Database\RFDetailService.cs" />
     <Compile Include="Models\BRANCH.cs" />
     <Compile Include="Models\COURT.cs" />
     <Compile Include="Models\CUSTOMER.cs" />
@@ -261,7 +261,7 @@
     <Compile Include="Forms\Service\ServiceForm.Designer.cs">
       <DependentUpon>ServiceForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Function\CourtService\CourtService.cs" />
+    <Compile Include="Database\CourtService.cs" />
     <Compile Include="Services\OTP\OTPService.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
