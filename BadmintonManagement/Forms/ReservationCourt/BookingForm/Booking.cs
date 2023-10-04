@@ -183,8 +183,8 @@ namespace BadmintonManagement.Forms.ReservationCourt.BookingForm
                 rev.Username = Properties.Settings.Default.Username;
                 rev.PhoneNumber = PN;
                 rev.CreateDate = DateTime.Now;
-                DateTime d = dtpDate.Value;
-                rev.BookingDate = new DateTime(d.Year,d.Month,d.Day,dtpStartTime.Value.Hour,dtpStartTime.Value.Minute,dtpStartTime.Value.Second);
+                
+                rev.BookingDate = EarliestTime();
                 rev.Deposite = Decimal.Parse(txtDeopsite.Text);
                 rev.C_Status = 0;
                 context.RESERVATION.Add(rev);

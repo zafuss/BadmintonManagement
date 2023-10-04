@@ -7,12 +7,15 @@ using BadmintonManagement.Forms.Receipt;
 using BadmintonManagement.Forms.Report;
 using BadmintonManagement.Forms.ReservationCourt;
 using BadmintonManagement.Forms.Service;
+using BadmintonManagement.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Entity.Migrations;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.Remoting.Contexts;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -131,6 +134,7 @@ namespace BadmintonManagement.Forms.AuthorizationForms
                 btnUser.Enabled = false;
             }
             lblEmployeeName.Text =  "Nhân viên: " + Properties.Settings.Default._Name;
+            bool t = RealTimeCaptureStatusReservation();
 
         }
 
@@ -186,6 +190,63 @@ namespace BadmintonManagement.Forms.AuthorizationForms
         private void lblEmployeeName_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private DateTime LatestBookingTime(RESERVATION rev)
+        {
+            DateTime d = new DateTime(0, 0, 0, 0, 0, 0);
+            foreach (RF_DETAIL rf in rev.RF_DETAIL)
+            {
+                if (DateTime.Compare(d, rf.EndTime.Value) < 1)
+                    d = rf.EndTime.Value;
+            }
+            return d;
+        }
+        private bool RealTimeCaptureStatusReservation()
+        {
+            ModelBadmintonManage context = new ModelBadmintonManage();
+            bool change = false;
+            List<RESERVATION> listRev = context.RESERVATION.ToList();
+            foreach (RESERVATION rev in listRev)
+            {
+                DateTime d = rev.BookingDate.Value;
+                int s = DateTime.Compare(d.Date, DateTime.Now.Date);
+                if (rev.C_Status == 3 && DateTime.Compare(LatestBookingTime(rev), DateTime.Now) < 0)
+                {
+                    rev.C_Status = 4;
+                }
+                else
+                if (s > 0 || rev.C_Status > 1)
+                    continue;
+                if (s == 0)
+                {
+                    if ((d.Hour * 60 + d.Minute - DateTime.Now.Hour * 60 - DateTime.Now.Minute) < -30)
+                    {
+                        if (rev.C_Status == 0)
+                            rev.C_Status = 5;
+                        else
+                            rev.C_Status = 6;
+                        context.RESERVATION.AddOrUpdate(rev);
+                        context.SaveChanges();
+                        change = true;
+                    }
+                }
+                else
+                {
+                    if (rev.C_Status == 0)
+                        rev.C_Status = 5;
+                    else
+                        rev.C_Status = 6;
+                    context.RESERVATION.AddOrUpdate(rev);
+                    context.SaveChanges();
+                    change = true;
+                }
+            }
+            return change;
+        }
+        private void timerRealTimeStatusCapture_Tick(object sender, EventArgs e)
+        {
+            bool t = RealTimeCaptureStatusReservation();
         }
 
         private void tabControl_DrawItem(object sender, DrawItemEventArgs e)

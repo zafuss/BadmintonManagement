@@ -279,14 +279,16 @@ namespace BadmintonManagement.Forms.ReservationCourt
             }
             ReloadGridByFollowTimeByFilter(st,se);
         }
-        /*private DateTime LatestBookingTime(RESERVATION rev)
+        private DateTime LatestBookingTime(RESERVATION rev)
         {
             DateTime d = new DateTime(0,0,0,0,0,0);
             foreach(RF_DETAIL rf in rev.RF_DETAIL)
             {
-
+                if (DateTime.Compare(d, rf.EndTime.Value) < 1)
+                    d = rf.EndTime.Value;
             }
-        }*/
+            return d;
+        }
         private bool RealTimeCaptureStatusReservation()
         {
             bool change = false;
@@ -295,9 +297,12 @@ namespace BadmintonManagement.Forms.ReservationCourt
             {
                 DateTime d = rev.BookingDate.Value;
                 int s = DateTime.Compare(d.Date, DateTime.Now.Date);
-                if(rev.C_Status == 3)
-
-                if (s > 0 || rev.C_Status>2)
+                if(rev.C_Status == 3 && DateTime.Compare(LatestBookingTime(rev),DateTime.Now)<0)
+                {
+                    rev.C_Status = 4;
+                }
+                else
+                if (s > 0 || rev.C_Status>1)
                     continue;
                 if(s==0)
                 {

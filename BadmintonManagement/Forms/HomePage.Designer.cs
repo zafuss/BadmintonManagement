@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.hệThốngToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tàiKhoảnToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -62,6 +63,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.lblEmployeeName = new System.Windows.Forms.Label();
             this.tabControl = new System.Windows.Forms.TabControl();
+            this.timerRealTimeStatusCapture = new System.Windows.Forms.Timer(this.components);
             this.menuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.pnlChildForm.SuspendLayout();
@@ -358,6 +360,11 @@
             this.tabControl.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.tabControl_DrawItem);
             this.tabControl.MouseClick += new System.Windows.Forms.MouseEventHandler(this.tabControl_MouseClick);
             // 
+            // timerRealTimeStatusCapture
+            // 
+            this.timerRealTimeStatusCapture.Interval = 60000;
+            this.timerRealTimeStatusCapture.Tick += new System.EventHandler(this.timerRealTimeStatusCapture_Tick);
+            // 
             // HomePage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
@@ -421,5 +428,6 @@
         private System.Windows.Forms.TabControl tabControl;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label lblEmployeeName;
+        private System.Windows.Forms.Timer timerRealTimeStatusCapture;
     }
 }

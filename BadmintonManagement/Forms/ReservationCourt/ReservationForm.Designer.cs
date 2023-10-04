@@ -39,6 +39,8 @@
             this.bntAccepted = new System.Windows.Forms.Button();
             this.btnAcceptDeposition = new System.Windows.Forms.Button();
             this.pnlSearch = new System.Windows.Forms.Panel();
+            this.btnCancelFilter = new System.Windows.Forms.Button();
+            this.btnNotYetPayed = new System.Windows.Forms.Button();
             this.btnNotYetDeposited = new System.Windows.Forms.Button();
             this.btnNotYetAccepted = new System.Windows.Forms.Button();
             this.btnOverTime = new System.Windows.Forms.Button();
@@ -55,6 +57,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.chbThisMonth = new System.Windows.Forms.CheckBox();
             this.tmrCheck = new System.Windows.Forms.Timer(this.components);
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.clnRevNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clnUserName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clnPhoneNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -63,9 +66,6 @@
             this.clnCreateDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clnBookingDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clnStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this.btnNotYetPayed = new System.Windows.Forms.Button();
-            this.btnCancelFilter = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvReservation)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -176,6 +176,29 @@
             this.pnlSearch.Size = new System.Drawing.Size(212, 202);
             this.pnlSearch.TabIndex = 7;
             this.pnlSearch.Visible = false;
+            // 
+            // btnCancelFilter
+            // 
+            this.btnCancelFilter.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnCancelFilter.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancelFilter.Location = new System.Drawing.Point(0, 160);
+            this.btnCancelFilter.Name = "btnCancelFilter";
+            this.btnCancelFilter.Size = new System.Drawing.Size(212, 40);
+            this.btnCancelFilter.TabIndex = 5;
+            this.btnCancelFilter.Text = "Bỏ lọc";
+            this.btnCancelFilter.UseVisualStyleBackColor = true;
+            this.btnCancelFilter.Click += new System.EventHandler(this.btnCancelFilter_Click);
+            // 
+            // btnNotYetPayed
+            // 
+            this.btnNotYetPayed.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnNotYetPayed.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNotYetPayed.Location = new System.Drawing.Point(0, 120);
+            this.btnNotYetPayed.Name = "btnNotYetPayed";
+            this.btnNotYetPayed.Size = new System.Drawing.Size(212, 40);
+            this.btnNotYetPayed.TabIndex = 4;
+            this.btnNotYetPayed.Text = "Chưa thanh toán";
+            this.btnNotYetPayed.UseVisualStyleBackColor = true;
             // 
             // btnNotYetDeposited
             // 
@@ -361,6 +384,7 @@
             this.clnRevNo.HeaderText = "Số phiếu";
             this.clnRevNo.Name = "clnRevNo";
             this.clnRevNo.ReadOnly = true;
+            this.clnRevNo.Width = 70;
             // 
             // clnUserName
             // 
@@ -412,29 +436,7 @@
             this.clnStatus.HeaderText = "Tình trạng";
             this.clnStatus.Name = "clnStatus";
             this.clnStatus.ReadOnly = true;
-            // 
-            // btnNotYetPayed
-            // 
-            this.btnNotYetPayed.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnNotYetPayed.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnNotYetPayed.Location = new System.Drawing.Point(0, 120);
-            this.btnNotYetPayed.Name = "btnNotYetPayed";
-            this.btnNotYetPayed.Size = new System.Drawing.Size(212, 40);
-            this.btnNotYetPayed.TabIndex = 4;
-            this.btnNotYetPayed.Text = "Chưa thanh toán";
-            this.btnNotYetPayed.UseVisualStyleBackColor = true;
-            // 
-            // btnCancelFilter
-            // 
-            this.btnCancelFilter.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnCancelFilter.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancelFilter.Location = new System.Drawing.Point(0, 160);
-            this.btnCancelFilter.Name = "btnCancelFilter";
-            this.btnCancelFilter.Size = new System.Drawing.Size(212, 40);
-            this.btnCancelFilter.TabIndex = 5;
-            this.btnCancelFilter.Text = "Bỏ lọc";
-            this.btnCancelFilter.UseVisualStyleBackColor = true;
-            this.btnCancelFilter.Click += new System.EventHandler(this.btnCancelFilter_Click);
+            this.clnStatus.Width = 150;
             // 
             // ReservationForm
             // 
@@ -492,6 +494,9 @@
         private System.Windows.Forms.CheckBox chbThisMonth;
         private System.Windows.Forms.Timer tmrCheck;
         private System.Windows.Forms.Button bntAccepted;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
+        private System.Windows.Forms.Button btnNotYetPayed;
+        private System.Windows.Forms.Button btnCancelFilter;
         private System.Windows.Forms.DataGridViewTextBoxColumn clnRevNo;
         private System.Windows.Forms.DataGridViewTextBoxColumn clnUserName;
         private System.Windows.Forms.DataGridViewTextBoxColumn clnPhoneNumber;
@@ -500,8 +505,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn clnCreateDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn clnBookingDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn clnStatus;
-        private System.ComponentModel.BackgroundWorker backgroundWorker1;
-        private System.Windows.Forms.Button btnNotYetPayed;
-        private System.Windows.Forms.Button btnCancelFilter;
     }
 }
