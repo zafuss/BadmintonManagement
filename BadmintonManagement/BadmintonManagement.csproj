@@ -119,6 +119,7 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Database\DatabaseInitial.cs" />
+    <Compile Include="Database\PriceServices.cs" />
     <Compile Include="Database\ServiceServices.cs" />
     <Compile Include="Database\UserServices.cs" />
     <Compile Include="Forms\Report\CustomerReport.cs">
