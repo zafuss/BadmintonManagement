@@ -137,6 +137,7 @@ create table RECEIPT(
 )
 go
 
+alter table PRICE add _Status int
 set dateformat DMY
 
 insert into CUSTOMER values ('337514097',N'Đậu Văn Nghĩa',N'nghiadauvan@gmail.com')
