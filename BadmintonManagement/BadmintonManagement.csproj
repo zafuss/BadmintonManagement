@@ -159,6 +159,18 @@
     <Compile Include="Forms\ReservationCourt\BookingForm\GetCustomerInformation.Designer.cs">
       <DependentUpon>GetCustomerInformation.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Service\ServiceForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Service\ServiceForm.Designer.cs">
+      <DependentUpon>ServiceForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Service\ShowServiceReceiptForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Service\ShowServiceReceiptForm.Designer.cs">
+      <DependentUpon>ShowServiceReceiptForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Function\RFDetailService\RFDetailService.cs" />
     <Compile Include="Models\BRANCH.cs" />
     <Compile Include="Models\COURT.cs" />
@@ -255,11 +267,11 @@
     <Compile Include="Forms\ReservationCourt\ReservationForm.Designer.cs">
       <DependentUpon>ReservationForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Service\ServiceForm.cs">
+    <Compile Include="Forms\Service\ManageServiceForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Service\ServiceForm.Designer.cs">
-      <DependentUpon>ServiceForm.cs</DependentUpon>
+    <Compile Include="Forms\Service\ManageServiceForm.Designer.cs">
+      <DependentUpon>ManageServiceForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Function\CourtService\CourtService.cs" />
     <Compile Include="Services\OTP\OTPService.cs" />
@@ -291,6 +303,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Report\ServiceReceiptForm.resx">
       <DependentUpon>ServiceReceiptForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Service\ManageServiceForm.resx">
+      <DependentUpon>ManageServiceForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Service\ServiceForm.resx">
+      <DependentUpon>ServiceForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Service\ShowServiceReceiptForm.resx">
+      <DependentUpon>ShowServiceReceiptForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="IncomeReport.rdlc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -338,9 +359,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\ReservationCourt\ReservationForm.resx">
       <DependentUpon>ReservationForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Service\ServiceForm.resx">
-      <DependentUpon>ServiceForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
