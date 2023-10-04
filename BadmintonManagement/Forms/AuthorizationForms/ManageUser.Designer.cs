@@ -52,10 +52,10 @@
             this.label6 = new System.Windows.Forms.Label();
             this.txtRegRepeatPass = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label7 = new System.Windows.Forms.Label();
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUsers)).BeginInit();
             this.panel1.SuspendLayout();
@@ -80,7 +80,7 @@
             this.txtRegPassword.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtRegPassword.Name = "txtRegPassword";
             this.txtRegPassword.PasswordChar = '●';
-            this.txtRegPassword.Size = new System.Drawing.Size(222, 39);
+            this.txtRegPassword.Size = new System.Drawing.Size(222, 34);
             this.txtRegPassword.TabIndex = 4;
             // 
             // label2
@@ -92,7 +92,7 @@
             this.label2.Location = new System.Drawing.Point(32, 384);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(115, 32);
+            this.label2.Size = new System.Drawing.Size(94, 28);
             this.label2.TabIndex = 5;
             this.label2.Text = "Mật khẩu";
             // 
@@ -103,7 +103,7 @@
             this.txtRegUsername.Location = new System.Drawing.Point(177, 182);
             this.txtRegUsername.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtRegUsername.Name = "txtRegUsername";
-            this.txtRegUsername.Size = new System.Drawing.Size(222, 39);
+            this.txtRegUsername.Size = new System.Drawing.Size(222, 34);
             this.txtRegUsername.TabIndex = 0;
             // 
             // label1
@@ -115,7 +115,7 @@
             this.label1.Location = new System.Drawing.Point(32, 185);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(174, 32);
+            this.label1.Size = new System.Drawing.Size(140, 28);
             this.label1.TabIndex = 6;
             this.label1.Text = "Tên đăng nhập";
             // 
@@ -126,7 +126,7 @@
             this.txtRegPhoneNumber.Location = new System.Drawing.Point(177, 331);
             this.txtRegPhoneNumber.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtRegPhoneNumber.Name = "txtRegPhoneNumber";
-            this.txtRegPhoneNumber.Size = new System.Drawing.Size(222, 39);
+            this.txtRegPhoneNumber.Size = new System.Drawing.Size(222, 34);
             this.txtRegPhoneNumber.TabIndex = 3;
             // 
             // label3
@@ -138,7 +138,7 @@
             this.label3.Location = new System.Drawing.Point(32, 334);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(156, 32);
+            this.label3.Size = new System.Drawing.Size(128, 28);
             this.label3.TabIndex = 10;
             this.label3.Text = "Số điện thoại";
             // 
@@ -149,7 +149,7 @@
             this.txtRegEmail.Location = new System.Drawing.Point(177, 282);
             this.txtRegEmail.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtRegEmail.Name = "txtRegEmail";
-            this.txtRegEmail.Size = new System.Drawing.Size(222, 39);
+            this.txtRegEmail.Size = new System.Drawing.Size(222, 34);
             this.txtRegEmail.TabIndex = 2;
             // 
             // label4
@@ -161,16 +161,16 @@
             this.label4.Location = new System.Drawing.Point(32, 285);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(71, 32);
+            this.label4.Size = new System.Drawing.Size(59, 28);
             this.label4.TabIndex = 11;
             this.label4.Text = "Email";
             // 
             // pictureBox1
             // 
             this.pictureBox1.Image = global::BadmintonManagement.Properties.Resources.register_images;
-            this.pictureBox1.Location = new System.Drawing.Point(147, 12);
+            this.pictureBox1.Location = new System.Drawing.Point(160, 12);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(139, 121);
+            this.pictureBox1.Size = new System.Drawing.Size(117, 121);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
@@ -275,7 +275,7 @@
             this.label5.Location = new System.Drawing.Point(32, 234);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(87, 32);
+            this.label5.Size = new System.Drawing.Size(71, 28);
             this.label5.TabIndex = 6;
             this.label5.Text = "Họ tên";
             // 
@@ -286,7 +286,7 @@
             this.txtName.Location = new System.Drawing.Point(177, 231);
             this.txtName.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(222, 39);
+            this.txtName.Size = new System.Drawing.Size(222, 34);
             this.txtName.TabIndex = 1;
             // 
             // label6
@@ -298,7 +298,7 @@
             this.label6.Location = new System.Drawing.Point(32, 433);
             this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(219, 32);
+            this.label6.Size = new System.Drawing.Size(177, 28);
             this.label6.TabIndex = 5;
             this.label6.Text = "Xác nhận mật khẩu";
             // 
@@ -310,17 +310,27 @@
             this.txtRegRepeatPass.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtRegRepeatPass.Name = "txtRegRepeatPass";
             this.txtRegRepeatPass.PasswordChar = '●';
-            this.txtRegRepeatPass.Size = new System.Drawing.Size(222, 39);
+            this.txtRegRepeatPass.Size = new System.Drawing.Size(222, 34);
             this.txtRegRepeatPass.TabIndex = 5;
             // 
             // panel1
             // 
             this.panel1.Controls.Add(this.groupBox1);
+            this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(426, 551);
             this.panel1.TabIndex = 12;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Location = new System.Drawing.Point(25, 139);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(386, 335);
+            this.groupBox1.TabIndex = 0;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Thông tin tài khoản";
             // 
             // label7
             // 
@@ -328,7 +338,7 @@
             this.label7.AutoSize = true;
             this.label7.Location = new System.Drawing.Point(377, 114);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(219, 32);
+            this.label7.Size = new System.Drawing.Size(177, 28);
             this.label7.TabIndex = 14;
             this.label7.Text = "Tìm kiếm tài khoản";
             // 
@@ -337,7 +347,7 @@
             this.txtSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.txtSearch.Location = new System.Drawing.Point(560, 114);
             this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(178, 39);
+            this.txtSearch.Size = new System.Drawing.Size(178, 34);
             this.txtSearch.TabIndex = 13;
             this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
             // 
@@ -352,18 +362,9 @@
             this.panel2.TabIndex = 16;
             this.panel2.SizeChanged += new System.EventHandler(this.panel2_SizeChanged);
             // 
-            // groupBox1
-            // 
-            this.groupBox1.Location = new System.Drawing.Point(25, 139);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(386, 335);
-            this.groupBox1.TabIndex = 0;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Thông tin tài khoản";
-            // 
             // ManageUser
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 32F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 28F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1176, 551);
             this.Controls.Add(this.dgvUsers);
@@ -383,7 +384,6 @@
             this.Controls.Add(this.label5);
             this.Controls.Add(this.txtRegUsername);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.panel1);
             this.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;

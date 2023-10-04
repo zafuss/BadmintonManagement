@@ -43,6 +43,7 @@
             this.txtServiceName = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label7 = new System.Windows.Forms.Label();
             this.txtSearch = new System.Windows.Forms.TextBox();
@@ -53,7 +54,6 @@
             this.clnPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clnQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clnStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nmrQuantity)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -88,7 +88,7 @@
             // 
             this.nmrQuantity.Location = new System.Drawing.Point(110, 391);
             this.nmrQuantity.Name = "nmrQuantity";
-            this.nmrQuantity.Size = new System.Drawing.Size(198, 39);
+            this.nmrQuantity.Size = new System.Drawing.Size(198, 34);
             this.nmrQuantity.TabIndex = 4;
             this.nmrQuantity.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -101,7 +101,7 @@
             this.label3.Location = new System.Drawing.Point(12, 391);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(110, 32);
+            this.label3.Size = new System.Drawing.Size(92, 28);
             this.label3.TabIndex = 26;
             this.label3.Text = "Số lượng";
             // 
@@ -112,7 +112,7 @@
             this.txtPrice.Location = new System.Drawing.Point(110, 339);
             this.txtPrice.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtPrice.Name = "txtPrice";
-            this.txtPrice.Size = new System.Drawing.Size(198, 39);
+            this.txtPrice.Size = new System.Drawing.Size(198, 34);
             this.txtPrice.TabIndex = 3;
             this.txtPrice.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtQuantity_KeyPress);
             // 
@@ -125,7 +125,7 @@
             this.label4.Location = new System.Drawing.Point(12, 342);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(98, 32);
+            this.label4.Size = new System.Drawing.Size(81, 28);
             this.label4.TabIndex = 27;
             this.label4.Text = "Đơn giá";
             // 
@@ -166,7 +166,7 @@
             this.txtUnit.Location = new System.Drawing.Point(110, 288);
             this.txtUnit.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtUnit.Name = "txtUnit";
-            this.txtUnit.Size = new System.Drawing.Size(198, 39);
+            this.txtUnit.Size = new System.Drawing.Size(198, 34);
             this.txtUnit.TabIndex = 2;
             // 
             // label5
@@ -178,7 +178,7 @@
             this.label5.Location = new System.Drawing.Point(12, 291);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(133, 32);
+            this.label5.Size = new System.Drawing.Size(108, 28);
             this.label5.TabIndex = 22;
             this.label5.Text = "Đơn vị tính";
             // 
@@ -189,7 +189,7 @@
             this.txtServiceID.Location = new System.Drawing.Point(110, 189);
             this.txtServiceID.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtServiceID.Name = "txtServiceID";
-            this.txtServiceID.Size = new System.Drawing.Size(198, 39);
+            this.txtServiceID.Size = new System.Drawing.Size(198, 34);
             this.txtServiceID.TabIndex = 0;
             // 
             // label2
@@ -201,7 +201,7 @@
             this.label2.Location = new System.Drawing.Point(12, 192);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(133, 32);
+            this.label2.Size = new System.Drawing.Size(108, 28);
             this.label2.TabIndex = 23;
             this.label2.Text = "Mã dịch vụ";
             // 
@@ -212,7 +212,7 @@
             this.txtServiceName.Location = new System.Drawing.Point(110, 239);
             this.txtServiceName.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtServiceName.Name = "txtServiceName";
-            this.txtServiceName.Size = new System.Drawing.Size(198, 39);
+            this.txtServiceName.Size = new System.Drawing.Size(198, 34);
             this.txtServiceName.TabIndex = 1;
             // 
             // label1
@@ -224,19 +224,28 @@
             this.label1.Location = new System.Drawing.Point(12, 242);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(137, 32);
+            this.label1.Size = new System.Drawing.Size(109, 28);
             this.label1.TabIndex = 23;
             this.label1.Text = "Tên dịch vụ";
             // 
             // pictureBox1
             // 
             this.pictureBox1.Image = global::BadmintonManagement.Properties.Resources.service_icon;
-            this.pictureBox1.Location = new System.Drawing.Point(90, 12);
+            this.pictureBox1.Location = new System.Drawing.Point(97, 12);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(148, 134);
+            this.pictureBox1.Size = new System.Drawing.Size(136, 134);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 13;
             this.pictureBox1.TabStop = false;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Location = new System.Drawing.Point(3, 152);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(316, 300);
+            this.groupBox1.TabIndex = 28;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Thông tin dịch vụ";
             // 
             // panel2
             // 
@@ -255,7 +264,7 @@
             this.label7.AutoSize = true;
             this.label7.Location = new System.Drawing.Point(466, 133);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(198, 32);
+            this.label7.Size = new System.Drawing.Size(159, 28);
             this.label7.TabIndex = 14;
             this.label7.Text = "Tìm kiếm dịch vụ";
             // 
@@ -264,7 +273,7 @@
             this.txtSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.txtSearch.Location = new System.Drawing.Point(649, 133);
             this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(178, 39);
+            this.txtSearch.Size = new System.Drawing.Size(178, 34);
             this.txtSearch.TabIndex = 0;
             this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
             // 
@@ -339,18 +348,9 @@
             this.clnStatus.Name = "clnStatus";
             this.clnStatus.ReadOnly = true;
             // 
-            // groupBox1
-            // 
-            this.groupBox1.Location = new System.Drawing.Point(3, 152);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(316, 300);
-            this.groupBox1.TabIndex = 28;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Thông tin dịch vụ";
-            // 
             // ManageServiceForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 32F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 28F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1176, 551);
             this.Controls.Add(this.dgvServices);
