@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.cmbStatus = new System.Windows.Forms.ComboBox();
             this.btnUsedPrice = new System.Windows.Forms.Button();
             this.txtPriceID = new System.Windows.Forms.TextBox();
@@ -41,6 +42,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.dgvPrices = new System.Windows.Forms.DataGridView();
             this.PriceID = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -49,13 +51,17 @@
             this.DateFactor = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Status = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.label6 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPrices)).BeginInit();
+            this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Controls.Add(this.cmbStatus);
             this.panel1.Controls.Add(this.btnUsedPrice);
             this.panel1.Controls.Add(this.txtPriceID);
@@ -68,11 +74,22 @@
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.label1);
+            this.panel1.Controls.Add(this.groupBox1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(265, 551);
             this.panel1.TabIndex = 0;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::BadmintonManagement.Properties.Resources.prices1;
+            this.pictureBox1.Location = new System.Drawing.Point(80, 8);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(100, 76);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 16;
+            this.pictureBox1.TabStop = false;
             // 
             // cmbStatus
             // 
@@ -80,14 +97,14 @@
             this.cmbStatus.Items.AddRange(new object[] {
             "Không áp dụng",
             "Áp dụng"});
-            this.cmbStatus.Location = new System.Drawing.Point(109, 321);
+            this.cmbStatus.Location = new System.Drawing.Point(107, 347);
             this.cmbStatus.Name = "cmbStatus";
             this.cmbStatus.Size = new System.Drawing.Size(140, 28);
             this.cmbStatus.TabIndex = 14;
             // 
             // btnUsedPrice
             // 
-            this.btnUsedPrice.Location = new System.Drawing.Point(137, 394);
+            this.btnUsedPrice.Location = new System.Drawing.Point(135, 420);
             this.btnUsedPrice.Name = "btnUsedPrice";
             this.btnUsedPrice.Size = new System.Drawing.Size(100, 34);
             this.btnUsedPrice.TabIndex = 13;
@@ -96,7 +113,7 @@
             // 
             // txtPriceID
             // 
-            this.txtPriceID.Location = new System.Drawing.Point(109, 107);
+            this.txtPriceID.Location = new System.Drawing.Point(107, 133);
             this.txtPriceID.Name = "txtPriceID";
             this.txtPriceID.Size = new System.Drawing.Size(140, 26);
             this.txtPriceID.TabIndex = 12;
@@ -104,7 +121,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(13, 329);
+            this.label5.Location = new System.Drawing.Point(11, 355);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(84, 20);
             this.label5.TabIndex = 11;
@@ -112,7 +129,7 @@
             // 
             // btnAddPrice
             // 
-            this.btnAddPrice.Location = new System.Drawing.Point(12, 394);
+            this.btnAddPrice.Location = new System.Drawing.Point(10, 420);
             this.btnAddPrice.Name = "btnAddPrice";
             this.btnAddPrice.Size = new System.Drawing.Size(100, 34);
             this.btnAddPrice.TabIndex = 8;
@@ -122,21 +139,21 @@
             // 
             // txtDateFactor
             // 
-            this.txtDateFactor.Location = new System.Drawing.Point(109, 269);
+            this.txtDateFactor.Location = new System.Drawing.Point(107, 295);
             this.txtDateFactor.Name = "txtDateFactor";
             this.txtDateFactor.Size = new System.Drawing.Size(140, 26);
             this.txtDateFactor.TabIndex = 6;
             // 
             // txtTimeFactor
             // 
-            this.txtTimeFactor.Location = new System.Drawing.Point(109, 213);
+            this.txtTimeFactor.Location = new System.Drawing.Point(107, 239);
             this.txtTimeFactor.Name = "txtTimeFactor";
             this.txtTimeFactor.Size = new System.Drawing.Size(140, 26);
             this.txtTimeFactor.TabIndex = 5;
             // 
             // txtPriceTag
             // 
-            this.txtPriceTag.Location = new System.Drawing.Point(109, 161);
+            this.txtPriceTag.Location = new System.Drawing.Point(107, 187);
             this.txtPriceTag.Name = "txtPriceTag";
             this.txtPriceTag.Size = new System.Drawing.Size(140, 26);
             this.txtPriceTag.TabIndex = 4;
@@ -144,7 +161,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(13, 272);
+            this.label4.Location = new System.Drawing.Point(11, 298);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(94, 20);
             this.label4.TabIndex = 3;
@@ -153,7 +170,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(12, 216);
+            this.label3.Location = new System.Drawing.Point(10, 242);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(83, 20);
             this.label3.TabIndex = 2;
@@ -162,7 +179,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(13, 164);
+            this.label2.Location = new System.Drawing.Point(11, 190);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(74, 20);
             this.label2.TabIndex = 1;
@@ -171,11 +188,20 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 110);
+            this.label1.Location = new System.Drawing.Point(10, 136);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(64, 20);
             this.label1.TabIndex = 0;
             this.label1.Text = "Mã Giá ";
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Location = new System.Drawing.Point(7, 96);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(252, 302);
+            this.groupBox1.TabIndex = 15;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Thông tin giá";
             // 
             // panel2
             // 
@@ -199,13 +225,14 @@
             this.DateFactor,
             this.Status});
             this.dgvPrices.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvPrices.Location = new System.Drawing.Point(0, 112);
+            this.dgvPrices.Location = new System.Drawing.Point(0, 106);
             this.dgvPrices.Name = "dgvPrices";
             this.dgvPrices.ReadOnly = true;
             this.dgvPrices.RowHeadersWidth = 62;
             this.dgvPrices.RowTemplate.Height = 28;
-            this.dgvPrices.Size = new System.Drawing.Size(911, 439);
+            this.dgvPrices.Size = new System.Drawing.Size(911, 445);
             this.dgvPrices.TabIndex = 1;
+            this.dgvPrices.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPrices_CellClick);
             // 
             // PriceID
             // 
@@ -249,11 +276,22 @@
             // 
             // panel3
             // 
+            this.panel3.Controls.Add(this.label6);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel3.Location = new System.Drawing.Point(0, 0);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(911, 112);
+            this.panel3.Size = new System.Drawing.Size(911, 106);
             this.panel3.TabIndex = 0;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(383, 47);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(159, 37);
+            this.label6.TabIndex = 0;
+            this.label6.Text = "Bảng Giá";
             // 
             // PriceForm
             // 
@@ -269,8 +307,11 @@
             this.Load += new System.EventHandler(this.PriceForm_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvPrices)).EndInit();
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -298,5 +339,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn TimeFactor;
         private System.Windows.Forms.DataGridViewTextBoxColumn DateFactor;
         private System.Windows.Forms.DataGridViewTextBoxColumn Status;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.GroupBox groupBox1;
     }
 }

@@ -80,5 +80,25 @@ namespace BadmintonManagement.Forms.Price
                 MessageBox.Show(ex.Message);
             }
         }
+
+        private void dgvPrices_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                if(e.RowIndex >= 0)
+                {
+                    int index = e.RowIndex;
+                    txtPriceID.Text = dgvPrices.Rows[index].Cells[0].Value.ToString();
+                    txtPriceTag.Text = dgvPrices.Rows[index].Cells[1].Value.ToString();
+                    txtTimeFactor.Text = dgvPrices.Rows[index].Cells[2].Value.ToString();
+                    txtDateFactor.Text = dgvPrices.Rows[index].Cells[3].Value.ToString();
+                    cmbStatus.Text = dgvPrices.Rows[index].Cells[4].Value.ToString();   
+                }
+            }
+            catch ( Exception ex )
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
     }
 }
