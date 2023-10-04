@@ -30,10 +30,10 @@
         {
             this.panel1 = new System.Windows.Forms.Panel();
             this.cmbStatus = new System.Windows.Forms.ComboBox();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnUsedPrice = new System.Windows.Forms.Button();
             this.txtPriceID = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnAddPrice = new System.Windows.Forms.Button();
             this.txtDateFactor = new System.Windows.Forms.TextBox();
             this.txtTimeFactor = new System.Windows.Forms.TextBox();
             this.txtPriceTag = new System.Windows.Forms.TextBox();
@@ -57,10 +57,10 @@
             // panel1
             // 
             this.panel1.Controls.Add(this.cmbStatus);
-            this.panel1.Controls.Add(this.button2);
+            this.panel1.Controls.Add(this.btnUsedPrice);
             this.panel1.Controls.Add(this.txtPriceID);
             this.panel1.Controls.Add(this.label5);
-            this.panel1.Controls.Add(this.button1);
+            this.panel1.Controls.Add(this.btnAddPrice);
             this.panel1.Controls.Add(this.txtDateFactor);
             this.panel1.Controls.Add(this.txtTimeFactor);
             this.panel1.Controls.Add(this.txtPriceTag);
@@ -78,21 +78,21 @@
             // 
             this.cmbStatus.FormattingEnabled = true;
             this.cmbStatus.Items.AddRange(new object[] {
-            "0",
-            "1"});
+            "Không áp dụng",
+            "Áp dụng"});
             this.cmbStatus.Location = new System.Drawing.Point(109, 321);
             this.cmbStatus.Name = "cmbStatus";
             this.cmbStatus.Size = new System.Drawing.Size(140, 28);
             this.cmbStatus.TabIndex = 14;
             // 
-            // button2
+            // btnUsedPrice
             // 
-            this.button2.Location = new System.Drawing.Point(137, 394);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(100, 34);
-            this.button2.TabIndex = 13;
-            this.button2.Text = "Áp Dụng";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnUsedPrice.Location = new System.Drawing.Point(137, 394);
+            this.btnUsedPrice.Name = "btnUsedPrice";
+            this.btnUsedPrice.Size = new System.Drawing.Size(100, 34);
+            this.btnUsedPrice.TabIndex = 13;
+            this.btnUsedPrice.Text = "Áp Dụng";
+            this.btnUsedPrice.UseVisualStyleBackColor = true;
             // 
             // txtPriceID
             // 
@@ -110,15 +110,15 @@
             this.label5.TabIndex = 11;
             this.label5.Text = "Trạng Thái";
             // 
-            // button1
+            // btnAddPrice
             // 
-            this.button1.Location = new System.Drawing.Point(17, 394);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(100, 34);
-            this.button1.TabIndex = 8;
-            this.button1.Text = "Thêm";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btnAddPrice.Location = new System.Drawing.Point(12, 394);
+            this.btnAddPrice.Name = "btnAddPrice";
+            this.btnAddPrice.Size = new System.Drawing.Size(100, 34);
+            this.btnAddPrice.TabIndex = 8;
+            this.btnAddPrice.Text = "Thêm";
+            this.btnAddPrice.UseVisualStyleBackColor = true;
+            this.btnAddPrice.Click += new System.EventHandler(this.btnAddPrice_Click);
             // 
             // txtDateFactor
             // 
@@ -282,14 +282,14 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnAddPrice;
         private System.Windows.Forms.TextBox txtDateFactor;
         private System.Windows.Forms.TextBox txtTimeFactor;
         private System.Windows.Forms.TextBox txtPriceTag;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtPriceID;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnUsedPrice;
         private System.Windows.Forms.ComboBox cmbStatus;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.DataGridView dgvPrices;
