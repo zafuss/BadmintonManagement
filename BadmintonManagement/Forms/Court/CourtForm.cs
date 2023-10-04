@@ -1,5 +1,5 @@
-﻿using BadmintonManagement.Function.CourtService;
-using BadmintonManagement.Function.RFDetailService;
+﻿using BadmintonManagement.Database;
+using BadmintonManagement.Custom;
 using BadmintonManagement.Models;
 using System;
 using System.Collections.Generic;
@@ -11,7 +11,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using BadmintonManagement.Custom;
+
 
 namespace BadmintonManagement.Forms.Court
 {
@@ -36,13 +36,19 @@ namespace BadmintonManagement.Forms.Court
             pnlDisplayCourt.AutoScroll = true;
             //Test();
         }
+
+        public void Reset()
+        {
+            txtBranchName.Text = txtCourtName.Text = txtNameCustom.Text = txtPhoneNumber.Text = "";
+            dtmEndTime.Value = dtmEndTime.Value = DateTime.Now;
+        }
+
         string _name = "";
         private void ControlHoverEnterHandler(object sender, EventArgs e)
         {
             CustomPanel hoverPanel = sender as CustomPanel;
             if (hoverPanel != null)
             {
-                _name = hoverPanel.Name;
                 hoverPanel.BorderStyle = BorderStyle.FixedSingle;
                 hoverPanel.BorderColor = Color.Red;
             }
@@ -51,12 +57,36 @@ namespace BadmintonManagement.Forms.Court
         private void ControlHoverLeaveHandler(object sender, EventArgs e)
         {
             CustomPanel hoverPanel = sender as CustomPanel;
-            if (hoverPanel != null )
+            if (hoverPanel != null)
             {
-                _name = "";
-                hoverPanel.BorderStyle = BorderStyle.None;
-                hoverPanel.BorderColor = System.Drawing.Color.Transparent;
-            } 
+                //_name = "";
+                //MessageBox.Show(_name);
+                
+                if (_name == "")
+                {
+                    hoverPanel.BorderStyle = BorderStyle.None;
+                    hoverPanel.BorderColor = System.Drawing.Color.Transparent;
+                }
+                if (_name != hoverPanel.Name)
+                {
+                    hoverPanel.BorderStyle = BorderStyle.None;
+                    hoverPanel.BorderColor = System.Drawing.Color.Transparent;
+                }
+
+            }
+            foreach(CustomPanel item in pnlDisplayCourt.Controls)
+            {
+                if (item.Name == _name)
+                {
+                    item.BorderStyle = BorderStyle.FixedSingle;
+                    item.BorderColor = Color.Red;
+                }
+                else
+                {
+                    item.BorderStyle = BorderStyle.None;
+                    item.BorderColor = System.Drawing.Color.Transparent;
+                }
+            }
         }
 
         private void PicMouseHoverHandler(object sender, EventArgs e)
@@ -66,12 +96,11 @@ namespace BadmintonManagement.Forms.Court
             {
                 foreach (CustomPanel item in pnlDisplayCourt.Controls)
                 {
-                    if(item.Name == customPicBox.Name)
+                    if(item.Name == customPicBox.Name )
                     {
                         item.BorderStyle = BorderStyle.FixedSingle;
                         item.BorderColor = Color.Red;
                     }
-                    
                 }
             }
         }
@@ -153,6 +182,14 @@ namespace BadmintonManagement.Forms.Court
             }
             pnlAdmin.Visible = false;
             pnlUser.Visible = false;
+            if(flagAdmin)
+            {
+                AddCourtForm.Instance.Reset();
+            }
+            else
+            {
+                Reset();
+            }
             //}
         }
 
@@ -209,10 +246,10 @@ namespace BadmintonManagement.Forms.Court
                 pnlDisplayCourt.Controls.Add(new RFDetailService().DisplayRFDetailUser(i, listRF[i], width, heigth));
                 pnlDisplayCourt.Controls[i].Controls[3].Click += ControlClickHandler;
                 pnlDisplayCourt.Click += ControlDoubleClickHandler;
-                //pnlDisplayCourt.Controls[i].Controls[3].MouseHover += PicMouseHoverHandler;
+                pnlDisplayCourt.Controls[i].Controls[3].MouseHover += PicMouseHoverHandler;
 
-                //pnlDisplayCourt.Controls[i].MouseHover += ControlHoverEnterHandler;
-                //pnlDisplayCourt.Controls[i].MouseLeave += ControlHoverLeaveHandler;
+                pnlDisplayCourt.Controls[i].MouseHover += ControlHoverEnterHandler;
+                pnlDisplayCourt.Controls[i].MouseLeave += ControlHoverLeaveHandler;
             }
             
         }
@@ -231,10 +268,10 @@ namespace BadmintonManagement.Forms.Court
                 pnlDisplayCourt.Controls.Add(new CourtService().DisplayCourtAdmin(i, newCourt[i],width,heigth));
                 pnlDisplayCourt.Controls[i].Controls[2].Click += ControlAdminClickHandler;
                 pnlDisplayCourt.Click += ControlDoubleClickHandler;
-                //pnlDisplayCourt.Controls[i].Controls[2].MouseHover += PicMouseHoverHandler;
+                pnlDisplayCourt.Controls[i].Controls[2].MouseHover += PicMouseHoverHandler;
 
-                //pnlDisplayCourt.Controls[i].MouseHover += ControlHoverEnterHandler;
-                //pnlDisplayCourt.Controls[i].MouseLeave += ControlHoverLeaveHandler;
+                pnlDisplayCourt.Controls[i].MouseHover += ControlHoverEnterHandler;
+                pnlDisplayCourt.Controls[i].MouseLeave += ControlHoverLeaveHandler;
             }
 
         }
@@ -288,6 +325,7 @@ namespace BadmintonManagement.Forms.Court
                 count = listRF.Count();
                 UserShow(listRF, count);
             }
+
 
             foreach (CustomPanel item in pnlDisplayCourt.Controls)
             {
