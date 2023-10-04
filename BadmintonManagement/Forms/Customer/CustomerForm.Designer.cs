@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.txtSearchFullName = new System.Windows.Forms.TextBox();
-            this.btnDelete = new System.Windows.Forms.Button();
             this.btnUpdate = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
             this.txtEmail = new System.Windows.Forms.TextBox();
@@ -41,17 +40,17 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.panelDataGrid = new System.Windows.Forms.Panel();
-            this.dataGridViewCustomer = new System.Windows.Forms.DataGridView();
+            this.dgvCustomer = new System.Windows.Forms.DataGridView();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label1 = new System.Windows.Forms.Label();
             this.panelInfo = new System.Windows.Forms.Panel();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.panelFeatures.SuspendLayout();
             this.panelDataGrid.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCustomer)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvCustomer)).BeginInit();
             this.panelInfo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -64,21 +63,12 @@
             this.txtSearchFullName.Name = "txtSearchFullName";
             this.txtSearchFullName.Size = new System.Drawing.Size(153, 39);
             this.txtSearchFullName.TabIndex = 2;
-            // 
-            // btnDelete
-            // 
-            this.btnDelete.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDelete.Location = new System.Drawing.Point(287, 364);
-            this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(119, 46);
-            this.btnDelete.TabIndex = 3;
-            this.btnDelete.Text = "Xóa";
-            this.btnDelete.UseVisualStyleBackColor = true;
+            this.txtSearchFullName.TextChanged += new System.EventHandler(this.txtSearchFullName_TextChanged);
             // 
             // btnUpdate
             // 
             this.btnUpdate.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUpdate.Location = new System.Drawing.Point(146, 364);
+            this.btnUpdate.Location = new System.Drawing.Point(215, 354);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(119, 46);
             this.btnUpdate.TabIndex = 2;
@@ -88,7 +78,7 @@
             // btnAdd
             // 
             this.btnAdd.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAdd.Location = new System.Drawing.Point(12, 364);
+            this.btnAdd.Location = new System.Drawing.Point(53, 354);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(119, 46);
             this.btnAdd.TabIndex = 2;
@@ -175,7 +165,7 @@
             // 
             // panelDataGrid
             // 
-            this.panelDataGrid.Controls.Add(this.dataGridViewCustomer);
+            this.panelDataGrid.Controls.Add(this.dgvCustomer);
             this.panelDataGrid.Controls.Add(this.panelFeatures);
             this.panelDataGrid.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelDataGrid.Location = new System.Drawing.Point(426, 0);
@@ -183,22 +173,23 @@
             this.panelDataGrid.Size = new System.Drawing.Size(749, 551);
             this.panelDataGrid.TabIndex = 8;
             // 
-            // dataGridViewCustomer
+            // dgvCustomer
             // 
-            this.dataGridViewCustomer.AllowUserToAddRows = false;
-            this.dataGridViewCustomer.AllowUserToDeleteRows = false;
-            this.dataGridViewCustomer.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewCustomer.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgvCustomer.AllowUserToAddRows = false;
+            this.dgvCustomer.AllowUserToDeleteRows = false;
+            this.dgvCustomer.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvCustomer.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
             this.Column2,
             this.Column3});
-            this.dataGridViewCustomer.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridViewCustomer.Location = new System.Drawing.Point(0, 137);
-            this.dataGridViewCustomer.Name = "dataGridViewCustomer";
-            this.dataGridViewCustomer.ReadOnly = true;
-            this.dataGridViewCustomer.RowHeadersWidth = 62;
-            this.dataGridViewCustomer.Size = new System.Drawing.Size(749, 414);
-            this.dataGridViewCustomer.TabIndex = 0;
+            this.dgvCustomer.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvCustomer.Location = new System.Drawing.Point(0, 137);
+            this.dgvCustomer.Name = "dgvCustomer";
+            this.dgvCustomer.ReadOnly = true;
+            this.dgvCustomer.RowHeadersWidth = 62;
+            this.dgvCustomer.Size = new System.Drawing.Size(749, 414);
+            this.dgvCustomer.TabIndex = 0;
+            this.dgvCustomer.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewCustomer_CellClick_1);
             // 
             // Column1
             // 
@@ -238,7 +229,6 @@
             // panelInfo
             // 
             this.panelInfo.Controls.Add(this.pictureBox1);
-            this.panelInfo.Controls.Add(this.btnDelete);
             this.panelInfo.Controls.Add(this.btnUpdate);
             this.panelInfo.Controls.Add(this.label3);
             this.panelInfo.Controls.Add(this.txtPhoneNumber);
@@ -254,15 +244,6 @@
             this.panelInfo.Size = new System.Drawing.Size(426, 551);
             this.panelInfo.TabIndex = 6;
             // 
-            // groupBox1
-            // 
-            this.groupBox1.Location = new System.Drawing.Point(12, 123);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(394, 207);
-            this.groupBox1.TabIndex = 4;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Thông tin khách hàng";
-            // 
             // pictureBox1
             // 
             this.pictureBox1.Image = global::BadmintonManagement.Properties.Resources.customer__1_;
@@ -272,6 +253,15 @@
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 5;
             this.pictureBox1.TabStop = false;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Location = new System.Drawing.Point(12, 123);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(394, 207);
+            this.groupBox1.TabIndex = 4;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Thông tin khách hàng";
             // 
             // CustomerForm
             // 
@@ -289,7 +279,7 @@
             this.panelFeatures.ResumeLayout(false);
             this.panelFeatures.PerformLayout();
             this.panelDataGrid.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCustomer)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvCustomer)).EndInit();
             this.panelInfo.ResumeLayout(false);
             this.panelInfo.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -300,7 +290,6 @@
         #endregion
 
         private System.Windows.Forms.TextBox txtSearchFullName;
-        private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button btnUpdate;
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.TextBox txtEmail;
@@ -311,7 +300,7 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Panel panelDataGrid;
-        private System.Windows.Forms.DataGridView dataGridViewCustomer;
+        private System.Windows.Forms.DataGridView dgvCustomer;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panelInfo;
         private System.Windows.Forms.Label label4;
