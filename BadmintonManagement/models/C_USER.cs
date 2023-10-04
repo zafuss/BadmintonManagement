@@ -13,6 +13,7 @@ namespace BadmintonManagement.Models
         public C_USER()
         {
             RESERVATION = new HashSet<RESERVATION>();
+            SERVICE_RECEIPT = new HashSet<SERVICE_RECEIPT>();
         }
 
         [Key]
@@ -43,5 +44,8 @@ namespace BadmintonManagement.Models
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<RESERVATION> RESERVATION { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<SERVICE_RECEIPT> SERVICE_RECEIPT { get; set; }
     }
 }

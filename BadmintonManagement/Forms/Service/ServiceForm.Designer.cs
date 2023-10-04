@@ -45,7 +45,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(200, 741);
+            this.panel1.Size = new System.Drawing.Size(245, 741);
             this.panel1.TabIndex = 0;
             // 
             // btnCreateServiceReceipt
@@ -56,7 +56,7 @@
             this.btnCreateServiceReceipt.Location = new System.Drawing.Point(0, 104);
             this.btnCreateServiceReceipt.Name = "btnCreateServiceReceipt";
             this.btnCreateServiceReceipt.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
-            this.btnCreateServiceReceipt.Size = new System.Drawing.Size(200, 52);
+            this.btnCreateServiceReceipt.Size = new System.Drawing.Size(245, 52);
             this.btnCreateServiceReceipt.TabIndex = 1;
             this.btnCreateServiceReceipt.Text = "Tạo hoá đơn";
             this.btnCreateServiceReceipt.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -72,7 +72,7 @@
             this.btnServiceReceipt.Location = new System.Drawing.Point(0, 52);
             this.btnServiceReceipt.Name = "btnServiceReceipt";
             this.btnServiceReceipt.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
-            this.btnServiceReceipt.Size = new System.Drawing.Size(200, 52);
+            this.btnServiceReceipt.Size = new System.Drawing.Size(245, 52);
             this.btnServiceReceipt.TabIndex = 1;
             this.btnServiceReceipt.Text = "Quản lý dịch vụ";
             this.btnServiceReceipt.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -88,9 +88,9 @@
             this.btnReceiptServices.Location = new System.Drawing.Point(0, 0);
             this.btnReceiptServices.Name = "btnReceiptServices";
             this.btnReceiptServices.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
-            this.btnReceiptServices.Size = new System.Drawing.Size(200, 52);
+            this.btnReceiptServices.Size = new System.Drawing.Size(245, 52);
             this.btnReceiptServices.TabIndex = 1;
-            this.btnReceiptServices.Text = "Danh sách dịch vụ";
+            this.btnReceiptServices.Text = "Danh sách hoá đơn dịch vụ";
             this.btnReceiptServices.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnReceiptServices.UseVisualStyleBackColor = false;
             this.btnReceiptServices.Click += new System.EventHandler(this.btnReceiptServices_Click);
@@ -98,9 +98,9 @@
             // pnlChild
             // 
             this.pnlChild.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlChild.Location = new System.Drawing.Point(200, 0);
+            this.pnlChild.Location = new System.Drawing.Point(245, 0);
             this.pnlChild.Name = "pnlChild";
-            this.pnlChild.Size = new System.Drawing.Size(1057, 741);
+            this.pnlChild.Size = new System.Drawing.Size(1012, 741);
             this.pnlChild.TabIndex = 2;
             // 
             // ServiceForm
