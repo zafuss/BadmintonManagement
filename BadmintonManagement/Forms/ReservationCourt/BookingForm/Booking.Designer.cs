@@ -254,6 +254,7 @@
             this.Name = "Booking";
             this.Text = "Đặt sân";
             this.Load += new System.EventHandler(this.BookingForm_Load);
+       
             ((System.ComponentModel.ISupportInitialize)(this.dgvRF_Detail)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

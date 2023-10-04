@@ -109,6 +109,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BadmintonManagementDBDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BadmintonManagementDBDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Database\DatabaseInitial.cs" />
     <Compile Include="Database\UserServices.cs" />
     <Compile Include="Forms\Report\CustomerReport.cs">
@@ -148,6 +153,12 @@
     </Compile>
     <Compile Include="Forms\ReservationCourt\BookingForm\GetCustomerInformation.Designer.cs">
       <DependentUpon>GetCustomerInformation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ReservationCourt\ReservationReceipt\RevReceipt.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ReservationCourt\ReservationReceipt\RevReceipt.Designer.cs">
+      <DependentUpon>RevReceipt.cs</DependentUpon>
     </Compile>
     <Compile Include="Function\RFDetailService\RFDetailService.cs" />
     <Compile Include="Models\BRANCH.cs" />
@@ -282,6 +293,9 @@
     <EmbeddedResource Include="Forms\Report\ServiceReceiptForm.resx">
       <DependentUpon>ServiceReceiptForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ReservationCourt\ReservationReceipt\RevReceipt.resx">
+      <DependentUpon>RevReceipt.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="IncomeReport.rdlc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
@@ -342,6 +356,17 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="BadmintonManagementDBDataSet.xsc">
+      <DependentUpon>BadmintonManagementDBDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="BadmintonManagementDBDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>BadmintonManagementDBDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="BadmintonManagementDBDataSet.xss">
+      <DependentUpon>BadmintonManagementDBDataSet.xsd</DependentUpon>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\DataSources\BadmintonManagement.Models.CUSTOMER.datasource" />
     <None Include="Properties\DataSources\BadmintonManagement.Models.RECEIPT.datasource" />
