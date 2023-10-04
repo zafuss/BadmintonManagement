@@ -18,7 +18,8 @@ namespace BadmintonManagement.Forms.ReservationCourt.BookingForm
         {
             InitializeComponent();
         }
-
+        public delegate void ChangeBK(int i);
+        public ChangeBK ReloadBK;
         string PN;
         string FN;
         string EM;
@@ -31,8 +32,6 @@ namespace BadmintonManagement.Forms.ReservationCourt.BookingForm
             FN = fullName; 
             EM = email;
         }
-
-       
         public Booking(string reservationNo)
         {
             InitializeComponent();
@@ -70,21 +69,21 @@ namespace BadmintonManagement.Forms.ReservationCourt.BookingForm
             dtpDate.Value = DateTime.Now;
             dtpStartTime.CustomFormat = "HH:mm";
             dtpEndTime.CustomFormat = "HH:mm";
-            dtpEndTime.Value = new DateTime(dtpDate.Value.Year, dtpDate.Value.Month, dtpDate.Value.Day, 0, 0, 0);
-            dtpStartTime.Value = new DateTime(dtpDate.Value.Year, dtpDate.Value.Month, dtpDate.Value.Day, 0, 0, 0);
+            dtpEndTime.Value = new DateTime(dtpDate.Value.Year, dtpDate.Value.Month, dtpDate.Value.Day, 6, 0, 0);
+            dtpStartTime.Value = new DateTime(dtpDate.Value.Year, dtpDate.Value.Month, dtpDate.Value.Day, 5, 0, 0);
             FillcboCourtName();
         }
         private void BindGrid(List<RF_DETAIL> listRFD)
         {
             foreach(RF_DETAIL item in listRFD)
             {
-                int i = dgvRF_Detail.Rows.Add();
                 int d = 0;
+                int i = dgvRF_Detail.Rows.Add();
                 dgvRF_Detail.Rows[i].Cells[d++].Value = item.ReservationNo;
                 dgvRF_Detail.Rows[i].Cells[d++].Value = item.COURT.CourtName;
                 dgvRF_Detail.Rows[i].Cells[d++].Value = item.StartTime;
                 dgvRF_Detail.Rows[i].Cells[d++].Value = item.EndTime;
-                dgvRF_Detail.Rows[i].Cells[d++].Value = context.PRICE.FirstOrDefault().PriceTag;
+                dgvRF_Detail.Rows[i].Cells[d++].Value = context.PRICE.FirstOrDefault().PriceTag;              
             }
         }
         private bool Check_dgvRF_DETAIL_Time_For_Court(COURT c)
@@ -151,7 +150,7 @@ namespace BadmintonManagement.Forms.ReservationCourt.BookingForm
             return (dgvRF_Detail.Rows.Count-1) * 50000;
         }
         private void btnAcept_Click(object sender, EventArgs e)
-        {
+        {          
             if(isNew == true) 
             {
                 RESERVATION rev = new RESERVATION();
@@ -159,11 +158,13 @@ namespace BadmintonManagement.Forms.ReservationCourt.BookingForm
                 rev.Username = context.C_USER.FirstOrDefault().Username;
                 rev.PhoneNumber = PN;
                 rev.CreateDate = DateTime.Now;
-                rev.BookingDate = dtpDate.Value;
+                DateTime d = dtpDate.Value;
+                rev.BookingDate = new DateTime(d.Year,d.Month,d.Day,dtpStartTime.Value.Hour,dtpStartTime.Value.Minute,dtpStartTime.Value.Second);
                 rev.Deposite = Decimal.Parse(txtDeopsite.Text);
                 rev.C_Status = 0;
                 context.RESERVATION.Add(rev);
                 context.SaveChanges();
+               
             }
             foreach (DataGridViewRow row in dgvRF_Detail.Rows)
             {
@@ -172,7 +173,7 @@ namespace BadmintonManagement.Forms.ReservationCourt.BookingForm
                 RF_DETAIL rfd = new RF_DETAIL();
                 rfd.ReservationNo = row.Cells[0].Value.ToString();
                 string str = row.Cells[1].Value.ToString();
-                rfd.CourtID = context.COURT.FirstOrDefault(p=>p.CourtName == str).CourtID;
+                rfd.CourtID = context.COURT.FirstOrDefault(p => p.CourtName == str).CourtID;
                 DateTime d = DateTime.Parse(row.Cells[2].Value.ToString());
                 rfd.StartTime = d;
                 d = DateTime.Parse(row.Cells[3].Value.ToString());
@@ -181,16 +182,39 @@ namespace BadmintonManagement.Forms.ReservationCourt.BookingForm
                 context.RF_DETAIL.Add(rfd);
                 context.SaveChanges();
             }
+            int i = 1;
+            ReloadBK(i);
             this.Close();
         }
         private void dtpDate_ValueChanged(object sender, EventArgs e)
         {
             dtpStartTime.Value = new DateTime(dtpDate.Value.Year, dtpDate.Value.Month, dtpDate.Value.Day, dtpStartTime.Value.Hour, dtpStartTime.Value.Minute, dtpStartTime.Value.Second);
             dtpEndTime.Value = new DateTime(dtpDate.Value.Year, dtpDate.Value.Month, dtpDate.Value.Day, dtpEndTime.Value.Hour, dtpEndTime.Value.Minute, dtpEndTime.Value.Second);
+           
         }
-
         private void dtpStartTime_ValueChanged(object sender, EventArgs e)
         {
+            if (dtpEndTime.Value.Hour < 6)
+            {
+                MessageBox.Show("Nhập thời gian kết thúc sai quy định ");
+                dtpEndTime.Value = new DateTime(dtpDate.Value.Year, dtpDate.Value.Month, dtpDate.Value.Day, 6, 0, 0);
+
+            }
+            if (dtpEndTime.Value.Hour > 22)
+            {
+                MessageBox.Show("Nhập thời gian kết thúc sai quy định ");
+                dtpEndTime.Value = new DateTime(dtpDate.Value.Year, dtpDate.Value.Month, dtpDate.Value.Day, 22, 0, 0);
+            }
+            if (dtpStartTime.Value.Hour < 5)
+            {
+                MessageBox.Show("Nhập thời gian bắt đầu sai quy định ");
+                dtpStartTime.Value = new DateTime(dtpDate.Value.Year, dtpDate.Value.Month, dtpDate.Value.Day, 5, 0, 0);
+            }
+            if (dtpStartTime.Value.Hour > 21)
+            {
+                MessageBox.Show("Nhập thời gian bắt đầu sai quy định ");
+                dtpStartTime.Value = new DateTime(dtpDate.Value.Year, dtpDate.Value.Month, dtpDate.Value.Day, 20, 0, 0);
+            }
             FillcboCourtName();
         }
     }

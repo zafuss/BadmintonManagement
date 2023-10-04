@@ -14,17 +14,22 @@ namespace BadmintonManagement.Forms.ReservationCourt.BookingForm
 {
     public partial class GetCustomerInformation : Form
     {
+       
         public GetCustomerInformation()
         {
             InitializeComponent();
         }
         ModelBadmintonManage context = new ModelBadmintonManage();
+
         private void GetCustomerInformation_Load(object sender, EventArgs e)
         {
           
             List<CUSTOMER> listCus = context.CUSTOMER.ToList();
             fillAutoCompleteSourcebyPhone(listCus);
         }
+        public delegate void ChangeRev(int i);
+        public ChangeRev ReloadRev;
+
         private void fillAutoCompleteSourcebyPhone(List<CUSTOMER> listCus)
         {
             foreach (CUSTOMER customer in listCus)
@@ -33,7 +38,11 @@ namespace BadmintonManagement.Forms.ReservationCourt.BookingForm
             }
            
         }
-
+        private void LoadCus(int i)
+        {
+            ReloadRev(i);
+           
+        }
         private void txtFullName_TextChanged(object sender, EventArgs e)
         {
             
@@ -69,8 +78,10 @@ namespace BadmintonManagement.Forms.ReservationCourt.BookingForm
             if(CheckExistPhoneNumber())
             {
                 Booking frm = new Booking(txtPhoneNumber.Text,txtFullName.Text,txtEmail.Text);
+                frm.ReloadBK = new Booking.ChangeBK(LoadCus);
                 frm.Show();
                 this.Close();
+                
             }
             else
             {

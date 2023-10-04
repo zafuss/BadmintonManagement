@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Entity.Core.Metadata.Edm;
 using System.Data.Entity.Migrations;
 using System.Drawing;
 using System.Linq;
@@ -16,18 +17,24 @@ namespace BadmintonManagement.Forms.ReservationCourt
 {
     public partial class ReservationForm : Form
     {
+        
         public ReservationForm()
         {
             InitializeComponent();
         }
+        DateTime st;
+        DateTime se;
         private void ReservationForm_Load(object sender, EventArgs e)
         {
-            dtpStartDay.Value = DateTime.Now;
-            dtpEndDay.Value = DateTime.Now;
-           
+            DateTime d = DateTime.Now;
+            dtpStartDay.Value = new DateTime(d.Year, d.Month, d.Day, 0, 0, 0);
+            dtpEndDay.Value = new DateTime(d.Year, d.Month, d.Day, 23, 59, 59);
+            DateTime st = new DateTime(dtpStartDay.Value.Year, dtpStartDay.Value.Month, dtpStartDay.Value.Day, 0, 0, 0);
+            DateTime se = new DateTime(dtpEndDay.Value.Year, dtpEndDay.Value.Month, dtpEndDay.Value.Day, 23, 59, 59);
             List<RESERVATION> listRev = context.RESERVATION.ToList();
             bindGrid(listRev);
-            pnlFunction.Visible = true;
+            pnlFunction.Visible = false;
+            ReloadGridFollowTime(st,se);
         }
         ModelBadmintonManage context = new ModelBadmintonManage();
         private string PickStatus(RESERVATION rev)
@@ -49,6 +56,7 @@ namespace BadmintonManagement.Forms.ReservationCourt
         }
         private void bindGrid(List<RESERVATION> listRev)
         {
+            
             foreach (RESERVATION item in listRev)
             {
                 int i = dgvReservation.Rows.Add();
@@ -68,7 +76,6 @@ namespace BadmintonManagement.Forms.ReservationCourt
 
             }
         }
-
         private void loadRevData(string revNo, string userName, string phoneNumber, string courtID, decimal deposite, DateTime createDate, DateTime bookingDate)
         {
             ModelBadmintonManage context = new ModelBadmintonManage();
@@ -83,21 +90,30 @@ namespace BadmintonManagement.Forms.ReservationCourt
             context.SaveChanges();
 
         }
-
+        private void ReloadGridFollowTime(DateTime st, DateTime se)
+        {
+            for(int i = 0;i<dgvReservation.Rows.Count-1;i++) 
+            {
+                DateTime p = DateTime.Parse(dgvReservation.Rows[i].Cells[6].Value.ToString());
+               
+                int s1 = DateTime.Compare(p,st);
+                int s2 = DateTime.Compare(p,se);
+                if(s1<=0||s2>=0)
+                    dgvReservation.Rows[i].Visible = false;
+                else
+                    dgvReservation.Rows[i].Visible = true;
+            }
+        }
         private void dtpStartDay_ValueChanged(object sender, EventArgs e)
         {
-
+            st = new DateTime(dtpStartDay.Value.Year, dtpStartDay.Value.Month, dtpStartDay.Value.Day, 0, 0, 0);
+            ReloadGridFollowTime(st,se);
         }
-
-        private void dgvReservation_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
         private void dtpEndDay_ValueChanged(object sender, EventArgs e)
         {
+            se = new DateTime(dtpEndDay.Value.Year, dtpEndDay.Value.Month, dtpEndDay.Value.Day, 23, 59, 59);
+            ReloadGridFollowTime(st,se);
         }
-
         private void btnFunction_Click(object sender, EventArgs e)
         {
             if (pnlFunction.Visible)
@@ -105,7 +121,6 @@ namespace BadmintonManagement.Forms.ReservationCourt
             else
                 pnlFunction.Visible = true;
         }
-
         private void btnSearch_Click(object sender, EventArgs e)
         {
             if (pnlSearch.Visible)
@@ -113,7 +128,6 @@ namespace BadmintonManagement.Forms.ReservationCourt
             else
                 pnlSearch.Visible = true;
         }
-
         private void txtSearchByPhoneNumber_TextChanged(object sender, EventArgs e)
         {
 
@@ -140,21 +154,18 @@ namespace BadmintonManagement.Forms.ReservationCourt
         {
             txtSearchByPhoneNumber.SelectAll();
         }
-
+        private void LoadRev(int i)
+        {
+            ReloadGrid();
+        }
         private void btnAdd_Click(object sender, EventArgs e)
         {
             GetCustomerInformation frm = new GetCustomerInformation();
+            frm.ReloadRev = new GetCustomerInformation.ChangeRev(LoadRev);
             frm.Show();
         }
-
-        private void btnDetailRF_Click(object sender, EventArgs e)
+        private void btnDetail_Click(object sender, EventArgs e)
         {
-            
-        }
-
-        private void btnUpdate_Click(object sender, EventArgs e)
-        {
-
             try
             {
                 if (dgvReservation.Rows.Count < 2)
@@ -169,7 +180,6 @@ namespace BadmintonManagement.Forms.ReservationCourt
                 MessageBox.Show(ex.Message);
             }
         }
-
         private void btnCancel_Click(object sender, EventArgs e)
         {
             if(MessageBox.Show("Có thật sự muốn hủy","Caution",MessageBoxButtons.YesNo) == DialogResult.Yes)
@@ -191,7 +201,6 @@ namespace BadmintonManagement.Forms.ReservationCourt
                 MessageBox.Show("Đã hủy");
             }
         }
-
         private void dgvReservation_SelectionChanged(object sender, EventArgs e)
         {
             if (dgvReservation.SelectedRows.Count < 1)
@@ -199,9 +208,71 @@ namespace BadmintonManagement.Forms.ReservationCourt
             if (dgvReservation.Rows[dgvReservation.Rows.Count-1].Selected)
                 btnCancel.Enabled = false;
             else if (dgvReservation.SelectedRows[0].Cells[7].Value.ToString() == "Chưa đặt cọc")
+            {
                 btnCancel.Enabled = true;
+                btnAcceptDeposition.Enabled = true;
+            }
             else
+            {
                 btnCancel.Enabled = false;
+                btnAcceptDeposition.Enabled = false;
+            } 
+        }
+        private void ReloadGrid()
+        {
+            dgvReservation.Rows.Clear();
+            List<RESERVATION> listRev = context.RESERVATION.ToList();
+            bindGrid(listRev);
+        }
+        private void btnAcceptDeposition_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Có xác nhận đặt cọc?", "Caution", MessageBoxButtons.YesNo) == DialogResult.No)
+                return;
+            RESERVATION rev = new RESERVATION();
+            string str = dgvReservation.SelectedRows[0].Cells[0].Value.ToString();
+            rev = context.RESERVATION.FirstOrDefault(p => p.ReservationNo == str);
+            rev.C_Status = 1;
+            context.RESERVATION.AddOrUpdate(rev);
+            context.SaveChanges();
+            ReloadGrid();
+        }
+        private void btnRevReceipt_Click(object sender, EventArgs e)
+        {
+        }
+        DateTime tempStart;
+        DateTime tempEnd;
+        private void chbThisMonth_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chbThisMonth.Checked)
+            {
+                tempStart = st;
+                tempEnd = se;
+                DateTime d = DateTime.Now;
+                DateTime d1 = new DateTime(d.Year, d.Month, 1, 0, 0, 0);
+                DateTime d2 = new DateTime(d.Year, d.Month, DateTime.DaysInMonth(d.Year, d.Month), 23, 59, 59);
+                ReloadGridFollowTime(d1, d2);
+                dtpStartDay.Value = d1;
+                dtpEndDay.Value = d2;
+            }
+            else
+            {
+                st = tempStart;
+                se = tempEnd;
+                dtpStartDay.Value = tempStart;
+                dtpEndDay.Value = tempEnd;
+                ReloadGridFollowTime(st, se);
+            }
+        }
+        private void btnOverTime_Click(object sender, EventArgs e)
+        {
+            
+        }
+        private void tmrCheck_Tick(object sender, EventArgs e)
+        {
+           /* for(int i = 0;i<dgvReservation.Rows.Count-1;i++)
+            {
+                if(dgvReservation)
+            }*/
         }
     }
 }
