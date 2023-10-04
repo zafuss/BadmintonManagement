@@ -26,12 +26,20 @@ namespace BadmintonManagement.Forms.Court
            "Chưa Được Sử Dụng","Đang Sử Dụng","Bảo Trì"
         };
 
+
         public AddCourtForm()
         {
             Instance = this;
             InitializeComponent();
             Loading();
             Reset();
+            var acsc = new AutoCompleteStringCollection();
+            acsc.AddRange(new CourtService().getBrachName().ToArray());
+            txtCourtName.AutoCompleteCustomSource = acsc;
+            txtCourtName.AutoCompleteSource = AutoCompleteSource.CustomSource;
+            txtCourtName.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+
+            //txtCourtName.Text = acsc[1].ToString();
         }
         private void Reset()
         {
@@ -108,6 +116,7 @@ namespace BadmintonManagement.Forms.Court
             newCourt.BranchID = new CourtService().GetBranchID(cboBranchID.Text);
             return newCourt;
         }
+        List<COURT> newCourt = new CourtService().getListCourtWithOutDisable();
 
         private void txtCourtName_TextChanged(object sender, EventArgs e)
         {
@@ -124,6 +133,25 @@ namespace BadmintonManagement.Forms.Court
                     txtCourtName.SelectionStart = txtCourtName.Text.Length;
                 }
             }
+
+            //if (txtCourtName.Text == "")
+            //{
+            //    int count = newCourt.Count();
+            //    if(cboCourtID.Text == "")
+            //        CourtForm.Instance.ShowCourt(newCourt, count);
+            //    else 
+            //    {
+            //        newCourt = new CourtService().
+            //    }
+            //}
+            //else 
+            //{
+            //    newCourt = new CourtService().getListNameCourt(txtCourtName.Text);
+            //    int count = newCourt.Count();
+            //    if( count != 0 ) 
+            //        CourtForm.Instance.ShowCourt(newCourt, count);
+
+            //}
         }
 
         
@@ -149,7 +177,9 @@ namespace BadmintonManagement.Forms.Court
                         Reset();
                         if (Application.OpenForms["CourtForm"] != null && !Application.OpenForms["CourtForm"].IsDisposed)
                         {
-                            CourtForm.Instance.ShowCourt();
+                            List<COURT> newCourt = new CourtService().getListCourtWithOutDisable();
+                            int count = newCourt.Count();
+                            CourtForm.Instance.ShowCourt(newCourt, count);
                         }
                     }
                     
@@ -185,8 +215,9 @@ namespace BadmintonManagement.Forms.Court
                     Reset();
                     if(Application.OpenForms["CourtForm"] != null && !Application.OpenForms["CourtForm"].IsDisposed)
                     {
-                        CourtForm.Instance.ShowCourt();
-
+                        List<COURT> newCourt = new CourtService().getListCourtWithOutDisable();
+                        int count = newCourt.Count();
+                        CourtForm.Instance.ShowCourt(newCourt, count);
                     }
                 }
 
@@ -225,7 +256,9 @@ namespace BadmintonManagement.Forms.Court
                         Reset();
                         if (Application.OpenForms["CourtForm"] != null && !Application.OpenForms["CourtForm"].IsDisposed)
                         {
-                            CourtForm.Instance.ShowCourt();
+                            List<COURT> newCourt = new CourtService().getListCourtWithOutDisable();
+                            int count = newCourt.Count();
+                            CourtForm.Instance.ShowCourt(newCourt, count);
                         }
                     }
                         
@@ -268,7 +301,7 @@ namespace BadmintonManagement.Forms.Court
                 cboBranchID.Enabled = true;
                 Reset();
             }
-            
+
         }
 
         private void cboCourtID_TextChanged(object sender, EventArgs e)

@@ -168,6 +168,23 @@ namespace BadmintonManagement.Forms.Customer
             btnDelete.BackColor= Color.White;
         }
 
-        
+        private void panel2_SizeChanged(object sender, EventArgs e)
+        {
+            panelFeatures.Controls.Clear();
+
+            panelFeatures.Controls.Add(label6);
+            panelFeatures.Controls.Add(txtSearchFullName);
+            double width = (panelFeatures.Width);
+            double height = (panelFeatures.Height) / 2.5;
+
+            Label label = new Label();
+            label.Location = new Point(0, Convert.ToInt32(height));
+            label.Size = new Size(Convert.ToInt32(width), 50);
+            label.TextAlign = ContentAlignment.MiddleCenter;
+            label.Text = "Danh Sách Khách Hàng";
+            label.Font = new Font("Segoe UI", 24, FontStyle.Bold);
+
+            panelFeatures.Controls.Add(label);
+        }
     }
 }

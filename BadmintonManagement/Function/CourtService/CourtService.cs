@@ -8,6 +8,8 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Linq;
+using BadmintonManagement.Custom;
 
 namespace BadmintonManagement.Function.CourtService
 {
@@ -22,27 +24,33 @@ namespace BadmintonManagement.Function.CourtService
         {
             double x = (_widht) / (3.4);
             double y = (_heigth) / (3.4);
-            String namePnl = "pnl" + court.CourtID;
-            Type controlType = typeof(Panel);
+            String namePnl = court.CourtID;
+            Font font = new Font("Segoe UI", 12);
+            Type controlType = typeof(CustomPanel);
             Control newControl = (Control)Activator.CreateInstance(controlType);
 
             newControl.Name = namePnl;  
 
             newControl.Size = new Size(Convert.ToInt32(x), Convert.ToInt32(y));
 
+
+
             Label lblCourtName = new Label();
             lblCourtName.Text = court.CourtName;
-            lblCourtName.Location = new Point(Convert.ToInt32(x * 1 / 5), 0);
+            lblCourtName.Location = new Point(Convert.ToInt32(x * 1 / 5), 10);
             lblCourtName.TextAlign = ContentAlignment.MiddleCenter;
             lblCourtName.Size = new Size(Convert.ToInt32(x * 3 / 5), 25);
 
             Label lblStartDate = new Label();
+            
             lblStartDate.Text = "Ngay HD " + court.StartDate.Value.ToString("dd/MM/yyyy");
-            lblStartDate.Location = new Point(0, Convert.ToInt32(y) - Convert.ToInt32(y * 1 / 8));
+            lblStartDate.Location = new Point(Convert.ToInt32(x * 1 / 10), Convert.ToInt32(y * 4.2 / 5));
             lblStartDate.TextAlign = ContentAlignment.MiddleCenter;
-            lblStartDate.Size = new Size(Convert.ToInt32(x), 25);
+            Size lblStartDateText = TextRenderer.MeasureText(lblStartDate.Text, font); 
+            lblStartDate.Size = new Size(Convert.ToInt32(x*4/5), lblStartDateText.Height);
+            //lblStartDate.Size = new Size(lblStartDateText.Width, lblStartDateText.Height);
 
-            PictureBox picStatusCourt = new PictureBox();
+            CustomPicBox picStatusCourt = new CustomPicBox();
             picStatusCourt.Name = court.CourtID;
             picStatusCourt.Image = Properties.Resources.Use;
             picStatusCourt.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -68,7 +76,7 @@ namespace BadmintonManagement.Function.CourtService
                 int _surplus = (int)(count / 3);
                 if (count % 3 == 0)
                 {
-                    newControl.Location = new Point(0, Convert.ToInt32(y + y * 0.2) * _surplus);
+                    newControl.Location = new Point(10, Convert.ToInt32(y + y * 0.2) * _surplus);
                 }
                 else if (count % 3 == 1)
                 {
@@ -76,14 +84,14 @@ namespace BadmintonManagement.Function.CourtService
                 }
                 else if (count % 3 == 2)
                 {
-                    newControl.Location = new Point(Convert.ToInt32(x + x * 0.2) * 2, Convert.ToInt32(y + y * 0.2) * _surplus);
+                    newControl.Location = new Point(Convert.ToInt32(x + x * 0.2-10) * 2, Convert.ToInt32(y + y * 0.2) * _surplus);
                 }
             }
             else
             {
                 if (count == 0)
                 {
-                    newControl.Location = new Point(0, 0);
+                    newControl.Location = new Point(10, 0);
                 }
                 else if (count == 1)
                 {
@@ -91,7 +99,7 @@ namespace BadmintonManagement.Function.CourtService
                 }
                 else if (count == 2)
                 {
-                    newControl.Location = new Point(Convert.ToInt32(x + x * 0.2) * 2, 0);
+                    newControl.Location = new Point(Convert.ToInt32(x + x * 0.2-10) * 2, 0);
                 }
             }
 
@@ -124,18 +132,38 @@ namespace BadmintonManagement.Function.CourtService
         {
             _modelBadmintonManage = new ModelBadmintonManage();
             List<COURT> tmp = _modelBadmintonManage.COURT.Where(p => p.C_Status != "Disable").ToList();
-            //List<COURT> tmp = new List<COURT>();
-            //foreach (var item in _courts)
-            //{
-            //    if(item.C_Status != "Disable")
-            //        tmp.Add(item);
-            //}
             return tmp;
         }
+
+        public List<COURT> getListNameCourt(string name)
+        {
+            _modelBadmintonManage = new ModelBadmintonManage();
+            List<COURT> tmp = _courts.Where(p => p.C_Status != "Disable" && p.CourtName.IndexOf(name, StringComparison.OrdinalIgnoreCase) >=0 ).ToList();
+            return tmp;
+        }
+
+        public List<COURT> getBranchName(string name)
+        {
+            _modelBadmintonManage = new ModelBadmintonManage();
+            List<COURT> tmp = _courts.Where(p => p.C_Status != "Disable" && p.BRANCH.BranchName.Equals(name,StringComparison.OrdinalIgnoreCase)).ToList();
+            return tmp;
+        }
+
         public List<BRANCH> getBranch()
         {
             _branchs = new ModelBadmintonManage().BRANCH.ToList();
             return _branchs;
+        }
+
+        public List<String> getBrachName()
+        {
+            List<String> tmp = new List<String>();
+            foreach ( BRANCH item in _branchs )
+            {
+                tmp.Add(item.BranchName);
+
+            }
+            return tmp;
         }
 
         public int getCountCourt()

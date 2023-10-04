@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using BadmintonManagement.Custom;
 
 namespace BadmintonManagement.Function.RFDetailService
 {
@@ -27,33 +28,38 @@ namespace BadmintonManagement.Function.RFDetailService
         {
             double x = (_widht) / (3.4);
             double y = (_heigth) / (3.4);
-            String namePnl = "pnl" + rf_detail.CourtID;
-            Type controlType = typeof(Panel);
+            String namePnl = rf_detail.COURT.CourtID + "+" + rf_detail.ReservationNo;
+            Type controlType = typeof(CustomPanel);
+            Font font = new Font("Segoe UI", 12);
+
             Control newControl = (Control)Activator.CreateInstance(controlType);
 
             newControl.Name = namePnl;
 
             newControl.Size = new Size(Convert.ToInt32(x), Convert.ToInt32(y));
 
+
             Label lblCourtName = new Label();
             lblCourtName.Text = rf_detail.COURT.CourtName;
-            lblCourtName.Location = new Point(Convert.ToInt32(x * 1 / 5), 0);
+            lblCourtName.Location = new Point(Convert.ToInt32(x * 1 / 5), 10);
             lblCourtName.TextAlign = ContentAlignment.MiddleCenter;
             lblCourtName.Size = new Size(Convert.ToInt32(x * 3 / 5), 25);
 
             Label lblStartTime = new Label();
             lblStartTime.Text = rf_detail.StartTime.Value.ToString("HH:mm:ss");
-            lblStartTime.Location = new Point(Convert.ToInt32(x * 1 / 10), Convert.ToInt32(y * 9 / 10));
+            lblStartTime.Location = new Point(Convert.ToInt32(x * 1 / 12), Convert.ToInt32(y * 8 / 10));
             lblStartTime.TextAlign = ContentAlignment.MiddleCenter;
             //lblStartTime.Size = new Size(Convert.ToInt32(x), 25);
 
             Label lblEndTime = new Label();
             lblEndTime.Text = rf_detail.EndTime.Value.ToString("HH:mm:ss");
-            lblEndTime.Location = new Point(Convert.ToInt32(x * 6 / 10), Convert.ToInt32(y * 9 / 10));
+            lblEndTime.Location = new Point(Convert.ToInt32(x * 6 / 10), Convert.ToInt32(y * 8 / 10));
+            Size lblEndTimeText = TextRenderer.MeasureText(lblEndTime.Text, font);
             lblEndTime.TextAlign = ContentAlignment.MiddleCenter;
+            lblEndTime.Size = new Size(lblEndTimeText.Width, lblEndTimeText.Height);
             //lblEndTime.Size = new Size(Convert.ToInt32(x), 25);
 
-            PictureBox picStatusCourt = new PictureBox();
+            CustomPicBox picStatusCourt = new CustomPicBox();
             picStatusCourt.Name = rf_detail.COURT.CourtID + "+" + rf_detail.ReservationNo;
             picStatusCourt.Image = Properties.Resources.Use;
             picStatusCourt.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -79,7 +85,7 @@ namespace BadmintonManagement.Function.RFDetailService
                 int _surplus = (int)(count / 3);
                 if (count % 3 == 0)
                 {
-                    newControl.Location = new Point(0, Convert.ToInt32(y + y * 0.2) * _surplus);
+                    newControl.Location = new Point(10, Convert.ToInt32(y + y * 0.2) * _surplus);
                 }
                 else if (count % 3 == 1)
                 {
@@ -87,14 +93,14 @@ namespace BadmintonManagement.Function.RFDetailService
                 }
                 else if (count % 3 == 2)
                 {
-                    newControl.Location = new Point(Convert.ToInt32(x + x * 0.2) * 2, Convert.ToInt32(y + y * 0.2) * _surplus);
+                    newControl.Location = new Point(Convert.ToInt32(x + x * 0.2 - 10) * 2, Convert.ToInt32(y + y * 0.2) * _surplus);
                 }
             }
             else
             {
                 if (count == 0)
                 {
-                    newControl.Location = new Point(0, 0);
+                    newControl.Location = new Point(10, 0);
                 }
                 else if (count == 1)
                 {
@@ -102,7 +108,7 @@ namespace BadmintonManagement.Function.RFDetailService
                 }
                 else if (count == 2)
                 {
-                    newControl.Location = new Point(Convert.ToInt32(x + x * 0.2) * 2, 0);
+                    newControl.Location = new Point(Convert.ToInt32(x + x * 0.2 - 10) * 2, 0);
                 }
             }
 

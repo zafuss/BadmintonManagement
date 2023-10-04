@@ -419,7 +419,7 @@
             this.Controls.Add(this.groupBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "ReservationForm";
-            this.Text = "ReservationForm";
+            this.Text = "Phiếu Đặt Sân";
             this.Load += new System.EventHandler(this.ReservationForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvReservation)).EndInit();
             this.groupBox1.ResumeLayout(false);
