@@ -117,6 +117,7 @@
     </Compile>
     <Compile Include="Custom\CustomPicBox.cs">
       <SubType>Component</SubType>
+	</Compile>
     <Compile Include="BadmintonManagementDBDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -170,6 +171,7 @@
     </Compile>
     <Compile Include="Forms\ReservationCourt\ReservationReceipt\RevReceipt.Designer.cs">
       <DependentUpon>RevReceipt.cs</DependentUpon>
+	</Compile>
     <Compile Include="Forms\Service\ServiceForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -182,7 +184,6 @@
     <Compile Include="Forms\Service\ShowServiceReceiptForm.Designer.cs">
       <DependentUpon>ShowServiceReceiptForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Function\RFDetailService\RFDetailService.cs" />
     <Compile Include="Models\BRANCH.cs" />
     <Compile Include="Models\COURT.cs" />
     <Compile Include="Models\CUSTOMER.cs" />
@@ -317,7 +318,8 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\ReservationCourt\ReservationReceipt\RevReceipt.resx">
       <DependentUpon>RevReceipt.cs</DependentUpon>
-    <EmbeddedResource Include="Forms\Service\ManageServiceForm.resx">
+	</EmbeddedResource>
+	<EmbeddedResource Include="Forms\Service\ManageServiceForm.resx">
       <DependentUpon>ManageServiceForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Service\ServiceForm.resx">
