@@ -31,6 +31,10 @@ namespace BadmintonManagement.Models
                 .HasPrecision(18, 0);
 
             modelBuilder.Entity<C_SERVICE>()
+                .Property(e => e.C_Status)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<C_SERVICE>()
                 .HasMany(e => e.SERVICE_DETAIL)
                 .WithRequired(e => e.C_SERVICE)
                 .WillCascadeOnDelete(false);

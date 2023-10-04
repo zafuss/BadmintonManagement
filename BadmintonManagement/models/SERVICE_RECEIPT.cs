@@ -25,6 +25,11 @@ namespace BadmintonManagement.Models
         [StringLength(13)]
         public string PhoneNumber { get; set; }
 
+        [StringLength(50)]
+        public string Username { get; set; }
+
+        public virtual C_USER C_USER { get; set; }
+
         public virtual CUSTOMER CUSTOMER { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

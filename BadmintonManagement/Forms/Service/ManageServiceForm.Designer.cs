@@ -43,6 +43,7 @@
             this.txtServiceName = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label7 = new System.Windows.Forms.Label();
             this.txtSearch = new System.Windows.Forms.TextBox();
@@ -76,6 +77,7 @@
             this.panel1.Controls.Add(this.txtServiceName);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.pictureBox1);
+            this.panel1.Controls.Add(this.groupBox1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
@@ -129,7 +131,7 @@
             // 
             // btnDelService
             // 
-            this.btnDelService.Location = new System.Drawing.Point(201, 441);
+            this.btnDelService.Location = new System.Drawing.Point(201, 458);
             this.btnDelService.Name = "btnDelService";
             this.btnDelService.Size = new System.Drawing.Size(107, 46);
             this.btnDelService.TabIndex = 7;
@@ -139,7 +141,7 @@
             // 
             // btnUpdateService
             // 
-            this.btnUpdateService.Location = new System.Drawing.Point(110, 441);
+            this.btnUpdateService.Location = new System.Drawing.Point(110, 458);
             this.btnUpdateService.Name = "btnUpdateService";
             this.btnUpdateService.Size = new System.Drawing.Size(85, 46);
             this.btnUpdateService.TabIndex = 6;
@@ -149,7 +151,7 @@
             // 
             // btnAddService
             // 
-            this.btnAddService.Location = new System.Drawing.Point(16, 441);
+            this.btnAddService.Location = new System.Drawing.Point(16, 458);
             this.btnAddService.Name = "btnAddService";
             this.btnAddService.Size = new System.Drawing.Size(88, 46);
             this.btnAddService.TabIndex = 5;
@@ -229,12 +231,21 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = global::BadmintonManagement.Properties.Resources.service_icon;
-            this.pictureBox1.Location = new System.Drawing.Point(110, 21);
+            this.pictureBox1.Location = new System.Drawing.Point(97, 12);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(148, 151);
+            this.pictureBox1.Size = new System.Drawing.Size(136, 134);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 13;
             this.pictureBox1.TabStop = false;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Location = new System.Drawing.Point(3, 152);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(316, 300);
+            this.groupBox1.TabIndex = 28;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Thông tin dịch vụ";
             // 
             // panel2
             // 
@@ -243,7 +254,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(337, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(839, 163);
+            this.panel2.Size = new System.Drawing.Size(839, 170);
             this.panel2.TabIndex = 17;
             this.panel2.SizeChanged += new System.EventHandler(this.panel2_SizeChanged);
             // 
@@ -251,7 +262,7 @@
             // 
             this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(466, 126);
+            this.label7.Location = new System.Drawing.Point(466, 133);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(159, 28);
             this.label7.TabIndex = 14;
@@ -260,7 +271,7 @@
             // txtSearch
             // 
             this.txtSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtSearch.Location = new System.Drawing.Point(649, 126);
+            this.txtSearch.Location = new System.Drawing.Point(649, 133);
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.Size = new System.Drawing.Size(178, 34);
             this.txtSearch.TabIndex = 0;
@@ -279,13 +290,13 @@
             this.clnQuantity,
             this.clnStatus});
             this.dgvServices.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvServices.Location = new System.Drawing.Point(337, 163);
+            this.dgvServices.Location = new System.Drawing.Point(337, 170);
             this.dgvServices.Name = "dgvServices";
             this.dgvServices.ReadOnly = true;
             this.dgvServices.RowHeadersWidth = 62;
             this.dgvServices.RowTemplate.Height = 24;
             this.dgvServices.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvServices.Size = new System.Drawing.Size(839, 388);
+            this.dgvServices.Size = new System.Drawing.Size(839, 381);
             this.dgvServices.TabIndex = 18;
             this.dgvServices.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvServices_CellClick);
             // 
@@ -389,5 +400,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn clnPrice;
         private System.Windows.Forms.DataGridViewTextBoxColumn clnQuantity;
         private System.Windows.Forms.DataGridViewTextBoxColumn clnStatus;
+        private System.Windows.Forms.GroupBox groupBox1;
     }
 }
