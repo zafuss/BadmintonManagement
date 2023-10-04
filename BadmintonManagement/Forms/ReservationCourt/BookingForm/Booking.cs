@@ -37,9 +37,7 @@ namespace BadmintonManagement.Forms.ReservationCourt.BookingForm
             InitializeComponent();
             revNo = reservationNo;
         }
-        
         ModelBadmintonManage context = new ModelBadmintonManage();
-
         private void RandomRevNo()
         {
             Random random = new Random();
@@ -120,6 +118,11 @@ namespace BadmintonManagement.Forms.ReservationCourt.BookingForm
         }
         private void btnSave_Click(object sender, EventArgs e)
         {
+            if(DateTime.Compare( dtpStartTime.Value,DateTime.Now)<0)
+            {
+                MessageBox.Show("Thời gian không phù hợp");
+                return;
+            }
             int dt = DateTime.Compare(dtpEndTime.Value, dtpStartTime.Value);
             if (dt <= 0)
             {
@@ -149,13 +152,35 @@ namespace BadmintonManagement.Forms.ReservationCourt.BookingForm
         {
             return (dgvRF_Detail.Rows.Count-1) * 50000;
         }
+        private DateTime EarliestTime() 
+        {
+            DateTime d = DateTime.Parse(dgvRF_Detail.Rows[0].Cells[2].Value.ToString());
+            for(int i=0;i<dgvRF_Detail.Rows.Count-1;i++)
+            {
+                DateTime ds = DateTime.Parse(dgvRF_Detail.Rows[i].Cells[2].Value.ToString());
+                if (DateTime.Compare(d,ds)>0)
+                    d = ds;
+            }
+            return d;
+        }
         private void btnAcept_Click(object sender, EventArgs e)
         {          
+            if(dgvRF_Detail.Rows.Count==1)
+            {
+                if (MessageBox.Show("Không thể thêm phiếu đặt sân, bạn có muốn thoát","Caution",MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    this.Close();
+                    return;
+                }
+                    
+                else
+                    return;
+            }
             if(isNew == true) 
             {
                 RESERVATION rev = new RESERVATION();
                 rev.ReservationNo = revNo;
-                rev.Username = context.C_USER.FirstOrDefault().Username;
+                rev.Username = Properties.Settings.Default.Username;
                 rev.PhoneNumber = PN;
                 rev.CreateDate = DateTime.Now;
                 DateTime d = dtpDate.Value;
