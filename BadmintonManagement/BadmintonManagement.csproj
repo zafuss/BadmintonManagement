@@ -148,6 +148,12 @@
     <Compile Include="Forms\Report\ReceiptReportForm.Designer.cs">
       <DependentUpon>ReceiptReportForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Report\ReservationReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Report\ReservationReport.Designer.cs">
+      <DependentUpon>ReservationReport.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\ReservationCourt\BookingForm\Booking.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -308,6 +314,9 @@
     <EmbeddedResource Include="Forms\Report\ReceiptReportForm.resx">
       <DependentUpon>ReceiptReportForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Report\ReservationReport.resx">
+      <DependentUpon>ReservationReport.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\ReservationCourt\BookingForm\Booking.resx">
       <DependentUpon>Booking.cs</DependentUpon>
     </EmbeddedResource>
@@ -333,6 +342,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="ReportReceipt.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReservationReport.rdlc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="ServiceReport.rdlc">
@@ -400,6 +412,7 @@
     <None Include="packages.config" />
     <None Include="Properties\DataSources\BadmintonManagement.Models.CUSTOMER.datasource" />
     <None Include="Properties\DataSources\BadmintonManagement.Models.RECEIPT.datasource" />
+    <None Include="Properties\DataSources\BadmintonManagement.Models.RESERVATION.datasource" />
     <None Include="Properties\DataSources\BadmintonManagement.Models.SERVICE_DETAIL.datasource" />
     <None Include="Properties\DataSources\BadmintonManagement.Models.SERVICE_RECEIPT.datasource" />
     <None Include="Properties\Settings.settings">
