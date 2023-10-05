@@ -46,13 +46,13 @@ namespace BadmintonManagement.Database
             lblCourtName.Size = new Size(Convert.ToInt32(x * 3 / 5), 25);
 
             Label lblStartTime = new Label();
-            lblStartTime.Text = rf_detail.StartTime.Value.ToString("HH:mm:ss");
+            
             lblStartTime.Location = new Point(Convert.ToInt32(x * 1 / 12), Convert.ToInt32(y * 8 / 10));
             lblStartTime.TextAlign = ContentAlignment.MiddleCenter;
             //lblStartTime.Size = new Size(Convert.ToInt32(x), 25);
 
             Label lblEndTime = new Label();
-            lblEndTime.Text = rf_detail.EndTime.Value.ToString("HH:mm:ss");
+            
             lblEndTime.Location = new Point(Convert.ToInt32(x * 6 / 10), Convert.ToInt32(y * 8 / 10));
             Size lblEndTimeText = TextRenderer.MeasureText(lblEndTime.Text, font);
             lblEndTime.TextAlign = ContentAlignment.MiddleCenter;

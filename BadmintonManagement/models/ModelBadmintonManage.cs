@@ -12,6 +12,7 @@ namespace BadmintonManagement.Models
         {
         }
 
+        public virtual DbSet<C__MigrationHistory> C__MigrationHistory { get; set; }
         public virtual DbSet<C_SERVICE> C_SERVICE { get; set; }
         public virtual DbSet<C_USER> C_USER { get; set; }
         public virtual DbSet<BRANCH> BRANCH { get; set; }

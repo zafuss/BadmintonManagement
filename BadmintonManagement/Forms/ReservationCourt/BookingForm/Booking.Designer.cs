@@ -44,8 +44,6 @@
             this.dgvRF_Detail = new System.Windows.Forms.DataGridView();
             this.clnRevNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clnCourtName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clnStartTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clnEndTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clnPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvRF_Detail)).BeginInit();
             this.SuspendLayout();
@@ -171,6 +169,7 @@
             this.btnCancel.TabIndex = 19;
             this.btnCancel.Text = "Hủy";
             this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // btnAcept
             // 
@@ -189,8 +188,6 @@
             this.dgvRF_Detail.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.clnRevNo,
             this.clnCourtName,
-            this.clnStartTime,
-            this.clnEndTime,
             this.clnPrice});
             this.dgvRF_Detail.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.dgvRF_Detail.Location = new System.Drawing.Point(0, 435);
@@ -211,20 +208,6 @@
             this.clnCourtName.HeaderText = "Tên sân";
             this.clnCourtName.Name = "clnCourtName";
             this.clnCourtName.ReadOnly = true;
-            // 
-            // clnStartTime
-            // 
-            this.clnStartTime.HeaderText = "Bắt đầu";
-            this.clnStartTime.Name = "clnStartTime";
-            this.clnStartTime.ReadOnly = true;
-            this.clnStartTime.Width = 150;
-            // 
-            // clnEndTime
-            // 
-            this.clnEndTime.HeaderText = "Kết thúc";
-            this.clnEndTime.Name = "clnEndTime";
-            this.clnEndTime.ReadOnly = true;
-            this.clnEndTime.Width = 150;
             // 
             // clnPrice
             // 
@@ -254,7 +237,6 @@
             this.Name = "Booking";
             this.Text = "Đặt sân";
             this.Load += new System.EventHandler(this.BookingForm_Load);
-       
             ((System.ComponentModel.ISupportInitialize)(this.dgvRF_Detail)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -278,8 +260,6 @@
         private System.Windows.Forms.DataGridView dgvRF_Detail;
         private System.Windows.Forms.DataGridViewTextBoxColumn clnRevNo;
         private System.Windows.Forms.DataGridViewTextBoxColumn clnCourtName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clnStartTime;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clnEndTime;
         private System.Windows.Forms.DataGridViewTextBoxColumn clnPrice;
     }
 }

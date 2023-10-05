@@ -18,10 +18,6 @@ namespace BadmintonManagement.Models
         [StringLength(20)]
         public string CourtID { get; set; }
 
-        public DateTime? StartTime { get; set; }
-
-        public DateTime? EndTime { get; set; }
-
         [StringLength(20)]
         public string PriceID { get; set; }
 
