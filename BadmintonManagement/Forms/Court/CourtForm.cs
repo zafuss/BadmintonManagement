@@ -199,8 +199,8 @@ namespace BadmintonManagement.Forms.Court
             txtCourtName.Text = rfdetail.COURT.CourtName;
             txtBranchName.Text = rfdetail.COURT.BRANCH.BranchName;
             txtPhoneNumber.Text = 0+rfdetail.RESERVATION.CUSTOMER.PhoneNumber;
-            dtmStartTime.Text = rfdetail.StartTime.ToString();
-            dtmEndTime.Text = rfdetail.EndTime.ToString();
+            dtmStartTime.Text = rfdetail.RESERVATION.StartTime.ToString();
+            dtmEndTime.Text = rfdetail.RESERVATION.EndTime.ToString(); 
         }
 
         

@@ -186,21 +186,9 @@ namespace BadmintonManagement.Forms.AuthorizationForms
             form.Show();
             this.Hide();
         }
-
         private void lblEmployeeName_Click(object sender, EventArgs e)
         {
 
-        }
-
-        private DateTime LatestBookingTime(RESERVATION rev)
-        {
-            DateTime d = new DateTime(0, 0, 0, 0, 0, 0);
-            foreach (RF_DETAIL rf in rev.RF_DETAIL)
-            {
-                if (DateTime.Compare(d, rf.EndTime.Value) < 1)
-                    d = rf.EndTime.Value;
-            }
-            return d;
         }
         private bool RealTimeCaptureStatusReservation()
         {
@@ -209,9 +197,9 @@ namespace BadmintonManagement.Forms.AuthorizationForms
             List<RESERVATION> listRev = context.RESERVATION.ToList();
             foreach (RESERVATION rev in listRev)
             {
-                DateTime d = rev.BookingDate.Value;
+                DateTime d = rev.StartTime.Value;
                 int s = DateTime.Compare(d.Date, DateTime.Now.Date);
-                if (rev.C_Status == 3 && DateTime.Compare(LatestBookingTime(rev), DateTime.Now) < 0)
+                if (rev.C_Status == 3 && DateTime.Compare(rev.StartTime.Value, DateTime.Now) < 0)
                 {
                     rev.C_Status = 4;
                 }

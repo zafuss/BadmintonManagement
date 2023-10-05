@@ -79,8 +79,9 @@ namespace BadmintonManagement.Forms.ReservationCourt
                 DateTime d = item.CreateDate.Value;
                 
                 dgvReservation.Rows[i].Cells[5].Value = item.CreateDate;
-                dgvReservation.Rows[i].Cells[6].Value = item.BookingDate;
-                dgvReservation.Rows[i].Cells[7].Value = PickStatus(item);
+                dgvReservation.Rows[i].Cells[6].Value = item.StartTime;
+                dgvReservation.Rows[i].Cells[7].Value = item.EndTime;
+                dgvReservation.Rows[i].Cells[8].Value = PickStatus(item);
 
             }
         }
@@ -98,7 +99,7 @@ namespace BadmintonManagement.Forms.ReservationCourt
                     dgvReservation.Rows[i].Visible = true;
             }
         }
-        private void ReloadGridByFollowTimeByFilter(DateTime st, DateTime se)
+        private void ReloadGridFollowTimeByFilter(DateTime st, DateTime se)
         {
             for (int i = 0; i < dgvReservation.Rows.Count - 1; i++)
             {
@@ -203,7 +204,7 @@ namespace BadmintonManagement.Forms.ReservationCourt
         {
             if(MessageBox.Show("Có thật sự muốn hủy","Caution",MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
-                dgvReservation.SelectedRows[0].Cells[7].Value = "Đã hủy";
+                dgvReservation.SelectedRows[0].Cells[8].Value = "Đã hủy";
                 int i = dgvReservation.SelectedRows.Count - 1;
                 string str = dgvReservation.SelectedRows[i].Cells[0].Value.ToString();
                 RESERVATION rev = context.RESERVATION.FirstOrDefault(p => p.ReservationNo == str);
@@ -227,7 +228,7 @@ namespace BadmintonManagement.Forms.ReservationCourt
             }
             else
             {
-                string str = dgvReservation.SelectedRows[0].Cells[7].Value.ToString();
+                string str = dgvReservation.SelectedRows[0].Cells[8].Value.ToString();
                 if (str == "Đã thanh toán")
                     btnRevReceipt.Text = "Xem hóa đơn";
                 else
@@ -306,7 +307,7 @@ namespace BadmintonManagement.Forms.ReservationCourt
             string str = dgvReservation.SelectedRows[i].Cells[0].Value.ToString();
             rev = context.RESERVATION.FirstOrDefault(p => p.ReservationNo == str);
             rev.C_Status = 1;
-            dgvReservation.SelectedRows[i].Cells[7].Value = "Đã đặt cọc";
+            dgvReservation.SelectedRows[i].Cells[8].Value = "Đã đặt cọc";
             context.RESERVATION.AddOrUpdate(rev);
             context.SaveChanges();
             btnGot.Enabled = true;
@@ -347,34 +348,25 @@ namespace BadmintonManagement.Forms.ReservationCourt
         {
             for(int i= 0; i <dgvReservation.Rows.Count-1; i++) 
             {
-                if (dgvReservation.Rows[i].Cells[7].Value.ToString() == "Đã cọc và quá giờ nhận sân"|| dgvReservation.Rows[i].Cells[7].Value.ToString() == "Quá giờ nhận sân")
+                if (dgvReservation.Rows[i].Cells[8].Value.ToString() == "Đã cọc và quá giờ nhận sân"|| dgvReservation.Rows[i].Cells[7].Value.ToString() == "Quá giờ nhận sân")
                     dgvReservation.Rows[i].Visible = true;
                 else
                     dgvReservation.Rows[i].Visible=false;
             }
-            ReloadGridByFollowTimeByFilter(st,se);
+            ReloadGridFollowTimeByFilter(st,se);
         }
-        private DateTime LatestBookingTime(RESERVATION rev)
-        {
-            DateTime d = new DateTime(0,0,0,0,0,0);
-            foreach(RF_DETAIL rf in rev.RF_DETAIL)
-            {
-                if (DateTime.Compare(d, rf.EndTime.Value) < 1)
-                    d = rf.EndTime.Value;
-            }
-            return d;
-        }
+        
         private bool RealTimeCaptureStatusReservation()
         {
             bool change = false;
             List<RESERVATION> listRev = context.RESERVATION.ToList();
             foreach(RESERVATION rev in listRev)
             {
-                DateTime d = rev.BookingDate.Value;
+                DateTime d = rev.StartTime.Value;
                 int s = DateTime.Compare(d.Date, DateTime.Now.Date);
-                if(rev.C_Status == 3 && DateTime.Compare(LatestBookingTime(rev),DateTime.Now)<0)
+                if(rev.C_Status == 2 && DateTime.Compare(rev.EndTime.Value,DateTime.Now)<=0)
                 {
-                    rev.C_Status = 4;
+                    rev.C_Status = 3;
                 }
                 else
                 if (s > 0 || rev.C_Status>1)
@@ -423,35 +415,35 @@ namespace BadmintonManagement.Forms.ReservationCourt
         {
             for (int i = 0; i < dgvReservation.Rows.Count - 1; i++)
             {
-                if (dgvReservation.Rows[i].Cells[7].Value.ToString() == "Chưa đặt cọc" || dgvReservation.Rows[i].Cells[7].Value.ToString() == "Đã đặt cọc")
+                if (dgvReservation.Rows[i].Cells[8].Value.ToString() == "Chưa đặt cọc" || dgvReservation.Rows[i].Cells[8].Value.ToString() == "Đã đặt cọc")
                     dgvReservation.Rows[i].Visible = true;
                 else
                     dgvReservation.Rows[i].Visible = false;
             }
-            ReloadGridByFollowTimeByFilter(st, se);
+            ReloadGridFollowTimeByFilter(st, se);
         }
         private void btnNotYetDeposited_Click(object sender, EventArgs e)
         {
             for(int i = 0;i< dgvReservation.Rows.Count -1;i++)
             {
-                if (dgvReservation.Rows[i].Cells[7].Value.ToString() == "Chưa đặt cọc")
+                if (dgvReservation.Rows[i].Cells[8].Value.ToString() == "Chưa đặt cọc")
                     dgvReservation.Rows[i].Visible = true;
                 else
                     dgvReservation.Rows[i].Visible = false;
             }
-            ReloadGridByFollowTimeByFilter(st,se);
+            ReloadGridFollowTimeByFilter(st,se);
         }
 
         private void btnNotYetPayed_Click(object sender, EventArgs e)
         {
             for (int i = 0; i < dgvReservation.Rows.Count - 1; i++)
             {
-                if (dgvReservation.Rows[i].Cells[7].Value.ToString() == "Chưa thanh toán")
+                if (dgvReservation.Rows[i].Cells[8].Value.ToString() == "Chưa thanh toán")
                     dgvReservation.Rows[i].Visible = true;
                 else
                     dgvReservation.Rows[i].Visible = false;
             }
-            ReloadGridByFollowTimeByFilter(st, se);
+            ReloadGridFollowTimeByFilter(st, se);
         }
         private void btnGot_Click(object sender, EventArgs e)
         {
@@ -462,7 +454,7 @@ namespace BadmintonManagement.Forms.ReservationCourt
             string str = dgvReservation.SelectedRows[i].Cells[0].Value.ToString();
             rev = context.RESERVATION.FirstOrDefault(p => p.ReservationNo == str);
             rev.C_Status = 2;
-            dgvReservation.SelectedRows[i].Cells[7].Value = "Đã nhận sân";
+            dgvReservation.SelectedRows[i].Cells[8].Value = "Đã nhận sân";
             context.RESERVATION.AddOrUpdate(rev);
             context.SaveChanges();
             btnRevReceipt.Enabled = true;

@@ -31,15 +31,8 @@
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgvReservation = new System.Windows.Forms.DataGridView();
-            this.clnRevNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clnUserName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clnPhoneNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clnCustomer = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clnDeposite = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clnCreateDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clnBookingDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clnStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dtpEndDay = new System.Windows.Forms.DateTimePicker();
             this.dtpStartDay = new System.Windows.Forms.DateTimePicker();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -66,6 +59,15 @@
             this.chbThisMonth = new System.Windows.Forms.CheckBox();
             this.tmrCheck = new System.Windows.Forms.Timer(this.components);
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.clnRevNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clnUserName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clnPhoneNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clnCustomer = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clnDeposite = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clnCreateDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clnStartime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clnEndTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clnStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvReservation)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -83,7 +85,8 @@
             this.clnCustomer,
             this.clnDeposite,
             this.clnCreateDate,
-            this.clnBookingDate,
+            this.clnStartime,
+            this.clnEndTime,
             this.clnStatus});
             this.dgvReservation.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvReservation.Location = new System.Drawing.Point(3, 16);
@@ -93,65 +96,6 @@
             this.dgvReservation.Size = new System.Drawing.Size(934, 534);
             this.dgvReservation.TabIndex = 0;
             this.dgvReservation.SelectionChanged += new System.EventHandler(this.dgvReservation_SelectionChanged);
-            // 
-            // clnRevNo
-            // 
-            this.clnRevNo.HeaderText = "Số phiếu";
-            this.clnRevNo.Name = "clnRevNo";
-            this.clnRevNo.ReadOnly = true;
-            this.clnRevNo.Width = 70;
-            // 
-            // clnUserName
-            // 
-            this.clnUserName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.clnUserName.HeaderText = "Tên nhân viên";
-            this.clnUserName.Name = "clnUserName";
-            this.clnUserName.ReadOnly = true;
-            // 
-            // clnPhoneNumber
-            // 
-            this.clnPhoneNumber.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.clnPhoneNumber.HeaderText = "Số điện thoại";
-            this.clnPhoneNumber.Name = "clnPhoneNumber";
-            this.clnPhoneNumber.ReadOnly = true;
-            // 
-            // clnCustomer
-            // 
-            this.clnCustomer.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.clnCustomer.HeaderText = "Tên Khách hàng";
-            this.clnCustomer.Name = "clnCustomer";
-            this.clnCustomer.ReadOnly = true;
-            // 
-            // clnDeposite
-            // 
-            this.clnDeposite.HeaderText = "Đặt cọc";
-            this.clnDeposite.Name = "clnDeposite";
-            this.clnDeposite.ReadOnly = true;
-            // 
-            // clnCreateDate
-            // 
-            dataGridViewCellStyle1.Format = "dd/MM/yyyy";
-            this.clnCreateDate.DefaultCellStyle = dataGridViewCellStyle1;
-            this.clnCreateDate.HeaderText = "Ngày đặt";
-            this.clnCreateDate.Name = "clnCreateDate";
-            this.clnCreateDate.ReadOnly = true;
-            // 
-            // clnBookingDate
-            // 
-            dataGridViewCellStyle2.Format = "dd/MM/yyyy HH:mm";
-            dataGridViewCellStyle2.NullValue = null;
-            this.clnBookingDate.DefaultCellStyle = dataGridViewCellStyle2;
-            this.clnBookingDate.HeaderText = "Ngày nhận";
-            this.clnBookingDate.Name = "clnBookingDate";
-            this.clnBookingDate.ReadOnly = true;
-            this.clnBookingDate.Width = 150;
-            // 
-            // clnStatus
-            // 
-            this.clnStatus.HeaderText = "Tình trạng";
-            this.clnStatus.Name = "clnStatus";
-            this.clnStatus.ReadOnly = true;
-            this.clnStatus.Width = 150;
             // 
             // dtpEndDay
             // 
@@ -235,7 +179,6 @@
             this.pnlSearch.Name = "pnlSearch";
             this.pnlSearch.Size = new System.Drawing.Size(212, 202);
             this.pnlSearch.TabIndex = 7;
-            this.pnlSearch.Visible = true;
             // 
             // btnCancelFilter
             // 
@@ -320,7 +263,6 @@
             this.pnlFunction.Name = "pnlFunction";
             this.pnlFunction.Size = new System.Drawing.Size(212, 161);
             this.pnlFunction.TabIndex = 5;
-            this.pnlFunction.Visible = true;
             // 
             // btnRevReceipt
             // 
@@ -442,6 +384,75 @@
             this.tmrCheck.Interval = 60000;
             this.tmrCheck.Tick += new System.EventHandler(this.tmrCheck_Tick);
             // 
+            // clnRevNo
+            // 
+            this.clnRevNo.HeaderText = "Số phiếu";
+            this.clnRevNo.Name = "clnRevNo";
+            this.clnRevNo.ReadOnly = true;
+            this.clnRevNo.Width = 70;
+            // 
+            // clnUserName
+            // 
+            this.clnUserName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.clnUserName.HeaderText = "Tên nhân viên";
+            this.clnUserName.Name = "clnUserName";
+            this.clnUserName.ReadOnly = true;
+            // 
+            // clnPhoneNumber
+            // 
+            this.clnPhoneNumber.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.clnPhoneNumber.HeaderText = "Số điện thoại";
+            this.clnPhoneNumber.Name = "clnPhoneNumber";
+            this.clnPhoneNumber.ReadOnly = true;
+            // 
+            // clnCustomer
+            // 
+            this.clnCustomer.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.clnCustomer.HeaderText = "Tên Khách hàng";
+            this.clnCustomer.Name = "clnCustomer";
+            this.clnCustomer.ReadOnly = true;
+            // 
+            // clnDeposite
+            // 
+            this.clnDeposite.HeaderText = "Đặt cọc";
+            this.clnDeposite.Name = "clnDeposite";
+            this.clnDeposite.ReadOnly = true;
+            // 
+            // clnCreateDate
+            // 
+            dataGridViewCellStyle1.Format = "dd/MM/yyyy";
+            this.clnCreateDate.DefaultCellStyle = dataGridViewCellStyle1;
+            this.clnCreateDate.HeaderText = "Ngày đặt";
+            this.clnCreateDate.Name = "clnCreateDate";
+            this.clnCreateDate.ReadOnly = true;
+            // 
+            // clnStartime
+            // 
+            dataGridViewCellStyle2.Format = "HH:mm";
+            dataGridViewCellStyle2.NullValue = null;
+            this.clnStartime.DefaultCellStyle = dataGridViewCellStyle2;
+            this.clnStartime.HeaderText = "Bắt đầu";
+            this.clnStartime.Name = "clnStartime";
+            this.clnStartime.ReadOnly = true;
+            this.clnStartime.Width = 70;
+            // 
+            // clnEndTime
+            // 
+            dataGridViewCellStyle3.Format = "HH:mm";
+            dataGridViewCellStyle3.NullValue = null;
+            this.clnEndTime.DefaultCellStyle = dataGridViewCellStyle3;
+            this.clnEndTime.HeaderText = "Kết thúc";
+            this.clnEndTime.Name = "clnEndTime";
+            this.clnEndTime.ReadOnly = true;
+            this.clnEndTime.Width = 70;
+            // 
+            // clnStatus
+            // 
+            this.clnStatus.HeaderText = "Tình trạng";
+            this.clnStatus.Name = "clnStatus";
+            this.clnStatus.ReadOnly = true;
+            this.clnStatus.Width = 150;
+            // 
             // ReservationForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -507,7 +518,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn clnCustomer;
         private System.Windows.Forms.DataGridViewTextBoxColumn clnDeposite;
         private System.Windows.Forms.DataGridViewTextBoxColumn clnCreateDate;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clnBookingDate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clnStartime;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clnEndTime;
         private System.Windows.Forms.DataGridViewTextBoxColumn clnStatus;
     }
 }
