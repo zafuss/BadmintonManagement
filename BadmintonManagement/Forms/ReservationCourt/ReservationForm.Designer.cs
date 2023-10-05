@@ -32,11 +32,19 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgvReservation = new System.Windows.Forms.DataGridView();
+            this.clnRevNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clnUserName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clnPhoneNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clnCustomer = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clnDeposite = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clnCreateDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clnBookingDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clnStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dtpEndDay = new System.Windows.Forms.DateTimePicker();
             this.dtpStartDay = new System.Windows.Forms.DateTimePicker();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.bntAccepted = new System.Windows.Forms.Button();
+            this.btnGot = new System.Windows.Forms.Button();
             this.btnAcceptDeposition = new System.Windows.Forms.Button();
             this.pnlSearch = new System.Windows.Forms.Panel();
             this.btnCancelFilter = new System.Windows.Forms.Button();
@@ -58,14 +66,6 @@
             this.chbThisMonth = new System.Windows.Forms.CheckBox();
             this.tmrCheck = new System.Windows.Forms.Timer(this.components);
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this.clnRevNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clnUserName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clnPhoneNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clnCustomer = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clnDeposite = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clnCreateDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clnBookingDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clnStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvReservation)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -93,6 +93,65 @@
             this.dgvReservation.Size = new System.Drawing.Size(934, 534);
             this.dgvReservation.TabIndex = 0;
             this.dgvReservation.SelectionChanged += new System.EventHandler(this.dgvReservation_SelectionChanged);
+            // 
+            // clnRevNo
+            // 
+            this.clnRevNo.HeaderText = "Số phiếu";
+            this.clnRevNo.Name = "clnRevNo";
+            this.clnRevNo.ReadOnly = true;
+            this.clnRevNo.Width = 70;
+            // 
+            // clnUserName
+            // 
+            this.clnUserName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.clnUserName.HeaderText = "Tên nhân viên";
+            this.clnUserName.Name = "clnUserName";
+            this.clnUserName.ReadOnly = true;
+            // 
+            // clnPhoneNumber
+            // 
+            this.clnPhoneNumber.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.clnPhoneNumber.HeaderText = "Số điện thoại";
+            this.clnPhoneNumber.Name = "clnPhoneNumber";
+            this.clnPhoneNumber.ReadOnly = true;
+            // 
+            // clnCustomer
+            // 
+            this.clnCustomer.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.clnCustomer.HeaderText = "Tên Khách hàng";
+            this.clnCustomer.Name = "clnCustomer";
+            this.clnCustomer.ReadOnly = true;
+            // 
+            // clnDeposite
+            // 
+            this.clnDeposite.HeaderText = "Đặt cọc";
+            this.clnDeposite.Name = "clnDeposite";
+            this.clnDeposite.ReadOnly = true;
+            // 
+            // clnCreateDate
+            // 
+            dataGridViewCellStyle1.Format = "dd/MM/yyyy";
+            this.clnCreateDate.DefaultCellStyle = dataGridViewCellStyle1;
+            this.clnCreateDate.HeaderText = "Ngày đặt";
+            this.clnCreateDate.Name = "clnCreateDate";
+            this.clnCreateDate.ReadOnly = true;
+            // 
+            // clnBookingDate
+            // 
+            dataGridViewCellStyle2.Format = "dd/MM/yyyy HH:mm";
+            dataGridViewCellStyle2.NullValue = null;
+            this.clnBookingDate.DefaultCellStyle = dataGridViewCellStyle2;
+            this.clnBookingDate.HeaderText = "Ngày nhận";
+            this.clnBookingDate.Name = "clnBookingDate";
+            this.clnBookingDate.ReadOnly = true;
+            this.clnBookingDate.Width = 150;
+            // 
+            // clnStatus
+            // 
+            this.clnStatus.HeaderText = "Tình trạng";
+            this.clnStatus.Name = "clnStatus";
+            this.clnStatus.ReadOnly = true;
+            this.clnStatus.Width = 150;
             // 
             // dtpEndDay
             // 
@@ -126,7 +185,7 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.bntAccepted);
+            this.groupBox2.Controls.Add(this.btnGot);
             this.groupBox2.Controls.Add(this.btnAcceptDeposition);
             this.groupBox2.Controls.Add(this.pnlSearch);
             this.groupBox2.Controls.Add(this.btnFilter);
@@ -138,17 +197,18 @@
             this.groupBox2.TabIndex = 10;
             this.groupBox2.TabStop = false;
             // 
-            // bntAccepted
+            // btnGot
             // 
-            this.bntAccepted.Dock = System.Windows.Forms.DockStyle.Top;
-            this.bntAccepted.Enabled = false;
-            this.bntAccepted.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bntAccepted.Location = new System.Drawing.Point(3, 499);
-            this.bntAccepted.Name = "bntAccepted";
-            this.bntAccepted.Size = new System.Drawing.Size(212, 40);
-            this.bntAccepted.TabIndex = 9;
-            this.bntAccepted.Text = "Xác nhận nhận sân";
-            this.bntAccepted.UseVisualStyleBackColor = true;
+            this.btnGot.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnGot.Enabled = false;
+            this.btnGot.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGot.Location = new System.Drawing.Point(3, 499);
+            this.btnGot.Name = "btnGot";
+            this.btnGot.Size = new System.Drawing.Size(212, 40);
+            this.btnGot.TabIndex = 9;
+            this.btnGot.Text = "Xác nhận nhận sân";
+            this.btnGot.UseVisualStyleBackColor = true;
+            this.btnGot.Click += new System.EventHandler(this.btnGot_Click);
             // 
             // btnAcceptDeposition
             // 
@@ -175,7 +235,7 @@
             this.pnlSearch.Name = "pnlSearch";
             this.pnlSearch.Size = new System.Drawing.Size(212, 202);
             this.pnlSearch.TabIndex = 7;
-            this.pnlSearch.Visible = false;
+            this.pnlSearch.Visible = true;
             // 
             // btnCancelFilter
             // 
@@ -199,6 +259,7 @@
             this.btnNotYetPayed.TabIndex = 4;
             this.btnNotYetPayed.Text = "Chưa thanh toán";
             this.btnNotYetPayed.UseVisualStyleBackColor = true;
+            this.btnNotYetPayed.Click += new System.EventHandler(this.btnNotYetPayed_Click);
             // 
             // btnNotYetDeposited
             // 
@@ -210,6 +271,7 @@
             this.btnNotYetDeposited.TabIndex = 2;
             this.btnNotYetDeposited.Text = "Chưa đặt cọc";
             this.btnNotYetDeposited.UseVisualStyleBackColor = true;
+            this.btnNotYetDeposited.Click += new System.EventHandler(this.btnNotYetDeposited_Click);
             // 
             // btnNotYetAccepted
             // 
@@ -258,11 +320,12 @@
             this.pnlFunction.Name = "pnlFunction";
             this.pnlFunction.Size = new System.Drawing.Size(212, 161);
             this.pnlFunction.TabIndex = 5;
-            this.pnlFunction.Visible = false;
+            this.pnlFunction.Visible = true;
             // 
             // btnRevReceipt
             // 
             this.btnRevReceipt.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnRevReceipt.Enabled = false;
             this.btnRevReceipt.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRevReceipt.Location = new System.Drawing.Point(0, 120);
             this.btnRevReceipt.Name = "btnRevReceipt";
@@ -379,65 +442,6 @@
             this.tmrCheck.Interval = 60000;
             this.tmrCheck.Tick += new System.EventHandler(this.tmrCheck_Tick);
             // 
-            // clnRevNo
-            // 
-            this.clnRevNo.HeaderText = "Số phiếu";
-            this.clnRevNo.Name = "clnRevNo";
-            this.clnRevNo.ReadOnly = true;
-            this.clnRevNo.Width = 70;
-            // 
-            // clnUserName
-            // 
-            this.clnUserName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.clnUserName.HeaderText = "Tên nhân viên";
-            this.clnUserName.Name = "clnUserName";
-            this.clnUserName.ReadOnly = true;
-            // 
-            // clnPhoneNumber
-            // 
-            this.clnPhoneNumber.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.clnPhoneNumber.HeaderText = "Số điện thoại";
-            this.clnPhoneNumber.Name = "clnPhoneNumber";
-            this.clnPhoneNumber.ReadOnly = true;
-            // 
-            // clnCustomer
-            // 
-            this.clnCustomer.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.clnCustomer.HeaderText = "Tên Khách hàng";
-            this.clnCustomer.Name = "clnCustomer";
-            this.clnCustomer.ReadOnly = true;
-            // 
-            // clnDeposite
-            // 
-            this.clnDeposite.HeaderText = "Đặt cọc";
-            this.clnDeposite.Name = "clnDeposite";
-            this.clnDeposite.ReadOnly = true;
-            // 
-            // clnCreateDate
-            // 
-            dataGridViewCellStyle1.Format = "dd/MM/yyyy";
-            this.clnCreateDate.DefaultCellStyle = dataGridViewCellStyle1;
-            this.clnCreateDate.HeaderText = "Ngày đặt";
-            this.clnCreateDate.Name = "clnCreateDate";
-            this.clnCreateDate.ReadOnly = true;
-            // 
-            // clnBookingDate
-            // 
-            dataGridViewCellStyle2.Format = "dd/MM/yyyy HH:mm";
-            dataGridViewCellStyle2.NullValue = null;
-            this.clnBookingDate.DefaultCellStyle = dataGridViewCellStyle2;
-            this.clnBookingDate.HeaderText = "Ngày nhận";
-            this.clnBookingDate.Name = "clnBookingDate";
-            this.clnBookingDate.ReadOnly = true;
-            this.clnBookingDate.Width = 150;
-            // 
-            // clnStatus
-            // 
-            this.clnStatus.HeaderText = "Tình trạng";
-            this.clnStatus.Name = "clnStatus";
-            this.clnStatus.ReadOnly = true;
-            this.clnStatus.Width = 150;
-            // 
             // ReservationForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -493,7 +497,7 @@
         private System.Windows.Forms.Button btnAcceptDeposition;
         private System.Windows.Forms.CheckBox chbThisMonth;
         private System.Windows.Forms.Timer tmrCheck;
-        private System.Windows.Forms.Button bntAccepted;
+        private System.Windows.Forms.Button btnGot;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private System.Windows.Forms.Button btnNotYetPayed;
         private System.Windows.Forms.Button btnCancelFilter;

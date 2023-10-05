@@ -16,5 +16,18 @@ namespace BadmintonManagement.Forms.ReservationCourt.ReservationReceipt
         {
             InitializeComponent();
         }
+        string revNo;
+        public RevReceipt(string reservationNo)
+        {
+            InitializeComponent();
+            revNo = reservationNo;
+        }
+
+        private void RevReceipt_Load(object sender, EventArgs e)
+        {
+            dtpTimePublish.Value = DateTime.Now;
+            string revReceiptNo = "Rec"+ revNo.Substring(3);
+            txtReceiptNo.Text = revReceiptNo;
+        }
     }
 }

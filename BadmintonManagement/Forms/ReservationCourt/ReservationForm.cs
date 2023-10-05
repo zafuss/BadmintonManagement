@@ -1,4 +1,5 @@
 ﻿using BadmintonManagement.Forms.ReservationCourt.BookingForm;
+using BadmintonManagement.Forms.ReservationCourt.ReservationReceipt;
 using BadmintonManagement.Models;
 using System;
 using System.Collections.Generic;
@@ -34,6 +35,7 @@ namespace BadmintonManagement.Forms.ReservationCourt
             List<RESERVATION> listRev = context.RESERVATION.ToList();
             bindGrid(listRev);
             pnlFunction.Visible = false;
+            pnlSearch.Visible = false;
             bool s = RealTimeCaptureStatusReservation();
             ReloadGridFollowTime(st,se);
             
@@ -177,7 +179,8 @@ namespace BadmintonManagement.Forms.ReservationCourt
                     throw new Exception("No data");
                 if (dgvReservation.SelectedRows.Count == 0)
                     throw new Exception("Please pick a RevNo to view");
-                Booking frm = new Booking(dgvReservation.SelectedRows[0].Cells[0].Value.ToString());
+                int i = dgvReservation.SelectedRows.Count - 1;
+                Booking frm = new Booking(dgvReservation.SelectedRows[i].Cells[0].Value.ToString());
                 frm.ShowDialog();
             }
             catch (Exception ex)
@@ -185,23 +188,27 @@ namespace BadmintonManagement.Forms.ReservationCourt
                 MessageBox.Show(ex.Message);
             }
         }
+        private void EraseRF_Detail(RESERVATION rev)
+        {
+            List<RF_DETAIL> listrf = rev.RF_DETAIL.ToList();
+            foreach (RF_DETAIL rf in listrf)
+            {
+                context.RF_DETAIL.Remove(rf);
+                context.SaveChanges();
+            }
+            context.RESERVATION.AddOrUpdate(rev);
+            context.SaveChanges();
+        }
         private void btnCancel_Click(object sender, EventArgs e)
         {
             if(MessageBox.Show("Có thật sự muốn hủy","Caution",MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
                 dgvReservation.SelectedRows[0].Cells[7].Value = "Đã hủy";
-                string str = dgvReservation.SelectedRows[0].Cells[0].Value.ToString();
+                int i = dgvReservation.SelectedRows.Count - 1;
+                string str = dgvReservation.SelectedRows[i].Cells[0].Value.ToString();
                 RESERVATION rev = context.RESERVATION.FirstOrDefault(p => p.ReservationNo == str);
-                rev.C_Status = 6;
-                List<RF_DETAIL> listrf = context.RF_DETAIL.ToList(); 
-                foreach(RF_DETAIL rf in listrf)
-                {
-                    if(rf.ReservationNo == rev.ReservationNo)
-                        context.RF_DETAIL.Remove(rf);
-                    context.SaveChanges();
-                }
-                context.RESERVATION.AddOrUpdate(rev);
-                context.SaveChanges();
+                rev.C_Status = 7;
+                EraseRF_Detail(rev);
                 btnCancel.Enabled = false;
                 MessageBox.Show("Đã hủy");
             }
@@ -210,18 +217,79 @@ namespace BadmintonManagement.Forms.ReservationCourt
         {
             if (dgvReservation.SelectedRows.Count < 1)
                 return;
-            if (dgvReservation.Rows[dgvReservation.Rows.Count-1].Selected)
-                btnCancel.Enabled = false;
-            else if (dgvReservation.SelectedRows[0].Cells[7].Value.ToString() == "Chưa đặt cọc")
-            {
-                btnCancel.Enabled = true;
-                btnAcceptDeposition.Enabled = true;
-            }
-            else
+
+            if (dgvReservation.Rows[dgvReservation.Rows.Count - 1].Selected)
             {
                 btnCancel.Enabled = false;
                 btnAcceptDeposition.Enabled = false;
-            } 
+                btnGot.Enabled = false;
+                btnRevReceipt.Enabled = false;
+            }
+            else
+            {
+                string str = dgvReservation.SelectedRows[0].Cells[7].Value.ToString();
+                if (str == "Đã thanh toán")
+                    btnRevReceipt.Text = "Xem hóa đơn";
+                else
+                    btnRevReceipt.Text = "Lập hóa đơn";
+                switch (str)
+                {
+                    case "Chưa đặt cọc":
+                        btnCancel.Enabled = true;
+                        btnAcceptDeposition.Enabled = true;
+                        btnGot.Enabled = false;
+                        btnRevReceipt.Enabled = false;
+                        break;
+                    case "Đã đặt cọc":
+                        btnCancel.Enabled = false;
+                        btnAcceptDeposition.Enabled = false;
+                        btnGot.Enabled = true;
+                        btnRevReceipt.Enabled = false;
+                        break;
+                    case "Đã nhận sân":
+                        btnCancel.Enabled = false;
+                        btnAcceptDeposition.Enabled = false;
+                        btnGot.Enabled = false;
+                        btnRevReceipt.Enabled = true;
+                        break;
+                    case "Chưa thanh toán":
+                        btnCancel.Enabled = false;
+                        btnAcceptDeposition.Enabled = false;
+                        btnGot.Enabled = false;
+                        btnRevReceipt.Enabled = true;
+                        break;
+                    case "Đã thanh toán":
+                        btnCancel.Enabled = false;
+                        btnAcceptDeposition.Enabled = false;
+                        btnGot.Enabled = false;
+                        btnRevReceipt.Enabled = true;
+                        break;
+                    case "Quá giờ nhận sân":
+                        btnCancel.Enabled = false;
+                        btnAcceptDeposition.Enabled = false;
+                        btnGot.Enabled = false;
+                        btnRevReceipt.Enabled = false;
+                        break;
+                    case "Đã cọc và quá giờ nhận sân":
+                        btnCancel.Enabled = false;
+                        btnAcceptDeposition.Enabled = false;
+                        btnGot.Enabled = false;
+                        btnRevReceipt.Enabled = false;
+                        break;
+                    case "Đã hủy":
+                        btnCancel.Enabled = false;
+                        btnAcceptDeposition.Enabled = false;
+                        btnGot.Enabled = false;
+                        btnRevReceipt.Enabled = false;
+                        break;
+                    default:
+                        btnCancel.Enabled = false;
+                        btnAcceptDeposition.Enabled = false;
+                        btnGot.Enabled = false;
+                        btnRevReceipt.Enabled = false;
+                        break;
+                }
+            }
         }
         private void ReloadGrid()
         {
@@ -234,15 +302,22 @@ namespace BadmintonManagement.Forms.ReservationCourt
             if (MessageBox.Show("Có xác nhận đặt cọc?", "Caution", MessageBoxButtons.YesNo) == DialogResult.No)
                 return;
             RESERVATION rev = new RESERVATION();
-            string str = dgvReservation.SelectedRows[0].Cells[0].Value.ToString();
+            int i = dgvReservation.SelectedRows.Count - 1;
+            string str = dgvReservation.SelectedRows[i].Cells[0].Value.ToString();
             rev = context.RESERVATION.FirstOrDefault(p => p.ReservationNo == str);
             rev.C_Status = 1;
+            dgvReservation.SelectedRows[i].Cells[7].Value = "Đã đặt cọc";
             context.RESERVATION.AddOrUpdate(rev);
             context.SaveChanges();
-            ReloadGrid();
+            btnGot.Enabled = true;
+            
         }
         private void btnRevReceipt_Click(object sender, EventArgs e)
         {
+            int i = dgvReservation.SelectedRows.Count-1;
+            string str = dgvReservation.SelectedRows[i].Cells[0].Value.ToString();
+            RevReceipt frm = new RevReceipt(str);
+            frm.Show();
         }
         DateTime tempStart;
         DateTime tempEnd;
@@ -312,6 +387,7 @@ namespace BadmintonManagement.Forms.ReservationCourt
                             rev.C_Status = 5;
                         else
                             rev.C_Status = 6;
+                        EraseRF_Detail(rev);
                         context.RESERVATION.AddOrUpdate(rev);
                         context.SaveChanges();
                         change = true;
@@ -323,6 +399,7 @@ namespace BadmintonManagement.Forms.ReservationCourt
                         rev.C_Status = 5;
                     else
                         rev.C_Status = 6;
+                    EraseRF_Detail(rev);
                     context.RESERVATION.AddOrUpdate(rev);
                     context.SaveChanges();
                     change = true;
@@ -338,12 +415,10 @@ namespace BadmintonManagement.Forms.ReservationCourt
                 ReloadGridFollowTime(st, se);
             }     
         }
-
         private void btnCancelFilter_Click(object sender, EventArgs e)
         {
             ReloadGridFollowTime(st, se);
         }
-
         private void btnNotYetAccepted_Click(object sender, EventArgs e)
         {
             for (int i = 0; i < dgvReservation.Rows.Count - 1; i++)
@@ -355,27 +430,42 @@ namespace BadmintonManagement.Forms.ReservationCourt
             }
             ReloadGridByFollowTimeByFilter(st, se);
         }
+        private void btnNotYetDeposited_Click(object sender, EventArgs e)
+        {
+            for(int i = 0;i< dgvReservation.Rows.Count -1;i++)
+            {
+                if (dgvReservation.Rows[i].Cells[7].Value.ToString() == "Chưa đặt cọc")
+                    dgvReservation.Rows[i].Visible = true;
+                else
+                    dgvReservation.Rows[i].Visible = false;
+            }
+            ReloadGridByFollowTimeByFilter(st,se);
+        }
 
-
-        /*
-            int d = rev.C_Status.Value;
-            if (d == 0)
-                return "Chưa đặt cọc";
-            if (d == 1) 
-                return "Đã đặt cọc";
-            if (d == 2)
-                return "Đã nhận sân";
-            if (d == 3)
-                return "Chưa thanh toán";
-            if (d == 4)
-                return "Đã thanh toán";
-            if (d == 5)
-                return "Quá giờ nhận sân";
-            if (d == 6)
-                return "Đã cọc và quá giờ nhận sân";
-            if (d == 7)
-                return "Đã hủy";
-            return "Cannot get the Status";
-            */
+        private void btnNotYetPayed_Click(object sender, EventArgs e)
+        {
+            for (int i = 0; i < dgvReservation.Rows.Count - 1; i++)
+            {
+                if (dgvReservation.Rows[i].Cells[7].Value.ToString() == "Chưa thanh toán")
+                    dgvReservation.Rows[i].Visible = true;
+                else
+                    dgvReservation.Rows[i].Visible = false;
+            }
+            ReloadGridByFollowTimeByFilter(st, se);
+        }
+        private void btnGot_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Có xác nhận nhận sân?", "Caution", MessageBoxButtons.YesNo) == DialogResult.No)
+                return;
+            RESERVATION rev = new RESERVATION();
+            int i = dgvReservation.SelectedRows.Count - 1;
+            string str = dgvReservation.SelectedRows[i].Cells[0].Value.ToString();
+            rev = context.RESERVATION.FirstOrDefault(p => p.ReservationNo == str);
+            rev.C_Status = 2;
+            dgvReservation.SelectedRows[i].Cells[7].Value = "Đã nhận sân";
+            context.RESERVATION.AddOrUpdate(rev);
+            context.SaveChanges();
+            btnRevReceipt.Enabled = true;
+        }
     }
 }

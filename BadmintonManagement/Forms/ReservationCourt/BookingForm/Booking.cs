@@ -40,10 +40,7 @@ namespace BadmintonManagement.Forms.ReservationCourt.BookingForm
         ModelBadmintonManage context = new ModelBadmintonManage();
         private void RandomRevNo()
         {
-            Random random = new Random();
-            revNo = random.Next(1000, 9999).ToString();
-            while(context.RESERVATION.Any(p=>p.ReservationNo == revNo))
-                revNo = random.Next(1000,9999).ToString();
+            revNo = "Rev" + string.Format("{0:ddMMyyHHmm}");  
         }
         private void BookingForm_Load(object sender, EventArgs e)
         {
