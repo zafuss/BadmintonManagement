@@ -30,9 +30,14 @@ namespace BadmintonManagement.Models
 
         public DateTime? CreateDate { get; set; }
 
+        public DateTime? BookingDate { get; set; }
+
         public DateTime? StartTime { get; set; }
 
         public DateTime? EndTime { get; set; }
+
+        [StringLength(20)]
+        public string PriceID { get; set; }
 
         [Column("_Status")]
         public int? C_Status { get; set; }
@@ -40,6 +45,8 @@ namespace BadmintonManagement.Models
         public virtual C_USER C_USER { get; set; }
 
         public virtual CUSTOMER CUSTOMER { get; set; }
+
+        public virtual PRICE PRICE { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<RECEIPT> RECEIPT { get; set; }

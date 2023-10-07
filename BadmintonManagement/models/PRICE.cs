@@ -12,7 +12,7 @@ namespace BadmintonManagement.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public PRICE()
         {
-            RF_DETAIL = new HashSet<RF_DETAIL>();
+            RESERVATION = new HashSet<RESERVATION>();
         }
 
         [StringLength(20)]
@@ -28,6 +28,6 @@ namespace BadmintonManagement.Models
         public int? C_Status { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<RF_DETAIL> RF_DETAIL { get; set; }
+        public virtual ICollection<RESERVATION> RESERVATION { get; set; }
     }
 }

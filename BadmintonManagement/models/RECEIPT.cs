@@ -23,6 +23,11 @@ namespace BadmintonManagement.Models
         [StringLength(20)]
         public string ReservationNo { get; set; }
 
+        [StringLength(50)]
+        public string Username { get; set; }
+
+        public virtual C_USER C_USER { get; set; }
+
         public virtual RESERVATION RESERVATION { get; set; }
     }
 }

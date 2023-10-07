@@ -292,9 +292,9 @@ namespace BadmintonManagement.Forms.Court
             pnlDisplayCourt.Controls.Clear();
             pnlDisplayCourt.Refresh();
             showSubMenu(pnlUser);
-            listRF = new RFDetailService().getRFDetail();
-            count = listRF.Count();
-            UserShow(listRF,count);
+           // listRF = new RFDetailService().getRFDetail();
+            //count = listRF.Count();
+            ///UserShow(listRF,count);
         }
 
         private void btnAdmin_Click(object sender, EventArgs e)
@@ -322,8 +322,8 @@ namespace BadmintonManagement.Forms.Court
             else 
             {
                 listRF = new RFDetailService().getRFDetail();
-                count = listRF.Count();
-                UserShow(listRF, count);
+                //count = listRF.Count();
+               // UserShow(listRF, count);
             }
 
 

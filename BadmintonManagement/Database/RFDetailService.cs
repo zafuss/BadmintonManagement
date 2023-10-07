@@ -7,6 +7,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using BadmintonManagement.Custom;
+using System.Data.SqlClient;
+using FireSharp.Extensions;
 
 namespace BadmintonManagement.Database
 {
@@ -14,11 +16,77 @@ namespace BadmintonManagement.Database
     {
         ModelBadmintonManage _modelbadmintonManage = new ModelBadmintonManage();
         List<RF_DETAIL> _rfDetail = new ModelBadmintonManage().RF_DETAIL.ToList();
-
-        public List<RF_DETAIL> getRFDetail()
+        List<COURT> _court = new ModelBadmintonManage().COURT.ToList();
+        List<RESERVATION> _reservation = new ModelBadmintonManage().RESERVATION.ToList();
+        public List<RF_DETAIL> getRFDetail()    
         {
             return _rfDetail;
         }
+
+
+        private Dictionary<string, List<string>> getListRFinDay()
+        {
+            string connectString = @"Data Source=localhost;Initial Catalog=BadmintonManagementDB;Integrated Security=True";
+
+            string sql = @"select * from RESERVATION rf
+                           where Cast(rf.StartTime as Date) = Cast(CURRENT_TIMESTAMP  as DATE)";
+            SqlConnection conn;
+            conn = new SqlConnection(connectString);
+            conn.Open();
+
+            SqlCommand cmd;
+            SqlDataReader dataReader;
+
+            cmd = new SqlCommand(sql, conn);
+            cmd.ExecuteNonQuery();
+            dataReader = cmd.ExecuteReader();
+            Dictionary<string, List<string>> keyValuePairs = new Dictionary<string, List<string>>() { };
+
+            string tmp = "";
+            string tmp1 = "";
+
+            while (dataReader.Read())
+            {
+                tmp = String.Format("{0:HH:mm}", dataReader.GetValue(5));
+                tmp1 = String.Format("{0:HH:mm}", dataReader.GetValue(6));
+                if (!keyValuePairs.ContainsKey(tmp))
+                    keyValuePairs.Add(tmp, new List<string>());
+                keyValuePairs[tmp].Add(dataReader.GetValue(0).ToString());
+
+                if (!keyValuePairs.ContainsKey(tmp1))
+                    keyValuePairs.Add(tmp1, new List<string>());
+                keyValuePairs[tmp1].Add(dataReader.GetValue(0).ToString());
+
+            }
+            return  keyValuePairs;
+        }
+
+
+        //private List<InfoCourt> getCourtByRF()
+        //{
+        //    Dictionary<string, List<string>> keyValuePairs = getListRFinDay();
+        //    List<InfoCourt> infoCourts = new List<InfoCourt>();
+        //    List<string> listRV = new List<string>();
+        //    List<RF_DETAIL> rF_DETAILs = new List<RF_DETAIL>();
+        //    foreach (var item in keyValuePairs)
+        //    {
+        //        string tmp = String.Format("{0:HH:mm}", DateTime.Now);
+        //        if (item.Key == tmp)
+        //        {
+        //            foreach (var item1 in keyValuePairs[item.Key])
+        //            {
+        //                listRV.Add(item1);
+        //            }
+        //        }
+        //    }
+
+        //    foreach(var item in _rfDetail) 
+        //    {
+                
+        //    }
+
+        //}
+
 
         public int getCountDetail()
         {
@@ -66,19 +134,22 @@ namespace BadmintonManagement.Database
             picStatusCourt.Size = new Size(Convert.ToInt32(x * 3 / 5), Convert.ToInt32(y * 3 / 5));
             picStatusCourt.Location = new Point(Convert.ToInt32(x * 1 / 5), Convert.ToInt32(y * 1 / 5));
 
-
-            if (rf_detail.COURT.C_Status == "Use")
-            {
-                picStatusCourt.Image = Properties.Resources.Use;
-            }
-            else if (rf_detail.COURT.C_Status == "Used")
-            {
-                picStatusCourt.Image = Properties.Resources.Used;
-            }
-            else if (rf_detail.COURT.C_Status == "Maintaince")
+            if(rf_detail.COURT.C_Status == "Maintaince")
             {
                 picStatusCourt.Image = Properties.Resources.Maintainace;
             }
+            else
+            {
+                if (rf_detail.RESERVATION.StartTime <= DateTime.Now && rf_detail.RESERVATION.EndTime >= DateTime.Now)
+                {
+                    picStatusCourt.Image = Properties.Resources.Use;
+                }
+                else 
+                {
+                    picStatusCourt.Image = Properties.Resources.Used;
+                }
+            }
+            
 
             if (count > 2)
             {
