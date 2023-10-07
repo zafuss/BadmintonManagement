@@ -81,8 +81,8 @@
             // 
             // cboCourt
             // 
-            this.cboCourt.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.cboCourt.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.cboCourt.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboCourt.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboCourt.FormattingEnabled = true;
             this.cboCourt.Location = new System.Drawing.Point(242, 185);

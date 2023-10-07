@@ -76,20 +76,18 @@ namespace BadmintonManagement.Forms.ReservationCourt
                     dgvReservation.Rows[i].Cells[3].Value = item.CUSTOMER.FullName;
                 }
                 dgvReservation.Rows[i].Cells[4].Value = item.Deposite;
-                DateTime d = item.CreateDate.Value;
-                
                 dgvReservation.Rows[i].Cells[5].Value = item.CreateDate;
-                dgvReservation.Rows[i].Cells[6].Value = item.StartTime;
-                dgvReservation.Rows[i].Cells[7].Value = item.EndTime;
-                dgvReservation.Rows[i].Cells[8].Value = PickStatus(item);
-
+                dgvReservation.Rows[i].Cells[6].Value = item.BookingDate;
+                dgvReservation.Rows[i].Cells[7].Value = item.StartTime;
+                dgvReservation.Rows[i].Cells[8].Value = item.EndTime;
+                dgvReservation.Rows[i].Cells[9].Value = PickStatus(item);
             }
         }
         private void ReloadGridFollowTime(DateTime st, DateTime se)
         {
             for(int i = 0;i<dgvReservation.Rows.Count-1;i++) 
             {
-                DateTime p = DateTime.Parse(dgvReservation.Rows[i].Cells[6].Value.ToString());
+                DateTime p = DateTime.Parse(dgvReservation.Rows[i].Cells[5].Value.ToString());
                
                 int s1 = DateTime.Compare(p,st);
                 int s2 = DateTime.Compare(p,se);
@@ -103,7 +101,7 @@ namespace BadmintonManagement.Forms.ReservationCourt
         {
             for (int i = 0; i < dgvReservation.Rows.Count - 1; i++)
             {
-                DateTime p = DateTime.Parse(dgvReservation.Rows[i].Cells[6].Value.ToString());
+                DateTime p = DateTime.Parse(dgvReservation.Rows[i].Cells[8].Value.ToString());
 
                 int s1 = DateTime.Compare(p, st);
                 int s2 = DateTime.Compare(p, se);
@@ -154,7 +152,7 @@ namespace BadmintonManagement.Forms.ReservationCourt
                     else
                         dgvReservation.Rows[i].Visible = true;
                 }
-
+                ReloadGridFollowTimeByFilter(st,se);
             }
         }
         private void txtSearchByPhoneNumber_Click(object sender, EventArgs e)
@@ -204,7 +202,7 @@ namespace BadmintonManagement.Forms.ReservationCourt
         {
             if(MessageBox.Show("Có thật sự muốn hủy","Caution",MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
-                dgvReservation.SelectedRows[0].Cells[8].Value = "Đã hủy";
+                dgvReservation.SelectedRows[0].Cells[9].Value = "Đã hủy";
                 int i = dgvReservation.SelectedRows.Count - 1;
                 string str = dgvReservation.SelectedRows[i].Cells[0].Value.ToString();
                 RESERVATION rev = context.RESERVATION.FirstOrDefault(p => p.ReservationNo == str);
@@ -228,7 +226,7 @@ namespace BadmintonManagement.Forms.ReservationCourt
             }
             else
             {
-                string str = dgvReservation.SelectedRows[0].Cells[8].Value.ToString();
+                string str = dgvReservation.SelectedRows[0].Cells[9].Value.ToString();
                 if (str == "Đã thanh toán")
                     btnRevReceipt.Text = "Xem hóa đơn";
                 else
@@ -240,54 +238,63 @@ namespace BadmintonManagement.Forms.ReservationCourt
                         btnAcceptDeposition.Enabled = true;
                         btnGot.Enabled = false;
                         btnRevReceipt.Enabled = false;
+                        btnRevReceipt.Text = "Lập hóa đơn";
                         break;
                     case "Đã đặt cọc":
                         btnCancel.Enabled = false;
                         btnAcceptDeposition.Enabled = false;
                         btnGot.Enabled = true;
                         btnRevReceipt.Enabled = false;
+                        btnRevReceipt.Text = "Lập hóa đơn";
                         break;
                     case "Đã nhận sân":
                         btnCancel.Enabled = false;
                         btnAcceptDeposition.Enabled = false;
                         btnGot.Enabled = false;
                         btnRevReceipt.Enabled = true;
+                        btnRevReceipt.Text = "Lập hóa đơn";
                         break;
                     case "Chưa thanh toán":
                         btnCancel.Enabled = false;
                         btnAcceptDeposition.Enabled = false;
                         btnGot.Enabled = false;
                         btnRevReceipt.Enabled = true;
+                        btnRevReceipt.Text = "Lập hóa đơn";
                         break;
                     case "Đã thanh toán":
                         btnCancel.Enabled = false;
                         btnAcceptDeposition.Enabled = false;
                         btnGot.Enabled = false;
                         btnRevReceipt.Enabled = true;
+                        btnRevReceipt.Text = "Xem hóa đơn";
                         break;
                     case "Quá giờ nhận sân":
                         btnCancel.Enabled = false;
                         btnAcceptDeposition.Enabled = false;
                         btnGot.Enabled = false;
                         btnRevReceipt.Enabled = false;
+                        btnRevReceipt.Text = "Lập hóa đơn";
                         break;
                     case "Đã cọc và quá giờ nhận sân":
                         btnCancel.Enabled = false;
                         btnAcceptDeposition.Enabled = false;
                         btnGot.Enabled = false;
                         btnRevReceipt.Enabled = false;
+                        btnRevReceipt.Text = "Lập hóa đơn";
                         break;
                     case "Đã hủy":
                         btnCancel.Enabled = false;
                         btnAcceptDeposition.Enabled = false;
                         btnGot.Enabled = false;
                         btnRevReceipt.Enabled = false;
+                        btnRevReceipt.Text = "Lập hóa đơn";
                         break;
                     default:
                         btnCancel.Enabled = false;
                         btnAcceptDeposition.Enabled = false;
                         btnGot.Enabled = false;
                         btnRevReceipt.Enabled = false;
+                        btnRevReceipt.Text = "Lập hóa đơn";
                         break;
                 }
             }
@@ -307,18 +314,35 @@ namespace BadmintonManagement.Forms.ReservationCourt
             string str = dgvReservation.SelectedRows[i].Cells[0].Value.ToString();
             rev = context.RESERVATION.FirstOrDefault(p => p.ReservationNo == str);
             rev.C_Status = 1;
-            dgvReservation.SelectedRows[i].Cells[8].Value = "Đã đặt cọc";
+            dgvReservation.SelectedRows[i].Cells[9].Value = "Đã đặt cọc";
             context.RESERVATION.AddOrUpdate(rev);
             context.SaveChanges();
             btnGot.Enabled = true;
+            btnAcceptDeposition .Enabled = false;
             
+        }
+        private void ChangeReservationStatus(string revNo)
+        {
+            RESERVATION rev = context.RESERVATION.FirstOrDefault(p => p.ReservationNo == revNo);
+            rev.C_Status = 4;
+            context.RESERVATION.AddOrUpdate(rev);
+            context.SaveChanges();
+        }
+        private void LoadRevStat(string revNo)
+        {
+            ChangeReservationStatus(revNo);
+            int index = dgvReservation.SelectedRows.Count - 1;
+            dgvReservation.SelectedRows[index].Cells[9].Value = "Đã thanh toán";
+            btnRevReceipt.Text = "Xem hóa đơn";
         }
         private void btnRevReceipt_Click(object sender, EventArgs e)
         {
             int i = dgvReservation.SelectedRows.Count-1;
-            string str = dgvReservation.SelectedRows[i].Cells[0].Value.ToString();
-            RevReceipt frm = new RevReceipt(str);
-            frm.Show();
+            string str1 = dgvReservation.SelectedRows[i].Cells[0].Value.ToString();
+            string str2 = dgvReservation.SelectedRows[i].Cells[9].Value.ToString();
+            RevReceipt frm = new RevReceipt(str1,str2);
+            frm.RevStat = new RevReceipt.ChangeRevStat(LoadRevStat);
+            frm.Show();  
         }
         DateTime tempStart;
         DateTime tempEnd;
@@ -348,7 +372,7 @@ namespace BadmintonManagement.Forms.ReservationCourt
         {
             for(int i= 0; i <dgvReservation.Rows.Count-1; i++) 
             {
-                if (dgvReservation.Rows[i].Cells[8].Value.ToString() == "Đã cọc và quá giờ nhận sân"|| dgvReservation.Rows[i].Cells[7].Value.ToString() == "Quá giờ nhận sân")
+                if (dgvReservation.Rows[i].Cells[9].Value.ToString() == "Đã cọc và quá giờ nhận sân"|| dgvReservation.Rows[i].Cells[9].Value.ToString() == "Quá giờ nhận sân")
                     dgvReservation.Rows[i].Visible = true;
                 else
                     dgvReservation.Rows[i].Visible=false;
@@ -415,7 +439,7 @@ namespace BadmintonManagement.Forms.ReservationCourt
         {
             for (int i = 0; i < dgvReservation.Rows.Count - 1; i++)
             {
-                if (dgvReservation.Rows[i].Cells[8].Value.ToString() == "Chưa đặt cọc" || dgvReservation.Rows[i].Cells[8].Value.ToString() == "Đã đặt cọc")
+                if (dgvReservation.Rows[i].Cells[9].Value.ToString() == "Chưa đặt cọc" || dgvReservation.Rows[i].Cells[9].Value.ToString() == "Đã đặt cọc")
                     dgvReservation.Rows[i].Visible = true;
                 else
                     dgvReservation.Rows[i].Visible = false;
@@ -426,7 +450,7 @@ namespace BadmintonManagement.Forms.ReservationCourt
         {
             for(int i = 0;i< dgvReservation.Rows.Count -1;i++)
             {
-                if (dgvReservation.Rows[i].Cells[8].Value.ToString() == "Chưa đặt cọc")
+                if (dgvReservation.Rows[i].Cells[9].Value.ToString() == "Chưa đặt cọc")
                     dgvReservation.Rows[i].Visible = true;
                 else
                     dgvReservation.Rows[i].Visible = false;
@@ -438,7 +462,7 @@ namespace BadmintonManagement.Forms.ReservationCourt
         {
             for (int i = 0; i < dgvReservation.Rows.Count - 1; i++)
             {
-                if (dgvReservation.Rows[i].Cells[8].Value.ToString() == "Chưa thanh toán")
+                if (dgvReservation.Rows[i].Cells[9].Value.ToString() == "Chưa thanh toán"|| dgvReservation.Rows[i].Cells[9].Value.ToString() == "Đã nhận sân")
                     dgvReservation.Rows[i].Visible = true;
                 else
                     dgvReservation.Rows[i].Visible = false;
@@ -454,10 +478,11 @@ namespace BadmintonManagement.Forms.ReservationCourt
             string str = dgvReservation.SelectedRows[i].Cells[0].Value.ToString();
             rev = context.RESERVATION.FirstOrDefault(p => p.ReservationNo == str);
             rev.C_Status = 2;
-            dgvReservation.SelectedRows[i].Cells[8].Value = "Đã nhận sân";
+            dgvReservation.SelectedRows[i].Cells[9].Value = "Đã nhận sân";
             context.RESERVATION.AddOrUpdate(rev);
             context.SaveChanges();
             btnRevReceipt.Enabled = true;
+            btnGot.Enabled = false;
         }
     }
 }
