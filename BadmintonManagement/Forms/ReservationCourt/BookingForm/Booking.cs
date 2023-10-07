@@ -40,15 +40,23 @@ namespace BadmintonManagement.Forms.ReservationCourt.BookingForm
             revNo = reservationNo;
         }
         ModelBadmintonManage context = new ModelBadmintonManage();
-        private void RandomRevNo()
+        private string RandomRevNo()
         {
-            revNo = "Rev" + string.Format("{0:ddMMyyHHmm}",DateTime.Now);  
+            DateTime d1 = DateTime.Now.Date;
+            DateTime d2 = new DateTime(d1.Year,d1.Month,d1.Day,23,59,59);
+            string s = context.RESERVATION.Count(p=> DateTime.Compare(p.CreateDate.Value,d1)>=0 && DateTime.Compare(p.CreateDate.Value, d2)<=0).ToString();
+            while (s.Length < 4)
+            {
+                s = 0 + s;
+            }
+            return "Rev" + string.Format("{0:ddMMyy}", DateTime.Now) + s;
+             
         }
         private void BookingForm_Load(object sender, EventArgs e)
         {
             if(revNo == string.Empty)
             {
-                RandomRevNo();
+                revNo = RandomRevNo();
                 isNew = true;
             }  
             else
@@ -57,13 +65,10 @@ namespace BadmintonManagement.Forms.ReservationCourt.BookingForm
                 List<RF_DETAIL> listRFD = rev.RF_DETAIL.ToList();
                 BindGrid(listRFD);
                 txtDeopsite.Text = rev.Deposite.Value.ToString();
-                if(rev.C_Status>=2)
-                {
-                    btnAcept.Enabled = false;
-                    btnCancel.Enabled = false;
-                    btnSave.Enabled = false;
-                    cboCourt.Enabled = false;
-                }
+                btnAcept.Enabled = false;
+                btnCancel.Enabled = false;
+                btnSave.Enabled = false;
+                cboCourt.Enabled = false;
                 dtpDate.Enabled = false;
                 dtpStartTime.Enabled = false;
                 dtpEndTime.Enabled = false;
@@ -72,9 +77,10 @@ namespace BadmintonManagement.Forms.ReservationCourt.BookingForm
             dtpDate.Value = DateTime.Now;
             dtpStartTime.CustomFormat = "HH:mm";
             dtpEndTime.CustomFormat = "HH:mm";
-            dtpEndTime.Value = new DateTime(dtpDate.Value.Year, dtpDate.Value.Month, dtpDate.Value.Day, 6, 0, 0);
             dtpStartTime.Value = new DateTime(dtpDate.Value.Year, dtpDate.Value.Month, dtpDate.Value.Day, 5, 0, 0);
+            dtpEndTime.Value = new DateTime(dtpDate.Value.Year, dtpDate.Value.Month, dtpDate.Value.Day, 6, 0, 0);
             FillcboCourtName();
+            
         }
         private void BindGrid(List<RF_DETAIL> listRFD)
         {
@@ -126,10 +132,24 @@ namespace BadmintonManagement.Forms.ReservationCourt.BookingForm
                 cboCourt.Items.Add(item.CourtName);
                 cboCourt.AutoCompleteCustomSource.Add(item.CourtName);
             }
-            cboCourt.SelectedIndex= 0;
+            if (cboCourt.Items.Count == 0)
+            {
+                cboCourt.Text = string.Empty;
+                cboCourt.Enabled = false;
+                /*MessageBox.Show("Không còn sân khả dụng, vui lòng chọn khung giờ hoặc ngày khác");
+                btnSave.Enabled = false;*/
+            }
+            else
+            {
+                cboCourt.SelectedIndex = 0;
+                cboCourt.Enabled = true;
+                //btnSave.Enabled = true;
+            }
+                
         }
         private void btnSave_Click(object sender, EventArgs e)
         {
+            
             if(DateTime.Compare( dtpStartTime.Value,DateTime.Now)<0)
             {
                 MessageBox.Show("Thời gian không phù hợp");
@@ -154,21 +174,35 @@ namespace BadmintonManagement.Forms.ReservationCourt.BookingForm
             int d= 0;
             dgvRF_Detail.Rows[i].Cells[d++].Value = revNo;
             dgvRF_Detail.Rows[i].Cells[d++].Value = cboCourt.Text;
-            dgvRF_Detail.Rows[i].Cells[d++].Value = context.PRICE.FirstOrDefault().PriceTag;
+            dgvRF_Detail.Rows[i].Cells[d++].Value = context.PRICE.FirstOrDefault(p=>p.C_Status==1).PriceTag;
             txtDeopsite.Text = DepositeCalculation().ToString();
             FillcboCourtName();
             dtpEndTime.Enabled = false;
             dtpStartTime.Enabled = false;
+            if(cboCourt.Items.Count==0)
+                btnSave.Enabled = false;
+            else
+                btnSave.Enabled = true;
         }
         private decimal DepositeCalculation()
         {
-            return (dgvRF_Detail.Rows.Count-1) * 50000;
+            if (dgvRF_Detail.Rows.Count == 1)
+                return 0;
+            decimal total = 0;
+            DateTime d1 = dtpStartTime.Value;
+            DateTime d2 = dtpEndTime.Value;
+            decimal p = (decimal)(d2.Hour * 60 + d2.Minute - d1.Hour * 60 - d1.Minute) / 60;
+            for(int i=0;i<dgvRF_Detail.Rows.Count-1;i++)
+            {
+                total += (decimal)dgvRF_Detail.Rows[i].Cells[2].Value * p;
+            }
+            return total * 30 / 100;
         }
         private void btnAcept_Click(object sender, EventArgs e)
         {          
             if(dgvRF_Detail.Rows.Count==1)
             {
-                if (MessageBox.Show("Không thể thêm phiếu đặt sân, bạn có muốn thoát","Caution",MessageBoxButtons.YesNo) == DialogResult.Yes)
+                if (MessageBox.Show("Không thể thêm phiếu đặt sân vì chưa có thông tin, bạn có muốn thoát","Caution",MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
                     this.Close();
                     return;
@@ -184,13 +218,14 @@ namespace BadmintonManagement.Forms.ReservationCourt.BookingForm
                 rev.Username = Properties.Settings.Default.Username;
                 rev.PhoneNumber = PN;
                 rev.CreateDate = DateTime.Now;
+                rev.BookingDate = d.Date;
                 rev.StartTime = new DateTime(d.Year,d.Month,d.Day,dtpStartTime.Value.Hour,dtpStartTime.Value.Minute,0);
                 rev.EndTime = new DateTime(d.Year,d.Month,d.Day,dtpEndTime.Value.Hour,dtpEndTime.Value.Minute,0);
                 rev.Deposite = Decimal.Parse(txtDeopsite.Text);
                 rev.C_Status = 0;
+                rev.PriceID = context.PRICE.FirstOrDefault(p => p.C_Status == 1).PriceID;
                 context.RESERVATION.Add(rev);
                 context.SaveChanges();
-               
             }
             foreach (DataGridViewRow row in dgvRF_Detail.Rows)
             {
@@ -222,36 +257,40 @@ namespace BadmintonManagement.Forms.ReservationCourt.BookingForm
         {
             if (dtpEndTime.Value.Hour < 6)
             {
-                MessageBox.Show("Nhập thời gian kết thúc sai quy định ");
+                //MessageBox.Show("Nhập thời gian kết thúc sai quy định ");
                 dtpEndTime.Value = new DateTime(dtpDate.Value.Year, dtpDate.Value.Month, dtpDate.Value.Day, 6, 0, 0);
 
             }
             if (dtpEndTime.Value.Hour > 22)
             {
-                MessageBox.Show("Nhập thời gian kết thúc sai quy định ");
+                //MessageBox.Show("Nhập thời gian kết thúc sai quy định ");
                 dtpEndTime.Value = new DateTime(dtpDate.Value.Year, dtpDate.Value.Month, dtpDate.Value.Day, 22, 0, 0);
             }
             if (dtpStartTime.Value.Hour < 5)
             {
-                MessageBox.Show("Nhập thời gian bắt đầu sai quy định ");
+                //MessageBox.Show("Nhập thời gian bắt đầu sai quy định ");
                 dtpStartTime.Value = new DateTime(dtpDate.Value.Year, dtpDate.Value.Month, dtpDate.Value.Day, 5, 0, 0);
             }
             if (dtpStartTime.Value.Hour > 21)
             {
-                MessageBox.Show("Nhập thời gian bắt đầu sai quy định ");
-                dtpStartTime.Value = new DateTime(dtpDate.Value.Year, dtpDate.Value.Month, dtpDate.Value.Day, 20, 0, 0);
+                //MessageBox.Show("Nhập thời gian bắt đầu sai quy định ");
+                dtpStartTime.Value = new DateTime(dtpDate.Value.Year, dtpDate.Value.Month, dtpDate.Value.Day, 21, 0, 0);
+            }
+            if(dtpEndTime.Value.Hour <= dtpStartTime.Value.Hour)
+            {
+                dtpEndTime.Value = new DateTime(dtpDate.Value.Year, dtpDate.Value.Month, dtpDate.Value.Day, dtpStartTime.Value.Hour + 1, 0, 0);
             }
             FillcboCourtName();
         }
-
         private void btnCancel_Click(object sender, EventArgs e)
         {
-        
             dgvRF_Detail.Rows.Clear();
+            txtDeopsite.Text = "0";
             dtpStartTime.Enabled = true;
             dtpEndTime.Enabled = true;
             dtpDate.Enabled = true;
             cboCourt.Enabled = true;
+            FillcboCourtName();
         }
     }
 }

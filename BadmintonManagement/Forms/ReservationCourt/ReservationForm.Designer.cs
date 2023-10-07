@@ -32,6 +32,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgvReservation = new System.Windows.Forms.DataGridView();
             this.dtpEndDay = new System.Windows.Forms.DateTimePicker();
             this.dtpStartDay = new System.Windows.Forms.DateTimePicker();
@@ -53,7 +54,6 @@
             this.btnAdd = new System.Windows.Forms.Button();
             this.btnFunction = new System.Windows.Forms.Button();
             this.txtSearchByPhoneNumber = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.chbThisMonth = new System.Windows.Forms.CheckBox();
@@ -65,6 +65,7 @@
             this.clnCustomer = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clnDeposite = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clnCreateDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clnBookingDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clnStartime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clnEndTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clnStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -85,6 +86,7 @@
             this.clnCustomer,
             this.clnDeposite,
             this.clnCreateDate,
+            this.clnBookingDate,
             this.clnStartime,
             this.clnEndTime,
             this.clnStatus});
@@ -329,23 +331,13 @@
             // txtSearchByPhoneNumber
             // 
             this.txtSearchByPhoneNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSearchByPhoneNumber.Location = new System.Drawing.Point(835, 61);
+            this.txtSearchByPhoneNumber.Location = new System.Drawing.Point(837, 63);
             this.txtSearchByPhoneNumber.Name = "txtSearchByPhoneNumber";
             this.txtSearchByPhoneNumber.Size = new System.Drawing.Size(262, 26);
             this.txtSearchByPhoneNumber.TabIndex = 1;
-            this.txtSearchByPhoneNumber.Text = "Nhập số điện thoại để tìm kiếm";
+            this.txtSearchByPhoneNumber.Text = "Nhập số điện thoại";
             this.txtSearchByPhoneNumber.Click += new System.EventHandler(this.txtSearchByPhoneNumber_Click);
             this.txtSearchByPhoneNumber.TextChanged += new System.EventHandler(this.txtSearchByPhoneNumber_TextChanged);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(745, 64);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(84, 20);
-            this.label1.TabIndex = 11;
-            this.label1.Text = "Tiềm kiếm ";
             // 
             // label2
             // 
@@ -389,7 +381,7 @@
             this.clnRevNo.HeaderText = "Số phiếu";
             this.clnRevNo.Name = "clnRevNo";
             this.clnRevNo.ReadOnly = true;
-            this.clnRevNo.Width = 70;
+            this.clnRevNo.Width = 140;
             // 
             // clnUserName
             // 
@@ -420,17 +412,25 @@
             // 
             // clnCreateDate
             // 
-            dataGridViewCellStyle1.Format = "dd/MM/yyyy";
+            dataGridViewCellStyle1.Format = "dd/MM/yy";
             this.clnCreateDate.DefaultCellStyle = dataGridViewCellStyle1;
             this.clnCreateDate.HeaderText = "Ngày đặt";
             this.clnCreateDate.Name = "clnCreateDate";
             this.clnCreateDate.ReadOnly = true;
             // 
+            // clnBookingDate
+            // 
+            dataGridViewCellStyle2.Format = "dd/MM/yy";
+            this.clnBookingDate.DefaultCellStyle = dataGridViewCellStyle2;
+            this.clnBookingDate.HeaderText = "Ngày nhận";
+            this.clnBookingDate.Name = "clnBookingDate";
+            this.clnBookingDate.ReadOnly = true;
+            // 
             // clnStartime
             // 
-            dataGridViewCellStyle2.Format = "HH:mm";
-            dataGridViewCellStyle2.NullValue = null;
-            this.clnStartime.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle3.Format = "HH:mm";
+            dataGridViewCellStyle3.NullValue = null;
+            this.clnStartime.DefaultCellStyle = dataGridViewCellStyle3;
             this.clnStartime.HeaderText = "Bắt đầu";
             this.clnStartime.Name = "clnStartime";
             this.clnStartime.ReadOnly = true;
@@ -438,9 +438,9 @@
             // 
             // clnEndTime
             // 
-            dataGridViewCellStyle3.Format = "HH:mm";
-            dataGridViewCellStyle3.NullValue = null;
-            this.clnEndTime.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle4.Format = "HH:mm";
+            dataGridViewCellStyle4.NullValue = null;
+            this.clnEndTime.DefaultCellStyle = dataGridViewCellStyle4;
             this.clnEndTime.HeaderText = "Kết thúc";
             this.clnEndTime.Name = "clnEndTime";
             this.clnEndTime.ReadOnly = true;
@@ -461,7 +461,6 @@
             this.Controls.Add(this.chbThisMonth);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.txtSearchByPhoneNumber);
             this.Controls.Add(this.dtpStartDay);
             this.Controls.Add(this.dtpEndDay);
@@ -501,7 +500,6 @@
         private System.Windows.Forms.Button btnNotYetAccepted;
         private System.Windows.Forms.Button btnOverTime;
         private System.Windows.Forms.TextBox txtSearchByPhoneNumber;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btnRevReceipt;
@@ -518,6 +516,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn clnCustomer;
         private System.Windows.Forms.DataGridViewTextBoxColumn clnDeposite;
         private System.Windows.Forms.DataGridViewTextBoxColumn clnCreateDate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clnBookingDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn clnStartime;
         private System.Windows.Forms.DataGridViewTextBoxColumn clnEndTime;
         private System.Windows.Forms.DataGridViewTextBoxColumn clnStatus;
