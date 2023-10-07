@@ -80,6 +80,7 @@ namespace BadmintonManagement.Forms.ReservationCourt.BookingForm
             dtpStartTime.Value = new DateTime(dtpDate.Value.Year, dtpDate.Value.Month, dtpDate.Value.Day, 5, 0, 0);
             dtpEndTime.Value = new DateTime(dtpDate.Value.Year, dtpDate.Value.Month, dtpDate.Value.Day, 6, 0, 0);
             FillcboCourtName();
+            
         }
         private void BindGrid(List<RF_DETAIL> listRFD)
         {
@@ -131,10 +132,24 @@ namespace BadmintonManagement.Forms.ReservationCourt.BookingForm
                 cboCourt.Items.Add(item.CourtName);
                 cboCourt.AutoCompleteCustomSource.Add(item.CourtName);
             }
-            cboCourt.SelectedIndex= 0;
+            if (cboCourt.Items.Count == 0)
+            {
+                cboCourt.Text = string.Empty;
+                cboCourt.Enabled = false;
+                /*MessageBox.Show("Không còn sân khả dụng, vui lòng chọn khung giờ hoặc ngày khác");
+                btnSave.Enabled = false;*/
+            }
+            else
+            {
+                cboCourt.SelectedIndex = 0;
+                cboCourt.Enabled = true;
+                //btnSave.Enabled = true;
+            }
+                
         }
         private void btnSave_Click(object sender, EventArgs e)
         {
+            
             if(DateTime.Compare( dtpStartTime.Value,DateTime.Now)<0)
             {
                 MessageBox.Show("Thời gian không phù hợp");
@@ -164,6 +179,10 @@ namespace BadmintonManagement.Forms.ReservationCourt.BookingForm
             FillcboCourtName();
             dtpEndTime.Enabled = false;
             dtpStartTime.Enabled = false;
+            if(cboCourt.Items.Count==0)
+                btnSave.Enabled = false;
+            else
+                btnSave.Enabled = true;
         }
         private decimal DepositeCalculation()
         {
@@ -183,7 +202,7 @@ namespace BadmintonManagement.Forms.ReservationCourt.BookingForm
         {          
             if(dgvRF_Detail.Rows.Count==1)
             {
-                if (MessageBox.Show("Không thể thêm phiếu đặt sân, bạn có muốn thoát","Caution",MessageBoxButtons.YesNo) == DialogResult.Yes)
+                if (MessageBox.Show("Không thể thêm phiếu đặt sân vì chưa có thông tin, bạn có muốn thoát","Caution",MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
                     this.Close();
                     return;
@@ -199,6 +218,7 @@ namespace BadmintonManagement.Forms.ReservationCourt.BookingForm
                 rev.Username = Properties.Settings.Default.Username;
                 rev.PhoneNumber = PN;
                 rev.CreateDate = DateTime.Now;
+                rev.BookingDate = d.Date;
                 rev.StartTime = new DateTime(d.Year,d.Month,d.Day,dtpStartTime.Value.Hour,dtpStartTime.Value.Minute,0);
                 rev.EndTime = new DateTime(d.Year,d.Month,d.Day,dtpEndTime.Value.Hour,dtpEndTime.Value.Minute,0);
                 rev.Deposite = Decimal.Parse(txtDeopsite.Text);
@@ -262,14 +282,15 @@ namespace BadmintonManagement.Forms.ReservationCourt.BookingForm
             }
             FillcboCourtName();
         }
-
         private void btnCancel_Click(object sender, EventArgs e)
         {
             dgvRF_Detail.Rows.Clear();
+            txtDeopsite.Text = "0";
             dtpStartTime.Enabled = true;
             dtpEndTime.Enabled = true;
             dtpDate.Enabled = true;
             cboCourt.Enabled = true;
+            FillcboCourtName();
         }
     }
 }

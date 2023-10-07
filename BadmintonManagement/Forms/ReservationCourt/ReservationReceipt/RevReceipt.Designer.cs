@@ -89,9 +89,9 @@
             this.label3.Location = new System.Drawing.Point(66, 150);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(96, 20);
+            this.label3.Size = new System.Drawing.Size(135, 20);
             this.label3.TabIndex = 4;
-            this.label3.Text = "Thời gian trễ";
+            this.label3.Text = "Phí thời gian thêm";
             // 
             // txtExtraTime
             // 

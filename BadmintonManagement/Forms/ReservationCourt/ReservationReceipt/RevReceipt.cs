@@ -26,8 +26,9 @@ namespace BadmintonManagement.Forms.ReservationCourt.ReservationReceipt
             revNo = reservationNo;
             if(status == "Đã thanh toán")
                 isNew = false;
+            else isNew = true;
         }
-        public delegate void ChangeRevStat(int i);
+        public delegate void ChangeRevStat(string revNo);
         public ChangeRevStat RevStat;
         ModelBadmintonManage context = new ModelBadmintonManage();
 
@@ -46,36 +47,37 @@ namespace BadmintonManagement.Forms.ReservationCourt.ReservationReceipt
         {
             if(isNew)
             {
+                List<RF_DETAIL> listRF = context.RF_DETAIL.Where(p => p.ReservationNo == revNo).ToList();
+                BindGrid(listRF);
                 RESERVATION rev = context.RESERVATION.FirstOrDefault(p => p.ReservationNo == revNo);
                 dtpTimePublish.Value = DateTime.Now;
                 txtReceiptNo.Text = ReceiptNoGenerator();
                 txtDeposite.Text = rev.Deposite.Value.ToString();
-                txtTotal.Text = GetTheTotal(rev).ToString();
-                txtExtraTime.Text = GetTheExtraTime().ToString();
-                List<RF_DETAIL> listRF = context.RF_DETAIL.Where(p => p.ReservationNo == revNo).ToList();
-                BindGrid(listRF);
+                txtTotal.Text = (GetTheTotal(rev)-rev.Deposite).ToString();
+                txtExtraTime.Text = GetTheExtraTimeFee().ToString();
             }
             else
             {
+                List<RF_DETAIL> listRF = context.RF_DETAIL.Where(p => p.ReservationNo == revNo).ToList();
+                BindGrid(listRF);
                 RECEIPT rec = context.RECEIPT.FirstOrDefault(p=>p.ReservationNo == revNo);
                 dtpTimePublish.Value = rec.C_Date.Value;
                 txtReceiptNo.Text = rec.ReceiptNo;
                 txtDeposite.Text = rec.RESERVATION.Deposite.Value.ToString();
-                txtTotal.Text = rec.Total.Value.ToString();
-                txtExtraTime.Text = rec.ExtraTime.Value.ToString();
-                List<RF_DETAIL> listRF = context.RF_DETAIL.Where(p => p.ReservationNo == revNo).ToList();
-                BindGrid(listRF);
+                txtTotal.Text = (rec.Total.Value-rec.RESERVATION.Deposite).ToString();
+                txtExtraTime.Text = GetTheExtraTimeFee().ToString();
                 btnPayment.Enabled = false;
             }
         }
         private decimal GetTheTotal(RESERVATION rev)
         {
+
             decimal total = 0;
             foreach(RF_DETAIL rf in rev.RF_DETAIL)
             {
                 total += GetTheDetailMoney(rf);
             }
-            return total - rev.Deposite.Value;
+            return total;
         }
         private decimal GetTheDetailMoney(RF_DETAIL rf)
         {
@@ -113,6 +115,11 @@ namespace BadmintonManagement.Forms.ReservationCourt.ReservationReceipt
             }
             return 0;
         }
+        private decimal GetTheExtraTimeFee()
+        {
+            RESERVATION rev = context.RESERVATION.FirstOrDefault(p => p.ReservationNo == revNo);
+            return decimal.Parse(GetTheExtraTime().ToString()) * rev.PRICE.PriceTag.Value;    
+        }
 
         private void AcceptReceipt()
         {
@@ -120,25 +127,18 @@ namespace BadmintonManagement.Forms.ReservationCourt.ReservationReceipt
             rec.ReceiptNo = txtReceiptNo.Text;
             rec.C_Date = DateTime.Now;
             rec.ReservationNo = revNo;
-            rec.Total = Decimal.Parse(txtTotal.Text);
+            RESERVATION rev = context.RESERVATION.FirstOrDefault(p => p.ReservationNo == revNo);
+            rec.Total = GetTheTotal(rev);
             rec.Username = Properties.Settings.Default.Username;
             rec.ExtraTime = float.Parse(txtExtraTime.Text);
             context.RECEIPT.Add(rec);
             context.SaveChanges();
         }
-        private void ChangeReservationStatus()
-        {
-            RESERVATION rev = context.RESERVATION.FirstOrDefault(p=>p.ReservationNo == revNo);
-            rev.C_Status = 4;
-            context.RESERVATION.AddOrUpdate(rev);
-            context.SaveChanges();
-        }
+       
         private void btnPayment_Click(object sender, EventArgs e)
         {
-            ChangeReservationStatus();
             AcceptReceipt();
-            int i = 1;
-            RevStat(i);
+            RevStat(revNo);
             this.Close();
         }
     }

@@ -116,6 +116,7 @@
             this.btnExit.TabIndex = 23;
             this.btnExit.Text = "Thoát";
             this.btnExit.UseVisualStyleBackColor = true;
+            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
             // GetCustomerInformation
             // 

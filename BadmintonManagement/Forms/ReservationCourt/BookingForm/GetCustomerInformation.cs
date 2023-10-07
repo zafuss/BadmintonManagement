@@ -88,5 +88,10 @@ namespace BadmintonManagement.Forms.ReservationCourt.BookingForm
                 //Chọn lưu mới
             }
         }
+
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }
