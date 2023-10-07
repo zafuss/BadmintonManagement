@@ -89,7 +89,7 @@ namespace BadmintonManagement.Forms.ReservationCourt
         {
             for(int i = 0;i<dgvReservation.Rows.Count-1;i++) 
             {
-                DateTime p = DateTime.Parse(dgvReservation.Rows[i].Cells[6].Value.ToString());
+                DateTime p = DateTime.Parse(dgvReservation.Rows[i].Cells[5].Value.ToString());
                
                 int s1 = DateTime.Compare(p,st);
                 int s2 = DateTime.Compare(p,se);

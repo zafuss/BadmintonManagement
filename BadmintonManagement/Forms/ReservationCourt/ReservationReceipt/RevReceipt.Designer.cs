@@ -40,6 +40,9 @@
             this.clnRevNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clnCourtName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clnMoney = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.txtDeposite = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.btnPayMent = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvRF_Detail)).BeginInit();
             this.SuspendLayout();
             // 
@@ -55,7 +58,7 @@
             // 
             // txtReceiptNo
             // 
-            this.txtReceiptNo.Location = new System.Drawing.Point(189, 47);
+            this.txtReceiptNo.Location = new System.Drawing.Point(222, 47);
             this.txtReceiptNo.Name = "txtReceiptNo";
             this.txtReceiptNo.ReadOnly = true;
             this.txtReceiptNo.Size = new System.Drawing.Size(200, 26);
@@ -75,7 +78,7 @@
             // 
             this.dtpTimePublish.Enabled = false;
             this.dtpTimePublish.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpTimePublish.Location = new System.Drawing.Point(189, 90);
+            this.dtpTimePublish.Location = new System.Drawing.Point(222, 90);
             this.dtpTimePublish.Name = "dtpTimePublish";
             this.dtpTimePublish.Size = new System.Drawing.Size(200, 26);
             this.dtpTimePublish.TabIndex = 3;
@@ -92,7 +95,7 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(189, 144);
+            this.textBox1.Location = new System.Drawing.Point(222, 144);
             this.textBox1.Name = "textBox1";
             this.textBox1.ReadOnly = true;
             this.textBox1.Size = new System.Drawing.Size(100, 26);
@@ -101,16 +104,16 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(66, 204);
+            this.label4.Location = new System.Drawing.Point(66, 261);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(75, 20);
+            this.label4.Size = new System.Drawing.Size(132, 20);
             this.label4.TabIndex = 6;
-            this.label4.Text = "Tổng tiền";
+            this.label4.Text = "Tổng tiền phải trả";
             // 
             // txtTotal
             // 
-            this.txtTotal.Location = new System.Drawing.Point(189, 198);
+            this.txtTotal.Location = new System.Drawing.Point(222, 255);
             this.txtTotal.Name = "txtTotal";
             this.txtTotal.ReadOnly = true;
             this.txtTotal.Size = new System.Drawing.Size(100, 26);
@@ -150,11 +153,42 @@
             this.clnMoney.Name = "clnMoney";
             this.clnMoney.ReadOnly = true;
             // 
+            // txtDeposite
+            // 
+            this.txtDeposite.Location = new System.Drawing.Point(222, 202);
+            this.txtDeposite.Name = "txtDeposite";
+            this.txtDeposite.ReadOnly = true;
+            this.txtDeposite.Size = new System.Drawing.Size(100, 26);
+            this.txtDeposite.TabIndex = 10;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(66, 208);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(68, 20);
+            this.label5.TabIndex = 9;
+            this.label5.Text = "Tiền cọc";
+            // 
+            // btnPayMent
+            // 
+            this.btnPayMent.Location = new System.Drawing.Point(772, 43);
+            this.btnPayMent.Name = "btnPayMent";
+            this.btnPayMent.Size = new System.Drawing.Size(127, 40);
+            this.btnPayMent.TabIndex = 11;
+            this.btnPayMent.Text = "Thanh toán";
+            this.btnPayMent.UseVisualStyleBackColor = true;
+            this.btnPayMent.Click += new System.EventHandler(this.btnPayMent_Click);
+            // 
             // RevReceipt
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(899, 674);
+            this.Controls.Add(this.btnPayMent);
+            this.Controls.Add(this.txtDeposite);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.dgvRF_Detail);
             this.Controls.Add(this.txtTotal);
             this.Controls.Add(this.label4);
@@ -189,5 +223,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn clnRevNo;
         private System.Windows.Forms.DataGridViewTextBoxColumn clnCourtName;
         private System.Windows.Forms.DataGridViewTextBoxColumn clnMoney;
+        private System.Windows.Forms.TextBox txtDeposite;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Button btnPayMent;
     }
 }

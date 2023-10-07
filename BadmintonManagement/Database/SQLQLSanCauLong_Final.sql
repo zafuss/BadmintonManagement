@@ -44,8 +44,8 @@ create table RESERVATION
 	Username		nvarchar(50),
 	PhoneNumber		varchar(13),
 	Deposite		decimal,
-	CreateDate		datetime,
-	BookingDate		datetime,
+	StarTime		datetime,
+	EndTime			datetime,
 	_Status			int,
 
 	constraint RESERVATION_PK primary key(ReservationNo),
@@ -114,8 +114,6 @@ go
 create table RF_DETAIL(
 	ReservationNo	nvarchar(20),
 	CourtID			nvarchar(20),
-	StartTime		DateTime,
-	EndTime			DateTime,
 	PriceID			varchar(20),
 
 	constraint PK_RF_DETAIL primary key(ReservationNo, CourtID) ,

@@ -162,7 +162,17 @@ namespace BadmintonManagement.Forms.ReservationCourt.BookingForm
         }
         private decimal DepositeCalculation()
         {
-            return (dgvRF_Detail.Rows.Count-1) * 50000;
+            if (dgvRF_Detail.Rows.Count == 1)
+                return 0;
+            decimal total = 0;
+            DateTime d1 = dtpStartTime.Value;
+            DateTime d2 = dtpEndTime.Value;
+            decimal p = (decimal)(d2.Hour * 60 + d2.Minute - d1.Hour * 60 - d1.Minute) / 60;
+            for(int i=0;i<dgvRF_Detail.Rows.Count-1;i++)
+            {
+                total += (decimal)dgvRF_Detail.Rows[i].Cells[2].Value * p;
+            }
+            return total * 30 / 100;
         }
         private void btnAcept_Click(object sender, EventArgs e)
         {          
@@ -223,31 +233,34 @@ namespace BadmintonManagement.Forms.ReservationCourt.BookingForm
         {
             if (dtpEndTime.Value.Hour < 6)
             {
-                MessageBox.Show("Nhập thời gian kết thúc sai quy định ");
+                //MessageBox.Show("Nhập thời gian kết thúc sai quy định ");
                 dtpEndTime.Value = new DateTime(dtpDate.Value.Year, dtpDate.Value.Month, dtpDate.Value.Day, 6, 0, 0);
 
             }
             if (dtpEndTime.Value.Hour > 22)
             {
-                MessageBox.Show("Nhập thời gian kết thúc sai quy định ");
+                //MessageBox.Show("Nhập thời gian kết thúc sai quy định ");
                 dtpEndTime.Value = new DateTime(dtpDate.Value.Year, dtpDate.Value.Month, dtpDate.Value.Day, 22, 0, 0);
             }
             if (dtpStartTime.Value.Hour < 5)
             {
-                MessageBox.Show("Nhập thời gian bắt đầu sai quy định ");
+                //MessageBox.Show("Nhập thời gian bắt đầu sai quy định ");
                 dtpStartTime.Value = new DateTime(dtpDate.Value.Year, dtpDate.Value.Month, dtpDate.Value.Day, 5, 0, 0);
             }
             if (dtpStartTime.Value.Hour > 21)
             {
-                MessageBox.Show("Nhập thời gian bắt đầu sai quy định ");
-                dtpStartTime.Value = new DateTime(dtpDate.Value.Year, dtpDate.Value.Month, dtpDate.Value.Day, 20, 0, 0);
+                //MessageBox.Show("Nhập thời gian bắt đầu sai quy định ");
+                dtpStartTime.Value = new DateTime(dtpDate.Value.Year, dtpDate.Value.Month, dtpDate.Value.Day, 21, 0, 0);
+            }
+            if(dtpEndTime.Value.Hour <= dtpStartTime.Value.Hour)
+            {
+                dtpEndTime.Value = new DateTime(dtpDate.Value.Year, dtpDate.Value.Month, dtpDate.Value.Day, dtpStartTime.Value.Hour + 1, 0, 0);
             }
             FillcboCourtName();
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
-        
             dgvRF_Detail.Rows.Clear();
             dtpStartTime.Enabled = true;
             dtpEndTime.Enabled = true;
