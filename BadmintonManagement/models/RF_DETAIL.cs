@@ -18,12 +18,10 @@ namespace BadmintonManagement.Models
         [StringLength(20)]
         public string CourtID { get; set; }
 
-        [StringLength(20)]
-        public string PriceID { get; set; }
+        [StringLength(255)]
+        public string Note { get; set; }
 
         public virtual COURT COURT { get; set; }
-
-        public virtual PRICE PRICE { get; set; }
 
         public virtual RESERVATION RESERVATION { get; set; }
     }

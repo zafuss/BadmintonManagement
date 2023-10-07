@@ -200,7 +200,6 @@ namespace BadmintonManagement.Forms.ReservationCourt.BookingForm
                 rfd.ReservationNo = row.Cells[0].Value.ToString();
                 string str = row.Cells[1].Value.ToString();
                 rfd.CourtID = context.COURT.FirstOrDefault(p => p.CourtName == str).CourtID;
-                rfd.PriceID = context.PRICE.FirstOrDefault().PriceID;
                 context.RF_DETAIL.Add(rfd);
                 context.SaveChanges();
             }

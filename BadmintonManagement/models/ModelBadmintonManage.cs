@@ -12,7 +12,6 @@ namespace BadmintonManagement.Models
         {
         }
 
-        public virtual DbSet<C__MigrationHistory> C__MigrationHistory { get; set; }
         public virtual DbSet<C_SERVICE> C_SERVICE { get; set; }
         public virtual DbSet<C_USER> C_USER { get; set; }
         public virtual DbSet<BRANCH> BRANCH { get; set; }
@@ -78,13 +77,13 @@ namespace BadmintonManagement.Models
                 .HasPrecision(18, 0);
 
             modelBuilder.Entity<RESERVATION>()
+                .Property(e => e.PriceID)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<RESERVATION>()
                 .HasMany(e => e.RF_DETAIL)
                 .WithRequired(e => e.RESERVATION)
                 .WillCascadeOnDelete(false);
-
-            modelBuilder.Entity<RF_DETAIL>()
-                .Property(e => e.PriceID)
-                .IsUnicode(false);
 
             modelBuilder.Entity<SERVICE_RECEIPT>()
                 .Property(e => e.Total)
