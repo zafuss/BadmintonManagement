@@ -28,16 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.pnlInformation = new System.Windows.Forms.Panel();
             this.pnlAdmin = new System.Windows.Forms.Panel();
             this.btnAdmin = new System.Windows.Forms.Button();
             this.pnlUser = new System.Windows.Forms.Panel();
+            this.txtEndTime = new System.Windows.Forms.TextBox();
+            this.txtStartTime = new System.Windows.Forms.TextBox();
             this.txtPhoneNumber = new System.Windows.Forms.TextBox();
             this.lblPhoneNumber = new System.Windows.Forms.Label();
             this.txtNameCustom = new System.Windows.Forms.TextBox();
             this.lblNameCustom = new System.Windows.Forms.Label();
-            this.dtmEndTime = new System.Windows.Forms.DateTimePicker();
-            this.dtmStartTime = new System.Windows.Forms.DateTimePicker();
             this.lblEndTime = new System.Windows.Forms.Label();
             this.lblStartTime = new System.Windows.Forms.Label();
             this.txtBranchName = new System.Windows.Forms.TextBox();
@@ -48,6 +49,8 @@
             this.pnlFunction = new System.Windows.Forms.Panel();
             this.lblfunction = new System.Windows.Forms.Label();
             this.pnlDisplayCourt = new System.Windows.Forms.Panel();
+            this.tmrCountDown = new System.Windows.Forms.Timer(this.components);
+            this.label1 = new System.Windows.Forms.Label();
             this.pnlInformation.SuspendLayout();
             this.pnlUser.SuspendLayout();
             this.pnlFunction.SuspendLayout();
@@ -91,12 +94,13 @@
             // pnlUser
             // 
             this.pnlUser.AutoScroll = true;
+            this.pnlUser.Controls.Add(this.label1);
+            this.pnlUser.Controls.Add(this.txtEndTime);
+            this.pnlUser.Controls.Add(this.txtStartTime);
             this.pnlUser.Controls.Add(this.txtPhoneNumber);
             this.pnlUser.Controls.Add(this.lblPhoneNumber);
             this.pnlUser.Controls.Add(this.txtNameCustom);
             this.pnlUser.Controls.Add(this.lblNameCustom);
-            this.pnlUser.Controls.Add(this.dtmEndTime);
-            this.pnlUser.Controls.Add(this.dtmStartTime);
             this.pnlUser.Controls.Add(this.lblEndTime);
             this.pnlUser.Controls.Add(this.lblStartTime);
             this.pnlUser.Controls.Add(this.txtBranchName);
@@ -108,6 +112,24 @@
             this.pnlUser.Name = "pnlUser";
             this.pnlUser.Size = new System.Drawing.Size(414, 300);
             this.pnlUser.TabIndex = 2;
+            // 
+            // txtEndTime
+            // 
+            this.txtEndTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtEndTime.Location = new System.Drawing.Point(231, 263);
+            this.txtEndTime.Name = "txtEndTime";
+            this.txtEndTime.ReadOnly = true;
+            this.txtEndTime.Size = new System.Drawing.Size(138, 30);
+            this.txtEndTime.TabIndex = 14;
+            // 
+            // txtStartTime
+            // 
+            this.txtStartTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtStartTime.Location = new System.Drawing.Point(231, 217);
+            this.txtStartTime.Name = "txtStartTime";
+            this.txtStartTime.ReadOnly = true;
+            this.txtStartTime.Size = new System.Drawing.Size(138, 30);
+            this.txtStartTime.TabIndex = 13;
             // 
             // txtPhoneNumber
             // 
@@ -146,26 +168,6 @@
             this.lblNameCustom.Size = new System.Drawing.Size(151, 28);
             this.lblNameCustom.TabIndex = 9;
             this.lblNameCustom.Text = "Tên Khách Hàng";
-            // 
-            // dtmEndTime
-            // 
-            this.dtmEndTime.Enabled = false;
-            this.dtmEndTime.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtmEndTime.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.dtmEndTime.Location = new System.Drawing.Point(208, 258);
-            this.dtmEndTime.Name = "dtmEndTime";
-            this.dtmEndTime.Size = new System.Drawing.Size(109, 34);
-            this.dtmEndTime.TabIndex = 8;
-            // 
-            // dtmStartTime
-            // 
-            this.dtmStartTime.Enabled = false;
-            this.dtmStartTime.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtmStartTime.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.dtmStartTime.Location = new System.Drawing.Point(208, 213);
-            this.dtmStartTime.Name = "dtmStartTime";
-            this.dtmStartTime.Size = new System.Drawing.Size(109, 34);
-            this.dtmStartTime.TabIndex = 7;
             // 
             // lblEndTime
             // 
@@ -266,6 +268,22 @@
             this.pnlDisplayCourt.TabIndex = 2;
             this.pnlDisplayCourt.SizeChanged += new System.EventHandler(this.pnlDisplayCourt_SizeChanged);
             // 
+            // tmrCountDown
+            // 
+            this.tmrCountDown.Enabled = true;
+            this.tmrCountDown.Interval = 1000;
+            this.tmrCountDown.Tick += new System.EventHandler(this.tmrCountDown_Tick);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(82, 30);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(14, 16);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "1";
+            this.label1.Visible = false;
+            // 
             // CourtForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -302,12 +320,14 @@
         private System.Windows.Forms.Label lblBranchName;
         private System.Windows.Forms.TextBox txtCourtName;
         private System.Windows.Forms.Label lblCourtName;
-        private System.Windows.Forms.DateTimePicker dtmEndTime;
-        private System.Windows.Forms.DateTimePicker dtmStartTime;
         private System.Windows.Forms.Panel pnlDisplayCourt;
         private System.Windows.Forms.TextBox txtNameCustom;
         private System.Windows.Forms.Label lblNameCustom;
         private System.Windows.Forms.TextBox txtPhoneNumber;
         private System.Windows.Forms.Label lblPhoneNumber;
+        private System.Windows.Forms.TextBox txtEndTime;
+        private System.Windows.Forms.TextBox txtStartTime;
+        private System.Windows.Forms.Timer tmrCountDown;
+        private System.Windows.Forms.Label label1;
     }
 }
