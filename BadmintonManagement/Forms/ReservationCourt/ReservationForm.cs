@@ -76,13 +76,10 @@ namespace BadmintonManagement.Forms.ReservationCourt
                     dgvReservation.Rows[i].Cells[3].Value = item.CUSTOMER.FullName;
                 }
                 dgvReservation.Rows[i].Cells[4].Value = item.Deposite;
-                DateTime d = item.CreateDate.Value;
-                
                 dgvReservation.Rows[i].Cells[5].Value = item.CreateDate;
                 dgvReservation.Rows[i].Cells[6].Value = item.StartTime;
                 dgvReservation.Rows[i].Cells[7].Value = item.EndTime;
                 dgvReservation.Rows[i].Cells[8].Value = PickStatus(item);
-
             }
         }
         private void ReloadGridFollowTime(DateTime st, DateTime se)
@@ -154,7 +151,7 @@ namespace BadmintonManagement.Forms.ReservationCourt
                     else
                         dgvReservation.Rows[i].Visible = true;
                 }
-
+                ReloadGridFollowTimeByFilter(st,se);
             }
         }
         private void txtSearchByPhoneNumber_Click(object sender, EventArgs e)
@@ -240,54 +237,63 @@ namespace BadmintonManagement.Forms.ReservationCourt
                         btnAcceptDeposition.Enabled = true;
                         btnGot.Enabled = false;
                         btnRevReceipt.Enabled = false;
+                        btnRevReceipt.Text = "Lập hóa đơn";
                         break;
                     case "Đã đặt cọc":
                         btnCancel.Enabled = false;
                         btnAcceptDeposition.Enabled = false;
                         btnGot.Enabled = true;
                         btnRevReceipt.Enabled = false;
+                        btnRevReceipt.Text = "Lập hóa đơn";
                         break;
                     case "Đã nhận sân":
                         btnCancel.Enabled = false;
                         btnAcceptDeposition.Enabled = false;
                         btnGot.Enabled = false;
                         btnRevReceipt.Enabled = true;
+                        btnRevReceipt.Text = "Lập hóa đơn";
                         break;
                     case "Chưa thanh toán":
                         btnCancel.Enabled = false;
                         btnAcceptDeposition.Enabled = false;
                         btnGot.Enabled = false;
                         btnRevReceipt.Enabled = true;
+                        btnRevReceipt.Text = "Lập hóa đơn";
                         break;
                     case "Đã thanh toán":
                         btnCancel.Enabled = false;
                         btnAcceptDeposition.Enabled = false;
                         btnGot.Enabled = false;
                         btnRevReceipt.Enabled = true;
+                        btnRevReceipt.Text = "Xem hóa đơn";
                         break;
                     case "Quá giờ nhận sân":
                         btnCancel.Enabled = false;
                         btnAcceptDeposition.Enabled = false;
                         btnGot.Enabled = false;
                         btnRevReceipt.Enabled = false;
+                        btnRevReceipt.Text = "Lập hóa đơn";
                         break;
                     case "Đã cọc và quá giờ nhận sân":
                         btnCancel.Enabled = false;
                         btnAcceptDeposition.Enabled = false;
                         btnGot.Enabled = false;
                         btnRevReceipt.Enabled = false;
+                        btnRevReceipt.Text = "Lập hóa đơn";
                         break;
                     case "Đã hủy":
                         btnCancel.Enabled = false;
                         btnAcceptDeposition.Enabled = false;
                         btnGot.Enabled = false;
                         btnRevReceipt.Enabled = false;
+                        btnRevReceipt.Text = "Lập hóa đơn";
                         break;
                     default:
                         btnCancel.Enabled = false;
                         btnAcceptDeposition.Enabled = false;
                         btnGot.Enabled = false;
                         btnRevReceipt.Enabled = false;
+                        btnRevReceipt.Text = "Lập hóa đơn";
                         break;
                 }
             }
@@ -311,14 +317,23 @@ namespace BadmintonManagement.Forms.ReservationCourt
             context.RESERVATION.AddOrUpdate(rev);
             context.SaveChanges();
             btnGot.Enabled = true;
+            btnAcceptDeposition .Enabled = false;
             
+        }
+        private void LoadRevStat(int i)
+        {
+            int index = dgvReservation.SelectedRows.Count - 1;
+            dgvReservation.SelectedRows[index].Cells[8].Value = "Đã thanh toán";
+            btnRevReceipt.Text = "Xem hóa đơn";
         }
         private void btnRevReceipt_Click(object sender, EventArgs e)
         {
             int i = dgvReservation.SelectedRows.Count-1;
-            string str = dgvReservation.SelectedRows[i].Cells[0].Value.ToString();
-            RevReceipt frm = new RevReceipt(str);
-            frm.Show();
+            string str1 = dgvReservation.SelectedRows[i].Cells[0].Value.ToString();
+            string str2 = dgvReservation.SelectedRows[i].Cells[8].Value.ToString();
+            RevReceipt frm = new RevReceipt(str1,str2);
+            frm.RevStat = new RevReceipt.ChangeRevStat(LoadRevStat);
+            frm.Show();  
         }
         DateTime tempStart;
         DateTime tempEnd;
@@ -458,6 +473,7 @@ namespace BadmintonManagement.Forms.ReservationCourt
             context.RESERVATION.AddOrUpdate(rev);
             context.SaveChanges();
             btnRevReceipt.Enabled = true;
+            btnGot.Enabled = false;
         }
     }
 }

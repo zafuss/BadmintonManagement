@@ -40,15 +40,23 @@ namespace BadmintonManagement.Forms.ReservationCourt.BookingForm
             revNo = reservationNo;
         }
         ModelBadmintonManage context = new ModelBadmintonManage();
-        private void RandomRevNo()
+        private string RandomRevNo()
         {
-            revNo = "Rev" + string.Format("{0:ddMMyyHHmm}",DateTime.Now);  
+            DateTime d1 = DateTime.Now.Date;
+            DateTime d2 = new DateTime(d1.Year,d1.Month,d1.Day,23,59,59);
+            string s = context.RESERVATION.Count(p=> DateTime.Compare(p.CreateDate.Value,d1)>=0 && DateTime.Compare(p.CreateDate.Value, d2)<=0).ToString();
+            while (s.Length < 4)
+            {
+                s = 0 + s;
+            }
+            return "Rev" + string.Format("{0:ddMMyy}", DateTime.Now) + s;
+             
         }
         private void BookingForm_Load(object sender, EventArgs e)
         {
             if(revNo == string.Empty)
             {
-                RandomRevNo();
+                revNo = RandomRevNo();
                 isNew = true;
             }  
             else
@@ -57,13 +65,10 @@ namespace BadmintonManagement.Forms.ReservationCourt.BookingForm
                 List<RF_DETAIL> listRFD = rev.RF_DETAIL.ToList();
                 BindGrid(listRFD);
                 txtDeopsite.Text = rev.Deposite.Value.ToString();
-                if(rev.C_Status>=2)
-                {
-                    btnAcept.Enabled = false;
-                    btnCancel.Enabled = false;
-                    btnSave.Enabled = false;
-                    cboCourt.Enabled = false;
-                }
+                btnAcept.Enabled = false;
+                btnCancel.Enabled = false;
+                btnSave.Enabled = false;
+                cboCourt.Enabled = false;
                 dtpDate.Enabled = false;
                 dtpStartTime.Enabled = false;
                 dtpEndTime.Enabled = false;
@@ -72,8 +77,8 @@ namespace BadmintonManagement.Forms.ReservationCourt.BookingForm
             dtpDate.Value = DateTime.Now;
             dtpStartTime.CustomFormat = "HH:mm";
             dtpEndTime.CustomFormat = "HH:mm";
-            dtpEndTime.Value = new DateTime(dtpDate.Value.Year, dtpDate.Value.Month, dtpDate.Value.Day, 6, 0, 0);
             dtpStartTime.Value = new DateTime(dtpDate.Value.Year, dtpDate.Value.Month, dtpDate.Value.Day, 5, 0, 0);
+            dtpEndTime.Value = new DateTime(dtpDate.Value.Year, dtpDate.Value.Month, dtpDate.Value.Day, 6, 0, 0);
             FillcboCourtName();
         }
         private void BindGrid(List<RF_DETAIL> listRFD)
@@ -154,7 +159,7 @@ namespace BadmintonManagement.Forms.ReservationCourt.BookingForm
             int d= 0;
             dgvRF_Detail.Rows[i].Cells[d++].Value = revNo;
             dgvRF_Detail.Rows[i].Cells[d++].Value = cboCourt.Text;
-            dgvRF_Detail.Rows[i].Cells[d++].Value = context.PRICE.FirstOrDefault().PriceTag;
+            dgvRF_Detail.Rows[i].Cells[d++].Value = context.PRICE.FirstOrDefault(p=>p.C_Status==1).PriceTag;
             txtDeopsite.Text = DepositeCalculation().ToString();
             FillcboCourtName();
             dtpEndTime.Enabled = false;
@@ -198,9 +203,9 @@ namespace BadmintonManagement.Forms.ReservationCourt.BookingForm
                 rev.EndTime = new DateTime(d.Year,d.Month,d.Day,dtpEndTime.Value.Hour,dtpEndTime.Value.Minute,0);
                 rev.Deposite = Decimal.Parse(txtDeopsite.Text);
                 rev.C_Status = 0;
+                rev.PriceID = context.PRICE.FirstOrDefault(p => p.C_Status == 1).PriceID;
                 context.RESERVATION.Add(rev);
                 context.SaveChanges();
-               
             }
             foreach (DataGridViewRow row in dgvRF_Detail.Rows)
             {

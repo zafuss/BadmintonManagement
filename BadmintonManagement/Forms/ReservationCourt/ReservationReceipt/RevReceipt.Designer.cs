@@ -33,7 +33,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.dtpTimePublish = new System.Windows.Forms.DateTimePicker();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtExtraTime = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.txtTotal = new System.Windows.Forms.TextBox();
             this.dgvRF_Detail = new System.Windows.Forms.DataGridView();
@@ -42,7 +42,7 @@
             this.clnMoney = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txtDeposite = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.btnPayMent = new System.Windows.Forms.Button();
+            this.btnPayment = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvRF_Detail)).BeginInit();
             this.SuspendLayout();
             // 
@@ -89,17 +89,17 @@
             this.label3.Location = new System.Drawing.Point(66, 150);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(113, 20);
+            this.label3.Size = new System.Drawing.Size(96, 20);
             this.label3.TabIndex = 4;
-            this.label3.Text = "Thời gian thêm";
+            this.label3.Text = "Thời gian trễ";
             // 
-            // textBox1
+            // txtExtraTime
             // 
-            this.textBox1.Location = new System.Drawing.Point(222, 144);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(100, 26);
-            this.textBox1.TabIndex = 5;
+            this.txtExtraTime.Location = new System.Drawing.Point(222, 144);
+            this.txtExtraTime.Name = "txtExtraTime";
+            this.txtExtraTime.ReadOnly = true;
+            this.txtExtraTime.Size = new System.Drawing.Size(100, 26);
+            this.txtExtraTime.TabIndex = 5;
             // 
             // label4
             // 
@@ -171,28 +171,28 @@
             this.label5.TabIndex = 9;
             this.label5.Text = "Tiền cọc";
             // 
-            // btnPayMent
+            // btnPayment
             // 
-            this.btnPayMent.Location = new System.Drawing.Point(772, 43);
-            this.btnPayMent.Name = "btnPayMent";
-            this.btnPayMent.Size = new System.Drawing.Size(127, 40);
-            this.btnPayMent.TabIndex = 11;
-            this.btnPayMent.Text = "Thanh toán";
-            this.btnPayMent.UseVisualStyleBackColor = true;
-            this.btnPayMent.Click += new System.EventHandler(this.btnPayMent_Click);
+            this.btnPayment.Location = new System.Drawing.Point(772, 43);
+            this.btnPayment.Name = "btnPayment";
+            this.btnPayment.Size = new System.Drawing.Size(127, 40);
+            this.btnPayment.TabIndex = 11;
+            this.btnPayment.Text = "Thanh toán";
+            this.btnPayment.UseVisualStyleBackColor = true;
+            this.btnPayment.Click += new System.EventHandler(this.btnPayment_Click);
             // 
             // RevReceipt
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(899, 674);
-            this.Controls.Add(this.btnPayMent);
+            this.Controls.Add(this.btnPayment);
             this.Controls.Add(this.txtDeposite);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.dgvRF_Detail);
             this.Controls.Add(this.txtTotal);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtExtraTime);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.dtpTimePublish);
             this.Controls.Add(this.label2);
@@ -216,7 +216,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DateTimePicker dtpTimePublish;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtExtraTime;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtTotal;
         private System.Windows.Forms.DataGridView dgvRF_Detail;
@@ -225,6 +225,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn clnMoney;
         private System.Windows.Forms.TextBox txtDeposite;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Button btnPayMent;
+        private System.Windows.Forms.Button btnPayment;
     }
 }
