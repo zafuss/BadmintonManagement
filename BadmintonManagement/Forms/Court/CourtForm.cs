@@ -20,7 +20,6 @@ namespace BadmintonManagement.Forms.Court
         public static CourtForm Instance;
         public bool flagUser = false;
         public bool flagAdmin = false;
-        private int countdown = 0;
         private DateTime lastCheckTime;
         public List<COURT> newCourt = new CourtService().getListCourtWithOutDisable();
         public List<RF_DETAIL> listRF = new RFDetailService().getRFDetail();
@@ -44,95 +43,26 @@ namespace BadmintonManagement.Forms.Court
         private void tmrCountDown_Tick(object sender, EventArgs e)
         {
             label1.Text = String.Format("{0}", DateTime.Now.ToString("HH:mm:ss")); 
-            //countdown = (int)RealTimeCourt().TotalSeconds + 1;
-            //countdown = 10;
-            //MessageBox.Show(countdown.ToString());
-            //if (countdown > 0)
-            //{
-            //    countdown = countdown - 1;
-            //    //MessageBox.Show(countdown.ToString());
-            //}
-            //else 
-            //{
-            //    tmrCountDown.Stop();
-            //    pnlDisplayCourt.Controls.Clear();
-            //    pnlDisplayCourt.Refresh();
-            //    this.Refresh();
-            //    ReLoad();
-
-            //    countdown = (int)LastTime.TotalSeconds + 1;
-
-            //    //MessageBox.Show("END");
-            //}
 
             loadCourt = new RFDetailService().getListTimeinDay();
-            string starttime = "";
-            string endtime = "";
-            int count = 0;
-            DateTime dateTime3 = new DateTime();
-            DateTime dateTime2 = new DateTime();
-
+           
             if (loadCourt.Count != 0)
             {
+                DateTime dateTime = new DateTime();
                 foreach (var item in loadCourt)
                 {
-                    if (count == 0)
-                        starttime = item;
-                    else if (count == 1)
+                    dateTime = DateTime.Parse(item);
+                    if (label1.Text == dateTime.ToString("HH:mm:ss"))
                     {
-                        endtime = item;
-                        break;
+                        pnlDisplayCourt.Controls.Clear();
+                        pnlDisplayCourt.Refresh();
+                        this.Refresh();
+                        ReLoad();
                     }
-                    count++;
                 }
-                dateTime3 = DateTime.Parse(starttime);
-                dateTime2 = DateTime.Parse(endtime);
-            }
-            if(label1.Text == dateTime3.ToString("HH:mm:ss") || label1.Text == dateTime2.ToString("HH:mm:ss"))
-            {
-                pnlDisplayCourt.Controls.Clear();
-                pnlDisplayCourt.Refresh();
-                this.Refresh();
-                ReLoad();
             }
         }
 
-        
-
-        TimeSpan LastTime = TimeSpan.Zero;
-
-        private TimeSpan RealTimeCourt()
-        {
-            loadCourt = new RFDetailService().getListTimeinDay();
-            string starttime = "";
-            string endtime = "";
-            TimeSpan timeDifference = TimeSpan.Zero;
-            int count = 0;
-            if (loadCourt.Count != 0)
-            {
-                foreach (var item in loadCourt)
-                {
-                    if(count == 0)
-                        starttime = item;
-                    else if(count == 1)
-                    {
-                        endtime = item;
-                        break;
-                    }
-                    count++;
-                }
-
-                DateTime dateTime3 = DateTime.Parse(starttime);
-                DateTime dateTime2 = DateTime.Parse(endtime);
-
-                //MessageBox.Show(dateTime3.ToString());
-                DateTime dateTime1 = DateTime.Now;
-                timeDifference = dateTime3 - dateTime1;
-                LastTime = dateTime3 - dateTime1;
-            }
-            return timeDifference;
-
-        }
 
         public void Reset()
         {
