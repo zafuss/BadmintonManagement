@@ -22,6 +22,18 @@ namespace BadmintonManagement.Forms.Customer
             InitializeComponent();
             
         }
+        string PN;
+        string FN;
+        string EM;
+        bool isNew = false;
+        public CustomerForm(string phoneNumber, string fullName, string email)
+        {
+            InitializeComponent();
+            PN = phoneNumber;
+            FN = fullName;
+            EM = email;
+            isNew = true;
+        }
         private void BindDataGrid(List<CUSTOMER> customers)
         {
             dgvCustomer.Rows.Clear();
@@ -38,8 +50,13 @@ namespace BadmintonManagement.Forms.Customer
         {
             List<CUSTOMER> cUSTOMERs = context.CUSTOMER.ToList();
             BindDataGrid(cUSTOMERs);
+            if(isNew)
+            {
+                txtPhoneNumber.Text = PN;
+                txtFullName.Text = FN;
+                txtEmail.Text = EM;
+            }
         }
-        
         public void InsertCustomerToDB()
         {
             CUSTOMER c = new CUSTOMER();

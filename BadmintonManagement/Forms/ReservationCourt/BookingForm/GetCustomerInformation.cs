@@ -1,5 +1,7 @@
-﻿using BadmintonManagement.Models;
+﻿using BadmintonManagement.Forms.Customer;
+using BadmintonManagement.Models;
 using System;
+using System.Activities.Expressions;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -79,13 +81,17 @@ namespace BadmintonManagement.Forms.ReservationCourt.BookingForm
             {
                 Booking frm = new Booking(txtPhoneNumber.Text,txtFullName.Text,txtEmail.Text);
                 frm.ReloadBK = new Booking.ChangeBK(LoadCus);
-                frm.Show();
+                frm.ShowDialog();
                 this.Close();
                 
             }
             else
             {
-                //Chọn lưu mới
+                if(MessageBox.Show("Bạn có muốn thêm khách hàng mới","Thông báo",MessageBoxButtons.YesNo)==DialogResult.No)
+                    return;
+                CustomerForm frm = new CustomerForm(txtPhoneNumber.Text,txtFullName.Text,txtEmail.Text);
+                frm.FormBorderStyle = FormBorderStyle.SizableToolWindow;
+                frm.Show();
             }
         }
 

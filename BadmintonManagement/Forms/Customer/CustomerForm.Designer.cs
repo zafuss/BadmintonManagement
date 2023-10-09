@@ -61,7 +61,7 @@
             this.txtSearchFullName.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtSearchFullName.Location = new System.Drawing.Point(555, 94);
             this.txtSearchFullName.Name = "txtSearchFullName";
-            this.txtSearchFullName.Size = new System.Drawing.Size(153, 34);
+            this.txtSearchFullName.Size = new System.Drawing.Size(153, 29);
             this.txtSearchFullName.TabIndex = 2;
             this.txtSearchFullName.TextChanged += new System.EventHandler(this.txtSearchFullName_TextChanged);
             // 
@@ -84,13 +84,14 @@
             this.btnAdd.TabIndex = 2;
             this.btnAdd.Text = "Thêm";
             this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // txtEmail
             // 
             this.txtEmail.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtEmail.Location = new System.Drawing.Point(171, 254);
             this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(225, 34);
+            this.txtEmail.Size = new System.Drawing.Size(225, 29);
             this.txtEmail.TabIndex = 1;
             // 
             // txtFullName
@@ -98,7 +99,7 @@
             this.txtFullName.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtFullName.Location = new System.Drawing.Point(171, 206);
             this.txtFullName.Name = "txtFullName";
-            this.txtFullName.Size = new System.Drawing.Size(225, 34);
+            this.txtFullName.Size = new System.Drawing.Size(225, 29);
             this.txtFullName.TabIndex = 1;
             // 
             // txtPhoneNumber
@@ -106,7 +107,7 @@
             this.txtPhoneNumber.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPhoneNumber.Location = new System.Drawing.Point(171, 163);
             this.txtPhoneNumber.Name = "txtPhoneNumber";
-            this.txtPhoneNumber.Size = new System.Drawing.Size(225, 34);
+            this.txtPhoneNumber.Size = new System.Drawing.Size(225, 29);
             this.txtPhoneNumber.TabIndex = 1;
             // 
             // label3
@@ -116,7 +117,7 @@
             this.label3.Location = new System.Drawing.Point(31, 257);
             this.label3.Margin = new System.Windows.Forms.Padding(3);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(59, 28);
+            this.label3.Size = new System.Drawing.Size(48, 21);
             this.label3.TabIndex = 0;
             this.label3.Text = "Email";
             // 
@@ -139,7 +140,7 @@
             this.label6.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.Location = new System.Drawing.Point(432, 97);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(146, 28);
+            this.label6.Size = new System.Drawing.Size(117, 21);
             this.label6.TabIndex = 1;
             this.label6.Text = "Tên khách hàng";
             // 
@@ -149,7 +150,7 @@
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(152, 25);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(0, 36);
+            this.label4.Size = new System.Drawing.Size(0, 29);
             this.label4.TabIndex = 0;
             // 
             // label2
@@ -159,7 +160,7 @@
             this.label2.Location = new System.Drawing.Point(31, 209);
             this.label2.Margin = new System.Windows.Forms.Padding(3);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(76, 28);
+            this.label2.Size = new System.Drawing.Size(60, 21);
             this.label2.TabIndex = 0;
             this.label2.Text = "Họ tên ";
             // 
@@ -222,7 +223,7 @@
             this.label1.Location = new System.Drawing.Point(31, 165);
             this.label1.Margin = new System.Windows.Forms.Padding(3);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(133, 28);
+            this.label1.Size = new System.Drawing.Size(105, 21);
             this.label1.TabIndex = 0;
             this.label1.Text = "Số điện thoại ";
             // 
@@ -265,7 +266,7 @@
             // 
             // CustomerForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 28F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1175, 551);
             this.Controls.Add(this.panelDataGrid);
