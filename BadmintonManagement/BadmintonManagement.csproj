@@ -134,8 +134,6 @@
       <DependentUpon>BadmintonManagementDBDataSet.xsd</DependentUpon>
     </Compile>
     <Compile Include="Database\DatabaseInitial.cs" />
-    <Compile Include="Database\IncomeSer.cs" />
-    <Compile Include="Database\IncomeYear.cs" />
     <Compile Include="Database\InfoCourt.cs" />
     <Compile Include="Database\PriceServices.cs" />
     <Compile Include="Database\ServiceReceiptServices.cs" />
@@ -147,11 +145,9 @@
     <Compile Include="Forms\Report\CustomerReport.Designer.cs">
       <DependentUpon>CustomerReport.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Report\FormIncome.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\Report\FormIncome.Designer.cs">
-      <DependentUpon>FormIncome.cs</DependentUpon>
+    <Compile Include="Forms\Report\IncomeForm.cs" />
+    <Compile Include="Forms\Report\IncomeForm.Designer.cs">
+      <DependentUpon>IncomeForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Report\ReceiptReportForm.cs">
       <SubType>Form</SubType>
@@ -213,6 +209,11 @@
     </Compile>
     <Compile Include="Forms\Service\ShowServiceReceiptForm.Designer.cs">
       <DependentUpon>ShowServiceReceiptForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IncomeOfYear.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>IncomeOfYear.xsd</DependentUpon>
     </Compile>
     <Compile Include="Models\BRANCH.cs" />
     <Compile Include="Models\COURT.cs" />
@@ -338,8 +339,8 @@
     <EmbeddedResource Include="Forms\Report\CustomerReport.resx">
       <DependentUpon>CustomerReport.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Report\FormIncome.resx">
-      <DependentUpon>FormIncome.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Report\IncomeForm.resx">
+      <DependentUpon>IncomeForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Report\ReceiptReportForm.resx">
       <DependentUpon>ReceiptReportForm.cs</DependentUpon>
@@ -374,12 +375,7 @@
     <EmbeddedResource Include="Forms\Service\ShowServiceReceiptForm.resx">
       <DependentUpon>ShowServiceReceiptForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ReportIncome.rdlc">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ReportIncomeService.rdlc">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </EmbeddedResource>
+    <EmbeddedResource Include="ReportIncome.rdlc" />
     <EmbeddedResource Include="ReportReceipt.rdlc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
@@ -444,6 +440,17 @@
     <None Include="BadmintonManagementDBDataSet.xss">
       <DependentUpon>BadmintonManagementDBDataSet.xsd</DependentUpon>
     </None>
+    <None Include="IncomeOfYear.xsc">
+      <DependentUpon>IncomeOfYear.xsd</DependentUpon>
+    </None>
+    <None Include="IncomeOfYear.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>IncomeOfYear.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="IncomeOfYear.xss">
+      <DependentUpon>IncomeOfYear.xsd</DependentUpon>
+    </None>
     <None Include="BadmintonManagementDBDataSet1.xsc">
       <DependentUpon>BadmintonManagementDBDataSet1.xsd</DependentUpon>
     </None>
@@ -456,9 +463,6 @@
       <DependentUpon>BadmintonManagementDBDataSet1.xsd</DependentUpon>
     </None>
     <None Include="packages.config" />
-    <None Include="Properties\DataSources\BadmintonManagement.Database.IncomeSer.datasource" />
-    <None Include="Properties\DataSources\BadmintonManagement.Database.IncomeService.datasource" />
-    <None Include="Properties\DataSources\BadmintonManagement.Database.IncomeYear.datasource" />
     <None Include="Properties\DataSources\BadmintonManagement.Models.CUSTOMER.datasource" />
     <None Include="Properties\DataSources\BadmintonManagement.Models.RECEIPT.datasource" />
     <None Include="Properties\DataSources\BadmintonManagement.Models.RESERVATION.datasource" />

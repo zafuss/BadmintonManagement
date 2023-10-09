@@ -38,6 +38,7 @@ namespace BadmintonManagement.Forms.Court
             pnlDisplayCourt.AutoScroll = true;
             tmrCountDown.Start();
             //Test();
+            new CourtService().publicDay();
         }
         
         private void tmrCountDown_Tick(object sender, EventArgs e)

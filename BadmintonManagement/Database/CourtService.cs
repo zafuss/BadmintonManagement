@@ -20,7 +20,26 @@ namespace BadmintonManagement.Database
         private List<COURT> _courts = new ModelBadmintonManage().COURT.ToList();
         private List<BRANCH> _branchs = new ModelBadmintonManage().BRANCH.ToList();
 
-
+        public void publicDay()
+        {
+            COURT cOURT = new COURT();
+            for ( int i = 0 ; i < _courts.Count ; i++ )
+            {
+                if(_courts[i].StartDate > DateTime.Now ) 
+                {
+                    cOURT = _courts[i];
+                    cOURT.C_Status = "Available";
+                    _modelBadmintonManage.COURT.AddOrUpdate(cOURT);
+                }
+                else if (String.Format("{0:dd:MM:yyyy}", _courts[i].StartDate) == DateTime.Now.ToString("dd:MM:yyyy"))
+                {
+                    cOURT = _courts[i];
+                    cOURT.C_Status = "Using";
+                    _modelBadmintonManage.COURT.AddOrUpdate(cOURT);
+                }
+            }
+            _modelBadmintonManage.SaveChanges();
+        }
         public Control DisplayCourtAdmin(int count, COURT court , double _widht , double _heigth)
         {
             double x = (_widht) / (3.4);

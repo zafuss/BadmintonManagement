@@ -23,9 +23,8 @@ namespace BadmintonManagement.Forms.Court
         public static AddCourtForm Instance; 
         private List<string> status = new List<string>()
         {
-           "Chưa Được Hoạt Động","Đã Hoạt Động","Bảo Trì"
+           "Chưa Đi Vào Hoạt Động","Đã Đi Vào Hoạt Động","Bảo Trì"
         };
-
 
         public AddCourtForm()
         {
@@ -179,7 +178,9 @@ namespace BadmintonManagement.Forms.Court
                         {
                             List<COURT> newCourt = new CourtService().getListCourtWithOutDisable();
                             int count = newCourt.Count();
+                            new CourtService().publicDay();
                             CourtForm.Instance.ShowCourt(newCourt, count);
+                            CourtForm.Instance.Reset();
                         }
                     }
                     
@@ -222,6 +223,7 @@ namespace BadmintonManagement.Forms.Court
                         List<COURT> newCourt = new CourtService().getListCourtWithOutDisable();
                         int count = newCourt.Count();
                         CourtForm.Instance.ShowCourt(newCourt, count);
+                        CourtForm.Instance.Reset();
                     }
                 }
 
@@ -247,9 +249,13 @@ namespace BadmintonManagement.Forms.Court
                 else
                 {
                     DateTime dateTime = DateTime.Now;
-                    if (tmp.StartDate > dtmStartDate.Value && tmp.StartDate > dateTime)
+                    if (tmp.C_Status == "Using" && cboStatus.SelectedIndex == 0)
                     {
                         throw new Exception("San Da Di Vao Hoat Dong");
+                    }
+                    else if (tmp.C_Status == "Available" && dtmStartDate.Value < Convert.ToDateTime(DateTime.Now.ToString("dd/MM/yyyy")))
+                    {
+                        throw new Exception("Ngay Thang Khong Hop Le");
                     }
                     else
                     {
@@ -262,7 +268,9 @@ namespace BadmintonManagement.Forms.Court
                         {
                             List<COURT> newCourt = new CourtService().getListCourtWithOutDisable();
                             int count = newCourt.Count();
+                            new CourtService().publicDay();
                             CourtForm.Instance.ShowCourt(newCourt, count);
+                            CourtForm.Instance.Reset();
                         }
                     }
                         
