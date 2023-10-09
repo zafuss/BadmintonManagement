@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BadmintonManagement.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -16,6 +17,14 @@ namespace BadmintonManagement.Forms.Service.ServiceReceipt
         {
             InitializeComponent();
         }
+        ModelBadmintonManage context = new ModelBadmintonManage();
+        private void ServiceReceiptDetail_Load(object sender, EventArgs e)
+        {
 
+        }
+        private void BindGrid()
+        {
+            List<C_SERVICE> listService = 
+        }
     }
 }
