@@ -484,5 +484,14 @@ namespace BadmintonManagement.Forms.ReservationCourt
             btnRevReceipt.Enabled = true;
             btnGot.Enabled = false;
         }
+
+        private void btnCancel_EnabledChanged_1(object sender, EventArgs e)
+        {
+            Button btn = sender as Button;
+            if(btn.Enabled==true)
+                btn.ForeColor = Color.Black;
+            else
+                btn.ForeColor = Color.White;
+        }
     }
 }
