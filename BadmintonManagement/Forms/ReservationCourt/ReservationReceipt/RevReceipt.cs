@@ -53,7 +53,7 @@ namespace BadmintonManagement.Forms.ReservationCourt.ReservationReceipt
                 dtpTimePublish.Value = DateTime.Now;
                 txtReceiptNo.Text = ReceiptNoGenerator();
                 txtDeposite.Text = rev.Deposite.Value.ToString();
-                txtTotal.Text = (GetTheTotal(rev)-rev.Deposite).ToString();
+                txtTotal.Text = (GetTheTotal(rev)-rev.Deposite+GetTheExtraTimeFee()).ToString();
                 txtExtraTime.Text = GetTheExtraTimeFee().ToString();
             }
             else
@@ -84,7 +84,7 @@ namespace BadmintonManagement.Forms.ReservationCourt.ReservationReceipt
             DateTime d1 = rf.RESERVATION.StartTime.Value;
             DateTime d2 = rf.RESERVATION.EndTime.Value;
             decimal p = (decimal)(d2.Hour*60 + d2.Minute - d1.Hour*60 -d1.Minute)/60;
-            return (p + Decimal.Parse(GetTheExtraTime().ToString())) * rf.RESERVATION.PRICE.PriceTag.Value;
+            return Math.Round((p + Decimal.Parse(GetTheExtraTime().ToString())) * rf.RESERVATION.PRICE.PriceTag.Value);
         }
         private void BindGrid(List<RF_DETAIL> listRF)
         {
@@ -118,8 +118,9 @@ namespace BadmintonManagement.Forms.ReservationCourt.ReservationReceipt
         private decimal GetTheExtraTimeFee()
         {
             RESERVATION rev = context.RESERVATION.FirstOrDefault(p => p.ReservationNo == revNo);
-            return decimal.Parse(GetTheExtraTime().ToString()) * rev.PRICE.PriceTag.Value;    
+            return Math.Round(decimal.Parse(GetTheExtraTime().ToString()) * rev.PRICE.PriceTag.Value);    
         }
+ 
 
         private void AcceptReceipt()
         {
@@ -128,7 +129,7 @@ namespace BadmintonManagement.Forms.ReservationCourt.ReservationReceipt
             rec.C_Date = DateTime.Now;
             rec.ReservationNo = revNo;
             RESERVATION rev = context.RESERVATION.FirstOrDefault(p => p.ReservationNo == revNo);
-            rec.Total = GetTheTotal(rev);
+            rec.Total = GetTheTotal(rev)+GetTheExtraTimeFee();
             rec.Username = Properties.Settings.Default.Username;
             rec.ExtraTime = float.Parse(txtExtraTime.Text);
             context.RECEIPT.Add(rec);
