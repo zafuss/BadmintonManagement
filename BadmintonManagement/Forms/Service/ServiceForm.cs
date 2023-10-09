@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using BadmintonManagement.Forms.Service.ServiceReceipt;
 
 namespace BadmintonManagement.Forms.Service
 {
@@ -59,7 +60,8 @@ namespace BadmintonManagement.Forms.Service
         }
         private void btnAdd_Click(object sender, EventArgs e)
         {
-
+            ServiceRec frm = new ServiceRec();
+            frm.ShowDialog();
         }
     }
 }

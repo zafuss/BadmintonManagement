@@ -397,6 +397,10 @@ namespace BadmintonManagement.Forms.ReservationCourt
                 if(rev.C_Status == 2 && DateTime.Compare(rev.EndTime.Value,DateTime.Now)<=0)
                 {
                     rev.C_Status = 3;
+                    if (Application.OpenForms["CourtForm"] != null && !Application.OpenForms["CourtForm"].IsDisposed)
+                    {
+                        CourtForm.Instance.ReLoad();
+                    }
                 }
                 else
                 if (s > 0 || rev.C_Status>1)

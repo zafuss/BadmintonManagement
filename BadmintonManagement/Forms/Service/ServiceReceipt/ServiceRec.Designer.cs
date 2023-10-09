@@ -1,6 +1,6 @@
 ﻿namespace BadmintonManagement.Forms.Service.ServiceReceipt
 {
-    partial class ServiceReciept
+    partial class ServiceRec
     {
         /// <summary>
         /// Required designer variable.
@@ -118,6 +118,7 @@
             this.txtPhoneNumber.Name = "txtPhoneNumber";
             this.txtPhoneNumber.Size = new System.Drawing.Size(383, 26);
             this.txtPhoneNumber.TabIndex = 7;
+            this.txtPhoneNumber.TextChanged += new System.EventHandler(this.txtPhoneNumber_TextChanged);
             // 
             // txtCustomerName
             // 
@@ -202,7 +203,7 @@
             this.btnPayment.Text = "Thanh toán";
             this.btnPayment.UseVisualStyleBackColor = true;
             // 
-            // ServiceReciept
+            // ServiceRec
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -223,7 +224,7 @@
             this.Controls.Add(this.label1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.Name = "ServiceReciept";
+            this.Name = "ServiceRec";
             this.Text = "ServiceReciept";
             this.Load += new System.EventHandler(this.ServiceReciept_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvServiceDetail)).EndInit();

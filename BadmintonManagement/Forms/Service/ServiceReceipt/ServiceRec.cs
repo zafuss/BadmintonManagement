@@ -11,9 +11,9 @@ using System.Windows.Forms;
 
 namespace BadmintonManagement.Forms.Service.ServiceReceipt
 {
-    public partial class ServiceReciept : Form
+    public partial class ServiceRec : Form
     {
-        public ServiceReciept()
+        public ServiceRec()
         {
             InitializeComponent();
         }
@@ -37,6 +37,19 @@ namespace BadmintonManagement.Forms.Service.ServiceReceipt
         }
 
         private void bntServiceRecDetail_Click(object sender, EventArgs e)
+        {
+            ServiceReceiptDetail frm = new ServiceReceiptDetail();
+            frm.ShowDialog();
+        }
+        private void FillCustomerPhoneNumber()
+        {
+            foreach(CUSTOMER item in context.CUSTOMER)
+            {
+                txtPhoneNumber.AutoCompleteCustomSource.Add (item.PhoneNumber);
+            }
+        }
+
+        private void txtPhoneNumber_TextChanged(object sender, EventArgs e)
         {
 
         }

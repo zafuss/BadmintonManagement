@@ -20,11 +20,20 @@ namespace BadmintonManagement.Forms.Service.ServiceReceipt
         ModelBadmintonManage context = new ModelBadmintonManage();
         private void ServiceReceiptDetail_Load(object sender, EventArgs e)
         {
-
+            BindGridService();
         }
-        private void BindGrid()
+        private void BindGridService()
         {
-            List<C_SERVICE> listService = 
+            List<C_SERVICE> listService = context.C_SERVICE.ToList();
+            foreach(C_SERVICE item in listService)
+            {
+                int i = dgvService.Rows.Add();
+                int d = 0;
+                dgvService.Rows[i].Cells[d++].Value = item.ServiceName;
+                dgvService.Rows[i].Cells[d++].Value = item.Quantity;
+                dgvService.Rows[i].Cells[d++].Value = item.Unit;
+                dgvService.Rows[i].Cells[d++].Value = item.Price;
+            }
         }
     }
 }
