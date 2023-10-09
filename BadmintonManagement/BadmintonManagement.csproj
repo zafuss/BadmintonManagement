@@ -452,6 +452,7 @@
     </None>
     <None Include="IncomeOfYear.xss">
       <DependentUpon>IncomeOfYear.xsd</DependentUpon>
+    </None>
     <None Include="BadmintonManagementDBDataSet1.xsc">
       <DependentUpon>BadmintonManagementDBDataSet1.xsd</DependentUpon>
     </None>
