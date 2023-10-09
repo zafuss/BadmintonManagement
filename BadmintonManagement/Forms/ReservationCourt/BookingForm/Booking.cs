@@ -196,7 +196,7 @@ namespace BadmintonManagement.Forms.ReservationCourt.BookingForm
             {
                 total += (decimal)dgvRF_Detail.Rows[i].Cells[2].Value * p;
             }
-            return total * 30 / 100;
+            return Math.Round(total * 30 / 100);
         }
         private void btnAcept_Click(object sender, EventArgs e)
         {          
@@ -214,18 +214,24 @@ namespace BadmintonManagement.Forms.ReservationCourt.BookingForm
             {
                 DateTime d = dtpDate.Value;
                 RESERVATION rev = new RESERVATION();
-                rev.ReservationNo = revNo;
-                rev.Username = Properties.Settings.Default.Username;
-                rev.PhoneNumber = PN;
-                rev.CreateDate = DateTime.Now;
-                rev.BookingDate = d.Date;
-                rev.StartTime = new DateTime(d.Year,d.Month,d.Day,dtpStartTime.Value.Hour,dtpStartTime.Value.Minute,0);
-                rev.EndTime = new DateTime(d.Year,d.Month,d.Day,dtpEndTime.Value.Hour,dtpEndTime.Value.Minute,0);
-                rev.Deposite = Decimal.Parse(txtDeopsite.Text);
-                rev.C_Status = 0;
-                rev.PriceID = context.PRICE.FirstOrDefault(p => p.C_Status == 1).PriceID;
-                context.RESERVATION.Add(rev);
-                context.SaveChanges();
+                try
+                {
+                    rev.ReservationNo = revNo;
+                    rev.Username = Properties.Settings.Default.Username;
+                    rev.PhoneNumber = PN;
+                    rev.CreateDate = DateTime.Now;
+                    rev.BookingDate = d.Date;
+                    rev.StartTime = new DateTime(d.Year, d.Month, d.Day, dtpStartTime.Value.Hour, dtpStartTime.Value.Minute, 0);
+                    rev.EndTime = new DateTime(d.Year, d.Month, d.Day, dtpEndTime.Value.Hour, dtpEndTime.Value.Minute, 0);
+                    rev.Deposite = Decimal.Parse(txtDeopsite.Text);
+                    rev.C_Status = 0;
+                    rev.PriceID = context.PRICE.FirstOrDefault(p => p.C_Status == 1).PriceID;
+                    context.RESERVATION.Add(rev);
+                    context.SaveChanges();
+                }
+                catch (Exception ex) 
+                { MessageBox.Show(ex.Message); }
+              
             }
             foreach (DataGridViewRow row in dgvRF_Detail.Rows)
             {

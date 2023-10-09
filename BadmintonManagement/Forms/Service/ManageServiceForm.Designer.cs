@@ -88,7 +88,7 @@
             // 
             this.nmrQuantity.Location = new System.Drawing.Point(110, 391);
             this.nmrQuantity.Name = "nmrQuantity";
-            this.nmrQuantity.Size = new System.Drawing.Size(198, 34);
+            this.nmrQuantity.Size = new System.Drawing.Size(198, 29);
             this.nmrQuantity.TabIndex = 4;
             this.nmrQuantity.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -101,7 +101,7 @@
             this.label3.Location = new System.Drawing.Point(12, 391);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(92, 28);
+            this.label3.Size = new System.Drawing.Size(73, 21);
             this.label3.TabIndex = 26;
             this.label3.Text = "Số lượng";
             // 
@@ -112,7 +112,7 @@
             this.txtPrice.Location = new System.Drawing.Point(110, 339);
             this.txtPrice.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtPrice.Name = "txtPrice";
-            this.txtPrice.Size = new System.Drawing.Size(198, 34);
+            this.txtPrice.Size = new System.Drawing.Size(198, 29);
             this.txtPrice.TabIndex = 3;
             this.txtPrice.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtQuantity_KeyPress);
             // 
@@ -125,7 +125,7 @@
             this.label4.Location = new System.Drawing.Point(12, 342);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(81, 28);
+            this.label4.Size = new System.Drawing.Size(65, 21);
             this.label4.TabIndex = 27;
             this.label4.Text = "Đơn giá";
             // 
@@ -166,7 +166,7 @@
             this.txtUnit.Location = new System.Drawing.Point(110, 288);
             this.txtUnit.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtUnit.Name = "txtUnit";
-            this.txtUnit.Size = new System.Drawing.Size(198, 34);
+            this.txtUnit.Size = new System.Drawing.Size(198, 29);
             this.txtUnit.TabIndex = 2;
             // 
             // label5
@@ -178,7 +178,7 @@
             this.label5.Location = new System.Drawing.Point(12, 291);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(108, 28);
+            this.label5.Size = new System.Drawing.Size(87, 21);
             this.label5.TabIndex = 22;
             this.label5.Text = "Đơn vị tính";
             // 
@@ -189,7 +189,7 @@
             this.txtServiceID.Location = new System.Drawing.Point(110, 189);
             this.txtServiceID.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtServiceID.Name = "txtServiceID";
-            this.txtServiceID.Size = new System.Drawing.Size(198, 34);
+            this.txtServiceID.Size = new System.Drawing.Size(198, 29);
             this.txtServiceID.TabIndex = 0;
             // 
             // label2
@@ -201,7 +201,7 @@
             this.label2.Location = new System.Drawing.Point(12, 192);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(108, 28);
+            this.label2.Size = new System.Drawing.Size(86, 21);
             this.label2.TabIndex = 23;
             this.label2.Text = "Mã dịch vụ";
             // 
@@ -212,7 +212,7 @@
             this.txtServiceName.Location = new System.Drawing.Point(110, 239);
             this.txtServiceName.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtServiceName.Name = "txtServiceName";
-            this.txtServiceName.Size = new System.Drawing.Size(198, 34);
+            this.txtServiceName.Size = new System.Drawing.Size(198, 29);
             this.txtServiceName.TabIndex = 1;
             // 
             // label1
@@ -224,7 +224,7 @@
             this.label1.Location = new System.Drawing.Point(12, 242);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(109, 28);
+            this.label1.Size = new System.Drawing.Size(87, 21);
             this.label1.TabIndex = 23;
             this.label1.Text = "Tên dịch vụ";
             // 
@@ -254,7 +254,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(337, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(839, 170);
+            this.panel2.Size = new System.Drawing.Size(839, 128);
             this.panel2.TabIndex = 17;
             this.panel2.SizeChanged += new System.EventHandler(this.panel2_SizeChanged);
             // 
@@ -262,18 +262,18 @@
             // 
             this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(466, 133);
+            this.label7.Location = new System.Drawing.Point(491, 34);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(159, 28);
+            this.label7.Size = new System.Drawing.Size(128, 21);
             this.label7.TabIndex = 14;
             this.label7.Text = "Tìm kiếm dịch vụ";
             // 
             // txtSearch
             // 
             this.txtSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtSearch.Location = new System.Drawing.Point(649, 133);
+            this.txtSearch.Location = new System.Drawing.Point(650, 31);
             this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(178, 34);
+            this.txtSearch.Size = new System.Drawing.Size(178, 29);
             this.txtSearch.TabIndex = 0;
             this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
             // 
@@ -290,13 +290,13 @@
             this.clnQuantity,
             this.clnStatus});
             this.dgvServices.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvServices.Location = new System.Drawing.Point(337, 170);
+            this.dgvServices.Location = new System.Drawing.Point(337, 128);
             this.dgvServices.Name = "dgvServices";
             this.dgvServices.ReadOnly = true;
             this.dgvServices.RowHeadersWidth = 62;
             this.dgvServices.RowTemplate.Height = 24;
             this.dgvServices.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvServices.Size = new System.Drawing.Size(839, 381);
+            this.dgvServices.Size = new System.Drawing.Size(839, 423);
             this.dgvServices.TabIndex = 18;
             this.dgvServices.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvServices_CellClick);
             // 
@@ -350,7 +350,7 @@
             // 
             // ManageServiceForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 28F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1176, 551);
             this.Controls.Add(this.dgvServices);
