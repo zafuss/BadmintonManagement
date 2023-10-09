@@ -156,5 +156,42 @@ from (	select convert(int,Month(R._Date)) as Thang,sum(R.Total) as Total
 where T1.Thang = T.Thang
 
 
+select * 
+from RESERVATION re
+where DATEPART(DAY, re.StartTime) = DATEPART(DAY, GETDATE()); 
+
+
+select * 
+from RESERVATION re
+where DATEPART(WEEK, re.StartTime) = DATEPART(WEEK, GETDATE()); 
+
+select * 
+from RESERVATION re
+where DATEPART(MONTH, re.StartTime) = DATEPART(MONTH, GETDATE()); 
+
+select c.CourtID,c.CourtName,c.BranchID , c.BranchName , b.FullName, b.PhoneNumber , b.ReservationNo , b.StartTime , b.EndTime , c._Status ,  b._Status
+                            from (	select c.CourtID , c.CourtName , c.BranchID , br.BranchName, c._Status
+		                            from COURT c , BRANCH br 
+		                            where c.BranchID = br.BranchID and c._Status != 'Disable' ) c
+                            Left Join (select rf.CourtID , tmp.FullName , tmp.PhoneNumber , rf.ReservationNo,tmp.StartTime,tmp.EndTime , tmp._Status
+			                            from RF_DETAIL rf ,		(select reser.ReservationNo , a.FullName , a.PhoneNumber , FORMAT(reser.StartTime, 'HH:mm') as StartTime , FORMAT(reser.EndTime, 'HH:mm') as EndTime , reser._Status
+									                            from RESERVATION reser , CUSTOMER a
+									                            where Cast(reser.StartTime as Date) = Cast(CURRENT_TIMESTAMP  as DATE) and 
+									                            FORMAT(CURRENT_TIMESTAMP , 'HH:mm') < FORMAT(reser.EndTime, 'HH:mm') and 
+									                            FORMAT(CURRENT_TIMESTAMP , 'HH:mm') >= FORMAT(reser.StartTime, 'HH:mm')  and 
+									                            a.PhoneNumber = reser.PhoneNumber ) tmp
+			                            where rf.ReservationNo = tmp.ReservationNo
+			                            )  b 
+                            on b.CourtID = c.CourtID
+
+select reser.ReservationNo , a.FullName , a.PhoneNumber , FORMAT(reser.StartTime, 'HH:mm') as StartTime , 
+FORMAT(reser.EndTime, 'HH:mm') as EndTime , reser._Status
+from RESERVATION reser , CUSTOMER a
+where Cast(reser.StartTime as Date) = Cast(CURRENT_TIMESTAMP  as DATE) and 
+FORMAT(CURRENT_TIMESTAMP , 'HH:mm') < FORMAT(reser.EndTime, 'HH:mm') and 
+FORMAT(CURRENT_TIMESTAMP , 'HH:mm') >= FORMAT(reser.StartTime, 'HH:mm')  and 
+a.PhoneNumber = reser.PhoneNumber
+
+
 
 --IncomeOfYear 2023

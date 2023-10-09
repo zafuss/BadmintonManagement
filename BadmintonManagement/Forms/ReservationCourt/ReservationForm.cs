@@ -1,4 +1,5 @@
-﻿using BadmintonManagement.Forms.ReservationCourt.BookingForm;
+﻿using BadmintonManagement.Forms.Court;
+using BadmintonManagement.Forms.ReservationCourt.BookingForm;
 using BadmintonManagement.Forms.ReservationCourt.ReservationReceipt;
 using BadmintonManagement.Models;
 using System;
@@ -18,9 +19,10 @@ namespace BadmintonManagement.Forms.ReservationCourt
 {
     public partial class ReservationForm : Form
     {
-        
+        public static ReservationForm instance;
         public ReservationForm()
         {
+            instance = this;
             InitializeComponent();
         }
         DateTime st;
@@ -168,7 +170,7 @@ namespace BadmintonManagement.Forms.ReservationCourt
         {
             GetCustomerInformation frm = new GetCustomerInformation();
             frm.ReloadRev = new GetCustomerInformation.ChangeRev(LoadRev);
-            frm.Show();
+            frm.ShowDialog();
         }
         private void btnDetail_Click(object sender, EventArgs e)
         {
@@ -334,6 +336,10 @@ namespace BadmintonManagement.Forms.ReservationCourt
             int index = dgvReservation.SelectedRows.Count - 1;
             dgvReservation.SelectedRows[index].Cells[9].Value = "Đã thanh toán";
             btnRevReceipt.Text = "Xem hóa đơn";
+            if (Application.OpenForms["CourtForm"] != null && !Application.OpenForms["CourtForm"].IsDisposed)
+            {
+                CourtForm.Instance.ReLoad();
+            }
         }
         private void btnRevReceipt_Click(object sender, EventArgs e)
         {
@@ -342,7 +348,7 @@ namespace BadmintonManagement.Forms.ReservationCourt
             string str2 = dgvReservation.SelectedRows[i].Cells[9].Value.ToString();
             RevReceipt frm = new RevReceipt(str1,str2);
             frm.RevStat = new RevReceipt.ChangeRevStat(LoadRevStat);
-            frm.Show();  
+            frm.ShowDialog();  
         }
         DateTime tempStart;
         DateTime tempEnd;
@@ -401,7 +407,7 @@ namespace BadmintonManagement.Forms.ReservationCourt
                     {
                         if(rev.C_Status==0)
                             rev.C_Status = 5;
-                        else
+                        else if(rev.C_Status==1)
                             rev.C_Status = 6;
                         EraseRF_Detail(rev);
                         context.RESERVATION.AddOrUpdate(rev);
@@ -409,11 +415,11 @@ namespace BadmintonManagement.Forms.ReservationCourt
                         change = true;
                     }
                 }
-                else
+                else if(s<0)
                 {
                     if (rev.C_Status == 0)
                         rev.C_Status = 5;
-                    else
+                    else if( rev.C_Status==1)
                         rev.C_Status = 6;
                     EraseRF_Detail(rev);
                     context.RESERVATION.AddOrUpdate(rev);
@@ -484,7 +490,6 @@ namespace BadmintonManagement.Forms.ReservationCourt
             btnRevReceipt.Enabled = true;
             btnGot.Enabled = false;
         }
-
         private void btnCancel_EnabledChanged_1(object sender, EventArgs e)
         {
             Button btn = sender as Button;

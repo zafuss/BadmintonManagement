@@ -199,9 +199,9 @@ namespace BadmintonManagement.Forms.AuthorizationForms
             {
                 DateTime d = rev.StartTime.Value;
                 int s = DateTime.Compare(d.Date, DateTime.Now.Date);
-                if (rev.C_Status == 3 && DateTime.Compare(rev.StartTime.Value, DateTime.Now) < 0)
+                if (rev.C_Status == 2 && DateTime.Compare(rev.StartTime.Value, DateTime.Now) < 0)
                 {
-                    rev.C_Status = 4;
+                    rev.C_Status = 3;
                 }
                 else
                 if (s > 0 || rev.C_Status > 1)
@@ -212,18 +212,18 @@ namespace BadmintonManagement.Forms.AuthorizationForms
                     {
                         if (rev.C_Status == 0)
                             rev.C_Status = 5;
-                        else
+                        else if (rev.C_Status == 1)
                             rev.C_Status = 6;
                         context.RESERVATION.AddOrUpdate(rev);
                         context.SaveChanges();
                         change = true;
                     }
                 }
-                else
+                else if(s<0)
                 {
                     if (rev.C_Status == 0)
                         rev.C_Status = 5;
-                    else
+                    else if(rev.C_Status == 1)
                         rev.C_Status = 6;
                     context.RESERVATION.AddOrUpdate(rev);
                     context.SaveChanges();

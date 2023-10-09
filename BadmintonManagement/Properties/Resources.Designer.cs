@@ -63,6 +63,46 @@ namespace BadmintonManagement.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap badminton_court_available {
+            get {
+                object obj = ResourceManager.GetObject("badminton_court_available", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap badminton_court_maintenance {
+            get {
+                object obj = ResourceManager.GetObject("badminton_court_maintenance", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap badminton_court_timeout {
+            get {
+                object obj = ResourceManager.GetObject("badminton_court_timeout", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap badminton_court_using {
+            get {
+                object obj = ResourceManager.GetObject("badminton_court_using", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap close {
             get {
                 object obj = ResourceManager.GetObject("close", resourceCulture);
@@ -126,16 +166,6 @@ namespace BadmintonManagement.Properties {
         internal static System.Drawing.Bitmap logout {
             get {
                 object obj = ResourceManager.GetObject("logout", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap Maintainace {
-            get {
-                object obj = ResourceManager.GetObject("Maintainace", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -226,26 +256,6 @@ namespace BadmintonManagement.Properties {
         internal static System.Drawing.Bitmap service_icon {
             get {
                 object obj = ResourceManager.GetObject("service_icon", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap Use {
-            get {
-                object obj = ResourceManager.GetObject("Use", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap Used {
-            get {
-                object obj = ResourceManager.GetObject("Used", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

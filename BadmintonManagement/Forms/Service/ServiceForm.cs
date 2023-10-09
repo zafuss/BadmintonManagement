@@ -39,13 +39,13 @@ namespace BadmintonManagement.Forms.Service
             OpenChildForm(new ManageServiceForm());
             btnServiceReceipt.BackColor = SystemColors.ButtonShadow;
             btnReceiptServices.BackColor = Color.LightGray;
-            btnCreateServiceReceipt.BackColor = Color.LightGray;
+            //btnCreateServiceReceipt.BackColor = Color.LightGray;
         }
 
         private void btnCreateServiceReceipt_Click(object sender, EventArgs e)
         {
             OpenChildForm(new ManageServiceForm());
-            btnCreateServiceReceipt.BackColor = SystemColors.ButtonShadow;
+            //btnCreateServiceReceipt.BackColor = SystemColors.ButtonShadow;
             btnServiceReceipt.BackColor = Color.LightGray;
             btnReceiptServices.BackColor = Color.LightGray;
         }
@@ -55,7 +55,11 @@ namespace BadmintonManagement.Forms.Service
             OpenChildForm(new ShowServiceReceiptForm());
             btnReceiptServices.BackColor = SystemColors.ButtonShadow;
             btnServiceReceipt.BackColor = Color.LightGray;
-            btnCreateServiceReceipt.BackColor= Color.LightGray; 
+            //btnCreateServiceReceipt.BackColor= Color.LightGray; 
+        }
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
