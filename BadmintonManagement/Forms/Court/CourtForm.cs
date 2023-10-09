@@ -236,7 +236,7 @@ namespace BadmintonManagement.Forms.Court
             txtNameCustom.Text = infoCourt.NameCustom;
             txtCourtName.Text = infoCourt.CourtName;
             txtBranchName.Text = infoCourt.BranhName;
-            txtPhoneNumber.Text = infoCourt.Phonenumber;
+            txtPhoneNumber.Text = 0+infoCourt.Phonenumber;
             txtStartTime.Text = infoCourt.Starttime;
             txtEndTime.Text = infoCourt.Endtime;
         }

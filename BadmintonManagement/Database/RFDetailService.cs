@@ -63,18 +63,18 @@ namespace BadmintonManagement.Database
         {
             string connectString = @"Data Source=localhost;Initial Catalog=BadmintonManagementDB;Integrated Security=True";
 
-            string sql = @"select c.CourtID,c.CourtName,c.BranchID , c.BranchName , b.FullName, b.PhoneNumber , b.ReservationNo , b.StartTime , b.EndTime , c._Status
+            string sql = @"select c.CourtID,c.CourtName,c.BranchID , c.BranchName , b.FullName, b.PhoneNumber , b.ReservationNo , b.StartTime , b.EndTime , c._Status ,  b._Status
                             from (	select c.CourtID , c.CourtName , c.BranchID , br.BranchName, c._Status
 		                            from COURT c , BRANCH br 
 		                            where c.BranchID = br.BranchID and c._Status != 'Disable' ) c
-                            Left Join (select rf.CourtID , tmp.FullName , tmp.PhoneNumber , rf.ReservationNo,tmp.StartTime,tmp.EndTime
-			                            from RF_DETAIL rf ,		(select reser.ReservationNo , a.FullName , a.PhoneNumber , FORMAT(reser.StartTime, 'HH:mm') as StartTime , FORMAT(reser.EndTime, 'HH:mm') as EndTime
-									                            from RESERVATION reser , CUSTOMER a
-									                            where Cast(reser.StartTime as Date) = Cast(CURRENT_TIMESTAMP  as DATE) and 
-									                            FORMAT(CURRENT_TIMESTAMP , 'HH:mm') < FORMAT(reser.EndTime, 'HH:mm') and 
-									                            FORMAT(CURRENT_TIMESTAMP , 'HH:mm') >= FORMAT(reser.StartTime, 'HH:mm')  and 
-									                            a.PhoneNumber = reser.PhoneNumber) tmp
-			                            where rf.ReservationNo = tmp.ReservationNo
+                            Left Join (select rf.CourtID , tmp.FullName , tmp.PhoneNumber , rf.ReservationNo,tmp.StartTime,tmp.EndTime , tmp._Status
+			                            from RF_DETAIL rf ,		(select reser.ReservationNo , a.FullName , a.PhoneNumber , FORMAT(reser.StartTime, 'HH:mm') as StartTime , FORMAT(reser.EndTime, 'HH:mm') as EndTime , reser._Status
+																from RESERVATION reser , CUSTOMER a
+																where (Cast(reser.StartTime as Date) = Cast(CURRENT_TIMESTAMP  as DATE) and 
+																FORMAT(CURRENT_TIMESTAMP , 'HH:mm') < FORMAT(reser.EndTime, 'HH:mm') and 
+																FORMAT(CURRENT_TIMESTAMP , 'HH:mm') >= FORMAT(reser.StartTime, 'HH:mm')  and 
+																a.PhoneNumber = reser.PhoneNumber) or reser._Status = 3) tmp
+																										where rf.ReservationNo = tmp.ReservationNo
 			                            )  b 
                             on b.CourtID = c.CourtID";
 
@@ -104,7 +104,7 @@ namespace BadmintonManagement.Database
                 infoCourt.Starttime = dataReader.GetValue(7).ToString();
                 infoCourt.Endtime =  dataReader.GetValue(8).ToString();
                 infoCourt.Status = dataReader.GetValue(9).ToString();
-
+                infoCourt.StatusOV = dataReader.GetValue(10).ToString();
                 listInfor.Add(infoCourt);
             }
             return listInfor;
@@ -160,24 +160,30 @@ namespace BadmintonManagement.Database
 
             CustomPicBox picStatusCourt = new CustomPicBox();
             picStatusCourt.Name = infoCourt.CourtId + "+" + infoCourt.Reservationno;
-            picStatusCourt.Image = Properties.Resources.Use;
+            //picStatusCourt.Image = Properties.Resources.Use;
             picStatusCourt.SizeMode = PictureBoxSizeMode.StretchImage;
-            picStatusCourt.Size = new Size(Convert.ToInt32(x * 3 / 5), Convert.ToInt32(y * 3 / 5));
+            picStatusCourt.Size = new Size(Convert.ToInt32(x *  3 / 5), Convert.ToInt32(y * 2.5 / 5));
             picStatusCourt.Location = new Point(Convert.ToInt32(x * 1 / 5), Convert.ToInt32(y * 1 / 5));
+            picStatusCourt.BorderStyle = BorderStyle.None;
+            picStatusCourt.BorderColor = Color.Transparent;
 
-            if(infoCourt.Status == "Maintaince")
+            if(infoCourt.Status == "Maintenance")
             {
-                picStatusCourt.Image = Properties.Resources.Maintainace;
+                picStatusCourt.Image = Properties.Resources.badminton_court_maintenance;
             }
             else
             {
-                if (infoCourt.Reservationno != string.Empty)
+                if (infoCourt.StatusOV == "3")
                 {
-                    picStatusCourt.Image = Properties.Resources.Used;
+                    picStatusCourt.Image = Properties.Resources.badminton_court_timeout;
+                }
+                else if (infoCourt.Reservationno != string.Empty )
+                {
+                    picStatusCourt.Image = Properties.Resources.badminton_court_using;
                 }
                 else 
                 {
-                    picStatusCourt.Image = Properties.Resources.Use;
+                    picStatusCourt.Image = Properties.Resources.badminton_court_available;
                 }
             }
             

@@ -121,14 +121,17 @@
   <data name="logout" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Images\home_images\logout.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="service_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\service_images\service_icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="badminton_court_available" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\status_images\badminton_court_available.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="visibale_password" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Images\auth_images\visibale_password.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="login_images" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\images\auth_images\login_images.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Use" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Images\status_images\Use.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="hidden_password" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Images\auth_images\hidden_password.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -169,16 +172,16 @@
   <data name="prices" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Images\home_images\prices.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Maintainace" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Images\status_images\Maintainace.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="reservation" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Images\home_images\reservation.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Used" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Images\status_images\Used.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="badminton_court_maintenance" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\status_images\badminton_court_maintenance.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="service_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Images\service_images\service_icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="badminton_court_timeout" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\status_images\badminton_court_timeout.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="badminton_court_using" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\status_images\badminton_court_using.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>
