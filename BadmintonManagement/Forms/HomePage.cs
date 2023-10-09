@@ -177,6 +177,7 @@ namespace BadmintonManagement.Forms.AuthorizationForms
         private void btnReport_Click_1(object sender, EventArgs e)
         {
             AddTabPages(new ReportForm());
+
         }
 
         private void btnExit_Click(object sender, EventArgs e)

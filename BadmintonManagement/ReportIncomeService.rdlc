@@ -7,29 +7,29 @@
         <DataProvider>System.Data.DataSet</DataProvider>
         <ConnectString>/* Local Connection */</ConnectString>
       </ConnectionProperties>
-      <rd:DataSourceID>6a91cf37-579c-4594-8cfa-c09c98051e58</rd:DataSourceID>
+      <rd:DataSourceID>0b29a413-0f3c-4517-9bff-274583716207</rd:DataSourceID>
     </DataSource>
   </DataSources>
   <DataSets>
-    <DataSet Name="DataSetIncome">
+    <DataSet Name="DataSetIncomeSer">
       <Query>
         <DataSourceName>BadmintonManagementDatabase</DataSourceName>
         <CommandText>/* Local Query */</CommandText>
       </Query>
       <Fields>
-        <Field Name="Tatol">
-          <DataField>Tatol</DataField>
+        <Field Name="PerCourt">
+          <DataField>PerCourt</DataField>
           <rd:TypeName>System.Decimal</rd:TypeName>
         </Field>
-        <Field Name="Year">
-          <DataField>Year</DataField>
-          <rd:TypeName>System.Int32</rd:TypeName>
+        <Field Name="PerSer">
+          <DataField>PerSer</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
         </Field>
       </Fields>
       <rd:DataSetInfo>
         <rd:DataSetName>BadmintonManagement.Database</rd:DataSetName>
-        <rd:TableName>IncomeYear</rd:TableName>
-        <rd:ObjectDataSourceType>BadmintonManagement.Database.IncomeYear, BadmintonManagement, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</rd:ObjectDataSourceType>
+        <rd:TableName>IncomeSer</rd:TableName>
+        <rd:ObjectDataSourceType>BadmintonManagement.Database.IncomeSer, BadmintonManagement, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</rd:ObjectDataSourceType>
       </rd:DataSetInfo>
     </DataSet>
   </DataSets>
@@ -37,53 +37,114 @@
     <ReportSection>
       <Body>
         <ReportItems>
+          <Textbox Name="Textbox7">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>Doanh thu tháng </Value>
+                    <Style />
+                  </TextRun>
+                  <TextRun>
+                    <Value>=Parameters!thang.Value</Value>
+                    <Style />
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox7</rd:DefaultName>
+            <Top>4.74875in</Top>
+            <Left>1.30083in</Left>
+            <Height>0.25in</Height>
+            <Width>1.8125in</Width>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
           <Chart Name="Chart1">
             <ChartCategoryHierarchy>
               <ChartMembers>
                 <ChartMember>
-                  <Group Name="Chart1_CategoryGroup">
-                    <GroupExpressions>
-                      <GroupExpression>=Fields!Year.Value</GroupExpression>
-                    </GroupExpressions>
-                  </Group>
-                  <SortExpressions>
-                    <SortExpression>
-                      <Value>=Fields!Year.Value</Value>
-                    </SortExpression>
-                  </SortExpressions>
-                  <Label>=Fields!Year.Value</Label>
+                  <Label />
                 </ChartMember>
               </ChartMembers>
             </ChartCategoryHierarchy>
             <ChartSeriesHierarchy>
               <ChartMembers>
                 <ChartMember>
-                  <Label>Tatol</Label>
+                  <Label>Per Court</Label>
+                </ChartMember>
+                <ChartMember>
+                  <Label>Per Ser</Label>
                 </ChartMember>
               </ChartMembers>
             </ChartSeriesHierarchy>
             <ChartData>
               <ChartSeriesCollection>
-                <ChartSeries Name="Tatol">
+                <ChartSeries Name="PerCourt">
                   <ChartDataPoints>
                     <ChartDataPoint>
                       <ChartDataPointValues>
-                        <X>=Fields!Year.Value</X>
-                        <Y>=Fields!Tatol.Value</Y>
+                        <Y>=Sum(Fields!PerCourt.Value)</Y>
                       </ChartDataPointValues>
                       <ChartDataLabel>
                         <Style />
                         <UseValueAsLabel>true</UseValueAsLabel>
+                        <Visible>true</Visible>
                       </ChartDataLabel>
-                      <Style>
-                        <BackgroundGradientType>None</BackgroundGradientType>
-                      </Style>
+                      <Style />
                       <ChartMarker>
                         <Style />
                       </ChartMarker>
                       <DataElementOutput>Output</DataElementOutput>
                     </ChartDataPoint>
                   </ChartDataPoints>
+                  <Type>Shape</Type>
+                  <Style />
+                  <ChartEmptyPoints>
+                    <Style />
+                    <ChartMarker>
+                      <Style />
+                    </ChartMarker>
+                    <ChartDataLabel>
+                      <Style />
+                    </ChartDataLabel>
+                  </ChartEmptyPoints>
+                  <ValueAxisName>Primary</ValueAxisName>
+                  <CategoryAxisName>Primary</CategoryAxisName>
+                  <ChartSmartLabel>
+                    <CalloutLineColor>Black</CalloutLineColor>
+                    <MinMovingDistance>0pt</MinMovingDistance>
+                  </ChartSmartLabel>
+                </ChartSeries>
+                <ChartSeries Name="PerSer">
+                  <ChartDataPoints>
+                    <ChartDataPoint>
+                      <ChartDataPointValues>
+                        <Y>=Sum(Fields!PerSer.Value)</Y>
+                      </ChartDataPointValues>
+                      <ChartDataLabel>
+                        <Style />
+                        <UseValueAsLabel>true</UseValueAsLabel>
+                        <Visible>true</Visible>
+                      </ChartDataLabel>
+                      <Style />
+                      <ChartMarker>
+                        <Style />
+                      </ChartMarker>
+                      <DataElementOutput>Output</DataElementOutput>
+                    </ChartDataPoint>
+                  </ChartDataPoints>
+                  <Type>Shape</Type>
                   <Style />
                   <ChartEmptyPoints>
                     <Style />
@@ -342,6 +403,7 @@
                   <FontSize>8pt</FontSize>
                 </Style>
                 <Position>TopLeft</Position>
+                <DockOutsideChartArea>true</DockOutsideChartArea>
                 <ChartLegendTitle>
                   <Caption />
                   <Style>
@@ -356,7 +418,7 @@
             </ChartLegends>
             <ChartTitles>
               <ChartTitle Name="Default">
-                <Caption xml:space="preserve"> </Caption>
+                <Caption />
                 <Style>
                   <BackgroundGradientType>None</BackgroundGradientType>
                   <FontSize>9pt</FontSize>
@@ -385,63 +447,26 @@
                 <VerticalAlign>Top</VerticalAlign>
               </Style>
             </ChartNoDataMessage>
-            <DataSetName>DataSetIncome</DataSetName>
-            <Top>0.42361in</Top>
-            <Left>0.12375in</Left>
-            <Height>4.1875in</Height>
-            <Width>6.33333in</Width>
+            <DataSetName>DataSetIncomeSer</DataSetName>
+            <Top>0.33208in</Top>
+            <Left>0.30083in</Left>
+            <Height>4.28125in</Height>
+            <Width>3.25in</Width>
+            <ZIndex>1</ZIndex>
             <Style>
               <Border>
                 <Color>LightGrey</Color>
-                <Style>Solid</Style>
+                <Style>None</Style>
               </Border>
               <BackgroundColor>White</BackgroundColor>
               <BackgroundGradientType>None</BackgroundGradientType>
             </Style>
           </Chart>
-          <Textbox Name="Textbox2">
-            <CanGrow>true</CanGrow>
-            <KeepTogether>true</KeepTogether>
-            <Paragraphs>
-              <Paragraph>
-                <TextRuns>
-                  <TextRun>
-                    <Value>Doanh thu năm </Value>
-                    <Style />
-                  </TextRun>
-                  <TextRun>
-                    <Value>=Parameters!nam.Value</Value>
-                    <Style />
-                  </TextRun>
-                  <TextRun>
-                    <Value xml:space="preserve"> </Value>
-                    <Style />
-                  </TextRun>
-                </TextRuns>
-                <Style />
-              </Paragraph>
-            </Paragraphs>
-            <rd:DefaultName>Textbox2</rd:DefaultName>
-            <Top>4.72917in</Top>
-            <Left>2.32167in</Left>
-            <Height>0.25in</Height>
-            <Width>1.89583in</Width>
-            <ZIndex>1</ZIndex>
-            <Style>
-              <Border>
-                <Style>None</Style>
-              </Border>
-              <PaddingLeft>2pt</PaddingLeft>
-              <PaddingRight>2pt</PaddingRight>
-              <PaddingTop>2pt</PaddingTop>
-              <PaddingBottom>2pt</PaddingBottom>
-            </Style>
-          </Textbox>
         </ReportItems>
-        <Height>5.09028in</Height>
+        <Height>5.08333in</Height>
         <Style />
       </Body>
-      <Width>6.82639in</Width>
+      <Width>3.75917in</Width>
       <Page>
         <LeftMargin>1in</LeftMargin>
         <RightMargin>1in</RightMargin>
@@ -452,7 +477,7 @@
     </ReportSection>
   </ReportSections>
   <ReportParameters>
-    <ReportParameter Name="nam">
+    <ReportParameter Name="thang">
       <DataType>String</DataType>
       <Prompt>ReportParameter1</Prompt>
     </ReportParameter>
@@ -465,11 +490,11 @@
         <CellDefinition>
           <ColumnIndex>0</ColumnIndex>
           <RowIndex>0</RowIndex>
-          <ParameterName>nam</ParameterName>
+          <ParameterName>thang</ParameterName>
         </CellDefinition>
       </CellDefinitions>
     </GridLayoutDefinition>
   </ReportParametersLayout>
   <rd:ReportUnitType>Inch</rd:ReportUnitType>
-  <rd:ReportID>f229cbec-2961-4f48-8603-17d467775b25</rd:ReportID>
+  <rd:ReportID>bfd4412e-c2a8-4b33-a5a6-22bd1c3a5407</rd:ReportID>
 </Report>
