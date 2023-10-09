@@ -61,9 +61,11 @@
             this.btnExit = new System.Windows.Forms.ToolStripButton();
             this.pnlChildForm = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.lblTime = new System.Windows.Forms.Label();
             this.lblEmployeeName = new System.Windows.Forms.Label();
             this.tabControl = new System.Windows.Forms.TabControl();
             this.timerRealTimeStatusCapture = new System.Windows.Forms.Timer(this.components);
+            this.tmrRload = new System.Windows.Forms.Timer(this.components);
             this.menuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.pnlChildForm.SuspendLayout();
@@ -81,6 +83,7 @@
             this.menuStrip1.Size = new System.Drawing.Size(1238, 24);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
+            this.menuStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip1_ItemClicked);
             // 
             // hệThốngToolStripMenuItem
             // 
@@ -331,12 +334,22 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.lblTime);
             this.panel1.Controls.Add(this.lblEmployeeName);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel1.Location = new System.Drawing.Point(0, 651);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1238, 39);
             this.panel1.TabIndex = 1;
+            // 
+            // lblTime
+            // 
+            this.lblTime.AutoSize = true;
+            this.lblTime.Location = new System.Drawing.Point(1070, 9);
+            this.lblTime.Name = "lblTime";
+            this.lblTime.Size = new System.Drawing.Size(76, 21);
+            this.lblTime.TabIndex = 1;
+            this.lblTime.Text = "DateTime";
             // 
             // lblEmployeeName
             // 
@@ -364,6 +377,12 @@
             // 
             this.timerRealTimeStatusCapture.Interval = 60000;
             this.timerRealTimeStatusCapture.Tick += new System.EventHandler(this.timerRealTimeStatusCapture_Tick);
+            // 
+            // tmrRload
+            // 
+            this.tmrRload.Enabled = true;
+            this.tmrRload.Interval = 1000;
+            this.tmrRload.Tick += new System.EventHandler(this.tmrRload_Tick);
             // 
             // HomePage
             // 
@@ -429,5 +448,7 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label lblEmployeeName;
         private System.Windows.Forms.Timer timerRealTimeStatusCapture;
+        private System.Windows.Forms.Label lblTime;
+        private System.Windows.Forms.Timer tmrRload;
     }
 }

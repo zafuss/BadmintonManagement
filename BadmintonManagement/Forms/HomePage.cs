@@ -237,6 +237,16 @@ namespace BadmintonManagement.Forms.AuthorizationForms
             bool t = RealTimeCaptureStatusReservation();
         }
 
+        public void tmrRload_Tick(object sender, EventArgs e)
+        {
+            lblTime.Text = String.Format("{0}  {1}", DateTime.Now.ToString("HH:mm:ss"),DateTime.Now.ToString("dd/MM/yyyy"));
+        }
+
+        private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
+        }
+
         private void tabControl_DrawItem(object sender, DrawItemEventArgs e)
         {
             Rectangle rect = tabControl.GetTabRect(e.Index);

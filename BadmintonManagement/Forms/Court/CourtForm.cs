@@ -20,9 +20,11 @@ namespace BadmintonManagement.Forms.Court
         public static CourtForm Instance;
         public bool flagUser = false;
         public bool flagAdmin = false;
+        private DateTime lastCheckTime;
         public List<COURT> newCourt = new CourtService().getListCourtWithOutDisable();
         public List<RF_DETAIL> listRF = new RFDetailService().getRFDetail();
-
+        public List<InfoCourt> listInfo = new RFDetailService().getCourtByRF();
+        public HashSet<string> loadCourt = new RFDetailService().getListTimeinDay();
         public CourtForm()
         {
             InitializeComponent();
@@ -34,13 +36,38 @@ namespace BadmintonManagement.Forms.Court
                 btnAdmin.Visible = false;
             }
             pnlDisplayCourt.AutoScroll = true;
+            tmrCountDown.Start();
             //Test();
         }
+        
+        private void tmrCountDown_Tick(object sender, EventArgs e)
+        {
+            label1.Text = String.Format("{0}", DateTime.Now.ToString("HH:mm:ss")); 
+
+            loadCourt = new RFDetailService().getListTimeinDay();
+           
+            if (loadCourt.Count != 0)
+            {
+                DateTime dateTime = new DateTime();
+                foreach (var item in loadCourt)
+                {
+                    dateTime = DateTime.Parse(item);
+                    if (label1.Text == dateTime.ToString("HH:mm:ss"))
+                    {
+                        pnlDisplayCourt.Controls.Clear();
+                        pnlDisplayCourt.Refresh();
+                        this.Refresh();
+                        ReLoad();
+                    }
+                }
+            }
+        }
+
 
         public void Reset()
         {
             txtBranchName.Text = txtCourtName.Text = txtNameCustom.Text = txtPhoneNumber.Text = "";
-            dtmEndTime.Value = dtmEndTime.Value = DateTime.Now;
+            txtStartTime.Text = txtEndTime.Text = "00:00";
         }
 
         string _name = "";
@@ -147,8 +174,19 @@ namespace BadmintonManagement.Forms.Court
                 {
                     listid.Add(var.Value);
                 }
-                RF_DETAIL rf_detail = new RFDetailService().FindRFDetailByID(listid[0], listid[1]);
-                displayUser(rf_detail);
+                //RF_DETAIL rf_detail = new RFDetailService().FindRFDetailByID(listid[0], listid[1]);
+                listInfo = new RFDetailService().getCourtByRF();
+                InfoCourt infoCourt = new InfoCourt();
+                if (listid.Count > 1) 
+                {
+                    infoCourt = new RFDetailService().FindinforCourt(listid[0], listid[1], listInfo);
+                    displayUser(infoCourt);
+                }
+                else
+                {
+                    Reset();
+                }
+               
                 foreach (CustomPanel item in pnlDisplayCourt.Controls)
                 {
                     if (item.Name == pictureBoxName)
@@ -193,14 +231,14 @@ namespace BadmintonManagement.Forms.Court
             //}
         }
 
-        private void displayUser(RF_DETAIL rfdetail)
+        private void displayUser(InfoCourt infoCourt)
         {
-            txtNameCustom.Text = rfdetail.RESERVATION.CUSTOMER.FullName;
-            txtCourtName.Text = rfdetail.COURT.CourtName;
-            txtBranchName.Text = rfdetail.COURT.BRANCH.BranchName;
-            txtPhoneNumber.Text = 0+rfdetail.RESERVATION.CUSTOMER.PhoneNumber;
-            dtmStartTime.Text = rfdetail.RESERVATION.StartTime.ToString();
-            dtmEndTime.Text = rfdetail.RESERVATION.EndTime.ToString(); 
+            txtNameCustom.Text = infoCourt.NameCustom;
+            txtCourtName.Text = infoCourt.CourtName;
+            txtBranchName.Text = infoCourt.BranhName;
+            txtPhoneNumber.Text = infoCourt.Phonenumber;
+            txtStartTime.Text = infoCourt.Starttime;
+            txtEndTime.Text = infoCourt.Endtime;
         }
 
         
@@ -232,18 +270,30 @@ namespace BadmintonManagement.Forms.Court
             }
         }
 
-        public void UserShow(List<RF_DETAIL> listRF,int count)
+        private void ReLoad()
+        {
+            pnlDisplayCourt.Controls.Clear();
+            pnlDisplayCourt.Refresh();
+
+            //MessageBox.Show(count.ToString());
+            RFDetailService rf = new RFDetailService();
+            List<InfoCourt> listInfo = rf.getCourtByRF();
+            count = listInfo.Count();
+            UserShow(listInfo, count);
+
+            //this.btnUser.Click += new System.EventHandler(this.btnUser_Click);
+        }
+
+        public void UserShow(List<InfoCourt> infoCourts,int count)
         {
             flagUser = true;
             flagAdmin = false;
-            
 
             double width = this.pnlDisplayCourt.Width;
             double heigth = this.pnlDisplayCourt.Height;
-
             for (int i = 0; i < count; i++)
             {
-                pnlDisplayCourt.Controls.Add(new RFDetailService().DisplayRFDetailUser(i, listRF[i], width, heigth));
+                pnlDisplayCourt.Controls.Add(new RFDetailService().DisplayRFDetailUser(i, infoCourts[i], width, heigth));
                 pnlDisplayCourt.Controls[i].Controls[3].Click += ControlClickHandler;
                 pnlDisplayCourt.Click += ControlDoubleClickHandler;
                 pnlDisplayCourt.Controls[i].Controls[3].MouseHover += PicMouseHoverHandler;
@@ -251,7 +301,7 @@ namespace BadmintonManagement.Forms.Court
                 pnlDisplayCourt.Controls[i].MouseHover += ControlHoverEnterHandler;
                 pnlDisplayCourt.Controls[i].MouseLeave += ControlHoverLeaveHandler;
             }
-            
+            //MessageBox.Show("VCL");
         }
 
         int count = new CourtService().getCountCourtDisable();
@@ -263,6 +313,7 @@ namespace BadmintonManagement.Forms.Court
             double width = this.pnlDisplayCourt.Width;
             double heigth = this.pnlDisplayCourt.Height;
             pnlDisplayCourt.Controls.Clear();
+            pnlDisplayCourt.Refresh();
             for (int i = 0; i < count; i++)
             {
                 pnlDisplayCourt.Controls.Add(new CourtService().DisplayCourtAdmin(i, newCourt[i],width,heigth));
@@ -286,15 +337,15 @@ namespace BadmintonManagement.Forms.Court
             else
                 panel.Visible = false;
         }
-
+        
         private void btnUser_Click(object sender, EventArgs e)
         {
             pnlDisplayCourt.Controls.Clear();
             pnlDisplayCourt.Refresh();
             showSubMenu(pnlUser);
-           // listRF = new RFDetailService().getRFDetail();
-            //count = listRF.Count();
-            ///UserShow(listRF,count);
+            listInfo = new RFDetailService().getCourtByRF();
+            count = listInfo.Count();
+            UserShow(listInfo, count);
         }
 
         private void btnAdmin_Click(object sender, EventArgs e)
@@ -306,8 +357,6 @@ namespace BadmintonManagement.Forms.Court
             count = newCourt.Count();
             ShowCourt(newCourt,count);
         }
-
-    
 
         private void pnlDisplayCourt_SizeChanged(object sender, EventArgs e)
         {
@@ -321,9 +370,9 @@ namespace BadmintonManagement.Forms.Court
             }
             else 
             {
-                listRF = new RFDetailService().getRFDetail();
-                //count = listRF.Count();
-               // UserShow(listRF, count);
+                listInfo = new RFDetailService().getCourtByRF();
+                count = listInfo.Count();
+                UserShow(listInfo, count);
             }
 
 
@@ -342,5 +391,7 @@ namespace BadmintonManagement.Forms.Court
             }
 
         }
+
+        
     }
 }

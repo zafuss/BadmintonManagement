@@ -92,14 +92,14 @@ namespace BadmintonManagement
         private void picShowPassword_MouseDown(object sender, MouseEventArgs e)
         {
             txtPassword.PasswordChar = '\0';
-            picShowPassword.Image = Properties.Resources.hidden_password;
+            picShowPassword.Image = Properties.Resources.visibale_password;
 
         }
 
         private void picShowPassword_MouseUp(object sender, MouseEventArgs e)
         {
             txtPassword.PasswordChar = '●';
-            picShowPassword.Image = Properties.Resources.visibale_password;
+            picShowPassword.Image = Properties.Resources.hidden_password;
             if (txtPassword.Text == "Password")
                 txtPassword.PasswordChar = '\0';
         }
@@ -129,6 +129,11 @@ namespace BadmintonManagement
             {
                 txtPassword.Focus();
             }
+        }
+
+        private void LoginForm_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

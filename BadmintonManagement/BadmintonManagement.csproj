@@ -136,7 +136,6 @@
     <Compile Include="Database\DatabaseInitial.cs" />
     <Compile Include="Database\InfoCourt.cs" />
     <Compile Include="Database\PriceServices.cs" />
-    <Compile Include="Database\ReservationService.cs" />
     <Compile Include="Database\ServiceReceiptServices.cs" />
     <Compile Include="Database\ServiceServices.cs" />
     <Compile Include="Database\UserServices.cs" />
