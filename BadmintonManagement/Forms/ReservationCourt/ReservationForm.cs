@@ -168,7 +168,7 @@ namespace BadmintonManagement.Forms.ReservationCourt
         {
             GetCustomerInformation frm = new GetCustomerInformation();
             frm.ReloadRev = new GetCustomerInformation.ChangeRev(LoadRev);
-            frm.Show();
+            frm.ShowDialog();
         }
         private void btnDetail_Click(object sender, EventArgs e)
         {
@@ -342,7 +342,7 @@ namespace BadmintonManagement.Forms.ReservationCourt
             string str2 = dgvReservation.SelectedRows[i].Cells[9].Value.ToString();
             RevReceipt frm = new RevReceipt(str1,str2);
             frm.RevStat = new RevReceipt.ChangeRevStat(LoadRevStat);
-            frm.Show();  
+            frm.ShowDialog();  
         }
         DateTime tempStart;
         DateTime tempEnd;

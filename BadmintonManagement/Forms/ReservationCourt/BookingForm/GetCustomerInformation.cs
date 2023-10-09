@@ -79,7 +79,7 @@ namespace BadmintonManagement.Forms.ReservationCourt.BookingForm
             {
                 Booking frm = new Booking(txtPhoneNumber.Text,txtFullName.Text,txtEmail.Text);
                 frm.ReloadBK = new Booking.ChangeBK(LoadCus);
-                frm.Show();
+                frm.ShowDialog();
                 this.Close();
                 
             }

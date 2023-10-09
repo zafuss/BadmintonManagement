@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgvReservation = new System.Windows.Forms.DataGridView();
             this.clnRevNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clnUserName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -46,7 +46,6 @@
             this.clnStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dtpEndDay = new System.Windows.Forms.DateTimePicker();
             this.dtpStartDay = new System.Windows.Forms.DateTimePicker();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.btnGot = new System.Windows.Forms.Button();
             this.btnAcceptDeposition = new System.Windows.Forms.Button();
@@ -69,11 +68,12 @@
             this.chbThisMonth = new System.Windows.Forms.CheckBox();
             this.tmrCheck = new System.Windows.Forms.Timer(this.components);
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvReservation)).BeginInit();
-            this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.pnlSearch.SuspendLayout();
             this.pnlFunction.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // dgvReservation
@@ -135,25 +135,25 @@
             // 
             // clnCreateDate
             // 
-            dataGridViewCellStyle1.Format = "dd/MM/yy";
-            this.clnCreateDate.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle9.Format = "dd/MM/yy";
+            this.clnCreateDate.DefaultCellStyle = dataGridViewCellStyle9;
             this.clnCreateDate.HeaderText = "Ngày đặt";
             this.clnCreateDate.Name = "clnCreateDate";
             this.clnCreateDate.ReadOnly = true;
             // 
             // clnBookingDate
             // 
-            dataGridViewCellStyle2.Format = "dd/MM/yy";
-            this.clnBookingDate.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle10.Format = "dd/MM/yy";
+            this.clnBookingDate.DefaultCellStyle = dataGridViewCellStyle10;
             this.clnBookingDate.HeaderText = "Ngày nhận";
             this.clnBookingDate.Name = "clnBookingDate";
             this.clnBookingDate.ReadOnly = true;
             // 
             // clnStartime
             // 
-            dataGridViewCellStyle3.Format = "HH:mm";
-            dataGridViewCellStyle3.NullValue = null;
-            this.clnStartime.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle11.Format = "HH:mm";
+            dataGridViewCellStyle11.NullValue = null;
+            this.clnStartime.DefaultCellStyle = dataGridViewCellStyle11;
             this.clnStartime.HeaderText = "Bắt đầu";
             this.clnStartime.Name = "clnStartime";
             this.clnStartime.ReadOnly = true;
@@ -161,9 +161,9 @@
             // 
             // clnEndTime
             // 
-            dataGridViewCellStyle4.Format = "HH:mm";
-            dataGridViewCellStyle4.NullValue = null;
-            this.clnEndTime.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle12.Format = "HH:mm";
+            dataGridViewCellStyle12.NullValue = null;
+            this.clnEndTime.DefaultCellStyle = dataGridViewCellStyle12;
             this.clnEndTime.HeaderText = "Kết thúc";
             this.clnEndTime.Name = "clnEndTime";
             this.clnEndTime.ReadOnly = true;
@@ -195,16 +195,6 @@
             this.dtpStartDay.Size = new System.Drawing.Size(200, 26);
             this.dtpStartDay.TabIndex = 5;
             this.dtpStartDay.ValueChanged += new System.EventHandler(this.dtpStartDay_ValueChanged);
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.dgvReservation);
-            this.groupBox1.Location = new System.Drawing.Point(217, 96);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(940, 553);
-            this.groupBox1.TabIndex = 9;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Thông tin phiếu đặt sân";
             // 
             // groupBox2
             // 
@@ -488,6 +478,16 @@
             this.tmrCheck.Interval = 60000;
             this.tmrCheck.Tick += new System.EventHandler(this.tmrCheck_Tick);
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.dgvReservation);
+            this.groupBox1.Location = new System.Drawing.Point(217, 96);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(940, 553);
+            this.groupBox1.TabIndex = 9;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Thông tin phiếu đặt sân";
+            // 
             // ReservationForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -506,10 +506,10 @@
             this.Text = "Phiếu Đặt Sân";
             this.Load += new System.EventHandler(this.ReservationForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvReservation)).EndInit();
-            this.groupBox1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.pnlSearch.ResumeLayout(false);
             this.pnlFunction.ResumeLayout(false);
+            this.groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -522,7 +522,6 @@
         private System.Windows.Forms.DataGridView dgvReservation;
         private System.Windows.Forms.DateTimePicker dtpEndDay;
         private System.Windows.Forms.DateTimePicker dtpStartDay;
-        private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Button btnFunction;
         private System.Windows.Forms.Panel pnlFunction;
@@ -555,5 +554,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn clnStartime;
         private System.Windows.Forms.DataGridViewTextBoxColumn clnEndTime;
         private System.Windows.Forms.DataGridViewTextBoxColumn clnStatus;
+        private System.Windows.Forms.GroupBox groupBox1;
     }
 }

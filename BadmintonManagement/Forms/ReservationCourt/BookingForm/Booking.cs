@@ -121,13 +121,19 @@ namespace BadmintonManagement.Forms.ReservationCourt.BookingForm
             }
             return false;
         }
+        private bool Check_Court_status(COURT item)
+        {
+            if(item.C_Status == "Disable"||item.C_Status=="Maintenance")
+                return true;
+            return false;
+        }
         private void FillcboCourtName()
         {
             cboCourt.Items.Clear();
             cboCourt.AutoCompleteCustomSource.Clear();
             foreach (COURT item in context.COURT)
             {
-                if(Check_DB_Exist_Time_For_Court(item)==true||Check_dgvRF_DETAIL_Time_For_Court(item)==true)
+                if(Check_DB_Exist_Time_For_Court(item)==true||Check_dgvRF_DETAIL_Time_For_Court(item)==true||Check_Court_status(item))
                     continue;
                 cboCourt.Items.Add(item.CourtName);
                 cboCourt.AutoCompleteCustomSource.Add(item.CourtName);
@@ -136,16 +142,12 @@ namespace BadmintonManagement.Forms.ReservationCourt.BookingForm
             {
                 cboCourt.Text = string.Empty;
                 cboCourt.Enabled = false;
-                /*MessageBox.Show("Không còn sân khả dụng, vui lòng chọn khung giờ hoặc ngày khác");
-                btnSave.Enabled = false;*/
             }
             else
             {
                 cboCourt.SelectedIndex = 0;
                 cboCourt.Enabled = true;
-                //btnSave.Enabled = true;
             }
-                
         }
         private void btnSave_Click(object sender, EventArgs e)
         {
@@ -297,6 +299,11 @@ namespace BadmintonManagement.Forms.ReservationCourt.BookingForm
             dtpDate.Enabled = true;
             cboCourt.Enabled = true;
             FillcboCourtName();
+        }
+
+        private void cboCourt_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
