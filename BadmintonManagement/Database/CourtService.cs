@@ -31,7 +31,8 @@ namespace BadmintonManagement.Database
                     cOURT.C_Status = "Available";
                     _modelBadmintonManage.COURT.AddOrUpdate(cOURT);
                 }
-                else if (String.Format("{0:dd:MM:yyyy}", _courts[i].StartDate) == DateTime.Now.ToString("dd:MM:yyyy"))
+
+                 if (String.Format("{0:dd:MM:yyyy}", _courts[i].StartDate) == DateTime.Now.ToString("dd:MM:yyyy"))
                 {
                     cOURT = _courts[i];
                     cOURT.C_Status = "Using";
@@ -152,7 +153,7 @@ namespace BadmintonManagement.Database
         public List<COURT> getListCourtWithOutDisable()
         {
             _modelBadmintonManage = new ModelBadmintonManage();
-            List<COURT> tmp = _modelBadmintonManage.COURT.Where(p => p.C_Status != "Disable" || p.C_Status != "Available").ToList();
+            List<COURT> tmp = _modelBadmintonManage.COURT.Where(p => p.C_Status != "Disable" ).ToList();
             return tmp;
         }
 
