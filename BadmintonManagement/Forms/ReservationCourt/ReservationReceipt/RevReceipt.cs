@@ -141,6 +141,7 @@ namespace BadmintonManagement.Forms.ReservationCourt.ReservationReceipt
             AcceptReceipt();
             RevStat(revNo);
             this.Close();
+
         }
     }
 }

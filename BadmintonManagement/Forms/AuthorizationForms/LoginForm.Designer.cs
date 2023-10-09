@@ -33,17 +33,17 @@
             this.btnLogin = new System.Windows.Forms.Button();
             this.lblForgotPass = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.picUsername = new System.Windows.Forms.PictureBox();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.btnExit = new System.Windows.Forms.Button();
             this.picShowPassword = new System.Windows.Forms.PictureBox();
             this.picPassword = new System.Windows.Forms.PictureBox();
-            this.btnExit = new System.Windows.Forms.Button();
+            this.picUsername = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picUsername)).BeginInit();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picShowPassword)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picPassword)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picUsername)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -54,7 +54,7 @@
             this.txtUser.Location = new System.Drawing.Point(51, 17);
             this.txtUser.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtUser.Name = "txtUser";
-            this.txtUser.Size = new System.Drawing.Size(216, 32);
+            this.txtUser.Size = new System.Drawing.Size(216, 27);
             this.txtUser.TabIndex = 0;
             this.txtUser.Text = "Username";
             this.txtUser.Enter += new System.EventHandler(this.txtUser_Enter);
@@ -68,7 +68,7 @@
             this.txtPassword.Location = new System.Drawing.Point(51, 16);
             this.txtPassword.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtPassword.Name = "txtPassword";
-            this.txtPassword.Size = new System.Drawing.Size(216, 32);
+            this.txtPassword.Size = new System.Drawing.Size(216, 27);
             this.txtPassword.TabIndex = 0;
             this.txtPassword.Text = "Password";
             this.txtPassword.Enter += new System.EventHandler(this.txtPassword_Enter);
@@ -95,7 +95,7 @@
             this.lblForgotPass.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblForgotPass.Location = new System.Drawing.Point(320, 458);
             this.lblForgotPass.Name = "lblForgotPass";
-            this.lblForgotPass.Size = new System.Drawing.Size(191, 32);
+            this.lblForgotPass.Size = new System.Drawing.Size(154, 28);
             this.lblForgotPass.TabIndex = 0;
             this.lblForgotPass.Text = "Quên mật khẩu?";
             this.lblForgotPass.Click += new System.EventHandler(this.lblForgotPass_Click);
@@ -110,17 +110,6 @@
             this.panel1.Size = new System.Drawing.Size(312, 58);
             this.panel1.TabIndex = 4;
             // 
-            // picUsername
-            // 
-            this.picUsername.Image = global::BadmintonManagement.Properties.Resources.user;
-            this.picUsername.InitialImage = null;
-            this.picUsername.Location = new System.Drawing.Point(16, 17);
-            this.picUsername.Name = "picUsername";
-            this.picUsername.Size = new System.Drawing.Size(23, 22);
-            this.picUsername.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.picUsername.TabIndex = 1;
-            this.picUsername.TabStop = false;
-            // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.White;
@@ -131,6 +120,19 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(312, 58);
             this.panel2.TabIndex = 5;
+            // 
+            // btnExit
+            // 
+            this.btnExit.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnExit.FlatAppearance.BorderSize = 0;
+            this.btnExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnExit.Location = new System.Drawing.Point(132, 576);
+            this.btnExit.Name = "btnExit";
+            this.btnExit.Size = new System.Drawing.Size(312, 58);
+            this.btnExit.TabIndex = 2;
+            this.btnExit.Text = "Thoát";
+            this.btnExit.UseVisualStyleBackColor = false;
+            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
             // picShowPassword
             // 
@@ -156,18 +158,16 @@
             this.picPassword.TabIndex = 2;
             this.picPassword.TabStop = false;
             // 
-            // btnExit
+            // picUsername
             // 
-            this.btnExit.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnExit.FlatAppearance.BorderSize = 0;
-            this.btnExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnExit.Location = new System.Drawing.Point(132, 576);
-            this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(312, 58);
-            this.btnExit.TabIndex = 2;
-            this.btnExit.Text = "Thoát";
-            this.btnExit.UseVisualStyleBackColor = false;
-            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
+            this.picUsername.Image = global::BadmintonManagement.Properties.Resources.user;
+            this.picUsername.InitialImage = null;
+            this.picUsername.Location = new System.Drawing.Point(16, 17);
+            this.picUsername.Name = "picUsername";
+            this.picUsername.Size = new System.Drawing.Size(23, 22);
+            this.picUsername.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.picUsername.TabIndex = 1;
+            this.picUsername.TabStop = false;
             // 
             // pictureBox1
             // 
@@ -180,7 +180,7 @@
             // 
             // LoginForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 32F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 28F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(574, 775);
             this.Controls.Add(this.btnExit);
@@ -197,11 +197,11 @@
             this.Load += new System.EventHandler(this.LoginForm_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picUsername)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picShowPassword)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picPassword)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picUsername)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -52,23 +52,24 @@ namespace BadmintonManagement.Database
 
             CustomPicBox picStatusCourt = new CustomPicBox();
             picStatusCourt.Name = court.CourtID;
-            picStatusCourt.Image = Properties.Resources.Use;
+            //picStatusCourt.Image = Properties.Resources.Use;
             picStatusCourt.SizeMode = PictureBoxSizeMode.StretchImage;
-            picStatusCourt.Size = new Size(Convert.ToInt32(x * 3 / 5), Convert.ToInt32(y * 3 / 5));
+            picStatusCourt.Size = new Size(Convert.ToInt32(x * 3 / 5), Convert.ToInt32(y * 2.5 / 5));
             picStatusCourt.Location = new Point(Convert.ToInt32(x * 1 / 5), Convert.ToInt32(y * 1 / 5));
+            picStatusCourt.BorderStyle = BorderStyle.None;
+            picStatusCourt.BorderColor = Color.Transparent;
 
-
-            if (court.C_Status == "Use")
+            if (court.C_Status == "Using")
             {
-                picStatusCourt.Image = Properties.Resources.Use;
+                picStatusCourt.Image = Properties.Resources.badminton_court_using;
             }
-            else if (court.C_Status == "Used")
+            else if (court.C_Status == "Available")
             {
-                picStatusCourt.Image = Properties.Resources.Used;
+                picStatusCourt.Image = Properties.Resources.badminton_court_available;
             }
-            else if (court.C_Status == "Maintaince")
+            else if (court.C_Status == "Maintenance")
             {
-                picStatusCourt.Image = Properties.Resources.Maintainace;
+                picStatusCourt.Image = Properties.Resources.badminton_court_maintenance;
             }
 
             if (count > 2)
