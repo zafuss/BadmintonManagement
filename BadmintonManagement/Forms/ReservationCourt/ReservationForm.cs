@@ -1,4 +1,5 @@
-﻿using BadmintonManagement.Forms.ReservationCourt.BookingForm;
+﻿using BadmintonManagement.Forms.Court;
+using BadmintonManagement.Forms.ReservationCourt.BookingForm;
 using BadmintonManagement.Forms.ReservationCourt.ReservationReceipt;
 using BadmintonManagement.Models;
 using System;
@@ -18,8 +19,10 @@ namespace BadmintonManagement.Forms.ReservationCourt
 {
     public partial class ReservationForm : Form
     {
+        public static ReservationForm instance;
         public ReservationForm()
         {
+            instance = this;
             InitializeComponent();
         }
         DateTime st;
@@ -333,6 +336,10 @@ namespace BadmintonManagement.Forms.ReservationCourt
             int index = dgvReservation.SelectedRows.Count - 1;
             dgvReservation.SelectedRows[index].Cells[9].Value = "Đã thanh toán";
             btnRevReceipt.Text = "Xem hóa đơn";
+            if (Application.OpenForms["CourtForm"] != null && !Application.OpenForms["CourtForm"].IsDisposed)
+            {
+                CourtForm.Instance.ReLoad();
+            }
         }
         private void btnRevReceipt_Click(object sender, EventArgs e)
         {

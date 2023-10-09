@@ -270,7 +270,7 @@ namespace BadmintonManagement.Forms.Court
             }
         }
 
-        private void ReLoad()
+        public void ReLoad()
         {
             pnlDisplayCourt.Controls.Clear();
             pnlDisplayCourt.Refresh();
