@@ -58,7 +58,7 @@ namespace BadmintonManagement.Forms.Report
             btnReceipt.BackColor = Color.LightGray;
             btnCustomerReport.BackColor = Color.LightGray;
             btnReservationReport.BackColor = Color.LightGray;
-            OpenChilForm(new IncomeReportForm());
+            OpenChilForm(new IncomeForm());
             
         }
         private void btnReceipt_Click(object sender, EventArgs e)

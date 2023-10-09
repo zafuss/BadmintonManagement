@@ -144,6 +144,17 @@ create table RECEIPT(
 )
 go
 
+create procedure IncomeOfYear (@year int) as
+select T1.Thang, (T1.Total + T.Total) as Total
+from (	select convert(int,Month(R._Date)) as Thang,sum(R.Total) as Total 
+		from RECEIPT R
+		where convert(int,year(R._Date)) = @year
+		group by convert(int,Month(R._Date))) T1 , (select convert(int ,month(S.CreateDate)) as Thang,sum(S.Total) as Total 
+													from SERVICE_RECEIPT S
+													where convert(int,year(S.CreateDate)) = @year
+													group by convert(int,Month(S.CreateDate))) T
+where T1.Thang = T.Thang
 
 
 
+--IncomeOfYear 2023
