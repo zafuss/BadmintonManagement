@@ -23,7 +23,7 @@ namespace BadmintonManagement.Forms.Court
         public static AddCourtForm Instance; 
         private List<string> status = new List<string>()
         {
-           "Chưa Được Sử Dụng","Đang Sử Dụng","Bảo Trì"
+           "Chưa Được Hoạt Động","Đã Hoạt Động","Bảo Trì"
         };
 
 
@@ -100,15 +100,15 @@ namespace BadmintonManagement.Forms.Court
 
             if (cboStatus.SelectedIndex == 0)
             {
-                newCourt.C_Status = "Used";
+                newCourt.C_Status = "Available";
             }
             else if (cboStatus.SelectedIndex == 1)
             {
-                newCourt.C_Status = "Use";
+                newCourt.C_Status = "Using";
             }
             else
             {
-                newCourt.C_Status = "Maintaince";
+                newCourt.C_Status = "Maintenance";
             }
 
             newCourt.CourtName = txtCourtName.Text;
@@ -206,6 +206,10 @@ namespace BadmintonManagement.Forms.Court
                 {
                     throw new Exception("Xoa Khong Thanh Cong");
                 }
+                else if ( new CourtService().CountCourt(cboCourtID.Text) != 0)
+                {
+                    throw new Exception("Xoa Khong Thanh Cong");
+                }
                 else 
                 {
                     tmp.C_Status = "Disable";
@@ -282,15 +286,15 @@ namespace BadmintonManagement.Forms.Court
                     txtCourtName.Text = court.CourtName;
                     dtmStartDate.Text = court.StartDate.ToString();
                     cboBranchID.Text = court.BRANCH.BranchName;
-                    if (court.C_Status.ToLower() == "used")
+                    if (court.C_Status.ToLower() == "available")
                     {
                         cboStatus.SelectedIndex = 0;
                     }
-                    else if (court.C_Status.ToLower() == "use")
+                    else if (court.C_Status.ToLower() == "using")
                     {
                         cboStatus.SelectedIndex = 1;
                     }
-                    else if (court.C_Status.ToLower() == "maintaince")
+                    else if (court.C_Status.ToLower() == "maintenance")
                     {
                         cboStatus.SelectedIndex = 2;
                     }

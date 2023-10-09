@@ -63,10 +63,15 @@ namespace BadmintonManagement.Database
         {
             string connectString = @"Data Source=localhost;Initial Catalog=BadmintonManagementDB;Integrated Security=True";
 
-            string sql = @"select c.CourtID,c.CourtName,c.BranchID , c.BranchName , b.FullName, b.PhoneNumber , b.ReservationNo , b.StartTime , b.EndTime , c._Status ,  b._Status
+            string sql = @"select c.CourtID,c.CourtName,c.BranchID , c.BranchName , b.FullName, b.PhoneNumber , b.ReservationNo , b.StartTime , b.EndTime  , b._Status , CASE 
+																																				When c._Status = 'Maintenance' then 'Maintenance'
+																																				When b.ReservationNo is NULL then 'Available'
+																																				When b.ReservationNo is not NULL then 'Using'
+																																				When b._Status = 3 then 'OvTime'
+																																				END as Status
                             from (	select c.CourtID , c.CourtName , c.BranchID , br.BranchName, c._Status
 		                            from COURT c , BRANCH br 
-		                            where c.BranchID = br.BranchID and c._Status != 'Disable' ) c
+		                            where c.BranchID = br.BranchID and c._Status != 'Available' and c._Status != 'Disable') c
                             Left Join (select rf.CourtID , tmp.FullName , tmp.PhoneNumber , rf.ReservationNo,tmp.StartTime,tmp.EndTime , tmp._Status
 			                            from RF_DETAIL rf ,		(select reser.ReservationNo , a.FullName , a.PhoneNumber , FORMAT(reser.StartTime, 'HH:mm') as StartTime , 
 																FORMAT(reser.EndTime, 'HH:mm') as EndTime , reser._Status
@@ -104,8 +109,8 @@ namespace BadmintonManagement.Database
                 infoCourt.Reservationno = dataReader.GetValue(6).ToString();
                 infoCourt.Starttime = dataReader.GetValue(7).ToString();
                 infoCourt.Endtime =  dataReader.GetValue(8).ToString();
-                infoCourt.Status = dataReader.GetValue(9).ToString();
-                infoCourt.StatusOV = dataReader.GetValue(10).ToString();
+                infoCourt.StatusOV = dataReader.GetValue(9).ToString();
+                infoCourt.Status = dataReader.GetValue(10).ToString();
                 listInfor.Add(infoCourt);
             }
             return listInfor;
@@ -174,11 +179,11 @@ namespace BadmintonManagement.Database
             }
             else
             {
-                if (infoCourt.StatusOV == "3")
+                if (infoCourt.StatusOV == "3" || infoCourt.Status == "OvTime")
                 {
                     picStatusCourt.Image = Properties.Resources.badminton_court_timeout;
                 }
-                else if (infoCourt.Reservationno != string.Empty )
+                else if (infoCourt.Status == "Using" )
                 {
                     picStatusCourt.Image = Properties.Resources.badminton_court_using;
                 }

@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml.Linq;
 using BadmintonManagement.Custom;
+using System.Data.SqlClient;
 
 namespace BadmintonManagement.Database
 {
@@ -132,7 +133,7 @@ namespace BadmintonManagement.Database
         public List<COURT> getListCourtWithOutDisable()
         {
             _modelBadmintonManage = new ModelBadmintonManage();
-            List<COURT> tmp = _modelBadmintonManage.COURT.Where(p => p.C_Status != "Disable").ToList();
+            List<COURT> tmp = _modelBadmintonManage.COURT.Where(p => p.C_Status != "Disable" || p.C_Status != "Available").ToList();
             return tmp;
         }
 
@@ -236,6 +237,34 @@ namespace BadmintonManagement.Database
             _modelBadmintonManage = new ModelBadmintonManage();
             BRANCH branch = _modelBadmintonManage.BRANCH.FirstOrDefault(p => p.BranchID.ToLower().Contains(id.ToLower()));
             return branch;
+        }
+
+        public int CountCourt( string id)
+        {
+            string connectString = @"Data Source=localhost;Initial Catalog=BadmintonManagementDB;Integrated Security=True";
+            string sql = @"select rf.CourtID
+                        from RF_DETAIL rf 
+                        where rf.ReservationNo in (select re.ReservationNo 
+					                        from RESERVATION re 
+					                        where Cast(re.StartTime as Date) >= Cast(CURRENT_TIMESTAMP  as DATE) )
+                        and rf.CourtID = @_idcourt";
+            SqlConnection conn;
+            conn = new SqlConnection(connectString);
+            conn.Open();
+
+            SqlCommand cmd;
+            SqlDataReader dataReader;
+
+            cmd = new SqlCommand(sql, conn);
+            cmd.Parameters.AddWithValue("@_idcourt", id);
+            cmd.ExecuteNonQuery();
+            dataReader = cmd.ExecuteReader();
+            int count = 0;
+            while (dataReader.Read())
+            {
+                count++;
+            }
+            return count;
         }
     }
 }

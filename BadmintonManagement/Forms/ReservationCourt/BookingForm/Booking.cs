@@ -121,7 +121,7 @@ namespace BadmintonManagement.Forms.ReservationCourt.BookingForm
         }
         private bool Check_Court_status(COURT item)
         {
-            if(item.C_Status == "Disable"||item.C_Status=="Maintenance")
+            if(item.C_Status == "Disable"||item.C_Status=="Maintenance"||item.C_Status == "Available")
                 return true;
             return false;
         }
