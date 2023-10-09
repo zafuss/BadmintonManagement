@@ -18,7 +18,6 @@ namespace BadmintonManagement.Forms.ReservationCourt
 {
     public partial class ReservationForm : Form
     {
-        
         public ReservationForm()
         {
             InitializeComponent();
@@ -401,7 +400,7 @@ namespace BadmintonManagement.Forms.ReservationCourt
                     {
                         if(rev.C_Status==0)
                             rev.C_Status = 5;
-                        else
+                        else if(rev.C_Status==1)
                             rev.C_Status = 6;
                         EraseRF_Detail(rev);
                         context.RESERVATION.AddOrUpdate(rev);
@@ -409,11 +408,11 @@ namespace BadmintonManagement.Forms.ReservationCourt
                         change = true;
                     }
                 }
-                else
+                else if(s<0)
                 {
                     if (rev.C_Status == 0)
                         rev.C_Status = 5;
-                    else
+                    else if( rev.C_Status==1)
                         rev.C_Status = 6;
                     EraseRF_Detail(rev);
                     context.RESERVATION.AddOrUpdate(rev);
@@ -484,7 +483,6 @@ namespace BadmintonManagement.Forms.ReservationCourt
             btnRevReceipt.Enabled = true;
             btnGot.Enabled = false;
         }
-
         private void btnCancel_EnabledChanged_1(object sender, EventArgs e)
         {
             Button btn = sender as Button;

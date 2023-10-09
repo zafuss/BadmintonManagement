@@ -114,6 +114,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>BadmintonManagementDBDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="BadmintonManagementDBDataSet1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BadmintonManagementDBDataSet1.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Custom\CustomControl.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -191,6 +196,18 @@
     </Compile>
     <Compile Include="Forms\Service\ServiceForm.Designer.cs">
       <DependentUpon>ServiceForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Service\ServiceReceipt\ServiceReceiptDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Service\ServiceReceipt\ServiceReceiptDetail.Designer.cs">
+      <DependentUpon>ServiceReceiptDetail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Service\ServiceReceipt\ServiceReciept.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Service\ServiceReceipt\ServiceReciept.Designer.cs">
+      <DependentUpon>ServiceReciept.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Service\ShowServiceReceiptForm.cs">
       <SubType>Form</SubType>
@@ -345,6 +362,12 @@
     <EmbeddedResource Include="Forms\Service\ServiceForm.resx">
       <DependentUpon>ServiceForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Service\ServiceReceipt\ServiceReceiptDetail.resx">
+      <DependentUpon>ServiceReceiptDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Service\ServiceReceipt\ServiceReciept.resx">
+      <DependentUpon>ServiceReciept.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Service\ShowServiceReceiptForm.resx">
       <DependentUpon>ShowServiceReceiptForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -419,6 +442,17 @@
     </None>
     <None Include="BadmintonManagementDBDataSet.xss">
       <DependentUpon>BadmintonManagementDBDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="BadmintonManagementDBDataSet1.xsc">
+      <DependentUpon>BadmintonManagementDBDataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="BadmintonManagementDBDataSet1.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>BadmintonManagementDBDataSet1.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="BadmintonManagementDBDataSet1.xss">
+      <DependentUpon>BadmintonManagementDBDataSet1.xsd</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\DataSources\BadmintonManagement.Models.CUSTOMER.datasource" />

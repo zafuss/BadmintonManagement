@@ -50,7 +50,6 @@ namespace BadmintonManagement.Forms.ReservationCourt.BookingForm
                 s = 0 + s;
             }
             return "Rev" + string.Format("{0:ddMMyy}", DateTime.Now) + s;
-             
         }
         private void BookingForm_Load(object sender, EventArgs e)
         {
@@ -80,7 +79,6 @@ namespace BadmintonManagement.Forms.ReservationCourt.BookingForm
             dtpStartTime.Value = new DateTime(dtpDate.Value.Year, dtpDate.Value.Month, dtpDate.Value.Day, 5, 0, 0);
             dtpEndTime.Value = new DateTime(dtpDate.Value.Year, dtpDate.Value.Month, dtpDate.Value.Day, 6, 0, 0);
             FillcboCourtName();
-            
         }
         private void BindGrid(List<RF_DETAIL> listRFD)
         {
@@ -111,9 +109,9 @@ namespace BadmintonManagement.Forms.ReservationCourt.BookingForm
             List<RF_DETAIL> listRF = context.RF_DETAIL.Where(p => p.CourtID == c.CourtID).ToList();
             foreach(RF_DETAIL rf in listRF)
             {
-                RESERVATION rev = context.RESERVATION.FirstOrDefault(p => p.ReservationNo == rf.ReservationNo);
-                int d2 = DateTime.Compare(ds, rev.EndTime.Value);
-                int d3 = DateTime.Compare(de, rev.StartTime.Value);
+                //RESERVATION rev = context.RESERVATION.FirstOrDefault(p => p.ReservationNo == rf.ReservationNo);
+                int d2 = DateTime.Compare(ds, rf.RESERVATION.EndTime.Value);
+                int d3 = DateTime.Compare(de, rf.RESERVATION.StartTime.Value);
                 if (d2 >= 0 || d3 <= 0)
                     continue;
                 else
