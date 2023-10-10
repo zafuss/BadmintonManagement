@@ -27,7 +27,7 @@ namespace BadmintonManagement.Forms.AuthorizationForms
 
         private void refreshTextBox()
         {
-            txtName.Text = txtRegEmail.Text = txtRegPassword.Text = txtRegPhoneNumber.Text = txtRegRepeatPass.Text = txtRegUsername.Text = "";
+            txtName.Text = txtRegEmail.Text  = txtRegPhoneNumber.Text = txtRegUsername.Text = "";
         }
 
         private void BindGrid()
@@ -44,25 +44,21 @@ namespace BadmintonManagement.Forms.AuthorizationForms
                 dgvUsers.Rows[index].Cells[3].Value = item.PhoneNumber;
                 dgvUsers.Rows[index].Cells[4].Value = item.C_Role;
                 dgvUsers.Rows[index].Cells[5].Value = item.C_Status == "Enabled" ? "Kích hoạt" : "Vô hiệu hoá";
-
-
             }
             refreshTextBox();
         }
 
-        private async void  btnReg_Click(object sender, EventArgs e)
+        private void btnReg_Click(object sender, EventArgs e)
         {
             try
             {
-                if (txtRegUsername.Text == "" || txtRegPassword.Text == "" || txtRegPhoneNumber.Text == "" || txtRegEmail.Text == "")
+                if (txtRegUsername.Text == "" || txtRegPhoneNumber.Text == "" || txtRegEmail.Text == "")
                     throw new Exception("Vui lòng nhập đầy đủ thông tin!");
-                if (txtRegPassword.Text != txtRegRepeatPass.Text)
-                    throw new Exception("Mật khẩu không trùng khớp!");
                 C_USER user = new C_USER()
                 {
                     Username = txtRegUsername.Text,
                     C_Name = txtName.Text,
-                    C_Password = txtRegPassword.Text,
+                    C_Password = GeneratePassword(),
                     PhoneNumber = txtRegPhoneNumber.Text,
                     Email = txtRegEmail.Text,
                     C_Role = "Staff",
@@ -91,6 +87,49 @@ namespace BadmintonManagement.Forms.AuthorizationForms
             BindGrid();
         }
 
+        private static string GeneratePassword()
+        {
+            Random random = new Random();
+            string upperCaseChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+            string lowerCaseChars = "abcdefghijklmnopqrstuvwxyz";
+            string digitChars = "0123456789";
+            string specialChars = "!@#$%^&*()_-+=<>?";
+
+            // Choose a random character from each character set
+            char upperCaseChar = upperCaseChars[random.Next(upperCaseChars.Length)];
+            char lowerCaseChar = lowerCaseChars[random.Next(lowerCaseChars.Length)];
+            char digitChar = digitChars[random.Next(digitChars.Length)];
+            char specialChar = specialChars[random.Next(specialChars.Length)];
+
+            // Create the remaining random characters
+            string allChars = upperCaseChars + lowerCaseChars + digitChars + specialChars;
+            char[] remainingChars = new char[4];
+
+            for (int i = 0; i < 4; i++)
+            {
+                remainingChars[i] = allChars[random.Next(allChars.Length)];
+            }
+
+            // Combine the characters to create the password
+            char[] passwordChars = { upperCaseChar, lowerCaseChar, digitChar, specialChar };
+            char[] passwordArray = passwordChars.Concat(remainingChars).ToArray();
+            
+
+            // Shuffle the passwordArray randomly
+            for (int i = 0; i < passwordArray.Length; i++)
+            {
+                int randomIndex = random.Next(i, passwordArray.Length);
+                char temp = passwordArray[i];
+                passwordArray[i] = passwordArray[randomIndex];
+                passwordArray[randomIndex] = temp;
+            }
+
+            // Convert the array to a string
+            string password = new string(passwordArray);
+
+            return password;
+        }
+
         private void dgvUsers_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex > -1)
@@ -100,8 +139,6 @@ namespace BadmintonManagement.Forms.AuthorizationForms
                 txtName.Text = dgvUsers.Rows[selectedRow].Cells[1].Value.ToString();
                 txtRegEmail.Text = dgvUsers.Rows[selectedRow].Cells[2].Value.ToString();
                 txtRegPhoneNumber.Text = dgvUsers.Rows[selectedRow].Cells[3].Value.ToString();
-                txtRegPassword.Text = "";
-                txtRegRepeatPass.Text = "";
                 selectedUsername = txtRegUsername.Text;
                 selectedEmail = txtRegEmail.Text;
                 selectedRole = dgvUsers.Rows[selectedRow].Cells[4].Value.ToString();
@@ -118,16 +155,17 @@ namespace BadmintonManagement.Forms.AuthorizationForms
         {
             try
             {
-                if (txtRegUsername.Text == "" || txtRegPassword.Text == "" || txtRegPhoneNumber.Text == "" || txtRegEmail.Text == "")
+                C_USER currentUser = null;
+                if (!cbxChangePassword.Checked)
+                    currentUser = UserServices.GetUser(selectedUsername);
+                if (txtRegUsername.Text == "" || txtRegPhoneNumber.Text == "" || txtRegEmail.Text == "")
                     throw new Exception("Vui lòng nhập đầy đủ thông tin!");
                 if (txtRegUsername.Text != selectedUsername)
                     throw new Exception("Không thể thay đổi username!");
-                if (txtRegPassword.Text != txtRegRepeatPass.Text)
-                    throw new Exception("Mật khẩu không trùng khớp!");
                 C_USER user = new C_USER()
                 {
                     Username = txtRegUsername.Text,
-                    C_Password = txtRegPassword.Text,
+                    C_Password = currentUser == null ? GeneratePassword() : currentUser.C_Password,
                     PhoneNumber = txtRegPhoneNumber.Text,
                     C_Name = txtName.Text,  
                     Email = txtRegEmail.Text,

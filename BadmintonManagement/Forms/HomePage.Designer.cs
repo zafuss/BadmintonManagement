@@ -43,21 +43,13 @@
             this.quảnLýToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.btnUser = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.btnCourt = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.btnCustomer = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.btnService = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.btnReservation = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton6 = new System.Windows.Forms.ToolStripSeparator();
             this.btnReceipt = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.btnPrice = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
             this.btnReport = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
             this.btnExit = new System.Windows.Forms.ToolStripButton();
             this.pnlChildForm = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -66,6 +58,7 @@
             this.tabControl = new System.Windows.Forms.TabControl();
             this.timerRealTimeStatusCapture = new System.Windows.Forms.Timer(this.components);
             this.tmrRload = new System.Windows.Forms.Timer(this.components);
+            this.trungTâmTàiKhoảnToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.pnlChildForm.SuspendLayout();
@@ -83,7 +76,6 @@
             this.menuStrip1.Size = new System.Drawing.Size(1238, 24);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
-            this.menuStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip1_ItemClicked);
             // 
             // hệThốngToolStripMenuItem
             // 
@@ -104,59 +96,61 @@
             // tàiKhoảnToolStripMenuItem
             // 
             this.tàiKhoảnToolStripMenuItem.Name = "tàiKhoảnToolStripMenuItem";
-            this.tàiKhoảnToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
+            this.tàiKhoảnToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.tàiKhoảnToolStripMenuItem.Text = "Tài khoản";
             // 
             // sânToolStripMenuItem
             // 
             this.sânToolStripMenuItem.Name = "sânToolStripMenuItem";
-            this.sânToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
+            this.sânToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.sânToolStripMenuItem.Text = "Sân";
             // 
             // kháchHàngToolStripMenuItem
             // 
             this.kháchHàngToolStripMenuItem.Name = "kháchHàngToolStripMenuItem";
-            this.kháchHàngToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
+            this.kháchHàngToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.kháchHàngToolStripMenuItem.Text = "Khách hàng";
             // 
             // dịchVụToolStripMenuItem
             // 
             this.dịchVụToolStripMenuItem.Name = "dịchVụToolStripMenuItem";
-            this.dịchVụToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
+            this.dịchVụToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.dịchVụToolStripMenuItem.Text = "dịch vụ";
             // 
             // phiếuĐặtSânToolStripMenuItem
             // 
             this.phiếuĐặtSânToolStripMenuItem.Name = "phiếuĐặtSânToolStripMenuItem";
-            this.phiếuĐặtSânToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
+            this.phiếuĐặtSânToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.phiếuĐặtSânToolStripMenuItem.Text = "Phiếu đặt sân";
             // 
             // hóaĐơnToolStripMenuItem
             // 
             this.hóaĐơnToolStripMenuItem.Name = "hóaĐơnToolStripMenuItem";
-            this.hóaĐơnToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
+            this.hóaĐơnToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.hóaĐơnToolStripMenuItem.Text = "Hóa đơn";
             // 
             // bảngGiáToolStripMenuItem
             // 
             this.bảngGiáToolStripMenuItem.Name = "bảngGiáToolStripMenuItem";
-            this.bảngGiáToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
+            this.bảngGiáToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.bảngGiáToolStripMenuItem.Text = "Bảng giá";
             // 
             // thốngKêToolStripMenuItem
             // 
             this.thốngKêToolStripMenuItem.Name = "thốngKêToolStripMenuItem";
-            this.thốngKêToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
+            this.thốngKêToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.thốngKêToolStripMenuItem.Text = "Thống kê";
             // 
             // thoátToolStripMenuItem
             // 
             this.thoátToolStripMenuItem.Name = "thoátToolStripMenuItem";
-            this.thoátToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
+            this.thoátToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.thoátToolStripMenuItem.Text = "Thoát";
             // 
             // quảnLýToolStripMenuItem
             // 
+            this.quảnLýToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.trungTâmTàiKhoảnToolStripMenuItem});
             this.quảnLýToolStripMenuItem.Name = "quảnLýToolStripMenuItem";
             this.quảnLýToolStripMenuItem.Size = new System.Drawing.Size(62, 20);
             this.quảnLýToolStripMenuItem.Text = "Quản Lý";
@@ -167,21 +161,13 @@
             this.toolStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.btnUser,
-            this.toolStripSeparator1,
             this.btnCourt,
-            this.toolStripSeparator2,
             this.btnCustomer,
-            this.toolStripSeparator3,
             this.btnService,
-            this.toolStripSeparator4,
             this.btnReservation,
-            this.toolStripButton6,
             this.btnReceipt,
-            this.toolStripSeparator5,
             this.btnPrice,
-            this.toolStripSeparator6,
             this.btnReport,
-            this.toolStripSeparator7,
             this.btnExit});
             this.toolStrip1.Location = new System.Drawing.Point(0, 24);
             this.toolStrip1.Name = "toolStrip1";
@@ -199,11 +185,6 @@
             this.btnUser.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnUser.Click += new System.EventHandler(this.btnUser_Click);
             // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 52);
-            // 
             // btnCourt
             // 
             this.btnCourt.Image = global::BadmintonManagement.Properties.Resources.court;
@@ -213,11 +194,6 @@
             this.btnCourt.Text = "Sân";
             this.btnCourt.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnCourt.Click += new System.EventHandler(this.btnCourt_Click);
-            // 
-            // toolStripSeparator2
-            // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 52);
             // 
             // btnCustomer
             // 
@@ -229,11 +205,6 @@
             this.btnCustomer.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnCustomer.Click += new System.EventHandler(this.btnCustomer_Click);
             // 
-            // toolStripSeparator3
-            // 
-            this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 52);
-            // 
             // btnService
             // 
             this.btnService.Image = global::BadmintonManagement.Properties.Resources.service;
@@ -243,11 +214,6 @@
             this.btnService.Text = "Dịch Vụ";
             this.btnService.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnService.Click += new System.EventHandler(this.btnService_Click_1);
-            // 
-            // toolStripSeparator4
-            // 
-            this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(6, 52);
             // 
             // btnReservation
             // 
@@ -260,11 +226,6 @@
             this.btnReservation.ToolTipText = "Phiếu Đặt Sân";
             this.btnReservation.Click += new System.EventHandler(this.btnReservation_Click);
             // 
-            // toolStripButton6
-            // 
-            this.toolStripButton6.Name = "toolStripButton6";
-            this.toolStripButton6.Size = new System.Drawing.Size(6, 52);
-            // 
             // btnReceipt
             // 
             this.btnReceipt.Image = global::BadmintonManagement.Properties.Resources.paper;
@@ -276,11 +237,6 @@
             this.btnReceipt.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnReceipt.Click += new System.EventHandler(this.btnReceipt_Click);
             // 
-            // toolStripSeparator5
-            // 
-            this.toolStripSeparator5.Name = "toolStripSeparator5";
-            this.toolStripSeparator5.Size = new System.Drawing.Size(6, 52);
-            // 
             // btnPrice
             // 
             this.btnPrice.Image = global::BadmintonManagement.Properties.Resources.prices1;
@@ -291,11 +247,6 @@
             this.btnPrice.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnPrice.Click += new System.EventHandler(this.btnPrice_Click);
             // 
-            // toolStripSeparator6
-            // 
-            this.toolStripSeparator6.Name = "toolStripSeparator6";
-            this.toolStripSeparator6.Size = new System.Drawing.Size(6, 52);
-            // 
             // btnReport
             // 
             this.btnReport.Image = global::BadmintonManagement.Properties.Resources.report;
@@ -305,11 +256,6 @@
             this.btnReport.Text = "Thống Kê";
             this.btnReport.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnReport.Click += new System.EventHandler(this.btnReport_Click_1);
-            // 
-            // toolStripSeparator7
-            // 
-            this.toolStripSeparator7.Name = "toolStripSeparator7";
-            this.toolStripSeparator7.Size = new System.Drawing.Size(6, 52);
             // 
             // btnExit
             // 
@@ -384,6 +330,13 @@
             this.tmrRload.Interval = 1000;
             this.tmrRload.Tick += new System.EventHandler(this.tmrRload_Tick);
             // 
+            // trungTâmTàiKhoảnToolStripMenuItem
+            // 
+            this.trungTâmTàiKhoảnToolStripMenuItem.Name = "trungTâmTàiKhoảnToolStripMenuItem";
+            this.trungTâmTàiKhoảnToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.trungTâmTàiKhoảnToolStripMenuItem.Text = "Trung tâm tài khoản";
+            this.trungTâmTàiKhoảnToolStripMenuItem.Click += new System.EventHandler(this.trungTâmTàiKhoảnToolStripMenuItem_Click);
+            // 
             // HomePage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
@@ -418,20 +371,12 @@
         private System.Windows.Forms.ToolStripMenuItem quảnLýToolStripMenuItem;
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.ToolStripButton btnUser;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripButton btnCustomer;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.ToolStripButton btnService;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
         private System.Windows.Forms.ToolStripButton btnReservation;
-        private System.Windows.Forms.ToolStripSeparator toolStripButton6;
         private System.Windows.Forms.ToolStripButton btnReceipt;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
         private System.Windows.Forms.ToolStripButton btnPrice;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator6;
         private System.Windows.Forms.ToolStripButton btnReport;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator7;
         private System.Windows.Forms.ToolStripButton btnExit;
         private System.Windows.Forms.ToolStripButton btnCourt;
         private System.Windows.Forms.ToolStripMenuItem tàiKhoảnToolStripMenuItem;
@@ -450,5 +395,6 @@
         private System.Windows.Forms.Timer timerRealTimeStatusCapture;
         private System.Windows.Forms.Label lblTime;
         private System.Windows.Forms.Timer tmrRload;
+        private System.Windows.Forms.ToolStripMenuItem trungTâmTàiKhoảnToolStripMenuItem;
     }
 }

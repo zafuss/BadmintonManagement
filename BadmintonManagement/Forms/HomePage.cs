@@ -42,27 +42,6 @@ namespace BadmintonManagement.Forms.AuthorizationForms
             Application.Exit(); 
         }
 
-        //private void HomePage_Load(object sender, EventArgs e)
-        //{
-        //    if (Properties.Settings.Default.Role == "Admin")
-        //    {
-        //        btnAdminManageUser.Visible = true;
-        //        btnAdminManageUser.Enabled = true;
-        //    } else
-        //    {
-        //        btnAdminManageUser.Visible = false;
-        //        btnAdminManageUser.Enabled = false;
-        //    }
-
-        //}
-
-        private void toolStripButton10_Click(object sender, EventArgs e)
-        {
-            DialogResult dialogResult = MessageBox.Show("Bạn có muốn thoát không?","Xác nhận",MessageBoxButtons.YesNo);
-            if (dialogResult == DialogResult.Yes)
-                this.Close();
-        }
-
         private int CheckExist(Form form)
         {
             for(int i = 0;i < tabControl.TabCount; i++)
@@ -126,12 +105,12 @@ namespace BadmintonManagement.Forms.AuthorizationForms
             if (Properties.Settings.Default.Role == "Admin")
             {
                 btnUser.Visible = true;
-                btnUser.Enabled = true;
+                btnPrice.Visible = true;
             }
             else
             {
                 btnUser.Visible = false;
-                btnUser.Enabled = false;
+                btnPrice.Visible = false;
             }
             lblEmployeeName.Text =  "Nhân viên: " + Properties.Settings.Default._Name;
             bool t = RealTimeCaptureStatusReservation();
@@ -179,7 +158,10 @@ namespace BadmintonManagement.Forms.AuthorizationForms
             AddTabPages(new ReportForm());
 
         }
-
+        private void trungTâmTàiKhoảnToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AddTabPages(new AccountCenterForm());
+        }
         private void btnExit_Click(object sender, EventArgs e)
         {
             UserServices.DeleteCurrentUser();
@@ -241,11 +223,6 @@ namespace BadmintonManagement.Forms.AuthorizationForms
         public void tmrRload_Tick(object sender, EventArgs e)
         {
             lblTime.Text = String.Format("{0}  {1}", DateTime.Now.ToString("HH:mm:ss"),DateTime.Now.ToString("dd/MM/yyyy"));
-        }
-
-        private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
-        {
-
         }
 
         private void tabControl_DrawItem(object sender, DrawItemEventArgs e)
