@@ -297,15 +297,15 @@ namespace BadmintonManagement.Forms.Court
                     txtCourtName.Text = court.CourtName;
                     dtmStartDate.Text = court.StartDate.ToString();
                     cboBranchID.Text = court.BRANCH.BranchName;
-                    if (court.C_Status.ToLower() == "available")
+                    if (court.C_Status == "Available")
                     {
                         cboStatus.SelectedIndex = 0;
                     }
-                    else if (court.C_Status.ToLower() == "using")
+                    else if (court.C_Status == "Using")
                     {
                         cboStatus.SelectedIndex = 1;
                     }
-                    else if (court.C_Status.ToLower() == "maintenance")
+                    else if (court.C_Status == "Maintenance")
                     {
                         cboStatus.SelectedIndex = 2;
                     }

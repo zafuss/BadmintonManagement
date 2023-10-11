@@ -22,24 +22,24 @@ namespace BadmintonManagement.Database
 
         public void publicDay()
         {
-            COURT cOURT = new COURT();
-            for ( int i = 0 ; i < _courts.Count ; i++ )
-            {
-                if(_courts[i].StartDate > DateTime.Now ) 
-                {
-                    cOURT = _courts[i];
-                    cOURT.C_Status = "Available";
-                    _modelBadmintonManage.COURT.AddOrUpdate(cOURT);
-                }
+            //COURT cOURT = new COURT();
+            //for ( int i = 0 ; i < _courts.Count ; i++ )
+            //{
+            //    if(_courts[i].StartDate > DateTime.Now ) 
+            //    {
+            //        cOURT = _courts[i];
+            //        cOURT.C_Status = "Available";
+            //        _modelBadmintonManage.COURT.AddOrUpdate(cOURT);
+            //    }
 
-                 if (String.Format("{0:dd:MM:yyyy}", _courts[i].StartDate) == DateTime.Now.ToString("dd:MM:yyyy"))
-                {
-                    cOURT = _courts[i];
-                    cOURT.C_Status = "Using";
-                    _modelBadmintonManage.COURT.AddOrUpdate(cOURT);
-                }
-            }
-            _modelBadmintonManage.SaveChanges();
+            //     if (String.Format("{0:dd:MM:yyyy}", _courts[i].StartDate) == DateTime.Now.ToString("dd:MM:yyyy"))
+            //    {
+            //        cOURT = _courts[i];
+            //        cOURT.C_Status = "Using";
+            //        _modelBadmintonManage.COURT.AddOrUpdate(cOURT);
+            //    }
+            //}
+            //_modelBadmintonManage.SaveChanges();
         }
         public Control DisplayCourtAdmin(int count, COURT court , double _widht , double _heigth)
         {
@@ -80,15 +80,15 @@ namespace BadmintonManagement.Database
             picStatusCourt.BorderStyle = BorderStyle.None;
             picStatusCourt.BorderColor = Color.Transparent;
 
-            if (court.C_Status == "Using")
-            {
-                picStatusCourt.Image = Properties.Resources.badminton_court_using;
-            }
-            else if (court.C_Status == "Available")
+            if (court.C_Status == "Using") // nay 
             {
                 picStatusCourt.Image = Properties.Resources.badminton_court_available;
             }
-            else if (court.C_Status == "Maintenance")
+            else if (court.C_Status == "Available") // nay la chua HD
+            {
+                picStatusCourt.Image = Properties.Resources.badminton_court_using;
+            }
+            else if (court.C_Status == "Maintenance") // nay la BT
             {
                 picStatusCourt.Image = Properties.Resources.badminton_court_maintenance;
             }
