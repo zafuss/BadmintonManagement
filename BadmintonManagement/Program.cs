@@ -14,6 +14,7 @@ using System.Data.SqlClient;
 using System.Text.RegularExpressions;
 using System.Configuration;
 using BadmintonManagement.Properties;
+using BadmintonManagement.Forms.Court;
 
 namespace BadmintonManagement
 {
@@ -37,7 +38,7 @@ namespace BadmintonManagement
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new LoginForm());
-            
+           //Application.Run(new CourtCalendar());
         }
     }
 }

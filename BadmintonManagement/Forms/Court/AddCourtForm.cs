@@ -36,8 +36,6 @@ namespace BadmintonManagement.Forms.Court
             acsc.AddRange(new CourtService().getBrachName().ToArray());
             txtCourtName.AutoCompleteCustomSource = acsc;
             txtCourtName.AutoCompleteSource = AutoCompleteSource.CustomSource;
-            txtCourtName.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
-
             //txtCourtName.Text = acsc[1].ToString();
         }
         public void Reset()
@@ -213,18 +211,23 @@ namespace BadmintonManagement.Forms.Court
                 }
                 else 
                 {
-                    tmp.C_Status = "Disable";
-                    new CourtService().InsertCourt(tmp);
-                    MessageBox.Show("Xoa Thanh Cong");
-                    Loading();
-                    Reset();
-                    if(Application.OpenForms["CourtForm"] != null && !Application.OpenForms["CourtForm"].IsDisposed)
+                    DialogResult result = MessageBox.Show("ThongBao","Ban Co Chac Khong",MessageBoxButtons.YesNo,MessageBoxIcon.Question);
+                    if (result == DialogResult.Yes)
                     {
-                        List<COURT> newCourt = new CourtService().getListCourtWithOutDisable();
-                        int count = newCourt.Count();
-                        CourtForm.Instance.ShowCourt(newCourt, count);
-                        CourtForm.Instance.Reset();
+                        tmp.C_Status = "Disable";
+                        new CourtService().InsertCourt(tmp);
+                        MessageBox.Show("Xoa Thanh Cong");
+                        Loading();
+                        Reset();
+                        if (Application.OpenForms["CourtForm"] != null && !Application.OpenForms["CourtForm"].IsDisposed)
+                        {
+                            List<COURT> newCourt = new CourtService().getListCourtWithOutDisable();
+                            int count = newCourt.Count();
+                            CourtForm.Instance.ShowCourt(newCourt, count);
+                            CourtForm.Instance.Reset();
+                        }
                     }
+                    
                 }
 
             }
@@ -249,7 +252,7 @@ namespace BadmintonManagement.Forms.Court
                 else
                 {
                     DateTime dateTime = DateTime.Now;
-                    if (tmp.C_Status == "Using" && cboStatus.SelectedIndex == 0)
+                    if (tmp.C_Status == "Using" && cboStatus.SelectedIndex != 2)
                     {
                         throw new Exception("San Da Di Vao Hoat Dong");
                     }
@@ -261,9 +264,9 @@ namespace BadmintonManagement.Forms.Court
                     {
                         tmp = SetCourt();
                         new CourtService().InsertCourt(tmp);
-                        MessageBox.Show("Sua Thanh Cong");
                         Loading();
                         Reset();
+                        MessageBox.Show("Sua Thanh Cong");
                         if (Application.OpenForms["CourtForm"] != null && !Application.OpenForms["CourtForm"].IsDisposed)
                         {
                             List<COURT> newCourt = new CourtService().getListCourtWithOutDisable();

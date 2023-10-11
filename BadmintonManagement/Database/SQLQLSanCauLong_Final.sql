@@ -157,7 +157,7 @@ from (	select convert(int,Month(R._Date)) as Thang,sum(R.Total) as Total
 where T1.Thang = T.Thang and T1.Thang = 1
 order by T1.Thang 
 
-
+select * from COURT
 select * 
 from RESERVATION re
 where DATEPART(DAY, re.StartTime) = DATEPART(DAY, GETDATE()); 
@@ -195,5 +195,10 @@ FORMAT(CURRENT_TIMESTAMP , 'HH:mm') >= FORMAT(reser.StartTime, 'HH:mm')  and
 a.PhoneNumber = reser.PhoneNumber
 
 
-
+select rf.CourtID
+                        from RF_DETAIL rf 
+                        where rf.ReservationNo in (select re.ReservationNo 
+					                        from RESERVATION re 
+					                        where Cast(re.StartTime as Date) >= Cast(CURRENT_TIMESTAMP  as DATE) )
+                        and rf.CourtID = @_idcourt
 --IncomeOfYear 2023
