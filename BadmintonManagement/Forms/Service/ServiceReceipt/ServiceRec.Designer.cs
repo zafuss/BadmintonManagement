@@ -39,20 +39,22 @@
             this.txtCustomerName = new System.Windows.Forms.TextBox();
             this.txtTotal = new System.Windows.Forms.TextBox();
             this.dgvServiceDetail = new System.Windows.Forms.DataGridView();
-            this.clnServiceRecNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bntServiceRecDetail = new System.Windows.Forms.Button();
+            this.btnPayment = new System.Windows.Forms.Button();
+            this.btnClose = new System.Windows.Forms.Button();
             this.clnServiceName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clnQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clnPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clnTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.bntServiceRecDetail = new System.Windows.Forms.Button();
-            this.btnPayment = new System.Windows.Forms.Button();
+            this.txtEmail = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvServiceDetail)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(57, 48);
+            this.label1.Location = new System.Drawing.Point(25, 20);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(91, 20);
             this.label1.TabIndex = 0;
@@ -61,7 +63,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(57, 315);
+            this.label2.Location = new System.Drawing.Point(25, 344);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(75, 20);
             this.label2.TabIndex = 1;
@@ -70,7 +72,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(57, 119);
+            this.label3.Location = new System.Drawing.Point(25, 91);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(79, 20);
             this.label3.TabIndex = 2;
@@ -79,7 +81,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(57, 189);
+            this.label4.Location = new System.Drawing.Point(25, 161);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(189, 20);
             this.label4.TabIndex = 3;
@@ -88,7 +90,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(57, 252);
+            this.label5.Location = new System.Drawing.Point(25, 224);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(123, 20);
             this.label5.TabIndex = 4;
@@ -96,7 +98,7 @@
             // 
             // txtRecNo
             // 
-            this.txtRecNo.Location = new System.Drawing.Point(317, 45);
+            this.txtRecNo.Location = new System.Drawing.Point(285, 17);
             this.txtRecNo.Name = "txtRecNo";
             this.txtRecNo.ReadOnly = true;
             this.txtRecNo.Size = new System.Drawing.Size(383, 26);
@@ -104,7 +106,7 @@
             // 
             // txtUser
             // 
-            this.txtUser.Location = new System.Drawing.Point(317, 116);
+            this.txtUser.Location = new System.Drawing.Point(285, 88);
             this.txtUser.Name = "txtUser";
             this.txtUser.ReadOnly = true;
             this.txtUser.Size = new System.Drawing.Size(383, 26);
@@ -112,9 +114,9 @@
             // 
             // txtPhoneNumber
             // 
-            this.txtPhoneNumber.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.txtPhoneNumber.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
             this.txtPhoneNumber.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.txtPhoneNumber.Location = new System.Drawing.Point(317, 186);
+            this.txtPhoneNumber.Location = new System.Drawing.Point(285, 158);
             this.txtPhoneNumber.Name = "txtPhoneNumber";
             this.txtPhoneNumber.Size = new System.Drawing.Size(383, 26);
             this.txtPhoneNumber.TabIndex = 7;
@@ -122,15 +124,14 @@
             // 
             // txtCustomerName
             // 
-            this.txtCustomerName.Location = new System.Drawing.Point(317, 249);
+            this.txtCustomerName.Location = new System.Drawing.Point(285, 221);
             this.txtCustomerName.Name = "txtCustomerName";
-            this.txtCustomerName.ReadOnly = true;
             this.txtCustomerName.Size = new System.Drawing.Size(383, 26);
             this.txtCustomerName.TabIndex = 8;
             // 
             // txtTotal
             // 
-            this.txtTotal.Location = new System.Drawing.Point(317, 315);
+            this.txtTotal.Location = new System.Drawing.Point(285, 344);
             this.txtTotal.Name = "txtTotal";
             this.txtTotal.ReadOnly = true;
             this.txtTotal.Size = new System.Drawing.Size(383, 26);
@@ -140,22 +141,46 @@
             // 
             this.dgvServiceDetail.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvServiceDetail.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.clnServiceRecNo,
             this.clnServiceName,
             this.clnQuantity,
             this.clnPrice,
             this.clnTotal});
-            this.dgvServiceDetail.Location = new System.Drawing.Point(12, 393);
+            this.dgvServiceDetail.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.dgvServiceDetail.Location = new System.Drawing.Point(0, 411);
             this.dgvServiceDetail.Name = "dgvServiceDetail";
-            this.dgvServiceDetail.Size = new System.Drawing.Size(1171, 353);
+            this.dgvServiceDetail.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvServiceDetail.Size = new System.Drawing.Size(1195, 353);
             this.dgvServiceDetail.TabIndex = 10;
             // 
-            // clnServiceRecNo
+            // bntServiceRecDetail
             // 
-            this.clnServiceRecNo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.clnServiceRecNo.HeaderText = "Số hóa đơn";
-            this.clnServiceRecNo.Name = "clnServiceRecNo";
-            this.clnServiceRecNo.ReadOnly = true;
+            this.bntServiceRecDetail.Location = new System.Drawing.Point(723, 344);
+            this.bntServiceRecDetail.Name = "bntServiceRecDetail";
+            this.bntServiceRecDetail.Size = new System.Drawing.Size(128, 61);
+            this.bntServiceRecDetail.TabIndex = 11;
+            this.bntServiceRecDetail.Text = "Chọn dịch vụ";
+            this.bntServiceRecDetail.UseVisualStyleBackColor = true;
+            this.bntServiceRecDetail.Click += new System.EventHandler(this.bntServiceRecDetail_Click);
+            // 
+            // btnPayment
+            // 
+            this.btnPayment.Location = new System.Drawing.Point(894, 344);
+            this.btnPayment.Name = "btnPayment";
+            this.btnPayment.Size = new System.Drawing.Size(125, 61);
+            this.btnPayment.TabIndex = 12;
+            this.btnPayment.Text = "Thanh toán";
+            this.btnPayment.UseVisualStyleBackColor = true;
+            this.btnPayment.Click += new System.EventHandler(this.btnPayment_Click);
+            // 
+            // btnClose
+            // 
+            this.btnClose.Location = new System.Drawing.Point(1058, 344);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(125, 61);
+            this.btnClose.TabIndex = 13;
+            this.btnClose.Text = "Thoát";
+            this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // clnServiceName
             // 
@@ -184,24 +209,21 @@
             this.clnTotal.Name = "clnTotal";
             this.clnTotal.ReadOnly = true;
             // 
-            // bntServiceRecDetail
+            // txtEmail
             // 
-            this.bntServiceRecDetail.Location = new System.Drawing.Point(815, 295);
-            this.bntServiceRecDetail.Name = "bntServiceRecDetail";
-            this.bntServiceRecDetail.Size = new System.Drawing.Size(128, 61);
-            this.bntServiceRecDetail.TabIndex = 11;
-            this.bntServiceRecDetail.Text = "Chọn dịch vụ";
-            this.bntServiceRecDetail.UseVisualStyleBackColor = true;
-            this.bntServiceRecDetail.Click += new System.EventHandler(this.bntServiceRecDetail_Click);
+            this.txtEmail.Location = new System.Drawing.Point(285, 284);
+            this.txtEmail.Name = "txtEmail";
+            this.txtEmail.Size = new System.Drawing.Size(383, 26);
+            this.txtEmail.TabIndex = 15;
             // 
-            // btnPayment
+            // label6
             // 
-            this.btnPayment.Location = new System.Drawing.Point(1019, 295);
-            this.btnPayment.Name = "btnPayment";
-            this.btnPayment.Size = new System.Drawing.Size(125, 61);
-            this.btnPayment.TabIndex = 12;
-            this.btnPayment.Text = "Thanh toán";
-            this.btnPayment.UseVisualStyleBackColor = true;
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(25, 284);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(48, 20);
+            this.label6.TabIndex = 14;
+            this.label6.Text = "Email";
             // 
             // ServiceRec
             // 
@@ -209,6 +231,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightGray;
             this.ClientSize = new System.Drawing.Size(1195, 764);
+            this.Controls.Add(this.txtEmail);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.btnClose);
             this.Controls.Add(this.btnPayment);
             this.Controls.Add(this.bntServiceRecDetail);
             this.Controls.Add(this.dgvServiceDetail);
@@ -246,12 +271,14 @@
         private System.Windows.Forms.TextBox txtCustomerName;
         private System.Windows.Forms.TextBox txtTotal;
         private System.Windows.Forms.DataGridView dgvServiceDetail;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clnServiceRecNo;
+        private System.Windows.Forms.Button bntServiceRecDetail;
+        private System.Windows.Forms.Button btnPayment;
+        private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.DataGridViewTextBoxColumn clnServiceName;
         private System.Windows.Forms.DataGridViewTextBoxColumn clnQuantity;
         private System.Windows.Forms.DataGridViewTextBoxColumn clnPrice;
         private System.Windows.Forms.DataGridViewTextBoxColumn clnTotal;
-        private System.Windows.Forms.Button bntServiceRecDetail;
-        private System.Windows.Forms.Button btnPayment;
+        private System.Windows.Forms.TextBox txtEmail;
+        private System.Windows.Forms.Label label6;
     }
 }

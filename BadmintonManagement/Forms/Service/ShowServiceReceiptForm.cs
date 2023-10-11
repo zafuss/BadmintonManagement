@@ -25,14 +25,19 @@ namespace BadmintonManagement.Forms.Service
         {
             serviceReceiptList = ServiceReceiptServices.GetAllServiceReceipt();
             foreach (var item in serviceReceiptList)
-            {          
+            {   
                 int index = dgvServiceReceipt.Rows.Add();
                 dgvServiceReceipt.Rows[index].Cells[0].Value = item.ServiceReceiptNo;
                 dgvServiceReceipt.Rows[index].Cells[1].Value = item.CreateDate;
-                dgvServiceReceipt.Rows[index].Cells[2].Value = item.C_USER.C_Name;
-                dgvServiceReceipt.Rows[index].Cells[3].Value = item.PhoneNumber;
+                dgvServiceReceipt.Rows[index].Cells[2].Value = item.PhoneNumber;
+                dgvServiceReceipt.Rows[index].Cells[3].Value = item.C_USER.C_Name;
                 dgvServiceReceipt.Rows[index].Cells[4].Value = item.Total;
             }
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

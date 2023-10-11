@@ -63,5 +63,10 @@ namespace BadmintonManagement.Forms.Service
             ServiceRec frm = new ServiceRec();
             frm.ShowDialog();
         }
+
+        private void btnDetail_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

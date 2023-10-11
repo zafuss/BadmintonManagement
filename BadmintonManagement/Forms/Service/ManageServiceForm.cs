@@ -48,8 +48,6 @@ namespace BadmintonManagement.Forms.Service
                 dgvServices.Rows[index].Cells[3].Value = item.Price;
                 dgvServices.Rows[index].Cells[4].Value = item.Quantity;
                 dgvServices.Rows[index].Cells[5].Value = item.C_Status == "Enabled" ? "Kích hoạt" : "Vô hiệu hoá";
-
-
             }
             refreshTextBox();
         }
