@@ -30,7 +30,7 @@ namespace BadmintonManagement.Forms.AuthorizationForms
         {
             InitializeComponent();
         }
-       
+
         private void btnAdminManageUser_Click(object sender, EventArgs e)
         {
             ManageUser manageUser = new ManageUser();
@@ -39,16 +39,16 @@ namespace BadmintonManagement.Forms.AuthorizationForms
 
         private void HomePage_FormClosed(object sender, FormClosedEventArgs e)
         {
-            Application.Exit(); 
+            Application.Exit();
         }
 
         private int CheckExist(Form form)
         {
-            for(int i = 0;i < tabControl.TabCount; i++)
+            for (int i = 0; i < tabControl.TabCount; i++)
             {
                 if (tabControl.TabPages[i].Text == form.Text.Trim())
-                        return i;
-               
+                    return i;
+
             }
             return -1;
         }
@@ -57,7 +57,7 @@ namespace BadmintonManagement.Forms.AuthorizationForms
             int checkExist = CheckExist(form);
             if (checkExist >= 0)
             {
-                if(tabControl.SelectedTab == tabControl.TabPages[checkExist])
+                if (tabControl.SelectedTab == tabControl.TabPages[checkExist])
                 {
 
                 }
@@ -80,7 +80,7 @@ namespace BadmintonManagement.Forms.AuthorizationForms
         }
         private void tabControl_MouseClick(object sender, MouseEventArgs e)
         {
-            for(int i = 0;i < tabControl.TabCount; i++)
+            for (int i = 0; i < tabControl.TabCount; i++)
             {
                 Rectangle rect = tabControl.GetTabRect(i);
                 Rectangle imageRect = new Rectangle(rect.Right - closeImage.Width, rect.Top + (rect.Height - closeImage.Height) / 2, closeImage.Width, closeImage.Height);
@@ -106,13 +106,15 @@ namespace BadmintonManagement.Forms.AuthorizationForms
             {
                 btnUser.Visible = true;
                 btnPrice.Visible = true;
+                toolStripSeparator1.Visible = true;
             }
             else
             {
                 btnUser.Visible = false;
                 btnPrice.Visible = false;
+                toolStripSeparator1.Visible = false;
             }
-            lblEmployeeName.Text =  "Nhân viên: " + Properties.Settings.Default._Name;
+            lblEmployeeName.Text = "Nhân viên: " + Properties.Settings.Default._Name;
             bool t = RealTimeCaptureStatusReservation();
 
         }
@@ -202,11 +204,11 @@ namespace BadmintonManagement.Forms.AuthorizationForms
                         change = true;
                     }
                 }
-                else if(s<0)
+                else if (s < 0)
                 {
                     if (rev.C_Status == 0)
                         rev.C_Status = 5;
-                    else if(rev.C_Status == 1)
+                    else if (rev.C_Status == 1)
                         rev.C_Status = 6;
                     context.RESERVATION.AddOrUpdate(rev);
                     context.SaveChanges();
@@ -222,13 +224,13 @@ namespace BadmintonManagement.Forms.AuthorizationForms
 
         public void tmrRload_Tick(object sender, EventArgs e)
         {
-            lblTime.Text = String.Format("{0}  {1}", DateTime.Now.ToString("HH:mm:ss"),DateTime.Now.ToString("dd/MM/yyyy"));
+            lblTime.Text = String.Format("{0}  {1}", DateTime.Now.ToString("HH:mm:ss"), DateTime.Now.ToString("dd/MM/yyyy"));
         }
 
         private void tabControl_DrawItem(object sender, DrawItemEventArgs e)
         {
             Rectangle rect = tabControl.GetTabRect(e.Index);
-            Rectangle imageRect =  new Rectangle(rect.Right -closeImage.Width,rect.Top + (rect.Height-closeImage.Width)/2,closeImage.Width,closeImage.Height);
+            Rectangle imageRect = new Rectangle(rect.Right - closeImage.Width, rect.Top + (rect.Height - closeImage.Width) / 2, closeImage.Width, closeImage.Height);
             rect.Size = new Size(rect.Width + 24, 38);
             Font font;
             Brush brush = Brushes.Black;
@@ -236,8 +238,8 @@ namespace BadmintonManagement.Forms.AuthorizationForms
             if (tabControl.SelectedTab == tabControl.TabPages[e.Index])
             {
                 e.Graphics.DrawImage(closeImage, imageRect);
-                font = new Font("Segoe UI", 12,FontStyle.Bold);
-                e.Graphics.DrawString(tabControl.TabPages[e.Index].Text, font,brush, rect,strFormat);
+                font = new Font("Segoe UI", 12, FontStyle.Bold);
+                e.Graphics.DrawString(tabControl.TabPages[e.Index].Text, font, brush, rect, strFormat);
             }
             else
             {
@@ -250,6 +252,6 @@ namespace BadmintonManagement.Forms.AuthorizationForms
         }
 
 
-        
+
     }
 }
