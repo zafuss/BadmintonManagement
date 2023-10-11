@@ -23,7 +23,7 @@ namespace BadmintonManagement.Forms.Court
         public static AddCourtForm Instance; 
         private List<string> status = new List<string>()
         {
-           "Chưa Đi Vào Hoạt Động","Đã Đi Vào Hoạt Động","Bảo Trì"
+           "Đã Đi Vào Hoạt Động","Bảo Trì"
         };
 
         public AddCourtForm()
@@ -41,7 +41,6 @@ namespace BadmintonManagement.Forms.Court
         public void Reset()
         {
             txtCourtName.Text = "";
-            dtmStartDate.Text = DateTime.Now.ToString("dd/MM/yyyy");
             cboBranchID.SelectedIndex = 0;
             cboStatus.SelectedIndex = 0;
             cboCourtID.SelectedIndex = -1;
@@ -79,7 +78,6 @@ namespace BadmintonManagement.Forms.Court
             cboCourtID.Text = newCourt.CourtID;
             cboStatus.Text = newCourt.C_Status;
             txtCourtName.Text = newCourt.CourtName;
-            dtmStartDate.Value = (DateTime)newCourt.StartDate;
             cboBranchID.Text = newCourt.BRANCH.BranchName;
         } 
 
@@ -97,10 +95,6 @@ namespace BadmintonManagement.Forms.Court
 
             if (cboStatus.SelectedIndex == 0)
             {
-                newCourt.C_Status = "Available";
-            }
-            else if (cboStatus.SelectedIndex == 1)
-            {
                 newCourt.C_Status = "Using";
             }
             else
@@ -109,7 +103,7 @@ namespace BadmintonManagement.Forms.Court
             }
 
             newCourt.CourtName = txtCourtName.Text;
-            newCourt.StartDate = dtmStartDate.Value;
+            newCourt.StartDate = DateTime.Now;
             newCourt.BranchID = new CourtService().GetBranchID(cboBranchID.Text);
             return newCourt;
         }
@@ -161,11 +155,8 @@ namespace BadmintonManagement.Forms.Court
                     return;
                 if (cboCourtID.Text == string.Empty || !new CourtService().checkCourtID(cboCourtID.Text))
                 {
-                    if(dtmStartDate.Value < DateTime.Now)
-                    {
-                        throw new Exception("Them Khong Thanh Cong");
-                    }
-                    else
+
+                    
                     {
                         COURT tmpCourt = SetCourt();
                         new CourtService().InsertCourt(tmpCourt);
@@ -252,15 +243,12 @@ namespace BadmintonManagement.Forms.Court
                 else
                 {
                     DateTime dateTime = DateTime.Now;
-                    if (tmp.C_Status == "Using" && cboStatus.SelectedIndex != 2)
-                    {
-                        throw new Exception("San Da Di Vao Hoat Dong");
-                    }
-                    else if (tmp.C_Status == "Available" && dtmStartDate.Value < Convert.ToDateTime(DateTime.Now.ToString("dd/MM/yyyy")))
-                    {
-                        throw new Exception("Ngay Thang Khong Hop Le");
-                    }
-                    else
+                    //if (tmp.C_Status == "Using" && cboStatus.SelectedIndex != 2)
+                    //{
+                    //    throw new Exception("San Da Di Vao Hoat Dong");
+                    //}
+                   
+                    
                     {
                         tmp = SetCourt();
                         new CourtService().InsertCourt(tmp);
@@ -295,19 +283,14 @@ namespace BadmintonManagement.Forms.Court
                 if( court != null )
                 {
                     txtCourtName.Text = court.CourtName;
-                    dtmStartDate.Text = court.StartDate.ToString();
                     cboBranchID.Text = court.BRANCH.BranchName;
-                    if (court.C_Status == "Available")
+                    if (court.C_Status == "Using")
                     {
                         cboStatus.SelectedIndex = 0;
                     }
-                    else if (court.C_Status == "Using")
-                    {
-                        cboStatus.SelectedIndex = 1;
-                    }
                     else if (court.C_Status == "Maintenance")
                     {
-                        cboStatus.SelectedIndex = 2;
+                        cboStatus.SelectedIndex = 1;
                     }
                 }
             }

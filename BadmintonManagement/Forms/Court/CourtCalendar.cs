@@ -204,7 +204,6 @@ namespace BadmintonManagement.Forms.Court
 
         private void btnReset_Click(object sender, EventArgs e)
         {
-            BindCalendar();
             rdoCheckDay.Checked = rdoCheckMonth.Checked = rdoCheckWeek.Checked = false;
         }
     }

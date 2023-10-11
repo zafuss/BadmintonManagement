@@ -84,10 +84,7 @@ namespace BadmintonManagement.Database
             {
                 picStatusCourt.Image = Properties.Resources.badminton_court_available;
             }
-            else if (court.C_Status == "Available") // nay la chua HD
-            {
-                picStatusCourt.Image = Properties.Resources.badminton_court_using;
-            }
+       
             else if (court.C_Status == "Maintenance") // nay la BT
             {
                 picStatusCourt.Image = Properties.Resources.badminton_court_maintenance;
