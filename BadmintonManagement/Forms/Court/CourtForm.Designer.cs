@@ -30,9 +30,8 @@
         {
             this.components = new System.ComponentModel.Container();
             this.pnlInformation = new System.Windows.Forms.Panel();
-            this.pnlAdmin = new System.Windows.Forms.Panel();
-            this.btnAdmin = new System.Windows.Forms.Button();
             this.pnlUser = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
             this.txtEndTime = new System.Windows.Forms.TextBox();
             this.txtStartTime = new System.Windows.Forms.TextBox();
             this.txtPhoneNumber = new System.Windows.Forms.TextBox();
@@ -50,46 +49,28 @@
             this.lblfunction = new System.Windows.Forms.Label();
             this.pnlDisplayCourt = new System.Windows.Forms.Panel();
             this.tmrCountDown = new System.Windows.Forms.Timer(this.components);
-            this.label1 = new System.Windows.Forms.Label();
+            this.btnCalendar = new System.Windows.Forms.Button();
+            this.pnlInAdmin = new System.Windows.Forms.Panel();
+            this.btnAdmin = new System.Windows.Forms.Button();
+            this.pnlAdmin = new System.Windows.Forms.Panel();
             this.pnlInformation.SuspendLayout();
             this.pnlUser.SuspendLayout();
             this.pnlFunction.SuspendLayout();
+            this.pnlInAdmin.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlInformation
             // 
-            this.pnlInformation.Controls.Add(this.pnlAdmin);
-            this.pnlInformation.Controls.Add(this.btnAdmin);
+            this.pnlInformation.Controls.Add(this.pnlInAdmin);
+            this.pnlInformation.Controls.Add(this.btnCalendar);
             this.pnlInformation.Controls.Add(this.pnlUser);
             this.pnlInformation.Controls.Add(this.btnUser);
             this.pnlInformation.Controls.Add(this.pnlFunction);
             this.pnlInformation.Dock = System.Windows.Forms.DockStyle.Left;
             this.pnlInformation.Location = new System.Drawing.Point(0, 0);
             this.pnlInformation.Name = "pnlInformation";
-            this.pnlInformation.Size = new System.Drawing.Size(414, 635);
+            this.pnlInformation.Size = new System.Drawing.Size(414, 707);
             this.pnlInformation.TabIndex = 1;
-            // 
-            // pnlAdmin
-            // 
-            this.pnlAdmin.BackColor = System.Drawing.SystemColors.Control;
-            this.pnlAdmin.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlAdmin.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.pnlAdmin.Location = new System.Drawing.Point(0, 411);
-            this.pnlAdmin.Name = "pnlAdmin";
-            this.pnlAdmin.Size = new System.Drawing.Size(414, 224);
-            this.pnlAdmin.TabIndex = 4;
-            // 
-            // btnAdmin
-            // 
-            this.btnAdmin.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnAdmin.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAdmin.Location = new System.Drawing.Point(0, 378);
-            this.btnAdmin.Name = "btnAdmin";
-            this.btnAdmin.Size = new System.Drawing.Size(414, 33);
-            this.btnAdmin.TabIndex = 3;
-            this.btnAdmin.Text = "ADMIN";
-            this.btnAdmin.UseVisualStyleBackColor = true;
-            this.btnAdmin.Click += new System.EventHandler(this.btnAdmin_Click);
             // 
             // pnlUser
             // 
@@ -110,8 +91,18 @@
             this.pnlUser.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlUser.Location = new System.Drawing.Point(0, 78);
             this.pnlUser.Name = "pnlUser";
-            this.pnlUser.Size = new System.Drawing.Size(414, 300);
+            this.pnlUser.Size = new System.Drawing.Size(414, 333);
             this.pnlUser.TabIndex = 2;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(82, 30);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(14, 16);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "1";
+            this.label1.Visible = false;
             // 
             // txtEndTime
             // 
@@ -264,7 +255,7 @@
             this.pnlDisplayCourt.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlDisplayCourt.Location = new System.Drawing.Point(414, 0);
             this.pnlDisplayCourt.Name = "pnlDisplayCourt";
-            this.pnlDisplayCourt.Size = new System.Drawing.Size(850, 635);
+            this.pnlDisplayCourt.Size = new System.Drawing.Size(850, 707);
             this.pnlDisplayCourt.TabIndex = 2;
             this.pnlDisplayCourt.SizeChanged += new System.EventHandler(this.pnlDisplayCourt_SizeChanged);
             // 
@@ -274,21 +265,53 @@
             this.tmrCountDown.Interval = 1000;
             this.tmrCountDown.Tick += new System.EventHandler(this.tmrCountDown_Tick);
             // 
-            // label1
+            // btnCalendar
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(82, 30);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(14, 16);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "1";
-            this.label1.Visible = false;
+            this.btnCalendar.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnCalendar.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCalendar.Location = new System.Drawing.Point(0, 411);
+            this.btnCalendar.Name = "btnCalendar";
+            this.btnCalendar.Size = new System.Drawing.Size(414, 33);
+            this.btnCalendar.TabIndex = 5;
+            this.btnCalendar.Text = "Xem Lịch Sân";
+            this.btnCalendar.UseVisualStyleBackColor = true;
+            this.btnCalendar.Click += new System.EventHandler(this.btnCalendar_Click);
+            // 
+            // pnlInAdmin
+            // 
+            this.pnlInAdmin.Controls.Add(this.pnlAdmin);
+            this.pnlInAdmin.Controls.Add(this.btnAdmin);
+            this.pnlInAdmin.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlInAdmin.Location = new System.Drawing.Point(0, 444);
+            this.pnlInAdmin.Name = "pnlInAdmin";
+            this.pnlInAdmin.Size = new System.Drawing.Size(414, 263);
+            this.pnlInAdmin.TabIndex = 6;
+            // 
+            // btnAdmin
+            // 
+            this.btnAdmin.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnAdmin.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAdmin.Location = new System.Drawing.Point(0, 0);
+            this.btnAdmin.Name = "btnAdmin";
+            this.btnAdmin.Size = new System.Drawing.Size(414, 33);
+            this.btnAdmin.TabIndex = 2;
+            this.btnAdmin.Text = "Admin";
+            this.btnAdmin.UseVisualStyleBackColor = true;
+            this.btnAdmin.Click += new System.EventHandler(this.btnAdmin_Click);
+            // 
+            // pnlAdmin
+            // 
+            this.pnlAdmin.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlAdmin.Location = new System.Drawing.Point(0, 33);
+            this.pnlAdmin.Name = "pnlAdmin";
+            this.pnlAdmin.Size = new System.Drawing.Size(414, 230);
+            this.pnlAdmin.TabIndex = 3;
             // 
             // CourtForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1264, 635);
+            this.ClientSize = new System.Drawing.Size(1264, 707);
             this.Controls.Add(this.pnlDisplayCourt);
             this.Controls.Add(this.pnlInformation);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -300,6 +323,7 @@
             this.pnlUser.PerformLayout();
             this.pnlFunction.ResumeLayout(false);
             this.pnlFunction.PerformLayout();
+            this.pnlInAdmin.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -310,8 +334,6 @@
         private System.Windows.Forms.Panel pnlInformation;
         private System.Windows.Forms.Panel pnlFunction;
         private System.Windows.Forms.Label lblfunction;
-        private System.Windows.Forms.Panel pnlAdmin;
-        private System.Windows.Forms.Button btnAdmin;
         private System.Windows.Forms.Panel pnlUser;
         private System.Windows.Forms.Button btnUser;
         private System.Windows.Forms.Label lblEndTime;
@@ -329,5 +351,9 @@
         private System.Windows.Forms.TextBox txtStartTime;
         private System.Windows.Forms.Timer tmrCountDown;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Panel pnlInAdmin;
+        private System.Windows.Forms.Panel pnlAdmin;
+        private System.Windows.Forms.Button btnAdmin;
+        private System.Windows.Forms.Button btnCalendar;
     }
 }

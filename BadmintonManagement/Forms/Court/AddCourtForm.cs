@@ -36,8 +36,6 @@ namespace BadmintonManagement.Forms.Court
             acsc.AddRange(new CourtService().getBrachName().ToArray());
             txtCourtName.AutoCompleteCustomSource = acsc;
             txtCourtName.AutoCompleteSource = AutoCompleteSource.CustomSource;
-            txtCourtName.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
-
             //txtCourtName.Text = acsc[1].ToString();
         }
         public void Reset()

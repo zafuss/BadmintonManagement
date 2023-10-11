@@ -141,6 +141,12 @@
     <Compile Include="Database\ServiceReceiptServices.cs" />
     <Compile Include="Database\ServiceServices.cs" />
     <Compile Include="Database\UserServices.cs" />
+    <Compile Include="Forms\Court\CourtCalendar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Court\CourtCalendar.Designer.cs">
+      <DependentUpon>CourtCalendar.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Report\CustomerReport.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -334,6 +340,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\AuthorizationForms\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Court\CourtCalendar.resx">
+      <DependentUpon>CourtCalendar.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Report\CustomerReport.resx">
       <DependentUpon>CustomerReport.cs</DependentUpon>
