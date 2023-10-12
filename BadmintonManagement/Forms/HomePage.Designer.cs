@@ -43,15 +43,16 @@
             this.quảnLýToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.trungTâmTàiKhoảnToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.btnUser = new System.Windows.Forms.ToolStripButton();
             this.btnCourt = new System.Windows.Forms.ToolStripButton();
             this.btnCustomer = new System.Windows.Forms.ToolStripButton();
             this.btnService = new System.Windows.Forms.ToolStripButton();
             this.btnReservation = new System.Windows.Forms.ToolStripButton();
             this.btnReceipt = new System.Windows.Forms.ToolStripButton();
-            this.btnPrice = new System.Windows.Forms.ToolStripButton();
             this.btnReport = new System.Windows.Forms.ToolStripButton();
             this.btnExit = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.btnUser = new System.Windows.Forms.ToolStripButton();
+            this.btnPrice = new System.Windows.Forms.ToolStripButton();
             this.pnlChildForm = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.lblTime = new System.Windows.Forms.Label();
@@ -59,7 +60,6 @@
             this.tabControl = new System.Windows.Forms.TabControl();
             this.timerRealTimeStatusCapture = new System.Windows.Forms.Timer(this.components);
             this.tmrRload = new System.Windows.Forms.Timer(this.components);
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.menuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.pnlChildForm.SuspendLayout();
@@ -184,16 +184,6 @@
             this.toolStrip1.TabIndex = 2;
             this.toolStrip1.Text = "toolStrip1";
             // 
-            // btnUser
-            // 
-            this.btnUser.Image = global::BadmintonManagement.Properties.Resources.user;
-            this.btnUser.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnUser.Name = "btnUser";
-            this.btnUser.Size = new System.Drawing.Size(80, 49);
-            this.btnUser.Text = "Tài Khoản";
-            this.btnUser.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnUser.Click += new System.EventHandler(this.btnUser_Click);
-            // 
             // btnCourt
             // 
             this.btnCourt.Image = global::BadmintonManagement.Properties.Resources.court;
@@ -246,16 +236,6 @@
             this.btnReceipt.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnReceipt.Click += new System.EventHandler(this.btnReceipt_Click);
             // 
-            // btnPrice
-            // 
-            this.btnPrice.Image = global::BadmintonManagement.Properties.Resources.prices1;
-            this.btnPrice.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnPrice.Name = "btnPrice";
-            this.btnPrice.Size = new System.Drawing.Size(76, 49);
-            this.btnPrice.Text = "Bảng Giá";
-            this.btnPrice.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnPrice.Click += new System.EventHandler(this.btnPrice_Click);
-            // 
             // btnReport
             // 
             this.btnReport.Image = global::BadmintonManagement.Properties.Resources.report;
@@ -277,10 +257,35 @@
             this.btnExit.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 52);
+            // 
+            // btnUser
+            // 
+            this.btnUser.Image = global::BadmintonManagement.Properties.Resources.user;
+            this.btnUser.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnUser.Name = "btnUser";
+            this.btnUser.Size = new System.Drawing.Size(80, 49);
+            this.btnUser.Text = "Tài Khoản";
+            this.btnUser.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnUser.Click += new System.EventHandler(this.btnUser_Click);
+            // 
+            // btnPrice
+            // 
+            this.btnPrice.Image = global::BadmintonManagement.Properties.Resources.prices1;
+            this.btnPrice.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnPrice.Name = "btnPrice";
+            this.btnPrice.Size = new System.Drawing.Size(76, 49);
+            this.btnPrice.Text = "Bảng Giá";
+            this.btnPrice.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnPrice.Click += new System.EventHandler(this.btnPrice_Click);
+            // 
             // pnlChildForm
             // 
-            this.pnlChildForm.Controls.Add(this.panel1);
             this.pnlChildForm.Controls.Add(this.tabControl);
+            this.pnlChildForm.Controls.Add(this.panel1);
             this.pnlChildForm.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlChildForm.Location = new System.Drawing.Point(0, 76);
             this.pnlChildForm.Name = "pnlChildForm";
@@ -292,16 +297,16 @@
             this.panel1.Controls.Add(this.lblTime);
             this.panel1.Controls.Add(this.lblEmployeeName);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 651);
+            this.panel1.Location = new System.Drawing.Point(0, 656);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1238, 39);
+            this.panel1.Size = new System.Drawing.Size(1238, 34);
             this.panel1.TabIndex = 1;
             // 
             // lblTime
             // 
             this.lblTime.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.lblTime.AutoSize = true;
-            this.lblTime.Location = new System.Drawing.Point(1070, 9);
+            this.lblTime.Location = new System.Drawing.Point(1070, 4);
             this.lblTime.Name = "lblTime";
             this.lblTime.Size = new System.Drawing.Size(76, 21);
             this.lblTime.TabIndex = 1;
@@ -324,7 +329,7 @@
             this.tabControl.Location = new System.Drawing.Point(0, 0);
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
-            this.tabControl.Size = new System.Drawing.Size(1238, 690);
+            this.tabControl.Size = new System.Drawing.Size(1238, 656);
             this.tabControl.TabIndex = 0;
             this.tabControl.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.tabControl_DrawItem);
             this.tabControl.MouseClick += new System.Windows.Forms.MouseEventHandler(this.tabControl_MouseClick);
@@ -339,11 +344,6 @@
             this.tmrRload.Enabled = true;
             this.tmrRload.Interval = 1000;
             this.tmrRload.Tick += new System.EventHandler(this.tmrRload_Tick);
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 52);
             // 
             // HomePage
             // 

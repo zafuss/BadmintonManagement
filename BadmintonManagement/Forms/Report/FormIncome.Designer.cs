@@ -52,6 +52,7 @@
             this.dtpMonth.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpMonth.Location = new System.Drawing.Point(431, 10);
             this.dtpMonth.Name = "dtpMonth";
+            this.dtpMonth.ShowUpDown = true;
             this.dtpMonth.Size = new System.Drawing.Size(85, 20);
             this.dtpMonth.TabIndex = 3;
             this.dtpMonth.ValueChanged += new System.EventHandler(this.dtpMonth_ValueChanged);
@@ -62,6 +63,7 @@
             this.dtpYear.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpYear.Location = new System.Drawing.Point(12, 8);
             this.dtpYear.Name = "dtpYear";
+            this.dtpYear.ShowUpDown = true;
             this.dtpYear.Size = new System.Drawing.Size(77, 20);
             this.dtpYear.TabIndex = 0;
             this.dtpYear.ValueChanged += new System.EventHandler(this.dtpYear_ValueChanged);

@@ -13,10 +13,10 @@ using System.Windows.Forms;
 
 namespace BadmintonManagement.Forms.Report
 {
-    public partial class ServiceReceiptForm : Form
+    public partial class ServiceIncome : Form
     {
         ModelBadmintonManage context = new ModelBadmintonManage();
-        public ServiceReceiptForm()
+        public ServiceIncome()
         {
             InitializeComponent();
         }

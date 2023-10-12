@@ -133,6 +133,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>BadmintonManagementDBDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Database\CourtIncomeReport.cs" />
     <Compile Include="Database\DatabaseInitial.cs" />
     <Compile Include="Database\IncomeSer.cs" />
     <Compile Include="Database\IncomeYear.cs" />
@@ -165,11 +166,11 @@
     <Compile Include="Forms\Report\FormIncome.Designer.cs">
       <DependentUpon>FormIncome.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Report\ReceiptReportForm.cs">
+    <Compile Include="Forms\Report\CourtIncome.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Report\ReceiptReportForm.Designer.cs">
-      <DependentUpon>ReceiptReportForm.cs</DependentUpon>
+    <Compile Include="Forms\Report\CourtIncome.Designer.cs">
+      <DependentUpon>CourtIncome.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Report\ReservationReport.cs">
       <SubType>Form</SubType>
@@ -180,11 +181,11 @@
     <Compile Include="Forms\ReservationCourt\BookingForm\Booking.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Report\ServiceReceiptForm.cs">
+    <Compile Include="Forms\Report\ServiceIncome.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Report\ServiceReceiptForm.Designer.cs">
-      <DependentUpon>ServiceReceiptForm.cs</DependentUpon>
+    <Compile Include="Forms\Report\ServiceIncome.Designer.cs">
+      <DependentUpon>ServiceIncome.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\ReservationCourt\BookingForm\Booking.Designer.cs">
       <DependentUpon>Booking.cs</DependentUpon>
@@ -359,8 +360,8 @@
     <EmbeddedResource Include="Forms\Report\FormIncome.resx">
       <DependentUpon>FormIncome.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Report\ReceiptReportForm.resx">
-      <DependentUpon>ReceiptReportForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Report\CourtIncome.resx">
+      <DependentUpon>CourtIncome.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Report\ReservationReport.resx">
       <DependentUpon>ReservationReport.cs</DependentUpon>
@@ -371,8 +372,8 @@
     <EmbeddedResource Include="Forms\ReservationCourt\BookingForm\GetCustomerInformation.resx">
       <DependentUpon>GetCustomerInformation.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Report\ServiceReceiptForm.resx">
-      <DependentUpon>ServiceReceiptForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Report\ServiceIncome.resx">
+      <DependentUpon>ServiceIncome.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\ReservationCourt\ReservationReceipt\RevReceipt.resx">
       <DependentUpon>RevReceipt.cs</DependentUpon>
@@ -398,7 +399,7 @@
     <EmbeddedResource Include="ReportIncomeService.rdlc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
-    <EmbeddedResource Include="ReportReceipt.rdlc">
+    <EmbeddedResource Include="CourtIncomeReport.rdlc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="ReservationReport.rdlc">
@@ -474,6 +475,8 @@
       <DependentUpon>BadmintonManagementDBDataSet1.xsd</DependentUpon>
     </None>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\BadmintonManagement.Database.CourtIncome.datasource" />
+    <None Include="Properties\DataSources\BadmintonManagement.Database.CourtIncomeReport.datasource" />
     <None Include="Properties\DataSources\BadmintonManagement.Database.IncomeSer.datasource" />
     <None Include="Properties\DataSources\BadmintonManagement.Database.IncomeService.datasource" />
     <None Include="Properties\DataSources\BadmintonManagement.Database.IncomeYear.datasource" />

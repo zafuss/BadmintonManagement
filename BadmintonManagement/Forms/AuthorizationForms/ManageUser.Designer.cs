@@ -37,12 +37,6 @@
             this.label4 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.dgvUsers = new System.Windows.Forms.DataGridView();
-            this.clnUsername = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clnName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clnEmail = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clnPhoneNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clnRole = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clnStaus = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnUpdate = new System.Windows.Forms.Button();
             this.btnDelUser = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
@@ -53,17 +47,24 @@
             this.label7 = new System.Windows.Forms.Label();
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.clnUsername = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clnName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clnEmail = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clnPhoneNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clnRole = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clnStaus = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUsers)).BeginInit();
             this.panel1.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnReg
             // 
-            this.btnReg.Location = new System.Drawing.Point(25, 382);
+            this.btnReg.Location = new System.Drawing.Point(13, 382);
             this.btnReg.Name = "btnReg";
-            this.btnReg.Size = new System.Drawing.Size(386, 46);
+            this.btnReg.Size = new System.Drawing.Size(371, 46);
             this.btnReg.TabIndex = 6;
             this.btnReg.Text = "Thêm user";
             this.btnReg.UseVisualStyleBackColor = true;
@@ -73,7 +74,7 @@
             // 
             this.txtRegUsername.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.txtRegUsername.Location = new System.Drawing.Point(177, 182);
+            this.txtRegUsername.Location = new System.Drawing.Point(139, 43);
             this.txtRegUsername.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtRegUsername.Name = "txtRegUsername";
             this.txtRegUsername.Size = new System.Drawing.Size(222, 29);
@@ -96,7 +97,7 @@
             // 
             this.txtRegPhoneNumber.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.txtRegPhoneNumber.Location = new System.Drawing.Point(177, 331);
+            this.txtRegPhoneNumber.Location = new System.Drawing.Point(139, 192);
             this.txtRegPhoneNumber.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtRegPhoneNumber.Name = "txtRegPhoneNumber";
             this.txtRegPhoneNumber.Size = new System.Drawing.Size(222, 29);
@@ -119,7 +120,7 @@
             // 
             this.txtRegEmail.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.txtRegEmail.Location = new System.Drawing.Point(177, 282);
+            this.txtRegEmail.Location = new System.Drawing.Point(139, 143);
             this.txtRegEmail.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtRegEmail.Name = "txtRegEmail";
             this.txtRegEmail.Size = new System.Drawing.Size(222, 29);
@@ -141,7 +142,7 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = global::BadmintonManagement.Properties.Resources.register_images;
-            this.pictureBox1.Location = new System.Drawing.Point(160, 12);
+            this.pictureBox1.Location = new System.Drawing.Point(133, 12);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(117, 121);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -161,69 +162,21 @@
             this.clnRole,
             this.clnStaus});
             this.dgvUsers.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvUsers.Location = new System.Drawing.Point(426, 151);
+            this.dgvUsers.Location = new System.Drawing.Point(398, 151);
             this.dgvUsers.Name = "dgvUsers";
             this.dgvUsers.ReadOnly = true;
             this.dgvUsers.RowHeadersWidth = 62;
             this.dgvUsers.RowTemplate.Height = 24;
             this.dgvUsers.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvUsers.Size = new System.Drawing.Size(750, 400);
+            this.dgvUsers.Size = new System.Drawing.Size(778, 400);
             this.dgvUsers.TabIndex = 9;
             this.dgvUsers.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvUsers_CellClick);
             // 
-            // clnUsername
-            // 
-            this.clnUsername.HeaderText = "Username";
-            this.clnUsername.MinimumWidth = 8;
-            this.clnUsername.Name = "clnUsername";
-            this.clnUsername.ReadOnly = true;
-            this.clnUsername.Width = 125;
-            // 
-            // clnName
-            // 
-            this.clnName.HeaderText = "Họ tên";
-            this.clnName.MinimumWidth = 6;
-            this.clnName.Name = "clnName";
-            this.clnName.ReadOnly = true;
-            this.clnName.Width = 200;
-            // 
-            // clnEmail
-            // 
-            this.clnEmail.HeaderText = "Email";
-            this.clnEmail.MinimumWidth = 8;
-            this.clnEmail.Name = "clnEmail";
-            this.clnEmail.ReadOnly = true;
-            this.clnEmail.Width = 250;
-            // 
-            // clnPhoneNumber
-            // 
-            this.clnPhoneNumber.HeaderText = "SĐT";
-            this.clnPhoneNumber.MinimumWidth = 8;
-            this.clnPhoneNumber.Name = "clnPhoneNumber";
-            this.clnPhoneNumber.ReadOnly = true;
-            this.clnPhoneNumber.Width = 125;
-            // 
-            // clnRole
-            // 
-            this.clnRole.HeaderText = "Quyền";
-            this.clnRole.MinimumWidth = 8;
-            this.clnRole.Name = "clnRole";
-            this.clnRole.ReadOnly = true;
-            this.clnRole.Width = 75;
-            // 
-            // clnStaus
-            // 
-            this.clnStaus.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.clnStaus.HeaderText = "Trạng thái";
-            this.clnStaus.MinimumWidth = 6;
-            this.clnStaus.Name = "clnStaus";
-            this.clnStaus.ReadOnly = true;
-            // 
             // btnUpdate
             // 
-            this.btnUpdate.Location = new System.Drawing.Point(25, 434);
+            this.btnUpdate.Location = new System.Drawing.Point(12, 434);
             this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.Size = new System.Drawing.Size(187, 46);
+            this.btnUpdate.Size = new System.Drawing.Size(174, 46);
             this.btnUpdate.TabIndex = 7;
             this.btnUpdate.Text = "Sửa user";
             this.btnUpdate.UseVisualStyleBackColor = true;
@@ -231,9 +184,9 @@
             // 
             // btnDelUser
             // 
-            this.btnDelUser.Location = new System.Drawing.Point(224, 434);
+            this.btnDelUser.Location = new System.Drawing.Point(212, 434);
             this.btnDelUser.Name = "btnDelUser";
-            this.btnDelUser.Size = new System.Drawing.Size(187, 46);
+            this.btnDelUser.Size = new System.Drawing.Size(172, 46);
             this.btnDelUser.TabIndex = 8;
             this.btnDelUser.Text = "...";
             this.btnDelUser.UseVisualStyleBackColor = true;
@@ -256,7 +209,7 @@
             // 
             this.txtName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.txtName.Location = new System.Drawing.Point(177, 231);
+            this.txtName.Location = new System.Drawing.Point(139, 92);
             this.txtName.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(222, 29);
@@ -273,13 +226,13 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(426, 551);
+            this.panel1.Size = new System.Drawing.Size(398, 551);
             this.panel1.TabIndex = 12;
             // 
             // cbxChangePassword
             // 
             this.cbxChangePassword.AutoSize = true;
-            this.cbxChangePassword.Location = new System.Drawing.Point(25, 489);
+            this.cbxChangePassword.Location = new System.Drawing.Point(13, 486);
             this.cbxChangePassword.Name = "cbxChangePassword";
             this.cbxChangePassword.Size = new System.Drawing.Size(157, 25);
             this.cbxChangePassword.TabIndex = 0;
@@ -288,9 +241,13 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Location = new System.Drawing.Point(25, 139);
+            this.groupBox1.Controls.Add(this.txtRegUsername);
+            this.groupBox1.Controls.Add(this.txtName);
+            this.groupBox1.Controls.Add(this.txtRegPhoneNumber);
+            this.groupBox1.Controls.Add(this.txtRegEmail);
+            this.groupBox1.Location = new System.Drawing.Point(12, 139);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(386, 237);
+            this.groupBox1.Size = new System.Drawing.Size(372, 237);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Thông tin tài khoản";
@@ -299,7 +256,7 @@
             // 
             this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(377, 114);
+            this.label7.Location = new System.Drawing.Point(405, 114);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(142, 21);
             this.label7.TabIndex = 14;
@@ -308,7 +265,7 @@
             // txtSearch
             // 
             this.txtSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtSearch.Location = new System.Drawing.Point(560, 114);
+            this.txtSearch.Location = new System.Drawing.Point(588, 114);
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.Size = new System.Drawing.Size(178, 29);
             this.txtSearch.TabIndex = 13;
@@ -319,11 +276,58 @@
             this.panel2.Controls.Add(this.label7);
             this.panel2.Controls.Add(this.txtSearch);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel2.Location = new System.Drawing.Point(426, 0);
+            this.panel2.Location = new System.Drawing.Point(398, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(750, 151);
+            this.panel2.Size = new System.Drawing.Size(778, 151);
             this.panel2.TabIndex = 16;
             this.panel2.SizeChanged += new System.EventHandler(this.panel2_SizeChanged);
+            // 
+            // clnUsername
+            // 
+            this.clnUsername.HeaderText = "Username";
+            this.clnUsername.MinimumWidth = 8;
+            this.clnUsername.Name = "clnUsername";
+            this.clnUsername.ReadOnly = true;
+            // 
+            // clnName
+            // 
+            this.clnName.HeaderText = "Họ tên";
+            this.clnName.MinimumWidth = 6;
+            this.clnName.Name = "clnName";
+            this.clnName.ReadOnly = true;
+            this.clnName.Width = 180;
+            // 
+            // clnEmail
+            // 
+            this.clnEmail.HeaderText = "Email";
+            this.clnEmail.MinimumWidth = 8;
+            this.clnEmail.Name = "clnEmail";
+            this.clnEmail.ReadOnly = true;
+            this.clnEmail.Width = 230;
+            // 
+            // clnPhoneNumber
+            // 
+            this.clnPhoneNumber.HeaderText = "SĐT";
+            this.clnPhoneNumber.MinimumWidth = 8;
+            this.clnPhoneNumber.Name = "clnPhoneNumber";
+            this.clnPhoneNumber.ReadOnly = true;
+            this.clnPhoneNumber.Width = 110;
+            // 
+            // clnRole
+            // 
+            this.clnRole.HeaderText = "Quyền";
+            this.clnRole.MinimumWidth = 8;
+            this.clnRole.Name = "clnRole";
+            this.clnRole.ReadOnly = true;
+            this.clnRole.Width = 60;
+            // 
+            // clnStaus
+            // 
+            this.clnStaus.HeaderText = "Trạng thái";
+            this.clnStaus.MinimumWidth = 6;
+            this.clnStaus.Name = "clnStaus";
+            this.clnStaus.ReadOnly = true;
+            this.clnStaus.Width = 110;
             // 
             // ManageUser
             // 
@@ -332,13 +336,9 @@
             this.ClientSize = new System.Drawing.Size(1176, 551);
             this.Controls.Add(this.dgvUsers);
             this.Controls.Add(this.panel2);
-            this.Controls.Add(this.txtRegPhoneNumber);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.txtRegEmail);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.txtName);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.txtRegUsername);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.panel1);
             this.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -351,6 +351,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvUsers)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.ResumeLayout(false);
@@ -377,13 +379,13 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox txtSearch;
         private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.CheckBox cbxChangePassword;
         private System.Windows.Forms.DataGridViewTextBoxColumn clnUsername;
         private System.Windows.Forms.DataGridViewTextBoxColumn clnName;
         private System.Windows.Forms.DataGridViewTextBoxColumn clnEmail;
         private System.Windows.Forms.DataGridViewTextBoxColumn clnPhoneNumber;
         private System.Windows.Forms.DataGridViewTextBoxColumn clnRole;
         private System.Windows.Forms.DataGridViewTextBoxColumn clnStaus;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.CheckBox cbxChangePassword;
     }
 }
