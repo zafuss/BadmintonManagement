@@ -32,14 +32,17 @@
             this.dtpMonth = new System.Windows.Forms.DateTimePicker();
             this.dtpYear = new System.Windows.Forms.DateTimePicker();
             this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
-            this.reportViewer2 = new Microsoft.Reporting.WinForms.ReportViewer();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.panel3 = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
+            this.panel2.SuspendLayout();
+            this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.dtpMonth);
-            this.panel1.Controls.Add(this.dtpYear);
+            this.panel1.Controls.Add(this.panel2);
+            this.panel1.Controls.Add(this.panel3);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
@@ -48,9 +51,10 @@
             // 
             // dtpMonth
             // 
+            this.dtpMonth.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.dtpMonth.CustomFormat = "MM";
             this.dtpMonth.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpMonth.Location = new System.Drawing.Point(431, 10);
+            this.dtpMonth.Location = new System.Drawing.Point(357, 10);
             this.dtpMonth.Name = "dtpMonth";
             this.dtpMonth.ShowUpDown = true;
             this.dtpMonth.Size = new System.Drawing.Size(85, 20);
@@ -61,7 +65,7 @@
             // 
             this.dtpYear.CustomFormat = "yyyy";
             this.dtpYear.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpYear.Location = new System.Drawing.Point(12, 8);
+            this.dtpYear.Location = new System.Drawing.Point(12, 10);
             this.dtpYear.Name = "dtpYear";
             this.dtpYear.ShowUpDown = true;
             this.dtpYear.Size = new System.Drawing.Size(77, 20);
@@ -70,7 +74,7 @@
             // 
             // reportViewer1
             // 
-            this.reportViewer1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.reportViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.reportViewer1.Location = new System.Drawing.Point(0, 36);
             this.reportViewer1.Name = "reportViewer1";
             this.reportViewer1.ServerReport.BearerToken = null;
@@ -81,39 +85,42 @@
             this.reportViewer1.ShowPrintButton = false;
             this.reportViewer1.ShowRefreshButton = false;
             this.reportViewer1.ShowStopButton = false;
-            this.reportViewer1.ShowZoomControl = false;
-            this.reportViewer1.Size = new System.Drawing.Size(431, 328);
+            this.reportViewer1.ShowToolBar = false;
+            this.reportViewer1.Size = new System.Drawing.Size(634, 328);
             this.reportViewer1.TabIndex = 1;
+            this.reportViewer1.ZoomMode = Microsoft.Reporting.WinForms.ZoomMode.PageWidth;
             // 
-            // reportViewer2
+            // panel2
             // 
-            this.reportViewer2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.reportViewer2.Location = new System.Drawing.Point(431, 36);
-            this.reportViewer2.Name = "reportViewer2";
-            this.reportViewer2.ServerReport.BearerToken = null;
-            this.reportViewer2.ShowBackButton = false;
-            this.reportViewer2.ShowExportButton = false;
-            this.reportViewer2.ShowFindControls = false;
-            this.reportViewer2.ShowPageNavigationControls = false;
-            this.reportViewer2.ShowPrintButton = false;
-            this.reportViewer2.ShowRefreshButton = false;
-            this.reportViewer2.ShowStopButton = false;
-            this.reportViewer2.ShowZoomControl = false;
-            this.reportViewer2.Size = new System.Drawing.Size(203, 328);
-            this.reportViewer2.TabIndex = 2;
+            this.panel2.Controls.Add(this.dtpYear);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel2.Location = new System.Drawing.Point(0, 0);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(323, 36);
+            this.panel2.TabIndex = 4;
+            // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.dtpMonth);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel3.Location = new System.Drawing.Point(0, 0);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(634, 36);
+            this.panel3.TabIndex = 5;
             // 
             // FormIncome
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(634, 364);
-            this.Controls.Add(this.reportViewer2);
             this.Controls.Add(this.reportViewer1);
             this.Controls.Add(this.panel1);
             this.Name = "FormIncome";
             this.Text = "FormIncome";
             this.Load += new System.EventHandler(this.FormIncome_Load);
             this.panel1.ResumeLayout(false);
+            this.panel2.ResumeLayout(false);
+            this.panel3.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -123,7 +130,8 @@
         private System.Windows.Forms.Panel panel1;
         private Microsoft.Reporting.WinForms.ReportViewer reportViewer1;
         private System.Windows.Forms.DateTimePicker dtpYear;
-        private Microsoft.Reporting.WinForms.ReportViewer reportViewer2;
         private System.Windows.Forms.DateTimePicker dtpMonth;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel panel3;
     }
 }

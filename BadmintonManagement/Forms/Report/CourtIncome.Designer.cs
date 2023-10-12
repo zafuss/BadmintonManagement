@@ -142,12 +142,15 @@
             // 
             // rptCourtIncome
             // 
+            this.rptCourtIncome.AutoScroll = true;
+            this.rptCourtIncome.AutoSize = true;
             this.rptCourtIncome.Dock = System.Windows.Forms.DockStyle.Fill;
             this.rptCourtIncome.Location = new System.Drawing.Point(0, 70);
             this.rptCourtIncome.Name = "rptCourtIncome";
             this.rptCourtIncome.ServerReport.BearerToken = null;
             this.rptCourtIncome.Size = new System.Drawing.Size(720, 380);
             this.rptCourtIncome.TabIndex = 1;
+            this.rptCourtIncome.ZoomMode = Microsoft.Reporting.WinForms.ZoomMode.PageWidth;
             // 
             // CourtIncome
             // 
@@ -162,6 +165,7 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 

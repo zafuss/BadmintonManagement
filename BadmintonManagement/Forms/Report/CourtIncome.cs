@@ -32,6 +32,7 @@ namespace BadmintonManagement.Forms.Report
         private void ReceiptFormReport_Load(object sender, EventArgs e)
         {
             rptCourtIncome.Visible = false;
+            rptCourtIncome.ZoomMode = ZoomMode.PageWidth;
         }
 
         private void IncomeCourtReportMonth()

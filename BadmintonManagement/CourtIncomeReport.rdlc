@@ -106,8 +106,9 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox2</rd:DefaultName>
+            <Left>1.3125in</Left>
             <Height>0.79167in</Height>
-            <Width>3.84375in</Width>
+            <Width>4.25125in</Width>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -153,7 +154,7 @@
             </Paragraphs>
             <rd:DefaultName>Textbox3</rd:DefaultName>
             <Top>1.17583in</Top>
-            <Left>2.35416in</Left>
+            <Left>3.10416in</Left>
             <Height>0.58333in</Height>
             <Width>4.08458in</Width>
             <ZIndex>1</ZIndex>
@@ -619,10 +620,10 @@
               </TablixMembers>
             </TablixRowHierarchy>
             <DataSetName>CourtIncomeReport</DataSetName>
-            <Top>2.35292in</Top>
-            <Left>0.80083in</Left>
+            <Top>2.36681in</Top>
+            <Left>1.3125in</Left>
             <Height>0.5in</Height>
-            <Width>7.57541in</Width>
+            <Width>7.57542in</Width>
             <ZIndex>2</ZIndex>
             <Style>
               <Border>
@@ -649,8 +650,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox31</rd:DefaultName>
-            <Top>2.85292in</Top>
-            <Left>0.80083in</Left>
+            <Top>2.86681in</Top>
+            <Left>1.31251in</Left>
             <Height>0.25in</Height>
             <Width>6.11708in</Width>
             <ZIndex>3</ZIndex>
@@ -683,8 +684,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox32</rd:DefaultName>
-            <Top>2.85292in</Top>
-            <Left>6.91791in</Left>
+            <Top>2.86681in</Top>
+            <Left>7.42959in</Left>
             <Height>0.25in</Height>
             <Width>1.45833in</Width>
             <ZIndex>4</ZIndex>
@@ -702,7 +703,7 @@
         <Height>4.89583in</Height>
         <Style />
       </Body>
-      <Width>8.66542in</Width>
+      <Width>10.17584in</Width>
       <Page>
         <LeftMargin>1in</LeftMargin>
         <RightMargin>1in</RightMargin>

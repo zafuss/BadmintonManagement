@@ -27,6 +27,7 @@ namespace BadmintonManagement.Forms.Report
         public FormIncome()
         {
             InitializeComponent();
+            
         }
 
         private void btnReport_Click(object sender, EventArgs e)
@@ -67,14 +68,14 @@ namespace BadmintonManagement.Forms.Report
             reader.Close();
             if (list.Count < 1)
                 throw new Exception("Khong có doanh thu trong thời gian này");
-            Microsoft.Reporting.WinForms.ReportParameter[] param1 = new Microsoft.Reporting.WinForms.ReportParameter[1]
+            Microsoft.Reporting.WinForms.ReportParameter[] param1 = new Microsoft.Reporting.WinForms.ReportParameter[2]
             {
-                    new Microsoft.Reporting.WinForms.ReportParameter("nam",dtpYear.Text)
+                    new Microsoft.Reporting.WinForms.ReportParameter("nam",dtpYear.Text),
+                    new Microsoft.Reporting.WinForms.ReportParameter("month", dtpMonth.Text)
             };
 
             reportViewer1.LocalReport.ReportPath = "ReportIncome.rdlc";
             var sour = new ReportDataSource("DataSetIncome", list);
-            reportViewer1.LocalReport.DataSources.Clear();
             reportViewer1.LocalReport.DataSources.Add(sour);
             reportViewer1.LocalReport.SetParameters(param1);
             this.reportViewer1.RefreshReport();
@@ -116,18 +117,11 @@ namespace BadmintonManagement.Forms.Report
             reader1.Close();
             if (list1.Count < 1)
                 throw new Exception("Khong có doanh thu trong thời gian này");
-            Microsoft.Reporting.WinForms.ReportParameter[] param2 = new Microsoft.Reporting.WinForms.ReportParameter[1]
-            {
-                    new Microsoft.Reporting.WinForms.ReportParameter("thang",dtpMonth.Text)
-            };
-
-
-            reportViewer2.LocalReport.ReportPath = "ReportIncomeService.rdlc";
-            var sour1 = new ReportDataSource("DataSetIncomeSer", list1);
-            reportViewer2.LocalReport.DataSources.Clear();
-            reportViewer2.LocalReport.DataSources.Add(sour1);
-            reportViewer2.LocalReport.SetParameters(param2);
-            this.reportViewer2.RefreshReport();
+            
+            reportViewer1.LocalReport.ReportPath = "ReportIncome.rdlc";
+            var sour1 = new ReportDataSource("DataSetMonth", list1);
+            reportViewer1.LocalReport.DataSources.Add(sour1);
+            this.reportViewer1.RefreshReport();
         }
         private void FormIncome_Load(object sender, EventArgs e)
         {
@@ -146,6 +140,7 @@ namespace BadmintonManagement.Forms.Report
         {
             try
             {
+                
                 IncomeCourt();
                 IncomeService1();
             }
@@ -159,7 +154,8 @@ namespace BadmintonManagement.Forms.Report
         {
             try
             {
-                //IncomeCourt();
+                
+                IncomeCourt();
                 IncomeService1();
             }
             catch (Exception ex)
