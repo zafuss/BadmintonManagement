@@ -43,12 +43,14 @@ namespace BadmintonManagement.Forms.Court
             string connectString = @"Data Source=localhost;Initial Catalog=BadmintonManagementDB;Integrated Security=True";
 
 
-            string sql = @"select rf.ReservationNo , tmp.FullName , tmp.PhoneNumber ,tmp.[Ngay Choi], tmp.StartTime,tmp.EndTime , tmp.[Tong gio choi]
-                            from RF_DETAIL rf ,		(select reser.ReservationNo, a.FullName , a.PhoneNumber , FORMAT(reser.StartTime, 'dd/MM/yyyy')as[Ngay Choi] , FORMAT(reser.StartTime, 'HH:mm') as StartTime , FORMAT(reser.EndTime, 'HH:mm') as EndTime , 
-						                            FORMAT( DATEADD(MINUTE,DATEDIFF(MINUTE,reser.StartTime,reser.EndTime),'00:00'), 'HH:mm') as [Tong gio choi]
-						                            from RESERVATION reser , CUSTOMER a 
-						                            where a.PhoneNumber = reser.PhoneNumber ) tmp , COURT a
-                            where rf.ReservationNo = tmp.ReservationNo and rf.CourtID = a.CourtID and rf.CourtID = @courtID";
+            string sql = @"	select rf.ReservationNo , tmp.FullName , tmp.PhoneNumber ,tmp.[Ngay Choi], tmp.StartTime,tmp.EndTime , tmp.[Tong gio choi]
+								from RF_DETAIL rf ,		(select reser.ReservationNo, a.FullName , a.PhoneNumber , FORMAT(reser.BookingDate, 'dd/MM/yyyy')as[Ngay Choi] , 
+								FORMAT(reser.StartTime, 'HH:mm') as StartTime , FORMAT(reser.EndTime, 'HH:mm') as EndTime , 
+														FORMAT( DATEADD(MINUTE,DATEDIFF(MINUTE,reser.StartTime,reser.EndTime),'00:00'), 'HH:mm') as [Tong gio choi]
+														from RESERVATION reser , CUSTOMER a 
+														where a.PhoneNumber = reser.PhoneNumber) 
+														tmp , COURT a
+								where rf.ReservationNo = tmp.ReservationNo and rf.CourtID = a.CourtID and rf.CourtID = @courtID";
 
 
             List<COURT> list = new ModelBadmintonManage().COURT.ToList();
@@ -91,12 +93,14 @@ namespace BadmintonManagement.Forms.Court
 
 
             string sql = @"select rf.ReservationNo , tmp.FullName , tmp.PhoneNumber ,tmp.[Ngay Choi], tmp.StartTime,tmp.EndTime , tmp.[Tong gio choi]
-                            from RF_DETAIL rf ,		(select reser.ReservationNo, a.FullName , a.PhoneNumber , FORMAT(reser.StartTime, 'dd/MM/yyyy')as[Ngay Choi] , FORMAT(reser.StartTime, 'HH:mm') as StartTime , FORMAT(reser.EndTime, 'HH:mm') as EndTime , 
+                            from RF_DETAIL rf ,		(select reser.ReservationNo, a.FullName , a.PhoneNumber , FORMAT(reser.BookingDate, 'dd/MM/yyyy')as[Ngay Choi] , 
+							FORMAT(reser.StartTime, 'HH:mm') as StartTime , FORMAT(reser.EndTime, 'HH:mm') as EndTime , 
 						                            FORMAT( DATEADD(MINUTE,DATEDIFF(MINUTE,reser.StartTime,reser.EndTime),'00:00'), 'HH:mm') as [Tong gio choi]
 						                            from RESERVATION reser , CUSTOMER a 
-						                            where a.PhoneNumber = reser.PhoneNumber ) tmp , COURT a
-                            where rf.ReservationNo = tmp.ReservationNo and rf.CourtID = a.CourtID and rf.CourtID = @courtID and tmp.[Ngay Choi] between @_date1 and @_date2";
-
+						                            where a.PhoneNumber = reser.PhoneNumber and 
+													CONVERT(datetime,reser.BookingDate,103) between @_date1 and @_date2 ) 
+													tmp , COURT a
+                            where rf.ReservationNo = tmp.ReservationNo and rf.CourtID = a.CourtID and rf.CourtID = @courtID";
 
             List<COURT> list = new ModelBadmintonManage().COURT.ToList();
             foreach (var item in list)
@@ -165,8 +169,8 @@ namespace BadmintonManagement.Forms.Court
             if(rdoCheckMonth.Checked == true)
             {
                 var lastdayofmont = DateTime.DaysInMonth(DateTime.Now.Year, DateTime.Now.Month);
-                DateTime dayStartMonth= new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1);
-                DateTime dayEndMonth = new DateTime(DateTime.Now.Year, DateTime.Now.Month, lastdayofmont);
+                DateTime dayStartMonth= DateTime.Parse(new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1).ToString("dd/MM/yyyy"));
+                DateTime dayEndMonth = DateTime.Parse(new DateTime(DateTime.Now.Year, DateTime.Now.Month, lastdayofmont).ToString("dd/MM/yyyy"));
                 BindCalendar(dayStartMonth, dayEndMonth);
             }
             else
@@ -180,7 +184,7 @@ namespace BadmintonManagement.Forms.Court
         {
             rdoCheckDay.Checked = rdoCheckMonth.Checked = rdoCheckWeek.Checked = false;
             DateTime dateS = DateTime.Parse(dtmStartDate.Value.ToString("dd/MM/yyyy"));
-            DateTime dateE = DateTime.Parse(dtmEndDate.Value.ToString("dd/MM/yyyy"));
+            DateTime dateE = DateTime.Parse(dtmEndDate.Value.ToString("dd/MM/yyyy")).AddDays(1);
             BindCalendar(dateS, dateE);
         }
 
@@ -200,7 +204,6 @@ namespace BadmintonManagement.Forms.Court
 
         private void btnReset_Click(object sender, EventArgs e)
         {
-            BindCalendar();
             rdoCheckDay.Checked = rdoCheckMonth.Checked = rdoCheckWeek.Checked = false;
         }
     }
