@@ -94,6 +94,9 @@
                       <Style />
                     </ChartDataLabel>
                   </ChartEmptyPoints>
+                  <ChartItemInLegend>
+                    <LegendText>Doanh thu</LegendText>
+                  </ChartItemInLegend>
                   <ValueAxisName>Primary</ValueAxisName>
                   <CategoryAxisName>Primary</CategoryAxisName>
                   <ChartSmartLabel>
