@@ -206,5 +206,13 @@ namespace BadmintonManagement.Forms.Court
         {
             rdoCheckDay.Checked = rdoCheckMonth.Checked = rdoCheckWeek.Checked = false;
         }
+
+        private void dtmStartDate_ValueChanged(object sender, EventArgs e)
+        {
+            rdoCheckDay.Checked = rdoCheckMonth.Checked = rdoCheckWeek.Checked = false;
+            DateTime dateS = DateTime.Parse(dtmStartDate.Value.ToString("dd/MM/yyyy"));
+            DateTime dateE = DateTime.Parse(dtmEndDate.Value.ToString("dd/MM/yyyy")).AddDays(1);
+            BindCalendar(dateS, dateE);
+        }
     }
 }

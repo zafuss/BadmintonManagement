@@ -183,6 +183,7 @@
             this.dtmStartDate.Name = "dtmStartDate";
             this.dtmStartDate.Size = new System.Drawing.Size(170, 34);
             this.dtmStartDate.TabIndex = 4;
+            this.dtmStartDate.ValueChanged += new System.EventHandler(this.dtmStartDate_ValueChanged);
             // 
             // btnExit
             // 
