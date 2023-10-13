@@ -58,7 +58,7 @@
             this.pnlTitle.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.pnlTitle.Location = new System.Drawing.Point(0, 0);
             this.pnlTitle.Name = "pnlTitle";
-            this.pnlTitle.Size = new System.Drawing.Size(1404, 118);
+            this.pnlTitle.Size = new System.Drawing.Size(1304, 118);
             this.pnlTitle.TabIndex = 0;
             this.pnlTitle.SizeChanged += new System.EventHandler(this.pnlTitle_SizeChanged);
             // 
@@ -70,7 +70,7 @@
             this.pnlInf.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.pnlInf.Location = new System.Drawing.Point(0, 118);
             this.pnlInf.Name = "pnlInf";
-            this.pnlInf.Size = new System.Drawing.Size(1404, 601);
+            this.pnlInf.Size = new System.Drawing.Size(1304, 599);
             this.pnlInf.TabIndex = 1;
             // 
             // pnlCalender
@@ -79,7 +79,7 @@
             this.pnlCalender.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlCalender.Location = new System.Drawing.Point(0, 38);
             this.pnlCalender.Name = "pnlCalender";
-            this.pnlCalender.Size = new System.Drawing.Size(1404, 563);
+            this.pnlCalender.Size = new System.Drawing.Size(1304, 561);
             this.pnlCalender.TabIndex = 1;
             // 
             // lstvCalender
@@ -96,7 +96,7 @@
             this.lstvCalender.HideSelection = false;
             this.lstvCalender.Location = new System.Drawing.Point(0, 0);
             this.lstvCalender.Name = "lstvCalender";
-            this.lstvCalender.Size = new System.Drawing.Size(1404, 563);
+            this.lstvCalender.Size = new System.Drawing.Size(1304, 561);
             this.lstvCalender.TabIndex = 0;
             this.lstvCalender.UseCompatibleStateImageBehavior = false;
             this.lstvCalender.View = System.Windows.Forms.View.Details;
@@ -104,37 +104,37 @@
             // clnReservationNo
             // 
             this.clnReservationNo.Text = "Mã Phiếu";
-            this.clnReservationNo.Width = 197;
+            this.clnReservationNo.Width = 149;
             // 
             // clnFullName
             // 
             this.clnFullName.Text = "Tên Khách Hàng";
-            this.clnFullName.Width = 213;
+            this.clnFullName.Width = 167;
             // 
             // clnPhoneNumber
             // 
             this.clnPhoneNumber.Text = "Số Điện Thoại";
-            this.clnPhoneNumber.Width = 187;
+            this.clnPhoneNumber.Width = 150;
             // 
             // clnStartDate
             // 
             this.clnStartDate.Text = "Ngày Chơi";
-            this.clnStartDate.Width = 188;
+            this.clnStartDate.Width = 127;
             // 
             // clnStartHour
             // 
-            this.clnStartHour.Text = "Thời Gian Bắt Đầu";
-            this.clnStartHour.Width = 185;
+            this.clnStartHour.Text = "Bắt Đầu";
+            this.clnStartHour.Width = 91;
             // 
             // clnEndHour
             // 
-            this.clnEndHour.Text = "Thời Gian Kết Thúc";
-            this.clnEndHour.Width = 198;
+            this.clnEndHour.Text = "Kết Thúc";
+            this.clnEndHour.Width = 90;
             // 
             // clnTotalHour
             // 
             this.clnTotalHour.Text = "Tổng Giờ Chơi";
-            this.clnTotalHour.Width = 216;
+            this.clnTotalHour.Width = 151;
             // 
             // pnlButton
             // 
@@ -148,13 +148,13 @@
             this.pnlButton.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlButton.Location = new System.Drawing.Point(0, 0);
             this.pnlButton.Name = "pnlButton";
-            this.pnlButton.Size = new System.Drawing.Size(1404, 38);
+            this.pnlButton.Size = new System.Drawing.Size(1304, 38);
             this.pnlButton.TabIndex = 0;
             // 
             // btnReset
             // 
             this.btnReset.Dock = System.Windows.Forms.DockStyle.Right;
-            this.btnReset.Location = new System.Drawing.Point(1196, 0);
+            this.btnReset.Location = new System.Drawing.Point(1096, 0);
             this.btnReset.Name = "btnReset";
             this.btnReset.Size = new System.Drawing.Size(104, 38);
             this.btnReset.TabIndex = 7;
@@ -164,6 +164,7 @@
             // 
             // dtmEndDate
             // 
+            this.dtmEndDate.CustomFormat = "dd/MM/yyy";
             this.dtmEndDate.Dock = System.Windows.Forms.DockStyle.Left;
             this.dtmEndDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtmEndDate.Location = new System.Drawing.Point(814, 0);
@@ -175,6 +176,7 @@
             // dtmStartDate
             // 
             this.dtmStartDate.CalendarFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtmStartDate.CustomFormat = "dd/MM/yyyy";
             this.dtmStartDate.Dock = System.Windows.Forms.DockStyle.Left;
             this.dtmStartDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtmStartDate.Location = new System.Drawing.Point(644, 0);
@@ -185,7 +187,7 @@
             // btnExit
             // 
             this.btnExit.Dock = System.Windows.Forms.DockStyle.Right;
-            this.btnExit.Location = new System.Drawing.Point(1300, 0);
+            this.btnExit.Location = new System.Drawing.Point(1200, 0);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(104, 38);
             this.btnExit.TabIndex = 3;
@@ -233,7 +235,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1404, 719);
+            this.ClientSize = new System.Drawing.Size(1304, 717);
             this.Controls.Add(this.pnlInf);
             this.Controls.Add(this.pnlTitle);
             this.Name = "CourtCalendar";

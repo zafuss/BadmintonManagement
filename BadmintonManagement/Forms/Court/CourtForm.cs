@@ -20,7 +20,6 @@ namespace BadmintonManagement.Forms.Court
         public static CourtForm Instance;
         public bool flagUser = false;
         public bool flagAdmin = false;
-        private DateTime lastCheckTime;
         public List<COURT> newCourt = new CourtService().getListCourtWithOutDisable();
         public List<RF_DETAIL> listRF = new RFDetailService().getRFDetail();
         public List<InfoCourt> listInfo = new RFDetailService().getCourtByRF();
@@ -37,10 +36,23 @@ namespace BadmintonManagement.Forms.Court
             }
             pnlDisplayCourt.AutoScroll = true;
             tmrCountDown.Start();
-            //Test();
+            Title();
             new CourtService().publicDay();
         }
-        
+
+        private void Title()
+        {
+            pnlFunction.Controls.Clear();
+            double width = (pnlFunction.Width);
+            double height = (pnlFunction.Height) / 12;
+            Label label = new Label();
+            label.Location = new Point(0, Convert.ToInt32(height));
+            label.Size = new Size(Convert.ToInt32(width), 50);
+            label.TextAlign = ContentAlignment.MiddleCenter;
+            label.Text = "Chức Năng";
+            label.Font = new Font("Segoe UI", 14, FontStyle.Bold);
+            pnlFunction.Controls.Add(label);
+        }
         private void tmrCountDown_Tick(object sender, EventArgs e)
         {
             label1.Text = String.Format("{0}", DateTime.Now.ToString("HH:mm:ss")); 
@@ -237,7 +249,7 @@ namespace BadmintonManagement.Forms.Court
             txtNameCustom.Text = infoCourt.NameCustom;
             txtCourtName.Text = infoCourt.CourtName;
             txtBranchName.Text = infoCourt.BranhName;
-            txtPhoneNumber.Text = 0+infoCourt.Phonenumber;
+            txtPhoneNumber.Text = infoCourt.Phonenumber;
             txtStartTime.Text = infoCourt.Starttime;
             txtEndTime.Text = infoCourt.Endtime;
         }
@@ -251,6 +263,7 @@ namespace BadmintonManagement.Forms.Court
             //addCourtForm.AutoScroll = true;
             pnlAdmin.AutoScroll = true;
             pnlAdmin.Controls.Add(addCourtForm);
+            addCourtForm.AutoScaleMode = AutoScaleMode.Inherit; 
             addCourtForm.Show();
         }
         private void customizeDesign()
@@ -354,6 +367,7 @@ namespace BadmintonManagement.Forms.Court
 
         private void pnlDisplayCourt_SizeChanged(object sender, EventArgs e)
         {
+            
             pnlDisplayCourt.Controls.Clear();
             pnlDisplayCourt.Refresh();
             if(flagAdmin == true)
