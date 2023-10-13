@@ -34,22 +34,23 @@
             this.clnUnit = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clnPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvServiceDetail = new System.Windows.Forms.DataGridView();
-            this.clnRecNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clnUsedQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clnUsedPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clnTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.btnSave = new System.Windows.Forms.Button();
+            this.btnCancel = new System.Windows.Forms.Button();
+            this.btnAccept = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.txtServiceName = new System.Windows.Forms.TextBox();
+            this.txtTotal = new System.Windows.Forms.TextBox();
+            this.nudTaken = new System.Windows.Forms.NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)(this.dgvService)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvServiceDetail)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudTaken)).BeginInit();
             this.SuspendLayout();
             // 
             // dgvService
@@ -60,10 +61,13 @@
             this.clnQuantity,
             this.clnUnit,
             this.clnPrice});
-            this.dgvService.Location = new System.Drawing.Point(434, 2);
+            this.dgvService.Location = new System.Drawing.Point(413, 2);
+            this.dgvService.MultiSelect = false;
             this.dgvService.Name = "dgvService";
-            this.dgvService.Size = new System.Drawing.Size(668, 384);
+            this.dgvService.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvService.Size = new System.Drawing.Size(689, 384);
             this.dgvService.TabIndex = 1;
+            this.dgvService.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvService_CellClick);
             // 
             // clnServiceName
             // 
@@ -95,22 +99,16 @@
             // 
             this.dgvServiceDetail.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvServiceDetail.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.clnRecNo,
             this.dataGridViewTextBoxColumn1,
             this.clnUsedQuantity,
+            this.clnUsedPrice,
             this.clnTotal});
             this.dgvServiceDetail.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.dgvServiceDetail.Location = new System.Drawing.Point(0, 392);
             this.dgvServiceDetail.Name = "dgvServiceDetail";
+            this.dgvServiceDetail.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvServiceDetail.Size = new System.Drawing.Size(1102, 339);
             this.dgvServiceDetail.TabIndex = 2;
-            // 
-            // clnRecNo
-            // 
-            this.clnRecNo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.clnRecNo.HeaderText = "Số hóa đơn";
-            this.clnRecNo.Name = "clnRecNo";
-            this.clnRecNo.ReadOnly = true;
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -125,6 +123,12 @@
             this.clnUsedQuantity.Name = "clnUsedQuantity";
             this.clnUsedQuantity.ReadOnly = true;
             // 
+            // clnUsedPrice
+            // 
+            this.clnUsedPrice.HeaderText = "Giá";
+            this.clnUsedPrice.Name = "clnUsedPrice";
+            this.clnUsedPrice.ReadOnly = true;
+            // 
             // clnTotal
             // 
             this.clnTotal.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
@@ -132,37 +136,40 @@
             this.clnTotal.Name = "clnTotal";
             this.clnTotal.ReadOnly = true;
             // 
-            // button1
+            // btnSave
             // 
-            this.button1.Location = new System.Drawing.Point(12, 323);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 63);
-            this.button1.TabIndex = 3;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnSave.Location = new System.Drawing.Point(8, 323);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(75, 63);
+            this.btnSave.TabIndex = 3;
+            this.btnSave.Text = "Lưu";
+            this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
-            // button2
+            // btnCancel
             // 
-            this.button2.Location = new System.Drawing.Point(115, 323);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 63);
-            this.button2.TabIndex = 4;
-            this.button2.Text = "button2";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnCancel.Location = new System.Drawing.Point(115, 323);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(75, 63);
+            this.btnCancel.TabIndex = 4;
+            this.btnCancel.Text = "Hủy";
+            this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
-            // button3
+            // btnAccept
             // 
-            this.button3.Location = new System.Drawing.Point(230, 323);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 63);
-            this.button3.TabIndex = 5;
-            this.button3.Text = "button3";
-            this.button3.UseVisualStyleBackColor = true;
+            this.btnAccept.Location = new System.Drawing.Point(227, 323);
+            this.btnAccept.Name = "btnAccept";
+            this.btnAccept.Size = new System.Drawing.Size(75, 63);
+            this.btnAccept.TabIndex = 5;
+            this.btnAccept.Text = "Xác nhận";
+            this.btnAccept.UseVisualStyleBackColor = true;
+            this.btnAccept.Click += new System.EventHandler(this.btnAccept_Click);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(-4, 12);
+            this.label1.Location = new System.Drawing.Point(11, 90);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(89, 20);
             this.label1.TabIndex = 6;
@@ -171,7 +178,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(-4, 56);
+            this.label2.Location = new System.Drawing.Point(11, 134);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(72, 20);
             this.label2.TabIndex = 7;
@@ -188,34 +195,36 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(-4, 107);
+            this.label4.Location = new System.Drawing.Point(11, 185);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(75, 20);
             this.label4.TabIndex = 9;
             this.label4.Text = "Tổng tiền";
             // 
-            // textBox1
+            // txtServiceName
             // 
-            this.textBox1.Location = new System.Drawing.Point(100, 9);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(205, 26);
-            this.textBox1.TabIndex = 10;
+            this.txtServiceName.Location = new System.Drawing.Point(115, 87);
+            this.txtServiceName.Name = "txtServiceName";
+            this.txtServiceName.ReadOnly = true;
+            this.txtServiceName.Size = new System.Drawing.Size(187, 26);
+            this.txtServiceName.TabIndex = 10;
             // 
-            // textBox2
+            // txtTotal
             // 
-            this.textBox2.Location = new System.Drawing.Point(100, 56);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(205, 26);
-            this.textBox2.TabIndex = 11;
+            this.txtTotal.Location = new System.Drawing.Point(115, 182);
+            this.txtTotal.Name = "txtTotal";
+            this.txtTotal.ReadOnly = true;
+            this.txtTotal.Size = new System.Drawing.Size(187, 26);
+            this.txtTotal.TabIndex = 12;
             // 
-            // textBox3
+            // nudTaken
             // 
-            this.textBox3.Location = new System.Drawing.Point(100, 104);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.ReadOnly = true;
-            this.textBox3.Size = new System.Drawing.Size(205, 26);
-            this.textBox3.TabIndex = 12;
+            this.nudTaken.Enabled = false;
+            this.nudTaken.Location = new System.Drawing.Point(115, 132);
+            this.nudTaken.Name = "nudTaken";
+            this.nudTaken.Size = new System.Drawing.Size(60, 26);
+            this.nudTaken.TabIndex = 13;
+            this.nudTaken.ValueChanged += new System.EventHandler(this.numericUpDown1_ValueChanged);
             // 
             // ServiceReceiptDetail
             // 
@@ -223,24 +232,26 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightGray;
             this.ClientSize = new System.Drawing.Size(1102, 731);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.nudTaken);
+            this.Controls.Add(this.txtTotal);
+            this.Controls.Add(this.txtServiceName);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnAccept);
+            this.Controls.Add(this.btnCancel);
+            this.Controls.Add(this.btnSave);
             this.Controls.Add(this.dgvServiceDetail);
             this.Controls.Add(this.dgvService);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "ServiceReceiptDetail";
             this.Text = "ServiceReceiptDetail";
+            this.Load += new System.EventHandler(this.ServiceReceiptDetail_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvService)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvServiceDetail)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudTaken)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -253,19 +264,19 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn clnQuantity;
         private System.Windows.Forms.DataGridViewTextBoxColumn clnUnit;
         private System.Windows.Forms.DataGridViewTextBoxColumn clnPrice;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clnRecNo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clnUsedQuantity;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clnTotal;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button btnSave;
+        private System.Windows.Forms.Button btnCancel;
+        private System.Windows.Forms.Button btnAccept;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox txtServiceName;
+        private System.Windows.Forms.TextBox txtTotal;
+        private System.Windows.Forms.NumericUpDown nudTaken;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clnUsedQuantity;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clnUsedPrice;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clnTotal;
     }
 }

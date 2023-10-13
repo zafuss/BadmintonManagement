@@ -48,14 +48,9 @@ namespace BadmintonManagement.Forms.Service
                 dgvServices.Rows[index].Cells[3].Value = item.Price;
                 dgvServices.Rows[index].Cells[4].Value = item.Quantity;
                 dgvServices.Rows[index].Cells[5].Value = item.C_Status == "Enabled" ? "Kích hoạt" : "Vô hiệu hoá";
-
-
             }
             refreshTextBox();
         }
-
-
-
         private void btnAddService_Click(object sender, EventArgs e)
         {
             try
@@ -197,6 +192,9 @@ namespace BadmintonManagement.Forms.Service
                 e.Handled = true;
         }
 
- 
+        private void dgvServices_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

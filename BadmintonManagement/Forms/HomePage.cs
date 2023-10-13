@@ -184,6 +184,10 @@ namespace BadmintonManagement.Forms.AuthorizationForms
                 if (rev.C_Status == 2 && DateTime.Compare(rev.StartTime.Value, DateTime.Now) < 0)
                 {
                     rev.C_Status = 3;
+                    if (Application.OpenForms["CourtForm"] != null && !Application.OpenForms["CourtForm"].IsDisposed)
+                    {
+                        CourtForm.Instance.ReLoad();
+                    }
                 }
                 else
                 if (s > 0 || rev.C_Status > 1)
@@ -216,6 +220,7 @@ namespace BadmintonManagement.Forms.AuthorizationForms
         }
         private void timerRealTimeStatusCapture_Tick(object sender, EventArgs e)
         {
+           
             bool t = RealTimeCaptureStatusReservation();
         }
 

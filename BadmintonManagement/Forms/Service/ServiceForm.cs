@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using BadmintonManagement.Forms.Service.ServiceReceipt;
 
 namespace BadmintonManagement.Forms.Service
 {
@@ -16,10 +17,8 @@ namespace BadmintonManagement.Forms.Service
         public ServiceForm()
         {
             InitializeComponent();
-            OpenChildForm(new ShowServiceReceiptForm());
-            btnReceiptServices.BackColor = SystemColors.ButtonShadow;
+            
         }
-
         private void OpenChildForm(Form childForm)
         {
             if (activeForm != null)
@@ -34,14 +33,6 @@ namespace BadmintonManagement.Forms.Service
             childForm.Show();
         }
 
-        private void btnServiceReceipt_Click(object sender, EventArgs e)
-        {
-            OpenChildForm(new ManageServiceForm());
-            btnServiceReceipt.BackColor = SystemColors.ButtonShadow;
-            btnReceiptServices.BackColor = Color.LightGray;
-            //btnCreateServiceReceipt.BackColor = Color.LightGray;
-        }
-
         private void btnCreateServiceReceipt_Click(object sender, EventArgs e)
         {
             OpenChildForm(new ManageServiceForm());
@@ -49,17 +40,44 @@ namespace BadmintonManagement.Forms.Service
             btnServiceReceipt.BackColor = Color.LightGray;
             btnReceiptServices.BackColor = Color.LightGray;
         }
-
+        string serviceRecNo;
+        private void LoadServiceRecNo(string serviceRecNo)
+        {
+            this.serviceRecNo = serviceRecNo;
+        }
         private void btnReceiptServices_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new ShowServiceReceiptForm());
+            ShowServiceReceiptForm frm = new ShowServiceReceiptForm();
+            frm.TheChosenServiceReceipt = new ShowServiceReceiptForm.GetTheChosenServiceReceipt(LoadServiceRecNo);
+            OpenChildForm(frm);
             btnReceiptServices.BackColor = SystemColors.ButtonShadow;
             btnServiceReceipt.BackColor = Color.LightGray;
             //btnCreateServiceReceipt.BackColor= Color.LightGray; 
         }
         private void btnAdd_Click(object sender, EventArgs e)
         {
-
+            ServiceRec frm = new ServiceRec();
+            frm.ReloadShowServiceReceipt = new ServiceRec.ChangeServiceReceipt(LoadTheShowedReceipt);
+            frm.ShowDialog();
+        }
+        private void LoadTheShowedReceipt(int i)
+        {
+            btnReceiptServices.PerformClick();
+        }
+        private void btnDetail_Click(object sender, EventArgs e)
+        {
+            ServiceRec frm = new ServiceRec(serviceRecNo);
+            frm.ShowDialog();
+        }
+        private void btnServiceReceipt_Click_1(object sender, EventArgs e)
+        {
+            OpenChildForm(new ManageServiceForm());
+            btnServiceReceipt.BackColor = SystemColors.ButtonShadow;
+            btnReceiptServices.BackColor = Color.LightGray;
+        }
+        private void ServiceForm_Load(object sender, EventArgs e)
+        {
+            btnReceiptServices.PerformClick();
         }
     }
 }
