@@ -54,12 +54,15 @@ namespace BadmintonManagement.Forms.Service.ServiceReceipt
             List<C_SERVICE> listService = context.C_SERVICE.ToList();
             foreach(C_SERVICE item in listService)
             {
-                int i = dgvService.Rows.Add();
-                int d = 0;
-                dgvService.Rows[i].Cells[d++].Value = item.ServiceName;
-                dgvService.Rows[i].Cells[d++].Value = item.Quantity;
-                dgvService.Rows[i].Cells[d++].Value = item.Unit;
-                dgvService.Rows[i].Cells[d++].Value = item.Price;
+                if(item.C_Status == "Enabled")
+                {
+                    int i = dgvService.Rows.Add();
+                    int d = 0;
+                    dgvService.Rows[i].Cells[d++].Value = item.ServiceName;
+                    dgvService.Rows[i].Cells[d++].Value = item.Quantity;
+                    dgvService.Rows[i].Cells[d++].Value = item.Unit;
+                    dgvService.Rows[i].Cells[d++].Value = item.Price;
+                }
             }
         }
         private int ServiceIndex(string serviceName)

@@ -21,42 +21,11 @@ namespace BadmintonManagement.Forms.Service.ServiceReceipt
         public ServiceRec(string serviceRecNo)
         {
             InitializeComponent();
-            if(serviceRecNo == string.Empty)
-            {
-                MessageBox.Show("Lỗi không tìm được hóa đơn", "Thông báo");
-                this.Close();
-            }
-            SERVICE_RECEIPT s = context.SERVICE_RECEIPT.FirstOrDefault(p => p.ServiceReceiptNo == serviceRecNo);
-            BindGrid(s.SERVICE_DETAIL.ToList());
-            txtRecNo.Text = s.ServiceReceiptNo;
-            txtUser.Text = s.Username;
-            if(s.PhoneNumber == null)
-            {
-                txtPhoneNumber.Text = string.Empty; 
-                txtCustomerName.Text = string.Empty;
-                txtEmail.Text = string.Empty;
-            }
-            else
-            {
-                txtPhoneNumber.Text = s.PhoneNumber;
-                if(s.CUSTOMER.FullName == null)
-                    txtCustomerName.Text = string.Empty;
-                else
-                    txtCustomerName.Text = s.CUSTOMER.FullName;
-                if(s.CUSTOMER.Email == null)
-                    txtEmail.Text = string.Empty;
-                else
-                    txtEmail.Text = s.CUSTOMER.Email;
-            }
-            txtRecNo.Enabled = false;
-            txtTotal.Text = s.Total.ToString();
-            btnPayment.Visible = false;
-            btnServiceRecDetail.Visible = false;
-            txtPhoneNumber.Enabled = false;
-            txtCustomerName.Enabled = false;
-            txtEmail.Enabled = false;
+            this.serviceRecNo = serviceRecNo;
+            isNew = false;
         }
-        
+        string serviceRecNo;
+        bool isNew=true;
         private void BindGrid(List<SERVICE_DETAIL> listSD)
         {
             dgvServiceDetail.Rows.Clear();
@@ -86,10 +55,52 @@ namespace BadmintonManagement.Forms.Service.ServiceReceipt
         }
         private void ServiceReciept_Load(object sender, EventArgs e)
         {
-            txtRecNo.Text = GenerateServiceRecNo();
-            txtUser.Text = Properties.Settings.Default.Username;
-            FillCustomerPhoneNumber();
-            txtTotal.Text = GetTheTotal().ToString();
+            if(isNew == true) 
+            {
+                txtRecNo.Text = GenerateServiceRecNo();
+                txtUser.Text = Properties.Settings.Default.Username;
+                FillCustomerPhoneNumber();
+                txtTotal.Text = GetTheTotal().ToString();
+            }
+            else
+            {
+                if (serviceRecNo == null)
+                {
+                    MessageBox.Show("Lỗi không tìm được hóa đơn", "Thông báo");
+                    this.Close();
+                    return;
+                }
+                SERVICE_RECEIPT s = context.SERVICE_RECEIPT.FirstOrDefault(p => p.ServiceReceiptNo == serviceRecNo);
+                BindGrid(s.SERVICE_DETAIL.ToList());
+                txtRecNo.Text = s.ServiceReceiptNo;
+                txtUser.Text = s.Username;
+                if (s.PhoneNumber == null)
+                {
+                    txtPhoneNumber.Text = string.Empty;
+                    txtCustomerName.Text = string.Empty;
+                    txtEmail.Text = string.Empty;
+                }
+                else
+                {
+                    txtPhoneNumber.Text = s.PhoneNumber;
+                    if (s.CUSTOMER.FullName == null)
+                        txtCustomerName.Text = string.Empty;
+                    else
+                        txtCustomerName.Text = s.CUSTOMER.FullName;
+                    if (s.CUSTOMER.Email == null)
+                        txtEmail.Text = string.Empty;
+                    else
+                        txtEmail.Text = s.CUSTOMER.Email;
+                }
+                txtRecNo.Enabled = false;
+                txtTotal.Text = s.Total.ToString();
+                btnPayment.Visible = false;
+                btnServiceRecDetail.Visible = false;
+                txtPhoneNumber.Enabled = false;
+                txtCustomerName.Enabled = false;
+                txtEmail.Enabled = false;
+            }
+            
         }
         private decimal GetTheTotal()
         {
