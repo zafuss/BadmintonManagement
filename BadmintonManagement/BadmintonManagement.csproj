@@ -144,11 +144,23 @@
     <Compile Include="Database\ServiceReceiptServices.cs" />
     <Compile Include="Database\ServiceServices.cs" />
     <Compile Include="Database\UserServices.cs" />
-    <Compile Include="Forms\AuthorizationForms\AccountCenterForm.cs">
+    <Compile Include="Forms\AuthorizationForms\AccountCenterForms\AccountCenterForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\AuthorizationForms\AccountCenterForm.Designer.cs">
+    <Compile Include="Forms\AuthorizationForms\AccountCenterForms\AccountCenterForm.Designer.cs">
       <DependentUpon>AccountCenterForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\AuthorizationForms\AccountCenterForms\AccountChangePasswordCenterForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AuthorizationForms\AccountCenterForms\AccountChangePasswordCenterForm.Designer.cs">
+      <DependentUpon>AccountChangePasswordCenterForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\AuthorizationForms\AccountCenterForms\AccountInformationCenterForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AuthorizationForms\AccountCenterForms\AccountInformationCenterForm.Designer.cs">
+      <DependentUpon>AccountInformationCenterForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Court\CourtCalendar.cs">
       <SubType>Form</SubType>
@@ -217,11 +229,11 @@
     <Compile Include="Forms\Service\ServiceReceipt\ServiceReceiptDetail.Designer.cs">
       <DependentUpon>ServiceReceiptDetail.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Service\ServiceReceipt\ServiceReciept.cs">
+    <Compile Include="Forms\Service\ServiceReceipt\ServiceRec.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Service\ServiceReceipt\ServiceReciept.Designer.cs">
-      <DependentUpon>ServiceReciept.cs</DependentUpon>
+    <Compile Include="Forms\Service\ServiceReceipt\ServiceRec.Designer.cs">
+      <DependentUpon>ServiceRec.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Service\ShowServiceReceiptForm.cs">
       <SubType>Form</SubType>
@@ -347,8 +359,14 @@
     <EmbeddedResource Include="CustomerReport.rdlc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\AuthorizationForms\AccountCenterForm.resx">
+    <EmbeddedResource Include="Forms\AuthorizationForms\AccountCenterForms\AccountCenterForm.resx">
       <DependentUpon>AccountCenterForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\AuthorizationForms\AccountCenterForms\AccountChangePasswordCenterForm.resx">
+      <DependentUpon>AccountChangePasswordCenterForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\AuthorizationForms\AccountCenterForms\AccountInformationCenterForm.resx">
+      <DependentUpon>AccountInformationCenterForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\AuthorizationForms\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
@@ -389,8 +407,8 @@
     <EmbeddedResource Include="Forms\Service\ServiceReceipt\ServiceReceiptDetail.resx">
       <DependentUpon>ServiceReceiptDetail.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Service\ServiceReceipt\ServiceReciept.resx">
-      <DependentUpon>ServiceReciept.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Service\ServiceReceipt\ServiceRec.resx">
+      <DependentUpon>ServiceRec.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Service\ShowServiceReceiptForm.resx">
       <DependentUpon>ShowServiceReceiptForm.cs</DependentUpon>

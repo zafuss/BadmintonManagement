@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BadmintonManagement.Database;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -47,7 +48,8 @@ namespace BadmintonManagement
         {
             this.Hide();
             validityOTPperiod = 60;
-            OTPService.SendActiveOTP(receiveEmail, callback);
+            var user = UserServices.GetUserByEmail(receiveEmail);
+            OTPService.SendFirstEmail(user, receiveEmail, callback);
         }
 
         private void Timer_Tick(object sender, EventArgs e)// hàm đếm ngược thời gian

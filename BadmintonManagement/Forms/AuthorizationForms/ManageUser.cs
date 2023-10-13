@@ -174,7 +174,7 @@ namespace BadmintonManagement.Forms.AuthorizationForms
 
                 };
                 //FirebaseHelper.UpdateUser(user, selectedUsername, selectedEmail);
-                UserServices.UpdateUser(user, selectedEmail, selectedUsername, selectedPhoneNumber);
+                UserServices.UpdateUser(user, selectedEmail, selectedUsername, selectedPhoneNumber, cbxChangePassword.Checked ? true : false);
                 MessageBox.Show("Cập nhật user thành công!", "Thông báo");
                 BindGrid();
             }
