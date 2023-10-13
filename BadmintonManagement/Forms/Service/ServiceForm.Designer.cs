@@ -64,6 +64,7 @@
             this.btnServiceReceipt.TabIndex = 3;
             this.btnServiceReceipt.Text = "Quản lý dịch vụ";
             this.btnServiceReceipt.UseVisualStyleBackColor = false;
+            this.btnServiceReceipt.Click += new System.EventHandler(this.btnServiceReceipt_Click_1);
             // 
             // panel2
             // 
@@ -133,6 +134,7 @@
             this.Margin = new System.Windows.Forms.Padding(5);
             this.Name = "ServiceForm";
             this.Text = "Dịch vụ";
+            this.Load += new System.EventHandler(this.ServiceForm_Load);
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);

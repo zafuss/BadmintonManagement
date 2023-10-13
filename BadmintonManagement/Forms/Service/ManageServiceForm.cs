@@ -51,9 +51,6 @@ namespace BadmintonManagement.Forms.Service
             }
             refreshTextBox();
         }
-
-
-
         private void btnAddService_Click(object sender, EventArgs e)
         {
             try
@@ -195,6 +192,9 @@ namespace BadmintonManagement.Forms.Service
                 e.Handled = true;
         }
 
- 
+        private void dgvServices_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

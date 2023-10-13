@@ -39,13 +39,13 @@
             this.txtCustomerName = new System.Windows.Forms.TextBox();
             this.txtTotal = new System.Windows.Forms.TextBox();
             this.dgvServiceDetail = new System.Windows.Forms.DataGridView();
-            this.bntServiceRecDetail = new System.Windows.Forms.Button();
-            this.btnPayment = new System.Windows.Forms.Button();
-            this.btnClose = new System.Windows.Forms.Button();
             this.clnServiceName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clnQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clnPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clnTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnServiceRecDetail = new System.Windows.Forms.Button();
+            this.btnPayment = new System.Windows.Forms.Button();
+            this.btnClose = new System.Windows.Forms.Button();
             this.txtEmail = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvServiceDetail)).BeginInit();
@@ -152,36 +152,6 @@
             this.dgvServiceDetail.Size = new System.Drawing.Size(1195, 353);
             this.dgvServiceDetail.TabIndex = 10;
             // 
-            // bntServiceRecDetail
-            // 
-            this.bntServiceRecDetail.Location = new System.Drawing.Point(723, 344);
-            this.bntServiceRecDetail.Name = "bntServiceRecDetail";
-            this.bntServiceRecDetail.Size = new System.Drawing.Size(128, 61);
-            this.bntServiceRecDetail.TabIndex = 11;
-            this.bntServiceRecDetail.Text = "Chọn dịch vụ";
-            this.bntServiceRecDetail.UseVisualStyleBackColor = true;
-            this.bntServiceRecDetail.Click += new System.EventHandler(this.bntServiceRecDetail_Click);
-            // 
-            // btnPayment
-            // 
-            this.btnPayment.Location = new System.Drawing.Point(894, 344);
-            this.btnPayment.Name = "btnPayment";
-            this.btnPayment.Size = new System.Drawing.Size(125, 61);
-            this.btnPayment.TabIndex = 12;
-            this.btnPayment.Text = "Thanh toán";
-            this.btnPayment.UseVisualStyleBackColor = true;
-            this.btnPayment.Click += new System.EventHandler(this.btnPayment_Click);
-            // 
-            // btnClose
-            // 
-            this.btnClose.Location = new System.Drawing.Point(1058, 344);
-            this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(125, 61);
-            this.btnClose.TabIndex = 13;
-            this.btnClose.Text = "Thoát";
-            this.btnClose.UseVisualStyleBackColor = true;
-            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
-            // 
             // clnServiceName
             // 
             this.clnServiceName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
@@ -209,6 +179,36 @@
             this.clnTotal.Name = "clnTotal";
             this.clnTotal.ReadOnly = true;
             // 
+            // btnServiceRecDetail
+            // 
+            this.btnServiceRecDetail.Location = new System.Drawing.Point(723, 344);
+            this.btnServiceRecDetail.Name = "btnServiceRecDetail";
+            this.btnServiceRecDetail.Size = new System.Drawing.Size(128, 61);
+            this.btnServiceRecDetail.TabIndex = 11;
+            this.btnServiceRecDetail.Text = "Chọn dịch vụ";
+            this.btnServiceRecDetail.UseVisualStyleBackColor = true;
+            this.btnServiceRecDetail.Click += new System.EventHandler(this.bntServiceRecDetail_Click);
+            // 
+            // btnPayment
+            // 
+            this.btnPayment.Location = new System.Drawing.Point(894, 344);
+            this.btnPayment.Name = "btnPayment";
+            this.btnPayment.Size = new System.Drawing.Size(125, 61);
+            this.btnPayment.TabIndex = 12;
+            this.btnPayment.Text = "Thanh toán";
+            this.btnPayment.UseVisualStyleBackColor = true;
+            this.btnPayment.Click += new System.EventHandler(this.btnPayment_Click);
+            // 
+            // btnClose
+            // 
+            this.btnClose.Location = new System.Drawing.Point(1058, 344);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(125, 61);
+            this.btnClose.TabIndex = 13;
+            this.btnClose.Text = "Thoát";
+            this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            // 
             // txtEmail
             // 
             this.txtEmail.Location = new System.Drawing.Point(285, 284);
@@ -235,7 +235,7 @@
             this.Controls.Add(this.label6);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.btnPayment);
-            this.Controls.Add(this.bntServiceRecDetail);
+            this.Controls.Add(this.btnServiceRecDetail);
             this.Controls.Add(this.dgvServiceDetail);
             this.Controls.Add(this.txtTotal);
             this.Controls.Add(this.txtCustomerName);
@@ -271,7 +271,7 @@
         private System.Windows.Forms.TextBox txtCustomerName;
         private System.Windows.Forms.TextBox txtTotal;
         private System.Windows.Forms.DataGridView dgvServiceDetail;
-        private System.Windows.Forms.Button bntServiceRecDetail;
+        private System.Windows.Forms.Button btnServiceRecDetail;
         private System.Windows.Forms.Button btnPayment;
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.DataGridViewTextBoxColumn clnServiceName;

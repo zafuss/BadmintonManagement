@@ -20,9 +20,11 @@ namespace BadmintonManagement.Forms.Service
             InitializeComponent();
             BindGrid();
         }
-
+        public delegate void GetTheChosenServiceReceipt(string serviceRecNo);
+        public GetTheChosenServiceReceipt TheChosenServiceReceipt;
         private void BindGrid()
         {
+            dgvServiceReceipt.Rows.Clear();
             serviceReceiptList = ServiceReceiptServices.GetAllServiceReceipt();
             foreach (var item in serviceReceiptList)
             {   
@@ -34,10 +36,16 @@ namespace BadmintonManagement.Forms.Service
                 dgvServiceReceipt.Rows[index].Cells[4].Value = item.Total;
             }
         }
-
-        private void panel1_Paint(object sender, PaintEventArgs e)
+        private void LoadGrid(int i)
         {
-
+            BindGrid();
+        }
+ 
+        private void dgvServiceReceipt_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int i = dgvServiceReceipt.SelectedRows.Count - 1;
+            string serviceRecNo = dgvServiceReceipt.SelectedRows[i].Cells[0].Value.ToString();
+            TheChosenServiceReceipt(serviceRecNo);
         }
     }
 }

@@ -53,12 +53,15 @@
             this.clnTotal});
             this.dgvServiceReceipt.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvServiceReceipt.Location = new System.Drawing.Point(0, 145);
+            this.dgvServiceReceipt.MultiSelect = false;
             this.dgvServiceReceipt.Name = "dgvServiceReceipt";
             this.dgvServiceReceipt.ReadOnly = true;
             this.dgvServiceReceipt.RowHeadersWidth = 51;
             this.dgvServiceReceipt.RowTemplate.Height = 27;
+            this.dgvServiceReceipt.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvServiceReceipt.Size = new System.Drawing.Size(1057, 596);
             this.dgvServiceReceipt.TabIndex = 0;
+            this.dgvServiceReceipt.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvServiceReceipt_CellClick);
             // 
             // clnSRNo
             // 
@@ -108,7 +111,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1057, 145);
             this.panel1.TabIndex = 1;
-            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // label1
             // 

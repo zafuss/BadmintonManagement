@@ -18,7 +18,61 @@ namespace BadmintonManagement.Forms.Service.ServiceReceipt
         {
             InitializeComponent();
         }
+        public ServiceRec(string serviceRecNo)
+        {
+            InitializeComponent();
+            if(serviceRecNo == string.Empty)
+            {
+                MessageBox.Show("Lỗi không tìm được hóa đơn", "Thông báo");
+                this.Close();
+            }
+            SERVICE_RECEIPT s = context.SERVICE_RECEIPT.FirstOrDefault(p => p.ServiceReceiptNo == serviceRecNo);
+            BindGrid(s.SERVICE_DETAIL.ToList());
+            txtRecNo.Text = s.ServiceReceiptNo;
+            txtUser.Text = s.Username;
+            if(s.PhoneNumber == null)
+            {
+                txtPhoneNumber.Text = string.Empty; 
+                txtCustomerName.Text = string.Empty;
+                txtEmail.Text = string.Empty;
+            }
+            else
+            {
+                txtPhoneNumber.Text = s.PhoneNumber;
+                if(s.CUSTOMER.FullName == null)
+                    txtCustomerName.Text = string.Empty;
+                else
+                    txtCustomerName.Text = s.CUSTOMER.FullName;
+                if(s.CUSTOMER.Email == null)
+                    txtEmail.Text = string.Empty;
+                else
+                    txtEmail.Text = s.CUSTOMER.Email;
+            }
+            txtRecNo.Enabled = false;
+            txtTotal.Text = s.Total.ToString();
+            btnPayment.Visible = false;
+            btnServiceRecDetail.Visible = false;
+            txtPhoneNumber.Enabled = false;
+            txtCustomerName.Enabled = false;
+            txtEmail.Enabled = false;
+        }
+        
+        private void BindGrid(List<SERVICE_DETAIL> listSD)
+        {
+            dgvServiceDetail.Rows.Clear();
+            foreach(SERVICE_DETAIL item in listSD) 
+            {
+                int index = dgvServiceDetail.Rows.Add();
+                int d = 0;
+                dgvServiceDetail.Rows[index].Cells[d++].Value = item.C_SERVICE.ServiceName;
+                dgvServiceDetail.Rows[index].Cells[d++].Value = item.Quantity;
+                dgvServiceDetail.Rows[index].Cells[d++].Value = item.C_SERVICE.Price;
+                dgvServiceDetail.Rows[index].Cells[d++].Value = item.Quantity*item.C_SERVICE.Price;
+            }
+        }
         ModelBadmintonManage context = new ModelBadmintonManage();
+        public delegate void ChangeServiceReceipt(int i);
+        public ChangeServiceReceipt ReloadShowServiceReceipt;
         private string GenerateServiceRecNo()
         {
             DateTime d1 = DateTime.Now.Date;
@@ -103,7 +157,7 @@ namespace BadmintonManagement.Forms.Service.ServiceReceipt
             {
                 if (CheckExistPhoneNumber() == false)
                 {
-                    if (txtCustomerName.Text != string.Empty)
+                    if (txtPhoneNumber.Text != string.Empty)
                     {
                         CUSTOMER c = new CUSTOMER();
                         c.PhoneNumber = txtPhoneNumber.Text;
@@ -138,10 +192,10 @@ namespace BadmintonManagement.Forms.Service.ServiceReceipt
                     context.C_SERVICE.AddOrUpdate(ser);
                     context.SaveChanges();
                 }
+                ReloadShowServiceReceipt(1);
                 this.Close();
             }
         }
-
         private void btnClose_Click(object sender, EventArgs e)
         {
             this.Close();
