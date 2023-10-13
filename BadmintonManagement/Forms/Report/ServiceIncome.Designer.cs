@@ -96,6 +96,7 @@
             this.dtpMonth.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpMonth.Location = new System.Drawing.Point(243, 16);
             this.dtpMonth.Name = "dtpMonth";
+            this.dtpMonth.ShowUpDown = true;
             this.dtpMonth.Size = new System.Drawing.Size(137, 20);
             this.dtpMonth.TabIndex = 12;
             // 
@@ -156,8 +157,9 @@
             this.rptServiceReceipt.ServerReport.BearerToken = null;
             this.rptServiceReceipt.Size = new System.Drawing.Size(720, 380);
             this.rptServiceReceipt.TabIndex = 4;
+            this.rptServiceReceipt.ZoomMode = Microsoft.Reporting.WinForms.ZoomMode.PageWidth;
             // 
-            // ServiceReceiptForm
+            // ServiceIncome
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -165,7 +167,7 @@
             this.Controls.Add(this.rptServiceReceipt);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.rptReceipt);
-            this.Name = "ServiceReceiptForm";
+            this.Name = "ServiceIncome";
             this.Text = "ServiceReceiptForm";
             this.Load += new System.EventHandler(this.ServiceReceiptForm_Load);
             this.groupBox1.ResumeLayout(false);

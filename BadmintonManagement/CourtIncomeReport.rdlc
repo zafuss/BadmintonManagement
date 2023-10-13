@@ -172,19 +172,22 @@
             <TablixBody>
               <TablixColumns>
                 <TablixColumn>
+                  <Width>0.44792in</Width>
+                </TablixColumn>
+                <TablixColumn>
                   <Width>1.04292in</Width>
                 </TablixColumn>
                 <TablixColumn>
                   <Width>1.08458in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>1.32292in</Width>
+                  <Width>1.46875in</Width>
                 </TablixColumn>
                 <TablixColumn>
                   <Width>1.38542in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>1.28125in</Width>
+                  <Width>1.38542in</Width>
                 </TablixColumn>
                 <TablixColumn>
                   <Width>1.45833in</Width>
@@ -194,6 +197,53 @@
                 <TablixRow>
                   <Height>0.25in</Height>
                   <TablixCells>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox1">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>STT</Value>
+                                  <Style>
+                                    <FontWeight>Bold</FontWeight>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
+                            </Paragraph>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value />
+                                  <Style>
+                                    <FontWeight>Bold</FontWeight>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox1</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
                     <TablixCell>
                       <CellContents>
                         <Textbox Name="Textbox19">
@@ -405,6 +455,39 @@
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
+                        <Textbox Name="Textbox4">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=RunningValue(Fields!ReceiptNo.Value, Count, Nothing)</Value>
+                                  <Style />
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox4</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                        <rd:Selected>true</rd:Selected>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
                         <Textbox Name="ReceiptNo">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
@@ -607,6 +690,7 @@
                 <TablixMember />
                 <TablixMember />
                 <TablixMember />
+                <TablixMember />
               </TablixMembers>
             </TablixColumnHierarchy>
             <TablixRowHierarchy>
@@ -621,9 +705,9 @@
             </TablixRowHierarchy>
             <DataSetName>CourtIncomeReport</DataSetName>
             <Top>2.36681in</Top>
-            <Left>1.3125in</Left>
+            <Left>0.92708in</Left>
             <Height>0.5in</Height>
-            <Width>7.57542in</Width>
+            <Width>8.27334in</Width>
             <ZIndex>2</ZIndex>
             <Style>
               <Border>
@@ -651,9 +735,9 @@
             </Paragraphs>
             <rd:DefaultName>Textbox31</rd:DefaultName>
             <Top>2.86681in</Top>
-            <Left>1.31251in</Left>
+            <Left>6.46084in</Left>
             <Height>0.25in</Height>
-            <Width>6.11708in</Width>
+            <Width>1.28125in</Width>
             <ZIndex>3</ZIndex>
             <Style>
               <Border>
@@ -685,9 +769,9 @@
             </Paragraphs>
             <rd:DefaultName>Textbox32</rd:DefaultName>
             <Top>2.86681in</Top>
-            <Left>7.42959in</Left>
+            <Left>7.76987in</Left>
             <Height>0.25in</Height>
-            <Width>1.45833in</Width>
+            <Width>1.43055in</Width>
             <ZIndex>4</ZIndex>
             <Style>
               <Border>

@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.btnReservationReport = new System.Windows.Forms.Button();
+            this.btnReportSerVice = new System.Windows.Forms.Button();
             this.btnCustomerReport = new System.Windows.Forms.Button();
             this.pnlReceiptReport = new System.Windows.Forms.Panel();
             this.btnServiceIncome = new System.Windows.Forms.Button();
@@ -46,7 +46,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.LightGray;
-            this.panel1.Controls.Add(this.btnReservationReport);
+            this.panel1.Controls.Add(this.btnReportSerVice);
             this.panel1.Controls.Add(this.btnCustomerReport);
             this.panel1.Controls.Add(this.pnlReceiptReport);
             this.panel1.Controls.Add(this.btnIncome);
@@ -58,21 +58,20 @@
             this.panel1.Size = new System.Drawing.Size(127, 403);
             this.panel1.TabIndex = 0;
             // 
-            // btnReservationReport
+            // btnReportSerVice
             // 
-            this.btnReservationReport.BackColor = System.Drawing.Color.LightGray;
-            this.btnReservationReport.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnReservationReport.FlatAppearance.BorderSize = 0;
-            this.btnReservationReport.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnReservationReport.ImageAlign = System.Drawing.ContentAlignment.TopRight;
-            this.btnReservationReport.Location = new System.Drawing.Point(0, 154);
-            this.btnReservationReport.Margin = new System.Windows.Forms.Padding(2);
-            this.btnReservationReport.Name = "btnReservationReport";
-            this.btnReservationReport.Size = new System.Drawing.Size(127, 29);
-            this.btnReservationReport.TabIndex = 6;
-            this.btnReservationReport.Text = "Thống kê phiếu đặt sân";
-            this.btnReservationReport.UseVisualStyleBackColor = false;
-            this.btnReservationReport.Click += new System.EventHandler(this.btnReservationReport_Click);
+            this.btnReportSerVice.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnReportSerVice.FlatAppearance.BorderSize = 0;
+            this.btnReportSerVice.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnReportSerVice.Location = new System.Drawing.Point(0, 154);
+            this.btnReportSerVice.Name = "btnReportSerVice";
+            this.btnReportSerVice.Padding = new System.Windows.Forms.Padding(8, 0, 0, 0);
+            this.btnReportSerVice.Size = new System.Drawing.Size(127, 30);
+            this.btnReportSerVice.TabIndex = 6;
+            this.btnReportSerVice.Text = "Báo cáo tồn kho dịch vụ";
+            this.btnReportSerVice.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnReportSerVice.UseVisualStyleBackColor = true;
+            this.btnReportSerVice.Click += new System.EventHandler(this.btnReportSerVice_Click);
             // 
             // btnCustomerReport
             // 
@@ -84,9 +83,11 @@
             this.btnCustomerReport.Location = new System.Drawing.Point(0, 125);
             this.btnCustomerReport.Margin = new System.Windows.Forms.Padding(2);
             this.btnCustomerReport.Name = "btnCustomerReport";
+            this.btnCustomerReport.Padding = new System.Windows.Forms.Padding(8, 0, 0, 0);
             this.btnCustomerReport.Size = new System.Drawing.Size(127, 29);
             this.btnCustomerReport.TabIndex = 5;
-            this.btnCustomerReport.Text = "Thống kê khách hàng";
+            this.btnCustomerReport.Text = "Thống kê lượt khách hàng";
+            this.btnCustomerReport.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnCustomerReport.UseVisualStyleBackColor = false;
             this.btnCustomerReport.Click += new System.EventHandler(this.btnCustomerReport_Click_1);
             // 
@@ -108,7 +109,7 @@
             this.btnServiceIncome.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnServiceIncome.Location = new System.Drawing.Point(0, 30);
             this.btnServiceIncome.Name = "btnServiceIncome";
-            this.btnServiceIncome.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
+            this.btnServiceIncome.Padding = new System.Windows.Forms.Padding(25, 0, 0, 0);
             this.btnServiceIncome.Size = new System.Drawing.Size(127, 30);
             this.btnServiceIncome.TabIndex = 1;
             this.btnServiceIncome.Text = "Doanh thu dịch vụ";
@@ -124,7 +125,7 @@
             this.btnCourtIncome.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCourtIncome.Location = new System.Drawing.Point(0, 0);
             this.btnCourtIncome.Name = "btnCourtIncome";
-            this.btnCourtIncome.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
+            this.btnCourtIncome.Padding = new System.Windows.Forms.Padding(25, 0, 0, 0);
             this.btnCourtIncome.Size = new System.Drawing.Size(127, 30);
             this.btnCourtIncome.TabIndex = 0;
             this.btnCourtIncome.Text = "Doanh thu sân";
@@ -210,6 +211,6 @@
         private System.Windows.Forms.Button btnServiceIncome;
         private System.Windows.Forms.Button btnCourtIncome;
         private System.Windows.Forms.Button btnCustomerReport;
-        private System.Windows.Forms.Button btnReservationReport;
+        private System.Windows.Forms.Button btnReportSerVice;
     }
 }

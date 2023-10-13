@@ -19,8 +19,8 @@ namespace BadmintonManagement.Forms.Report
             btnChartIncome.BackColor = SystemColors.ButtonShadow;
             btnIncome.BackColor = Color.LightGray;
             btnCustomerReport.BackColor = Color.LightGray;
-            btnReservationReport.BackColor = Color.LightGray;
             OpenChilForm(new FormIncome());
+            btnReportSerVice.BackColor = Color.LightGray;
             pnlReceiptReport.Visible = false;
             
         }
@@ -62,7 +62,7 @@ namespace BadmintonManagement.Forms.Report
             btnChartIncome.BackColor = SystemColors.ButtonShadow;
             btnIncome.BackColor = Color.LightGray;
             btnCustomerReport.BackColor = Color.LightGray;
-            btnReservationReport.BackColor = Color.LightGray;
+            btnReportSerVice.BackColor = Color.LightGray;
             OpenChilForm(new FormIncome());
         }
 
@@ -72,7 +72,7 @@ namespace BadmintonManagement.Forms.Report
             btnIncome.BackColor = SystemColors.ButtonShadow;
             btnChartIncome.BackColor = Color.LightGray;
             btnCustomerReport.BackColor = Color.LightGray;
-            btnReservationReport.BackColor = Color.LightGray;
+            btnReportSerVice.BackColor = Color.LightGray;
         }
 
         private void btnServiceIncome_Click(object sender, EventArgs e)
@@ -95,18 +95,18 @@ namespace BadmintonManagement.Forms.Report
             btnCustomerReport.BackColor = SystemColors.ButtonShadow;
             btnChartIncome.BackColor = Color.LightGray;
             btnIncome.BackColor = Color.LightGray;
-            btnReservationReport.BackColor = Color.LightGray;
+            btnReportSerVice.BackColor = Color.LightGray;
             OpenChilForm(new CustomerReport());
         }
 
-        private void btnReservationReport_Click(object sender, EventArgs e)
+        private void btnReportSerVice_Click(object sender, EventArgs e)
         {
             HiddenReceipt();
-            btnReservationReport.BackColor = SystemColors.ButtonShadow;
+            btnReportSerVice.BackColor = SystemColors.ButtonShadow;
+            btnCustomerReport.BackColor = Color.LightGray;
             btnChartIncome.BackColor = Color.LightGray;
             btnIncome.BackColor = Color.LightGray;
-            btnCustomerReport.BackColor = Color.LightGray;
-            OpenChilForm(new ReservationReport());
+            OpenChilForm(new ReportService());
         }
     }
 }

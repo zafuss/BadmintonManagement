@@ -67,7 +67,9 @@ namespace BadmintonManagement.Forms.Report
             }
             reader.Close();
             if (list.Count < 1)
+            {
                 throw new Exception("Khong có doanh thu trong thời gian này");
+            }
             Microsoft.Reporting.WinForms.ReportParameter[] param1 = new Microsoft.Reporting.WinForms.ReportParameter[2]
             {
                     new Microsoft.Reporting.WinForms.ReportParameter("nam",dtpYear.Text),
@@ -116,8 +118,10 @@ namespace BadmintonManagement.Forms.Report
             }
             reader1.Close();
             if (list1.Count < 1)
-                throw new Exception("Khong có doanh thu trong thời gian này");
-            
+            {
+                dtpMonth.Value = DateTime.Now; 
+                throw new Exception("Không có doanh thu trong thời gian này");
+            }
             reportViewer1.LocalReport.ReportPath = "ReportIncome.rdlc";
             var sour1 = new ReportDataSource("DataSetMonth", list1);
             reportViewer1.LocalReport.DataSources.Add(sour1);

@@ -54,20 +54,17 @@
             this.groupBox1.Controls.Add(this.rdbMonth);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox1.Location = new System.Drawing.Point(0, 0);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.groupBox1.Size = new System.Drawing.Size(1065, 108);
+            this.groupBox1.Size = new System.Drawing.Size(710, 77);
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Thời gian";
             // 
             // btnShowReport
             // 
-            this.btnShowReport.Location = new System.Drawing.Point(912, 62);
-            this.btnShowReport.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnShowReport.Location = new System.Drawing.Point(608, 40);
             this.btnShowReport.Name = "btnShowReport";
-            this.btnShowReport.Size = new System.Drawing.Size(94, 31);
+            this.btnShowReport.Size = new System.Drawing.Size(63, 20);
             this.btnShowReport.TabIndex = 7;
             this.btnShowReport.Text = "Thống kê";
             this.btnShowReport.UseVisualStyleBackColor = true;
@@ -76,20 +73,18 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(591, 68);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Location = new System.Drawing.Point(394, 44);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(77, 20);
+            this.label2.Size = new System.Drawing.Size(53, 13);
             this.label2.TabIndex = 6;
             this.label2.Text = "Đến ngày";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(286, 68);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(191, 44);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(65, 20);
+            this.label1.Size = new System.Drawing.Size(46, 13);
             this.label1.TabIndex = 5;
             this.label1.Text = "Từ ngày";
             // 
@@ -97,39 +92,35 @@
             // 
             this.dtpMonth.CustomFormat = "MM/yyyy";
             this.dtpMonth.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpMonth.Location = new System.Drawing.Point(364, 25);
-            this.dtpMonth.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.dtpMonth.Location = new System.Drawing.Point(243, 16);
             this.dtpMonth.Name = "dtpMonth";
-            this.dtpMonth.Size = new System.Drawing.Size(204, 26);
+            this.dtpMonth.Size = new System.Drawing.Size(137, 20);
             this.dtpMonth.TabIndex = 4;
             // 
             // dtpEnd
             // 
             this.dtpEnd.CustomFormat = "dd/MM/yyyy";
             this.dtpEnd.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpEnd.Location = new System.Drawing.Point(680, 62);
-            this.dtpEnd.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.dtpEnd.Location = new System.Drawing.Point(453, 40);
             this.dtpEnd.Name = "dtpEnd";
-            this.dtpEnd.Size = new System.Drawing.Size(204, 26);
+            this.dtpEnd.Size = new System.Drawing.Size(137, 20);
             this.dtpEnd.TabIndex = 3;
             // 
             // dtbStart
             // 
             this.dtbStart.CustomFormat = "dd/MM/yyyy";
             this.dtbStart.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtbStart.Location = new System.Drawing.Point(364, 62);
-            this.dtbStart.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.dtbStart.Location = new System.Drawing.Point(243, 40);
             this.dtbStart.Name = "dtbStart";
-            this.dtbStart.Size = new System.Drawing.Size(204, 26);
+            this.dtbStart.Size = new System.Drawing.Size(137, 20);
             this.dtbStart.TabIndex = 2;
             // 
             // rdbDay
             // 
             this.rdbDay.AutoSize = true;
-            this.rdbDay.Location = new System.Drawing.Point(78, 66);
-            this.rdbDay.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.rdbDay.Location = new System.Drawing.Point(52, 43);
             this.rdbDay.Name = "rdbDay";
-            this.rdbDay.Size = new System.Drawing.Size(174, 24);
+            this.rdbDay.Size = new System.Drawing.Size(121, 17);
             this.rdbDay.TabIndex = 1;
             this.rdbDay.TabStop = true;
             this.rdbDay.Text = "Thống kê theo ngày";
@@ -138,10 +129,9 @@
             // rdbMonth
             // 
             this.rdbMonth.AutoSize = true;
-            this.rdbMonth.Location = new System.Drawing.Point(78, 29);
-            this.rdbMonth.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.rdbMonth.Location = new System.Drawing.Point(52, 19);
             this.rdbMonth.Name = "rdbMonth";
-            this.rdbMonth.Size = new System.Drawing.Size(181, 24);
+            this.rdbMonth.Size = new System.Drawing.Size(125, 17);
             this.rdbMonth.TabIndex = 0;
             this.rdbMonth.TabStop = true;
             this.rdbMonth.Text = "Thống kê theo tháng";
@@ -151,29 +141,30 @@
             // 
             this.rptIncome.Dock = System.Windows.Forms.DockStyle.Fill;
             this.rptIncome.Location = new System.Drawing.Point(0, 0);
-            this.rptIncome.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.rptIncome.Name = "rptIncome";
             this.rptIncome.ServerReport.BearerToken = null;
-            this.rptIncome.Size = new System.Drawing.Size(1065, 632);
+            this.rptIncome.Size = new System.Drawing.Size(710, 411);
             this.rptIncome.TabIndex = 3;
             // 
             // rptCustomer
             // 
             this.rptCustomer.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.rptCustomer.Location = new System.Drawing.Point(0, 108);
+            this.rptCustomer.Location = new System.Drawing.Point(0, 77);
+            this.rptCustomer.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.rptCustomer.Name = "rptCustomer";
             this.rptCustomer.ServerReport.BearerToken = null;
-            this.rptCustomer.Size = new System.Drawing.Size(1065, 524);
+            this.rptCustomer.Size = new System.Drawing.Size(710, 334);
             this.rptCustomer.TabIndex = 4;
             // 
             // CustomerReport
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1065, 632);
+            this.ClientSize = new System.Drawing.Size(710, 411);
             this.Controls.Add(this.rptCustomer);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.rptIncome);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "CustomerReport";
             this.Text = "CustomerReport";
             this.Load += new System.EventHandler(this.CustomerReport_Load);

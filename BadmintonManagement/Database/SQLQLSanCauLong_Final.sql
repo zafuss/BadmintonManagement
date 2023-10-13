@@ -202,3 +202,20 @@ select rf.CourtID
 					                        where Cast(re.StartTime as Date) >= Cast(CURRENT_TIMESTAMP  as DATE) )
                         and rf.CourtID = @_idcourt
 --IncomeOfYear 2023
+
+
+select S1.ServiceReceiptNo,convert(varchar,S1.CreateDate,105) as NgayLap,C.FullName,S1.PhoneNumber,U._Name,S1.Total
+from SERVICE_RECEIPT S1,_USER U,CUSTOMER C
+where  S1.PhoneNumber = C.PhoneNumber and U.Username = S1.Username
+		and convert(varchar,month(s1.CreateDate)) = '4' and convert(varchar,year(s1.CreateDate)) = '2023' 
+
+select C.FullName,C.PhoneNumber,C.Email,count(R.ReservationNo) as SoLan
+from RESERVATION R,CUSTOMER C,RECEIPT R1
+where R.PhoneNumber = C.PhoneNumber and R1.ReservationNo = R.ReservationNo 
+	and R1._Date > '2023-4-16' and R1._Date < '2023-7-18'
+group by C.FullName,C.PhoneNumber,C.Email
+
+select C.FullName,C.PhoneNumber,C.Email,count(R.ReservationNo) as SoLan
+from RESERVATION R,CUSTOMER C,RECEIPT R1
+where R.PhoneNumber = C.PhoneNumber and R1.ReservationNo = R.ReservationNo and CONVERT(varchar,month(R1._Date))= '4'  and CONVERT(varchar,year(R1._Date))= '2023'
+group by C.FullName,C.PhoneNumber,C.Email

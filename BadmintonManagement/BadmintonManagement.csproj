@@ -133,12 +133,14 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>BadmintonManagementDBDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Database\CountCustomer.cs" />
     <Compile Include="Database\CourtIncomeReport.cs" />
     <Compile Include="Database\DatabaseInitial.cs" />
     <Compile Include="Database\IncomeSer.cs" />
     <Compile Include="Database\IncomeYear.cs" />
     <Compile Include="Database\InfoCourt.cs" />
     <Compile Include="Database\PriceServices.cs" />
+    <Compile Include="Database\ReportServiceInStoge.cs" />
     <Compile Include="Database\ServiceReceiptServices.cs" />
     <Compile Include="Database\ServiceServices.cs" />
     <Compile Include="Database\UserServices.cs" />
@@ -172,11 +174,11 @@
     <Compile Include="Forms\Report\CourtIncome.Designer.cs">
       <DependentUpon>CourtIncome.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Report\ReservationReport.cs">
+    <Compile Include="Forms\Report\ReportService.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Report\ReservationReport.Designer.cs">
-      <DependentUpon>ReservationReport.cs</DependentUpon>
+    <Compile Include="Forms\Report\ReportService.Designer.cs">
+      <DependentUpon>ReportService.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\ReservationCourt\BookingForm\Booking.cs">
       <SubType>Form</SubType>
@@ -363,8 +365,8 @@
     <EmbeddedResource Include="Forms\Report\CourtIncome.resx">
       <DependentUpon>CourtIncome.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Report\ReservationReport.resx">
-      <DependentUpon>ReservationReport.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Report\ReportService.resx">
+      <DependentUpon>ReportService.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\ReservationCourt\BookingForm\Booking.resx">
       <DependentUpon>Booking.cs</DependentUpon>
@@ -399,7 +401,7 @@
     <EmbeddedResource Include="CourtIncomeReport.rdlc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
-    <EmbeddedResource Include="ReservationReport.rdlc">
+    <EmbeddedResource Include="ReportServiceInStoge.rdlc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="ServiceReport.rdlc">
@@ -472,11 +474,14 @@
       <DependentUpon>BadmintonManagementDBDataSet1.xsd</DependentUpon>
     </None>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\BadmintonManagement.Database.CountCustomer.datasource" />
+    <None Include="Properties\DataSources\BadmintonManagement.Database.CountCustomerReport.datasource" />
     <None Include="Properties\DataSources\BadmintonManagement.Database.CourtIncome.datasource" />
     <None Include="Properties\DataSources\BadmintonManagement.Database.CourtIncomeReport.datasource" />
     <None Include="Properties\DataSources\BadmintonManagement.Database.IncomeSer.datasource" />
     <None Include="Properties\DataSources\BadmintonManagement.Database.IncomeService.datasource" />
     <None Include="Properties\DataSources\BadmintonManagement.Database.IncomeYear.datasource" />
+    <None Include="Properties\DataSources\BadmintonManagement.Database.ReportServiceInStoge.datasource" />
     <None Include="Properties\DataSources\BadmintonManagement.Models.CUSTOMER.datasource" />
     <None Include="Properties\DataSources\BadmintonManagement.Models.RECEIPT.datasource" />
     <None Include="Properties\DataSources\BadmintonManagement.Models.RESERVATION.datasource" />
