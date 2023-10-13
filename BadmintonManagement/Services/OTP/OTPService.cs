@@ -1,6 +1,7 @@
 ﻿using BadmintonManagement.Database;
 using BadmintonManagement.Forms.AuthorizationForms;
 using BadmintonManagement.Models;
+using Microsoft.ReportingServices.ReportProcessing.ReportObjectModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,8 +26,7 @@ namespace BadmintonManagement
             return random.Next(100000, 999999);
         }
 
-
-        public static void SendActiveOTP(string receiveEmail, Action callback)
+        public static void SendDisabledMail(string receiveEmail)
         {
             try
             {
@@ -37,11 +37,12 @@ namespace BadmintonManagement
                 mail.From = new MailAddress(sendEmail);
                 mail.To.Add(receiveEmail);
                 mail.Subject = "[TOD] Công ty Theatre Of Dreams";
-                int code = RandomOTPCode();
-                mail.Body = "Xin chào,\n\n"
-                            + "Để hoàn tất việc trở thành thành viên của Công ty TOD, hãy nhập mã ở dưới để kích hoạt tài khoản của bạn:\n\n"
-                            + RandomOTPCode().ToString()
-                            + mailTrailing;
+                mail.IsBodyHtml = true; // Đánh dấu nội dung email là HTML
+                var user = UserServices.GetUserByEmail(receiveEmail);
+                mail.Body = $@"Chào {user.C_Name},<br><br>
+                Tài khoản của bạn đã bị vô hiệu hoá!.<br><br>
+                Nếu bạn không yêu cầu thực hiện thay đổi này, vui lòng liên hệ admin để được hỗ trợ. <br></br>
+                {htmlMailTrailing}";
 
                 SmtpServer.EnableSsl = true;
                 SmtpServer.Port = 587;
@@ -49,8 +50,47 @@ namespace BadmintonManagement
                 SmtpServer.Credentials = new System.Net.NetworkCredential(sendEmail, appPassword);
 
                 SmtpServer.Send(mail);
-                EnterOTP enterActiveOTP = new EnterOTP(receiveEmail, code.ToString(), callback);
-                enterActiveOTP.Show();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+        }
+
+        public static void SendChangedInformationMail(string receiveEmail, string? newPassword)
+        {
+            try
+            {
+
+                MailMessage mail = new MailMessage();
+                SmtpClient SmtpServer = new SmtpClient("smtp.gmail.com");
+
+                mail.From = new MailAddress(sendEmail);
+                mail.To.Add(receiveEmail);
+                mail.Subject = "[TOD] Công ty Theatre Of Dreams";
+                mail.IsBodyHtml = true; // Đánh dấu nội dung email là HTML
+                var user = UserServices.GetUserByEmail(receiveEmail);
+                string mailBody = $@"Chào {user.C_Name},<br><br>
+                Một số thông tin cá nhân của bạn đã được thay đổi.<br><br>
+                Nếu bạn không yêu cầu thực hiện thay đổi này, vui lòng liên hệ admin để được hỗ trợ. <br></br>
+                ";
+                if (newPassword != null)
+                    mailBody += $@"Dưới đây là mật khẩu đăng nhập mới của bạn vào hệ thống của chúng tôi:<br><br>
+                <b>Mật khẩu (Password): {newPassword}</b><br>
+                 - <i style=""color: red;"">Lưu ý: Hãy bảo mật thông tin này và không chia sẻ với người khác</i><br><br>
+                Vui lòng sử dụng thông tin đăng nhập trên để truy cập vào hệ thống của chúng tôi tại ứng dụng Badminton Management.<br><br>
+                Nếu bạn gặp bất kỳ vấn đề nào trong quá trình đăng nhập hoặc cần sự hỗ trợ, xin vui lòng liên hệ với đội ngũ admin tại {sendEmail} hoặc số điện thoại 0823216213.<br><br>
+                Chúng tôi hy vọng bạn sẽ có một trải nghiệm làm việc thú vị và có ích tại TOD Company, và chúng tôi rất mong được làm việc cùng bạn.<br><br>
+               <br>
+               ";
+                mail.Body = mailBody + $@" {htmlMailTrailing}";
+                SmtpServer.EnableSsl = true;
+                SmtpServer.Port = 587;
+                SmtpServer.DeliveryMethod = SmtpDeliveryMethod.Network;
+                SmtpServer.Credentials = new System.Net.NetworkCredential(sendEmail, appPassword);
+
+                SmtpServer.Send(mail);
             }
             catch (Exception ex)
             {

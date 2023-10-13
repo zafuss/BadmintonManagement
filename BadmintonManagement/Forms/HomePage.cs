@@ -166,10 +166,7 @@ namespace BadmintonManagement.Forms.AuthorizationForms
         }
         private void btnExit_Click(object sender, EventArgs e)
         {
-            UserServices.DeleteCurrentUser();
-            LoginForm form = new LoginForm();
-            form.Show();
-            this.Hide();
+            UserServices.LogoutUser();
         }
         private void lblEmployeeName_Click(object sender, EventArgs e)
         {

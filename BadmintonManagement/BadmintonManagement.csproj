@@ -142,11 +142,23 @@
     <Compile Include="Database\ServiceReceiptServices.cs" />
     <Compile Include="Database\ServiceServices.cs" />
     <Compile Include="Database\UserServices.cs" />
-    <Compile Include="Forms\AuthorizationForms\AccountCenterForm.cs">
+    <Compile Include="Forms\AuthorizationForms\AccountCenterForms\AccountCenterForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\AuthorizationForms\AccountCenterForm.Designer.cs">
+    <Compile Include="Forms\AuthorizationForms\AccountCenterForms\AccountCenterForm.Designer.cs">
       <DependentUpon>AccountCenterForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\AuthorizationForms\AccountCenterForms\AccountChangePasswordCenterForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AuthorizationForms\AccountCenterForms\AccountChangePasswordCenterForm.Designer.cs">
+      <DependentUpon>AccountChangePasswordCenterForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\AuthorizationForms\AccountCenterForms\AccountInformationCenterForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AuthorizationForms\AccountCenterForms\AccountInformationCenterForm.Designer.cs">
+      <DependentUpon>AccountInformationCenterForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Court\CourtCalendar.cs">
       <SubType>Form</SubType>
@@ -345,8 +357,14 @@
     <EmbeddedResource Include="CustomerReport.rdlc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\AuthorizationForms\AccountCenterForm.resx">
+    <EmbeddedResource Include="Forms\AuthorizationForms\AccountCenterForms\AccountCenterForm.resx">
       <DependentUpon>AccountCenterForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\AuthorizationForms\AccountCenterForms\AccountChangePasswordCenterForm.resx">
+      <DependentUpon>AccountChangePasswordCenterForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\AuthorizationForms\AccountCenterForms\AccountInformationCenterForm.resx">
+      <DependentUpon>AccountInformationCenterForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\AuthorizationForms\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>

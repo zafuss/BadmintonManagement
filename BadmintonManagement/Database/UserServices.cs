@@ -84,8 +84,11 @@ namespace BadmintonManagement.Database
 
         }
 
-        public static void UpdateUser(C_USER user, string currentEmail, string? currentUsername, string? currentPhoneNumber)
+        public static void UpdateUser(C_USER user, string currentEmail, string? currentUsername, string? currentPhoneNumber, bool isPasswordChanged)
         {
+            string newPassword = null;
+            if (isPasswordChanged)
+                newPassword = user.C_Password.ToString();
             if (currentUsername != null)
                 if (currentUsername != user.Username)
                     throw new Exception("Không thể thay đổi username!");
@@ -103,6 +106,7 @@ namespace BadmintonManagement.Database
             user.C_Password = password;
             context.C_USER.AddOrUpdate(user);
             context.SaveChanges();
+            OTPService.SendChangedInformationMail(user.Email, newPassword);
         }
 
         public static void DisableUser(string username)
@@ -113,6 +117,7 @@ namespace BadmintonManagement.Database
             else tmpUser.C_Status = "Enabled";
             context.C_USER.AddOrUpdate(tmpUser);
             context.SaveChanges();
+            OTPService.SendDisabledMail(tmpUser.Email);
         }
         public static void EnableUser(C_USER user)
         {
@@ -172,6 +177,17 @@ namespace BadmintonManagement.Database
                 }
                 if (!isSuccess) throw new Exception("Sai tên tài khoản hoặc mật khẩu");
             }
+        }
+
+        public static void LogoutUser()
+        {
+            DeleteCurrentUser();
+            LoginForm loginForm = new LoginForm();
+            foreach (Form form in Application.OpenForms)
+            {
+                form.Hide();
+            };
+            loginForm.Show();
         }
     }
 }

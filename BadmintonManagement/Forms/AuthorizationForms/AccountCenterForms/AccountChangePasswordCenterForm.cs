@@ -12,18 +12,32 @@ using System.Windows.Forms;
 
 namespace BadmintonManagement.Forms.AuthorizationForms
 {
-    public partial class ResetPasswordForm : Form
+    public partial class AccountChangePasswordCenterForm : Form
     {
-        C_USER user;
-        string currentEmail;
-        public ResetPasswordForm(C_USER user, string currentEmail)
-
+        public AccountChangePasswordCenterForm()
         {
-            this.currentEmail = currentEmail;
-            this.user = user;
             InitializeComponent();
         }
 
+        private void txtCurrentPassword_Enter(object sender, EventArgs e)
+        {
+            if (txtCurrentPassword.Text == "Mật khẩu hiện tại")
+            {
+                txtCurrentPassword.PasswordChar = '●';
+                txtCurrentPassword.ForeColor = Color.Black;
+                txtCurrentPassword.Text = "";
+            }
+        }
+
+        private void txtCurrentPassword_Leave(object sender, EventArgs e)
+        {
+            if (txtCurrentPassword.Text == "")
+            {
+                txtCurrentPassword.PasswordChar = '\0';
+                txtCurrentPassword.ForeColor = Color.DarkGray;
+                txtCurrentPassword.Text = "Mật khẩu hiện tại";
+            }
+        }
         private void txtPassword_Enter(object sender, EventArgs e)
         {
             if (txtNewPassword.Text == "Mật khẩu mới")
@@ -65,57 +79,73 @@ namespace BadmintonManagement.Forms.AuthorizationForms
         }
 
 
+        private void picShowCurrentPassword_MouseDown(object sender, MouseEventArgs e)
+        {
+            txtCurrentPassword.PasswordChar = '\0';
+            picShowCurrentPassword.Image = Properties.Resources.visibale_password;
+
+        }
+
+        private void picShowCurrentPassword_MouseUp(object sender, MouseEventArgs e)
+        {
+            txtCurrentPassword.PasswordChar = '●';
+            picShowCurrentPassword.Image = Properties.Resources.hidden_password;
+            if (txtCurrentPassword.Text == "Mật khẩu hiện tại")
+                txtCurrentPassword.PasswordChar = '\0';
+        }
         private void picShowNewPassword_MouseDown(object sender, MouseEventArgs e)
         {
             txtNewPassword.PasswordChar = '\0';
-            picShowPassword.Image = Properties.Resources.visibale_password;
+            picShowNewPassword.Image = Properties.Resources.visibale_password;
 
         }
 
         private void picShowNewPassword_MouseUp(object sender, MouseEventArgs e)
         {
             txtNewPassword.PasswordChar = '●';
-            picShowPassword.Image = Properties.Resources.hidden_password;
-            if (txtNewPassword.Text == "New Password")
+            picShowNewPassword.Image = Properties.Resources.hidden_password;
+            if (txtNewPassword.Text == "Mật khẩu mới")
                 txtNewPassword.PasswordChar = '\0';
         }
 
         private void picShowConfirmNewPassword_MouseDown(object sender, MouseEventArgs e)
         {
             txtConfirmNewPassword.PasswordChar = '\0';
-            picShowPassword.Image = Properties.Resources.visibale_password;
+            picShowConfirmNewPassword.Image = Properties.Resources.visibale_password;
 
         }
 
         private void picShowConfirmNewPassword_MouseUp(object sender, MouseEventArgs e)
         {
             txtConfirmNewPassword.PasswordChar = '●';
-            picShowPassword.Image = Properties.Resources.hidden_password;
-            if (txtNewPassword.Text == "Confirm New Password")
+            picShowConfirmNewPassword.Image = Properties.Resources.hidden_password;
+            if (txtNewPassword.Text == "Nhập lại mật khẩu mới")
                 txtNewPassword.PasswordChar = '\0';
         }
 
 
-        private void btnEnterOTP_Click(object sender, EventArgs e)
+        private void btnSave_Click(object sender, EventArgs e)
         {
             try
             {
-                if (txtNewPassword.Text == "" || txtConfirmNewPassword.Text == "")
+                C_USER tmpUser = UserServices.GetUser(Properties.Settings.Default.Username);
+                if (txtCurrentPassword.Text == "" || txtNewPassword.Text == "" || txtConfirmNewPassword.Text == "")
                     throw new Exception("Vui lòng nhập đầy đủ thông tin!");
+                if (tmpUser.C_Password != Security.Encrypt(txtCurrentPassword.Text))
+                    throw new Exception("Mật khẩu hiện tại không đúng!");
                 Validator.ResetPasswordValidator(txtNewPassword.Text, txtConfirmNewPassword.Text);
-                user.C_Password = txtNewPassword.Text;
-                UserServices.UpdateUser(user, currentEmail, null, null, false);
-                Close();
-                MessageBox.Show("Thay đổi mật khẩu thành công!");
+                tmpUser.C_Password = txtNewPassword.Text;
+                UserServices.UpdateUser(tmpUser, tmpUser.Email, null, null, true);
+                MessageBox.Show("Cập nhật mật khẩu thành công!\nVui lòng đăng nhập lại!", "Thông báo");
+                UserServices.LogoutUser();
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Thông báo");
             }
-
         }
 
-        private void txtNewPassword_TextChanged(object sender, EventArgs e)
+        private void groupBox2_Enter(object sender, EventArgs e)
         {
 
         }
