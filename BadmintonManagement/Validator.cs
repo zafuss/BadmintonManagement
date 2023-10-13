@@ -17,8 +17,6 @@ namespace BadmintonManagement
         public static void UserValidator(C_USER user) {
             if (!Regex.IsMatch(user.Username, usernamePattern))
                 throw new Exception("Tên đăng nhập không hợp lệ!");
-            if (!Regex.IsMatch(user.C_Password, passwordPattern))
-                throw new Exception("Mật khẩu không hợp lệ!");
             if (!Regex.IsMatch(user.Email, emailPattern))
                 throw new Exception("Email không hợp lệ");
             if (!Regex.IsMatch(user.PhoneNumber, phoneNumberPattern))
@@ -28,7 +26,7 @@ namespace BadmintonManagement
         public static void ResetPasswordValidator(string newPass, string confirmNewPass)
         {
             if (!Regex.IsMatch(newPass, passwordPattern)) 
-                throw new Exception("Mật khẩu không hợp lệ!" + newPass);
+                throw new Exception("Mật khẩu không hợp lệ!");
             if (confirmNewPass != newPass) 
                 throw new Exception("Mật khẩu không trùng khớp");
         }

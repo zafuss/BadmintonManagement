@@ -144,18 +144,20 @@ create table RECEIPT(
 )
 go
 
-create procedure IncomeOfYear (@year int) as
-select T1.Thang, (T1.Total + T.Total) as Total
+ 
+
+select T1.Thang, cast(round((T1.Total/(T1.Total+T.Total))*100,2) as decimal(38,2)) as San,cast((100-round((T1.Total/(T1.Total+T.Total))*100,2)) as decimal(38,2)) as dichvu
 from (	select convert(int,Month(R._Date)) as Thang,sum(R.Total) as Total 
 		from RECEIPT R
-		where convert(int,year(R._Date)) = @year
+		where convert(varchar,year(R._Date)) = '2023'
 		group by convert(int,Month(R._Date))) T1 , (select convert(int ,month(S.CreateDate)) as Thang,sum(S.Total) as Total 
 													from SERVICE_RECEIPT S
-													where convert(int,year(S.CreateDate)) = @year
+													where convert(varchar,year(S.CreateDate)) = '2023'
 													group by convert(int,Month(S.CreateDate))) T
-where T1.Thang = T.Thang
+where T1.Thang = T.Thang and T1.Thang = 1
+order by T1.Thang 
 
-
+select * from COURT
 select * 
 from RESERVATION re
 where DATEPART(DAY, re.StartTime) = DATEPART(DAY, GETDATE()); 
@@ -193,5 +195,10 @@ FORMAT(CURRENT_TIMESTAMP , 'HH:mm') >= FORMAT(reser.StartTime, 'HH:mm')  and
 a.PhoneNumber = reser.PhoneNumber
 
 
-
+select rf.CourtID
+                        from RF_DETAIL rf 
+                        where rf.ReservationNo in (select re.ReservationNo 
+					                        from RESERVATION re 
+					                        where Cast(re.StartTime as Date) >= Cast(CURRENT_TIMESTAMP  as DATE) )
+                        and rf.CourtID = @_idcourt
 --IncomeOfYear 2023

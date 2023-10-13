@@ -15,6 +15,12 @@ namespace BadmintonManagement.Forms.Report
         public ReportForm()
         {
             InitializeComponent();
+            HiddenReceipt();
+            btnChartIncome.BackColor = SystemColors.ButtonShadow;
+            btnIncome.BackColor = Color.LightGray;
+            btnCustomerReport.BackColor = Color.LightGray;
+            btnReservationReport.BackColor = Color.LightGray;
+            OpenChilForm(new FormIncome());
             pnlReceiptReport.Visible = false;
             
         }
@@ -50,57 +56,55 @@ namespace BadmintonManagement.Forms.Report
                 pnlReceiptReport.Visible = true;
         }
 
-       
-        private void btnIncome_Click(object sender, EventArgs e)
+        private void btnChartIncome_Click(object sender, EventArgs e)
         {
             HiddenReceipt();
-            btnIncome.BackColor = SystemColors.ButtonShadow;
-            btnReceipt.BackColor = Color.LightGray;
-            btnCustomerReport.BackColor = Color.LightGray;
-            btnReservationReport.BackColor = Color.LightGray;
-            OpenChilForm(new IncomeForm());
-            
-        }
-        private void btnReceipt_Click(object sender, EventArgs e)
-        {
-            HiddenButom();
-            btnReceipt.BackColor = SystemColors.ButtonShadow;
+            btnChartIncome.BackColor = SystemColors.ButtonShadow;
             btnIncome.BackColor = Color.LightGray;
             btnCustomerReport.BackColor = Color.LightGray;
             btnReservationReport.BackColor = Color.LightGray;
+            OpenChilForm(new FormIncome());
         }
 
-        private void btnCourtReceipt_Click(object sender, EventArgs e)
+        private void btnIncome_Click(object sender, EventArgs e)
         {
-            btnCourtReceipt.BackColor = SystemColors.ButtonShadow;
-            btnServiceReceipt.BackColor = Color.LightGray;
-            OpenChilForm(new ReceiptReportForm()); 
+            HiddenButom();
+            btnIncome.BackColor = SystemColors.ButtonShadow;
+            btnChartIncome.BackColor = Color.LightGray;
+            btnCustomerReport.BackColor = Color.LightGray;
+            btnReservationReport.BackColor = Color.LightGray;
         }
 
-        private void btnServiceReceipt_Click(object sender, EventArgs e)
+        private void btnServiceIncome_Click(object sender, EventArgs e)
         {
-            btnServiceReceipt.BackColor = SystemColors.ButtonShadow;
-            btnCourtReceipt.BackColor = Color.LightGray;
-            OpenChilForm(new ServiceReceiptForm());
-            
+            btnServiceIncome.BackColor = SystemColors.ButtonShadow;
+            btnCourtIncome.BackColor = Color.LightGray;
+            OpenChilForm(new ServiceIncome());
         }
 
-        private void btnCustomerReport_Click(object sender, EventArgs e)
+        private void btnCourtIncome_Click(object sender, EventArgs e)
+        {
+            btnCourtIncome.BackColor = SystemColors.ButtonShadow;
+            btnServiceIncome.BackColor = Color.LightGray;
+            OpenChilForm(new CourtIncome());
+        }
+
+        private void btnCustomerReport_Click_1(object sender, EventArgs e)
         {
             HiddenReceipt();
             btnCustomerReport.BackColor = SystemColors.ButtonShadow;
+            btnChartIncome.BackColor = Color.LightGray;
             btnIncome.BackColor = Color.LightGray;
-            btnReceipt.BackColor = Color.LightGray;
             btnReservationReport.BackColor = Color.LightGray;
             OpenChilForm(new CustomerReport());
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btnReservationReport_Click(object sender, EventArgs e)
         {
             HiddenReceipt();
             btnReservationReport.BackColor = SystemColors.ButtonShadow;
+            btnChartIncome.BackColor = Color.LightGray;
             btnIncome.BackColor = Color.LightGray;
-            btnReceipt.BackColor = Color.LightGray;
             btnCustomerReport.BackColor = Color.LightGray;
             OpenChilForm(new ReservationReport());
         }

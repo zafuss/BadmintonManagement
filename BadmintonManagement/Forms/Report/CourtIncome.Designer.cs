@@ -1,6 +1,6 @@
 ﻿namespace BadmintonManagement.Forms.Report
 {
-    partial class ReceiptReportForm
+    partial class CourtIncome
     {
         /// <summary>
         /// Required designer variable.
@@ -38,7 +38,7 @@
             this.dtbStart = new System.Windows.Forms.DateTimePicker();
             this.rdbDay = new System.Windows.Forms.RadioButton();
             this.rdbMonth = new System.Windows.Forms.RadioButton();
-            this.rptReceipt = new Microsoft.Reporting.WinForms.ReportViewer();
+            this.rptCourtIncome = new Microsoft.Reporting.WinForms.ReportViewer();
             this.backgroundWorker2 = new System.ComponentModel.BackgroundWorker();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -95,11 +95,13 @@
             this.dtpMonth.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpMonth.Location = new System.Drawing.Point(243, 16);
             this.dtpMonth.Name = "dtpMonth";
+            this.dtpMonth.ShowUpDown = true;
             this.dtpMonth.Size = new System.Drawing.Size(137, 20);
             this.dtpMonth.TabIndex = 12;
             // 
             // dtpEnd
             // 
+            this.dtpEnd.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.dtpEnd.CustomFormat = "dd/MM/yyyy";
             this.dtpEnd.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpEnd.Location = new System.Drawing.Point(453, 40);
@@ -138,35 +140,39 @@
             this.rdbMonth.Text = "Thống kê theo tháng";
             this.rdbMonth.UseVisualStyleBackColor = true;
             // 
-            // rptReceipt
+            // rptCourtIncome
             // 
-            this.rptReceipt.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.rptReceipt.Location = new System.Drawing.Point(0, 70);
-            this.rptReceipt.Name = "rptReceipt";
-            this.rptReceipt.ServerReport.BearerToken = null;
-            this.rptReceipt.Size = new System.Drawing.Size(720, 380);
-            this.rptReceipt.TabIndex = 1;
+            this.rptCourtIncome.AutoScroll = true;
+            this.rptCourtIncome.AutoSize = true;
+            this.rptCourtIncome.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rptCourtIncome.Location = new System.Drawing.Point(0, 70);
+            this.rptCourtIncome.Name = "rptCourtIncome";
+            this.rptCourtIncome.ServerReport.BearerToken = null;
+            this.rptCourtIncome.Size = new System.Drawing.Size(720, 380);
+            this.rptCourtIncome.TabIndex = 1;
+            this.rptCourtIncome.ZoomMode = Microsoft.Reporting.WinForms.ZoomMode.PageWidth;
             // 
-            // ReceiptReportForm
+            // CourtIncome
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(720, 450);
-            this.Controls.Add(this.rptReceipt);
+            this.Controls.Add(this.rptCourtIncome);
             this.Controls.Add(this.groupBox1);
-            this.Name = "ReceiptReportForm";
+            this.Name = "CourtIncome";
             this.Text = "ReceiptForm";
             this.Load += new System.EventHandler(this.ReceiptFormReport_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private System.Windows.Forms.GroupBox groupBox1;
-        private Microsoft.Reporting.WinForms.ReportViewer rptReceipt;
+        private Microsoft.Reporting.WinForms.ReportViewer rptCourtIncome;
         private System.Windows.Forms.Button btnShowReport;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;

@@ -23,9 +23,8 @@ namespace BadmintonManagement.Forms.Court
         public static AddCourtForm Instance; 
         private List<string> status = new List<string>()
         {
-           "Chưa Được Sử Dụng","Đang Sử Dụng","Bảo Trì"
+           "Đã Đi Vào Hoạt Động","Bảo Trì"
         };
-
 
         public AddCourtForm()
         {
@@ -37,14 +36,11 @@ namespace BadmintonManagement.Forms.Court
             acsc.AddRange(new CourtService().getBrachName().ToArray());
             txtCourtName.AutoCompleteCustomSource = acsc;
             txtCourtName.AutoCompleteSource = AutoCompleteSource.CustomSource;
-            txtCourtName.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
-
             //txtCourtName.Text = acsc[1].ToString();
         }
         public void Reset()
         {
             txtCourtName.Text = "";
-            dtmStartDate.Text = DateTime.Now.ToString("dd/MM/yyyy");
             cboBranchID.SelectedIndex = 0;
             cboStatus.SelectedIndex = 0;
             cboCourtID.SelectedIndex = -1;
@@ -82,7 +78,6 @@ namespace BadmintonManagement.Forms.Court
             cboCourtID.Text = newCourt.CourtID;
             cboStatus.Text = newCourt.C_Status;
             txtCourtName.Text = newCourt.CourtName;
-            dtmStartDate.Value = (DateTime)newCourt.StartDate;
             cboBranchID.Text = newCourt.BRANCH.BranchName;
         } 
 
@@ -100,19 +95,15 @@ namespace BadmintonManagement.Forms.Court
 
             if (cboStatus.SelectedIndex == 0)
             {
-                newCourt.C_Status = "Used";
-            }
-            else if (cboStatus.SelectedIndex == 1)
-            {
-                newCourt.C_Status = "Use";
+                newCourt.C_Status = "Using";
             }
             else
             {
-                newCourt.C_Status = "Maintaince";
+                newCourt.C_Status = "Maintenance";
             }
 
             newCourt.CourtName = txtCourtName.Text;
-            newCourt.StartDate = dtmStartDate.Value;
+            newCourt.StartDate = DateTime.Now;
             newCourt.BranchID = new CourtService().GetBranchID(cboBranchID.Text);
             return newCourt;
         }
@@ -164,11 +155,8 @@ namespace BadmintonManagement.Forms.Court
                     return;
                 if (cboCourtID.Text == string.Empty || !new CourtService().checkCourtID(cboCourtID.Text))
                 {
-                    if(dtmStartDate.Value < DateTime.Now)
-                    {
-                        throw new Exception("Them Khong Thanh Cong");
-                    }
-                    else
+
+                    
                     {
                         COURT tmpCourt = SetCourt();
                         new CourtService().InsertCourt(tmpCourt);
@@ -179,7 +167,9 @@ namespace BadmintonManagement.Forms.Court
                         {
                             List<COURT> newCourt = new CourtService().getListCourtWithOutDisable();
                             int count = newCourt.Count();
+                            new CourtService().publicDay();
                             CourtForm.Instance.ShowCourt(newCourt, count);
+                            CourtForm.Instance.Reset();
                         }
                     }
                     
@@ -206,19 +196,29 @@ namespace BadmintonManagement.Forms.Court
                 {
                     throw new Exception("Xoa Khong Thanh Cong");
                 }
+                else if ( new CourtService().CountCourt(cboCourtID.Text) != 0)
+                {
+                    throw new Exception("Xoa Khong Thanh Cong");
+                }
                 else 
                 {
-                    tmp.C_Status = "Disable";
-                    new CourtService().InsertCourt(tmp);
-                    MessageBox.Show("Xoa Thanh Cong");
-                    Loading();
-                    Reset();
-                    if(Application.OpenForms["CourtForm"] != null && !Application.OpenForms["CourtForm"].IsDisposed)
+                    DialogResult result = MessageBox.Show("ThongBao","Ban Co Chac Khong",MessageBoxButtons.YesNo,MessageBoxIcon.Question);
+                    if (result == DialogResult.Yes)
                     {
-                        List<COURT> newCourt = new CourtService().getListCourtWithOutDisable();
-                        int count = newCourt.Count();
-                        CourtForm.Instance.ShowCourt(newCourt, count);
+                        tmp.C_Status = "Disable";
+                        new CourtService().InsertCourt(tmp);
+                        MessageBox.Show("Xoa Thanh Cong");
+                        Loading();
+                        Reset();
+                        if (Application.OpenForms["CourtForm"] != null && !Application.OpenForms["CourtForm"].IsDisposed)
+                        {
+                            List<COURT> newCourt = new CourtService().getListCourtWithOutDisable();
+                            int count = newCourt.Count();
+                            CourtForm.Instance.ShowCourt(newCourt, count);
+                            CourtForm.Instance.Reset();
+                        }
                     }
+                    
                 }
 
             }
@@ -243,22 +243,25 @@ namespace BadmintonManagement.Forms.Court
                 else
                 {
                     DateTime dateTime = DateTime.Now;
-                    if (tmp.StartDate > dtmStartDate.Value && tmp.StartDate > dateTime)
-                    {
-                        throw new Exception("San Da Di Vao Hoat Dong");
-                    }
-                    else
+                    //if (tmp.C_Status == "Using" && cboStatus.SelectedIndex != 2)
+                    //{
+                    //    throw new Exception("San Da Di Vao Hoat Dong");
+                    //}
+                   
+                    
                     {
                         tmp = SetCourt();
                         new CourtService().InsertCourt(tmp);
-                        MessageBox.Show("Sua Thanh Cong");
                         Loading();
                         Reset();
+                        MessageBox.Show("Sua Thanh Cong");
                         if (Application.OpenForms["CourtForm"] != null && !Application.OpenForms["CourtForm"].IsDisposed)
                         {
                             List<COURT> newCourt = new CourtService().getListCourtWithOutDisable();
                             int count = newCourt.Count();
+                            new CourtService().publicDay();
                             CourtForm.Instance.ShowCourt(newCourt, count);
+                            CourtForm.Instance.Reset();
                         }
                     }
                         
@@ -280,19 +283,14 @@ namespace BadmintonManagement.Forms.Court
                 if( court != null )
                 {
                     txtCourtName.Text = court.CourtName;
-                    dtmStartDate.Text = court.StartDate.ToString();
                     cboBranchID.Text = court.BRANCH.BranchName;
-                    if (court.C_Status.ToLower() == "used")
+                    if (court.C_Status == "Using")
                     {
                         cboStatus.SelectedIndex = 0;
                     }
-                    else if (court.C_Status.ToLower() == "use")
+                    else if (court.C_Status == "Maintenance")
                     {
                         cboStatus.SelectedIndex = 1;
-                    }
-                    else if (court.C_Status.ToLower() == "maintaince")
-                    {
-                        cboStatus.SelectedIndex = 2;
                     }
                 }
             }

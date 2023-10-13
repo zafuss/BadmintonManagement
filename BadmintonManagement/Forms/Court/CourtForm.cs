@@ -38,6 +38,7 @@ namespace BadmintonManagement.Forms.Court
             pnlDisplayCourt.AutoScroll = true;
             tmrCountDown.Start();
             //Test();
+            new CourtService().publicDay();
         }
         
         private void tmrCountDown_Tick(object sender, EventArgs e)
@@ -247,7 +248,8 @@ namespace BadmintonManagement.Forms.Court
         {
             AddCourtForm addCourtForm = new AddCourtForm();
             addCourtForm.TopLevel = false;
-            addCourtForm.AutoScroll = true;
+            //addCourtForm.AutoScroll = true;
+            pnlAdmin.AutoScroll = true;
             pnlAdmin.Controls.Add(addCourtForm);
             addCourtForm.Show();
         }
@@ -348,15 +350,7 @@ namespace BadmintonManagement.Forms.Court
             UserShow(listInfo, count);
         }
 
-        private void btnAdmin_Click(object sender, EventArgs e)
-        {
-            pnlDisplayCourt.Controls.Clear();
-            pnlDisplayCourt.Refresh();
-            showSubMenu(pnlAdmin);
-            newCourt = new CourtService().getListCourtWithOutDisable();
-            count = newCourt.Count();
-            ShowCourt(newCourt,count);
-        }
+
 
         private void pnlDisplayCourt_SizeChanged(object sender, EventArgs e)
         {
@@ -392,6 +386,22 @@ namespace BadmintonManagement.Forms.Court
 
         }
 
-        
+
+
+        private void btnAdmin_Click(object sender, EventArgs e)
+        {
+            pnlDisplayCourt.Controls.Clear();
+            pnlDisplayCourt.Refresh();
+            showSubMenu(pnlAdmin);
+            newCourt = new CourtService().getListCourtWithOutDisable();
+            count = newCourt.Count();
+            ShowCourt(newCourt, count);
+        }
+
+        private void btnCalendar_Click(object sender, EventArgs e)
+        {
+            CourtCalendar courtCalendar = new CourtCalendar();
+            courtCalendar.Show();
+        }
     }
 }

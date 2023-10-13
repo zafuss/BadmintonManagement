@@ -114,6 +114,7 @@ namespace BadmintonManagement.Forms.Customer
         
         private void UpdateCustomerToDB()
         {
+            
             foreach (DataGridViewRow dataGridViewRow in dgvCustomer.SelectedRows)
             {
                 CUSTOMER c = new CUSTOMER();

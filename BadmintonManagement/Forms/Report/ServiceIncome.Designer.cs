@@ -1,6 +1,6 @@
 ﻿namespace BadmintonManagement.Forms.Report
 {
-    partial class ServiceReceiptForm
+    partial class ServiceIncome
     {
         /// <summary>
         /// Required designer variable.

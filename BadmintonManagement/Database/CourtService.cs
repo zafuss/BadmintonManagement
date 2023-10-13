@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml.Linq;
 using BadmintonManagement.Custom;
+using System.Data.SqlClient;
 
 namespace BadmintonManagement.Database
 {
@@ -19,7 +20,27 @@ namespace BadmintonManagement.Database
         private List<COURT> _courts = new ModelBadmintonManage().COURT.ToList();
         private List<BRANCH> _branchs = new ModelBadmintonManage().BRANCH.ToList();
 
+        public void publicDay()
+        {
+            //COURT cOURT = new COURT();
+            //for ( int i = 0 ; i < _courts.Count ; i++ )
+            //{
+            //    if(_courts[i].StartDate > DateTime.Now ) 
+            //    {
+            //        cOURT = _courts[i];
+            //        cOURT.C_Status = "Available";
+            //        _modelBadmintonManage.COURT.AddOrUpdate(cOURT);
+            //    }
 
+            //     if (String.Format("{0:dd:MM:yyyy}", _courts[i].StartDate) == DateTime.Now.ToString("dd:MM:yyyy"))
+            //    {
+            //        cOURT = _courts[i];
+            //        cOURT.C_Status = "Using";
+            //        _modelBadmintonManage.COURT.AddOrUpdate(cOURT);
+            //    }
+            //}
+            //_modelBadmintonManage.SaveChanges();
+        }
         public Control DisplayCourtAdmin(int count, COURT court , double _widht , double _heigth)
         {
             double x = (_widht) / (3.4);
@@ -59,15 +80,12 @@ namespace BadmintonManagement.Database
             picStatusCourt.BorderStyle = BorderStyle.None;
             picStatusCourt.BorderColor = Color.Transparent;
 
-            if (court.C_Status == "Using")
-            {
-                picStatusCourt.Image = Properties.Resources.badminton_court_using;
-            }
-            else if (court.C_Status == "Available")
+            if (court.C_Status == "Using") // nay 
             {
                 picStatusCourt.Image = Properties.Resources.badminton_court_available;
             }
-            else if (court.C_Status == "Maintenance")
+       
+            else if (court.C_Status == "Maintenance") // nay la BT
             {
                 picStatusCourt.Image = Properties.Resources.badminton_court_maintenance;
             }
@@ -132,7 +150,7 @@ namespace BadmintonManagement.Database
         public List<COURT> getListCourtWithOutDisable()
         {
             _modelBadmintonManage = new ModelBadmintonManage();
-            List<COURT> tmp = _modelBadmintonManage.COURT.Where(p => p.C_Status != "Disable").ToList();
+            List<COURT> tmp = _modelBadmintonManage.COURT.Where(p => p.C_Status != "Disable" ).ToList();
             return tmp;
         }
 
@@ -236,6 +254,34 @@ namespace BadmintonManagement.Database
             _modelBadmintonManage = new ModelBadmintonManage();
             BRANCH branch = _modelBadmintonManage.BRANCH.FirstOrDefault(p => p.BranchID.ToLower().Contains(id.ToLower()));
             return branch;
+        }
+
+        public int CountCourt( string id)
+        {
+            string connectString = @"Data Source=localhost;Initial Catalog=BadmintonManagementDB;Integrated Security=True";
+            string sql = @"select rf.CourtID
+                        from RF_DETAIL rf 
+                        where rf.ReservationNo in (select re.ReservationNo 
+					                        from RESERVATION re 
+					                        where Cast(re.StartTime as Date) >= Cast(CURRENT_TIMESTAMP  as DATE) )
+                        and rf.CourtID = @_idcourt";
+            SqlConnection conn;
+            conn = new SqlConnection(connectString);
+            conn.Open();
+
+            SqlCommand cmd;
+            SqlDataReader dataReader;
+
+            cmd = new SqlCommand(sql, conn);
+            cmd.Parameters.AddWithValue("@_idcourt", id);
+            cmd.ExecuteNonQuery();
+            dataReader = cmd.ExecuteReader();
+            int count = 0;
+            while (dataReader.Read())
+            {
+                count++;
+            }
+            return count;
         }
     }
 }
