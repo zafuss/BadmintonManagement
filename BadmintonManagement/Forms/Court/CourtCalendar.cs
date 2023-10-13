@@ -74,7 +74,7 @@ namespace BadmintonManagement.Forms.Court
                     ListViewItem lvi = new ListViewItem();
                     lvi.Text = dataReader.GetString(0);
                     lvi.SubItems.Add(dataReader.GetString(1));
-                    lvi.SubItems.Add(0 + dataReader.GetString(2));
+                    lvi.SubItems.Add(dataReader.GetString(2));
                     lvi.SubItems.Add(dataReader.GetString(3));
                     lvi.SubItems.Add(dataReader.GetString(4));
                     lvi.SubItems.Add(dataReader.GetString(5));
@@ -125,7 +125,7 @@ namespace BadmintonManagement.Forms.Court
                     ListViewItem lvi = new ListViewItem();
                     lvi.Text = dataReader.GetString(0);
                     lvi.SubItems.Add(dataReader.GetString(1));
-                    lvi.SubItems.Add(0 + dataReader.GetString(2));
+                    lvi.SubItems.Add(dataReader.GetString(2));
                     lvi.SubItems.Add(dataReader.GetString(3));
                     lvi.SubItems.Add(dataReader.GetString(4));
                     lvi.SubItems.Add(dataReader.GetString(5));
