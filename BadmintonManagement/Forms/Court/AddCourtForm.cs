@@ -108,7 +108,8 @@ namespace BadmintonManagement.Forms.Court
             newCourt.BranchID = new CourtService().GetBranchID(cboBranchID.Text);
             return newCourt;
         }
-        List<COURT> newCourt = new CourtService().getListCourtWithOutDisable();
+
+       
 
         private void txtCourtName_TextChanged(object sender, EventArgs e)
         {
@@ -182,7 +183,7 @@ namespace BadmintonManagement.Forms.Court
             }
             catch (Exception ex)
             {
-                return;
+                MessageBox.Show(ex.Message);
             }
         }
 

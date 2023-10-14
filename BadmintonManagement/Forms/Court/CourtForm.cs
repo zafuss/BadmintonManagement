@@ -90,8 +90,9 @@ namespace BadmintonManagement.Forms.Court
             CustomPanel hoverPanel = sender as CustomPanel;
             if (hoverPanel != null)
             {
-                hoverPanel.BorderStyle = BorderStyle.FixedSingle;
-                hoverPanel.BorderColor = Color.Red;
+                //hoverPanel.BorderStyle = BorderStyle.FixedSingle;
+                //hoverPanel.BorderColor = Color.Red;
+                hoverPanel.BorderRadius = 15;
             }
         }
 
@@ -119,8 +120,9 @@ namespace BadmintonManagement.Forms.Court
             {
                 if (item.Name == _name)
                 {
-                    item.BorderStyle = BorderStyle.FixedSingle;
+                    //item.BorderStyle = BorderStyle.FixedSingle;
                     item.BorderColor = Color.Red;
+                    item.BorderRadius = 15;
                 }
                 else
                 {
@@ -139,8 +141,10 @@ namespace BadmintonManagement.Forms.Court
                 {
                     if(item.Name == customPicBox.Name )
                     {
-                        item.BorderStyle = BorderStyle.FixedSingle;
+                        //item.BorderStyle = BorderStyle.FixedSingle;
                         item.BorderColor = Color.Red;
+                        item.BorderRadius = 15;
+
                     }
                 }
             }
@@ -161,8 +165,9 @@ namespace BadmintonManagement.Forms.Court
                     if (item.Name == pictureBoxName)
                     {
                         _name = pictureBoxName;
-                        item.BorderStyle = BorderStyle.FixedSingle;
+                        //item.BorderStyle = BorderStyle.FixedSingle;
                         item.BorderColor = Color.Red;
+                        item.BorderRadius = 15;
                     }
                     else
                     {
@@ -206,8 +211,9 @@ namespace BadmintonManagement.Forms.Court
                     if (item.Name == pictureBoxName)
                     {
                         _name = pictureBoxName;
-                        item.BorderStyle = BorderStyle.FixedSingle;
+                        //item.BorderStyle = BorderStyle.FixedSingle;
                         item.BorderColor = Color.Red;
+                        item.BorderRadius = 15;
                     }
                     else
                     {
@@ -254,8 +260,6 @@ namespace BadmintonManagement.Forms.Court
             txtStartTime.Text = infoCourt.Starttime;
             txtEndTime.Text = infoCourt.Endtime;
         }
-
-        
 
         private void fill()
         {
@@ -367,8 +371,6 @@ namespace BadmintonManagement.Forms.Court
             btnAdmin.BackColor = Color.LightGray;
         }
 
-
-
         private void pnlDisplayCourt_SizeChanged(object sender, EventArgs e)
         {
             
@@ -392,8 +394,9 @@ namespace BadmintonManagement.Forms.Court
             {
                 if (item.Name == _name)
                 {
-                    item.BorderStyle = BorderStyle.FixedSingle;
+                    //item.BorderStyle = BorderStyle.FixedSingle;
                     item.BorderColor = Color.Red;
+                    item.BorderRadius = 15;
                 }
                 else
                 {
@@ -403,8 +406,6 @@ namespace BadmintonManagement.Forms.Court
             }
 
         }
-
-
 
         private void btnAdmin_Click(object sender, EventArgs e)
         {
