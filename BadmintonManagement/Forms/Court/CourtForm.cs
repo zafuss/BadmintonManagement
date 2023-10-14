@@ -36,23 +36,24 @@ namespace BadmintonManagement.Forms.Court
             }
             pnlDisplayCourt.AutoScroll = true;
             tmrCountDown.Start();
-            Title();
+            //Title();
             new CourtService().publicDay();
+            btnUser.BackColor = SystemColors.ButtonShadow;
         }
 
-        private void Title()
-        {
-            pnlFunction.Controls.Clear();
-            double width = (pnlFunction.Width);
-            double height = (pnlFunction.Height) / 12;
-            Label label = new Label();
-            label.Location = new Point(0, Convert.ToInt32(height));
-            label.Size = new Size(Convert.ToInt32(width), 50);
-            label.TextAlign = ContentAlignment.MiddleCenter;
-            label.Text = "Chức Năng";
-            label.Font = new Font("Segoe UI", 14, FontStyle.Bold);
-            pnlFunction.Controls.Add(label);
-        }
+        //private void Title()
+        //{
+        //    pnlFunction.Controls.Clear();
+        //    double width = (pnlFunction.Width);
+        //    double height = (pnlFunction.Height) / 12;
+        //    Label label = new Label();
+        //    label.Location = new Point(0, Convert.ToInt32(height));
+        //    label.Size = new Size(Convert.ToInt32(width), 50);
+        //    label.TextAlign = ContentAlignment.MiddleCenter;
+        //    label.Text = "Chức Năng";
+        //    label.Font = new Font("Segoe UI", 14, FontStyle.Bold);
+        //    pnlFunction.Controls.Add(label);
+        //}
         private void tmrCountDown_Tick(object sender, EventArgs e)
         {
             label1.Text = String.Format("{0}", DateTime.Now.ToString("HH:mm:ss")); 
@@ -361,6 +362,9 @@ namespace BadmintonManagement.Forms.Court
             listInfo = new RFDetailService().getCourtByRF();
             count = listInfo.Count();
             UserShow(listInfo, count);
+            btnUser.BackColor = SystemColors.ButtonShadow;
+            btnCalendar.BackColor = Color.LightGray;
+            btnAdmin.BackColor = Color.LightGray;
         }
 
 
@@ -410,10 +414,16 @@ namespace BadmintonManagement.Forms.Court
             newCourt = new CourtService().getListCourtWithOutDisable();
             count = newCourt.Count();
             ShowCourt(newCourt, count);
+            btnUser.BackColor = Color.LightGray;
+            btnCalendar.BackColor = Color.LightGray;
+            btnAdmin.BackColor = SystemColors.ButtonShadow; ;
         }
 
         private void btnCalendar_Click(object sender, EventArgs e)
         {
+            btnUser.BackColor = Color.LightGray;
+            btnCalendar.BackColor = SystemColors.ButtonShadow;
+            btnAdmin.BackColor = Color.LightGray;
             CourtCalendar courtCalendar = new CourtCalendar();
             courtCalendar.Show();
         }

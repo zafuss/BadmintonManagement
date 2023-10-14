@@ -36,6 +36,7 @@ namespace BadmintonManagement.Forms.Court
             acsc.AddRange(new CourtService().getBrachName().ToArray());
             txtCourtName.AutoCompleteCustomSource = acsc;
             txtCourtName.AutoCompleteSource = AutoCompleteSource.CustomSource;
+           
             //txtCourtName.Text = acsc[1].ToString();
         }
         public void Reset()
@@ -160,7 +161,7 @@ namespace BadmintonManagement.Forms.Court
                     {
                         COURT tmpCourt = SetCourt();
                         new CourtService().InsertCourt(tmpCourt);
-                        MessageBox.Show("Them Thanh Cong");
+                        MessageBox.Show("Thêm sân thành công!", "Thông báo");
                         Loading();
                         Reset();
                         if (Application.OpenForms["CourtForm"] != null && !Application.OpenForms["CourtForm"].IsDisposed)
@@ -176,7 +177,7 @@ namespace BadmintonManagement.Forms.Court
                 }
                 else
                 {
-                    MessageBox.Show("Them Khong Thanh Cong");
+                    MessageBox.Show("Thêm sân không thành công!", "Thông báo");
                 }               
             }
             catch (Exception ex)
@@ -194,20 +195,20 @@ namespace BadmintonManagement.Forms.Court
                 COURT tmp = new CourtService().FindCourtByID(cboCourtID.Text);
                 if ( tmp == null)
                 {
-                    throw new Exception("Xoa Khong Thanh Cong");
+                    throw new Exception("Xoá sân thành công!");
                 }
                 else if ( new CourtService().CountCourt(cboCourtID.Text) != 0)
                 {
-                    throw new Exception("Xoa Khong Thanh Cong");
+                    throw new Exception("Xoá sân không thành công!");
                 }
                 else 
                 {
-                    DialogResult result = MessageBox.Show("ThongBao","Ban Co Chac Khong",MessageBoxButtons.YesNo,MessageBoxIcon.Question);
+                    DialogResult result = MessageBox.Show("Vô hiệu hoá sân đã chọn?", "Thông báo", MessageBoxButtons.YesNo,MessageBoxIcon.Question);
                     if (result == DialogResult.Yes)
                     {
                         tmp.C_Status = "Disable";
                         new CourtService().InsertCourt(tmp);
-                        MessageBox.Show("Xoa Thanh Cong");
+                        MessageBox.Show("Vô hiệu hoá sân thành công!");
                         Loading();
                         Reset();
                         if (Application.OpenForms["CourtForm"] != null && !Application.OpenForms["CourtForm"].IsDisposed)
@@ -238,7 +239,7 @@ namespace BadmintonManagement.Forms.Court
                 COURT tmp = new CourtService().FindCourtByID(cboCourtID.Text);
                 if (tmp == null)
                 {
-                    throw new Exception("Sua Khong Thanh Cong");
+                    throw new Exception("Chỉnh sửa sân không thành công!");
                 }
                 else
                 {
@@ -254,7 +255,7 @@ namespace BadmintonManagement.Forms.Court
                         new CourtService().InsertCourt(tmp);
                         Loading();
                         Reset();
-                        MessageBox.Show("Sua Thanh Cong");
+                        MessageBox.Show("Chỉnh sửa thông tin sân thành công!");
                         if (Application.OpenForms["CourtForm"] != null && !Application.OpenForms["CourtForm"].IsDisposed)
                         {
                             List<COURT> newCourt = new CourtService().getListCourtWithOutDisable();
@@ -317,5 +318,7 @@ namespace BadmintonManagement.Forms.Court
                 }
             }
         }
+
+   
     }
 }
