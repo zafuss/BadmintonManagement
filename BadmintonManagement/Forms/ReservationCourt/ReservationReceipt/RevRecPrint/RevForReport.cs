@@ -20,5 +20,6 @@ namespace BadmintonManagement.Forms.ReservationCourt.ReservationReceipt.RevRecPr
         public DateTime? EndTime { get; set; }
         public string PriceID { get; set; }
         public int? C_Status { get; set; }
+        public string FullName { get; set; }
     }
 }

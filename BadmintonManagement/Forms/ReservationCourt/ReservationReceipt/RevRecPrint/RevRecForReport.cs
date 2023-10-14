@@ -18,5 +18,7 @@ namespace BadmintonManagement.Forms.ReservationCourt.ReservationReceipt.RevRecPr
         public string PhoneNumber { get; set; }
 
         public string Username { get; set; }
+
+        public decimal? RealChagre { get; set; }
     }
 }
