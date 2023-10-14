@@ -217,6 +217,9 @@
     <Compile Include="Forms\ReservationCourt\ReservationReceipt\RevReceipt.Designer.cs">
       <DependentUpon>RevReceipt.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\ReservationCourt\ReservationReceipt\RevRecPrint\RevDetailForReport.cs" />
+    <Compile Include="Forms\ReservationCourt\ReservationReceipt\RevRecPrint\RevForReport.cs" />
+    <Compile Include="Forms\ReservationCourt\ReservationReceipt\RevRecPrint\RevRecForReport.cs" />
     <Compile Include="Forms\ReservationCourt\ReservationReceipt\RevRecPrint\RevRecPrint.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -520,6 +523,9 @@
     <None Include="Properties\DataSources\BadmintonManagement.Database.IncomeService.datasource" />
     <None Include="Properties\DataSources\BadmintonManagement.Database.IncomeYear.datasource" />
     <None Include="Properties\DataSources\BadmintonManagement.Database.ReportServiceInStoge.datasource" />
+    <None Include="Properties\DataSources\BadmintonManagement.Forms.ReservationCourt.ReservationReceipt.RevRecPrint.RevDetailForReport.datasource" />
+    <None Include="Properties\DataSources\BadmintonManagement.Forms.ReservationCourt.ReservationReceipt.RevRecPrint.RevForReport.datasource" />
+    <None Include="Properties\DataSources\BadmintonManagement.Forms.ReservationCourt.ReservationReceipt.RevRecPrint.RevRecForReport.datasource" />
     <None Include="Properties\DataSources\BadmintonManagement.Forms.Service.ServiceReceipt.Print.SerRec.datasource" />
     <None Include="Properties\DataSources\BadmintonManagement.Forms.Service.ServiceReceipt.Print.SerRecDetail.datasource" />
     <None Include="Properties\DataSources\BadmintonManagement.Models.CUSTOMER.datasource" />

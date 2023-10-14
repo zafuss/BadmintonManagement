@@ -33,10 +33,12 @@
             // 
             // rpvPrint
             // 
-            this.rpvPrint.Location = new System.Drawing.Point(160, 77);
+            this.rpvPrint.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rpvPrint.LocalReport.ReportEmbeddedResource = "BadmintonManagement.SerRecPrintReport.rdlc";
+            this.rpvPrint.Location = new System.Drawing.Point(0, 0);
             this.rpvPrint.Name = "rpvPrint";
             this.rpvPrint.ServerReport.BearerToken = null;
-            this.rpvPrint.Size = new System.Drawing.Size(396, 246);
+            this.rpvPrint.Size = new System.Drawing.Size(800, 450);
             this.rpvPrint.TabIndex = 0;
             // 
             // RevRecPrint
