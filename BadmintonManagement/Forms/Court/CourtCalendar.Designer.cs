@@ -57,7 +57,7 @@
             this.pnlTitle.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlTitle.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.pnlTitle.Location = new System.Drawing.Point(0, 0);
-            this.pnlTitle.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pnlTitle.Margin = new System.Windows.Forms.Padding(2);
             this.pnlTitle.Name = "pnlTitle";
             this.pnlTitle.Size = new System.Drawing.Size(1355, 118);
             this.pnlTitle.TabIndex = 0;
@@ -96,7 +96,7 @@
             this.lstvCalender.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lstvCalender.HideSelection = false;
             this.lstvCalender.Location = new System.Drawing.Point(0, 0);
-            this.lstvCalender.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.lstvCalender.Margin = new System.Windows.Forms.Padding(2);
             this.lstvCalender.Name = "lstvCalender";
             this.lstvCalender.Size = new System.Drawing.Size(1355, 561);
             this.lstvCalender.TabIndex = 0;
@@ -149,7 +149,7 @@
             this.pnlButton.Controls.Add(this.rdoCheckDay);
             this.pnlButton.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlButton.Location = new System.Drawing.Point(0, 0);
-            this.pnlButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pnlButton.Margin = new System.Windows.Forms.Padding(2);
             this.pnlButton.Name = "pnlButton";
             this.pnlButton.Size = new System.Drawing.Size(1355, 38);
             this.pnlButton.TabIndex = 0;
@@ -203,8 +203,8 @@
             // 
             this.rdoCheckWeek.AutoSize = true;
             this.rdoCheckWeek.Dock = System.Windows.Forms.DockStyle.Left;
-            this.rdoCheckWeek.Location = new System.Drawing.Point(350, 0);
-            this.rdoCheckWeek.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.rdoCheckWeek.Location = new System.Drawing.Point(435, 0);
+            this.rdoCheckWeek.Margin = new System.Windows.Forms.Padding(2);
             this.rdoCheckWeek.Name = "rdoCheckWeek";
             this.rdoCheckWeek.Size = new System.Drawing.Size(209, 38);
             this.rdoCheckWeek.TabIndex = 2;
@@ -216,8 +216,8 @@
             // 
             this.rdoCheckMonth.AutoSize = true;
             this.rdoCheckMonth.Dock = System.Windows.Forms.DockStyle.Left;
-            this.rdoCheckMonth.Location = new System.Drawing.Point(172, 0);
-            this.rdoCheckMonth.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.rdoCheckMonth.Location = new System.Drawing.Point(214, 0);
+            this.rdoCheckMonth.Margin = new System.Windows.Forms.Padding(2);
             this.rdoCheckMonth.Name = "rdoCheckMonth";
             this.rdoCheckMonth.Size = new System.Drawing.Size(221, 38);
             this.rdoCheckMonth.TabIndex = 1;
@@ -230,7 +230,7 @@
             this.rdoCheckDay.AutoSize = true;
             this.rdoCheckDay.Dock = System.Windows.Forms.DockStyle.Left;
             this.rdoCheckDay.Location = new System.Drawing.Point(0, 0);
-            this.rdoCheckDay.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.rdoCheckDay.Margin = new System.Windows.Forms.Padding(2);
             this.rdoCheckDay.Name = "rdoCheckDay";
             this.rdoCheckDay.Size = new System.Drawing.Size(214, 38);
             this.rdoCheckDay.TabIndex = 0;
@@ -245,7 +245,7 @@
             this.ClientSize = new System.Drawing.Size(1355, 717);
             this.Controls.Add(this.pnlInf);
             this.Controls.Add(this.pnlTitle);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "CourtCalendar";
             this.Text = "Lịch Sân";
             this.pnlInf.ResumeLayout(false);
