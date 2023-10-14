@@ -48,6 +48,7 @@
             this.btnClose = new System.Windows.Forms.Button();
             this.txtEmail = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
+            this.btnPrint = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvServiceDetail)).BeginInit();
             this.SuspendLayout();
             // 
@@ -225,12 +226,23 @@
             this.label6.TabIndex = 14;
             this.label6.Text = "Email";
             // 
+            // btnPrint
+            // 
+            this.btnPrint.Location = new System.Drawing.Point(1058, 20);
+            this.btnPrint.Name = "btnPrint";
+            this.btnPrint.Size = new System.Drawing.Size(125, 61);
+            this.btnPrint.TabIndex = 16;
+            this.btnPrint.Text = "In hóa đơn";
+            this.btnPrint.UseVisualStyleBackColor = true;
+            this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
+            // 
             // ServiceRec
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightGray;
             this.ClientSize = new System.Drawing.Size(1195, 764);
+            this.Controls.Add(this.btnPrint);
             this.Controls.Add(this.txtEmail);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.btnClose);
@@ -280,5 +292,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn clnTotal;
         private System.Windows.Forms.TextBox txtEmail;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Button btnPrint;
     }
 }

@@ -1,4 +1,5 @@
-﻿using BadmintonManagement.Models;
+﻿using BadmintonManagement.Forms.Service.ServiceReceipt.Print;
+using BadmintonManagement.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -210,6 +211,12 @@ namespace BadmintonManagement.Forms.Service.ServiceReceipt
         private void btnClose_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void btnPrint_Click(object sender, EventArgs e)
+        {
+            SerRecPrint frm = new SerRecPrint(txtRecNo.Text);
+            frm.ShowDialog();
         }
     }
 }

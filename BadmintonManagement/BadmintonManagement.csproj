@@ -223,6 +223,14 @@
     <Compile Include="Forms\Service\ServiceForm.Designer.cs">
       <DependentUpon>ServiceForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Service\ServiceReceipt\Print\SerRec.cs" />
+    <Compile Include="Forms\Service\ServiceReceipt\Print\SerRecDetail.cs" />
+    <Compile Include="Forms\Service\ServiceReceipt\Print\SerRecPrint.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Service\ServiceReceipt\Print\SerRecPrint.Designer.cs">
+      <DependentUpon>SerRecPrint.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Service\ServiceReceipt\ServiceReceiptDetail.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -243,13 +251,11 @@
     </Compile>
     <Compile Include="Models\BRANCH.cs" />
     <Compile Include="Models\COURT.cs" />
-    <Compile Include="Models\COURT.cs" />
     <Compile Include="Models\CUSTOMER.cs" />
     <Compile Include="Models\C_SERVICE.cs" />
     <Compile Include="Models\C_USER.cs" />
     <Compile Include="Models\C__MigrationHistory.cs" />
     <Compile Include="Models\ModelBadmintonManage.cs" />
-    <Compile Include="Models\PRICE.cs" />
     <Compile Include="Models\PRICE.cs" />
     <Compile Include="Models\RECEIPT.cs" />
     <Compile Include="Models\RESERVATION.cs" />
@@ -403,6 +409,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Service\ServiceForm.resx">
       <DependentUpon>ServiceForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Service\ServiceReceipt\Print\SerRecPrint.resx">
+      <DependentUpon>SerRecPrint.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Service\ServiceReceipt\ServiceReceiptDetail.resx">
       <DependentUpon>ServiceReceiptDetail.cs</DependentUpon>
