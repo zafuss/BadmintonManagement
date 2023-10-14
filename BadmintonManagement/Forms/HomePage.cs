@@ -36,12 +36,12 @@ namespace BadmintonManagement.Forms.AuthorizationForms
             ManageUser manageUser = new ManageUser();
             manageUser.Show();
         }
-
+        // Đóng ứng dụng khi form HomePage được đóng.
         private void HomePage_FormClosed(object sender, FormClosedEventArgs e)
         {
             Application.Exit();
         }
-
+        // Kiểm tra xem một tab với cùng tiêu đề như form đã tồn tại chưa.
         private int CheckExist(Form form)
         {
             for (int i = 0; i < tabControl.TabCount; i++)
@@ -52,6 +52,7 @@ namespace BadmintonManagement.Forms.AuthorizationForms
             }
             return -1;
         }
+        // Thêm trang tab mới cho form hoặc chuyển đến tab hiện tại nếu nó đã tồn tại.
         private void AddTabPages(Form form)
         {
             int checkExist = CheckExist(form);
@@ -78,6 +79,7 @@ namespace BadmintonManagement.Forms.AuthorizationForms
 
             }
         }
+        // Đóng một tab khi nút đóng được nhấn trên tab đó. 
         private void tabControl_MouseClick(object sender, MouseEventArgs e)
         {
             for (int i = 0; i < tabControl.TabCount; i++)
@@ -93,6 +95,7 @@ namespace BadmintonManagement.Forms.AuthorizationForms
 
         private void HomePage_Load(object sender, EventArgs e)
         {
+            // Khởi tạo form và hiển thị các yếu tố giao diện người dùng liên quan dựa vào vai trò của người dùng.
             Size mySize = new System.Drawing.Size(20, 20);
             Bitmap bitmap = new Bitmap(Properties.Resources.closeAct);
             Bitmap btm = new Bitmap(bitmap, mySize);
@@ -115,47 +118,48 @@ namespace BadmintonManagement.Forms.AuthorizationForms
                 toolStripSeparator1.Visible = false;
             }
             lblEmployeeName.Text = "Nhân viên: " + Properties.Settings.Default._Name;
+            // kiểm tra và cập nhật trạng thái đặt sân thời gian thực
             bool t = RealTimeCaptureStatusReservation();
             AddTabPages(new CourtForm());
 
         }
 
-
+        // mở form quản lý user
         private void btnUser_Click(object sender, EventArgs e)
         {
             AddTabPages(new ManageUser());
         }
-
+        // mở form quản lý sân
         private void btnCourt_Click(object sender, EventArgs e)
         {
             AddTabPages(new CourtForm());
         }
-
+        // mở form quản lý khách hàng
         private void btnCustomer_Click(object sender, EventArgs e)
         {
             AddTabPages(new CustomerForm());
         }
-
+        // mở form quản lý dịch vụ
         private void btnService_Click_1(object sender, EventArgs e)
         {
             AddTabPages(new ServiceForm());
         }
-
+        // mở form quản lý  đặt sân
         private void btnReservation_Click(object sender, EventArgs e)
         {
             AddTabPages(new ReservationForm());
         }
-
+        // mở form xem hóa đơn
         private void btnReceipt_Click(object sender, EventArgs e)
         {
             AddTabPages(new ReceiptForm());
         }
-
+        // mở form quản lý bảng giá
         private void btnPrice_Click(object sender, EventArgs e)
         {
             AddTabPages(new PriceForm());
         }
-
+        // mở form báo cáo thống kê
         private void btnReport_Click_1(object sender, EventArgs e)
         {
             AddTabPages(new ReportForm());
@@ -173,6 +177,8 @@ namespace BadmintonManagement.Forms.AuthorizationForms
         {
 
         }
+
+        // kiểm tra xem có sự thay đổi trong trạng thái đặt sân không
         private bool RealTimeCaptureStatusReservation()
         {
             ModelBadmintonManage context = new ModelBadmintonManage();
@@ -219,12 +225,13 @@ namespace BadmintonManagement.Forms.AuthorizationForms
             }
             return change;
         }
+        // Cập nhật thời gian thực trạng thái đặt sân
         private void timerRealTimeStatusCapture_Tick(object sender, EventArgs e)
         {
            
             bool t = RealTimeCaptureStatusReservation();
         }
-
+        // Cập nhật hiển thị thời gian trên Homepage
         public void tmrRload_Tick(object sender, EventArgs e)
         {
             lblTime.Text = String.Format("{0}  {1}", DateTime.Now.ToString("HH:mm:ss"), DateTime.Now.ToString("dd/MM/yyyy"));
@@ -232,22 +239,25 @@ namespace BadmintonManagement.Forms.AuthorizationForms
 
         private void tabControl_DrawItem(object sender, DrawItemEventArgs e)
         {
+            // Vẽ giao diện của các tab trên tabControl
             Rectangle rect = tabControl.GetTabRect(e.Index);
             Rectangle imageRect = new Rectangle(rect.Right - closeImage.Width, rect.Top + (rect.Height - closeImage.Width) / 2, closeImage.Width, closeImage.Height);
             rect.Size = new Size(rect.Width + 24, 38);
             Font font;
             Brush brush = Brushes.Black;
             StringFormat strFormat = new StringFormat(StringFormat.GenericDefault);
+            // Kiểm tra xem tab hiện tại có được chọn hay không
             if (tabControl.SelectedTab == tabControl.TabPages[e.Index])
             {
+                // Nếu tab được chọn, vẽ một hình ảnh đóng tab và sử dụng font đậm
                 e.Graphics.DrawImage(closeImage, imageRect);
                 font = new Font("Segoe UI", 12, FontStyle.Bold);
                 e.Graphics.DrawString(tabControl.TabPages[e.Index].Text, font, brush, rect, strFormat);
             }
             else
             {
+                // Nếu tab không được chọn, vẽ hình ảnh đóng tab và sử dụng font thường
                 e.Graphics.DrawImage(closeImage, imageRect);
-                //font = new Font("Arial", 9, FontStyle.Strikeout);
                 font = new Font("Segoe UI", 11, FontStyle.Regular);
                 e.Graphics.DrawString(tabControl.TabPages[e.Index].Text, font, brush, rect, strFormat);
             }

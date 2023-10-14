@@ -23,6 +23,7 @@ namespace BadmintonManagement.Forms.Report
         SqlCommand cmd = new SqlCommand();
         SqlConnection conn1;
         SqlCommand cmd1 = new SqlCommand();
+        //  khởi tạo chuỗi kết nối cơ sở dữ liệu SQL Server
         string str = @"data source=(local);initial catalog=BadmintonManagementDB;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework";
         public FormIncome()
         {
@@ -30,11 +31,7 @@ namespace BadmintonManagement.Forms.Report
             
         }
 
-        private void btnReport_Click(object sender, EventArgs e)
-        {
-            
-        }
-
+        // lấy dữ liệu doanh thu sân từ hóa đơn đưa lên reportviewer
         private void IncomeCourt()
         {
             string year = dtpYear.Text;
@@ -42,6 +39,7 @@ namespace BadmintonManagement.Forms.Report
                 conn = new SqlConnection(str);
             if (conn.State == ConnectionState.Closed)
                 conn.Open();
+            // Set command type thành text, truy vấn SQL để lấy dữ liệu doanh thu 
             cmd.CommandType = CommandType.Text;
             cmd.CommandText = @"select T1.Thang, (T1.Total + T.Total) as Total
                                     from (	select convert(int,Month(R._Date)) as Thang,sum(R.Total) as Total 
@@ -53,9 +51,11 @@ namespace BadmintonManagement.Forms.Report
 													                                    group by convert(int,Month(S.CreateDate))) T
                                     where T1.Thang = T.Thang
                                     order by T1.Thang ";
+            
             cmd.Connection = conn;
             SqlDataReader reader = cmd.ExecuteReader();
             List<IncomeYear> list = new List<IncomeYear>();
+            // Đọc dữ liệu từ SqlDataReader và điền vào danh sách.
             while (reader.Read())
             {
                 int moth = reader.GetInt32(0);
@@ -70,12 +70,15 @@ namespace BadmintonManagement.Forms.Report
             {
                 throw new Exception("Khong có doanh thu trong thời gian này");
             }
+            // khởi tạo và gán các tham số
             Microsoft.Reporting.WinForms.ReportParameter[] param1 = new Microsoft.Reporting.WinForms.ReportParameter[2]
             {
                     new Microsoft.Reporting.WinForms.ReportParameter("nam",dtpYear.Text),
                     new Microsoft.Reporting.WinForms.ReportParameter("month", dtpMonth.Text)
             };
-
+            // Set ReportPath cho ReportViewer.
+            // Tạo ReportDataSource với dữ liệu từ list
+            // Đặt tham số báo cáo và refresh ReportViewer để hiển thị dữ liệu.
             reportViewer1.LocalReport.ReportPath = "ReportIncome.rdlc";
             var sour = new ReportDataSource("DataSetIncome", list);
             reportViewer1.LocalReport.DataSources.Add(sour);
@@ -84,6 +87,7 @@ namespace BadmintonManagement.Forms.Report
             
         }
 
+        // lấy dữ liệu danh sách hóa đơn dịch vụ
         private void IncomeService1()
         {
             string year = dtpYear.Text;
@@ -92,6 +96,7 @@ namespace BadmintonManagement.Forms.Report
                 conn1 = new SqlConnection(str);
             if (conn1.State == ConnectionState.Closed)
                 conn1.Open();
+            // Set command type thành text, truy vấn SQL để lấy dữ liệu doanh thu 
             cmd1.CommandType = CommandType.Text;
             cmd1.CommandText = @"select cast(round((T1.Total/(T1.Total+T.Total))*100,2) as decimal(18,2)) as San,cast((100-round((T1.Total/(T1.Total+T.Total))*100,2)) as decimal(18,2)) as dichvu
                              from (	select convert(int,Month(R._Date)) as Thang,sum(R.Total) as Total 
@@ -105,6 +110,7 @@ namespace BadmintonManagement.Forms.Report
             cmd1.Connection = conn1;
             SqlDataReader reader1 = cmd1.ExecuteReader();
             List<IncomeSer>  list1 = new List<IncomeSer>();
+            // Đọc dữ liệu từ SqlDataReader và điền vào danh sách.
             while (reader1.Read())
             {
               
@@ -122,11 +128,15 @@ namespace BadmintonManagement.Forms.Report
                 dtpMonth.Value = DateTime.Now; 
                 throw new Exception("Không có doanh thu trong thời gian này");
             }
+            // Set ReportPath cho ReportViewer.
+            // Tạo ReportDataSource với dữ liệu từ list
+            // refresh ReportViewer để hiển thị dữ liệu.
             reportViewer1.LocalReport.ReportPath = "ReportIncome.rdlc";
             var sour1 = new ReportDataSource("DataSetMonth", list1);
             reportViewer1.LocalReport.DataSources.Add(sour1);
             this.reportViewer1.RefreshReport();
         }
+        // Load biểu đồ khi load form
         private void FormIncome_Load(object sender, EventArgs e)
         {
             try
@@ -139,7 +149,7 @@ namespace BadmintonManagement.Forms.Report
                 MessageBox.Show(ex.Message);
             }
         }
-
+        // cập nhật biểu đồ khi thay đổi năm 
         private void dtpYear_ValueChanged(object sender, EventArgs e)
         {
             try
@@ -153,7 +163,7 @@ namespace BadmintonManagement.Forms.Report
                 MessageBox.Show(ex.Message);
             }
         }
-
+        //cập nhật biểu đồ khi thay đổi tháng
         private void dtpMonth_ValueChanged(object sender, EventArgs e)
         {
             try
