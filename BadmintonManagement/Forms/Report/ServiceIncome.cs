@@ -20,6 +20,7 @@ namespace BadmintonManagement.Forms.Report
         ModelBadmintonManage context = new ModelBadmintonManage();
         SqlConnection conn;
         SqlCommand cmd = new SqlCommand();
+        //  khởi tạo chuỗi kết nối cơ sở dữ liệu SQL Server
         string str = @"data source=(local);initial catalog=BadmintonManagementDB;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework";
         public ServiceIncome()
         {
@@ -31,7 +32,7 @@ namespace BadmintonManagement.Forms.Report
 
             rptServiceReceipt.Visible = false;
         }
-
+        // lấy dữ liệu lượt khách hàng đưa lên reportviewer
         private void IncomeCourtReportMonth()
         {
             
@@ -49,6 +50,7 @@ namespace BadmintonManagement.Forms.Report
                 };
                 string month1 = dtpMonth.Value.Month.ToString();
                 string year1 = dtpMonth.Value.Year.ToString();
+                //  truy vấn SQL để lấy dữ liệu doanh thu 
                 cmd.CommandText = @"select S1.ServiceReceiptNo,convert(varchar,S1.CreateDate,105) as NgayLap,C.FullName,S1.PhoneNumber,U._Name,S1.Total
                                     from SERVICE_RECEIPT S1,_USER U,CUSTOMER C
                                     where  S1.PhoneNumber = C.PhoneNumber and U.Username = S1.Username
@@ -62,6 +64,7 @@ namespace BadmintonManagement.Forms.Report
                 };
                 string starDay = dtbStart.Value.AddDays(-1).ToString();
                 string enDay = dtpEnd.Value.AddDays(1).ToString();
+                //  truy vấn SQL để lấy dữ liệu doanh thu 
                 cmd.CommandText = @"select S1.ServiceReceiptNo,convert(varchar,S1.CreateDate,105) as NgayLap,C.FullName,S1.PhoneNumber,U._Name,S1.Total
                                     from SERVICE_RECEIPT S1,_USER U,CUSTOMER C
                                     where  S1.PhoneNumber = C.PhoneNumber and U.Username = S1.Username
@@ -71,6 +74,7 @@ namespace BadmintonManagement.Forms.Report
             cmd.Connection = conn;
             SqlDataReader reader = cmd.ExecuteReader();
             List<CourtIncomeReport> list = new List<CourtIncomeReport>();
+            // Đọc dữ liệu từ SqlDataReader và điền vào danh sách.
             while (reader.Read())
             {
                 CourtIncomeReport court = new CourtIncomeReport();
@@ -86,6 +90,9 @@ namespace BadmintonManagement.Forms.Report
             reader.Close();
             if (list.Count < 1)
                 throw new Exception("Khong có doanh thu trong thời gian này");
+            // Set ReportPath cho ReportViewer.
+            // Tạo ReportDataSource với dữ liệu từ list
+            // Đặt tham số báo cáo và refresh ReportViewer để hiển thị dữ liệu.
             rptServiceReceipt.LocalReport.ReportPath = "ServiceReport.rdlc";
             var sour = new ReportDataSource("ServiceIncomeReport", list);
             rptServiceReceipt.LocalReport.DataSources.Clear();
@@ -94,6 +101,7 @@ namespace BadmintonManagement.Forms.Report
 
             this.rptServiceReceipt.RefreshReport();
         }
+        // Load form Doanh thu dịch vụ
         private void btnShowReport_Click(object sender, EventArgs e)
         {
             try

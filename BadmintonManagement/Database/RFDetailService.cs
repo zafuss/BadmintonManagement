@@ -16,14 +16,11 @@ namespace BadmintonManagement.Database
     {
         ModelBadmintonManage _modelbadmintonManage = new ModelBadmintonManage();
         List<RF_DETAIL> _rfDetail = new ModelBadmintonManage().RF_DETAIL.ToList();
-        List<COURT> _court = new ModelBadmintonManage().COURT.ToList();
-        List<RESERVATION> _reservation = new ModelBadmintonManage().RESERVATION.ToList();
 
         public List<RF_DETAIL> getRFDetail()    
         {
             return _rfDetail;
         }
-
 
         public HashSet<string> getListTimeinDay()
         {
@@ -114,7 +111,6 @@ namespace BadmintonManagement.Database
                 listInfor.Add(infoCourt);
             }
             return listInfor;
-            conn.Close();
         }
 
 

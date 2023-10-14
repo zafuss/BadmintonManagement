@@ -20,6 +20,7 @@ namespace BadmintonManagement.Forms.Report
         ModelBadmintonManage context = new ModelBadmintonManage();
         SqlConnection conn;
         SqlCommand cmd = new SqlCommand();
+        //  khởi tạo chuỗi kết nối cơ sở dữ liệu SQL Server
         string str = @"data source=(local);initial catalog=BadmintonManagementDB;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework";
         public CustomerReport()
         {
@@ -31,6 +32,7 @@ namespace BadmintonManagement.Forms.Report
             rptCustomer.Visible = false;
             
         }
+        // lấy dữ liệu lượt khách hàng đưa lên reportviewer
         private void CustomerReportMonth()
         {
 
@@ -40,6 +42,7 @@ namespace BadmintonManagement.Forms.Report
                 conn.Open();
             cmd.CommandType = CommandType.Text;
             Microsoft.Reporting.WinForms.ReportParameter[] param;
+            // kiểm tra nếu thống kê theo tháng và theo ngày
             if (rdbMonth.Checked)
             {
                 param = new Microsoft.Reporting.WinForms.ReportParameter[1]
@@ -48,6 +51,7 @@ namespace BadmintonManagement.Forms.Report
                 };
                 string month1 = dtpMonth.Value.Month.ToString();
                 string year1 = dtpMonth.Value.Year.ToString();
+                //  truy vấn SQL để lấy dữ liệu lượt khách theo tháng
                 cmd.CommandText = @"select C.FullName,C.PhoneNumber,C.Email,convert (varchar,count(R.ReservationNo)) as SoLan
                                     from RESERVATION R,CUSTOMER C,RECEIPT R1
                                     where R.PhoneNumber = C.PhoneNumber and R1.ReservationNo = R.ReservationNo and CONVERT(varchar,month(R1._Date))= '"+month1+"'  and CONVERT(varchar,year(R1._Date))= '"+year1+
@@ -61,6 +65,7 @@ namespace BadmintonManagement.Forms.Report
                 };
                 string starDay = dtbStart.Value.AddDays(-1).ToString();
                 string enDay = dtpEnd.Value.AddDays(1).ToString();
+                //  truy vấn SQL để lấy dữ liệu lượt khách theo ngày
                 cmd.CommandText = @"select C.FullName,C.PhoneNumber,C.Email,convert (varchar,count(R.ReservationNo)) as SoLan
                                     from RESERVATION R,CUSTOMER C,RECEIPT R1
                                     where R.PhoneNumber = C.PhoneNumber and R1.ReservationNo = R.ReservationNo 
@@ -70,6 +75,7 @@ namespace BadmintonManagement.Forms.Report
             cmd.Connection = conn;
             SqlDataReader reader = cmd.ExecuteReader();
             List<CountCustomer> list = new List<CountCustomer>();
+            // Đọc dữ liệu từ SqlDataReader và điền vào danh sách.
             while (reader.Read())
             {
                 CountCustomer customer = new CountCustomer();
@@ -83,6 +89,9 @@ namespace BadmintonManagement.Forms.Report
             reader.Close();
             if (list.Count < 1)
                 throw new Exception("Không có khách hàng trong thời gian này");
+            // Set ReportPath cho ReportViewer.
+            // Tạo ReportDataSource với dữ liệu từ list
+            // Đặt tham số báo cáo và refresh ReportViewer để hiển thị dữ liệu.
             rptCustomer.LocalReport.ReportPath = "CustomerReport.rdlc";
             var sour = new ReportDataSource("DataSetCountCustomer", list);
             rptCustomer.LocalReport.DataSources.Clear();
@@ -91,6 +100,8 @@ namespace BadmintonManagement.Forms.Report
 
             this.rptCustomer.RefreshReport();
         }
+
+        // load form thống kê lượt khách
         private void btnShowReport_Click(object sender, EventArgs e)
         {
             try

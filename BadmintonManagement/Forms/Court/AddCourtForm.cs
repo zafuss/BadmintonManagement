@@ -108,7 +108,33 @@ namespace BadmintonManagement.Forms.Court
             newCourt.BranchID = new CourtService().GetBranchID(cboBranchID.Text);
             return newCourt;
         }
-        List<COURT> newCourt = new CourtService().getListCourtWithOutDisable();
+
+        private COURT UpdateCourt(COURT newCourt)
+        {
+            if (cboCourtID.Text == string.Empty)
+            {
+                newCourt.CourtID = new CourtService().GetCourtID(cboBranchID.Text);
+            }
+            else
+            {
+                newCourt.CourtID = cboCourtID.Text;
+            }
+
+            if (cboStatus.SelectedIndex == 0)
+            {
+                newCourt.C_Status = "Using";
+            }
+            else
+            {
+                newCourt.C_Status = "Maintenance";
+            }
+
+            newCourt.CourtName = txtCourtName.Text;
+            newCourt.StartDate = newCourt.StartDate;
+            newCourt.BranchID = new CourtService().GetBranchID(cboBranchID.Text);
+            return newCourt;
+        }
+
 
         private void txtCourtName_TextChanged(object sender, EventArgs e)
         {
@@ -182,7 +208,7 @@ namespace BadmintonManagement.Forms.Court
             }
             catch (Exception ex)
             {
-                return;
+                MessageBox.Show(ex.Message);
             }
         }
 
@@ -251,7 +277,7 @@ namespace BadmintonManagement.Forms.Court
                    
                     
                     {
-                        tmp = SetCourt();
+                        tmp = UpdateCourt(tmp);
                         new CourtService().InsertCourt(tmp);
                         Loading();
                         Reset();

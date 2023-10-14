@@ -21,17 +21,18 @@ namespace BadmintonManagement.Forms.Report
         ModelBadmintonManage context = new ModelBadmintonManage();
         SqlConnection conn;
         SqlCommand cmd = new SqlCommand();
+        //  khởi tạo chuỗi kết nối cơ sở dữ liệu SQL Server
         string str = @"data source=(local);initial catalog=BadmintonManagementDB;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework";
         public CourtIncome()
         {
             InitializeComponent();
         }
-
+        
         private void ReceiptFormReport_Load(object sender, EventArgs e)
         {
             rptCourtIncome.Visible = false;
         }
-
+        // lấy dữ liệu doanh thu sân từ hóa đơn đưa lên reportviewer
         private void IncomeCourtReportMonth()
         {
             
@@ -41,6 +42,7 @@ namespace BadmintonManagement.Forms.Report
                 conn.Open();
             cmd.CommandType = CommandType.Text;
             Microsoft.Reporting.WinForms.ReportParameter[] param1;
+            // kiểm tra nếu thống kê theo tháng và theo ngày
             if (rdbMonth.Checked == true)
             {
                 param1 = new Microsoft.Reporting.WinForms.ReportParameter[1]
@@ -49,6 +51,7 @@ namespace BadmintonManagement.Forms.Report
                 };
                 string month1 = dtpMonth.Value.Month.ToString();
                 string year1 = dtpMonth.Value.Year.ToString();
+                //  truy vấn SQL để lấy dữ liệu doanh thu 
                 cmd.CommandText = @"select R1.ReceiptNo,convert(varchar,R1._Date,105) as Ngay,C.PhoneNumber,C.FullName,U._Name,R1.Total
                                 from RECEIPT R1,RESERVATION R2,CUSTOMER C,_USER U
                                 where R1.ReservationNo = R2.ReservationNo and R1.Username= U.Username and R2.PhoneNumber = C.PhoneNumber 
@@ -63,6 +66,7 @@ namespace BadmintonManagement.Forms.Report
                 };
                 string starDay = dtbStart.Value.AddDays(-1).ToString();
                 string enDay = dtpEnd.Value.AddDays(1).ToString();
+                //  truy vấn SQL để lấy dữ liệu doanh thu 
                 cmd.CommandText = @"select R1.ReceiptNo,convert(varchar,R1._Date,105) as Ngay,C.PhoneNumber,C.FullName,U._Name,R1.Total
                                 from RECEIPT R1,RESERVATION R2,CUSTOMER C,_USER U
                                 where R1.ReservationNo = R2.ReservationNo and R1.Username= U.Username and R2.PhoneNumber = C.PhoneNumber 
@@ -73,6 +77,7 @@ namespace BadmintonManagement.Forms.Report
             cmd.Connection = conn;
             SqlDataReader reader = cmd.ExecuteReader();
             List<CourtIncomeReport> list = new List<CourtIncomeReport>();
+            // Đọc dữ liệu từ SqlDataReader và điền vào danh sách.
             while (reader.Read())
             {
                 CourtIncomeReport court = new CourtIncomeReport();
@@ -88,7 +93,9 @@ namespace BadmintonManagement.Forms.Report
             reader.Close();
             if (list.Count < 1)
                 throw new Exception("Không có doanh thu trong thời gian này");
-
+            // Set ReportPath cho ReportViewer.
+            // Tạo ReportDataSource với dữ liệu từ list
+            // Đặt tham số báo cáo và refresh ReportViewer để hiển thị dữ liệu.
             rptCourtIncome.LocalReport.ReportPath = "CourtIncomeReport.rdlc";
             var sour = new ReportDataSource("CourtIncomeReport", list);
             rptCourtIncome.LocalReport.DataSources.Clear();
@@ -98,7 +105,7 @@ namespace BadmintonManagement.Forms.Report
 
         }
         
-
+        // load form thống kê doanh thu sân
         private void btnShowReport_Click(object sender, EventArgs e)
         {
             try

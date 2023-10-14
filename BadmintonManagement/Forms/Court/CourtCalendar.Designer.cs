@@ -57,8 +57,9 @@
             this.pnlTitle.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlTitle.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.pnlTitle.Location = new System.Drawing.Point(0, 0);
+            this.pnlTitle.Margin = new System.Windows.Forms.Padding(2);
             this.pnlTitle.Name = "pnlTitle";
-            this.pnlTitle.Size = new System.Drawing.Size(1186, 125);
+            this.pnlTitle.Size = new System.Drawing.Size(1355, 118);
             this.pnlTitle.TabIndex = 0;
             this.pnlTitle.SizeChanged += new System.EventHandler(this.pnlTitle_SizeChanged);
             // 
@@ -68,18 +69,18 @@
             this.pnlInf.Controls.Add(this.pnlButton);
             this.pnlInf.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlInf.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.pnlInf.Location = new System.Drawing.Point(0, 125);
+            this.pnlInf.Location = new System.Drawing.Point(0, 118);
             this.pnlInf.Name = "pnlInf";
-            this.pnlInf.Size = new System.Drawing.Size(1186, 637);
+            this.pnlInf.Size = new System.Drawing.Size(1355, 599);
             this.pnlInf.TabIndex = 1;
             // 
             // pnlCalender
             // 
             this.pnlCalender.Controls.Add(this.lstvCalender);
             this.pnlCalender.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlCalender.Location = new System.Drawing.Point(0, 40);
+            this.pnlCalender.Location = new System.Drawing.Point(0, 38);
             this.pnlCalender.Name = "pnlCalender";
-            this.pnlCalender.Size = new System.Drawing.Size(1186, 597);
+            this.pnlCalender.Size = new System.Drawing.Size(1355, 561);
             this.pnlCalender.TabIndex = 1;
             // 
             // lstvCalender
@@ -95,8 +96,9 @@
             this.lstvCalender.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lstvCalender.HideSelection = false;
             this.lstvCalender.Location = new System.Drawing.Point(0, 0);
+            this.lstvCalender.Margin = new System.Windows.Forms.Padding(2);
             this.lstvCalender.Name = "lstvCalender";
-            this.lstvCalender.Size = new System.Drawing.Size(1186, 597);
+            this.lstvCalender.Size = new System.Drawing.Size(1355, 561);
             this.lstvCalender.TabIndex = 0;
             this.lstvCalender.UseCompatibleStateImageBehavior = false;
             this.lstvCalender.View = System.Windows.Forms.View.Details;
@@ -147,16 +149,17 @@
             this.pnlButton.Controls.Add(this.rdoCheckDay);
             this.pnlButton.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlButton.Location = new System.Drawing.Point(0, 0);
+            this.pnlButton.Margin = new System.Windows.Forms.Padding(2);
             this.pnlButton.Name = "pnlButton";
-            this.pnlButton.Size = new System.Drawing.Size(1186, 40);
+            this.pnlButton.Size = new System.Drawing.Size(1355, 38);
             this.pnlButton.TabIndex = 0;
             // 
             // btnReset
             // 
             this.btnReset.Dock = System.Windows.Forms.DockStyle.Right;
-            this.btnReset.Location = new System.Drawing.Point(950, 0);
+            this.btnReset.Location = new System.Drawing.Point(1085, 0);
             this.btnReset.Name = "btnReset";
-            this.btnReset.Size = new System.Drawing.Size(145, 40);
+            this.btnReset.Size = new System.Drawing.Size(166, 38);
             this.btnReset.TabIndex = 7;
             this.btnReset.Text = "Hiển thị tất cả";
             this.btnReset.UseVisualStyleBackColor = true;
@@ -166,10 +169,10 @@
             // 
             this.dtmEndDate.CustomFormat = "dd/MM/yyy";
             this.dtmEndDate.Dock = System.Windows.Forms.DockStyle.Left;
-            this.dtmEndDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtmEndDate.Location = new System.Drawing.Point(793, 0);
+            this.dtmEndDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtmEndDate.Location = new System.Drawing.Point(814, 0);
             this.dtmEndDate.Name = "dtmEndDate";
-            this.dtmEndDate.Size = new System.Drawing.Size(151, 34);
+            this.dtmEndDate.Size = new System.Drawing.Size(172, 34);
             this.dtmEndDate.TabIndex = 5;
             this.dtmEndDate.ValueChanged += new System.EventHandler(this.dtmEndDate_ValueChanged);
             // 
@@ -178,19 +181,19 @@
             this.dtmStartDate.CalendarFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtmStartDate.CustomFormat = "dd/MM/yyyy";
             this.dtmStartDate.Dock = System.Windows.Forms.DockStyle.Left;
-            this.dtmStartDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtmStartDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtmStartDate.Location = new System.Drawing.Point(644, 0);
             this.dtmStartDate.Name = "dtmStartDate";
-            this.dtmStartDate.Size = new System.Drawing.Size(149, 34);
+            this.dtmStartDate.Size = new System.Drawing.Size(170, 34);
             this.dtmStartDate.TabIndex = 4;
             this.dtmStartDate.ValueChanged += new System.EventHandler(this.dtmStartDate_ValueChanged);
             // 
             // btnExit
             // 
             this.btnExit.Dock = System.Windows.Forms.DockStyle.Right;
-            this.btnExit.Location = new System.Drawing.Point(1095, 0);
+            this.btnExit.Location = new System.Drawing.Point(1251, 0);
             this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(91, 40);
+            this.btnExit.Size = new System.Drawing.Size(104, 38);
             this.btnExit.TabIndex = 3;
             this.btnExit.Text = "Thoát";
             this.btnExit.UseVisualStyleBackColor = true;
@@ -201,8 +204,9 @@
             this.rdoCheckWeek.AutoSize = true;
             this.rdoCheckWeek.Dock = System.Windows.Forms.DockStyle.Left;
             this.rdoCheckWeek.Location = new System.Drawing.Point(435, 0);
+            this.rdoCheckWeek.Margin = new System.Windows.Forms.Padding(2);
             this.rdoCheckWeek.Name = "rdoCheckWeek";
-            this.rdoCheckWeek.Size = new System.Drawing.Size(209, 40);
+            this.rdoCheckWeek.Size = new System.Drawing.Size(209, 38);
             this.rdoCheckWeek.TabIndex = 2;
             this.rdoCheckWeek.Text = "Tìm Kiếm Theo Tuần";
             this.rdoCheckWeek.UseVisualStyleBackColor = true;
@@ -213,8 +217,9 @@
             this.rdoCheckMonth.AutoSize = true;
             this.rdoCheckMonth.Dock = System.Windows.Forms.DockStyle.Left;
             this.rdoCheckMonth.Location = new System.Drawing.Point(214, 0);
+            this.rdoCheckMonth.Margin = new System.Windows.Forms.Padding(2);
             this.rdoCheckMonth.Name = "rdoCheckMonth";
-            this.rdoCheckMonth.Size = new System.Drawing.Size(221, 40);
+            this.rdoCheckMonth.Size = new System.Drawing.Size(221, 38);
             this.rdoCheckMonth.TabIndex = 1;
             this.rdoCheckMonth.Text = "Tìm Kiếm Theo Tháng";
             this.rdoCheckMonth.UseVisualStyleBackColor = true;
@@ -225,8 +230,9 @@
             this.rdoCheckDay.AutoSize = true;
             this.rdoCheckDay.Dock = System.Windows.Forms.DockStyle.Left;
             this.rdoCheckDay.Location = new System.Drawing.Point(0, 0);
+            this.rdoCheckDay.Margin = new System.Windows.Forms.Padding(2);
             this.rdoCheckDay.Name = "rdoCheckDay";
-            this.rdoCheckDay.Size = new System.Drawing.Size(214, 40);
+            this.rdoCheckDay.Size = new System.Drawing.Size(214, 38);
             this.rdoCheckDay.TabIndex = 0;
             this.rdoCheckDay.Text = "Tìm Kiếm Theo Ngày";
             this.rdoCheckDay.UseVisualStyleBackColor = true;
@@ -234,11 +240,12 @@
             // 
             // CourtCalendar
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1186, 762);
+            this.ClientSize = new System.Drawing.Size(1355, 717);
             this.Controls.Add(this.pnlInf);
             this.Controls.Add(this.pnlTitle);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "CourtCalendar";
             this.Text = "Lịch Sân";
             this.pnlInf.ResumeLayout(false);

@@ -17,12 +17,13 @@ namespace BadmintonManagement.Forms.Report
     {
         SqlConnection conn;
         SqlCommand cmd = new SqlCommand();
+        //  khởi tạo chuỗi kết nối cơ sở dữ liệu SQL Server
         string str = @"data source=(local);initial catalog=BadmintonManagementDB;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework";
         public ReportService()
         {
             InitializeComponent();
         }
-
+        // lấy dữ liệu tồn kho dịch vụ đưa lên reportviewer
         private void ServiceReportMonth()
         {
 
@@ -36,6 +37,7 @@ namespace BadmintonManagement.Forms.Report
                 new ReportParameter("ngaybaocao","Ngày báo cáo: " + day)
             };
             cmd.CommandType = CommandType.Text;
+            //  truy vấn SQL để lấy dữ dịch vụ
             cmd.CommandText = @"select S.ServiceID,S.ServiceName,s.Unit,convert(varchar,S.Quantity) as SL
                                 from _SERVICE S
                                 where S._Status = 'Enabled'";
@@ -43,6 +45,7 @@ namespace BadmintonManagement.Forms.Report
             cmd.Connection = conn;
             SqlDataReader reader = cmd.ExecuteReader();
             List<ReportServiceInStoge> list = new List<ReportServiceInStoge>();
+            // Đọc dữ liệu từ SqlDataReader và điền vào danh sách.
             while (reader.Read())
             {
                 ReportServiceInStoge service = new ReportServiceInStoge();
@@ -54,7 +57,9 @@ namespace BadmintonManagement.Forms.Report
                 list.Add(service);
             }
             reader.Close();
-          
+            // Set ReportPath cho ReportViewer.
+            // Tạo ReportDataSource với dữ liệu từ list
+            // Đặt tham số báo cáo và refresh ReportViewer để hiển thị dữ liệu.
             rptService.LocalReport.ReportPath = "ReportServiceInStoge.rdlc";
             var sour = new ReportDataSource("DataSetServiceInStoge", list);
             rptService.LocalReport.DataSources.Clear();
@@ -63,6 +68,7 @@ namespace BadmintonManagement.Forms.Report
 
             this.rptService.RefreshReport();
         }
+        //Load form báo cáo tồn kho
         private void ReportService_Load(object sender, EventArgs e)
         {
 

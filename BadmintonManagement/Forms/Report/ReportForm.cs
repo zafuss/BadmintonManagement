@@ -19,12 +19,14 @@ namespace BadmintonManagement.Forms.Report
             btnChartIncome.BackColor = SystemColors.ButtonShadow;
             btnIncome.BackColor = Color.LightGray;
             btnCustomerReport.BackColor = Color.LightGray;
-            OpenChilForm(new FormIncome());
+            OpenChilForm(new FormIncome()); // hiện form biểu đò doanh thu khi load form
             btnReportSerVice.BackColor = Color.LightGray;
             pnlReceiptReport.Visible = false;
             
         }
         Form activeForm = null;
+
+        // mở form con trên from cha.
         private void OpenChilForm(Form chilForm)
         {
             if (activeForm != null)
@@ -55,7 +57,7 @@ namespace BadmintonManagement.Forms.Report
             else
                 pnlReceiptReport.Visible = true;
         }
-
+        // Load from biểu đồ doanh thu
         private void btnChartIncome_Click(object sender, EventArgs e)
         {
             HiddenReceipt();
@@ -66,6 +68,7 @@ namespace BadmintonManagement.Forms.Report
             OpenChilForm(new FormIncome());
         }
 
+        
         private void btnIncome_Click(object sender, EventArgs e)
         {
             HiddenButom();
@@ -74,21 +77,21 @@ namespace BadmintonManagement.Forms.Report
             btnCustomerReport.BackColor = Color.LightGray;
             btnReportSerVice.BackColor = Color.LightGray;
         }
-
+        // load form doanh thu dịch vụ
         private void btnServiceIncome_Click(object sender, EventArgs e)
         {
             btnServiceIncome.BackColor = SystemColors.ButtonShadow;
             btnCourtIncome.BackColor = Color.LightGray;
             OpenChilForm(new ServiceIncome());
         }
-
+        // load form doanh thu sân
         private void btnCourtIncome_Click(object sender, EventArgs e)
         {
             btnCourtIncome.BackColor = SystemColors.ButtonShadow;
             btnServiceIncome.BackColor = Color.LightGray;
             OpenChilForm(new CourtIncome());
         }
-
+        // load form lượt khách hàng
         private void btnCustomerReport_Click_1(object sender, EventArgs e)
         {
             HiddenReceipt();
@@ -98,7 +101,7 @@ namespace BadmintonManagement.Forms.Report
             btnReportSerVice.BackColor = Color.LightGray;
             OpenChilForm(new CustomerReport());
         }
-
+        // load form báo cáo tồn kho dịch vụ
         private void btnReportSerVice_Click(object sender, EventArgs e)
         {
             HiddenReceipt();
