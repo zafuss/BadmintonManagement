@@ -116,6 +116,7 @@ namespace BadmintonManagement.Forms.AuthorizationForms
             }
             lblEmployeeName.Text = "Nhân viên: " + Properties.Settings.Default._Name;
             bool t = RealTimeCaptureStatusReservation();
+            AddTabPages(new CourtForm());
 
         }
 

@@ -36,23 +36,24 @@ namespace BadmintonManagement.Forms.Court
             }
             pnlDisplayCourt.AutoScroll = true;
             tmrCountDown.Start();
-            Title();
+            //Title();
             new CourtService().publicDay();
+            btnUser.BackColor = SystemColors.ButtonShadow;
         }
 
-        private void Title()
-        {
-            pnlFunction.Controls.Clear();
-            double width = (pnlFunction.Width);
-            double height = (pnlFunction.Height) / 12;
-            Label label = new Label();
-            label.Location = new Point(0, Convert.ToInt32(height));
-            label.Size = new Size(Convert.ToInt32(width), 50);
-            label.TextAlign = ContentAlignment.MiddleCenter;
-            label.Text = "Chức Năng";
-            label.Font = new Font("Segoe UI", 14, FontStyle.Bold);
-            pnlFunction.Controls.Add(label);
-        }
+        //private void Title()
+        //{
+        //    pnlFunction.Controls.Clear();
+        //    double width = (pnlFunction.Width);
+        //    double height = (pnlFunction.Height) / 12;
+        //    Label label = new Label();
+        //    label.Location = new Point(0, Convert.ToInt32(height));
+        //    label.Size = new Size(Convert.ToInt32(width), 50);
+        //    label.TextAlign = ContentAlignment.MiddleCenter;
+        //    label.Text = "Chức Năng";
+        //    label.Font = new Font("Segoe UI", 14, FontStyle.Bold);
+        //    pnlFunction.Controls.Add(label);
+        //}
         private void tmrCountDown_Tick(object sender, EventArgs e)
         {
             label1.Text = String.Format("{0}", DateTime.Now.ToString("HH:mm:ss")); 
@@ -89,8 +90,9 @@ namespace BadmintonManagement.Forms.Court
             CustomPanel hoverPanel = sender as CustomPanel;
             if (hoverPanel != null)
             {
-                hoverPanel.BorderStyle = BorderStyle.FixedSingle;
-                hoverPanel.BorderColor = Color.Red;
+                //hoverPanel.BorderStyle = BorderStyle.FixedSingle;
+                //hoverPanel.BorderColor = Color.Red;
+                hoverPanel.BorderRadius = 15;
             }
         }
 
@@ -118,8 +120,9 @@ namespace BadmintonManagement.Forms.Court
             {
                 if (item.Name == _name)
                 {
-                    item.BorderStyle = BorderStyle.FixedSingle;
+                    //item.BorderStyle = BorderStyle.FixedSingle;
                     item.BorderColor = Color.Red;
+                    item.BorderRadius = 15;
                 }
                 else
                 {
@@ -138,8 +141,10 @@ namespace BadmintonManagement.Forms.Court
                 {
                     if(item.Name == customPicBox.Name )
                     {
-                        item.BorderStyle = BorderStyle.FixedSingle;
+                        //item.BorderStyle = BorderStyle.FixedSingle;
                         item.BorderColor = Color.Red;
+                        item.BorderRadius = 15;
+
                     }
                 }
             }
@@ -160,8 +165,9 @@ namespace BadmintonManagement.Forms.Court
                     if (item.Name == pictureBoxName)
                     {
                         _name = pictureBoxName;
-                        item.BorderStyle = BorderStyle.FixedSingle;
+                        //item.BorderStyle = BorderStyle.FixedSingle;
                         item.BorderColor = Color.Red;
+                        item.BorderRadius = 15;
                     }
                     else
                     {
@@ -205,8 +211,9 @@ namespace BadmintonManagement.Forms.Court
                     if (item.Name == pictureBoxName)
                     {
                         _name = pictureBoxName;
-                        item.BorderStyle = BorderStyle.FixedSingle;
+                        //item.BorderStyle = BorderStyle.FixedSingle;
                         item.BorderColor = Color.Red;
+                        item.BorderRadius = 15;
                     }
                     else
                     {
@@ -253,8 +260,6 @@ namespace BadmintonManagement.Forms.Court
             txtStartTime.Text = infoCourt.Starttime;
             txtEndTime.Text = infoCourt.Endtime;
         }
-
-        
 
         private void fill()
         {
@@ -361,9 +366,10 @@ namespace BadmintonManagement.Forms.Court
             listInfo = new RFDetailService().getCourtByRF();
             count = listInfo.Count();
             UserShow(listInfo, count);
+            btnUser.BackColor = SystemColors.ButtonShadow;
+            btnCalendar.BackColor = Color.LightGray;
+            btnAdmin.BackColor = Color.LightGray;
         }
-
-
 
         private void pnlDisplayCourt_SizeChanged(object sender, EventArgs e)
         {
@@ -388,8 +394,9 @@ namespace BadmintonManagement.Forms.Court
             {
                 if (item.Name == _name)
                 {
-                    item.BorderStyle = BorderStyle.FixedSingle;
+                    //item.BorderStyle = BorderStyle.FixedSingle;
                     item.BorderColor = Color.Red;
+                    item.BorderRadius = 15;
                 }
                 else
                 {
@@ -400,8 +407,6 @@ namespace BadmintonManagement.Forms.Court
 
         }
 
-
-
         private void btnAdmin_Click(object sender, EventArgs e)
         {
             pnlDisplayCourt.Controls.Clear();
@@ -410,10 +415,16 @@ namespace BadmintonManagement.Forms.Court
             newCourt = new CourtService().getListCourtWithOutDisable();
             count = newCourt.Count();
             ShowCourt(newCourt, count);
+            btnUser.BackColor = Color.LightGray;
+            btnCalendar.BackColor = Color.LightGray;
+            btnAdmin.BackColor = SystemColors.ButtonShadow; ;
         }
 
         private void btnCalendar_Click(object sender, EventArgs e)
         {
+            btnUser.BackColor = Color.LightGray;
+            btnCalendar.BackColor = SystemColors.ButtonShadow;
+            btnAdmin.BackColor = Color.LightGray;
             CourtCalendar courtCalendar = new CourtCalendar();
             courtCalendar.Show();
         }

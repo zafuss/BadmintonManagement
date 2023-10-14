@@ -50,6 +50,7 @@ namespace BadmintonManagement.Database
             Type controlType = typeof(CustomPanel);
             Control newControl = (Control)Activator.CreateInstance(controlType);
 
+
             newControl.Name = namePnl;  
 
             newControl.Size = new Size(Convert.ToInt32(x), Convert.ToInt32(y));
