@@ -217,6 +217,12 @@
     <Compile Include="Forms\ReservationCourt\ReservationReceipt\RevReceipt.Designer.cs">
       <DependentUpon>RevReceipt.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\ReservationCourt\ReservationReceipt\RevRecPrint\RevRecPrint.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ReservationCourt\ReservationReceipt\RevRecPrint\RevRecPrint.Designer.cs">
+      <DependentUpon>RevRecPrint.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Service\ServiceForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -404,6 +410,9 @@
     <EmbeddedResource Include="Forms\ReservationCourt\ReservationReceipt\RevReceipt.resx">
       <DependentUpon>RevReceipt.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ReservationCourt\ReservationReceipt\RevRecPrint\RevRecPrint.resx">
+      <DependentUpon>RevRecPrint.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Service\ManageServiceForm.resx">
       <DependentUpon>ManageServiceForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -431,6 +440,7 @@
     <EmbeddedResource Include="ReportServiceInStoge.rdlc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
+    <EmbeddedResource Include="RevRecPrintReport.rdlc" />
     <EmbeddedResource Include="SerRecPrintReport.rdlc" />
     <EmbeddedResource Include="ServiceReport.rdlc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

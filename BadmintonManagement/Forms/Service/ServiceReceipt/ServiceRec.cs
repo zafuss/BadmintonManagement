@@ -100,6 +100,7 @@ namespace BadmintonManagement.Forms.Service.ServiceReceipt
                 txtPhoneNumber.Enabled = false;
                 txtCustomerName.Enabled = false;
                 txtEmail.Enabled = false;
+                btnPrint.Visible = true;
             }
             
         }
@@ -164,7 +165,6 @@ namespace BadmintonManagement.Forms.Service.ServiceReceipt
         }
         private void btnPayment_Click(object sender, EventArgs e)
         {
-            
             if(MessageBox.Show("Ban có muốn xác nhận thanh toán?","Thông báo",MessageBoxButtons.YesNo)==DialogResult.Yes)
             {
                 if (CheckExistPhoneNumber() == false)
@@ -206,6 +206,8 @@ namespace BadmintonManagement.Forms.Service.ServiceReceipt
                 }
                 ReloadShowServiceReceipt(1);
                 this.Close();
+                SerRecPrint frm = new SerRecPrint(txtRecNo.Text);
+                frm.ShowDialog();
             }
         }
         private void btnClose_Click(object sender, EventArgs e)

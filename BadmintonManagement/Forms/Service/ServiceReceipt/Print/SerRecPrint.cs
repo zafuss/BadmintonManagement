@@ -38,7 +38,7 @@ namespace BadmintonManagement.Forms.Service.ServiceReceipt.Print
                             where s.ServiceReceiptNo =" + @"'" + serviceRecNo + @"'";
             List<SerRec> listSR = context.Database.SqlQuery<SerRec>(sql).ToList();
             var srDS = new ReportDataSource("SerRec", listSR);
-            sql = @"select s.ServiceReceiptNo,s.ServiceID,s.Quantity,r.ServiceName,(s.Quantity*r.Price) as [Total]
+            sql = @"select s.ServiceReceiptNo,s.ServiceID,s.Quantity,r.ServiceName,(s.Quantity*r.Price) as [Total],r.Price
                     from SERVICE_DETAIL s inner join _SERVICE r on s.ServiceID = r.ServiceID
                     where s.ServiceReceiptNo =" + @"'" + serviceRecNo + @"'";
             List<SerRecDetail> listSRD = context.Database.SqlQuery<SerRecDetail>(sql).ToList();

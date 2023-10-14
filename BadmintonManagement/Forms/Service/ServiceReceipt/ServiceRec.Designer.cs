@@ -234,6 +234,7 @@
             this.btnPrint.TabIndex = 16;
             this.btnPrint.Text = "In hóa đơn";
             this.btnPrint.UseVisualStyleBackColor = true;
+            this.btnPrint.Visible = false;
             this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
             // 
             // ServiceRec

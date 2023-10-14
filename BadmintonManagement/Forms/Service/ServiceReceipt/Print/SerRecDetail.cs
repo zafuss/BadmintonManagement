@@ -13,5 +13,6 @@ namespace BadmintonManagement.Forms.Service.ServiceReceipt.Print
         public int? Quantity { get; set; }
         public string ServiceName { get; set; }
         public decimal? Total { get; set; }
+        public decimal? Price { get; set; }
     }
 }
