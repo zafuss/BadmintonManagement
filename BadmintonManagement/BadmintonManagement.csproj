@@ -431,6 +431,7 @@
     <EmbeddedResource Include="ReportServiceInStoge.rdlc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
+    <EmbeddedResource Include="SerRecPrintReport.rdlc" />
     <EmbeddedResource Include="ServiceReport.rdlc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
@@ -509,6 +510,8 @@
     <None Include="Properties\DataSources\BadmintonManagement.Database.IncomeService.datasource" />
     <None Include="Properties\DataSources\BadmintonManagement.Database.IncomeYear.datasource" />
     <None Include="Properties\DataSources\BadmintonManagement.Database.ReportServiceInStoge.datasource" />
+    <None Include="Properties\DataSources\BadmintonManagement.Forms.Service.ServiceReceipt.Print.SerRec.datasource" />
+    <None Include="Properties\DataSources\BadmintonManagement.Forms.Service.ServiceReceipt.Print.SerRecDetail.datasource" />
     <None Include="Properties\DataSources\BadmintonManagement.Models.CUSTOMER.datasource" />
     <None Include="Properties\DataSources\BadmintonManagement.Models.RECEIPT.datasource" />
     <None Include="Properties\DataSources\BadmintonManagement.Models.RESERVATION.datasource" />

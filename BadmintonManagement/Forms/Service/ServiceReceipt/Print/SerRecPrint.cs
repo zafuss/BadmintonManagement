@@ -26,6 +26,7 @@ namespace BadmintonManagement.Forms.Service.ServiceReceipt.Print
         }
         private void SerRecPrint_Load(object sender, EventArgs e)
         {
+            ShowReport();
             this.rpvPrint.RefreshReport();
         }
 
@@ -36,14 +37,14 @@ namespace BadmintonManagement.Forms.Service.ServiceReceipt.Print
                             from SERVICE_RECEIPT s left join CUSTOMER c on s.PhoneNumber = c.PhoneNumber
                             where s.ServiceReceiptNo =" + @"'" + serviceRecNo + @"'";
             List<SerRec> listSR = context.Database.SqlQuery<SerRec>(sql).ToList();
-            var srDS = new ReportDataSource("SerSec", listSR);
-            sql = @"select *
-                    from SERVICE_DETAIL
-                    where ServiceReceiptNo =" + @"'" + serviceRecNo + @"'";
+            var srDS = new ReportDataSource("SerRec", listSR);
+            sql = @"select s.ServiceReceiptNo,s.ServiceID,s.Quantity,r.ServiceName,(s.Quantity*r.Price) as [Total]
+                    from SERVICE_DETAIL s inner join _SERVICE r on s.ServiceID = r.ServiceID
+                    where s.ServiceReceiptNo =" + @"'" + serviceRecNo + @"'";
             List<SerRecDetail> listSRD = context.Database.SqlQuery<SerRecDetail>(sql).ToList();
             var listSRDDS = new ReportDataSource("SerRecDetail", listSRD);
-            rpvPrint.ProcessingMode = Microsoft.Reporting.WinForms.ProcessingMode.Local;
-            rpvPrint.LocalReport.ReportPath = "";
+            //rpvPrint.ProcessingMode = Microsoft.Reporting.WinForms.ProcessingMode.Local;
+            //rpvPrint.LocalReport.ReportPath = "D:\\Badmin\\BadmintonManagement\\BadmintonManagement\\SerRecPrintReport.rdlc";
             rpvPrint.LocalReport.DataSources.Clear();
             rpvPrint.LocalReport.DataSources.Add(srDS);
             rpvPrint.LocalReport.DataSources.Add(listSRDDS);
