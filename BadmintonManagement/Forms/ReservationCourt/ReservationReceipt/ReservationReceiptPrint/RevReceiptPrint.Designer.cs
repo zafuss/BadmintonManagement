@@ -1,6 +1,6 @@
 ﻿namespace BadmintonManagement.Forms.ReservationCourt.ReservationReceipt.RevRecPrint
 {
-    partial class RevRecPrint
+    partial class RevReceiptPrint
     {
         /// <summary>
         /// Required designer variable.
@@ -34,7 +34,7 @@
             // rpvPrint
             // 
             this.rpvPrint.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.rpvPrint.LocalReport.ReportEmbeddedResource = "BadmintonManagement.SerRecPrintReport.rdlc";
+            this.rpvPrint.LocalReport.ReportEmbeddedResource = "BadmintonManagement.RevRecPrintReport.rdlc";
             this.rpvPrint.Location = new System.Drawing.Point(0, 0);
             this.rpvPrint.Name = "rpvPrint";
             this.rpvPrint.ServerReport.BearerToken = null;

@@ -43,6 +43,7 @@
             this.txtDeposite = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.btnPayment = new System.Windows.Forms.Button();
+            this.btnPrint = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvRF_Detail)).BeginInit();
             this.SuspendLayout();
             // 
@@ -173,7 +174,7 @@
             // 
             // btnPayment
             // 
-            this.btnPayment.Location = new System.Drawing.Point(772, 43);
+            this.btnPayment.Location = new System.Drawing.Point(772, 261);
             this.btnPayment.Name = "btnPayment";
             this.btnPayment.Size = new System.Drawing.Size(127, 40);
             this.btnPayment.TabIndex = 11;
@@ -181,11 +182,23 @@
             this.btnPayment.UseVisualStyleBackColor = true;
             this.btnPayment.Click += new System.EventHandler(this.btnPayment_Click);
             // 
+            // btnPrint
+            // 
+            this.btnPrint.Location = new System.Drawing.Point(772, 12);
+            this.btnPrint.Name = "btnPrint";
+            this.btnPrint.Size = new System.Drawing.Size(127, 40);
+            this.btnPrint.TabIndex = 12;
+            this.btnPrint.Text = "In hóa đơn";
+            this.btnPrint.UseVisualStyleBackColor = true;
+            this.btnPrint.Visible = false;
+            this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
+            // 
             // RevReceipt
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(899, 674);
+            this.Controls.Add(this.btnPrint);
             this.Controls.Add(this.btnPayment);
             this.Controls.Add(this.txtDeposite);
             this.Controls.Add(this.label5);
@@ -226,5 +239,6 @@
         private System.Windows.Forms.TextBox txtDeposite;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button btnPayment;
+        private System.Windows.Forms.Button btnPrint;
     }
 }

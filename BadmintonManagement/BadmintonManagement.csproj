@@ -217,14 +217,14 @@
     <Compile Include="Forms\ReservationCourt\ReservationReceipt\RevReceipt.Designer.cs">
       <DependentUpon>RevReceipt.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\ReservationCourt\ReservationReceipt\RevRecPrint\RevDetailForReport.cs" />
-    <Compile Include="Forms\ReservationCourt\ReservationReceipt\RevRecPrint\RevForReport.cs" />
-    <Compile Include="Forms\ReservationCourt\ReservationReceipt\RevRecPrint\RevRecForReport.cs" />
-    <Compile Include="Forms\ReservationCourt\ReservationReceipt\RevRecPrint\RevRecPrint.cs">
+    <Compile Include="Forms\ReservationCourt\ReservationReceipt\ReservationReceiptPrint\RevDetailForReport.cs" />
+    <Compile Include="Forms\ReservationCourt\ReservationReceipt\ReservationReceiptPrint\RevForReport.cs" />
+    <Compile Include="Forms\ReservationCourt\ReservationReceipt\ReservationReceiptPrint\RevRecForReport.cs" />
+    <Compile Include="Forms\ReservationCourt\ReservationReceipt\ReservationReceiptPrint\RevReceiptPrint.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\ReservationCourt\ReservationReceipt\RevRecPrint\RevRecPrint.Designer.cs">
-      <DependentUpon>RevRecPrint.cs</DependentUpon>
+    <Compile Include="Forms\ReservationCourt\ReservationReceipt\ReservationReceiptPrint\RevReceiptPrint.Designer.cs">
+      <DependentUpon>RevReceiptPrint.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Service\ServiceForm.cs">
       <SubType>Form</SubType>
@@ -413,8 +413,8 @@
     <EmbeddedResource Include="Forms\ReservationCourt\ReservationReceipt\RevReceipt.resx">
       <DependentUpon>RevReceipt.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\ReservationCourt\ReservationReceipt\RevRecPrint\RevRecPrint.resx">
-      <DependentUpon>RevRecPrint.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\ReservationCourt\ReservationReceipt\ReservationReceiptPrint\RevReceiptPrint.resx">
+      <DependentUpon>RevReceiptPrint.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Service\ManageServiceForm.resx">
       <DependentUpon>ManageServiceForm.cs</DependentUpon>

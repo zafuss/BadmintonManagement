@@ -1,4 +1,6 @@
-﻿using BadmintonManagement.Models;
+﻿using BadmintonManagement.Forms.ReservationCourt.ReservationReceipt;
+using BadmintonManagement.Forms.ReservationCourt.ReservationReceipt.RevRecPrint;
+using BadmintonManagement.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -55,6 +57,7 @@ namespace BadmintonManagement.Forms.ReservationCourt.ReservationReceipt
                 txtDeposite.Text = rev.Deposite.Value.ToString();
                 txtTotal.Text = (GetTheTotal(rev)-rev.Deposite+GetTheExtraTimeFee()).ToString();
                 txtExtraTime.Text = GetTheExtraTimeFee().ToString();
+                
             }
             else
             {
@@ -67,6 +70,7 @@ namespace BadmintonManagement.Forms.ReservationCourt.ReservationReceipt
                 txtTotal.Text = (rec.Total.Value-rec.RESERVATION.Deposite).ToString();
                 txtExtraTime.Text = GetTheExtraTimeFee().ToString();
                 btnPayment.Enabled = false;
+                btnPrint.Visible = true;
             }
         }
         private decimal GetTheTotal(RESERVATION rev)
@@ -140,8 +144,15 @@ namespace BadmintonManagement.Forms.ReservationCourt.ReservationReceipt
         {
             AcceptReceipt();
             RevStat(revNo);
+            RevReceiptPrint frm = new RevReceiptPrint(revNo);
+            frm.ShowDialog();
             this.Close();
+        }
 
+        private void btnPrint_Click(object sender, EventArgs e)
+        {
+            RevReceiptPrint frm = new RevReceiptPrint(revNo);
+            frm.ShowDialog();
         }
     }
 }
