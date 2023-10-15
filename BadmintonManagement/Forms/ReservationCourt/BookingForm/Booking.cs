@@ -44,7 +44,7 @@ namespace BadmintonManagement.Forms.ReservationCourt.BookingForm
         {
             DateTime d1 = DateTime.Now.Date;
             DateTime d2 = new DateTime(d1.Year,d1.Month,d1.Day,23,59,59);
-            string s = context.RESERVATION.Count(p=> DateTime.Compare(p.CreateDate.Value,d1)>=0 && DateTime.Compare(p.CreateDate.Value, d2)<=0).ToString();
+            string s = context.RESERVATION.Count(p=> DateTime.Compare(p.CreateDate,d1)>=0 && DateTime.Compare(p.CreateDate, d2)<=0).ToString();
             while (s.Length < 4)
             {
                 s = 0 + s;
@@ -110,8 +110,8 @@ namespace BadmintonManagement.Forms.ReservationCourt.BookingForm
             foreach(RF_DETAIL rf in listRF)
             {
                 //RESERVATION rev = context.RESERVATION.FirstOrDefault(p => p.ReservationNo == rf.ReservationNo);
-                int d2 = DateTime.Compare(ds, rf.RESERVATION.EndTime.Value);
-                int d3 = DateTime.Compare(de, rf.RESERVATION.StartTime.Value);
+                int d2 = DateTime.Compare(ds, rf.RESERVATION.EndTime);
+                int d3 = DateTime.Compare(de, rf.RESERVATION.StartTime);
                 if (d2 >= 0 || d3 <= 0)
                     continue;
                 else

@@ -22,24 +22,30 @@ namespace BadmintonManagement.Models
         public string Username { get; set; }
 
         [Column("_Password")]
+        [Required]
         [StringLength(50)]
         public string C_Password { get; set; }
 
         [Column("_Name")]
+        [Required]
         [StringLength(100)]
         public string C_Name { get; set; }
 
         [Column("_Role")]
+        [Required]
         [StringLength(30)]
         public string C_Role { get; set; }
 
+        [Required]
         [StringLength(60)]
         public string Email { get; set; }
 
+        [Required]
         [StringLength(13)]
         public string PhoneNumber { get; set; }
 
         [Column("_Status")]
+        [Required]
         [StringLength(30)]
         public string C_Status { get; set; }
 

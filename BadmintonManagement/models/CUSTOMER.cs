@@ -20,9 +20,11 @@ namespace BadmintonManagement.Models
         [StringLength(13)]
         public string PhoneNumber { get; set; }
 
+        [Required]
         [StringLength(100)]
         public string FullName { get; set; }
 
+        [Required]
         [StringLength(100)]
         public string Email { get; set; }
 

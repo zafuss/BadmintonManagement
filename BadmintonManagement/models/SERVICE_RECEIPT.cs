@@ -18,7 +18,7 @@ namespace BadmintonManagement.Models
         [StringLength(20)]
         public string ServiceReceiptNo { get; set; }
 
-        public DateTime? CreateDate { get; set; }
+        public DateTime CreateDate { get; set; }
 
         public decimal? Total { get; set; }
 
@@ -27,6 +27,9 @@ namespace BadmintonManagement.Models
 
         [StringLength(50)]
         public string Username { get; set; }
+
+        [StringLength(30)]
+        public string Payment { get; set; }
 
         public virtual C_USER C_USER { get; set; }
 

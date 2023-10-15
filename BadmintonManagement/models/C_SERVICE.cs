@@ -19,17 +19,20 @@ namespace BadmintonManagement.Models
         [StringLength(20)]
         public string ServiceID { get; set; }
 
+        [Required]
         [StringLength(100)]
         public string ServiceName { get; set; }
 
+        [Required]
         [StringLength(20)]
         public string Unit { get; set; }
 
-        public decimal? Price { get; set; }
+        public decimal Price { get; set; }
 
-        public int? Quantity { get; set; }
+        public int Quantity { get; set; }
 
         [Column("_Status")]
+        [Required]
         [StringLength(30)]
         public string C_Status { get; set; }
 
