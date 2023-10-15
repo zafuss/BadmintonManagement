@@ -53,9 +53,9 @@
             this.panel1.Controls.Add(this.btnChartIncome);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2);
+            this.panel1.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(127, 403);
+            this.panel1.Size = new System.Drawing.Size(267, 551);
             this.panel1.TabIndex = 0;
             // 
             // btnReportSerVice
@@ -63,10 +63,11 @@
             this.btnReportSerVice.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnReportSerVice.FlatAppearance.BorderSize = 0;
             this.btnReportSerVice.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnReportSerVice.Location = new System.Drawing.Point(0, 154);
+            this.btnReportSerVice.Location = new System.Drawing.Point(0, 205);
+            this.btnReportSerVice.Margin = new System.Windows.Forms.Padding(0);
             this.btnReportSerVice.Name = "btnReportSerVice";
-            this.btnReportSerVice.Padding = new System.Windows.Forms.Padding(8, 0, 0, 0);
-            this.btnReportSerVice.Size = new System.Drawing.Size(127, 30);
+            this.btnReportSerVice.Padding = new System.Windows.Forms.Padding(14, 0, 0, 0);
+            this.btnReportSerVice.Size = new System.Drawing.Size(267, 40);
             this.btnReportSerVice.TabIndex = 6;
             this.btnReportSerVice.Text = "Báo cáo tồn kho dịch vụ";
             this.btnReportSerVice.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -79,12 +80,11 @@
             this.btnCustomerReport.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnCustomerReport.FlatAppearance.BorderSize = 0;
             this.btnCustomerReport.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCustomerReport.ImageAlign = System.Drawing.ContentAlignment.TopRight;
-            this.btnCustomerReport.Location = new System.Drawing.Point(0, 125);
-            this.btnCustomerReport.Margin = new System.Windows.Forms.Padding(2);
+            this.btnCustomerReport.Location = new System.Drawing.Point(0, 165);
+            this.btnCustomerReport.Margin = new System.Windows.Forms.Padding(0);
             this.btnCustomerReport.Name = "btnCustomerReport";
-            this.btnCustomerReport.Padding = new System.Windows.Forms.Padding(8, 0, 0, 0);
-            this.btnCustomerReport.Size = new System.Drawing.Size(127, 29);
+            this.btnCustomerReport.Padding = new System.Windows.Forms.Padding(14, 0, 0, 0);
+            this.btnCustomerReport.Size = new System.Drawing.Size(267, 40);
             this.btnCustomerReport.TabIndex = 5;
             this.btnCustomerReport.Text = "Thống kê lượt khách hàng";
             this.btnCustomerReport.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -96,9 +96,10 @@
             this.pnlReceiptReport.Controls.Add(this.btnServiceIncome);
             this.pnlReceiptReport.Controls.Add(this.btnCourtIncome);
             this.pnlReceiptReport.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlReceiptReport.Location = new System.Drawing.Point(0, 62);
+            this.pnlReceiptReport.Location = new System.Drawing.Point(0, 80);
+            this.pnlReceiptReport.Margin = new System.Windows.Forms.Padding(6, 7, 6, 7);
             this.pnlReceiptReport.Name = "pnlReceiptReport";
-            this.pnlReceiptReport.Size = new System.Drawing.Size(127, 63);
+            this.pnlReceiptReport.Size = new System.Drawing.Size(267, 85);
             this.pnlReceiptReport.TabIndex = 4;
             // 
             // btnServiceIncome
@@ -107,10 +108,11 @@
             this.btnServiceIncome.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnServiceIncome.FlatAppearance.BorderSize = 0;
             this.btnServiceIncome.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnServiceIncome.Location = new System.Drawing.Point(0, 30);
+            this.btnServiceIncome.Location = new System.Drawing.Point(0, 40);
+            this.btnServiceIncome.Margin = new System.Windows.Forms.Padding(0);
             this.btnServiceIncome.Name = "btnServiceIncome";
-            this.btnServiceIncome.Padding = new System.Windows.Forms.Padding(25, 0, 0, 0);
-            this.btnServiceIncome.Size = new System.Drawing.Size(127, 30);
+            this.btnServiceIncome.Padding = new System.Windows.Forms.Padding(46, 0, 0, 0);
+            this.btnServiceIncome.Size = new System.Drawing.Size(267, 40);
             this.btnServiceIncome.TabIndex = 1;
             this.btnServiceIncome.Text = "Doanh thu dịch vụ";
             this.btnServiceIncome.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -124,9 +126,10 @@
             this.btnCourtIncome.FlatAppearance.BorderSize = 0;
             this.btnCourtIncome.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCourtIncome.Location = new System.Drawing.Point(0, 0);
+            this.btnCourtIncome.Margin = new System.Windows.Forms.Padding(0);
             this.btnCourtIncome.Name = "btnCourtIncome";
-            this.btnCourtIncome.Padding = new System.Windows.Forms.Padding(25, 0, 0, 0);
-            this.btnCourtIncome.Size = new System.Drawing.Size(127, 30);
+            this.btnCourtIncome.Padding = new System.Windows.Forms.Padding(46, 0, 0, 0);
+            this.btnCourtIncome.Size = new System.Drawing.Size(267, 40);
             this.btnCourtIncome.TabIndex = 0;
             this.btnCourtIncome.Text = "Doanh thu sân";
             this.btnCourtIncome.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -139,10 +142,11 @@
             this.btnIncome.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnIncome.FlatAppearance.BorderSize = 0;
             this.btnIncome.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnIncome.Location = new System.Drawing.Point(0, 31);
+            this.btnIncome.Location = new System.Drawing.Point(0, 40);
+            this.btnIncome.Margin = new System.Windows.Forms.Padding(0);
             this.btnIncome.Name = "btnIncome";
-            this.btnIncome.Padding = new System.Windows.Forms.Padding(8, 0, 0, 0);
-            this.btnIncome.Size = new System.Drawing.Size(127, 31);
+            this.btnIncome.Padding = new System.Windows.Forms.Padding(14, 0, 0, 0);
+            this.btnIncome.Size = new System.Drawing.Size(267, 40);
             this.btnIncome.TabIndex = 3;
             this.btnIncome.Text = "Thống kê doanh thu";
             this.btnIncome.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -156,9 +160,10 @@
             this.btnChartIncome.FlatAppearance.BorderSize = 0;
             this.btnChartIncome.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnChartIncome.Location = new System.Drawing.Point(0, 0);
+            this.btnChartIncome.Margin = new System.Windows.Forms.Padding(0);
             this.btnChartIncome.Name = "btnChartIncome";
-            this.btnChartIncome.Padding = new System.Windows.Forms.Padding(8, 0, 0, 0);
-            this.btnChartIncome.Size = new System.Drawing.Size(127, 31);
+            this.btnChartIncome.Padding = new System.Windows.Forms.Padding(14, 0, 0, 0);
+            this.btnChartIncome.Size = new System.Drawing.Size(267, 40);
             this.btnChartIncome.TabIndex = 2;
             this.btnChartIncome.Text = "Biểu đồ doanh thu";
             this.btnChartIncome.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -169,28 +174,31 @@
             // 
             this.pnlIncome.Controls.Add(this.pnlViewreport);
             this.pnlIncome.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlIncome.Location = new System.Drawing.Point(127, 0);
-            this.pnlIncome.Margin = new System.Windows.Forms.Padding(2);
+            this.pnlIncome.Location = new System.Drawing.Point(267, 0);
+            this.pnlIncome.Margin = new System.Windows.Forms.Padding(6, 7, 6, 7);
             this.pnlIncome.Name = "pnlIncome";
-            this.pnlIncome.Size = new System.Drawing.Size(650, 403);
+            this.pnlIncome.Size = new System.Drawing.Size(908, 551);
             this.pnlIncome.TabIndex = 1;
             // 
             // pnlViewreport
             // 
             this.pnlViewreport.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlViewreport.Location = new System.Drawing.Point(0, 0);
+            this.pnlViewreport.Margin = new System.Windows.Forms.Padding(6, 7, 6, 7);
             this.pnlViewreport.Name = "pnlViewreport";
-            this.pnlViewreport.Size = new System.Drawing.Size(650, 403);
+            this.pnlViewreport.Size = new System.Drawing.Size(908, 551);
             this.pnlViewreport.TabIndex = 1;
             // 
             // ReportForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 28F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(777, 403);
+            this.ClientSize = new System.Drawing.Size(1175, 551);
             this.Controls.Add(this.pnlIncome);
             this.Controls.Add(this.panel1);
+            this.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(6, 7, 6, 7);
             this.Name = "ReportForm";
             this.Text = "Thống Kê";
             this.panel1.ResumeLayout(false);

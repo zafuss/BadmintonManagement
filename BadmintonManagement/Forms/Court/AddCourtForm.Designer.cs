@@ -45,7 +45,7 @@
             // 
             // grpInformation
             // 
-            this.grpInformation.BackColor = System.Drawing.Color.LightGray;
+            this.grpInformation.BackColor = UIConstants.LeftSideBackColor;
             this.grpInformation.Controls.Add(this.cboCourtID);
             this.grpInformation.Controls.Add(this.btnChange);
             this.grpInformation.Controls.Add(this.btnDelete);

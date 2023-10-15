@@ -57,12 +57,13 @@
             this.btnServiceReceipt.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnServiceReceipt.FlatAppearance.BorderSize = 0;
             this.btnServiceReceipt.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnServiceReceipt.Location = new System.Drawing.Point(0, 143);
+            this.btnServiceReceipt.Location = new System.Drawing.Point(0, 131);
             this.btnServiceReceipt.Name = "btnServiceReceipt";
-            this.btnServiceReceipt.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
-            this.btnServiceReceipt.Size = new System.Drawing.Size(239, 52);
+            this.btnServiceReceipt.Padding = new System.Windows.Forms.Padding(14, 0, 0, 0);
+            this.btnServiceReceipt.Size = new System.Drawing.Size(239, UIConstants.DefaultSideButtonHeight);
             this.btnServiceReceipt.TabIndex = 3;
             this.btnServiceReceipt.Text = "Quản lý dịch vụ";
+            this.btnServiceReceipt.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnServiceReceipt.UseVisualStyleBackColor = false;
             this.btnServiceReceipt.Click += new System.EventHandler(this.btnServiceReceipt_Click_1);
             // 
@@ -71,30 +72,39 @@
             this.panel2.Controls.Add(this.btnDetail);
             this.panel2.Controls.Add(this.btnAdd);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel2.Location = new System.Drawing.Point(0, 52);
+            this.panel2.Location = new System.Drawing.Point(0, 46);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(239, 91);
+            this.panel2.Size = new System.Drawing.Size(239, 85);
             this.panel2.TabIndex = 2;
             // 
             // btnDetail
             // 
+            this.btnDetail.BackColor = System.Drawing.Color.LightGray;
             this.btnDetail.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnDetail.FlatAppearance.BorderSize = 0;
+            this.btnDetail.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDetail.Location = new System.Drawing.Point(0, 40);
             this.btnDetail.Name = "btnDetail";
-            this.btnDetail.Size = new System.Drawing.Size(239, 40);
+            this.btnDetail.Padding = new System.Windows.Forms.Padding(46, 0, 0, 0);
+            this.btnDetail.Size = new System.Drawing.Size(239, UIConstants.DefaultSideButtonHeight);
             this.btnDetail.TabIndex = 1;
             this.btnDetail.Text = "Xem hóa đơn";
-            this.btnDetail.UseVisualStyleBackColor = true;
+            this.btnDetail.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnDetail.UseVisualStyleBackColor = false;
             this.btnDetail.Click += new System.EventHandler(this.btnDetail_Click);
             // 
             // btnAdd
             // 
             this.btnAdd.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnAdd.FlatAppearance.BorderSize = 0;
+            this.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAdd.Location = new System.Drawing.Point(0, 0);
             this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(239, 40);
+            this.btnAdd.Padding = new System.Windows.Forms.Padding(46, 0, 0, 0);
+            this.btnAdd.Size = new System.Drawing.Size(239, UIConstants.DefaultSideButtonHeight);
             this.btnAdd.TabIndex = 0;
             this.btnAdd.Text = "Thêm hóa đơn";
+            this.btnAdd.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnAdd.UseVisualStyleBackColor = true;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
@@ -107,7 +117,7 @@
             this.btnReceiptServices.Location = new System.Drawing.Point(0, 0);
             this.btnReceiptServices.Name = "btnReceiptServices";
             this.btnReceiptServices.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
-            this.btnReceiptServices.Size = new System.Drawing.Size(239, 52);
+            this.btnReceiptServices.Size = new System.Drawing.Size(239, UIConstants.DefaultSideButtonHeight);
             this.btnReceiptServices.TabIndex = 1;
             this.btnReceiptServices.Text = "Danh sách hoá đơn dịch vụ";
             this.btnReceiptServices.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -124,7 +134,7 @@
             // 
             // ServiceForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 28F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1257, 741);
             this.Controls.Add(this.pnlChild);

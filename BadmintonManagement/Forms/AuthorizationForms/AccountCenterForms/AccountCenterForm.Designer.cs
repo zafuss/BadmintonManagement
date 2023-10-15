@@ -43,7 +43,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(239, 551);
+            this.panel1.Size = new System.Drawing.Size(223, 551);
             this.panel1.TabIndex = 3;
             // 
             // btnChangePassword
@@ -54,9 +54,11 @@
             this.btnChangePassword.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnChangePassword.Location = new System.Drawing.Point(0, 52);
             this.btnChangePassword.Name = "btnChangePassword";
-            this.btnChangePassword.Size = new System.Drawing.Size(239, 52);
+            this.btnChangePassword.Padding = new System.Windows.Forms.Padding(14, 0, 0, 0);
+            this.btnChangePassword.Size = new System.Drawing.Size(223, UIConstants.DefaultSideButtonHeight);
             this.btnChangePassword.TabIndex = 3;
             this.btnChangePassword.Text = "Đổi mật khẩu";
+            this.btnChangePassword.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnChangePassword.UseVisualStyleBackColor = false;
             this.btnChangePassword.Click += new System.EventHandler(this.btnChangePassword_Click);
             // 
@@ -68,18 +70,20 @@
             this.btnAccountInformation.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAccountInformation.Location = new System.Drawing.Point(0, 0);
             this.btnAccountInformation.Name = "btnAccountInformation";
-            this.btnAccountInformation.Size = new System.Drawing.Size(239, 52);
+            this.btnAccountInformation.Padding = new System.Windows.Forms.Padding(14, 0, 0, 0);
+            this.btnAccountInformation.Size = new System.Drawing.Size(223, UIConstants.DefaultSideButtonHeight);
             this.btnAccountInformation.TabIndex = 1;
             this.btnAccountInformation.Text = "Thông tin tài khoản";
+            this.btnAccountInformation.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnAccountInformation.UseVisualStyleBackColor = false;
             this.btnAccountInformation.Click += new System.EventHandler(this.btnAccountInformation_Click);
             // 
             // pnlChild
             // 
             this.pnlChild.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlChild.Location = new System.Drawing.Point(239, 0);
+            this.pnlChild.Location = new System.Drawing.Point(223, 0);
             this.pnlChild.Name = "pnlChild";
-            this.pnlChild.Size = new System.Drawing.Size(937, 551);
+            this.pnlChild.Size = new System.Drawing.Size(953, 551);
             this.pnlChild.TabIndex = 4;
             // 
             // AccountCenterForm
