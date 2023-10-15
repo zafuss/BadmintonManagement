@@ -1,4 +1,5 @@
-﻿using BadmintonManagement.Models;
+﻿using BadmintonManagement.Database;
+using BadmintonManagement.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,25 +15,15 @@ namespace BadmintonManagement.Forms.Customer
 {
     public partial class CustomerForm : Form
     {
-        
-        public int index;
-        ModelBadmintonManage context = new ModelBadmintonManage();
+        List<CUSTOMER> customers = CustomerServices.GetAllService();
         public CustomerForm()
         {
             InitializeComponent();
-            
         }
-        string PN;
-        string FN;
-        string EM;
-        bool isNew = false;
-        public CustomerForm(string phoneNumber, string fullName, string email)
+
+        private void CustomerForm_Load_1(object sender, EventArgs e)
         {
-            InitializeComponent();
-            PN = phoneNumber;
-            FN = fullName;
-            EM = email;
-            isNew = true;
+            BindDataGrid(customers);
         }
         private void BindDataGrid(List<CUSTOMER> customers)
         {
@@ -46,127 +37,38 @@ namespace BadmintonManagement.Forms.Customer
 
             }
         }
-        private void CustomerForm_Load_1(object sender, EventArgs e)
+        private void CheckException()
         {
-            List<CUSTOMER> cUSTOMERs = context.CUSTOMER.ToList();
-            BindDataGrid(cUSTOMERs);
-            if(isNew)
-            {
-                txtPhoneNumber.Text = PN;
-                txtFullName.Text = FN;
-                txtEmail.Text = EM;
-            }
+            if (txtEmail.Text == "" || txtPhoneNumber.Text == "" || txtFullName.Text == "")
+                throw new Exception("Vui lòng nhập đầy đủ thông tin");
+
         }
-        public void InsertCustomerToDB()
-        {
-            CUSTOMER c = new CUSTOMER();
-            c.PhoneNumber = txtPhoneNumber.Text;
-            c.FullName = txtFullName.Text;
-            c.Email = txtEmail.Text;
-            MessageBox.Show("Thêm khách hàng thành công !", "Thông báo", MessageBoxButtons.OK);
-            context.CUSTOMER.Add(c);
-            context.SaveChanges();
-        }
+       
         private void btnAdd_Click(object sender, EventArgs e)
         {
             try
             {
-                if (txtPhoneNumber.Text == " " || txtFullName.Text == " " || txtEmail.Text == " ")
-                    throw new Exception("Vui lòng nhập đủ thông tin !");
-                dgvCustomer.Rows.Add(txtPhoneNumber.Text, txtFullName.Text, txtEmail.Text);
-                InsertCustomerToDB();
-                txtPhoneNumber.Text = string.Empty; 
-                txtFullName.Text = string.Empty;
-                txtEmail.Text = string.Empty;
+                CheckException();
+                CUSTOMER customer = CustomerServices.GetCustomer(txtPhoneNumber.Text);
+                if (customer != null)
+                    throw new Exception("Số điện thoại khách hàng đã tồn tại");
+                else
+                {
+                    customer = new CUSTOMER();
+                    customer.PhoneNumber = txtPhoneNumber.Text;
+                    customer.FullName = txtFullName.Text;
+                    customer.Email = txtEmail.Text;
+                    CustomerServices.AddCustomer(customer);
+                }
+                customers = CustomerServices.GetAllService();
+                BindDataGrid(customers);
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
         }
-        private void RemoveCustomerToDB()
-        {
-            CUSTOMER cUSTOMER = context.CUSTOMER.FirstOrDefault(p => p.PhoneNumber == txtPhoneNumber.Text);
-            if(cUSTOMER != null)
-            {
-                context.CUSTOMER.Remove(cUSTOMER);    
-                context.SaveChanges();
-            }
-        }
-        private void btnExit_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
-        private void btnDelete_Click(object sender, EventArgs e)
-        {
-            foreach(DataGridViewRow dataGridViewRow in dgvCustomer.SelectedRows)
-            {
-                DialogResult dr = MessageBox.Show("Xác nhận xóa khách hàng này?", "YES/NO", MessageBoxButtons.YesNo);
-                if(dr == DialogResult.Yes) 
-                { 
-                    dgvCustomer.Rows.RemoveAt(dataGridViewRow.Index);
-                    RemoveCustomerToDB();
-                    MessageBox.Show("Xóa khách hàng thành công !", "Thông báo", MessageBoxButtons.OK);
-                }
-            }    
-        }
-        
-        private void UpdateCustomerToDB()
-        {
-            
-            foreach (DataGridViewRow dataGridViewRow in dgvCustomer.SelectedRows)
-            {
-                CUSTOMER c = new CUSTOMER();
-                if (c != null)
-                {
-                    c.PhoneNumber = txtPhoneNumber.Text;
-                    c.FullName = txtFullName.Text;
-                    c.Email = txtEmail.Text;
-                    MessageBox.Show("Cập nhật khách hàng thành công !", "Thông báo", MessageBoxButtons.OK);
-                    context.CUSTOMER.Add(c);
-                    context.SaveChanges();
-                }
-            }
-        }
-        private void btnUpdate_Click(object sender, EventArgs e)
-        {
-            DataGridViewRow dataGridViewRow = dgvCustomer.Rows[index];
-            dataGridViewRow.Cells[0].Value = txtPhoneNumber.Text;
-            dataGridViewRow.Cells[1].Value = txtFullName.Text;
-            dataGridViewRow.Cells[2].Value = txtEmail.Text;
-            UpdateCustomerToDB();
-        }
-        private void txtSearchFullName_TextChanged1111(object sender, EventArgs e)
-        {
-            try
-            {
-                for (int i = 0; i < dgvCustomer.Rows.Count - 1; i++)
-                {
-                    if (dgvCustomer.Rows[i].Cells[1].Value.ToString().ToLower().Contains(txtSearchFullName.Text.ToLower()) == true)
-                        dgvCustomer.Rows[i].Visible = true;
-                    else
-                        dgvCustomer.Rows[i].Visible = false;
-                }
-            }
-            catch(Exception ex) { }
-        }
-        private void btnAdd_MouseHover(object sender, EventArgs e)
-        {
-            btnAdd.BackColor = Color.Gray; ;
-        }
-
-        private void btnAdd_MouseLeave(object sender, EventArgs e)
-        {
-            btnAdd.BackColor = Color.White; 
-        }
-
-        private void btnUpdate_MouseHover(object sender, EventArgs e)
-        {
-            btnUpdate.BackColor = Color.Gray;
-
-        }
-      
+     
 
         private void panel2_SizeChanged(object sender, EventArgs e)
         {
@@ -221,7 +123,33 @@ namespace BadmintonManagement.Forms.Customer
                         dgvCustomer.Rows[i].Visible = false;
                 }
             }
-            catch (Exception ex) { }
+            catch (Exception ex) {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                CheckException();
+                CUSTOMER customer = CustomerServices.GetCustomer(txtPhoneNumber.Text);
+                if (customer == null)
+                    throw new Exception("Khách hàng không tồn tại");
+                else
+                {
+                    customer.PhoneNumber = txtPhoneNumber.Text;
+                    customer.FullName = txtFullName.Text;
+                    customer.Email = txtEmail.Text;
+                    CustomerServices.UpdateCustomer(customer);
+                }
+                customers = CustomerServices.GetAllService();
+                BindDataGrid(customers);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }

@@ -62,7 +62,7 @@
             // 
             // btnShowReport
             // 
-            this.btnShowReport.Location = new System.Drawing.Point(608, 40);
+            this.btnShowReport.Location = new System.Drawing.Point(530, 40);
             this.btnShowReport.Name = "btnShowReport";
             this.btnShowReport.Size = new System.Drawing.Size(63, 20);
             this.btnShowReport.TabIndex = 7;
@@ -73,7 +73,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(394, 44);
+            this.label2.Location = new System.Drawing.Point(344, 44);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(53, 13);
             this.label2.TabIndex = 6;
@@ -82,7 +82,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(191, 44);
+            this.label1.Location = new System.Drawing.Point(166, 44);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(46, 13);
             this.label1.TabIndex = 5;
@@ -92,33 +92,33 @@
             // 
             this.dtpMonth.CustomFormat = "MM/yyyy";
             this.dtpMonth.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpMonth.Location = new System.Drawing.Point(243, 16);
+            this.dtpMonth.Location = new System.Drawing.Point(218, 16);
             this.dtpMonth.Name = "dtpMonth";
-            this.dtpMonth.Size = new System.Drawing.Size(137, 20);
+            this.dtpMonth.Size = new System.Drawing.Size(113, 20);
             this.dtpMonth.TabIndex = 4;
             // 
             // dtpEnd
             // 
             this.dtpEnd.CustomFormat = "dd/MM/yyyy";
             this.dtpEnd.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpEnd.Location = new System.Drawing.Point(453, 40);
+            this.dtpEnd.Location = new System.Drawing.Point(403, 40);
             this.dtpEnd.Name = "dtpEnd";
-            this.dtpEnd.Size = new System.Drawing.Size(137, 20);
+            this.dtpEnd.Size = new System.Drawing.Size(110, 20);
             this.dtpEnd.TabIndex = 3;
             // 
             // dtbStart
             // 
             this.dtbStart.CustomFormat = "dd/MM/yyyy";
             this.dtbStart.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtbStart.Location = new System.Drawing.Point(243, 40);
+            this.dtbStart.Location = new System.Drawing.Point(218, 40);
             this.dtbStart.Name = "dtbStart";
-            this.dtbStart.Size = new System.Drawing.Size(137, 20);
+            this.dtbStart.Size = new System.Drawing.Size(113, 20);
             this.dtbStart.TabIndex = 2;
             // 
             // rdbDay
             // 
             this.rdbDay.AutoSize = true;
-            this.rdbDay.Location = new System.Drawing.Point(52, 43);
+            this.rdbDay.Location = new System.Drawing.Point(27, 43);
             this.rdbDay.Name = "rdbDay";
             this.rdbDay.Size = new System.Drawing.Size(121, 17);
             this.rdbDay.TabIndex = 1;
@@ -129,7 +129,7 @@
             // rdbMonth
             // 
             this.rdbMonth.AutoSize = true;
-            this.rdbMonth.Location = new System.Drawing.Point(52, 19);
+            this.rdbMonth.Location = new System.Drawing.Point(27, 19);
             this.rdbMonth.Name = "rdbMonth";
             this.rdbMonth.Size = new System.Drawing.Size(125, 17);
             this.rdbMonth.TabIndex = 0;
@@ -150,7 +150,7 @@
             // 
             this.rptCustomer.Dock = System.Windows.Forms.DockStyle.Fill;
             this.rptCustomer.Location = new System.Drawing.Point(0, 77);
-            this.rptCustomer.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.rptCustomer.Margin = new System.Windows.Forms.Padding(2);
             this.rptCustomer.Name = "rptCustomer";
             this.rptCustomer.ServerReport.BearerToken = null;
             this.rptCustomer.Size = new System.Drawing.Size(710, 334);
@@ -164,7 +164,7 @@
             this.Controls.Add(this.rptCustomer);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.rptIncome);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "CustomerReport";
             this.Text = "CustomerReport";
             this.Load += new System.EventHandler(this.CustomerReport_Load);
