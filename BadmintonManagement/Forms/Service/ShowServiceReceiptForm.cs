@@ -42,7 +42,6 @@ namespace BadmintonManagement.Forms.Service
             
             BindGrid();
         }
- 
         private void dgvServiceReceipt_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             int i = dgvServiceReceipt.SelectedRows.Count - 1;
