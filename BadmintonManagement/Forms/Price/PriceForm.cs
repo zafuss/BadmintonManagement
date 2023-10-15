@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Entity.Migrations;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -19,16 +20,16 @@ namespace BadmintonManagement.Forms.Price
         {
             InitializeComponent();
         }
-
+        public static string GBPriceID;
         private void PriceForm_Load(object sender, EventArgs e)
         {
-            cmbStatus.SelectedIndex = 1;
+            
             BindGrid();
         }
         private void RefreshTexbox()
         {
             txtPriceID.Text = txtPriceTag.Text = txtDateFactor.Text = txtTimeFactor.Text=string.Empty;
-            cmbStatus.SelectedIndex = 1;
+            
         }
         private void BindGrid()
         {
@@ -43,8 +44,12 @@ namespace BadmintonManagement.Forms.Price
                 dgvPrices.Rows[index].Cells[3].Value = price.DateFactor;
                 if (price.C_Status == 0)
                     dgvPrices.Rows[index].Cells[4].Value = "Không áp dụng";
-                else if (price.C_Status == 1)
+                else
+                {
                     dgvPrices.Rows[index].Cells[4].Value = "Áp dụng";
+                    GBPriceID = price.PriceID;
+                }
+                  
             }
         }
 
@@ -62,16 +67,12 @@ namespace BadmintonManagement.Forms.Price
                     throw new Exception("Hệ số ngày không hợp lệ!");
                 if (txtDateFactor.Text == "" || txtPriceID.Text == "" || txtPriceTag.Text == "" || txtTimeFactor.Text == "")
                     throw new Exception("Vui lòng nhập đầy đủ thông tin");
-
                 PRICE price = new PRICE();
                 price.PriceID = txtPriceID.Text.ToUpper();
                 price.PriceTag = decimal.Parse(txtPriceTag.Text);
-                price.TimeFactor = timeFactor;
-                price.DateFactor = dateFactor;
-                if (cmbStatus.Text == "Không áp dụng")
-                    price.C_Status = 0;
-                else if (cmbStatus.Text == "Áp dụng")
-                    price.C_Status = 1;
+                price.TimeFactor = Math.Round(timeFactor,2);
+                price.DateFactor = Math.Round(dateFactor,2);
+                price.C_Status = 0;
                 PriceServices.AddPrice(price);
                 BindGrid();        
             }
@@ -103,7 +104,43 @@ namespace BadmintonManagement.Forms.Price
 
         private void btnUsedPrice_Click(object sender, EventArgs e)
         {
-
+            int i = dgvPrices.SelectedRows.Count - 1;
+            if (dgvPrices.SelectedRows[i].Cells[4].Value.ToString() == "Áp dụng")
+            {
+                MessageBox.Show("Giá đã được áp dụng","Thông báo");
+                return;
+            }
+            ModelBadmintonManage context = new ModelBadmintonManage();
+            PRICE pr = new PRICE();
+            string str = dgvPrices.SelectedRows[i].Cells[0].Value.ToString();
+            pr = context.PRICE.FirstOrDefault(p => p.PriceID == str);
+            pr.C_Status = 1;
+            dgvPrices.SelectedRows[i].Cells[4].Value = "Áp dụng";
+            GBPriceID = pr.PriceID;
+            cmbStatus.SelectedIndex = 1;
+            context.PRICE.AddOrUpdate(pr);
+            context.SaveChanges();
+            List<PRICE> listPR = context.PRICE.Where(p=>p.PriceID!=pr.PriceID).ToList();
+            foreach(PRICE item in listPR)
+            {
+                if(item.C_Status==1)
+                {
+                    item.C_Status = 0;
+                    context.PRICE.AddOrUpdate(item);
+                    context.SaveChanges();
+                    str = item.PriceID;
+                    break;
+                }
+            }
+            foreach(DataGridViewRow row in dgvPrices.Rows) 
+            {
+                if (row.Cells[0].Value.ToString() == str)
+                {
+                    row.Cells[4].Value = "Không áp dụng";
+                    break;
+                }
+            }
+            //BindGrid();
         }
     }
 }

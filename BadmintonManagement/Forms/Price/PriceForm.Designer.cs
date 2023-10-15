@@ -93,6 +93,7 @@
             // 
             // cmbStatus
             // 
+            this.cmbStatus.Enabled = false;
             this.cmbStatus.FormattingEnabled = true;
             this.cmbStatus.Items.AddRange(new object[] {
             "Không áp dụng",
@@ -231,6 +232,7 @@
             this.dgvPrices.ReadOnly = true;
             this.dgvPrices.RowHeadersWidth = 62;
             this.dgvPrices.RowTemplate.Height = 28;
+            this.dgvPrices.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvPrices.Size = new System.Drawing.Size(910, 464);
             this.dgvPrices.TabIndex = 1;
             this.dgvPrices.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPrices_CellClick);
