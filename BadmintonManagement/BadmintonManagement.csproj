@@ -135,6 +135,7 @@
     </Compile>
     <Compile Include="Database\CountCustomer.cs" />
     <Compile Include="Database\CourtIncomeReport.cs" />
+    <Compile Include="Database\CustomerServices.cs" />
     <Compile Include="Database\DatabaseInitial.cs" />
     <Compile Include="Database\IncomeSer.cs" />
     <Compile Include="Database\IncomeYear.cs" />
