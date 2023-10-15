@@ -89,7 +89,6 @@
             this.cboCourt.Name = "cboCourt";
             this.cboCourt.Size = new System.Drawing.Size(314, 28);
             this.cboCourt.TabIndex = 3;
-      
             // 
             // label1
             // 
@@ -235,6 +234,7 @@
             this.Controls.Add(this.dtpStartTime);
             this.Controls.Add(this.dtpDate);
             this.Controls.Add(this.dtpEndTime);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Booking";
             this.Text = "Đặt sân";
             this.Load += new System.EventHandler(this.BookingForm_Load);

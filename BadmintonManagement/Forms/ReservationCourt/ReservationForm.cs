@@ -228,7 +228,7 @@ namespace BadmintonManagement.Forms.ReservationCourt
                 MessageBox.Show("Đã hủy","Thông báo");
             }
         }
-        private void dgvReservation_SelectionChanged(object sender, EventArgs e)
+        private void dgvReservation_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (dgvReservation.SelectedRows.Count < 1)
                 return;
@@ -314,6 +314,10 @@ namespace BadmintonManagement.Forms.ReservationCourt
                         break;
                 }
             }
+        }
+        private void dgvReservation_SelectionChanged(object sender, EventArgs e)
+        {
+            
         }
         private void ReloadGrid()
         {
@@ -551,7 +555,8 @@ namespace BadmintonManagement.Forms.ReservationCourt
 
             }
             btn.BackColor = SystemColors.ButtonShadow;
-        } 
+        }
+       
     }
 
 }

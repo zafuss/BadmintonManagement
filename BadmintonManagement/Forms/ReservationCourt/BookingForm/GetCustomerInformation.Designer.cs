@@ -131,6 +131,7 @@
             this.Controls.Add(this.label6);
             this.Controls.Add(this.txtFullName);
             this.Controls.Add(this.label5);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "GetCustomerInformation";
             this.Text = "GetCustomerInformation";
             this.Load += new System.EventHandler(this.GetCustomerInformation_Load);

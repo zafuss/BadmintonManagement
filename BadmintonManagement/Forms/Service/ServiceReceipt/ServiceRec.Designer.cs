@@ -39,18 +39,18 @@
             this.btnClose = new System.Windows.Forms.Button();
             this.btnPrint = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.txtRecNo = new System.Windows.Forms.TextBox();
-            this.txtUser = new System.Windows.Forms.TextBox();
-            this.txtPhoneNumber = new System.Windows.Forms.TextBox();
-            this.txtCustomerName = new System.Windows.Forms.TextBox();
-            this.txtTotal = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
             this.txtEmail = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.txtTotal = new System.Windows.Forms.TextBox();
+            this.txtCustomerName = new System.Windows.Forms.TextBox();
+            this.txtPhoneNumber = new System.Windows.Forms.TextBox();
+            this.txtUser = new System.Windows.Forms.TextBox();
+            this.txtRecNo = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.dgvServiceDetail)).BeginInit();
             this.panel1.SuspendLayout();
@@ -177,68 +177,36 @@
             this.groupBox1.Text = "Thông tin hóa đơn";
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
-            // label1
+            // txtEmail
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 33);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(91, 20);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Số hóa đơn";
+            this.txtEmail.Location = new System.Drawing.Point(206, 294);
+            this.txtEmail.Name = "txtEmail";
+            this.txtEmail.Size = new System.Drawing.Size(247, 26);
+            this.txtEmail.TabIndex = 15;
             // 
-            // label2
+            // label6
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 357);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(75, 20);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Tổng tiền";
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(12, 297);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(48, 20);
+            this.label6.TabIndex = 14;
+            this.label6.Text = "Email";
             // 
-            // label3
+            // txtTotal
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(12, 102);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(79, 20);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "Nhân viên";
-            this.label3.Click += new System.EventHandler(this.label3_Click);
+            this.txtTotal.Location = new System.Drawing.Point(206, 357);
+            this.txtTotal.Name = "txtTotal";
+            this.txtTotal.ReadOnly = true;
+            this.txtTotal.Size = new System.Drawing.Size(247, 26);
+            this.txtTotal.TabIndex = 9;
             // 
-            // label4
+            // txtCustomerName
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(7, 168);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(128, 20);
-            this.label4.TabIndex = 3;
-            this.label4.Text = "SDT khách hàng";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(12, 237);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(123, 20);
-            this.label5.TabIndex = 4;
-            this.label5.Text = "Tên khách hàng";
-            // 
-            // txtRecNo
-            // 
-            this.txtRecNo.Location = new System.Drawing.Point(206, 33);
-            this.txtRecNo.Name = "txtRecNo";
-            this.txtRecNo.ReadOnly = true;
-            this.txtRecNo.Size = new System.Drawing.Size(247, 26);
-            this.txtRecNo.TabIndex = 5;
-            this.txtRecNo.TextChanged += new System.EventHandler(this.txtRecNo_TextChanged);
-            // 
-            // txtUser
-            // 
-            this.txtUser.Location = new System.Drawing.Point(206, 96);
-            this.txtUser.Name = "txtUser";
-            this.txtUser.ReadOnly = true;
-            this.txtUser.Size = new System.Drawing.Size(247, 26);
-            this.txtUser.TabIndex = 6;
+            this.txtCustomerName.Location = new System.Drawing.Point(206, 231);
+            this.txtCustomerName.Name = "txtCustomerName";
+            this.txtCustomerName.Size = new System.Drawing.Size(247, 26);
+            this.txtCustomerName.TabIndex = 8;
             // 
             // txtPhoneNumber
             // 
@@ -250,36 +218,68 @@
             this.txtPhoneNumber.TabIndex = 7;
             this.txtPhoneNumber.TextChanged += new System.EventHandler(this.txtPhoneNumber_TextChanged);
             // 
-            // txtCustomerName
+            // txtUser
             // 
-            this.txtCustomerName.Location = new System.Drawing.Point(206, 231);
-            this.txtCustomerName.Name = "txtCustomerName";
-            this.txtCustomerName.Size = new System.Drawing.Size(247, 26);
-            this.txtCustomerName.TabIndex = 8;
+            this.txtUser.Location = new System.Drawing.Point(206, 96);
+            this.txtUser.Name = "txtUser";
+            this.txtUser.ReadOnly = true;
+            this.txtUser.Size = new System.Drawing.Size(247, 26);
+            this.txtUser.TabIndex = 6;
             // 
-            // txtTotal
+            // txtRecNo
             // 
-            this.txtTotal.Location = new System.Drawing.Point(206, 357);
-            this.txtTotal.Name = "txtTotal";
-            this.txtTotal.ReadOnly = true;
-            this.txtTotal.Size = new System.Drawing.Size(247, 26);
-            this.txtTotal.TabIndex = 9;
+            this.txtRecNo.Location = new System.Drawing.Point(206, 33);
+            this.txtRecNo.Name = "txtRecNo";
+            this.txtRecNo.ReadOnly = true;
+            this.txtRecNo.Size = new System.Drawing.Size(247, 26);
+            this.txtRecNo.TabIndex = 5;
+            this.txtRecNo.TextChanged += new System.EventHandler(this.txtRecNo_TextChanged);
             // 
-            // label6
+            // label5
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(12, 297);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(48, 20);
-            this.label6.TabIndex = 14;
-            this.label6.Text = "Email";
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(12, 237);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(123, 20);
+            this.label5.TabIndex = 4;
+            this.label5.Text = "Tên khách hàng";
             // 
-            // txtEmail
+            // label4
             // 
-            this.txtEmail.Location = new System.Drawing.Point(206, 294);
-            this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(247, 26);
-            this.txtEmail.TabIndex = 15;
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(7, 168);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(128, 20);
+            this.label4.TabIndex = 3;
+            this.label4.Text = "SDT khách hàng";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(12, 102);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(79, 20);
+            this.label3.TabIndex = 2;
+            this.label3.Text = "Nhân viên";
+            this.label3.Click += new System.EventHandler(this.label3_Click);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(12, 357);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(75, 20);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "Tổng tiền";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(12, 33);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(91, 20);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Số hóa đơn";
             // 
             // panel3
             // 
@@ -299,6 +299,7 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel3);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "ServiceRec";
             this.Text = "ServiceReciept";

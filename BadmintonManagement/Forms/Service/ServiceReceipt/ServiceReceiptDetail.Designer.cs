@@ -38,18 +38,18 @@
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnAccept = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.txtServiceName = new System.Windows.Forms.TextBox();
-            this.txtTotal = new System.Windows.Forms.TextBox();
             this.nudTaken = new System.Windows.Forms.NumericUpDown();
+            this.txtTotal = new System.Windows.Forms.TextBox();
+            this.txtServiceName = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.dgvServiceDetail = new System.Windows.Forms.DataGridView();
-            this.clnTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clnUsedPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clnUsedQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clnUsedQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clnUsedPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clnTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.dgvService)).BeginInit();
@@ -158,23 +158,30 @@
             this.groupBox1.Text = "Thông tin dịch vụ";
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
-            // label1
+            // nudTaken
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(15, 54);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(89, 20);
-            this.label1.TabIndex = 6;
-            this.label1.Text = "Tên dịch vụ";
+            this.nudTaken.Enabled = false;
+            this.nudTaken.Location = new System.Drawing.Point(152, 106);
+            this.nudTaken.Name = "nudTaken";
+            this.nudTaken.Size = new System.Drawing.Size(174, 26);
+            this.nudTaken.TabIndex = 13;
+            this.nudTaken.ValueChanged += new System.EventHandler(this.numericUpDown1_ValueChanged);
             // 
-            // label2
+            // txtTotal
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(15, 106);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(72, 20);
-            this.label2.TabIndex = 7;
-            this.label2.Text = "Số lượng";
+            this.txtTotal.Location = new System.Drawing.Point(152, 160);
+            this.txtTotal.Name = "txtTotal";
+            this.txtTotal.ReadOnly = true;
+            this.txtTotal.Size = new System.Drawing.Size(174, 26);
+            this.txtTotal.TabIndex = 12;
+            // 
+            // txtServiceName
+            // 
+            this.txtServiceName.Location = new System.Drawing.Point(152, 48);
+            this.txtServiceName.Name = "txtServiceName";
+            this.txtServiceName.ReadOnly = true;
+            this.txtServiceName.Size = new System.Drawing.Size(174, 26);
+            this.txtServiceName.TabIndex = 10;
             // 
             // label4
             // 
@@ -185,30 +192,23 @@
             this.label4.TabIndex = 9;
             this.label4.Text = "Tổng tiền";
             // 
-            // txtServiceName
+            // label2
             // 
-            this.txtServiceName.Location = new System.Drawing.Point(152, 48);
-            this.txtServiceName.Name = "txtServiceName";
-            this.txtServiceName.ReadOnly = true;
-            this.txtServiceName.Size = new System.Drawing.Size(174, 26);
-            this.txtServiceName.TabIndex = 10;
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(15, 106);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(72, 20);
+            this.label2.TabIndex = 7;
+            this.label2.Text = "Số lượng";
             // 
-            // txtTotal
+            // label1
             // 
-            this.txtTotal.Location = new System.Drawing.Point(152, 160);
-            this.txtTotal.Name = "txtTotal";
-            this.txtTotal.ReadOnly = true;
-            this.txtTotal.Size = new System.Drawing.Size(174, 26);
-            this.txtTotal.TabIndex = 12;
-            // 
-            // nudTaken
-            // 
-            this.nudTaken.Enabled = false;
-            this.nudTaken.Location = new System.Drawing.Point(152, 106);
-            this.nudTaken.Name = "nudTaken";
-            this.nudTaken.Size = new System.Drawing.Size(174, 26);
-            this.nudTaken.TabIndex = 13;
-            this.nudTaken.ValueChanged += new System.EventHandler(this.numericUpDown1_ValueChanged);
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(15, 54);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(89, 20);
+            this.label1.TabIndex = 6;
+            this.label1.Text = "Tên dịch vụ";
             // 
             // panel2
             // 
@@ -238,18 +238,12 @@
             this.dgvServiceDetail.TabIndex = 2;
             this.dgvServiceDetail.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvServiceDetail_CellContentClick);
             // 
-            // clnTotal
+            // dataGridViewTextBoxColumn1
             // 
-            this.clnTotal.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.clnTotal.HeaderText = "Thành tiền";
-            this.clnTotal.Name = "clnTotal";
-            this.clnTotal.ReadOnly = true;
-            // 
-            // clnUsedPrice
-            // 
-            this.clnUsedPrice.HeaderText = "Giá";
-            this.clnUsedPrice.Name = "clnUsedPrice";
-            this.clnUsedPrice.ReadOnly = true;
+            this.dataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn1.HeaderText = "tên dịch vụ";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
             // 
             // clnUsedQuantity
             // 
@@ -257,12 +251,18 @@
             this.clnUsedQuantity.Name = "clnUsedQuantity";
             this.clnUsedQuantity.ReadOnly = true;
             // 
-            // dataGridViewTextBoxColumn1
+            // clnUsedPrice
             // 
-            this.dataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dataGridViewTextBoxColumn1.HeaderText = "tên dịch vụ";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.clnUsedPrice.HeaderText = "Giá";
+            this.clnUsedPrice.Name = "clnUsedPrice";
+            this.clnUsedPrice.ReadOnly = true;
+            // 
+            // clnTotal
+            // 
+            this.clnTotal.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.clnTotal.HeaderText = "Thành tiền";
+            this.clnTotal.Name = "clnTotal";
+            this.clnTotal.ReadOnly = true;
             // 
             // panel3
             // 
@@ -293,6 +293,7 @@
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.label3);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "ServiceReceiptDetail";
             this.Text = "ServiceReceiptDetail";

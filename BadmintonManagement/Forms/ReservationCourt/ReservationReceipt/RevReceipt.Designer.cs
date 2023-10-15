@@ -45,8 +45,8 @@
             this.btnPayment = new System.Windows.Forms.Button();
             this.btnPrint = new System.Windows.Forms.Button();
             this.grpPayment = new System.Windows.Forms.GroupBox();
-            this.rdoCash = new System.Windows.Forms.RadioButton();
             this.rdoEBanking = new System.Windows.Forms.RadioButton();
+            this.rdoCash = new System.Windows.Forms.RadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.dgvRF_Detail)).BeginInit();
             this.grpPayment.SuspendLayout();
             this.SuspendLayout();
@@ -208,17 +208,6 @@
             this.grpPayment.TabStop = false;
             this.grpPayment.Text = "Phương thức thanh toán";
             // 
-            // rdoCash
-            // 
-            this.rdoCash.AutoSize = true;
-            this.rdoCash.Location = new System.Drawing.Point(6, 25);
-            this.rdoCash.Name = "rdoCash";
-            this.rdoCash.Size = new System.Drawing.Size(88, 24);
-            this.rdoCash.TabIndex = 0;
-            this.rdoCash.TabStop = true;
-            this.rdoCash.Text = "Tiền mặt";
-            this.rdoCash.UseVisualStyleBackColor = true;
-            // 
             // rdoEBanking
             // 
             this.rdoEBanking.AutoSize = true;
@@ -229,6 +218,17 @@
             this.rdoEBanking.TabStop = true;
             this.rdoEBanking.Text = "Chuyển khoản";
             this.rdoEBanking.UseVisualStyleBackColor = true;
+            // 
+            // rdoCash
+            // 
+            this.rdoCash.AutoSize = true;
+            this.rdoCash.Location = new System.Drawing.Point(6, 25);
+            this.rdoCash.Name = "rdoCash";
+            this.rdoCash.Size = new System.Drawing.Size(88, 24);
+            this.rdoCash.TabIndex = 0;
+            this.rdoCash.TabStop = true;
+            this.rdoCash.Text = "Tiền mặt";
+            this.rdoCash.UseVisualStyleBackColor = true;
             // 
             // RevReceipt
             // 
@@ -250,6 +250,7 @@
             this.Controls.Add(this.txtReceiptNo);
             this.Controls.Add(this.label1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "RevReceipt";
             this.Text = "Hóa đơn phiếu đặt sân";
