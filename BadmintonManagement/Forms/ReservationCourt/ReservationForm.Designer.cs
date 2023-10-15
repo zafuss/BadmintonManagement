@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgvReservation = new System.Windows.Forms.DataGridView();
             this.clnRevNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clnUserName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -47,6 +47,7 @@
             this.dtpEndDay = new System.Windows.Forms.DateTimePicker();
             this.dtpStartDay = new System.Windows.Forms.DateTimePicker();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btnRevReceipt = new System.Windows.Forms.Button();
             this.btnGot = new System.Windows.Forms.Button();
             this.btnAcceptDeposition = new System.Windows.Forms.Button();
             this.pnlSearch = new System.Windows.Forms.Panel();
@@ -57,7 +58,6 @@
             this.btnOverTime = new System.Windows.Forms.Button();
             this.btnFilter = new System.Windows.Forms.Button();
             this.pnlFunction = new System.Windows.Forms.Panel();
-            this.btnRevReceipt = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnDetail = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
@@ -95,7 +95,7 @@
             this.dgvReservation.MultiSelect = false;
             this.dgvReservation.Name = "dgvReservation";
             this.dgvReservation.ReadOnly = true;
-            this.dgvReservation.Size = new System.Drawing.Size(921, 537);
+            this.dgvReservation.Size = new System.Drawing.Size(921, 381);
             this.dgvReservation.TabIndex = 0;
             this.dgvReservation.SelectionChanged += new System.EventHandler(this.dgvReservation_SelectionChanged);
             // 
@@ -135,25 +135,25 @@
             // 
             // clnCreateDate
             // 
-            dataGridViewCellStyle9.Format = "dd/MM/yy";
-            this.clnCreateDate.DefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle5.Format = "dd/MM/yy";
+            this.clnCreateDate.DefaultCellStyle = dataGridViewCellStyle5;
             this.clnCreateDate.HeaderText = "Ngày đặt";
             this.clnCreateDate.Name = "clnCreateDate";
             this.clnCreateDate.ReadOnly = true;
             // 
             // clnBookingDate
             // 
-            dataGridViewCellStyle10.Format = "dd/MM/yy";
-            this.clnBookingDate.DefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle6.Format = "dd/MM/yy";
+            this.clnBookingDate.DefaultCellStyle = dataGridViewCellStyle6;
             this.clnBookingDate.HeaderText = "Ngày nhận";
             this.clnBookingDate.Name = "clnBookingDate";
             this.clnBookingDate.ReadOnly = true;
             // 
             // clnStartime
             // 
-            dataGridViewCellStyle11.Format = "HH:mm";
-            dataGridViewCellStyle11.NullValue = null;
-            this.clnStartime.DefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle7.Format = "HH:mm";
+            dataGridViewCellStyle7.NullValue = null;
+            this.clnStartime.DefaultCellStyle = dataGridViewCellStyle7;
             this.clnStartime.HeaderText = "Bắt đầu";
             this.clnStartime.Name = "clnStartime";
             this.clnStartime.ReadOnly = true;
@@ -161,9 +161,9 @@
             // 
             // clnEndTime
             // 
-            dataGridViewCellStyle12.Format = "HH:mm";
-            dataGridViewCellStyle12.NullValue = null;
-            this.clnEndTime.DefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle8.Format = "HH:mm";
+            dataGridViewCellStyle8.NullValue = null;
+            this.clnEndTime.DefaultCellStyle = dataGridViewCellStyle8;
             this.clnEndTime.HeaderText = "Kết thúc";
             this.clnEndTime.Name = "clnEndTime";
             this.clnEndTime.ReadOnly = true;
@@ -180,9 +180,9 @@
             // 
             this.dtpEndDay.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpEndDay.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpEndDay.Location = new System.Drawing.Point(528, 54);
+            this.dtpEndDay.Location = new System.Drawing.Point(459, 50);
             this.dtpEndDay.Name = "dtpEndDay";
-            this.dtpEndDay.Size = new System.Drawing.Size(200, 26);
+            this.dtpEndDay.Size = new System.Drawing.Size(107, 26);
             this.dtpEndDay.TabIndex = 4;
             this.dtpEndDay.ValueChanged += new System.EventHandler(this.dtpEndDay_ValueChanged);
             // 
@@ -190,9 +190,9 @@
             // 
             this.dtpStartDay.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpStartDay.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpStartDay.Location = new System.Drawing.Point(261, 54);
+            this.dtpStartDay.Location = new System.Drawing.Point(266, 50);
             this.dtpStartDay.Name = "dtpStartDay";
-            this.dtpStartDay.Size = new System.Drawing.Size(200, 26);
+            this.dtpStartDay.Size = new System.Drawing.Size(109, 26);
             this.dtpStartDay.TabIndex = 5;
             this.dtpStartDay.ValueChanged += new System.EventHandler(this.dtpStartDay_ValueChanged);
             // 
@@ -211,6 +211,23 @@
             this.groupBox2.Size = new System.Drawing.Size(218, 649);
             this.groupBox2.TabIndex = 10;
             this.groupBox2.TabStop = false;
+            // 
+            // btnRevReceipt
+            // 
+            this.btnRevReceipt.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnRevReceipt.Enabled = false;
+            this.btnRevReceipt.FlatAppearance.BorderColor = System.Drawing.Color.LightGray;
+            this.btnRevReceipt.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRevReceipt.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRevReceipt.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.btnRevReceipt.Location = new System.Drawing.Point(3, 501);
+            this.btnRevReceipt.Name = "btnRevReceipt";
+            this.btnRevReceipt.Size = new System.Drawing.Size(212, 40);
+            this.btnRevReceipt.TabIndex = 3;
+            this.btnRevReceipt.Text = "Lập hóa đơn";
+            this.btnRevReceipt.UseVisualStyleBackColor = true;
+            this.btnRevReceipt.EnabledChanged += new System.EventHandler(this.btnCancel_EnabledChanged_1);
+            this.btnRevReceipt.Click += new System.EventHandler(this.btnRevReceipt_Click);
             // 
             // btnGot
             // 
@@ -354,23 +371,6 @@
             this.pnlFunction.Size = new System.Drawing.Size(212, 123);
             this.pnlFunction.TabIndex = 5;
             // 
-            // btnRevReceipt
-            // 
-            this.btnRevReceipt.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnRevReceipt.Enabled = false;
-            this.btnRevReceipt.FlatAppearance.BorderColor = System.Drawing.Color.LightGray;
-            this.btnRevReceipt.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRevReceipt.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRevReceipt.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btnRevReceipt.Location = new System.Drawing.Point(3, 501);
-            this.btnRevReceipt.Name = "btnRevReceipt";
-            this.btnRevReceipt.Size = new System.Drawing.Size(212, 40);
-            this.btnRevReceipt.TabIndex = 3;
-            this.btnRevReceipt.Text = "Lập hóa đơn";
-            this.btnRevReceipt.UseVisualStyleBackColor = true;
-            this.btnRevReceipt.EnabledChanged += new System.EventHandler(this.btnCancel_EnabledChanged_1);
-            this.btnRevReceipt.Click += new System.EventHandler(this.btnRevReceipt_Click);
-            // 
             // btnCancel
             // 
             this.btnCancel.Dock = System.Windows.Forms.DockStyle.Top;
@@ -433,7 +433,7 @@
             // txtSearchByPhoneNumber
             // 
             this.txtSearchByPhoneNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSearchByPhoneNumber.Location = new System.Drawing.Point(837, 56);
+            this.txtSearchByPhoneNumber.Location = new System.Drawing.Point(616, 47);
             this.txtSearchByPhoneNumber.Name = "txtSearchByPhoneNumber";
             this.txtSearchByPhoneNumber.Size = new System.Drawing.Size(262, 26);
             this.txtSearchByPhoneNumber.TabIndex = 1;
@@ -445,7 +445,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(483, 57);
+            this.label2.Location = new System.Drawing.Point(414, 53);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(39, 20);
             this.label2.TabIndex = 12;
@@ -455,7 +455,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(228, 59);
+            this.label3.Location = new System.Drawing.Point(233, 55);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(27, 20);
             this.label3.TabIndex = 13;
@@ -483,7 +483,7 @@
             this.groupBox1.Controls.Add(this.dgvReservation);
             this.groupBox1.Location = new System.Drawing.Point(217, 82);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(927, 556);
+            this.groupBox1.Size = new System.Drawing.Size(927, 400);
             this.groupBox1.TabIndex = 9;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Thông tin phiếu đặt sân";

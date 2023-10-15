@@ -154,5 +154,7 @@ namespace BadmintonManagement.Forms.ReservationCourt.ReservationReceipt
             RevReceiptPrint frm = new RevReceiptPrint(revNo);
             frm.ShowDialog();
         }
+
+     
     }
 }

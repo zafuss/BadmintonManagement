@@ -90,7 +90,6 @@ namespace BadmintonManagement.Forms.ReservationCourt
             for(int i = 0;i<dgvReservation.Rows.Count-1;i++) 
             {
                 DateTime p = DateTime.Parse(dgvReservation.Rows[i].Cells[5].Value.ToString());
-               
                 int s1 = DateTime.Compare(p,st);
                 int s2 = DateTime.Compare(p,se);
                 if(s1<=0||s2>=0)
@@ -103,7 +102,7 @@ namespace BadmintonManagement.Forms.ReservationCourt
         {
             for (int i = 0; i < dgvReservation.Rows.Count - 1; i++)
             {
-                DateTime p = DateTime.Parse(dgvReservation.Rows[i].Cells[8].Value.ToString());
+                DateTime p = DateTime.Parse(dgvReservation.Rows[i].Cells[5].Value.ToString());
 
                 int s1 = DateTime.Compare(p, st);
                 int s2 = DateTime.Compare(p, se);
@@ -135,27 +134,36 @@ namespace BadmintonManagement.Forms.ReservationCourt
             else
                 pnlSearch.Visible = true;
         }
+        private bool CheckContain(DataGridViewRow row)
+        {
+            for(int d =0;d<dgvReservation.ColumnCount;d++) 
+            {
+                if (row.Cells[d].Value.ToString().ToLower().Contains(txtSearchByPhoneNumber.Text.ToLower()))
+                    return true;
+            }
+            return false;
+        }
         private void txtSearchByPhoneNumber_TextChanged(object sender, EventArgs e)
         {
-
+            ReloadGrid();
             for (int i = 0; i < dgvReservation.Rows.Count - 1; i++)
             {
-                if (dgvReservation.Rows[i].Cells[2].Value != null)
+                if (dgvReservation.Rows[i].Cells[0].Value != null)
                 {
-                    if (dgvReservation.Rows[i].Cells[2].Value.ToString().Contains(txtSearchByPhoneNumber.Text))
+                    if (CheckContain(dgvReservation.Rows[i])==true)
                         dgvReservation.Rows[i].Visible = true;
                     else
                         dgvReservation.Rows[i].Visible = false;
                 }
-                else
+              /*  else
                 {
                     if (txtSearchByPhoneNumber.TextLength > 0)
                         dgvReservation.Rows[i].Visible = false;
                     else
                         dgvReservation.Rows[i].Visible = true;
-                }
-                ReloadGridFollowTimeByFilter(st,se);
+                }*/
             }
+            ReloadGridFollowTimeByFilter(st, se);
         }
         private void txtSearchByPhoneNumber_Click(object sender, EventArgs e)
         {
@@ -360,11 +368,11 @@ namespace BadmintonManagement.Forms.ReservationCourt
                 tempStart = st;
                 tempEnd = se;
                 DateTime d = DateTime.Now;
-                DateTime d1 = new DateTime(d.Year, d.Month, 1, 0, 0, 0);
-                DateTime d2 = new DateTime(d.Year, d.Month, DateTime.DaysInMonth(d.Year, d.Month), 23, 59, 59);
-                ReloadGridFollowTime(d1, d2);
-                dtpStartDay.Value = d1;
-                dtpEndDay.Value = d2;
+                st = new DateTime(d.Year, d.Month, 1, 0, 0, 0);
+                se = new DateTime(d.Year, d.Month, DateTime.DaysInMonth(d.Year, d.Month), 23, 59, 59);
+                ReloadGridFollowTime(st, se);
+                dtpStartDay.Value = st;
+                dtpEndDay.Value = se;
             }
             else
             {

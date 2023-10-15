@@ -64,6 +64,7 @@
             this.txtReceiptNo.ReadOnly = true;
             this.txtReceiptNo.Size = new System.Drawing.Size(200, 26);
             this.txtReceiptNo.TabIndex = 1;
+
             // 
             // label2
             // 
