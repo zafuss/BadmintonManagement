@@ -290,6 +290,11 @@ namespace BadmintonManagement.Forms.Court
                 {
                     throw new Exception("Chỉnh sửa sân không thành công!");
                 }
+                else if (new CourtService().CountCourt(cboCourtID.Text) != 0)
+                {
+                    throw new Exception("Chỉnh sửa sân không thành công!");
+                }
+
                 else
                 {
                     DateTime dateTime = DateTime.Now;
