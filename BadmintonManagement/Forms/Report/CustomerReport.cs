@@ -90,9 +90,8 @@ namespace BadmintonManagement.Forms.Report
                 list.Add(customer);
             }
             reader.Close();
-            if (list.Count < 1)
-                throw new Exception("Không có khách hàng trong thời gian này");
-            // Set ReportPath cho ReportViewer.
+            
+                // Set ReportPath cho ReportViewer.
             // Tạo ReportDataSource với dữ liệu từ list
             // Đặt tham số báo cáo và refresh ReportViewer để hiển thị dữ liệu.
             rptCustomer.LocalReport.ReportPath = "CustomerReport.rdlc";
@@ -102,6 +101,10 @@ namespace BadmintonManagement.Forms.Report
             rptCustomer.LocalReport.SetParameters(param);
 
             this.rptCustomer.RefreshReport();
+            if (list.Count < 1)
+            {
+                throw new Exception("Không có khách hàng trong thời gian này");
+            }
         }
 
         // load form thống kê lượt khách

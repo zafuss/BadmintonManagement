@@ -56,7 +56,8 @@ namespace BadmintonManagement.Forms.Service.ServiceReceipt
         }
         private void ServiceReciept_Load(object sender, EventArgs e)
         {
-            if(isNew == true) 
+            btnPayment.Enabled = false;
+            if (isNew == true) 
             {
                 txtRecNo.Text = GenerateServiceRecNo();
                 txtUser.Text = Properties.Settings.Default.Username;
@@ -221,19 +222,38 @@ namespace BadmintonManagement.Forms.Service.ServiceReceipt
             frm.ShowDialog();
         }
 
-        private void txtRecNo_TextChanged(object sender, EventArgs e)
+        private void dgvServiceDetail_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
         {
-
+            try
+            {
+                if (dgvServiceDetail.Rows.Count > 1)
+                {
+                    btnPayment.Enabled = true;
+                }
+                else
+                    btnPayment.Enabled = false;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
-        private void label3_Click(object sender, EventArgs e)
+        private void dgvServiceDetail_RowsRemoved(object sender, DataGridViewRowsRemovedEventArgs e)
         {
-
-        }
-
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
-
+            try
+            {
+                if (dgvServiceDetail.Rows.Count > 1)
+                {
+                    btnPayment.Enabled = true;
+                }
+                else
+                    btnPayment.Enabled = false;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }

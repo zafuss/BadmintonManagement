@@ -47,12 +47,12 @@
             this.label7 = new System.Windows.Forms.Label();
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.clnStaus = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clnRole = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clnPhoneNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clnEmail = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clnName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clnUsername = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clnName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clnEmail = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clnPhoneNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clnRole = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clnStaus = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUsers)).BeginInit();
             this.panel1.SuspendLayout();
@@ -62,7 +62,7 @@
             // 
             // btnReg
             // 
-            this.btnReg.Location = new System.Drawing.Point(13, 382);
+            this.btnReg.Location = new System.Drawing.Point(4, 382);
             this.btnReg.Name = "btnReg";
             this.btnReg.Size = new System.Drawing.Size(371, 46);
             this.btnReg.TabIndex = 6;
@@ -142,7 +142,7 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = global::BadmintonManagement.Properties.Resources.register_images;
-            this.pictureBox1.Location = new System.Drawing.Point(133, 12);
+            this.pictureBox1.Location = new System.Drawing.Point(117, 12);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(117, 121);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -162,19 +162,19 @@
             this.clnRole,
             this.clnStaus});
             this.dgvUsers.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvUsers.Location = new System.Drawing.Point(398, 151);
+            this.dgvUsers.Location = new System.Drawing.Point(386, 151);
             this.dgvUsers.Name = "dgvUsers";
             this.dgvUsers.ReadOnly = true;
             this.dgvUsers.RowHeadersWidth = 62;
             this.dgvUsers.RowTemplate.Height = 24;
             this.dgvUsers.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvUsers.Size = new System.Drawing.Size(778, 400);
+            this.dgvUsers.Size = new System.Drawing.Size(862, 395);
             this.dgvUsers.TabIndex = 9;
             this.dgvUsers.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvUsers_CellClick);
             // 
             // btnUpdate
             // 
-            this.btnUpdate.Location = new System.Drawing.Point(12, 434);
+            this.btnUpdate.Location = new System.Drawing.Point(4, 434);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(184, 46);
             this.btnUpdate.TabIndex = 7;
@@ -184,7 +184,7 @@
             // 
             // btnDelUser
             // 
-            this.btnDelUser.Location = new System.Drawing.Point(200, 434);
+            this.btnDelUser.Location = new System.Drawing.Point(194, 434);
             this.btnDelUser.Name = "btnDelUser";
             this.btnDelUser.Size = new System.Drawing.Size(184, 46);
             this.btnDelUser.TabIndex = 8;
@@ -226,7 +226,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(398, 551);
+            this.panel1.Size = new System.Drawing.Size(386, 546);
             this.panel1.TabIndex = 12;
             // 
             // cbxChangePassword
@@ -245,7 +245,7 @@
             this.groupBox1.Controls.Add(this.txtName);
             this.groupBox1.Controls.Add(this.txtRegPhoneNumber);
             this.groupBox1.Controls.Add(this.txtRegEmail);
-            this.groupBox1.Location = new System.Drawing.Point(12, 139);
+            this.groupBox1.Location = new System.Drawing.Point(3, 139);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(372, 237);
             this.groupBox1.TabIndex = 0;
@@ -256,7 +256,7 @@
             // 
             this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(405, 114);
+            this.label7.Location = new System.Drawing.Point(489, 114);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(177, 28);
             this.label7.TabIndex = 14;
@@ -265,7 +265,7 @@
             // txtSearch
             // 
             this.txtSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtSearch.Location = new System.Drawing.Point(588, 114);
+            this.txtSearch.Location = new System.Drawing.Point(672, 114);
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.Size = new System.Drawing.Size(178, 34);
             this.txtSearch.TabIndex = 13;
@@ -276,43 +276,19 @@
             this.panel2.Controls.Add(this.label7);
             this.panel2.Controls.Add(this.txtSearch);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel2.Location = new System.Drawing.Point(398, 0);
+            this.panel2.Location = new System.Drawing.Point(386, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(778, 151);
+            this.panel2.Size = new System.Drawing.Size(862, 151);
             this.panel2.TabIndex = 16;
             this.panel2.SizeChanged += new System.EventHandler(this.panel2_SizeChanged);
             // 
-            // clnStaus
+            // clnUsername
             // 
-            this.clnStaus.HeaderText = "Trạng thái";
-            this.clnStaus.MinimumWidth = 6;
-            this.clnStaus.Name = "clnStaus";
-            this.clnStaus.ReadOnly = true;
-            this.clnStaus.Width = 110;
-            // 
-            // clnRole
-            // 
-            this.clnRole.HeaderText = "Quyền";
-            this.clnRole.MinimumWidth = 8;
-            this.clnRole.Name = "clnRole";
-            this.clnRole.ReadOnly = true;
-            this.clnRole.Width = 60;
-            // 
-            // clnPhoneNumber
-            // 
-            this.clnPhoneNumber.HeaderText = "SĐT";
-            this.clnPhoneNumber.MinimumWidth = 8;
-            this.clnPhoneNumber.Name = "clnPhoneNumber";
-            this.clnPhoneNumber.ReadOnly = true;
-            this.clnPhoneNumber.Width = 110;
-            // 
-            // clnEmail
-            // 
-            this.clnEmail.HeaderText = "Email";
-            this.clnEmail.MinimumWidth = 8;
-            this.clnEmail.Name = "clnEmail";
-            this.clnEmail.ReadOnly = true;
-            this.clnEmail.Width = 230;
+            this.clnUsername.HeaderText = "Username";
+            this.clnUsername.MinimumWidth = 8;
+            this.clnUsername.Name = "clnUsername";
+            this.clnUsername.ReadOnly = true;
+            this.clnUsername.Width = 110;
             // 
             // clnName
             // 
@@ -322,19 +298,43 @@
             this.clnName.ReadOnly = true;
             this.clnName.Width = 180;
             // 
-            // clnUsername
+            // clnEmail
             // 
-            this.clnUsername.HeaderText = "Username";
-            this.clnUsername.MinimumWidth = 8;
-            this.clnUsername.Name = "clnUsername";
-            this.clnUsername.ReadOnly = true;
-            this.clnUsername.Width = 125;
+            this.clnEmail.HeaderText = "Email";
+            this.clnEmail.MinimumWidth = 8;
+            this.clnEmail.Name = "clnEmail";
+            this.clnEmail.ReadOnly = true;
+            this.clnEmail.Width = 230;
+            // 
+            // clnPhoneNumber
+            // 
+            this.clnPhoneNumber.HeaderText = "SĐT";
+            this.clnPhoneNumber.MinimumWidth = 8;
+            this.clnPhoneNumber.Name = "clnPhoneNumber";
+            this.clnPhoneNumber.ReadOnly = true;
+            this.clnPhoneNumber.Width = 110;
+            // 
+            // clnRole
+            // 
+            this.clnRole.HeaderText = "Quyền";
+            this.clnRole.MinimumWidth = 8;
+            this.clnRole.Name = "clnRole";
+            this.clnRole.ReadOnly = true;
+            this.clnRole.Width = 60;
+            // 
+            // clnStaus
+            // 
+            this.clnStaus.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.clnStaus.HeaderText = "Trạng thái";
+            this.clnStaus.MinimumWidth = 6;
+            this.clnStaus.Name = "clnStaus";
+            this.clnStaus.ReadOnly = true;
             // 
             // ManageUser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 28F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1176, 551);
+            this.ClientSize = new System.Drawing.Size(1248, 546);
             this.Controls.Add(this.dgvUsers);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.label3);

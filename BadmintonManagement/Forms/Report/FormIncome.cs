@@ -68,7 +68,10 @@ namespace BadmintonManagement.Forms.Report
             reader.Close();
             if (list.Count < 1)
             {
+                //this.reportViewer1.LocalReport.DataSources.Clear();
+                this.reportViewer1.RefreshReport();
                 throw new Exception("Khong có doanh thu trong thời gian này");
+                
             }
             // khởi tạo và gán các tham số
             Microsoft.Reporting.WinForms.ReportParameter[] param1 = new Microsoft.Reporting.WinForms.ReportParameter[2]
@@ -125,8 +128,9 @@ namespace BadmintonManagement.Forms.Report
             reader1.Close();
             if (list1.Count < 1)
             {
-                dtpMonth.Value = DateTime.Now; 
+                
                 throw new Exception("Không có doanh thu trong thời gian này");
+                
             }
             // Set ReportPath cho ReportViewer.
             // Tạo ReportDataSource với dữ liệu từ list

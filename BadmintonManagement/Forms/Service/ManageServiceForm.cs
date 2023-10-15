@@ -113,17 +113,22 @@ namespace BadmintonManagement.Forms.Service
                     throw new Exception("Số lượng không hợp lệ!");
                 if (txtServiceName.Text == "" || txtServiceID.Text == "" || nmrQuantity.Text == "" || txtPrice.Text == "")
                     throw new Exception("Vui lòng nhập đầy đủ thông tin!");
-                C_SERVICE service = new C_SERVICE()
-                {
-                    ServiceID = txtServiceID.Text.ToUpper(),
-                    ServiceName = txtServiceName.Text,
-                    Unit = txtUnit.Text,
-                    Quantity = quantity,
-                    Price = price
+                C_SERVICE service = ServiceServices.GetServiceID(txtServiceID.Text);
 
-                };
-               ServiceServices.UpdateService(service, selectedServiceID, selectedServiceName);
-                BindGrid();
+                if(service != null) 
+                {
+                    service.ServiceName = txtServiceName.Text;
+                    service.Unit = txtUnit.Text;
+                    service.Price = price;
+                    service.Quantity = quantity;
+                    ServiceServices.UpdateService(service, selectedServiceID, selectedServiceName);
+                    BindGrid();
+                }
+                else
+                {
+                    throw new Exception("Dịch Vụ Không Tồn Tại");
+                }
+                
             }
             catch (Exception ex)
             {
@@ -136,9 +141,19 @@ namespace BadmintonManagement.Forms.Service
             try
             {
                 //FirebaseHelper.DeleteUser(selectedUsername);
-                ServiceServices.DisableService(selectedServiceName);
-                MessageBox.Show("Thay đổi trạng thái dịch vụ thành công!");
-                BindGrid();
+                C_SERVICE service = ServiceServices.GetServiceID(txtServiceID.Text);
+                if(service != null)
+                {
+                    //ServiceServices.DisableService(selectedServiceName);
+                    ServiceServices.DisableServiceID(txtServiceID.Text);
+                    
+                    MessageBox.Show("Thay đổi trạng thái dịch vụ thành công!");
+                    BindGrid();
+                }
+                else
+                {
+                    throw new Exception("Dịch Vụ Không Tồn Tại");
+                }
             }
             catch (Exception ex)
             {

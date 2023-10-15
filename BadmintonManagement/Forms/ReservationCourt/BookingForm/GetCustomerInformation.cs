@@ -84,31 +84,31 @@ namespace BadmintonManagement.Forms.ReservationCourt.BookingForm
             }
             else
             {
-                if(MessageBox.Show("Bạn có muốn thêm khách hàng mới","Thông báo",MessageBoxButtons.YesNo)==DialogResult.Yes)
+                //if(MessageBox.Show("Bạn có muốn thêm khách hàng mới","Thông báo",MessageBoxButtons.YesNo)==DialogResult.Yes)
+                //{
+                if (txtPhoneNumber.Text == string.Empty || txtFullName.Text == string.Empty|| txtEmail.Text == string.Empty)
                 {
-                    if (txtPhoneNumber.Text == string.Empty || txtFullName.Text == string.Empty|| txtEmail.Text == string.Empty)
-                    {
-                        MessageBox.Show("Vui lòng nhập đủ thông tin khách hàng","Thông báo");
-                        return;
-                    }
-                    ModelBadmintonManage context = new ModelBadmintonManage();
-                    CUSTOMER c = new CUSTOMER();
-                    c.PhoneNumber = txtPhoneNumber.Text;
-                    c.FullName = txtFullName.Text;
-                    c.Email = txtEmail.Text;
-                    Booking frm = new Booking(txtPhoneNumber.Text, txtFullName.Text, txtEmail.Text);
-                    frm.FormBorderStyle = FormBorderStyle.SizableToolWindow;
-                    frm.ShowDialog();
-                    this.Close();
+                    MessageBox.Show("Vui lòng nhập đủ thông tin khách hàng","Thông báo");
+                    return;
                 }
-                else
-                {
-                    Booking frm = new Booking();
-                    frm.FormBorderStyle = FormBorderStyle.SizableToolWindow;
-                    frm.ReloadBK = new Booking.ChangeBK(LoadCus);
-                    frm.ShowDialog();
-                    this.Close();
-                } 
+                ModelBadmintonManage context = new ModelBadmintonManage();
+                CUSTOMER c = new CUSTOMER();
+                c.PhoneNumber = txtPhoneNumber.Text;
+                c.FullName = txtFullName.Text;
+                c.Email = txtEmail.Text;
+                Booking frm = new Booking(txtPhoneNumber.Text, txtFullName.Text, txtEmail.Text);
+                frm.FormBorderStyle = FormBorderStyle.SizableToolWindow;
+                frm.ShowDialog();
+                this.Close();
+                //}
+                //else
+                //{
+                //    Booking frm = new Booking();
+                //    frm.FormBorderStyle = FormBorderStyle.SizableToolWindow;
+                //    frm.ReloadBK = new Booking.ChangeBK(LoadCus);
+                //    frm.ShowDialog();
+                //    this.Close();
+                //} 
             }
         }
         private void btnExit_Click(object sender, EventArgs e)
@@ -116,24 +116,20 @@ namespace BadmintonManagement.Forms.ReservationCourt.BookingForm
             this.Close();
         }
 
-        private void groupBox1_Enter(object sender, EventArgs e)
+        private void btnNoInfor_Click(object sender, EventArgs e)
         {
-
-        }
-
-        private void label5_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label6_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label7_Click(object sender, EventArgs e)
-        {
-
+            try
+            {
+                Booking frm = new Booking();
+                frm.FormBorderStyle = FormBorderStyle.SizableToolWindow;
+                frm.ReloadBK = new Booking.ChangeBK(LoadCus);
+                frm.ShowDialog();
+                this.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }

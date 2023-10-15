@@ -18,6 +18,7 @@ namespace BadmintonManagement.Forms.Service
         {
             InitializeComponent();
             
+            
         }
         private void OpenChildForm(Form childForm)
         {
@@ -53,6 +54,7 @@ namespace BadmintonManagement.Forms.Service
             btnReceiptServices.BackColor = SystemColors.ButtonShadow;
             btnServiceReceipt.BackColor = Color.LightGray;
             //btnCreateServiceReceipt.BackColor= Color.LightGray; 
+            pnlListReceip.Visible = true;
         }
         private void btnAdd_Click(object sender, EventArgs e)
         {
@@ -74,10 +76,14 @@ namespace BadmintonManagement.Forms.Service
             OpenChildForm(new ManageServiceForm());
             btnServiceReceipt.BackColor = SystemColors.ButtonShadow;
             btnReceiptServices.BackColor = Color.LightGray;
+            pnlListReceip.Visible = false;
         }
         private void ServiceForm_Load(object sender, EventArgs e)
         {
             btnReceiptServices.PerformClick();
+            pnlListReceip.Visible = false;
         }
+
+       
     }
 }

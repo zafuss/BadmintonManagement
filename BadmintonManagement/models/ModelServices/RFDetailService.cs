@@ -76,15 +76,15 @@ namespace BadmintonManagement.Database
 		                            from COURT c , BRANCH br 
 		                            where c.BranchID = br.BranchID and c._Status != 'Available' and c._Status != 'Disable') c
                             Left Join (select rf.CourtID , tmp.FullName , tmp.PhoneNumber , rf.ReservationNo,tmp.StartTime,tmp.EndTime , tmp._Status
-			                            from RF_DETAIL rf ,		(select reser.ReservationNo , a.FullName , a.PhoneNumber , FORMAT(reser.StartTime, 'HH:mm') as StartTime , 
-																FORMAT(reser.EndTime, 'HH:mm') as EndTime , reser._Status
-																from RESERVATION reser , CUSTOMER a
-																where (Cast(reser.StartTime as Date) = Cast(CURRENT_TIMESTAMP  as DATE) and 
-																FORMAT(CURRENT_TIMESTAMP , 'HH:mm') < FORMAT(reser.EndTime, 'HH:mm') and 
-																FORMAT(CURRENT_TIMESTAMP , 'HH:mm') >= FORMAT(reser.StartTime, 'HH:mm')  and 
-																a.PhoneNumber = reser.PhoneNumber) or (a.PhoneNumber = reser.PhoneNumber and reser._Status = 3 )) tmp
-			                            where rf.ReservationNo = tmp.ReservationNo
-			                            )  b 
+			                            from RF_DETAIL rf ,	(select reser.ReservationNo , a.FullName , a.PhoneNumber , FORMAT(reser.StartTime, 'HH:mm') as StartTime , 
+										                            FORMAT(reser.EndTime, 'HH:mm') as EndTime , reser._Status
+								                            from RESERVATION reser left join CUSTOMER a
+								                            on a.PhoneNumber = reser.PhoneNumber
+								                            where Cast(reser.StartTime as Date) = Cast(CURRENT_TIMESTAMP  as DATE) and 
+									                            FORMAT(CURRENT_TIMESTAMP , 'HH:mm') < FORMAT(reser.EndTime, 'HH:mm') and 
+									                            FORMAT(CURRENT_TIMESTAMP , 'HH:mm') >= FORMAT(reser.StartTime, 'HH:mm')  or 
+									                            reser._Status = 3  ) tmp
+			                            where rf.ReservationNo = tmp.ReservationNo)  b 
                             on b.CourtID = c.CourtID";
 
             SqlConnection conn;

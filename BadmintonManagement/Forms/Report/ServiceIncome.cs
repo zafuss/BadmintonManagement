@@ -90,8 +90,7 @@ namespace BadmintonManagement.Forms.Report
                 list.Add(court);
             }
             reader.Close();
-            if (list.Count < 1)
-                throw new Exception("Khong có doanh thu trong thời gian này");
+            
             // Set ReportPath cho ReportViewer.
             // Tạo ReportDataSource với dữ liệu từ list
             // Đặt tham số báo cáo và refresh ReportViewer để hiển thị dữ liệu.
@@ -102,6 +101,10 @@ namespace BadmintonManagement.Forms.Report
             rptServiceReceipt.LocalReport.SetParameters(param);
 
             this.rptServiceReceipt.RefreshReport();
+            if (list.Count < 1)
+            {
+                throw new Exception("Khong có doanh thu trong thời gian này");
+            }
         }
         // Load form Doanh thu dịch vụ
         private void btnShowReport_Click(object sender, EventArgs e)

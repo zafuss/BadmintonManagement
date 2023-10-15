@@ -95,9 +95,8 @@ namespace BadmintonManagement.Forms.Report
                 list.Add(court);
             }
             reader.Close();
-            if (list.Count < 1)
-                throw new Exception("Không có doanh thu trong thời gian này");
-            // Set ReportPath cho ReportViewer.
+            
+                // Set ReportPath cho ReportViewer.
             // Tạo ReportDataSource với dữ liệu từ list
             // Đặt tham số báo cáo và refresh ReportViewer để hiển thị dữ liệu.
             rptCourtIncome.LocalReport.ReportPath = "CourtIncomeReport.rdlc";
@@ -106,6 +105,10 @@ namespace BadmintonManagement.Forms.Report
             rptCourtIncome.LocalReport.DataSources.Add(sour);
             rptCourtIncome.LocalReport.SetParameters(param1);
             this.rptCourtIncome.RefreshReport();
+            if (list.Count < 1)
+            {
+                throw new Exception("Không có doanh thu trong thời gian này");
+            }
 
         }
         

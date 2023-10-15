@@ -20,8 +20,12 @@ namespace BadmintonManagement.Database
 
         public static C_SERVICE GetService(string serviceName)
         {
-
             return context.C_SERVICE.FirstOrDefault(x => x.ServiceName == serviceName);
+        }
+
+        public static C_SERVICE GetServiceID(string serviceID)
+        {
+            return context.C_SERVICE.FirstOrDefault(x => x.ServiceID == serviceID);
         }
 
         public static bool IS_ServiceNameExist(string serviceName)
@@ -81,16 +85,25 @@ namespace BadmintonManagement.Database
             }
         }
 
-        public static void DisableService(string username)
+        //public static void DisableService(string username)
+        //{
+        //    C_SERVICE tmpService = GetService(username);
+        //    if (tmpService.C_Status == "Enabled")
+        //        tmpService.C_Status = "Disabled";
+        //    else tmpService.C_Status = "Enabled";
+        //    context.C_SERVICE.AddOrUpdate(tmpService);
+        //    context.SaveChanges();
+        //}
+
+        public static void DisableServiceID(string serviceID)
         {
-            C_SERVICE tmpService = GetService(username);
+            C_SERVICE tmpService = GetServiceID(serviceID);
             if (tmpService.C_Status == "Enabled")
                 tmpService.C_Status = "Disabled";
             else tmpService.C_Status = "Enabled";
             context.C_SERVICE.AddOrUpdate(tmpService);
             context.SaveChanges();
         }
-
 
 
 
