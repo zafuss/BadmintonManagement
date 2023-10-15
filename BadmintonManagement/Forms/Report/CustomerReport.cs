@@ -35,7 +35,7 @@ namespace BadmintonManagement.Forms.Report
         // lấy dữ liệu lượt khách hàng đưa lên reportviewer
         private void CustomerReportMonth()
         {
-
+            
             if (conn == null)
                 conn = new SqlConnection(str);
             if (conn.State == ConnectionState.Closed)
@@ -63,13 +63,16 @@ namespace BadmintonManagement.Forms.Report
                 {
                     new Microsoft.Reporting.WinForms.ReportParameter("DateTimeString","Từ ngày "+dtbStart.Text +" đến ngày "+dtpEnd.Text)
                 };
-                string starDay = dtbStart.Value.AddDays(-1).ToString();
-                string enDay = dtpEnd.Value.AddDays(1).ToString();
+                DateTime starDay = DateTime.Parse(dtbStart.Value.AddDays(-1).ToString("dd/MM/yyyy"));
+                DateTime endDay = DateTime.Parse(dtpEnd.Value.AddDays(1).ToString("dd/MM/yyyy"));
+                cmd.Parameters.AddWithValue("@_date5", starDay);
+                cmd.Parameters.AddWithValue("@_date6", endDay);
                 //  truy vấn SQL để lấy dữ liệu lượt khách theo ngày
                 cmd.CommandText = @"select C.FullName,C.PhoneNumber,C.Email,convert (varchar,count(R.ReservationNo)) as SoLan
                                     from RESERVATION R,CUSTOMER C,RECEIPT R1
                                     where R.PhoneNumber = C.PhoneNumber and R1.ReservationNo = R.ReservationNo 
-	                                    and R1._Date > '" + starDay+"' and R1._Date < '" + enDay + "' group by C.FullName,C.PhoneNumber,C.Email ";
+	                                    and CONVERT(datetime,R1._Date,103) between @_date5 and @_date6 
+                                    group by C.FullName,C.PhoneNumber,C.Email ";
             }
 
             cmd.Connection = conn;
@@ -106,6 +109,7 @@ namespace BadmintonManagement.Forms.Report
         {
             try
             {
+                cmd.Parameters.Clear();
                 if (!rdbDay.Checked && !rdbMonth.Checked)
                     throw new Exception("Vui lòng chọn thời gian thống kê");
                 rptCustomer.Visible = true;

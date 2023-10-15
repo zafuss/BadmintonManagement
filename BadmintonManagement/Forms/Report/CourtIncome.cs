@@ -64,18 +64,22 @@ namespace BadmintonManagement.Forms.Report
                 {
                     new Microsoft.Reporting.WinForms.ReportParameter("DeliveryDateStr","Từ ngày" + dtbStart.Text + " đến ngày " + dtpEnd.Text)
                 };
-                string starDay = dtbStart.Value.AddDays(-1).ToString();
-                string enDay = dtpEnd.Value.AddDays(1).ToString();
+
                 //  truy vấn SQL để lấy dữ liệu doanh thu 
+                DateTime starDay =DateTime.Parse(dtbStart.Value.AddDays(-1).ToString("dd/MM/yyyy"));
+                DateTime endDay =DateTime.Parse(dtpEnd.Value.AddDays(1).ToString("dd/MM/yyyy"));
+                cmd.Parameters.AddWithValue("@_date1",starDay);
+                cmd.Parameters.AddWithValue("@_date2",endDay);
                 cmd.CommandText = @"select R1.ReceiptNo,convert(varchar,R1._Date,105) as Ngay,C.PhoneNumber,C.FullName,U._Name,R1.Total
                                 from RECEIPT R1,RESERVATION R2,CUSTOMER C,_USER U
                                 where R1.ReservationNo = R2.ReservationNo and R1.Username= U.Username and R2.PhoneNumber = C.PhoneNumber 
-		                                and R1._Date between '" + starDay + "' and '" + enDay + "'";
+		                                and CONVERT(datetime,R1._Date,103) between @_date1 and @_date2 ";
             }  
            
- 
+            
             cmd.Connection = conn;
             SqlDataReader reader = cmd.ExecuteReader();
+
             List<CourtIncomeReport> list = new List<CourtIncomeReport>();
             // Đọc dữ liệu từ SqlDataReader và điền vào danh sách.
             while (reader.Read())
@@ -110,6 +114,7 @@ namespace BadmintonManagement.Forms.Report
         {
             try
             {
+                cmd.Parameters.Clear();
                 if (rdbMonth.Checked == false && rdbDay.Checked == false)
                     throw new Exception("Vui lòng chọn thời gian thống kê");
                 rptCourtIncome.Visible = true;

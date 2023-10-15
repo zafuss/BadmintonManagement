@@ -62,13 +62,15 @@ namespace BadmintonManagement.Forms.Report
                 {
                     new Microsoft.Reporting.WinForms.ReportParameter("DateTimeStrr","Từ ngày "+dtbStart.Text +" đến ngày "+dtpEnd.Text)
                 };
-                string starDay = dtbStart.Value.AddDays(-1).ToString();
-                string enDay = dtpEnd.Value.AddDays(1).ToString();
+                DateTime starDay = DateTime.Parse(dtbStart.Value.AddDays(-1).ToString("dd/MM/yyyy"));
+                DateTime endDay = DateTime.Parse(dtpEnd.Value.AddDays(1).ToString("dd/MM/yyyy"));
+                cmd.Parameters.AddWithValue("@_date3", starDay);
+                cmd.Parameters.AddWithValue("@_date4", endDay);
                 //  truy vấn SQL để lấy dữ liệu doanh thu 
                 cmd.CommandText = @"select S1.ServiceReceiptNo,convert(varchar,S1.CreateDate,105) as NgayLap,C.FullName,S1.PhoneNumber,U._Name,S1.Total
                                     from SERVICE_RECEIPT S1,_USER U,CUSTOMER C
                                     where  S1.PhoneNumber = C.PhoneNumber and U.Username = S1.Username
-		                                    and s1.CreateDate  > '" + starDay +"' and '" + enDay +"' > s1.CreateDate";
+		                                    and  CONVERT(datetime,s1.CreateDate,103) between @_date3 and @_date4" ;
             }
           
             cmd.Connection = conn;
@@ -106,7 +108,8 @@ namespace BadmintonManagement.Forms.Report
         {
             try
             {
-                if(!rdbDay.Checked && !rdbMonth.Checked)
+                cmd.Parameters.Clear();
+                if (!rdbDay.Checked && !rdbMonth.Checked)
                 {
                     throw new Exception("Vui lòng nhập thời gian thống kê");
                 }
