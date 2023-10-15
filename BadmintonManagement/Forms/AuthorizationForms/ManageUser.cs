@@ -158,7 +158,7 @@ namespace BadmintonManagement.Forms.AuthorizationForms
                 C_USER currentUser = null;
                 if (!cbxChangePassword.Checked)
                     currentUser = UserServices.GetUser(selectedUsername);
-                if (txtRegUsername.Text == "" || txtRegPhoneNumber.Text == "" || txtRegEmail.Text == "")
+                if (txtRegUsername.Text == "" || txtRegPhoneNumber.Text == "" || txtRegEmail.Text == "" || txtName.Text == "")
                     throw new Exception("Vui lòng nhập đầy đủ thông tin!");
                 if (txtRegUsername.Text != selectedUsername)
                     throw new Exception("Không thể thay đổi username!");

@@ -219,3 +219,37 @@ select C.FullName,C.PhoneNumber,C.Email,count(R.ReservationNo) as SoLan
 from RESERVATION R,CUSTOMER C,RECEIPT R1
 where R.PhoneNumber = C.PhoneNumber and R1.ReservationNo = R.ReservationNo and CONVERT(varchar,month(R1._Date))= '4'  and CONVERT(varchar,year(R1._Date))= '2023'
 group by C.FullName,C.PhoneNumber,C.Email
+
+
+select c.CourtID,c.CourtName,c.BranchID , c.BranchName , b.FullName, b.PhoneNumber , b.ReservationNo , b.StartTime , b.EndTime  , b._Status , CASE 
+																																				When c._Status = 'Maintenance' then 'Maintenance'
+																																				When b.ReservationNo is NULL then 'Available'
+																																				When b.ReservationNo is not NULL then 'Using'
+																																				When b._Status = 3 then 'OvTime'
+																																				END as Status
+from (	select c.CourtID , c.CourtName , c.BranchID , br.BranchName, c._Status
+		from COURT c , BRANCH br 
+		where c.BranchID = br.BranchID and c._Status != 'Available' and c._Status != 'Disable') c
+Left Join (select rf.CourtID , tmp.FullName , tmp.PhoneNumber , rf.ReservationNo,tmp.StartTime,tmp.EndTime , tmp._Status
+			from RF_DETAIL rf ,	(select reser.ReservationNo , a.FullName , a.PhoneNumber , FORMAT(reser.StartTime, 'HH:mm') as StartTime , 
+										FORMAT(reser.EndTime, 'HH:mm') as EndTime , reser._Status
+								from RESERVATION reser left join CUSTOMER a
+								on a.PhoneNumber = reser.PhoneNumber
+								where Cast(reser.StartTime as Date) = Cast(CURRENT_TIMESTAMP  as DATE) and 
+									FORMAT(CURRENT_TIMESTAMP , 'HH:mm') < FORMAT(reser.EndTime, 'HH:mm') and 
+									FORMAT(CURRENT_TIMESTAMP , 'HH:mm') >= FORMAT(reser.StartTime, 'HH:mm')  or 
+									reser._Status = 3  ) tmp
+			where rf.ReservationNo = tmp.ReservationNo)  b 
+on b.CourtID = c.CourtID
+select * from RESERVATION
+
+select rf.ReservationNo , tmp.FullName , tmp.PhoneNumber ,tmp.[Ngay Choi], tmp.StartTime,tmp.EndTime , tmp.[Tong gio choi]
+                            from RF_DETAIL rf ,		(select reser.ReservationNo, a.FullName , a.PhoneNumber , FORMAT(reser.BookingDate, 'dd/MM/yyyy')as[Ngay Choi] , 
+							FORMAT(reser.StartTime, 'HH:mm') as StartTime , FORMAT(reser.EndTime, 'HH:mm') as EndTime , 
+						                            FORMAT( DATEADD(MINUTE,DATEDIFF(MINUTE,reser.StartTime,reser.EndTime),'00:00'), 'HH:mm') as [Tong gio choi]
+						                            from RESERVATION reser left join CUSTOMER a
+													on a.PhoneNumber = reser.PhoneNumber 
+						                            where CONVERT(datetime,reser.BookingDate,103) between @_date1 and @_date2 ) tmp , COURT a
+                            where rf.ReservationNo = tmp.ReservationNo and rf.CourtID = a.CourtID and rf.CourtID = @courtID\
+
+							select * from RESERVATION
