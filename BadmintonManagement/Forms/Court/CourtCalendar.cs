@@ -20,9 +20,9 @@ namespace BadmintonManagement.Forms.Court
             InitializeComponent();
             BindCalendar();
             Title();
-
         }
 
+        //Title của form
         private void Title()
         {
             pnlTitle.Controls.Clear();
@@ -36,13 +36,18 @@ namespace BadmintonManagement.Forms.Court
             label.Font = new Font("Segoe UI", 24, FontStyle.Bold);
             pnlTitle.Controls.Add(label);
         }
+
+        //Hàm để hiện thị tất cả các lịch sân
         private void BindCalendar()
         {
+            //Xóa hết một thu trong listview
             lstvCalender.Items.Clear();
             lstvCalender.Groups.Clear();
+
+            //Tên máy và tên cơ sở dữ liệu
             string connectString = @"Data Source=localhost;Initial Catalog=BadmintonManagementDB;Integrated Security=True";
 
-
+            //Câu lệnh truy vấn sql
             string sql = @"	select rf.ReservationNo , tmp.FullName , tmp.PhoneNumber ,tmp.[Ngay Choi], tmp.StartTime,tmp.EndTime , tmp.[Tong gio choi]
 								from RF_DETAIL rf ,		(select reser.ReservationNo, a.FullName , a.PhoneNumber , FORMAT(reser.BookingDate, 'dd/MM/yyyy')as[Ngay Choi] , 
 								FORMAT(reser.StartTime, 'HH:mm') as StartTime , FORMAT(reser.EndTime, 'HH:mm') as EndTime , 
@@ -52,11 +57,13 @@ namespace BadmintonManagement.Forms.Court
 														tmp , COURT a
 								where rf.ReservationNo = tmp.ReservationNo and rf.CourtID = a.CourtID and rf.CourtID = @courtID";
 
-
+            //List sân trong cơ sở dữ liệu
             List<COURT> list = new ModelBadmintonManage().COURT.ToList();
             foreach (var item in list)
             {
+                //Tạo một listviewgroup
                 ListViewGroup Court = new ListViewGroup(item.CourtName);
+                //Thêm listviewGroup 
                 lstvCalender.Groups.Add(Court);
 
                 SqlConnection conn;
@@ -66,9 +73,12 @@ namespace BadmintonManagement.Forms.Court
                 SqlCommand cmd;
                 SqlDataReader dataReader;
                 cmd = new SqlCommand(sql, conn);
+
+                //Truyền mã sân vào trong câu lệnh sql
                 cmd.Parameters.AddWithValue("@courtID", item.CourtID);
                 dataReader = cmd.ExecuteReader();
 
+                //Lấy thông tin từ sql truyền vào listview
                 while (dataReader.Read())
                 {
                     ListViewItem lvi = new ListViewItem();
@@ -85,13 +95,17 @@ namespace BadmintonManagement.Forms.Court
             }
         }
 
+        //Hàm để hiện thị tất cả các lịch sân dựa trên ngày tháng truyền vào
         private void BindCalendar(DateTime starttime , DateTime endtime)
         {
+            //Xóa hết một thu trong listview
             lstvCalender.Items.Clear();
             lstvCalender.Groups.Clear();
+
+            //Tên máy và tên cơ sở dữ liệu
             string connectString = @"Data Source=localhost;Initial Catalog=BadmintonManagementDB;Integrated Security=True";
 
-
+            //Câu lệnh truy vấn sql
             string sql = @"select rf.ReservationNo , tmp.FullName , tmp.PhoneNumber ,tmp.[Ngay Choi], tmp.StartTime,tmp.EndTime , tmp.[Tong gio choi]
                             from RF_DETAIL rf ,		(select reser.ReservationNo, a.FullName , a.PhoneNumber , FORMAT(reser.BookingDate, 'dd/MM/yyyy')as[Ngay Choi] , 
 							FORMAT(reser.StartTime, 'HH:mm') as StartTime , FORMAT(reser.EndTime, 'HH:mm') as EndTime , 
@@ -102,9 +116,11 @@ namespace BadmintonManagement.Forms.Court
 													tmp , COURT a
                             where rf.ReservationNo = tmp.ReservationNo and rf.CourtID = a.CourtID and rf.CourtID = @courtID";
 
+            //List sân trong cơ sở dữ liệu
             List<COURT> list = new ModelBadmintonManage().COURT.ToList();
             foreach (var item in list)
             {
+                //Tạo một listviewgroup
                 ListViewGroup Court = new ListViewGroup(item.CourtName);
                 lstvCalender.Groups.Add(Court);
 
@@ -115,11 +131,18 @@ namespace BadmintonManagement.Forms.Court
                 SqlCommand cmd;
                 SqlDataReader dataReader;
                 cmd = new SqlCommand(sql, conn);
+
+                //Truyền mã sân vào trong câu lệnh sql
                 cmd.Parameters.AddWithValue("@courtID", item.CourtID);
+
+                //Truyền ngày bắt đầu vào câu lệnh sql
                 cmd.Parameters.AddWithValue("@_date1", starttime);
+
+                //Truyền ngày kết thúc vào câu lệnh sql
                 cmd.Parameters.AddWithValue("@_date2", endtime);
                 dataReader = cmd.ExecuteReader();
 
+                //Lấy thông tin từ sql truyền vào listview
                 while (dataReader.Read())
                 {
                     ListViewItem lvi = new ListViewItem();
@@ -138,43 +161,65 @@ namespace BadmintonManagement.Forms.Court
 
         private void rdoCheckDay_CheckedChanged(object sender, EventArgs e)
         {
+            //Kiểm tra radiobutton day có được click không
             if(rdoCheckDay.Checked == true)
             {
+                //Lấy ra ngày hiện tại 
                 DateTime dateTime = DateTime.Parse(DateTime.Now.ToString("dd/MM/yyyy"));
+
+                //Bind lại list view dựa trên thông tin truyền vào
                 BindCalendar(dateTime, dateTime);
             }
             else
             {
+                //Bind tất cả dự liệu trong danh sách
                 BindCalendar();
             }
         }
 
         private void rdoCheckWeek_CheckedChanged(object sender, EventArgs e)
         {
+            //Kiểm tra radiobutton week có được click không
             if(rdoCheckWeek.Checked == true)
             {
                 DateTime now = DateTime.Now;
+
+                //Lấy ra ngày bắt của tuần hiện tại
                 DateTime startOfWeek = now.AddDays(-(int)now.DayOfWeek + 1);
+
+                //Lấy ra ngày kết thúc của tuần hiện tại
                 DateTime endOfWeek = startOfWeek.AddDays(6);
+
+                //Bind lại list view dựa trên thông tin truyền vào
                 BindCalendar(startOfWeek, endOfWeek);
             }
             else 
             { 
+                //Bind tất cả dự liệu trong danh sách
                 BindCalendar();
             }
         }
 
         private void rdoCheckMonth_CheckedChanged(object sender, EventArgs e)
         {
-            if(rdoCheckMonth.Checked == true)
+            //Kiểm tra radiobutton Month có được click không
+            if (rdoCheckMonth.Checked == true)
             {
+                //Lấy ra ngày cuối cùng trong tháng hiện tại
                 var lastdayofmont = DateTime.DaysInMonth(DateTime.Now.Year, DateTime.Now.Month);
+
+                //Lấy ra ngày đầu tiên trong tháng hiện tại
                 DateTime dayStartMonth= DateTime.Parse(new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1).ToString("dd/MM/yyyy"));
+
+                //Lấy ra ngày cuối cùng trong tháng hiện tại
                 DateTime dayEndMonth = DateTime.Parse(new DateTime(DateTime.Now.Year, DateTime.Now.Month, lastdayofmont).ToString("dd/MM/yyyy"));
+
+                //Bind lại list view dựa trên thông tin truyền vào
                 BindCalendar(dayStartMonth, dayEndMonth);
             }
             else
             {
+                //Bind tất cả dự liệu trong danh sách
                 BindCalendar();
             }
         }
@@ -185,6 +230,17 @@ namespace BadmintonManagement.Forms.Court
             rdoCheckDay.Checked = rdoCheckMonth.Checked = rdoCheckWeek.Checked = false;
             DateTime dateS = DateTime.Parse(dtmStartDate.Value.ToString("dd/MM/yyyy"));
             DateTime dateE = DateTime.Parse(dtmEndDate.Value.ToString("dd/MM/yyyy")).AddDays(1);
+
+            //Bind lại list view dựa trên thông tin truyền vào
+            BindCalendar(dateS, dateE);
+        }
+        private void dtmStartDate_ValueChanged(object sender, EventArgs e)
+        {
+            rdoCheckDay.Checked = rdoCheckMonth.Checked = rdoCheckWeek.Checked = false;
+            DateTime dateS = DateTime.Parse(dtmStartDate.Value.ToString("dd/MM/yyyy"));
+            DateTime dateE = DateTime.Parse(dtmEndDate.Value.ToString("dd/MM/yyyy")).AddDays(1);
+
+            //Bind lại list view dựa trên thông tin truyền vào
             BindCalendar(dateS, dateE);
         }
 
@@ -207,12 +263,5 @@ namespace BadmintonManagement.Forms.Court
             rdoCheckDay.Checked = rdoCheckMonth.Checked = rdoCheckWeek.Checked = false;
         }
 
-        private void dtmStartDate_ValueChanged(object sender, EventArgs e)
-        {
-            rdoCheckDay.Checked = rdoCheckMonth.Checked = rdoCheckWeek.Checked = false;
-            DateTime dateS = DateTime.Parse(dtmStartDate.Value.ToString("dd/MM/yyyy"));
-            DateTime dateE = DateTime.Parse(dtmEndDate.Value.ToString("dd/MM/yyyy")).AddDays(1);
-            BindCalendar(dateS, dateE);
-        }
     }
 }

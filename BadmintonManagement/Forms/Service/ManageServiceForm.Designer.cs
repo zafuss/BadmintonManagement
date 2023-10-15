@@ -262,7 +262,7 @@
             // 
             this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(491, 34);
+            this.label7.Location = new System.Drawing.Point(498, 95);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(128, 21);
             this.label7.TabIndex = 14;
@@ -271,7 +271,7 @@
             // txtSearch
             // 
             this.txtSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtSearch.Location = new System.Drawing.Point(650, 31);
+            this.txtSearch.Location = new System.Drawing.Point(632, 92);
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.Size = new System.Drawing.Size(178, 29);
             this.txtSearch.TabIndex = 0;

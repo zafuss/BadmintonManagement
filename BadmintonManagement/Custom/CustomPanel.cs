@@ -25,13 +25,16 @@ namespace BadmintonManagement.Custom
 
         //    ControlPaint.DrawBorder(e.Graphics, ClientRectangle, borderColor, ButtonBorderStyle.Solid);
         //}
-        private System.Windows.Forms.Panel panel = new Panel();
 
+        private System.Windows.Forms.Panel panel = new Panel();
+        //Tạo thuộc tính màu viền cho panel
         private Color borderColor = Color.MediumSlateBlue;
         private Color borderFocusColor = Color.HotPink;
+        //Tạo thuộc tính độ rộng màu viền cho panel
         private int borderSize = 2;
         private bool underlinedStyle = false;
         private bool isFocused = false;
+        //Tạo thuộc tính độ cong cho viền panel
         private int borderRadius = 0;
 
         public CustomPanel()

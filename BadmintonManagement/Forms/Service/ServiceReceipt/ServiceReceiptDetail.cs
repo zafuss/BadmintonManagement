@@ -167,5 +167,15 @@ namespace BadmintonManagement.Forms.Service.ServiceReceipt
             dgvService.Rows[j].Cells[1].Value = decimal.Parse(dgvService.Rows[j].Cells[1].Value.ToString()) + decimal.Parse(row.Cells[1].Value.ToString());
             dgvServiceDetail.Rows.Remove(row);
         }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dgvServiceDetail_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }
