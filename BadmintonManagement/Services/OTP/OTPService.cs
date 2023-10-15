@@ -58,7 +58,7 @@ namespace BadmintonManagement
 
         }
 
-        public static void SendChangedInformationMail(string receiveEmail, string? newPassword)
+        public static void SendChangedInformationMail(string receiveEmail, string newPassword)
         {
             try
             {

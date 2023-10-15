@@ -84,7 +84,7 @@ namespace BadmintonManagement.Database
 
         }
 
-        public static void UpdateUser(C_USER user, string currentEmail, string? currentUsername, string? currentPhoneNumber, bool isPasswordChanged)
+        public static void UpdateUser(C_USER user, string currentEmail, string currentUsername, string currentPhoneNumber, bool isPasswordChanged)
         {
             string newPassword = null;
             if (isPasswordChanged)

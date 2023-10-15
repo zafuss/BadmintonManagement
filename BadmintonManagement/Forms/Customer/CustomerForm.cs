@@ -98,7 +98,9 @@ namespace BadmintonManagement.Forms.Customer
 
                 panelFeatures.Controls.Add(label);
             }
-            catch (Exception ex){ }
+            catch (Exception ex){
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void dataGridViewCustomer_CellClick_1(object sender, DataGridViewCellEventArgs e)

@@ -24,7 +24,7 @@ namespace BadmintonManagement.Forms.AuthorizationForms
 {
     public partial class HomePage : Form
     {
-        private Form activeForm = null;
+        //private Form activeForm = null;
         Image closeImage, closeImageAct;
         public HomePage()
         {

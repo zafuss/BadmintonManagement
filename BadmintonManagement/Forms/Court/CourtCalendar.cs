@@ -49,70 +49,11 @@ namespace BadmintonManagement.Forms.Court
 
             //Câu lệnh truy vấn sql
             string sql = @"	select rf.ReservationNo , tmp.FullName , tmp.PhoneNumber ,tmp.[Ngay Choi], tmp.StartTime,tmp.EndTime , tmp.[Tong gio choi]
-								from RF_DETAIL rf ,		(select reser.ReservationNo, a.FullName , a.PhoneNumber , FORMAT(reser.BookingDate, 'dd/MM/yyyy')as[Ngay Choi] , 
-								FORMAT(reser.StartTime, 'HH:mm') as StartTime , FORMAT(reser.EndTime, 'HH:mm') as EndTime , 
-														FORMAT( DATEADD(MINUTE,DATEDIFF(MINUTE,reser.StartTime,reser.EndTime),'00:00'), 'HH:mm') as [Tong gio choi]
-														from RESERVATION reser , CUSTOMER a 
-														where a.PhoneNumber = reser.PhoneNumber) 
-														tmp , COURT a
-								where rf.ReservationNo = tmp.ReservationNo and rf.CourtID = a.CourtID and rf.CourtID = @courtID";
-
-            //List sân trong cơ sở dữ liệu
-            List<COURT> list = new ModelBadmintonManage().COURT.ToList();
-            foreach (var item in list)
-            {
-                //Tạo một listviewgroup
-                ListViewGroup Court = new ListViewGroup(item.CourtName);
-                //Thêm listviewGroup 
-                lstvCalender.Groups.Add(Court);
-
-                SqlConnection conn;
-                conn = new SqlConnection(connectString);
-                conn.Open();
-
-                SqlCommand cmd;
-                SqlDataReader dataReader;
-                cmd = new SqlCommand(sql, conn);
-
-                //Truyền mã sân vào trong câu lệnh sql
-                cmd.Parameters.AddWithValue("@courtID", item.CourtID);
-                dataReader = cmd.ExecuteReader();
-
-                //Lấy thông tin từ sql truyền vào listview
-                while (dataReader.Read())
-                {
-                    ListViewItem lvi = new ListViewItem();
-                    lvi.Text = dataReader.GetString(0);
-                    lvi.SubItems.Add(dataReader.GetString(1));
-                    lvi.SubItems.Add(dataReader.GetString(2));
-                    lvi.SubItems.Add(dataReader.GetString(3));
-                    lvi.SubItems.Add(dataReader.GetString(4));
-                    lvi.SubItems.Add(dataReader.GetString(5));
-                    lvi.SubItems.Add(dataReader.GetString(6));
-                    lvi.Group = Court;
-                    lstvCalender.Items.Add(lvi);
-                }
-            }
-        }
-
-        private void BindCalendarAvailable()
-        {
-            //Xóa hết một thu trong listview
-            lstvCalender.Items.Clear();
-            lstvCalender.Groups.Clear();
-
-            //Tên máy và tên cơ sở dữ liệu
-            string connectString = @"Data Source=localhost;Initial Catalog=BadmintonManagementDB;Integrated Security=True";
-
-            //Câu lệnh truy vấn sql
-            string sql = @"select rf.ReservationNo , tmp.FullName , tmp.PhoneNumber ,tmp.[Ngay Choi], tmp.StartTime,tmp.EndTime , tmp.[Tong gio choi]
                             from RF_DETAIL rf ,		(select reser.ReservationNo, a.FullName , a.PhoneNumber , FORMAT(reser.BookingDate, 'dd/MM/yyyy')as[Ngay Choi] , 
-							FORMAT(reser.StartTime, 'HH:mm') as StartTime , FORMAT(reser.EndTime, 'HH:mm') as EndTime , 
-						                            FORMAT( DATEADD(MINUTE,DATEDIFF(MINUTE,reser.StartTime,reser.EndTime),'00:00'), 'HH:mm') as [Tong gio choi]
-						                            from RESERVATION reser , CUSTOMER a 
-						                            where a.PhoneNumber = reser.PhoneNumber and 
-													CONVERT(datetime,reser.BookingDate,103) >= Cast(CURRENT_TIMESTAMP  as DATE)  ) 
-													tmp , COURT a
+								                            FORMAT(reser.StartTime, 'HH:mm') as StartTime , FORMAT(reser.EndTime, 'HH:mm') as EndTime , 
+								                            FORMAT( DATEADD(MINUTE,DATEDIFF(MINUTE,reser.StartTime,reser.EndTime),'00:00'), 'HH:mm') as [Tong gio choi]
+						                            from RESERVATION reser left join CUSTOMER a 
+						                            on a.PhoneNumber = reser.PhoneNumber) tmp , COURT a
                             where rf.ReservationNo = tmp.ReservationNo and rf.CourtID = a.CourtID and rf.CourtID = @courtID";
 
             //List sân trong cơ sở dữ liệu
@@ -141,8 +82,82 @@ namespace BadmintonManagement.Forms.Court
                 {
                     ListViewItem lvi = new ListViewItem();
                     lvi.Text = dataReader.GetString(0);
-                    lvi.SubItems.Add(dataReader.GetString(1));
-                    lvi.SubItems.Add(dataReader.GetString(2));
+                    if (dataReader.GetValue(1).ToString() == string.Empty && dataReader.GetValue(2).ToString() ==string.Empty)
+                    {
+                        lvi.SubItems.Add("");
+                        lvi.SubItems.Add("");
+                    }
+                    else
+                    {
+                        lvi.SubItems.Add(dataReader.GetString(1));
+                        lvi.SubItems.Add(dataReader.GetString(2));
+                    }
+                    lvi.SubItems.Add(dataReader.GetString(3));
+                    lvi.SubItems.Add(dataReader.GetString(4));
+                    lvi.SubItems.Add(dataReader.GetString(5));
+                    lvi.SubItems.Add(dataReader.GetString(6));
+                    lvi.Group = Court;
+                    lstvCalender.Items.Add(lvi);
+                }
+            }
+        }
+
+        private void BindCalendarAvailable()
+        {
+            //Xóa hết một thu trong listview
+            lstvCalender.Items.Clear();
+            lstvCalender.Groups.Clear();
+
+            //Tên máy và tên cơ sở dữ liệu
+            string connectString = @"Data Source=localhost;Initial Catalog=BadmintonManagementDB;Integrated Security=True";
+
+            //Câu lệnh truy vấn sql
+            string sql = @"select rf.ReservationNo , tmp.FullName , tmp.PhoneNumber ,tmp.[Ngay Choi], tmp.StartTime,tmp.EndTime , tmp.[Tong gio choi]
+                            from RF_DETAIL rf ,		(select reser.ReservationNo, a.FullName , a.PhoneNumber , FORMAT(reser.BookingDate, 'dd/MM/yyyy')as[Ngay Choi] , 
+                                                    FORMAT(reser.StartTime, 'HH:mm') as StartTime , FORMAT(reser.EndTime, 'HH:mm') as EndTime , 
+			                                        FORMAT( DATEADD(MINUTE,DATEDIFF(MINUTE,reser.StartTime,reser.EndTime),'00:00'), 'HH:mm') as [Tong gio choi]
+			                                        from RESERVATION reser left join CUSTOMER a
+			                                        on a.PhoneNumber = reser.PhoneNumber 
+			                                        where CONVERT(datetime,reser.BookingDate,103) >= Cast(CURRENT_TIMESTAMP  as DATE)  ) 
+			                                        tmp , COURT a
+                            where rf.ReservationNo = tmp.ReservationNo and rf.CourtID = a.CourtID and rf.CourtID = @courtID";
+
+            //List sân trong cơ sở dữ liệu
+            List<COURT> list = new ModelBadmintonManage().COURT.ToList();
+            foreach (var item in list)
+            {
+                //Tạo một listviewgroup
+                ListViewGroup Court = new ListViewGroup(item.CourtName);
+                //Thêm listviewGroup 
+                lstvCalender.Groups.Add(Court);
+
+                SqlConnection conn;
+                conn = new SqlConnection(connectString);
+                conn.Open();
+
+                SqlCommand cmd;
+                SqlDataReader dataReader;
+                cmd = new SqlCommand(sql, conn);
+
+                //Truyền mã sân vào trong câu lệnh sql
+                cmd.Parameters.AddWithValue("@courtID", item.CourtID);
+                dataReader = cmd.ExecuteReader();
+
+                //Lấy thông tin từ sql truyền vào listview
+                while (dataReader.Read())
+                {
+                    ListViewItem lvi = new ListViewItem();
+                    lvi.Text = dataReader.GetString(0);
+                    if (dataReader.GetValue(1).ToString() == string.Empty && dataReader.GetValue(2).ToString() == string.Empty)
+                    {
+                        lvi.SubItems.Add("");
+                        lvi.SubItems.Add("");
+                    }
+                    else
+                    {
+                        lvi.SubItems.Add(dataReader.GetString(1));
+                        lvi.SubItems.Add(dataReader.GetString(2));
+                    }
                     lvi.SubItems.Add(dataReader.GetString(3));
                     lvi.SubItems.Add(dataReader.GetString(4));
                     lvi.SubItems.Add(dataReader.GetString(5));
@@ -168,10 +183,9 @@ namespace BadmintonManagement.Forms.Court
                             from RF_DETAIL rf ,		(select reser.ReservationNo, a.FullName , a.PhoneNumber , FORMAT(reser.BookingDate, 'dd/MM/yyyy')as[Ngay Choi] , 
 							FORMAT(reser.StartTime, 'HH:mm') as StartTime , FORMAT(reser.EndTime, 'HH:mm') as EndTime , 
 						                            FORMAT( DATEADD(MINUTE,DATEDIFF(MINUTE,reser.StartTime,reser.EndTime),'00:00'), 'HH:mm') as [Tong gio choi]
-						                            from RESERVATION reser , CUSTOMER a 
-						                            where a.PhoneNumber = reser.PhoneNumber and 
-													CONVERT(datetime,reser.BookingDate,103) between @_date1 and @_date2 ) 
-													tmp , COURT a
+						                            from RESERVATION reser left join CUSTOMER a
+			                                        on a.PhoneNumber = reser.PhoneNumber 
+						                            where CONVERT(datetime,reser.BookingDate,103) between @_date1 and @_date2 ) tmp , COURT a
                             where rf.ReservationNo = tmp.ReservationNo and rf.CourtID = a.CourtID and rf.CourtID = @courtID";
 
             //List sân trong cơ sở dữ liệu
@@ -205,8 +219,16 @@ namespace BadmintonManagement.Forms.Court
                 {
                     ListViewItem lvi = new ListViewItem();
                     lvi.Text = dataReader.GetString(0);
-                    lvi.SubItems.Add(dataReader.GetString(1));
-                    lvi.SubItems.Add(dataReader.GetString(2));
+                    if (dataReader.GetValue(1).ToString() == string.Empty && dataReader.GetValue(2).ToString() == string.Empty)
+                    {
+                        lvi.SubItems.Add("");
+                        lvi.SubItems.Add("");
+                    }
+                    else
+                    {
+                        lvi.SubItems.Add(dataReader.GetString(1));
+                        lvi.SubItems.Add(dataReader.GetString(2));
+                    }
                     lvi.SubItems.Add(dataReader.GetString(3));
                     lvi.SubItems.Add(dataReader.GetString(4));
                     lvi.SubItems.Add(dataReader.GetString(5));
@@ -240,13 +262,23 @@ namespace BadmintonManagement.Forms.Court
             //Kiểm tra radiobutton week có được click không
             if(rdoCheckWeek.Checked == true)
             {
-                DateTime now = DateTime.Now;
 
                 //Lấy ra ngày bắt của tuần hiện tại
-                DateTime startOfWeek = now.AddDays(-(int)now.DayOfWeek + 1);
+                DateTime today = DateTime.Now;
+                ///DayOfWeek currentDayOfWeek = today.DayOfWeek;
 
+                // Tìm ngày đầu của tuần (Chủ Nhật là ngày đầu của tuần trong .NET)
+                DateTime startOfWeek = today;
+                while (startOfWeek.DayOfWeek != DayOfWeek.Sunday)
+                {
+                    startOfWeek = DateTime.Parse(startOfWeek.AddDays(-1).ToString("dd/MM/yyyy"));
+                }
+                if((int)today.DayOfWeek == 0)
+                {
+                    startOfWeek = DateTime.Parse(startOfWeek.AddDays(-6).ToString("dd/MM/yyyy"));
+                }
                 //Lấy ra ngày kết thúc của tuần hiện tại
-                DateTime endOfWeek = startOfWeek.AddDays(6);
+                DateTime endOfWeek = DateTime.Parse(startOfWeek.AddDays(6).ToString("dd/MM/yyyy"));
 
                 //Bind lại list view dựa trên thông tin truyền vào
                 BindCalendar(startOfWeek, endOfWeek);
