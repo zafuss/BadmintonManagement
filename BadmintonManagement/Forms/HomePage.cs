@@ -31,11 +31,7 @@ namespace BadmintonManagement.Forms.AuthorizationForms
             InitializeComponent();
         }
 
-        private void btnAdminManageUser_Click(object sender, EventArgs e)
-        {
-            ManageUser manageUser = new ManageUser();
-            manageUser.Show();
-        }
+        
         // Đóng ứng dụng khi form HomePage được đóng.
         private void HomePage_FormClosed(object sender, FormClosedEventArgs e)
         {
@@ -173,10 +169,7 @@ namespace BadmintonManagement.Forms.AuthorizationForms
         {
             UserServices.LogoutUser();
         }
-        private void lblEmployeeName_Click(object sender, EventArgs e)
-        {
-
-        }
+        
 
         // kiểm tra xem có sự thay đổi trong trạng thái đặt sân không
         private bool RealTimeCaptureStatusReservation()
@@ -235,6 +228,16 @@ namespace BadmintonManagement.Forms.AuthorizationForms
         public void tmrRload_Tick(object sender, EventArgs e)
         {
             lblTime.Text = String.Format("{0}  {1}", DateTime.Now.ToString("HH:mm:ss"), DateTime.Now.ToString("dd/MM/yyyy"));
+        }
+
+        private void thoátToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("bạn có muốn thoát?","YES/NO",MessageBoxButtons.YesNo);
+            if (result == DialogResult.Yes)
+            {
+                this.Close();
+            }
+            
         }
 
         private void tabControl_DrawItem(object sender, DrawItemEventArgs e)
