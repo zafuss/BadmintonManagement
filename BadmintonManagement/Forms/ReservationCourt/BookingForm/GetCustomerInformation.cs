@@ -81,7 +81,6 @@ namespace BadmintonManagement.Forms.ReservationCourt.BookingForm
                 frm.ReloadBK = new Booking.ChangeBK(LoadCus);
                 frm.ShowDialog();
                 this.Close();
-                
             }
             else
             {
@@ -99,7 +98,7 @@ namespace BadmintonManagement.Forms.ReservationCourt.BookingForm
                     c.Email = txtEmail.Text;
                     Booking frm = new Booking(txtPhoneNumber.Text, txtFullName.Text, txtEmail.Text);
                     frm.FormBorderStyle = FormBorderStyle.SizableToolWindow;
-                    frm.Show();
+                    frm.ShowDialog();
                     this.Close();
                 }
                 else
@@ -107,10 +106,9 @@ namespace BadmintonManagement.Forms.ReservationCourt.BookingForm
                     Booking frm = new Booking();
                     frm.FormBorderStyle = FormBorderStyle.SizableToolWindow;
                     frm.ReloadBK = new Booking.ChangeBK(LoadCus);
-                    frm.Show();
+                    frm.ShowDialog();
                     this.Close();
-                }
-               
+                } 
             }
         }
         private void btnExit_Click(object sender, EventArgs e)

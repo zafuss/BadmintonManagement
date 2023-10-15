@@ -45,6 +45,7 @@
             this.clnRevNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clnCourtName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clnPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnClose = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvRF_Detail)).BeginInit();
             this.SuspendLayout();
             // 
@@ -215,11 +216,23 @@
             this.clnPrice.Name = "clnPrice";
             this.clnPrice.ReadOnly = true;
             // 
+            // btnClose
+            // 
+            this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnClose.Location = new System.Drawing.Point(681, 329);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(113, 70);
+            this.btnClose.TabIndex = 22;
+            this.btnClose.Text = "Thoát";
+            this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            // 
             // Booking
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1017, 679);
+            this.Controls.Add(this.btnClose);
             this.Controls.Add(this.dgvRF_Detail);
             this.Controls.Add(this.btnAcept);
             this.Controls.Add(this.btnCancel);
@@ -262,5 +275,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn clnRevNo;
         private System.Windows.Forms.DataGridViewTextBoxColumn clnCourtName;
         private System.Windows.Forms.DataGridViewTextBoxColumn clnPrice;
+        private System.Windows.Forms.Button btnClose;
     }
 }

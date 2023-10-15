@@ -302,10 +302,9 @@ namespace BadmintonManagement.Forms.ReservationCourt.BookingForm
             cboCourt.Enabled = true;
             FillcboCourtName();
         }
-
-        private void cboCourt_SelectedIndexChanged(object sender, EventArgs e)
+        private void btnClose_Click(object sender, EventArgs e)
         {
-
+            this.Close();
         }
     }
 }

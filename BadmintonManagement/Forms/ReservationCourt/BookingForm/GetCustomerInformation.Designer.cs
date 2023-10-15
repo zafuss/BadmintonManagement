@@ -101,18 +101,18 @@
             this.btnSelect.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSelect.Location = new System.Drawing.Point(323, 240);
             this.btnSelect.Name = "btnSelect";
-            this.btnSelect.Size = new System.Drawing.Size(75, 68);
+            this.btnSelect.Size = new System.Drawing.Size(94, 68);
             this.btnSelect.TabIndex = 22;
-            this.btnSelect.Text = "Chọn";
+            this.btnSelect.Text = "Xác nhận";
             this.btnSelect.UseVisualStyleBackColor = true;
             this.btnSelect.Click += new System.EventHandler(this.btnSelect_Click);
             // 
             // btnExit
             // 
             this.btnExit.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExit.Location = new System.Drawing.Point(580, 240);
+            this.btnExit.Location = new System.Drawing.Point(565, 240);
             this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(75, 68);
+            this.btnExit.Size = new System.Drawing.Size(90, 68);
             this.btnExit.TabIndex = 23;
             this.btnExit.Text = "Thoát";
             this.btnExit.UseVisualStyleBackColor = true;

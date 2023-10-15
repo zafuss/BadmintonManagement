@@ -52,6 +52,7 @@
             this.clnTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnClose = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvService)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudTaken)).BeginInit();
@@ -114,9 +115,9 @@
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(7, 267);
+            this.btnSave.Location = new System.Drawing.Point(73, 252);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(78, 42);
+            this.btnSave.Size = new System.Drawing.Size(88, 42);
             this.btnSave.TabIndex = 3;
             this.btnSave.Text = "Lưu";
             this.btnSave.UseVisualStyleBackColor = true;
@@ -124,7 +125,7 @@
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(269, 267);
+            this.btnCancel.Location = new System.Drawing.Point(73, 314);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(88, 42);
             this.btnCancel.TabIndex = 4;
@@ -134,7 +135,7 @@
             // 
             // btnAccept
             // 
-            this.btnAccept.Location = new System.Drawing.Point(121, 267);
+            this.btnAccept.Location = new System.Drawing.Point(215, 252);
             this.btnAccept.Name = "btnAccept";
             this.btnAccept.Size = new System.Drawing.Size(99, 42);
             this.btnAccept.TabIndex = 5;
@@ -212,6 +213,7 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.btnClose);
             this.panel2.Controls.Add(this.groupBox1);
             this.panel2.Controls.Add(this.btnAccept);
             this.panel2.Controls.Add(this.btnCancel);
@@ -283,6 +285,16 @@
             this.panel1.Size = new System.Drawing.Size(1068, 308);
             this.panel1.TabIndex = 18;
             // 
+            // btnClose
+            // 
+            this.btnClose.Location = new System.Drawing.Point(215, 314);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(99, 42);
+            this.btnClose.TabIndex = 15;
+            this.btnClose.Text = "Thoát";
+            this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            // 
             // ServiceReceiptDetail
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -336,5 +348,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn clnTotal;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Button btnClose;
     }
 }
