@@ -188,7 +188,7 @@ namespace BadmintonManagement.Forms.AuthorizationForms
             {
                 DateTime d = rev.StartTime;
                 int s = DateTime.Compare(d.Date, DateTime.Now.Date);
-                if (rev.C_Status == 2 && DateTime.Compare(rev.StartTime, DateTime.Now) < 0)
+                if (rev.C_Status == 2 && DateTime.Compare(rev.EndTime, DateTime.Now) <= 0)
                 {
                     rev.C_Status = 3;
                     if (Application.OpenForms["CourtForm"] != null && !Application.OpenForms["CourtForm"].IsDisposed)

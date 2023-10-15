@@ -100,5 +100,10 @@ namespace BadmintonManagement.Forms.Price
                 MessageBox.Show(ex.Message);
             }
         }
+
+        private void btnUsedPrice_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

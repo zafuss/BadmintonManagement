@@ -24,7 +24,6 @@ namespace BadmintonManagement.Forms.ReservationCourt.ReservationReceipt.RevRecPr
             InitializeComponent();
             this.reservationNo = reservationNo;
         }
-
         private void RevRecPrint_Load(object sender, EventArgs e)
         {
             ShowReport();
@@ -43,7 +42,7 @@ namespace BadmintonManagement.Forms.ReservationCourt.ReservationReceipt.RevRecPr
                     where r.ReservationNo =" + @"'" + reservationNo + @"'";
             List<RevDetailForReport> listRDFR = context.Database.SqlQuery<RevDetailForReport>(sql).ToList() ;
             var RDFRDS = new ReportDataSource("RevDetailForReport", listRDFR);
-            sql = @"select r.ReceiptNo,r._Date,r._Date,r.Total,r.ExtraTime,e.ReservationNo,r.Username,(r.Total - e.Deposite) as[RealChagre],Cast(Round((r.ExtraTime*p.PriceTag),0)as decimal)
+            sql = @"select r.ReceiptNo,r._Date as [C_Date],r.Total,r.ExtraTime,e.ReservationNo,r.Username,(r.Total - e.Deposite) as[RealChagre],Cast(Round((r.ExtraTime*p.PriceTag),0)as decimal)
                     from (RECEIPT r inner join RESERVATION e on r.ReservationNo = e.ReservationNo) inner join PRICE p on e.PriceID = p.PriceID
                     where r.ReservationNo =" + @"'" + reservationNo + @"'";
             List<RevRecForReport> listRRFR = context.Database.SqlQuery<RevRecForReport>(sql).ToList();
@@ -54,7 +53,6 @@ namespace BadmintonManagement.Forms.ReservationCourt.ReservationReceipt.RevRecPr
             rpvPrint.LocalReport.DataSources.Add(RRFRDS);
             rpvPrint.RefreshReport();
         }
-
         private void rpvPrint_Load(object sender, EventArgs e)
         {
 
