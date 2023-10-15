@@ -49,6 +49,7 @@
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.rpvPrint);
             this.Name = "SerRecPrint";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "SerRecPrint";
             this.Load += new System.EventHandler(this.SerRecPrint_Load);
             this.ResumeLayout(false);

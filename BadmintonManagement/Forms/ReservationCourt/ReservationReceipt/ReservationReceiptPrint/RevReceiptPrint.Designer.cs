@@ -50,6 +50,7 @@
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.rpvPrint);
             this.Name = "RevReceiptPrint";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "RevRecPrint";
             this.Load += new System.EventHandler(this.RevRecPrint_Load);
             this.ResumeLayout(false);
