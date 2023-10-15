@@ -34,7 +34,10 @@
             this.clnPhoneNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clnUser = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clnTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clnPayment = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.txtSearch = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvServiceReceipt)).BeginInit();
             this.panel1.SuspendLayout();
@@ -50,7 +53,8 @@
             this.clnCreateDate,
             this.clnPhoneNumber,
             this.clnUser,
-            this.clnTotal});
+            this.clnTotal,
+            this.clnPayment});
             this.dgvServiceReceipt.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvServiceReceipt.Location = new System.Drawing.Point(0, 145);
             this.dgvServiceReceipt.MultiSelect = false;
@@ -103,14 +107,41 @@
             this.clnTotal.Name = "clnTotal";
             this.clnTotal.ReadOnly = true;
             // 
+            // clnPayment
+            // 
+            this.clnPayment.HeaderText = "Hình thức thanh toán";
+            this.clnPayment.Name = "clnPayment";
+            this.clnPayment.ReadOnly = true;
+            // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.txtSearch);
+            this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1057, 145);
             this.panel1.TabIndex = 1;
+            // 
+            // txtSearch
+            // 
+            this.txtSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtSearch.Location = new System.Drawing.Point(775, 108);
+            this.txtSearch.Name = "txtSearch";
+            this.txtSearch.Size = new System.Drawing.Size(239, 29);
+            this.txtSearch.TabIndex = 2;
+            this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
+            // 
+            // label2
+            // 
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(679, 111);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(79, 21);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "Tìm Kiếm ";
             // 
             // label1
             // 
@@ -151,5 +182,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn clnPhoneNumber;
         private System.Windows.Forms.DataGridViewTextBoxColumn clnUser;
         private System.Windows.Forms.DataGridViewTextBoxColumn clnTotal;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clnPayment;
+        private System.Windows.Forms.TextBox txtSearch;
+        private System.Windows.Forms.Label label2;
     }
 }

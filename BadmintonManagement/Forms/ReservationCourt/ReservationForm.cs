@@ -123,17 +123,26 @@ namespace BadmintonManagement.Forms.ReservationCourt
         }
         private void btnFunction_Click(object sender, EventArgs e)
         {
+            ChangeButtonColor(sender, e);
             if (pnlFunction.Visible)
                 pnlFunction.Visible = false;
             else
+            {
                 pnlFunction.Visible = true;
+                pnlSearch.Visible = false;
+            }
         }
         private void btnSearch_Click(object sender, EventArgs e)
         {
+            ChangeButtonColor(sender, e);
+
             if (pnlSearch.Visible)
                 pnlSearch.Visible = false;
             else
+            {
                 pnlSearch.Visible = true;
+                pnlFunction.Visible = false;
+            }
         }
         private void txtSearchByPhoneNumber_TextChanged(object sender, EventArgs e)
         {
@@ -168,6 +177,7 @@ namespace BadmintonManagement.Forms.ReservationCourt
         }
         private void btnAdd_Click(object sender, EventArgs e)
         {
+            ChangeButtonColor(sender, e);
             GetCustomerInformation frm = new GetCustomerInformation();
             frm.ReloadRev = new GetCustomerInformation.ChangeRev(LoadRev);
             frm.ShowDialog();
@@ -176,6 +186,8 @@ namespace BadmintonManagement.Forms.ReservationCourt
         {
             try
             {
+                ChangeButtonColor(sender, e);
+
                 if (dgvReservation.Rows.Count < 2)
                     throw new Exception("No data");
                 if (dgvReservation.SelectedRows.Count == 0)
@@ -202,8 +214,11 @@ namespace BadmintonManagement.Forms.ReservationCourt
         }
         private void btnCancel_Click(object sender, EventArgs e)
         {
-            if(MessageBox.Show("Có thật sự muốn hủy","Caution",MessageBoxButtons.YesNo) == DialogResult.Yes)
+            ChangeButtonColor(sender, e);
+
+            if (MessageBox.Show("Có thật sự muốn hủy","Caution",MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
+
                 dgvReservation.SelectedRows[0].Cells[9].Value = "Đã hủy";
                 int i = dgvReservation.SelectedRows.Count - 1;
                 string str = dgvReservation.SelectedRows[i].Cells[0].Value.ToString();
@@ -309,6 +324,7 @@ namespace BadmintonManagement.Forms.ReservationCourt
         }
         private void btnAcceptDeposition_Click(object sender, EventArgs e)
         {
+            ChangeButtonColor(sender, e);
             if (MessageBox.Show("Có xác nhận đặt cọc?", "Caution", MessageBoxButtons.YesNo) == DialogResult.No)
                 return;
             RESERVATION rev = new RESERVATION();
@@ -344,6 +360,8 @@ namespace BadmintonManagement.Forms.ReservationCourt
         }
         private void btnRevReceipt_Click(object sender, EventArgs e)
         {
+            ChangeButtonColor(sender, e);
+
             int i = dgvReservation.SelectedRows.Count-1;
             string str1 = dgvReservation.SelectedRows[i].Cells[0].Value.ToString();
             string str2 = dgvReservation.SelectedRows[i].Cells[9].Value.ToString();
@@ -377,7 +395,9 @@ namespace BadmintonManagement.Forms.ReservationCourt
         }
         private void btnOverTime_Click(object sender, EventArgs e)
         {
-            for(int i= 0; i <dgvReservation.Rows.Count-1; i++) 
+            ChangeButtonColor(sender, e);
+
+            for (int i= 0; i <dgvReservation.Rows.Count-1; i++) 
             {
                 if (dgvReservation.Rows[i].Cells[9].Value.ToString() == "Đã cọc và quá giờ nhận sân"|| dgvReservation.Rows[i].Cells[9].Value.ToString() == "Quá giờ nhận sân")
                     dgvReservation.Rows[i].Visible = true;
@@ -444,10 +464,14 @@ namespace BadmintonManagement.Forms.ReservationCourt
         }
         private void btnCancelFilter_Click(object sender, EventArgs e)
         {
+            ChangeButtonColor(sender, e);
+
             ReloadGridFollowTime(st, se);
         }
         private void btnNotYetAccepted_Click(object sender, EventArgs e)
         {
+            ChangeButtonColor(sender, e);
+
             for (int i = 0; i < dgvReservation.Rows.Count - 1; i++)
             {
                 if (dgvReservation.Rows[i].Cells[9].Value.ToString() == "Chưa đặt cọc" || dgvReservation.Rows[i].Cells[9].Value.ToString() == "Đã đặt cọc")
@@ -459,7 +483,9 @@ namespace BadmintonManagement.Forms.ReservationCourt
         }
         private void btnNotYetDeposited_Click(object sender, EventArgs e)
         {
-            for(int i = 0;i< dgvReservation.Rows.Count -1;i++)
+            ChangeButtonColor(sender, e);
+
+            for (int i = 0;i< dgvReservation.Rows.Count -1;i++)
             {
                 if (dgvReservation.Rows[i].Cells[9].Value.ToString() == "Chưa đặt cọc")
                     dgvReservation.Rows[i].Visible = true;
@@ -468,9 +494,10 @@ namespace BadmintonManagement.Forms.ReservationCourt
             }
             ReloadGridFollowTimeByFilter(st,se);
         }
-
         private void btnNotYetPayed_Click(object sender, EventArgs e)
         {
+            ChangeButtonColor(sender, e);
+
             for (int i = 0; i < dgvReservation.Rows.Count - 1; i++)
             {
                 if (dgvReservation.Rows[i].Cells[9].Value.ToString() == "Chưa thanh toán"|| dgvReservation.Rows[i].Cells[9].Value.ToString() == "Đã nhận sân")
@@ -482,8 +509,9 @@ namespace BadmintonManagement.Forms.ReservationCourt
         }
         private void btnGot_Click(object sender, EventArgs e)
         {
-            
-            if(MessageBox.Show("Có xác nhận nhận sân?", "Caution", MessageBoxButtons.YesNo) == DialogResult.No)
+            ChangeButtonColor(sender, e);
+
+            if (MessageBox.Show("Có xác nhận nhận sân?", "Caution", MessageBoxButtons.YesNo) == DialogResult.No)
                 return;
             RESERVATION rev = new RESERVATION();
             int i = dgvReservation.SelectedRows.Count - 1;
@@ -503,13 +531,29 @@ namespace BadmintonManagement.Forms.ReservationCourt
                 MessageBox.Show("Chưa đến giờ nhận sân","Thông báo");
             }
         }
-        private void btnCancel_EnabledChanged_1(object sender, EventArgs e)
+        private void ChangeButtonColor(object sender, EventArgs e)
         {
             Button btn = sender as Button;
-            if(btn.Enabled==true)
-                btn.ForeColor = Color.Black;
-            else
-                btn.ForeColor = Color.White;
-        }
+            foreach (var item in panel2.Controls)
+            {
+                if (item is Button)
+                {
+                    Button btnz = (Button)item;
+                    btnz.BackColor = UIConstants.LeftSideBackColor;
+                }
+                else if (item is Panel)
+                {
+                    Panel panel = (Panel)item;
+                    foreach (var item2 in panel.Controls)
+                    { 
+                        Button btnz = (Button)item2;
+                        btnz.BackColor = UIConstants.LeftSideBackColor;
+                    }
+                }
+
+            }
+            btn.BackColor = SystemColors.ButtonShadow;
+        } 
     }
+
 }

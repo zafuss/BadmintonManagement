@@ -220,5 +220,20 @@ namespace BadmintonManagement.Forms.Service.ServiceReceipt
             SerRecPrint frm = new SerRecPrint(txtRecNo.Text);
             frm.ShowDialog();
         }
+
+        private void txtRecNo_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
     }
 }
