@@ -18,14 +18,14 @@ namespace BadmintonManagement.Models
         [StringLength(20)]
         public string PriceID { get; set; }
 
-        public decimal? PriceTag { get; set; }
+        public decimal PriceTag { get; set; }
 
-        public double? TimeFactor { get; set; }
+        public double TimeFactor { get; set; }
 
-        public double? DateFactor { get; set; }
+        public double DateFactor { get; set; }
 
         [Column("_Status")]
-        public int? C_Status { get; set; }
+        public int C_Status { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<RESERVATION> RESERVATION { get; set; }

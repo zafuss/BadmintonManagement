@@ -69,7 +69,8 @@ namespace BadmintonManagement.Database
 
             //Tạo một label để hiện thị ngày hoạt động của sân
             Label lblStartDate = new Label();
-            lblStartDate.Text = "Ngay HD " + court.StartDate.Value.ToString("dd/MM/yyyy");
+            
+            lblStartDate.Text = "Ngay HD " + court.StartDate.ToString("dd/MM/yyyy");
             lblStartDate.Location = new Point(Convert.ToInt32(x * 1 / 10), Convert.ToInt32(y * 4.2 / 5));
             lblStartDate.TextAlign = ContentAlignment.MiddleCenter;
             Size lblStartDateText = TextRenderer.MeasureText(lblStartDate.Text, font); 
