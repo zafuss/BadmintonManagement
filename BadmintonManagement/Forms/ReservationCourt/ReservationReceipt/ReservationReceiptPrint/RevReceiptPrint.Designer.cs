@@ -40,14 +40,16 @@
             this.rpvPrint.ServerReport.BearerToken = null;
             this.rpvPrint.Size = new System.Drawing.Size(800, 450);
             this.rpvPrint.TabIndex = 0;
+            this.rpvPrint.ZoomMode = Microsoft.Reporting.WinForms.ZoomMode.PageWidth;
+            this.rpvPrint.Load += new System.EventHandler(this.rpvPrint_Load);
             // 
-            // RevRecPrint
+            // RevReceiptPrint
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.rpvPrint);
-            this.Name = "RevRecPrint";
+            this.Name = "RevReceiptPrint";
             this.Text = "RevRecPrint";
             this.Load += new System.EventHandler(this.RevRecPrint_Load);
             this.ResumeLayout(false);

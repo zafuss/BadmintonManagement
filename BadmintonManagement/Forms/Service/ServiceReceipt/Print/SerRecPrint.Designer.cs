@@ -40,6 +40,7 @@
             this.rpvPrint.ServerReport.BearerToken = null;
             this.rpvPrint.Size = new System.Drawing.Size(800, 450);
             this.rpvPrint.TabIndex = 0;
+            this.rpvPrint.ZoomMode = Microsoft.Reporting.WinForms.ZoomMode.PageWidth;
             // 
             // SerRecPrint
             // 

@@ -89,12 +89,19 @@ namespace BadmintonManagement.Forms.ReservationCourt.BookingForm
             {
                 if(MessageBox.Show("Bạn có muốn thêm khách hàng mới","Thông báo",MessageBoxButtons.YesNo)==DialogResult.No)
                     return;
-                CustomerForm frm = new CustomerForm(txtPhoneNumber.Text,txtFullName.Text,txtEmail.Text);
+                if(txtPhoneNumber.Text != string.Empty)
+                {
+                    ModelBadmintonManage context = new ModelBadmintonManage();
+                    CUSTOMER c = new CUSTOMER();
+                    c.PhoneNumber = txtPhoneNumber.Text;
+                    c.FullName = txtFullName.Text;
+                    c.Email = txtEmail.Text;
+                }
+                Booking frm = new Booking(txtPhoneNumber.Text,txtFullName.Text,txtEmail.Text);
                 frm.FormBorderStyle = FormBorderStyle.SizableToolWindow;
                 frm.Show();
             }
         }
-
         private void btnExit_Click(object sender, EventArgs e)
         {
             this.Close();

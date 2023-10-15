@@ -54,5 +54,10 @@ namespace BadmintonManagement.Forms.ReservationCourt.ReservationReceipt.RevRecPr
             rpvPrint.LocalReport.DataSources.Add(RRFRDS);
             rpvPrint.RefreshReport();
         }
+
+        private void rpvPrint_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
