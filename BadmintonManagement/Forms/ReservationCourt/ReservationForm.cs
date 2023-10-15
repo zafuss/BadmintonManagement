@@ -90,7 +90,6 @@ namespace BadmintonManagement.Forms.ReservationCourt
             for(int i = 0;i<dgvReservation.Rows.Count-1;i++) 
             {
                 DateTime p = DateTime.Parse(dgvReservation.Rows[i].Cells[5].Value.ToString());
-               
                 int s1 = DateTime.Compare(p,st);
                 int s2 = DateTime.Compare(p,se);
                 if(s1<=0||s2>=0)
@@ -103,7 +102,7 @@ namespace BadmintonManagement.Forms.ReservationCourt
         {
             for (int i = 0; i < dgvReservation.Rows.Count - 1; i++)
             {
-                DateTime p = DateTime.Parse(dgvReservation.Rows[i].Cells[8].Value.ToString());
+                DateTime p = DateTime.Parse(dgvReservation.Rows[i].Cells[5].Value.ToString());
 
                 int s1 = DateTime.Compare(p, st);
                 int s2 = DateTime.Compare(p, se);
@@ -144,27 +143,29 @@ namespace BadmintonManagement.Forms.ReservationCourt
                 pnlFunction.Visible = false;
             }
         }
+        private bool CheckContain(DataGridViewRow row)
+        {
+            for(int d =0;d<dgvReservation.ColumnCount;d++) 
+            {
+                if (row.Cells[d].Value.ToString().ToLower().Contains(txtSearchByPhoneNumber.Text.ToLower()))
+                    return true;
+            }
+            return false;
+        }
         private void txtSearchByPhoneNumber_TextChanged(object sender, EventArgs e)
         {
-
+            ReloadGrid();
             for (int i = 0; i < dgvReservation.Rows.Count - 1; i++)
             {
-                if (dgvReservation.Rows[i].Cells[2].Value != null)
+                if (dgvReservation.Rows[i].Cells[0].Value != null)
                 {
-                    if (dgvReservation.Rows[i].Cells[2].Value.ToString().Contains(txtSearchByPhoneNumber.Text))
+                    if (CheckContain(dgvReservation.Rows[i])==true)
                         dgvReservation.Rows[i].Visible = true;
                     else
                         dgvReservation.Rows[i].Visible = false;
                 }
-                else
-                {
-                    if (txtSearchByPhoneNumber.TextLength > 0)
-                        dgvReservation.Rows[i].Visible = false;
-                    else
-                        dgvReservation.Rows[i].Visible = true;
-                }
-                ReloadGridFollowTimeByFilter(st,se);
             }
+            ReloadGridFollowTimeByFilter(st, se);
         }
         private void txtSearchByPhoneNumber_Click(object sender, EventArgs e)
         {
@@ -214,9 +215,7 @@ namespace BadmintonManagement.Forms.ReservationCourt
         }
         private void btnCancel_Click(object sender, EventArgs e)
         {
-            ChangeButtonColor(sender, e);
-
-            if (MessageBox.Show("Có thật sự muốn hủy","Caution",MessageBoxButtons.YesNo) == DialogResult.Yes)
+            if(MessageBox.Show("Có thật sự muốn hủy","Thông báo",MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
 
                 dgvReservation.SelectedRows[0].Cells[9].Value = "Đã hủy";
@@ -226,10 +225,10 @@ namespace BadmintonManagement.Forms.ReservationCourt
                 rev.C_Status = 7;
                 EraseRF_Detail(rev);
                 btnCancel.Enabled = false;
-                MessageBox.Show("Đã hủy");
+                MessageBox.Show("Đã hủy","Thông báo");
             }
         }
-        private void dgvReservation_SelectionChanged(object sender, EventArgs e)
+        private void dgvReservation_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (dgvReservation.SelectedRows.Count < 1)
                 return;
@@ -316,6 +315,10 @@ namespace BadmintonManagement.Forms.ReservationCourt
                 }
             }
         }
+        private void dgvReservation_SelectionChanged(object sender, EventArgs e)
+        {
+            
+        }
         private void ReloadGrid()
         {
             dgvReservation.Rows.Clear();
@@ -324,8 +327,7 @@ namespace BadmintonManagement.Forms.ReservationCourt
         }
         private void btnAcceptDeposition_Click(object sender, EventArgs e)
         {
-            ChangeButtonColor(sender, e);
-            if (MessageBox.Show("Có xác nhận đặt cọc?", "Caution", MessageBoxButtons.YesNo) == DialogResult.No)
+            if (MessageBox.Show("Có xác nhận đặt cọc?", "Thông báo", MessageBoxButtons.YesNo) == DialogResult.No)
                 return;
             RESERVATION rev = new RESERVATION();
             int i = dgvReservation.SelectedRows.Count - 1;
@@ -378,11 +380,11 @@ namespace BadmintonManagement.Forms.ReservationCourt
                 tempStart = st;
                 tempEnd = se;
                 DateTime d = DateTime.Now;
-                DateTime d1 = new DateTime(d.Year, d.Month, 1, 0, 0, 0);
-                DateTime d2 = new DateTime(d.Year, d.Month, DateTime.DaysInMonth(d.Year, d.Month), 23, 59, 59);
-                ReloadGridFollowTime(d1, d2);
-                dtpStartDay.Value = d1;
-                dtpEndDay.Value = d2;
+                st = new DateTime(d.Year, d.Month, 1, 0, 0, 0);
+                se = new DateTime(d.Year, d.Month, DateTime.DaysInMonth(d.Year, d.Month), 23, 59, 59);
+                ReloadGridFollowTime(st, se);
+                dtpStartDay.Value = st;
+                dtpEndDay.Value = se;
             }
             else
             {
@@ -553,7 +555,8 @@ namespace BadmintonManagement.Forms.ReservationCourt
 
             }
             btn.BackColor = SystemColors.ButtonShadow;
-        } 
+        }
+       
     }
 
 }

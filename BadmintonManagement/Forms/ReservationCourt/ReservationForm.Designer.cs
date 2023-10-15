@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgvReservation = new System.Windows.Forms.DataGridView();
             this.clnRevNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clnUserName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -57,27 +57,27 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.btnGot = new System.Windows.Forms.Button();
             this.btnAcceptDeposition = new System.Windows.Forms.Button();
-            this.btnFilter = new System.Windows.Forms.Button();
-            this.btnFunction = new System.Windows.Forms.Button();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.pnlFunction = new System.Windows.Forms.Panel();
-            this.btnRevReceipt = new System.Windows.Forms.Button();
-            this.btnCancel = new System.Windows.Forms.Button();
-            this.btnDetail = new System.Windows.Forms.Button();
-            this.btnAdd = new System.Windows.Forms.Button();
             this.pnlSearch = new System.Windows.Forms.Panel();
             this.btnCancelFilter = new System.Windows.Forms.Button();
             this.btnNotYetPayed = new System.Windows.Forms.Button();
             this.btnNotYetDeposited = new System.Windows.Forms.Button();
             this.btnNotYetAccepted = new System.Windows.Forms.Button();
             this.btnOverTime = new System.Windows.Forms.Button();
+            this.btnFilter = new System.Windows.Forms.Button();
+            this.pnlFunction = new System.Windows.Forms.Panel();
+            this.btnRevReceipt = new System.Windows.Forms.Button();
+            this.btnCancel = new System.Windows.Forms.Button();
+            this.btnDetail = new System.Windows.Forms.Button();
+            this.btnAdd = new System.Windows.Forms.Button();
+            this.btnFunction = new System.Windows.Forms.Button();
+            this.panel3 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.dgvReservation)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
-            this.panel3.SuspendLayout();
-            this.pnlFunction.SuspendLayout();
             this.pnlSearch.SuspendLayout();
+            this.pnlFunction.SuspendLayout();
+            this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // dgvReservation
@@ -95,18 +95,21 @@
             this.clnEndTime,
             this.clnStatus});
             this.dgvReservation.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvReservation.Location = new System.Drawing.Point(6, 34);
+            this.dgvReservation.Location = new System.Drawing.Point(6, 29);
             this.dgvReservation.Margin = new System.Windows.Forms.Padding(6, 7, 6, 7);
             this.dgvReservation.MultiSelect = false;
             this.dgvReservation.Name = "dgvReservation";
             this.dgvReservation.ReadOnly = true;
             this.dgvReservation.RowHeadersWidth = 51;
-            this.dgvReservation.Size = new System.Drawing.Size(1585, 798);
+            this.dgvReservation.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvReservation.Size = new System.Drawing.Size(1585, 899);
             this.dgvReservation.TabIndex = 0;
+            this.dgvReservation.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvReservation_CellClick);
             this.dgvReservation.SelectionChanged += new System.EventHandler(this.dgvReservation_SelectionChanged);
             // 
             // clnRevNo
             // 
+            this.clnRevNo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.clnRevNo.HeaderText = "Số phiếu";
             this.clnRevNo.MinimumWidth = 6;
             this.clnRevNo.Name = "clnRevNo";
@@ -117,28 +120,30 @@
             // 
             this.clnUserName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.clnUserName.HeaderText = "Tên nhân viên";
-            this.clnUserName.MinimumWidth = 6;
+            this.clnUserName.MinimumWidth = 100;
             this.clnUserName.Name = "clnUserName";
             this.clnUserName.ReadOnly = true;
             // 
             // clnPhoneNumber
             // 
-            this.clnPhoneNumber.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.clnPhoneNumber.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.clnPhoneNumber.HeaderText = "Số điện thoại";
             this.clnPhoneNumber.MinimumWidth = 6;
             this.clnPhoneNumber.Name = "clnPhoneNumber";
             this.clnPhoneNumber.ReadOnly = true;
+            this.clnPhoneNumber.Width = 243;
             // 
             // clnCustomer
             // 
             this.clnCustomer.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.clnCustomer.HeaderText = "Tên Khách hàng";
-            this.clnCustomer.MinimumWidth = 6;
+            this.clnCustomer.MinimumWidth = 100;
             this.clnCustomer.Name = "clnCustomer";
             this.clnCustomer.ReadOnly = true;
             // 
             // clnDeposite
             // 
+            this.clnDeposite.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.clnDeposite.HeaderText = "Đặt cọc";
             this.clnDeposite.MinimumWidth = 6;
             this.clnDeposite.Name = "clnDeposite";
@@ -147,8 +152,9 @@
             // 
             // clnCreateDate
             // 
-            dataGridViewCellStyle17.Format = "dd/MM/yy";
-            this.clnCreateDate.DefaultCellStyle = dataGridViewCellStyle17;
+            this.clnCreateDate.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            dataGridViewCellStyle9.Format = "dd/MM/yy";
+            this.clnCreateDate.DefaultCellStyle = dataGridViewCellStyle9;
             this.clnCreateDate.HeaderText = "Ngày đặt";
             this.clnCreateDate.MinimumWidth = 6;
             this.clnCreateDate.Name = "clnCreateDate";
@@ -157,8 +163,9 @@
             // 
             // clnBookingDate
             // 
-            dataGridViewCellStyle18.Format = "dd/MM/yy";
-            this.clnBookingDate.DefaultCellStyle = dataGridViewCellStyle18;
+            this.clnBookingDate.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            dataGridViewCellStyle10.Format = "dd/MM/yy";
+            this.clnBookingDate.DefaultCellStyle = dataGridViewCellStyle10;
             this.clnBookingDate.HeaderText = "Ngày nhận";
             this.clnBookingDate.MinimumWidth = 6;
             this.clnBookingDate.Name = "clnBookingDate";
@@ -167,9 +174,10 @@
             // 
             // clnStartime
             // 
-            dataGridViewCellStyle19.Format = "HH:mm";
-            dataGridViewCellStyle19.NullValue = null;
-            this.clnStartime.DefaultCellStyle = dataGridViewCellStyle19;
+            this.clnStartime.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            dataGridViewCellStyle11.Format = "HH:mm";
+            dataGridViewCellStyle11.NullValue = null;
+            this.clnStartime.DefaultCellStyle = dataGridViewCellStyle11;
             this.clnStartime.HeaderText = "Bắt đầu";
             this.clnStartime.MinimumWidth = 6;
             this.clnStartime.Name = "clnStartime";
@@ -178,9 +186,10 @@
             // 
             // clnEndTime
             // 
-            dataGridViewCellStyle20.Format = "HH:mm";
-            dataGridViewCellStyle20.NullValue = null;
-            this.clnEndTime.DefaultCellStyle = dataGridViewCellStyle20;
+            this.clnEndTime.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            dataGridViewCellStyle12.Format = "HH:mm";
+            dataGridViewCellStyle12.NullValue = null;
+            this.clnEndTime.DefaultCellStyle = dataGridViewCellStyle12;
             this.clnEndTime.HeaderText = "Kết thúc";
             this.clnEndTime.MinimumWidth = 6;
             this.clnEndTime.Name = "clnEndTime";
@@ -189,6 +198,7 @@
             // 
             // clnStatus
             // 
+            this.clnStatus.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.clnStatus.HeaderText = "Tình trạng";
             this.clnStatus.MinimumWidth = 6;
             this.clnStatus.Name = "clnStatus";
@@ -199,10 +209,10 @@
             // 
             this.dtpEndDay.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpEndDay.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpEndDay.Location = new System.Drawing.Point(584, 125);
+            this.dtpEndDay.Location = new System.Drawing.Point(267, 84);
             this.dtpEndDay.Margin = new System.Windows.Forms.Padding(6, 7, 6, 7);
             this.dtpEndDay.Name = "dtpEndDay";
-            this.dtpEndDay.Size = new System.Drawing.Size(364, 30);
+            this.dtpEndDay.Size = new System.Drawing.Size(120, 26);
             this.dtpEndDay.TabIndex = 4;
             this.dtpEndDay.ValueChanged += new System.EventHandler(this.dtpEndDay_ValueChanged);
             // 
@@ -210,20 +220,20 @@
             // 
             this.dtpStartDay.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpStartDay.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpStartDay.Location = new System.Drawing.Point(94, 125);
+            this.dtpStartDay.Location = new System.Drawing.Point(70, 85);
             this.dtpStartDay.Margin = new System.Windows.Forms.Padding(6, 7, 6, 7);
             this.dtpStartDay.Name = "dtpStartDay";
-            this.dtpStartDay.Size = new System.Drawing.Size(364, 30);
+            this.dtpStartDay.Size = new System.Drawing.Size(120, 26);
             this.dtpStartDay.TabIndex = 5;
             this.dtpStartDay.ValueChanged += new System.EventHandler(this.dtpStartDay_ValueChanged);
             // 
             // txtSearchByPhoneNumber
             // 
             this.txtSearchByPhoneNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSearchByPhoneNumber.Location = new System.Drawing.Point(1389, 125);
+            this.txtSearchByPhoneNumber.Location = new System.Drawing.Point(463, 84);
             this.txtSearchByPhoneNumber.Margin = new System.Windows.Forms.Padding(6, 7, 6, 7);
             this.txtSearchByPhoneNumber.Name = "txtSearchByPhoneNumber";
-            this.txtSearchByPhoneNumber.Size = new System.Drawing.Size(208, 30);
+            this.txtSearchByPhoneNumber.Size = new System.Drawing.Size(322, 26);
             this.txtSearchByPhoneNumber.TabIndex = 1;
             this.txtSearchByPhoneNumber.Text = "Tìm kiếm";
             this.txtSearchByPhoneNumber.Click += new System.EventHandler(this.txtSearchByPhoneNumber_Click);
@@ -233,10 +243,10 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(502, 132);
+            this.label2.Location = new System.Drawing.Point(216, 89);
             this.label2.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(48, 25);
+            this.label2.Size = new System.Drawing.Size(39, 20);
             this.label2.TabIndex = 12;
             this.label2.Text = "Đến";
             // 
@@ -244,10 +254,10 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(34, 135);
+            this.label3.Location = new System.Drawing.Point(31, 90);
             this.label3.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(36, 25);
+            this.label3.Size = new System.Drawing.Size(27, 20);
             this.label3.TabIndex = 13;
             this.label3.Text = "Từ";
             // 
@@ -258,7 +268,7 @@
             this.chbThisMonth.Location = new System.Drawing.Point(42, 43);
             this.chbThisMonth.Margin = new System.Windows.Forms.Padding(6, 7, 6, 7);
             this.chbThisMonth.Name = "chbThisMonth";
-            this.chbThisMonth.Size = new System.Drawing.Size(278, 29);
+            this.chbThisMonth.Size = new System.Drawing.Size(229, 24);
             this.chbThisMonth.TabIndex = 14;
             this.chbThisMonth.Text = "Danh sách phiếu theo tháng";
             this.chbThisMonth.UseVisualStyleBackColor = true;
@@ -273,11 +283,11 @@
             // 
             this.groupBox1.Controls.Add(this.dgvReservation);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox1.Location = new System.Drawing.Point(0, 216);
+            this.groupBox1.Location = new System.Drawing.Point(0, 120);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(6, 7, 6, 7);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(6, 7, 6, 7);
-            this.groupBox1.Size = new System.Drawing.Size(1597, 839);
+            this.groupBox1.Size = new System.Drawing.Size(1597, 935);
             this.groupBox1.TabIndex = 9;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Thông tin phiếu đặt sân";
@@ -293,7 +303,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1597, 216);
+            this.panel1.Size = new System.Drawing.Size(1597, 120);
             this.panel1.TabIndex = 15;
             // 
             // panel2
@@ -352,146 +362,6 @@
             this.btnAcceptDeposition.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnAcceptDeposition.UseVisualStyleBackColor = true;
             this.btnAcceptDeposition.Click += new System.EventHandler(this.btnAcceptDeposition_Click);
-            // 
-            // btnFilter
-            // 
-            this.btnFilter.BackColor = System.Drawing.Color.LightGray;
-            this.btnFilter.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnFilter.FlatAppearance.BorderColor = System.Drawing.Color.LightGray;
-            this.btnFilter.FlatAppearance.BorderSize = 0;
-            this.btnFilter.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnFilter.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnFilter.Location = new System.Drawing.Point(0, 206);
-            this.btnFilter.Margin = new System.Windows.Forms.Padding(6, 7, 6, 7);
-            this.btnFilter.Name = "btnFilter";
-            this.btnFilter.Padding = new System.Windows.Forms.Padding(14, 0, 0, 0);
-            this.btnFilter.Size = new System.Drawing.Size(327, 40);
-            this.btnFilter.TabIndex = 20;
-            this.btnFilter.Text = "Lọc";
-            this.btnFilter.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnFilter.UseVisualStyleBackColor = true;
-            this.btnFilter.Click += new System.EventHandler(this.btnSearch_Click);
-            // 
-            // btnFunction
-            // 
-            this.btnFunction.BackColor = System.Drawing.Color.LightGray;
-            this.btnFunction.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnFunction.FlatAppearance.BorderColor = System.Drawing.Color.LightGray;
-            this.btnFunction.FlatAppearance.BorderSize = 0;
-            this.btnFunction.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnFunction.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnFunction.Location = new System.Drawing.Point(0, 0);
-            this.btnFunction.Margin = new System.Windows.Forms.Padding(6, 7, 6, 7);
-            this.btnFunction.Name = "btnFunction";
-            this.btnFunction.Padding = new System.Windows.Forms.Padding(14, 0, 0, 0);
-            this.btnFunction.Size = new System.Drawing.Size(327, 40);
-            this.btnFunction.TabIndex = 18;
-            this.btnFunction.Text = "Chức năng";
-            this.btnFunction.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnFunction.UseVisualStyleBackColor = true;
-            this.btnFunction.Click += new System.EventHandler(this.btnFunction_Click);
-            // 
-            // panel3
-            // 
-            this.panel3.Controls.Add(this.groupBox1);
-            this.panel3.Controls.Add(this.panel1);
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(327, 0);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1597, 1055);
-            this.panel3.TabIndex = 17;
-            // 
-            // pnlFunction
-            // 
-            this.pnlFunction.Controls.Add(this.btnRevReceipt);
-            this.pnlFunction.Controls.Add(this.btnCancel);
-            this.pnlFunction.Controls.Add(this.btnDetail);
-            this.pnlFunction.Controls.Add(this.btnAdd);
-            this.pnlFunction.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlFunction.Location = new System.Drawing.Point(0, 40);
-            this.pnlFunction.Name = "pnlFunction";
-            this.pnlFunction.Size = new System.Drawing.Size(327, 166);
-            this.pnlFunction.TabIndex = 23;
-            // 
-            // btnRevReceipt
-            // 
-            this.btnRevReceipt.BackColor = System.Drawing.Color.LightGray;
-            this.btnRevReceipt.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnRevReceipt.Enabled = false;
-            this.btnRevReceipt.FlatAppearance.BorderColor = System.Drawing.Color.LightGray;
-            this.btnRevReceipt.FlatAppearance.BorderSize = 0;
-            this.btnRevReceipt.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRevReceipt.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRevReceipt.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btnRevReceipt.Location = new System.Drawing.Point(0, 120);
-            this.btnRevReceipt.Margin = new System.Windows.Forms.Padding(6, 7, 6, 7);
-            this.btnRevReceipt.Name = "btnRevReceipt";
-            this.btnRevReceipt.Padding = new System.Windows.Forms.Padding(46, 0, 0, 0);
-            this.btnRevReceipt.Size = new System.Drawing.Size(327, 40);
-            this.btnRevReceipt.TabIndex = 20;
-            this.btnRevReceipt.Text = "Lập hóa đơn";
-            this.btnRevReceipt.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnRevReceipt.UseVisualStyleBackColor = true;
-            this.btnRevReceipt.Click += new System.EventHandler(this.btnRevReceipt_Click);
-            // 
-            // btnCancel
-            // 
-            this.btnCancel.BackColor = System.Drawing.Color.LightGray;
-            this.btnCancel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnCancel.Enabled = false;
-            this.btnCancel.FlatAppearance.BorderColor = System.Drawing.Color.LightGray;
-            this.btnCancel.FlatAppearance.BorderSize = 0;
-            this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancel.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btnCancel.Location = new System.Drawing.Point(0, 80);
-            this.btnCancel.Margin = new System.Windows.Forms.Padding(6, 7, 6, 7);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Padding = new System.Windows.Forms.Padding(46, 0, 0, 0);
-            this.btnCancel.Size = new System.Drawing.Size(327, 40);
-            this.btnCancel.TabIndex = 19;
-            this.btnCancel.Text = "Hủy";
-            this.btnCancel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCancel.UseVisualStyleBackColor = true;
-            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
-            // 
-            // btnDetail
-            // 
-            this.btnDetail.BackColor = System.Drawing.Color.LightGray;
-            this.btnDetail.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnDetail.FlatAppearance.BorderColor = System.Drawing.Color.LightGray;
-            this.btnDetail.FlatAppearance.BorderSize = 0;
-            this.btnDetail.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDetail.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDetail.Location = new System.Drawing.Point(0, 40);
-            this.btnDetail.Margin = new System.Windows.Forms.Padding(6, 7, 6, 7);
-            this.btnDetail.Name = "btnDetail";
-            this.btnDetail.Padding = new System.Windows.Forms.Padding(46, 0, 0, 0);
-            this.btnDetail.Size = new System.Drawing.Size(327, 40);
-            this.btnDetail.TabIndex = 18;
-            this.btnDetail.Text = "Chi tiết";
-            this.btnDetail.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnDetail.UseVisualStyleBackColor = true;
-            this.btnDetail.Click += new System.EventHandler(this.btnDetail_Click);
-            // 
-            // btnAdd
-            // 
-            this.btnAdd.BackColor = System.Drawing.Color.LightGray;
-            this.btnAdd.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnAdd.FlatAppearance.BorderColor = System.Drawing.Color.LightGray;
-            this.btnAdd.FlatAppearance.BorderSize = 0;
-            this.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAdd.Location = new System.Drawing.Point(0, 0);
-            this.btnAdd.Margin = new System.Windows.Forms.Padding(6, 7, 6, 7);
-            this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Padding = new System.Windows.Forms.Padding(46, 0, 0, 0);
-            this.btnAdd.Size = new System.Drawing.Size(327, 40);
-            this.btnAdd.TabIndex = 17;
-            this.btnAdd.Text = "Thêm";
-            this.btnAdd.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAdd.UseVisualStyleBackColor = true;
-            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // pnlSearch
             // 
@@ -601,9 +471,149 @@
             this.btnOverTime.UseVisualStyleBackColor = true;
             this.btnOverTime.Click += new System.EventHandler(this.btnOverTime_Click);
             // 
+            // btnFilter
+            // 
+            this.btnFilter.BackColor = System.Drawing.Color.LightGray;
+            this.btnFilter.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnFilter.FlatAppearance.BorderColor = System.Drawing.Color.LightGray;
+            this.btnFilter.FlatAppearance.BorderSize = 0;
+            this.btnFilter.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnFilter.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFilter.Location = new System.Drawing.Point(0, 206);
+            this.btnFilter.Margin = new System.Windows.Forms.Padding(6, 7, 6, 7);
+            this.btnFilter.Name = "btnFilter";
+            this.btnFilter.Padding = new System.Windows.Forms.Padding(14, 0, 0, 0);
+            this.btnFilter.Size = new System.Drawing.Size(327, 40);
+            this.btnFilter.TabIndex = 20;
+            this.btnFilter.Text = "Lọc";
+            this.btnFilter.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnFilter.UseVisualStyleBackColor = true;
+            this.btnFilter.Click += new System.EventHandler(this.btnSearch_Click);
+            // 
+            // pnlFunction
+            // 
+            this.pnlFunction.Controls.Add(this.btnRevReceipt);
+            this.pnlFunction.Controls.Add(this.btnCancel);
+            this.pnlFunction.Controls.Add(this.btnDetail);
+            this.pnlFunction.Controls.Add(this.btnAdd);
+            this.pnlFunction.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlFunction.Location = new System.Drawing.Point(0, 40);
+            this.pnlFunction.Name = "pnlFunction";
+            this.pnlFunction.Size = new System.Drawing.Size(327, 166);
+            this.pnlFunction.TabIndex = 23;
+            // 
+            // btnRevReceipt
+            // 
+            this.btnRevReceipt.BackColor = System.Drawing.Color.LightGray;
+            this.btnRevReceipt.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnRevReceipt.Enabled = false;
+            this.btnRevReceipt.FlatAppearance.BorderColor = System.Drawing.Color.LightGray;
+            this.btnRevReceipt.FlatAppearance.BorderSize = 0;
+            this.btnRevReceipt.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRevReceipt.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRevReceipt.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.btnRevReceipt.Location = new System.Drawing.Point(0, 120);
+            this.btnRevReceipt.Margin = new System.Windows.Forms.Padding(6, 7, 6, 7);
+            this.btnRevReceipt.Name = "btnRevReceipt";
+            this.btnRevReceipt.Padding = new System.Windows.Forms.Padding(46, 0, 0, 0);
+            this.btnRevReceipt.Size = new System.Drawing.Size(327, 40);
+            this.btnRevReceipt.TabIndex = 20;
+            this.btnRevReceipt.Text = "Lập hóa đơn";
+            this.btnRevReceipt.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnRevReceipt.UseVisualStyleBackColor = true;
+            this.btnRevReceipt.Click += new System.EventHandler(this.btnRevReceipt_Click);
+            // 
+            // btnCancel
+            // 
+            this.btnCancel.BackColor = System.Drawing.Color.LightGray;
+            this.btnCancel.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnCancel.Enabled = false;
+            this.btnCancel.FlatAppearance.BorderColor = System.Drawing.Color.LightGray;
+            this.btnCancel.FlatAppearance.BorderSize = 0;
+            this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancel.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.btnCancel.Location = new System.Drawing.Point(0, 80);
+            this.btnCancel.Margin = new System.Windows.Forms.Padding(6, 7, 6, 7);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Padding = new System.Windows.Forms.Padding(46, 0, 0, 0);
+            this.btnCancel.Size = new System.Drawing.Size(327, 40);
+            this.btnCancel.TabIndex = 19;
+            this.btnCancel.Text = "Hủy";
+            this.btnCancel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            // 
+            // btnDetail
+            // 
+            this.btnDetail.BackColor = System.Drawing.Color.LightGray;
+            this.btnDetail.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnDetail.FlatAppearance.BorderColor = System.Drawing.Color.LightGray;
+            this.btnDetail.FlatAppearance.BorderSize = 0;
+            this.btnDetail.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDetail.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDetail.Location = new System.Drawing.Point(0, 40);
+            this.btnDetail.Margin = new System.Windows.Forms.Padding(6, 7, 6, 7);
+            this.btnDetail.Name = "btnDetail";
+            this.btnDetail.Padding = new System.Windows.Forms.Padding(46, 0, 0, 0);
+            this.btnDetail.Size = new System.Drawing.Size(327, 40);
+            this.btnDetail.TabIndex = 18;
+            this.btnDetail.Text = "Chi tiết";
+            this.btnDetail.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnDetail.UseVisualStyleBackColor = true;
+            this.btnDetail.Click += new System.EventHandler(this.btnDetail_Click);
+            // 
+            // btnAdd
+            // 
+            this.btnAdd.BackColor = System.Drawing.Color.LightGray;
+            this.btnAdd.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnAdd.FlatAppearance.BorderColor = System.Drawing.Color.LightGray;
+            this.btnAdd.FlatAppearance.BorderSize = 0;
+            this.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAdd.Location = new System.Drawing.Point(0, 0);
+            this.btnAdd.Margin = new System.Windows.Forms.Padding(6, 7, 6, 7);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Padding = new System.Windows.Forms.Padding(46, 0, 0, 0);
+            this.btnAdd.Size = new System.Drawing.Size(327, 40);
+            this.btnAdd.TabIndex = 17;
+            this.btnAdd.Text = "Thêm";
+            this.btnAdd.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+            // 
+            // btnFunction
+            // 
+            this.btnFunction.BackColor = System.Drawing.Color.LightGray;
+            this.btnFunction.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnFunction.FlatAppearance.BorderColor = System.Drawing.Color.LightGray;
+            this.btnFunction.FlatAppearance.BorderSize = 0;
+            this.btnFunction.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnFunction.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFunction.Location = new System.Drawing.Point(0, 0);
+            this.btnFunction.Margin = new System.Windows.Forms.Padding(6, 7, 6, 7);
+            this.btnFunction.Name = "btnFunction";
+            this.btnFunction.Padding = new System.Windows.Forms.Padding(14, 0, 0, 0);
+            this.btnFunction.Size = new System.Drawing.Size(327, 40);
+            this.btnFunction.TabIndex = 18;
+            this.btnFunction.Text = "Chức năng";
+            this.btnFunction.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnFunction.UseVisualStyleBackColor = true;
+            this.btnFunction.Click += new System.EventHandler(this.btnFunction_Click);
+            // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.groupBox1);
+            this.panel3.Controls.Add(this.panel1);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel3.Location = new System.Drawing.Point(327, 0);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(1597, 1055);
+            this.panel3.TabIndex = 17;
+            // 
             // ReservationForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 28F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1924, 1055);
             this.Controls.Add(this.panel3);
@@ -619,9 +629,9 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
-            this.panel3.ResumeLayout(false);
-            this.pnlFunction.ResumeLayout(false);
             this.pnlSearch.ResumeLayout(false);
+            this.pnlFunction.ResumeLayout(false);
+            this.panel3.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -639,16 +649,6 @@
         private System.Windows.Forms.CheckBox chbThisMonth;
         private System.Windows.Forms.Timer tmrCheck;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clnRevNo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clnUserName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clnPhoneNumber;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clnCustomer;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clnDeposite;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clnCreateDate;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clnBookingDate;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clnStartime;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clnEndTime;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clnStatus;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
@@ -668,5 +668,15 @@
         private System.Windows.Forms.Button btnNotYetDeposited;
         private System.Windows.Forms.Button btnNotYetAccepted;
         private System.Windows.Forms.Button btnOverTime;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clnRevNo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clnUserName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clnPhoneNumber;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clnCustomer;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clnDeposite;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clnCreateDate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clnBookingDate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clnStartime;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clnEndTime;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clnStatus;
     }
 }
