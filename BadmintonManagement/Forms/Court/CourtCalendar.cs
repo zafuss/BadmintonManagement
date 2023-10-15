@@ -95,6 +95,64 @@ namespace BadmintonManagement.Forms.Court
             }
         }
 
+        private void BindCalendarAvailable()
+        {
+            //Xóa hết một thu trong listview
+            lstvCalender.Items.Clear();
+            lstvCalender.Groups.Clear();
+
+            //Tên máy và tên cơ sở dữ liệu
+            string connectString = @"Data Source=localhost;Initial Catalog=BadmintonManagementDB;Integrated Security=True";
+
+            //Câu lệnh truy vấn sql
+            string sql = @"select rf.ReservationNo , tmp.FullName , tmp.PhoneNumber ,tmp.[Ngay Choi], tmp.StartTime,tmp.EndTime , tmp.[Tong gio choi]
+                            from RF_DETAIL rf ,		(select reser.ReservationNo, a.FullName , a.PhoneNumber , FORMAT(reser.BookingDate, 'dd/MM/yyyy')as[Ngay Choi] , 
+							FORMAT(reser.StartTime, 'HH:mm') as StartTime , FORMAT(reser.EndTime, 'HH:mm') as EndTime , 
+						                            FORMAT( DATEADD(MINUTE,DATEDIFF(MINUTE,reser.StartTime,reser.EndTime),'00:00'), 'HH:mm') as [Tong gio choi]
+						                            from RESERVATION reser , CUSTOMER a 
+						                            where a.PhoneNumber = reser.PhoneNumber and 
+													CONVERT(datetime,reser.BookingDate,103) >= Cast(CURRENT_TIMESTAMP  as DATE)  ) 
+													tmp , COURT a
+                            where rf.ReservationNo = tmp.ReservationNo and rf.CourtID = a.CourtID and rf.CourtID = @courtID";
+
+            //List sân trong cơ sở dữ liệu
+            List<COURT> list = new ModelBadmintonManage().COURT.ToList();
+            foreach (var item in list)
+            {
+                //Tạo một listviewgroup
+                ListViewGroup Court = new ListViewGroup(item.CourtName);
+                //Thêm listviewGroup 
+                lstvCalender.Groups.Add(Court);
+
+                SqlConnection conn;
+                conn = new SqlConnection(connectString);
+                conn.Open();
+
+                SqlCommand cmd;
+                SqlDataReader dataReader;
+                cmd = new SqlCommand(sql, conn);
+
+                //Truyền mã sân vào trong câu lệnh sql
+                cmd.Parameters.AddWithValue("@courtID", item.CourtID);
+                dataReader = cmd.ExecuteReader();
+
+                //Lấy thông tin từ sql truyền vào listview
+                while (dataReader.Read())
+                {
+                    ListViewItem lvi = new ListViewItem();
+                    lvi.Text = dataReader.GetString(0);
+                    lvi.SubItems.Add(dataReader.GetString(1));
+                    lvi.SubItems.Add(dataReader.GetString(2));
+                    lvi.SubItems.Add(dataReader.GetString(3));
+                    lvi.SubItems.Add(dataReader.GetString(4));
+                    lvi.SubItems.Add(dataReader.GetString(5));
+                    lvi.SubItems.Add(dataReader.GetString(6));
+                    lvi.Group = Court;
+                    lstvCalender.Items.Add(lvi);
+                }
+            }
+        }
+
         //Hàm để hiện thị tất cả các lịch sân dựa trên ngày tháng truyền vào
         private void BindCalendar(DateTime starttime , DateTime endtime)
         {
@@ -261,6 +319,8 @@ namespace BadmintonManagement.Forms.Court
         private void btnReset_Click(object sender, EventArgs e)
         {
             rdoCheckDay.Checked = rdoCheckMonth.Checked = rdoCheckWeek.Checked = false;
+            dtmEndDate.Value = dtmStartDate.Value = DateTime.Now;
+            BindCalendarAvailable();
         }
 
     }

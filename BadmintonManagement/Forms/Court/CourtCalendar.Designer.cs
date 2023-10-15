@@ -157,11 +157,11 @@
             // btnReset
             // 
             this.btnReset.Dock = System.Windows.Forms.DockStyle.Right;
-            this.btnReset.Location = new System.Drawing.Point(1085, 0);
+            this.btnReset.Location = new System.Drawing.Point(1062, 0);
             this.btnReset.Name = "btnReset";
-            this.btnReset.Size = new System.Drawing.Size(166, 38);
+            this.btnReset.Size = new System.Drawing.Size(189, 38);
             this.btnReset.TabIndex = 7;
-            this.btnReset.Text = "Hiển thị tất cả";
+            this.btnReset.Text = "Sân Khả Dụng";
             this.btnReset.UseVisualStyleBackColor = true;
             this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
             // 

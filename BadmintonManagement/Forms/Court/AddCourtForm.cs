@@ -136,7 +136,10 @@ namespace BadmintonManagement.Forms.Court
                 newCourt.C_Status = "Maintenance";
             }
 
-            newCourt.CourtName = txtCourtName.Text;
+            if (txtCourtName.Text == "")
+                newCourt.CourtName = newCourt.CourtName;
+            else
+                newCourt.CourtName = txtCourtName.Text;
             newCourt.StartDate = newCourt.StartDate;
             newCourt.BranchID = new CourtService().GetBranchID(cboBranchID.Text);
             return newCourt;
@@ -189,7 +192,7 @@ namespace BadmintonManagement.Forms.Court
             {
                 //Kiểm tra các thông tin sân
                 if (txtCourtName.Text == "")
-                    return;
+                    throw new Exception("Thêm sân không thành công!");
                 if (cboCourtID.Text == string.Empty || !new CourtService().checkCourtID(cboCourtID.Text))
                 {
                     {
@@ -219,7 +222,7 @@ namespace BadmintonManagement.Forms.Court
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.Message, "Thông báo");
             }
         }
 
@@ -232,12 +235,14 @@ namespace BadmintonManagement.Forms.Court
                 if (cboBranchID.Text == string.Empty)
                 { return; }
 
+                if(txtCourtName.Text == "")
+                    throw new Exception("Xoá sân không thành công!");
                 //Tìm kiếm sân dựa trên mã sân
                 COURT tmp = new CourtService().FindCourtByID(cboCourtID.Text);
                 //Nếu không có thì hiện thị thông báo
                 if ( tmp == null)
                 {
-                    throw new Exception("Xoá sân thành công!");
+                    throw new Exception("Xoá sân không thành công!");
                 }
                 //Nếu sân đã có lịch booking thì không cho vô hiệu hóa sân
                 else if ( new CourtService().CountCourt(cboCourtID.Text) != 0)
@@ -272,7 +277,7 @@ namespace BadmintonManagement.Forms.Court
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.Message, "Thông báo");
             }
 
         }
@@ -328,7 +333,7 @@ namespace BadmintonManagement.Forms.Court
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.Message, "Thông báo");
             }
         }
 

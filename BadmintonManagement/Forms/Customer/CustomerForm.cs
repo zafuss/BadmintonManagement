@@ -37,6 +37,7 @@ namespace BadmintonManagement.Forms.Customer
 
             }
         }
+
         private void CheckException()
         {
             if (txtEmail.Text == "" || txtPhoneNumber.Text == "" || txtFullName.Text == "")
@@ -44,6 +45,11 @@ namespace BadmintonManagement.Forms.Customer
 
         }
        
+        private void Reset()
+        {
+            txtEmail.Text = txtFullName.Text = txtPhoneNumber.Text = "";
+        }
+
         private void btnAdd_Click(object sender, EventArgs e)
         {
             try
@@ -58,10 +64,12 @@ namespace BadmintonManagement.Forms.Customer
                     customer.PhoneNumber = txtPhoneNumber.Text;
                     customer.FullName = txtFullName.Text;
                     customer.Email = txtEmail.Text;
+                    Validator.CustomerValidator(customer);
                     CustomerServices.AddCustomer(customer);
                 }
                 customers = CustomerServices.GetAllService();
                 BindDataGrid(customers);
+                Reset();
             }
             catch (Exception ex)
             {
@@ -141,10 +149,12 @@ namespace BadmintonManagement.Forms.Customer
                     customer.PhoneNumber = txtPhoneNumber.Text;
                     customer.FullName = txtFullName.Text;
                     customer.Email = txtEmail.Text;
+                    Validator.CustomerValidator(customer);
                     CustomerServices.UpdateCustomer(customer);
                 }
                 customers = CustomerServices.GetAllService();
                 BindDataGrid(customers);
+                Reset();
             }
             catch (Exception ex)
             {
