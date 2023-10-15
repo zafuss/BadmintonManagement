@@ -16,8 +16,11 @@ namespace BadmintonManagement.Database
 {
     public class CourtService
     {
+        //Khởi Tạo một đối tượng modelbadminton
         private ModelBadmintonManage _modelBadmintonManage = new ModelBadmintonManage();
+        //Tạo một List court chứa thông tin từ đối tượng model
         private List<COURT> _courts = new ModelBadmintonManage().COURT.ToList();
+        //Tạo một List branch chứa thông tin từ đối tượng model
         private List<BRANCH> _branchs = new ModelBadmintonManage().BRANCH.ToList();
 
         public void publicDay()
@@ -41,30 +44,31 @@ namespace BadmintonManagement.Database
             //}
             //_modelBadmintonManage.SaveChanges();
         }
+
+        //Hàm để hiện thị sân dựa
         public Control DisplayCourtAdmin(int count, COURT court , double _widht , double _heigth)
         {
             double x = (_widht) / (3.4);
             double y = (_heigth) / (3.4);
             String namePnl = court.CourtID;
             Font font = new Font("Segoe UI", 12);
+            //Tạo một custompanel để chứa các control
             Type controlType = typeof(CustomPanel);
             Control newControl = (Control)Activator.CreateInstance(controlType);
-
 
             newControl.Name = namePnl;  
 
             newControl.Size = new Size(Convert.ToInt32(x), Convert.ToInt32(y));
 
-
-
+            //Tạo một label để hiện thị Tên Sân
             Label lblCourtName = new Label();
             lblCourtName.Text = court.CourtName;
             lblCourtName.Location = new Point(Convert.ToInt32(x * 1 / 5), 10);
             lblCourtName.TextAlign = ContentAlignment.MiddleCenter;
             lblCourtName.Size = new Size(Convert.ToInt32(x * 3 / 5), 25);
 
+            //Tạo một label để hiện thị ngày hoạt động của sân
             Label lblStartDate = new Label();
-            
             lblStartDate.Text = "Ngay HD " + court.StartDate.Value.ToString("dd/MM/yyyy");
             lblStartDate.Location = new Point(Convert.ToInt32(x * 1 / 10), Convert.ToInt32(y * 4.2 / 5));
             lblStartDate.TextAlign = ContentAlignment.MiddleCenter;
@@ -72,6 +76,7 @@ namespace BadmintonManagement.Database
             lblStartDate.Size = new Size(Convert.ToInt32(x*4/5), lblStartDateText.Height);
             //lblStartDate.Size = new Size(lblStartDateText.Width, lblStartDateText.Height);
 
+            //Tạo một picturebox để hiện thị sân
             CustomPicBox picStatusCourt = new CustomPicBox();
             picStatusCourt.Name = court.CourtID;
             //picStatusCourt.Image = Properties.Resources.Use;
@@ -81,12 +86,12 @@ namespace BadmintonManagement.Database
             picStatusCourt.BorderStyle = BorderStyle.None;
             picStatusCourt.BorderColor = Color.Transparent;
 
-            if (court.C_Status == "Using") // nay 
+            if (court.C_Status == "Using") 
             {
                 picStatusCourt.Image = Properties.Resources.badminton_court_using;
             }
        
-            else if (court.C_Status == "Maintenance") // nay la BT
+            else if (court.C_Status == "Maintenance")
             {
                 picStatusCourt.Image = Properties.Resources.badminton_court_maintenance;
             }
@@ -131,23 +136,27 @@ namespace BadmintonManagement.Database
             return newControl;
         }
 
+        //Hàm trả về đối tượng badmintonmodel
         public ModelBadmintonManage getModelBadmintonManage()
         {
             _modelBadmintonManage = new ModelBadmintonManage();
             return _modelBadmintonManage;
         }
 
+        //Hàm để thêm mới một đối tượng court vào cơ sở dữ liệu
         public void InsertCourt(COURT newCourt)
         {
             _modelBadmintonManage.COURT.AddOrUpdate(newCourt);
             _modelBadmintonManage.SaveChanges();
         }
 
+        //Hàm trả về tất cả các sân từ cơ sở dữ liệu
         public List<COURT> getListCourt()
         {
             return _courts;
         }
 
+        //Hàm trả về các sân đang hoạt động từ cơ sở dữ liệu
         public List<COURT> getListCourtWithOutDisable()
         {
             _modelBadmintonManage = new ModelBadmintonManage();
@@ -155,6 +164,7 @@ namespace BadmintonManagement.Database
             return tmp;
         }
 
+        //Hàm trả về tên các sân dựa theo biến truyền vào 
         public List<COURT> getListNameCourt(string name)
         {
             _modelBadmintonManage = new ModelBadmintonManage();
@@ -162,6 +172,7 @@ namespace BadmintonManagement.Database
             return tmp;
         }
 
+        //Hàm trả về tên các nhánh dựa theo biến truyền vào 
         public List<COURT> getBranchName(string name)
         {
             _modelBadmintonManage = new ModelBadmintonManage();
@@ -169,33 +180,38 @@ namespace BadmintonManagement.Database
             return tmp;
         }
 
+        //Hàm trả về tất cả các nhánh có trong cơ sở dữ liệu
         public List<BRANCH> getBranch()
         {
             _branchs = new ModelBadmintonManage().BRANCH.ToList();
             return _branchs;
         }
 
+        //Hàm Lấy ra tất cả các tên nhánh có trong danh sách
         public List<String> getBrachName()
         {
             List<String> tmp = new List<String>();
             foreach ( BRANCH item in _branchs )
             {
                 tmp.Add(item.BranchName);
-
             }
             return tmp;
         }
 
+        //Hàm trả về số lượng sân có trong cơ sở dữ liệu
         public int getCountCourt()
         {
             _courts = new ModelBadmintonManage().COURT.ToList();
             return _courts.Count();
         }
+
+        //Hàm trả về số lượng sân khả dụng trong cơ sở dữ liệu
         public int getCountCourtDisable()
         {
             return getListCourtWithOutDisable().Count();
         }
 
+        //Hàm trả về Mã sân dựa theo tên truyền vào
         public string GetBranchID(string branchName)
         {
             _branchs = new ModelBadmintonManage().BRANCH.ToList();
@@ -204,6 +220,7 @@ namespace BadmintonManagement.Database
             return tmp.BranchID;
         }
 
+        //Hàm chuyển đổi UTF16 thành UTF8
         public string RemoveDiacritics(string str)
         {
             Regex regex = new Regex("\\p{IsCombiningDiacriticalMarks}+");
@@ -212,6 +229,7 @@ namespace BadmintonManagement.Database
                .Replace('đ', 'd').Replace('Đ', 'D');
         }
 
+        //Hàm sinh tự động mã sân
         public string GetCourtID(string branchname)
         {
             string pattern = @"\b\w";
@@ -226,6 +244,7 @@ namespace BadmintonManagement.Database
             return CourtID;
         }
 
+        //Hàm Kiểm tra mã sân có trong cơ sở dữ liệu không
         public bool checkCourtID(string courtID)
         {
             _modelBadmintonManage = new ModelBadmintonManage();
@@ -234,6 +253,8 @@ namespace BadmintonManagement.Database
                 return false;
             return true;
         }
+
+        //Hàm kiểm tra nhánh có trong cơ sở dữ liệu không
         public bool checkBranchID(string courtID)
         {
             _modelBadmintonManage = new ModelBadmintonManage();
@@ -243,6 +264,7 @@ namespace BadmintonManagement.Database
             return true;
         }
 
+        //Hàm tìm kiếm Mã sân 
         public COURT FindCourtByID(string id)
         {
             _modelBadmintonManage = new ModelBadmintonManage();
@@ -250,6 +272,7 @@ namespace BadmintonManagement.Database
             return court;
         }
 
+        //Hàm tìm kiếm nhánh
         public BRANCH FindBranchByID(string id)
         {
             _modelBadmintonManage = new ModelBadmintonManage();
@@ -257,6 +280,7 @@ namespace BadmintonManagement.Database
             return branch;
         }
 
+        //Hàm trả về số lượng thời gian đặt sân trong danh sách
         public int CountCourt( string id)
         {
             string connectString = @"Data Source=localhost;Initial Catalog=BadmintonManagementDB;Integrated Security=True";

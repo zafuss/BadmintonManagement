@@ -21,6 +21,7 @@ namespace BadmintonManagement.Forms.Court
     public partial class AddCourtForm : Form
     {
         public static AddCourtForm Instance; 
+        //Một list danh sách trạng thái sân
         private List<string> status = new List<string>()
         {
            "Đã Đi Vào Hoạt Động","Bảo Trì"
@@ -39,6 +40,8 @@ namespace BadmintonManagement.Forms.Court
            
             //txtCourtName.Text = acsc[1].ToString();
         }
+
+        //Hàm reset dữ liệu
         public void Reset()
         {
             txtCourtName.Text = "";
@@ -46,6 +49,8 @@ namespace BadmintonManagement.Forms.Court
             cboStatus.SelectedIndex = 0;
             cboCourtID.SelectedIndex = -1;
         }
+
+        //Hàm để load thông tin vào các combobox
         private void Loading()
         {
             FillcboStatus(status);
@@ -82,6 +87,7 @@ namespace BadmintonManagement.Forms.Court
             cboBranchID.Text = newCourt.BRANCH.BranchName;
         } 
 
+        //Hàm để lấy thông tin sân từ các textbox , combobox
         private COURT SetCourt()
         {
             COURT newCourt = new COURT();
@@ -109,6 +115,7 @@ namespace BadmintonManagement.Forms.Court
             return newCourt;
         }
 
+        //Hàm để update sân dựa trên textbox, combobox
         private COURT UpdateCourt(COURT newCourt)
         {
             if (cboCourtID.Text == string.Empty)
@@ -138,6 +145,7 @@ namespace BadmintonManagement.Forms.Court
 
         private void txtCourtName_TextChanged(object sender, EventArgs e)
         {
+            //Hàm để kiểm tra tên sân có chứa các ký tự đặt biệt không
             string pattern = @"[@#$%^~&`|'""{}\[\]\-\\_\\()!*+=?.,><:;//]";
             if (Regex.IsMatch(txtCourtName.Text, pattern))
             {
@@ -147,6 +155,7 @@ namespace BadmintonManagement.Forms.Court
                 }
                 else
                 {
+                    //Nếu có thì xóa đi ký tự đó đi
                     txtCourtName.Text = txtCourtName.Text.Remove(txtCourtName.TextLength - 1);
                     txtCourtName.SelectionStart = txtCourtName.Text.Length;
                 }
@@ -173,23 +182,25 @@ namespace BadmintonManagement.Forms.Court
         }
 
         
-       
+        //Khi nhấn vào nút thêm sân thì
         private void btnAdd_Click(object sender, EventArgs e)
         {
             try
             {
+                //Kiểm tra các thông tin sân
                 if (txtCourtName.Text == "")
                     return;
                 if (cboCourtID.Text == string.Empty || !new CourtService().checkCourtID(cboCourtID.Text))
                 {
-
-                    
                     {
                         COURT tmpCourt = SetCourt();
+                        //Thêm sân vào cơ sở dữ liệu
                         new CourtService().InsertCourt(tmpCourt);
                         MessageBox.Show("Thêm sân thành công!", "Thông báo");
+                        //Load lại màn hình hiện thị admin
                         Loading();
                         Reset();
+                        //Load lại màn hình nhân viên
                         if (Application.OpenForms["CourtForm"] != null && !Application.OpenForms["CourtForm"].IsDisposed)
                         {
                             List<COURT> newCourt = new CourtService().getListCourtWithOutDisable();
@@ -212,31 +223,41 @@ namespace BadmintonManagement.Forms.Court
             }
         }
 
+        //Khi nhấn vào nút vô hiệu hóa sân
         private void btnDelete_Click(object sender, EventArgs e)
         {
             try
             {
+                //Kiểm tra các thông tin sân
                 if (cboBranchID.Text == string.Empty)
                 { return; }
+
+                //Tìm kiếm sân dựa trên mã sân
                 COURT tmp = new CourtService().FindCourtByID(cboCourtID.Text);
+                //Nếu không có thì hiện thị thông báo
                 if ( tmp == null)
                 {
                     throw new Exception("Xoá sân thành công!");
                 }
+                //Nếu sân đã có lịch booking thì không cho vô hiệu hóa sân
                 else if ( new CourtService().CountCourt(cboCourtID.Text) != 0)
                 {
                     throw new Exception("Xoá sân không thành công!");
                 }
+                //Ngược lại thì cho vô hiệu hóa sân
                 else 
                 {
                     DialogResult result = MessageBox.Show("Vô hiệu hoá sân đã chọn?", "Thông báo", MessageBoxButtons.YesNo,MessageBoxIcon.Question);
                     if (result == DialogResult.Yes)
                     {
                         tmp.C_Status = "Disable";
+                        //Sửa lại trạng thái sân
                         new CourtService().InsertCourt(tmp);
                         MessageBox.Show("Vô hiệu hoá sân thành công!");
+                        //Load lại màn hình hiện thị admin
                         Loading();
                         Reset();
+                        //Load lại màn hình nhân viên
                         if (Application.OpenForms["CourtForm"] != null && !Application.OpenForms["CourtForm"].IsDisposed)
                         {
                             List<COURT> newCourt = new CourtService().getListCourtWithOutDisable();
@@ -256,10 +277,12 @@ namespace BadmintonManagement.Forms.Court
 
         }
 
+        //Khi nhấn vào nút sửa sân
         private void btnChange_Click(object sender, EventArgs e)
         {
             try
             {
+                //Kiểm tra các thông tin sân
                 if(cboBranchID.Text == string.Empty)
                 { return; }
                 COURT tmp = new CourtService().FindCourtByID(cboCourtID.Text);
@@ -274,13 +297,16 @@ namespace BadmintonManagement.Forms.Court
                     //{
                     //    throw new Exception("San Da Di Vao Hoat Dong");
                     //}
-                   
                     
                     {
+                        //Cập nhật lại thông tin sân
                         tmp = UpdateCourt(tmp);
+                        //Chỉnh sửa thông tin sân trong cơ sở dữ liệu
                         new CourtService().InsertCourt(tmp);
+                        //Load lại màn hình hiện thị admin
                         Loading();
                         Reset();
+                        //Load lại màn hình nhân viên
                         MessageBox.Show("Chỉnh sửa thông tin sân thành công!");
                         if (Application.OpenForms["CourtForm"] != null && !Application.OpenForms["CourtForm"].IsDisposed)
                         {
@@ -304,6 +330,7 @@ namespace BadmintonManagement.Forms.Court
 
         private void cboCourtID_SelectedIndexChanged(object sender, EventArgs e)
         {
+            //Hàm để lấy thông tin sân dựa trên court id
             if (cboCourtID.Text != "")
             {
                 COURT court = new CourtService().FindCourtByID(cboCourtID.Text);
@@ -331,6 +358,7 @@ namespace BadmintonManagement.Forms.Court
 
         private void cboCourtID_TextChanged(object sender, EventArgs e)
         {
+            //Hàm để ẩn đi thông tin nhánh sân
             if (cboCourtID.Text != "")
             {
                 COURT court = new CourtService().FindCourtByID(cboCourtID.Text);

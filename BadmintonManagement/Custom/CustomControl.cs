@@ -10,6 +10,7 @@ namespace BadmintonManagement.Custom
 {
     public class CustomControl : Control
     {
+        //Tạo thuộc tính màu viền cho control
         public Color borderColor;
 
         public Color BorderColor
