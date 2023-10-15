@@ -58,7 +58,7 @@
             // 
             // pnlInformation
             // 
-            this.pnlInformation.BackColor = System.Drawing.Color.LightGray;
+            this.pnlInformation.BackColor = UIConstants.LeftSideBackColor;
             this.pnlInformation.Controls.Add(this.pnlAdmin);
             this.pnlInformation.Controls.Add(this.pnlInAdmin);
             this.pnlInformation.Controls.Add(this.btnCalendar);
@@ -72,14 +72,15 @@
             // 
             // btnCalendar
             // 
-            this.btnCalendar.BackColor = System.Drawing.Color.LightGray;
+            this.btnCalendar.Padding = UIConstants.Level1ButtonPadding;
+            this.btnCalendar.BackColor = UIConstants.LeftSideBackColor;
             this.btnCalendar.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnCalendar.FlatAppearance.BorderSize = 0;
             this.btnCalendar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCalendar.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCalendar.Location = new System.Drawing.Point(0, 347);
             this.btnCalendar.Name = "btnCalendar";
-            this.btnCalendar.Size = new System.Drawing.Size(284, 39);
+            this.btnCalendar.Size = new System.Drawing.Size(284, UIConstants.DefaultSideButtonHeight);
             this.btnCalendar.TabIndex = 5;
             this.btnCalendar.Text = "Xem Lịch Sân";
             this.btnCalendar.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -147,6 +148,7 @@
             // 
             // lblPhoneNumber
             // 
+            this.lblPhoneNumber.Padding = UIConstants.Level1ButtonPadding;
             this.lblPhoneNumber.AutoSize = true;
             this.lblPhoneNumber.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPhoneNumber.Location = new System.Drawing.Point(13, 167);
@@ -166,6 +168,7 @@
             // 
             // lblNameCustom
             // 
+            this.lblNameCustom.Padding = UIConstants.Level1ButtonPadding; 
             this.lblNameCustom.AutoSize = true;
             this.lblNameCustom.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblNameCustom.Location = new System.Drawing.Point(13, 117);
@@ -176,6 +179,7 @@
             // 
             // lblEndTime
             // 
+            this.lblEndTime.Padding = UIConstants.Level1ButtonPadding; 
             this.lblEndTime.AutoSize = true;
             this.lblEndTime.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblEndTime.Location = new System.Drawing.Point(13, 260);
@@ -186,6 +190,7 @@
             // 
             // lblStartTime
             // 
+            this.lblStartTime.Padding = UIConstants.Level1ButtonPadding;
             this.lblStartTime.AutoSize = true;
             this.lblStartTime.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblStartTime.Location = new System.Drawing.Point(13, 212);
@@ -205,6 +210,7 @@
             // 
             // lblBranchName
             // 
+            this.lblBranchName.Padding = UIConstants.Level1ButtonPadding; 
             this.lblBranchName.AutoSize = true;
             this.lblBranchName.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblBranchName.Location = new System.Drawing.Point(13, 63);
@@ -224,6 +230,7 @@
             // 
             // lblCourtName
             // 
+            this.lblCourtName.Padding = UIConstants.Level1ButtonPadding; 
             this.lblCourtName.AutoSize = true;
             this.lblCourtName.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCourtName.Location = new System.Drawing.Point(13, 13);
@@ -234,7 +241,8 @@
             // 
             // btnUser
             // 
-            this.btnUser.BackColor = System.Drawing.Color.LightGray;
+            this.btnUser.Padding = UIConstants.Level1ButtonPadding;
+            this.btnUser.BackColor = UIConstants.LeftSideBackColor;
             this.btnUser.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.btnUser.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnUser.FlatAppearance.BorderSize = 0;
@@ -242,7 +250,7 @@
             this.btnUser.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnUser.Location = new System.Drawing.Point(0, 0);
             this.btnUser.Name = "btnUser";
-            this.btnUser.Size = new System.Drawing.Size(284, 39);
+            this.btnUser.Size = new System.Drawing.Size(284, UIConstants.DefaultSideButtonHeight);
             this.btnUser.TabIndex = 1;
             this.btnUser.Text = "Nhân Viên";
             this.btnUser.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -267,7 +275,8 @@
             // 
             // btnAdmin
             // 
-            this.btnAdmin.BackColor = System.Drawing.Color.LightGray;
+            this.btnAdmin.Padding = UIConstants.Level1ButtonPadding;
+            this.btnAdmin.BackColor = UIConstants.LeftSideBackColor;
             this.btnAdmin.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnAdmin.FlatAppearance.BorderSize = 0;
             this.btnAdmin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -275,7 +284,7 @@
             this.btnAdmin.ForeColor = System.Drawing.SystemColors.ControlText;
             this.btnAdmin.Location = new System.Drawing.Point(0, 0);
             this.btnAdmin.Name = "btnAdmin";
-            this.btnAdmin.Size = new System.Drawing.Size(284, 39);
+            this.btnAdmin.Size = new System.Drawing.Size(284, UIConstants.DefaultSideButtonHeight);
             this.btnAdmin.TabIndex = 2;
             this.btnAdmin.Text = "Admin";
             this.btnAdmin.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -284,7 +293,7 @@
             // 
             // pnlInAdmin
             // 
-            this.pnlInAdmin.BackColor = System.Drawing.Color.LightGray;
+            this.pnlInAdmin.BackColor = UIConstants.LeftSideBackColor;
             this.pnlInAdmin.Controls.Add(this.btnAdmin);
             this.pnlInAdmin.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlInAdmin.Location = new System.Drawing.Point(0, 386);
@@ -294,7 +303,7 @@
             // 
             // pnlAdmin
             // 
-            this.pnlAdmin.BackColor = System.Drawing.Color.LightGray;
+            this.pnlAdmin.BackColor = UIConstants.LeftSideBackColor;
             this.pnlAdmin.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlAdmin.Location = new System.Drawing.Point(0, 430);
             this.pnlAdmin.Name = "pnlAdmin";

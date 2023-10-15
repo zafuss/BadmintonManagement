@@ -369,6 +369,7 @@
     <Compile Include="Services\OTP\OTPService.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UIConstants.cs" />
     <Compile Include="Validator.cs" />
     <Compile Include="Security.cs" />
     <EmbeddedResource Include="CustomerReport.rdlc">
