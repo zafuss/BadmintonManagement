@@ -18,10 +18,12 @@ namespace BadmintonManagement.Models
         [StringLength(20)]
         public string BranchID { get; set; }
 
+        [Required]
         [StringLength(50)]
         public string BranchName { get; set; }
 
         [Column("_Address")]
+        [Required]
         [StringLength(50)]
         public string C_Address { get; set; }
 

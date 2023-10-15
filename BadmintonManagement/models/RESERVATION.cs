@@ -20,6 +20,7 @@ namespace BadmintonManagement.Models
         [StringLength(20)]
         public string ReservationNo { get; set; }
 
+        [Required]
         [StringLength(50)]
         public string Username { get; set; }
 
@@ -28,19 +29,20 @@ namespace BadmintonManagement.Models
 
         public decimal? Deposite { get; set; }
 
-        public DateTime? CreateDate { get; set; }
+        public DateTime CreateDate { get; set; }
 
-        public DateTime? BookingDate { get; set; }
+        public DateTime BookingDate { get; set; }
 
-        public DateTime? StartTime { get; set; }
+        public DateTime StartTime { get; set; }
 
-        public DateTime? EndTime { get; set; }
+        public DateTime EndTime { get; set; }
 
+        [Required]
         [StringLength(20)]
         public string PriceID { get; set; }
 
         [Column("_Status")]
-        public int? C_Status { get; set; }
+        public int C_Status { get; set; }
 
         public virtual C_USER C_USER { get; set; }
 

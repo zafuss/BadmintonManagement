@@ -38,7 +38,7 @@ namespace BadmintonManagement.Forms.ReservationCourt.ReservationReceipt
         { 
             DateTime d1 = DateTime.Now.Date;
             DateTime d2 = new DateTime(d1.Year, d1.Month, d1.Day, 23, 59, 59);
-            string s = context.RECEIPT.Count(p => DateTime.Compare(p.C_Date.Value, d1) >= 0 && DateTime.Compare(p.C_Date.Value, d2) <= 0).ToString();
+            string s = context.RECEIPT.Count(p => DateTime.Compare(p.C_Date, d1) >= 0 && DateTime.Compare(p.C_Date, d2) <= 0).ToString();
             while(s.Length <4)
             {
                 s = 0 + s;
@@ -64,7 +64,7 @@ namespace BadmintonManagement.Forms.ReservationCourt.ReservationReceipt
                 List<RF_DETAIL> listRF = context.RF_DETAIL.Where(p => p.ReservationNo == revNo).ToList();
                 BindGrid(listRF);
                 RECEIPT rec = context.RECEIPT.FirstOrDefault(p=>p.ReservationNo == revNo);
-                dtpTimePublish.Value = rec.C_Date.Value;
+                dtpTimePublish.Value = rec.C_Date;
                 txtReceiptNo.Text = rec.ReceiptNo;
                 txtDeposite.Text = rec.RESERVATION.Deposite.Value.ToString();
                 txtTotal.Text = (rec.Total.Value-rec.RESERVATION.Deposite).ToString();
@@ -85,10 +85,10 @@ namespace BadmintonManagement.Forms.ReservationCourt.ReservationReceipt
         }
         private decimal GetTheDetailMoney(RF_DETAIL rf)
         {
-            DateTime d1 = rf.RESERVATION.StartTime.Value;
-            DateTime d2 = rf.RESERVATION.EndTime.Value;
+            DateTime d1 = rf.RESERVATION.StartTime;
+            DateTime d2 = rf.RESERVATION.EndTime;
             decimal p = (decimal)(d2.Hour*60 + d2.Minute - d1.Hour*60 -d1.Minute)/60;
-            return Math.Round((p + Decimal.Parse(GetTheExtraTime().ToString())) * rf.RESERVATION.PRICE.PriceTag.Value);
+            return Math.Round((p + Decimal.Parse(GetTheExtraTime().ToString())) * rf.RESERVATION.PRICE.PriceTag);
         }
         private void BindGrid(List<RF_DETAIL> listRF)
         {
@@ -106,8 +106,8 @@ namespace BadmintonManagement.Forms.ReservationCourt.ReservationReceipt
         {
             RESERVATION rev = context.RESERVATION.FirstOrDefault(p => p.ReservationNo == revNo);
             DateTime d = DateTime.Now;
-            DateTime revTime = rev.EndTime.Value;
-            if(DateTime.Compare(d,rev.EndTime.Value)<=0)
+            DateTime revTime = rev.EndTime;
+            if(DateTime.Compare(d,rev.EndTime)<=0)
                 return 0;
             float p = d.Hour * 60 + d.Minute - revTime.Hour * 60 - revTime.Minute;
             p = p / 30;
@@ -122,7 +122,7 @@ namespace BadmintonManagement.Forms.ReservationCourt.ReservationReceipt
         private decimal GetTheExtraTimeFee()
         {
             RESERVATION rev = context.RESERVATION.FirstOrDefault(p => p.ReservationNo == revNo);
-            return Math.Round(decimal.Parse(GetTheExtraTime().ToString()) * rev.PRICE.PriceTag.Value);    
+            return Math.Round(decimal.Parse(GetTheExtraTime().ToString()) * rev.PRICE.PriceTag);    
         }
  
 

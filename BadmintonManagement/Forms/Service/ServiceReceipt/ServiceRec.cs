@@ -47,7 +47,7 @@ namespace BadmintonManagement.Forms.Service.ServiceReceipt
         {
             DateTime d1 = DateTime.Now.Date;
             DateTime d2 = new DateTime(d1.Year, d1.Month, d1.Day, 23, 59, 59);
-            string s = context.SERVICE_RECEIPT.Count(p => DateTime.Compare(p.CreateDate.Value, d1) >= 0 && DateTime.Compare(p.CreateDate.Value, d2) <= 0).ToString();
+            string s = context.SERVICE_RECEIPT.Count(p => DateTime.Compare(p.CreateDate, d1) >= 0 && DateTime.Compare(p.CreateDate, d2) <= 0).ToString();
             while (s.Length < 4)
             {
                 s = 0 + s;
@@ -200,7 +200,7 @@ namespace BadmintonManagement.Forms.Service.ServiceReceipt
                     context.SERVICE_DETAIL.Add(sd);
                     context.SaveChanges();
                     C_SERVICE ser = context.C_SERVICE.FirstOrDefault(p => p.ServiceName == serviceName);
-                    ser.Quantity = ser.Quantity.Value - sd.Quantity.Value;
+                    ser.Quantity = ser.Quantity - sd.Quantity.Value;
                     context.C_SERVICE.AddOrUpdate(ser);
                     context.SaveChanges();
                 }

@@ -186,9 +186,9 @@ namespace BadmintonManagement.Forms.AuthorizationForms
             List<RESERVATION> listRev = context.RESERVATION.ToList();
             foreach (RESERVATION rev in listRev)
             {
-                DateTime d = rev.StartTime.Value;
+                DateTime d = rev.StartTime;
                 int s = DateTime.Compare(d.Date, DateTime.Now.Date);
-                if (rev.C_Status == 2 && DateTime.Compare(rev.StartTime.Value, DateTime.Now) < 0)
+                if (rev.C_Status == 2 && DateTime.Compare(rev.StartTime, DateTime.Now) < 0)
                 {
                     rev.C_Status = 3;
                     if (Application.OpenForms["CourtForm"] != null && !Application.OpenForms["CourtForm"].IsDisposed)

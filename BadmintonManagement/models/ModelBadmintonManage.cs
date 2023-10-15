@@ -47,6 +47,16 @@ namespace BadmintonManagement.Models
                 .Property(e => e.PhoneNumber)
                 .IsUnicode(false);
 
+            modelBuilder.Entity<C_USER>()
+                .HasMany(e => e.RESERVATION)
+                .WithRequired(e => e.C_USER)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<BRANCH>()
+                .HasMany(e => e.COURT)
+                .WithRequired(e => e.BRANCH)
+                .WillCascadeOnDelete(false);
+
             modelBuilder.Entity<COURT>()
                 .HasMany(e => e.RF_DETAIL)
                 .WithRequired(e => e.COURT)
@@ -63,6 +73,11 @@ namespace BadmintonManagement.Models
             modelBuilder.Entity<PRICE>()
                 .Property(e => e.PriceTag)
                 .HasPrecision(18, 0);
+
+            modelBuilder.Entity<PRICE>()
+                .HasMany(e => e.RESERVATION)
+                .WithRequired(e => e.PRICE)
+                .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<RECEIPT>()
                 .Property(e => e.Total)
