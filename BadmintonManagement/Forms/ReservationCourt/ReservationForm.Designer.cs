@@ -225,7 +225,7 @@
             this.txtSearchByPhoneNumber.Name = "txtSearchByPhoneNumber";
             this.txtSearchByPhoneNumber.Size = new System.Drawing.Size(208, 30);
             this.txtSearchByPhoneNumber.TabIndex = 1;
-            this.txtSearchByPhoneNumber.Text = "Nhập số điện thoại";
+            this.txtSearchByPhoneNumber.Text = "Tìm kiếm";
             this.txtSearchByPhoneNumber.Click += new System.EventHandler(this.txtSearchByPhoneNumber_Click);
             this.txtSearchByPhoneNumber.TextChanged += new System.EventHandler(this.txtSearchByPhoneNumber_TextChanged);
             // 

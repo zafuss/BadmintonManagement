@@ -6,9 +6,9 @@ go
 --drop database BadmintonManagementDB
 create table CUSTOMER
 (
-	PhoneNumber		varchar(13),
-	FullName		nvarchar(100),
-	Email			nvarchar(100),
+	PhoneNumber		varchar(13) not null,
+	FullName		nvarchar(100)not null,
+	Email			nvarchar(100)not null,
 
 	constraint CUSTOMER_PK primary key(PhoneNumber)
 )
@@ -16,24 +16,24 @@ go
 
 create table PRICE
 (
-	PriceID		varchar(20),
-	PriceTag	decimal,
-	TimeFactor	float,
-	DateFactor	float,
-	_Status		int,
+	PriceID		varchar(20)not null,
+	PriceTag	decimal not null,
+	TimeFactor	float not null,
+	DateFactor	float not null,
+	_Status		int not null,
 
 	constraint PRICEID_PK primary Key (PriceID)
 )
 go
 
 create table _USER(
-	Username	nvarchar(50),
-	_Password	nvarchar(50),
-	_Name		nvarchar(100),
-	_Role		nvarchar(30),
-	Email		varchar(60),
-	PhoneNumber varchar(13),
-	_Status		nvarchar(30),
+	Username	nvarchar(50) not null,
+	_Password	nvarchar(50) not null,
+	_Name		nvarchar(100) not null,
+	_Role		nvarchar(30) not null,
+	Email		varchar(60) not null,
+	PhoneNumber varchar(13) not null,
+	_Status		nvarchar(30) not null,
 
 	constraint Username_PK primary key (Username)	
 )
@@ -41,16 +41,16 @@ go
 
 create table RESERVATION
 (
-	ReservationNo	nvarchar(20),
-	Username		nvarchar(50),
+	ReservationNo	nvarchar(20) not null,
+	Username		nvarchar(50) not null,
 	PhoneNumber		varchar(13),
 	Deposite		decimal,
-	CreateDate		datetime,
-	BookingDate		datetime,
-	StartTime		DateTime,
-	EndTime			DateTime,
-	PriceID			varchar(20),
-	_Status			int,
+	CreateDate		datetime not null,
+	BookingDate		datetime not null,
+	StartTime		DateTime not null,
+	EndTime			DateTime not null,
+	PriceID			varchar(20) not null,
+	_Status			int not null,
 
 	constraint RESERVATION_PK primary key(ReservationNo),
 	constraint CUSTOMER_FK foreign key (PhoneNumber) references CUSTOMER(PhoneNumber),
@@ -60,20 +60,20 @@ create table RESERVATION
 go
 
 create table BRANCH (
-	BranchID	nvarchar(20),
-	BranchName	nvarchar(50),
-	_Address	nvarchar(50),
+	BranchID	nvarchar(20) not null,
+	BranchName	nvarchar(50) not null,
+	_Address	nvarchar(50) not null,
 
 	constraint BRANCH_PK  primary key (BranchID)
 ) 
 go
 
 create table COURT (
-	CourtID		nvarchar(20),
-	CourtName	nvarchar(50),
-	_Status		nvarchar(30), 
-	StartDate	datetime,
-	BranchID	nvarchar(20),
+	CourtID		nvarchar(20) not null,
+	CourtName	nvarchar(50) not null,
+	_Status		nvarchar(30) not null, 
+	StartDate	datetime not null,
+	BranchID	nvarchar(20) not null,
 
 	constraint COURT_PK  primary key (CourtID) ,
 	constraint BRANCH_FK_BRANCH foreign key (BranchID) references BRANCH(BranchID)
@@ -82,20 +82,20 @@ go
 
 create table _SERVICE
 (
-	ServiceID		nvarchar(20),
-	ServiceName		nvarchar(100),
-	Unit			nvarchar(20),
-	Price			decimal,
-	Quantity		int,
-	_Status			varchar(30)
+	ServiceID		nvarchar(20) not null,
+	ServiceName		nvarchar(100) not null,
+	Unit			nvarchar(20) not null,
+	Price			decimal not null,
+	Quantity		int not null,
+	_Status			varchar(30) not null,
 	constraint PK_SERVICE_DETAIL_ServiceID primary key (ServiceID)
 )
 go
 
 create table SERVICE_RECEIPT
 (
-	ServiceReceiptNo	nvarchar(20),
-	CreateDate			datetime,
+	ServiceReceiptNo	nvarchar(20)  not null,
+	CreateDate			datetime not null,
 	Total				decimal,
 	PhoneNumber			varchar(13),
 	Username			nvarchar(50),
@@ -131,13 +131,13 @@ create table RF_DETAIL(
 go
 
 create table RECEIPT(
-	ReceiptNo			nvarchar(20),
-	_Date				datetime,
+	ReceiptNo			nvarchar(20) not null,
+	_Date				datetime not null,
 	Total				decimal,
 	ExtraTime			float,
 	ReservationNo		nvarchar(20),
 	Username			nvarchar(50),
-
+	Payment				nvarchar(30)
 	constraint PK_ReceiptNo primary key (ReceiptNo),
 	constraint FK_ReservationNo_ foreign key (ReservationNo) references RESERVATION(ReservationNo),
 	constraint FK_ReservationNo_Usẻ foreign key (Username) references _USER(Username),

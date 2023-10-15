@@ -10,7 +10,11 @@ namespace BadmintonManagement.Custom
 {
     public class CustomPicBox : PictureBox
     {
+        // Tạo thuộc tính độ rộng cho viền của picturebox
         public int BorderWidth { get; set; } = 1;
+        // Tạo thuộc tính màu  viền cho picturebox
+        public Color BorderColor { get; set; } = Color.Black;
+
 
         protected override void OnPaint(PaintEventArgs pe)
         {
@@ -22,6 +26,5 @@ namespace BadmintonManagement.Custom
             }
         }
 
-        public Color BorderColor { get; set; } = Color.Black;
     }
 }

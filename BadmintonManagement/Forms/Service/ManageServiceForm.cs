@@ -174,7 +174,7 @@ namespace BadmintonManagement.Forms.Service
             panel2.Controls.Add(label7);
             panel2.Controls.Add(txtSearch);
             double width = (panel2.Width);
-            double height = (panel2.Height) / 2.5;
+            double height = (panel2.Height) / 4;
 
             Label label = new Label();
             label.Location = new Point(0, Convert.ToInt32(height));

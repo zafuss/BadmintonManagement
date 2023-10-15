@@ -263,7 +263,6 @@
     <Compile Include="Models\CUSTOMER.cs" />
     <Compile Include="Models\C_SERVICE.cs" />
     <Compile Include="Models\C_USER.cs" />
-    <Compile Include="Models\C__MigrationHistory.cs" />
     <Compile Include="Models\ModelBadmintonManage.cs" />
     <Compile Include="Models\PRICE.cs" />
     <Compile Include="Models\RECEIPT.cs" />
