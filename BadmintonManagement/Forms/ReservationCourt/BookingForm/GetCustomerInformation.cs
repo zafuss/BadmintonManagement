@@ -49,7 +49,6 @@ namespace BadmintonManagement.Forms.ReservationCourt.BookingForm
         {
             
         }
-
         private bool CheckExistPhoneNumber()
         {
             if (context.CUSTOMER.Any(p => p.PhoneNumber == txtPhoneNumber.Text))
@@ -74,7 +73,6 @@ namespace BadmintonManagement.Forms.ReservationCourt.BookingForm
             }
                 
         }
-
         private void btnSelect_Click(object sender, EventArgs e)
         {
             if(CheckExistPhoneNumber())
@@ -87,19 +85,32 @@ namespace BadmintonManagement.Forms.ReservationCourt.BookingForm
             }
             else
             {
-                if(MessageBox.Show("Bạn có muốn thêm khách hàng mới","Thông báo",MessageBoxButtons.YesNo)==DialogResult.No)
-                    return;
-                if(txtPhoneNumber.Text != string.Empty)
+                if(MessageBox.Show("Bạn có muốn thêm khách hàng mới","Thông báo",MessageBoxButtons.YesNo)==DialogResult.Yes)
                 {
+                    if (txtPhoneNumber.Text == string.Empty || txtFullName.Text == string.Empty|| txtEmail.Text == string.Empty)
+                    {
+                        MessageBox.Show("Vui lòng nhập đủ thông tin khách hàng","Thông báo");
+                        return;
+                    }
                     ModelBadmintonManage context = new ModelBadmintonManage();
                     CUSTOMER c = new CUSTOMER();
                     c.PhoneNumber = txtPhoneNumber.Text;
                     c.FullName = txtFullName.Text;
                     c.Email = txtEmail.Text;
+                    Booking frm = new Booking(txtPhoneNumber.Text, txtFullName.Text, txtEmail.Text);
+                    frm.FormBorderStyle = FormBorderStyle.SizableToolWindow;
+                    frm.Show();
+                    this.Close();
                 }
-                Booking frm = new Booking(txtPhoneNumber.Text,txtFullName.Text,txtEmail.Text);
-                frm.FormBorderStyle = FormBorderStyle.SizableToolWindow;
-                frm.Show();
+                else
+                {
+                    Booking frm = new Booking();
+                    frm.FormBorderStyle = FormBorderStyle.SizableToolWindow;
+                    frm.ReloadBK = new Booking.ChangeBK(LoadCus);
+                    frm.Show();
+                    this.Close();
+                }
+               
             }
         }
         private void btnExit_Click(object sender, EventArgs e)

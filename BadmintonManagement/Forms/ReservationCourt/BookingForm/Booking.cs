@@ -218,7 +218,10 @@ namespace BadmintonManagement.Forms.ReservationCourt.BookingForm
                 {
                     rev.ReservationNo = revNo;
                     rev.Username = Properties.Settings.Default.Username;
-                    rev.PhoneNumber = PN;
+                    if (PN != string.Empty)
+                        rev.PhoneNumber = PN;
+                    else
+                        rev.PhoneNumber = null;
                     rev.CreateDate = DateTime.Now;
                     rev.BookingDate = d.Date;
                     rev.StartTime = new DateTime(d.Year, d.Month, d.Day, dtpStartTime.Value.Hour, dtpStartTime.Value.Minute, 0);
@@ -229,7 +232,8 @@ namespace BadmintonManagement.Forms.ReservationCourt.BookingForm
                     context.RESERVATION.Add(rev);
                     context.SaveChanges();
                 }
-                catch (Exception ex) 
+                catch (Exception ex)
+ 
                 { MessageBox.Show(ex.Message); }
               
             }

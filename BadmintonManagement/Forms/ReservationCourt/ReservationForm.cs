@@ -155,13 +155,6 @@ namespace BadmintonManagement.Forms.ReservationCourt
                     else
                         dgvReservation.Rows[i].Visible = false;
                 }
-              /*  else
-                {
-                    if (txtSearchByPhoneNumber.TextLength > 0)
-                        dgvReservation.Rows[i].Visible = false;
-                    else
-                        dgvReservation.Rows[i].Visible = true;
-                }*/
             }
             ReloadGridFollowTimeByFilter(st, se);
         }
@@ -210,7 +203,7 @@ namespace BadmintonManagement.Forms.ReservationCourt
         }
         private void btnCancel_Click(object sender, EventArgs e)
         {
-            if(MessageBox.Show("Có thật sự muốn hủy","Caution",MessageBoxButtons.YesNo) == DialogResult.Yes)
+            if(MessageBox.Show("Có thật sự muốn hủy","Thông báo",MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
                 dgvReservation.SelectedRows[0].Cells[9].Value = "Đã hủy";
                 int i = dgvReservation.SelectedRows.Count - 1;
@@ -219,7 +212,7 @@ namespace BadmintonManagement.Forms.ReservationCourt
                 rev.C_Status = 7;
                 EraseRF_Detail(rev);
                 btnCancel.Enabled = false;
-                MessageBox.Show("Đã hủy");
+                MessageBox.Show("Đã hủy","Thông báo");
             }
         }
         private void dgvReservation_SelectionChanged(object sender, EventArgs e)
@@ -317,7 +310,7 @@ namespace BadmintonManagement.Forms.ReservationCourt
         }
         private void btnAcceptDeposition_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Có xác nhận đặt cọc?", "Caution", MessageBoxButtons.YesNo) == DialogResult.No)
+            if (MessageBox.Show("Có xác nhận đặt cọc?", "Thông báo", MessageBoxButtons.YesNo) == DialogResult.No)
                 return;
             RESERVATION rev = new RESERVATION();
             int i = dgvReservation.SelectedRows.Count - 1;

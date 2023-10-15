@@ -69,8 +69,13 @@ namespace BadmintonManagement.Forms.ReservationCourt.ReservationReceipt
                 txtDeposite.Text = rec.RESERVATION.Deposite.Value.ToString();
                 txtTotal.Text = (rec.Total.Value-rec.RESERVATION.Deposite).ToString();
                 txtExtraTime.Text = GetTheExtraTimeFee().ToString();
+                if(rec.Payment == "Tiền mặt")
+                    rdoCash.Checked = true;
+                else if(rec.Payment == "Chuyển khoản")
+                    rdoEBanking.Checked = true;
                 btnPayment.Enabled = false;
                 btnPrint.Visible = true;
+                grpPayment.Enabled = false;
             }
         }
         private decimal GetTheTotal(RESERVATION rev)
@@ -124,8 +129,6 @@ namespace BadmintonManagement.Forms.ReservationCourt.ReservationReceipt
             RESERVATION rev = context.RESERVATION.FirstOrDefault(p => p.ReservationNo == revNo);
             return Math.Round(decimal.Parse(GetTheExtraTime().ToString()) * rev.PRICE.PriceTag);    
         }
- 
-
         private void AcceptReceipt()
         {
             RECEIPT rec = new RECEIPT();
@@ -136,12 +139,21 @@ namespace BadmintonManagement.Forms.ReservationCourt.ReservationReceipt
             rec.Total = GetTheTotal(rev)+GetTheExtraTimeFee();
             rec.Username = Properties.Settings.Default.Username;
             rec.ExtraTime = float.Parse(txtExtraTime.Text);
+            if (rdoCash.Checked == true)
+                rec.Payment = "Tiền mặt";
+            else if (rdoEBanking.Checked == true)
+                rec.Payment = "Chuyển khoản";
             context.RECEIPT.Add(rec);
             context.SaveChanges();
         }
        
         private void btnPayment_Click(object sender, EventArgs e)
         {
+            if(rdoCash.Checked == false && rdoEBanking.Checked == false) 
+            {
+                MessageBox.Show("Vui lòng chọn hình thức thanh toán","Thông báo");
+                return;
+            }
             AcceptReceipt();
             RevStat(revNo);
             RevReceiptPrint frm = new RevReceiptPrint(revNo);

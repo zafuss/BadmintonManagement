@@ -95,7 +95,7 @@
             this.dgvReservation.MultiSelect = false;
             this.dgvReservation.Name = "dgvReservation";
             this.dgvReservation.ReadOnly = true;
-            this.dgvReservation.Size = new System.Drawing.Size(921, 381);
+            this.dgvReservation.Size = new System.Drawing.Size(921, 537);
             this.dgvReservation.TabIndex = 0;
             this.dgvReservation.SelectionChanged += new System.EventHandler(this.dgvReservation_SelectionChanged);
             // 
@@ -483,7 +483,7 @@
             this.groupBox1.Controls.Add(this.dgvReservation);
             this.groupBox1.Location = new System.Drawing.Point(217, 82);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(927, 400);
+            this.groupBox1.Size = new System.Drawing.Size(927, 556);
             this.groupBox1.TabIndex = 9;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Thông tin phiếu đặt sân";

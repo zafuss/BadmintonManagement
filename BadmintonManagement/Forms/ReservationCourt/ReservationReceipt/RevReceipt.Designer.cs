@@ -44,7 +44,11 @@
             this.label5 = new System.Windows.Forms.Label();
             this.btnPayment = new System.Windows.Forms.Button();
             this.btnPrint = new System.Windows.Forms.Button();
+            this.grpPayment = new System.Windows.Forms.GroupBox();
+            this.rdoCash = new System.Windows.Forms.RadioButton();
+            this.rdoEBanking = new System.Windows.Forms.RadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.dgvRF_Detail)).BeginInit();
+            this.grpPayment.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -64,7 +68,6 @@
             this.txtReceiptNo.ReadOnly = true;
             this.txtReceiptNo.Size = new System.Drawing.Size(200, 26);
             this.txtReceiptNo.TabIndex = 1;
-
             // 
             // label2
             // 
@@ -194,11 +197,45 @@
             this.btnPrint.Visible = false;
             this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
             // 
+            // grpPayment
+            // 
+            this.grpPayment.Controls.Add(this.rdoEBanking);
+            this.grpPayment.Controls.Add(this.rdoCash);
+            this.grpPayment.Location = new System.Drawing.Point(477, 53);
+            this.grpPayment.Name = "grpPayment";
+            this.grpPayment.Size = new System.Drawing.Size(200, 228);
+            this.grpPayment.TabIndex = 13;
+            this.grpPayment.TabStop = false;
+            this.grpPayment.Text = "Phương thức thanh toán";
+            // 
+            // rdoCash
+            // 
+            this.rdoCash.AutoSize = true;
+            this.rdoCash.Location = new System.Drawing.Point(6, 25);
+            this.rdoCash.Name = "rdoCash";
+            this.rdoCash.Size = new System.Drawing.Size(88, 24);
+            this.rdoCash.TabIndex = 0;
+            this.rdoCash.TabStop = true;
+            this.rdoCash.Text = "Tiền mặt";
+            this.rdoCash.UseVisualStyleBackColor = true;
+            // 
+            // rdoEBanking
+            // 
+            this.rdoEBanking.AutoSize = true;
+            this.rdoEBanking.Location = new System.Drawing.Point(6, 55);
+            this.rdoEBanking.Name = "rdoEBanking";
+            this.rdoEBanking.Size = new System.Drawing.Size(129, 24);
+            this.rdoEBanking.TabIndex = 1;
+            this.rdoEBanking.TabStop = true;
+            this.rdoEBanking.Text = "Chuyển khoản";
+            this.rdoEBanking.UseVisualStyleBackColor = true;
+            // 
             // RevReceipt
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(899, 674);
+            this.Controls.Add(this.grpPayment);
             this.Controls.Add(this.btnPrint);
             this.Controls.Add(this.btnPayment);
             this.Controls.Add(this.txtDeposite);
@@ -218,6 +255,8 @@
             this.Text = "Hóa đơn phiếu đặt sân";
             this.Load += new System.EventHandler(this.RevReceipt_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvRF_Detail)).EndInit();
+            this.grpPayment.ResumeLayout(false);
+            this.grpPayment.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -241,5 +280,8 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button btnPayment;
         private System.Windows.Forms.Button btnPrint;
+        private System.Windows.Forms.GroupBox grpPayment;
+        private System.Windows.Forms.RadioButton rdoEBanking;
+        private System.Windows.Forms.RadioButton rdoCash;
     }
 }
