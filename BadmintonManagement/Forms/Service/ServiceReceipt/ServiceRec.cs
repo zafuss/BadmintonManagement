@@ -205,9 +205,9 @@ namespace BadmintonManagement.Forms.Service.ServiceReceipt
                     context.SaveChanges();
                 }
                 ReloadShowServiceReceipt(1);
-                this.Close();
                 SerRecPrint frm = new SerRecPrint(txtRecNo.Text);
                 frm.ShowDialog();
+                this.Close();
             }
         }
         private void btnClose_Click(object sender, EventArgs e)

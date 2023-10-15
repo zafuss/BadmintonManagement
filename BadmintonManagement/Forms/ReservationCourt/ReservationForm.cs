@@ -321,6 +321,7 @@ namespace BadmintonManagement.Forms.ReservationCourt
             context.SaveChanges();
             btnGot.Enabled = true;
             btnAcceptDeposition .Enabled = false;
+            MessageBox.Show("Đặt cọc thành công","Thông báo");
             
         }
         private void ChangeReservationStatus(string revNo)
@@ -481,18 +482,26 @@ namespace BadmintonManagement.Forms.ReservationCourt
         }
         private void btnGot_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Có xác nhận nhận sân?", "Caution", MessageBoxButtons.YesNo) == DialogResult.No)
+            
+            if(MessageBox.Show("Có xác nhận nhận sân?", "Caution", MessageBoxButtons.YesNo) == DialogResult.No)
                 return;
             RESERVATION rev = new RESERVATION();
             int i = dgvReservation.SelectedRows.Count - 1;
             string str = dgvReservation.SelectedRows[i].Cells[0].Value.ToString();
             rev = context.RESERVATION.FirstOrDefault(p => p.ReservationNo == str);
-            rev.C_Status = 2;
-            dgvReservation.SelectedRows[i].Cells[9].Value = "Đã nhận sân";
-            context.RESERVATION.AddOrUpdate(rev);
-            context.SaveChanges();
-            btnRevReceipt.Enabled = true;
-            btnGot.Enabled = false;
+            if (DateTime.Compare(DateTime.Now,rev.StartTime.Value)>=0)
+            {
+                rev.C_Status = 2;
+                dgvReservation.SelectedRows[i].Cells[9].Value = "Đã nhận sân";
+                context.RESERVATION.AddOrUpdate(rev);
+                context.SaveChanges();
+                btnRevReceipt.Enabled = true;
+                btnGot.Enabled = false;
+            }
+            else
+            {
+                MessageBox.Show("Chưa đến giờ nhận sân","Thông báo");
+            }
         }
         private void btnCancel_EnabledChanged_1(object sender, EventArgs e)
         {
