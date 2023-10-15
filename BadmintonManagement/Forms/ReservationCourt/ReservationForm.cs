@@ -147,6 +147,8 @@ namespace BadmintonManagement.Forms.ReservationCourt
         {
             for(int d =0;d<dgvReservation.ColumnCount;d++) 
             {
+                if (row.Cells[d].Value == null)
+                    continue;
                 if (row.Cells[d].Value.ToString().ToLower().Contains(txtSearchByPhoneNumber.Text.ToLower()))
                     return true;
             }
@@ -154,7 +156,7 @@ namespace BadmintonManagement.Forms.ReservationCourt
         }
         private void txtSearchByPhoneNumber_TextChanged(object sender, EventArgs e)
         {
-            ReloadGrid();
+            //ReloadGrid();
             for (int i = 0; i < dgvReservation.Rows.Count - 1; i++)
             {
                 if (dgvReservation.Rows[i].Cells[0].Value != null)

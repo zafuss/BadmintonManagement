@@ -110,6 +110,7 @@
             this.btnUsedPrice.TabIndex = 13;
             this.btnUsedPrice.Text = "Áp Dụng";
             this.btnUsedPrice.UseVisualStyleBackColor = true;
+            this.btnUsedPrice.Click += new System.EventHandler(this.btnUsedPrice_Click);
             // 
             // txtPriceID
             // 
