@@ -114,11 +114,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>BadmintonManagementDBDataSet.xsd</DependentUpon>
     </Compile>
-    <Compile Include="BadmintonManagementDBDataSet1.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>BadmintonManagementDBDataSet1.xsd</DependentUpon>
-    </Compile>
     <Compile Include="Custom\CustomControl.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -368,7 +363,7 @@
     <Compile Include="Services\OTP\OTPService.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UIConstants.cs" />
+    <Compile Include="Security\UIConstants.cs" />
     <Compile Include="Security\Validator.cs" />
     <Compile Include="Security\Security.cs" />
     <EmbeddedResource Include="CustomerReport.rdlc">
@@ -502,17 +497,6 @@
     </None>
     <None Include="BadmintonManagementDBDataSet.xss">
       <DependentUpon>BadmintonManagementDBDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="BadmintonManagementDBDataSet1.xsc">
-      <DependentUpon>BadmintonManagementDBDataSet1.xsd</DependentUpon>
-    </None>
-    <None Include="BadmintonManagementDBDataSet1.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>BadmintonManagementDBDataSet1.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="BadmintonManagementDBDataSet1.xss">
-      <DependentUpon>BadmintonManagementDBDataSet1.xsd</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\DataSources\BadmintonManagement.Database.CountCustomer.datasource" />
