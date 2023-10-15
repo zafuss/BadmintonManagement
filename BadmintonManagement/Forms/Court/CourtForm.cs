@@ -18,18 +18,26 @@ namespace BadmintonManagement.Forms.Court
     public partial class CourtForm : Form
     {
         public static CourtForm Instance;
+        //Cờ để kiểm tra user có mở không
         public bool flagUser = false;
+        //Cờ để kiểm tra admin có mở không
         public bool flagAdmin = false;
+        //Danh sách các sân khả dụng
         public List<COURT> newCourt = new CourtService().getListCourtWithOutDisable();
+        //Danh sách các rf detail khả dụng
         public List<RF_DETAIL> listRF = new RFDetailService().getRFDetail();
+        //Danh sách chứa các thông tin sân user
         public List<InfoCourt> listInfo = new RFDetailService().getCourtByRF();
+        //Danh sách thời gian đặt sân trong cơ sở dữ liệu
         public HashSet<string> loadCourt = new RFDetailService().getListTimeinDay();
+
         public CourtForm()
         {
             InitializeComponent();
             fill();
             customizeDesign();
             Instance = this;
+            //ẩn đi nút admin nếu role không phải admin
             if (Properties.Settings.Default.Role != "Admin")
             {
                 btnAdmin.Visible = false;
@@ -54,12 +62,16 @@ namespace BadmintonManagement.Forms.Court
         //    label.Font = new Font("Segoe UI", 14, FontStyle.Bold);
         //    pnlFunction.Controls.Add(label);
         //}
+
+
+        //Hàm để kiểm tra thời gian hiện tại có trong thời gian đặt sân không
         private void tmrCountDown_Tick(object sender, EventArgs e)
         {
             label1.Text = String.Format("{0}", DateTime.Now.ToString("HH:mm:ss")); 
 
             loadCourt = new RFDetailService().getListTimeinDay();
-           
+            
+            //Kiểm tra có thời gian đặt sân nào trong danh sách booking không
             if (loadCourt.Count != 0)
             {
                 DateTime dateTime = new DateTime();
@@ -77,14 +89,17 @@ namespace BadmintonManagement.Forms.Court
             }
         }
 
-
+        //Reset lại thời gian và thông tin sân
         public void Reset()
         {
             txtBranchName.Text = txtCourtName.Text = txtNameCustom.Text = txtPhoneNumber.Text = "";
             txtStartTime.Text = txtEndTime.Text = "00:00";
         }
 
-        string _name = "";
+        //Biến để lấy ra sân nào đang click
+        private string _name = "";
+
+        //Hàm để tô viền cho custompanel
         private void ControlHoverEnterHandler(object sender, EventArgs e)
         {
             CustomPanel hoverPanel = sender as CustomPanel;
@@ -96,6 +111,7 @@ namespace BadmintonManagement.Forms.Court
             }
         }
 
+        //Hàm để tô viền cho custompanel
         private void ControlHoverLeaveHandler(object sender, EventArgs e)
         {
             CustomPanel hoverPanel = sender as CustomPanel;
@@ -132,6 +148,7 @@ namespace BadmintonManagement.Forms.Court
             }
         }
 
+        //Hàm để tô viền panel
         private void PicMouseHoverHandler(object sender, EventArgs e)
         {
             CustomPicBox customPicBox = sender as CustomPicBox;
@@ -150,6 +167,7 @@ namespace BadmintonManagement.Forms.Court
             }
         }
 
+        //Hàm to viền pic box khi click vào hình sân
         private void ControlAdminClickHandler(object sender, EventArgs e)
         {
             hideSubMenu();
@@ -178,6 +196,7 @@ namespace BadmintonManagement.Forms.Court
             }
         }
 
+        //Hàm để tô viền panel
         private void ControlClickHandler(object sender, EventArgs e)
         {
             hideSubMenu();
@@ -224,6 +243,7 @@ namespace BadmintonManagement.Forms.Court
             }
         }
 
+        //Khi double click vùng không phải sân thì bỏ chọn sân và reset lại thông tin
         private void ControlDoubleClickHandler(object sender, EventArgs e)
         {
             //hideSubMenu();
@@ -251,6 +271,7 @@ namespace BadmintonManagement.Forms.Court
             //}
         }
 
+        //Hàm để lấy thông tin sân đổ vào bên trái màn hình
         private void displayUser(InfoCourt infoCourt)
         {
             txtNameCustom.Text = infoCourt.NameCustom;
@@ -261,6 +282,7 @@ namespace BadmintonManagement.Forms.Court
             txtEndTime.Text = infoCourt.Endtime;
         }
 
+        //Hàm để gọi form addcourt
         private void fill()
         {
             AddCourtForm addCourtForm = new AddCourtForm();
@@ -271,12 +293,14 @@ namespace BadmintonManagement.Forms.Court
             addCourtForm.AutoScaleMode = AutoScaleMode.Inherit; 
             addCourtForm.Show();
         }
+
         private void customizeDesign()
         {
             pnlUser.Visible = false;
             pnlAdmin.Visible = false;
         }
 
+        //Hàm để ẩn hiện các button
         private void hideSubMenu()
         {
             if(pnlUser.Visible == true ) 
@@ -290,20 +314,19 @@ namespace BadmintonManagement.Forms.Court
             }
         }
 
+        //Hàm để làm mới lại giao diện nhân viên
         public void ReLoad()
         {
             pnlDisplayCourt.Controls.Clear();
             pnlDisplayCourt.Refresh();
 
-            //MessageBox.Show(count.ToString());
             RFDetailService rf = new RFDetailService();
             List<InfoCourt> listInfo = rf.getCourtByRF();
             count = listInfo.Count();
             UserShow(listInfo, count);
-
-            //this.btnUser.Click += new System.EventHandler(this.btnUser_Click);
         }
 
+        //Hàm để hiện thị giao diện nhân viên
         public void UserShow(List<InfoCourt> infoCourts,int count)
         {
             flagUser = true;
@@ -313,18 +336,24 @@ namespace BadmintonManagement.Forms.Court
             double heigth = this.pnlDisplayCourt.Height;
             for (int i = 0; i < count; i++)
             {
+                //Thêm sân user vào panel 
                 pnlDisplayCourt.Controls.Add(new RFDetailService().DisplayRFDetailUser(i, infoCourts[i], width, heigth));
+                //Cài đặt các sự kiên cho panel
                 pnlDisplayCourt.Controls[i].Controls[3].Click += ControlClickHandler;
                 pnlDisplayCourt.Click += ControlDoubleClickHandler;
                 pnlDisplayCourt.Controls[i].Controls[3].MouseHover += PicMouseHoverHandler;
 
+                //Cài đặt các sự kiện cho picbox
                 pnlDisplayCourt.Controls[i].MouseHover += ControlHoverEnterHandler;
                 pnlDisplayCourt.Controls[i].MouseLeave += ControlHoverLeaveHandler;
             }
             //MessageBox.Show("VCL");
         }
 
+        //Đếm tất cả sân khả dụng trong danh sách
         int count = new CourtService().getCountCourtDisable();
+
+        //Hàm để hiện thị giao diện nhân viên
         public void ShowCourt(List<COURT> newCourt, int count)
         {
             flagAdmin = true;
@@ -336,17 +365,21 @@ namespace BadmintonManagement.Forms.Court
             pnlDisplayCourt.Refresh();
             for (int i = 0; i < count; i++)
             {
+                //Thêm sân admin vào panel
                 pnlDisplayCourt.Controls.Add(new CourtService().DisplayCourtAdmin(i, newCourt[i],width,heigth));
+                //Cài đặt các sự kiện cho panel
                 pnlDisplayCourt.Controls[i].Controls[2].Click += ControlAdminClickHandler;
                 pnlDisplayCourt.Click += ControlDoubleClickHandler;
                 pnlDisplayCourt.Controls[i].Controls[2].MouseHover += PicMouseHoverHandler;
 
+                //Cài đặt các sự kiện cho picbox
                 pnlDisplayCourt.Controls[i].MouseHover += ControlHoverEnterHandler;
                 pnlDisplayCourt.Controls[i].MouseLeave += ControlHoverLeaveHandler;
             }
 
         }
 
+        //Ẩn hiện các panel
         private void showSubMenu(Panel panel) {
 
             if (panel.Visible == false)
@@ -358,6 +391,7 @@ namespace BadmintonManagement.Forms.Court
                 panel.Visible = false;
         }
         
+        //Khi nhấn vào button user thì sẽ hiện thị ra form user
         private void btnUser_Click(object sender, EventArgs e)
         {
             pnlDisplayCourt.Controls.Clear();
@@ -371,6 +405,21 @@ namespace BadmintonManagement.Forms.Court
             btnAdmin.BackColor = Color.LightGray;
         }
 
+        //Khi nhấn vào nút admin thì hiện thị form admin
+        private void btnAdmin_Click(object sender, EventArgs e)
+        {
+            pnlDisplayCourt.Controls.Clear();
+            pnlDisplayCourt.Refresh();
+            showSubMenu(pnlAdmin);
+            newCourt = new CourtService().getListCourtWithOutDisable();
+            count = newCourt.Count();
+            ShowCourt(newCourt, count);
+            btnUser.BackColor = Color.LightGray;
+            btnCalendar.BackColor = Color.LightGray;
+            btnAdmin.BackColor = SystemColors.ButtonShadow; ;
+        }
+
+        //Khi mà màn hình thay đổi size thì các panel cũng thay đổi theo
         private void pnlDisplayCourt_SizeChanged(object sender, EventArgs e)
         {
             
@@ -389,7 +438,7 @@ namespace BadmintonManagement.Forms.Court
                 UserShow(listInfo, count);
             }
 
-
+            //Lưu lại viền khi thay đổi kích thước form
             foreach (CustomPanel item in pnlDisplayCourt.Controls)
             {
                 if (item.Name == _name)
@@ -407,19 +456,7 @@ namespace BadmintonManagement.Forms.Court
 
         }
 
-        private void btnAdmin_Click(object sender, EventArgs e)
-        {
-            pnlDisplayCourt.Controls.Clear();
-            pnlDisplayCourt.Refresh();
-            showSubMenu(pnlAdmin);
-            newCourt = new CourtService().getListCourtWithOutDisable();
-            count = newCourt.Count();
-            ShowCourt(newCourt, count);
-            btnUser.BackColor = Color.LightGray;
-            btnCalendar.BackColor = Color.LightGray;
-            btnAdmin.BackColor = SystemColors.ButtonShadow; ;
-        }
-
+        //Khi nhấn vào button xem lịch sân thì hiện thị ra form court calendar
         private void btnCalendar_Click(object sender, EventArgs e)
         {
             btnUser.BackColor = Color.LightGray;

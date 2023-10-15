@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace BadmintonManagement.Database
 {
+    // Tạo class infocourt chứa các thông tin cần thiết để truy xuất
     public class InfoCourt
     {
         private string _courtId;
