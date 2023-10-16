@@ -1,4 +1,6 @@
-﻿using BadmintonManagement.Forms.ReservationCourt.ReservationReceipt;
+﻿using BadmintonManagement.Forms.Price;
+using BadmintonManagement.Forms.ReservationCourt.BookingForm;
+using BadmintonManagement.Forms.ReservationCourt.ReservationReceipt;
 using BadmintonManagement.Forms.ReservationCourt.ReservationReceipt.RevRecPrint;
 using BadmintonManagement.Models;
 using System;
@@ -19,9 +21,11 @@ namespace BadmintonManagement.Forms.ReservationCourt.ReservationReceipt
         public RevReceipt()
         {
             InitializeComponent();
+            
         }
         string revNo;
         bool isNew;
+        BookingDetailForReceitp bookingDetail = new BookingDetailForReceitp();
         public RevReceipt(string reservationNo, string status)
         {
             InitializeComponent();
@@ -47,8 +51,10 @@ namespace BadmintonManagement.Forms.ReservationCourt.ReservationReceipt
         }
         private void RevReceipt_Load(object sender, EventArgs e)
         {
-            if(isNew)
+            bookingDetail = GetTheBookingDetail();
+            if (isNew)
             {
+                bookingDetail = GetTheBookingDetail();
                 List<RF_DETAIL> listRF = context.RF_DETAIL.Where(p => p.ReservationNo == revNo).ToList();
                 BindGrid(listRF);
                 RESERVATION rev = context.RESERVATION.FirstOrDefault(p => p.ReservationNo == revNo);
@@ -78,6 +84,54 @@ namespace BadmintonManagement.Forms.ReservationCourt.ReservationReceipt
                 grpPayment.Enabled = false;
             }
         }
+        private BookingDetailForReceitp GetTheBookingDetail()
+        {
+           
+            foreach(BookingDetailForReceitp item in Booking.listBDFR)
+            {
+                if(item.ReservationNo == revNo)
+                    return item;
+            }
+            return null;
+        }
+        private decimal GetTheExactTimeFactoredMinutes(DateTime st, DateTime se,BookingDetailForReceitp bookingDetail)
+        {
+            decimal d1 = st.Hour * 60 + st.Minute;
+            decimal d2 = se.Hour * 60 + se.Minute;
+            if(bookingDetail is null)
+            {
+                return 0;
+            }
+            string str= bookingDetail.PriceID;
+            decimal timeFactor = (decimal)context.PRICE.FirstOrDefault(p => p.PriceID == str).TimeFactor;
+            decimal dayFactor;
+            if (bookingDetail.WDay.Any(p => p.Day == DateTime.Now.DayOfWeek))
+                dayFactor = (decimal)context.PRICE.FirstOrDefault(p => p.PriceID == str).DateFactor;
+            else
+                dayFactor = 1;
+            foreach (TimeApplyFactor item in ApplyFactor.timeApplyFactors)
+            {
+                decimal d3 = item.StartTime;
+                decimal d4 = item.EndTime;
+                if (d1 > d4 || d2 < d3)
+                    continue;
+                if (d1 <= d3)
+                {
+                    if (d2 >= d4)
+                        return (d2 - d1 + (d4 - d3) * (timeFactor - 1)) * dayFactor;
+                    else
+                        return (d2 - d1 + (d2 - d3) * (timeFactor - 1)) * dayFactor;
+                }
+                else
+                {
+                    if (d2 >= d4)
+                        return (d2 - d1 + (d4 - d1) * (timeFactor - 1)) * dayFactor;
+                    else
+                        return (d2 - d1) * timeFactor * dayFactor;
+                }
+            }
+            return d2 - d1;
+        }
         private decimal GetTheTotal(RESERVATION rev)
         {
 
@@ -92,8 +146,11 @@ namespace BadmintonManagement.Forms.ReservationCourt.ReservationReceipt
         {
             DateTime d1 = rf.RESERVATION.StartTime;
             DateTime d2 = rf.RESERVATION.EndTime;
-            decimal p = (decimal)(d2.Hour*60 + d2.Minute - d1.Hour*60 -d1.Minute)/60;
-            return Math.Round((p + Decimal.Parse(GetTheExtraTime().ToString())) * rf.RESERVATION.PRICE.PriceTag);
+            if (bookingDetail is null)
+                return 0;
+            string str = bookingDetail.PriceID;
+            decimal p = (GetTheExactTimeFactoredMinutes(d1, d2, bookingDetail)+ Decimal.Parse(GetTheExtraTime().ToString())*30) * context.PRICE.FirstOrDefault(p => p.PriceID ==str ).PriceTag/60;
+            return Math.Round(p);
         }
         private void BindGrid(List<RF_DETAIL> listRF)
         {
@@ -127,7 +184,7 @@ namespace BadmintonManagement.Forms.ReservationCourt.ReservationReceipt
         private decimal GetTheExtraTimeFee()
         {
             RESERVATION rev = context.RESERVATION.FirstOrDefault(p => p.ReservationNo == revNo);
-            return Math.Round(decimal.Parse(GetTheExtraTime().ToString()) * rev.PRICE.PriceTag);    
+            return Math.Round(decimal.Parse(GetTheExtraTime().ToString()) * rev.PRICE.PriceTag*decimal.Parse(rev.PRICE.TimeFactor.ToString()));    
         }
         private void AcceptReceipt()
         {

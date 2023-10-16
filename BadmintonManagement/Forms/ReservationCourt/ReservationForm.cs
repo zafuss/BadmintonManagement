@@ -262,7 +262,7 @@ namespace BadmintonManagement.Forms.ReservationCourt
                         btnCancel.Enabled = false;
                         btnAcceptDeposition.Enabled = false;
                         btnGot.Enabled = true;
-                        btnRevReceipt.Enabled = false;
+                        btnRevReceipt.Enabled = true;
                         btnRevReceipt.Text = "Lập hóa đơn";
                         break;
                     case "Đã nhận sân":

@@ -6,6 +6,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Data.Entity;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Runtime.Remoting.Contexts;
@@ -21,6 +22,7 @@ namespace BadmintonManagement.Forms.ReservationCourt.BookingForm
         {
             InitializeComponent();
         }
+        public static List<BookingDetailForReceitp> listBDFR;
         public delegate void ChangeBK(int i);
         public ChangeBK ReloadBK;
         string PN;
@@ -54,6 +56,7 @@ namespace BadmintonManagement.Forms.ReservationCourt.BookingForm
         }
         private void BookingForm_Load(object sender, EventArgs e)
         {
+            LoadFileBooking();
             if(revNo == string.Empty)
             {
                 revNo = RandomRevNo();
@@ -64,6 +67,8 @@ namespace BadmintonManagement.Forms.ReservationCourt.BookingForm
                 RESERVATION rev = context.RESERVATION.FirstOrDefault(p => p.ReservationNo == revNo);
                 List<RF_DETAIL> listRFD = rev.RF_DETAIL.ToList();
                 BindGrid(listRFD);
+                dtpStartTime.Value = rev.StartTime;
+                dtpEndTime.Value = rev.EndTime;
                 txtDeopsite.Text = rev.Deposite.Value.ToString();
                 btnAcept.Enabled = false;
                 btnCancel.Enabled = false;
@@ -287,6 +292,14 @@ namespace BadmintonManagement.Forms.ReservationCourt.BookingForm
                 context.RF_DETAIL.Add(rfd);
                 context.SaveChanges();
             }
+            BookingDetailForReceitp item = new BookingDetailForReceitp();
+            item.ReservationNo = revNo;
+            item.TFactor = ApplyFactor.timeApplyFactors;
+            item.WDay = ApplyFactor.weekDay;
+            item.PriceID = PriceForm.GBPriceID;
+            item.Total = ProvisionOfTotal();
+            listBDFR.Add(item);
+            SaveFile(listBDFR);
             int i = 1;
             ReloadBK(i);
             this.Close();
@@ -344,6 +357,22 @@ namespace BadmintonManagement.Forms.ReservationCourt.BookingForm
         private void btnClose_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+        public static void LoadFileBooking()
+        {
+            OpenFileDialog dialog = new OpenFileDialog();
+            dialog.Filter = "Binary file|*.dat";
+            string parentDirectory = Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory).Parent.Parent.FullName;
+            string filePath = Path.Combine(parentDirectory, "BookingDetailForReceipt", "BookingDetailForReceipt");
+            listBDFR = IOHelper.Load<BookingDetailForReceitp>(filePath);
+        }
+        private void SaveFile(List<BookingDetailForReceitp> T)
+        {
+            SaveFileDialog dialog = new SaveFileDialog();
+            dialog.Filter = "Binary file|*.dat";
+            string parentDirectory = Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory).Parent.Parent.FullName;
+            string filePath = Path.Combine(parentDirectory, "BookingDetailForReceipt", "BookingDetailForReceipt");
+            IOHelper.Save(filePath, T);
         }
     }
 }
