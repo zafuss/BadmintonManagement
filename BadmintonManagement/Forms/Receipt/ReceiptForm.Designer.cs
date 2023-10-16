@@ -102,7 +102,7 @@
             // 
             // btnGetAll
             // 
-            this.btnGetAll.Location = new System.Drawing.Point(859, 54);
+            this.btnGetAll.Location = new System.Drawing.Point(733, 54);
             this.btnGetAll.Name = "btnGetAll";
             this.btnGetAll.Size = new System.Drawing.Size(104, 33);
             this.btnGetAll.TabIndex = 5;
