@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace BadmintonManagement.Forms.ReservationCourt.BookingForm
 {
+    [Serializable]
     public class BookingDetailForReceitp
     {
         public BookingDetailForReceitp() { }

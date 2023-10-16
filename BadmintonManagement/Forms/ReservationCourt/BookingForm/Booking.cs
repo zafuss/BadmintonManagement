@@ -57,10 +57,14 @@ namespace BadmintonManagement.Forms.ReservationCourt.BookingForm
         private void BookingForm_Load(object sender, EventArgs e)
         {
             LoadFileBooking();
+            //UpdateBookingDetailForReceipt();
+            SaveFile(listBDFR);
             if(revNo == string.Empty)
             {
                 revNo = RandomRevNo();
                 isNew = true;
+                dtpStartTime.Value = new DateTime(dtpDate.Value.Year, dtpDate.Value.Month, dtpDate.Value.Day, DateTime.Now.Hour, DateTime.Now.Minute+5, 0);
+                dtpEndTime.Value = new DateTime(dtpDate.Value.Year, dtpDate.Value.Month, dtpDate.Value.Day, DateTime.Now.Hour+1, DateTime.Now.Minute+5, 0);
             }  
             else
             {
@@ -82,8 +86,7 @@ namespace BadmintonManagement.Forms.ReservationCourt.BookingForm
             dtpDate.Value = DateTime.Now;
             dtpStartTime.CustomFormat = "HH:mm";
             dtpEndTime.CustomFormat = "HH:mm";
-            dtpStartTime.Value = new DateTime(dtpDate.Value.Year, dtpDate.Value.Month, dtpDate.Value.Day, 5, 0, 0);
-            dtpEndTime.Value = new DateTime(dtpDate.Value.Year, dtpDate.Value.Month, dtpDate.Value.Day, 6, 0, 0);
+            
             FillcboCourtName();
         }
         private void BindGrid(List<RF_DETAIL> listRFD)
@@ -374,5 +377,19 @@ namespace BadmintonManagement.Forms.ReservationCourt.BookingForm
             string filePath = Path.Combine(parentDirectory, "BookingDetailForReceipt", "BookingDetailForReceipt");
             IOHelper.Save(filePath, T);
         }
+       /* public static void UpdateBookingDetailForReceipt()
+        {
+            ModelBadmintonManage context = new ModelBadmintonManage();
+            List<BookingDetailForReceitp> tempt = listBDFR.ToList();
+            foreach(BookingDetailForReceitp item in listBDFR)
+            {
+                if(context.RESERVATION.Any(p=>p.ReservationNo == item.ReservationNo))
+                {
+                    tempt.Remove(item);
+                }
+            }
+            listBDFR.Clear();
+            listBDFR = tempt.ToList();
+        }*/
     }
 }

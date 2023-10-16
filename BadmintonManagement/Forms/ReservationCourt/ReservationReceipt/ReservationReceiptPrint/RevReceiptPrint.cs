@@ -37,9 +37,10 @@ namespace BadmintonManagement.Forms.ReservationCourt.ReservationReceipt.RevRecPr
                             where ReservationNo =" + @"'" + reservationNo + @"'";
             List<RevForReport> listRFR = context.Database.SqlQuery<RevForReport>(sql).ToList();
             var RFRDS = new ReportDataSource("RevForReport", listRFR);
-            sql = @"select r.ReservationNo,c.CourtID,r.Note,c.CourtName,p.PriceTag, cast((Round((DATEDIFF(MINUTE,e.StartTime,e.EndTime)*p.PriceTag/60),0,0)) as decimal(9,0)) as[Total]
-                    from ((RF_DETAIL r inner join RESERVATION e on r.ReservationNo = e.ReservationNo) inner join COURT c on r.CourtID = c.CourtID) inner join PRICE p on e.PriceID = p.PriceID
-                    where r.ReservationNo =" + @"'" + reservationNo + @"'";
+            sql = @"select r.ReservationNo,c.CourtID,r.Note,c.CourtName,p.PriceTag,cast(t.Total/(select COUNT(CourtID)	from RF_DETAIL	where ReservationNo ="+ @"'" + reservationNo + @"'" + @"group by ReservationNo)as decimal(9,0)) as [Total]
+                        from (((RF_DETAIL r inner join RESERVATION e on r.ReservationNo = e.ReservationNo) inner join COURT c on r.CourtID = c.CourtID) inner join PRICE p on e.PriceID = p.PriceID) 
+		                        inner join RECEIPT t on r.ReservationNo = t.ReservationNo
+                        where r.ReservationNo = " + @"'" + reservationNo + @"'";
             List<RevDetailForReport> listRDFR = context.Database.SqlQuery<RevDetailForReport>(sql).ToList() ;
             var RDFRDS = new ReportDataSource("RevDetailForReport", listRDFR);
             sql = @"select r.ReceiptNo,r._Date as [C_Date],r.Total,r.ExtraTime,e.ReservationNo,r.Username,(r.Total - e.Deposite) as[RealChagre],Cast(Round((r.ExtraTime*p.PriceTag),0)as decimal)

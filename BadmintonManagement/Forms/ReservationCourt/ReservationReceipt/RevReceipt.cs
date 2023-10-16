@@ -149,7 +149,7 @@ namespace BadmintonManagement.Forms.ReservationCourt.ReservationReceipt
             if (bookingDetail is null)
                 return 0;
             string str = bookingDetail.PriceID;
-            decimal p = (GetTheExactTimeFactoredMinutes(d1, d2, bookingDetail)+ Decimal.Parse(GetTheExtraTime().ToString())*30) * context.PRICE.FirstOrDefault(p => p.PriceID ==str ).PriceTag/60;
+            decimal p = (GetTheExactTimeFactoredMinutes(d1, d2, bookingDetail)+ Decimal.Parse(GetTheExtraTime().ToString())) * context.PRICE.FirstOrDefault(p => p.PriceID ==str ).PriceTag/60;
             return Math.Round(p);
         }
         private void BindGrid(List<RF_DETAIL> listRF)
