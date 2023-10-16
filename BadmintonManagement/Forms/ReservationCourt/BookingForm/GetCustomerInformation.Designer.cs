@@ -44,7 +44,7 @@
             // txtEmail
             // 
             this.txtEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtEmail.Location = new System.Drawing.Point(166, 155);
+            this.txtEmail.Location = new System.Drawing.Point(163, 168);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(260, 26);
             this.txtEmail.TabIndex = 19;
@@ -53,7 +53,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(28, 194);
+            this.label7.Location = new System.Drawing.Point(28, 171);
             this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(48, 20);
@@ -64,7 +64,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(28, 124);
+            this.label6.Location = new System.Drawing.Point(28, 116);
             this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(123, 20);
@@ -74,7 +74,7 @@
             // txtFullName
             // 
             this.txtFullName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtFullName.Location = new System.Drawing.Point(166, 97);
+            this.txtFullName.Location = new System.Drawing.Point(163, 113);
             this.txtFullName.Name = "txtFullName";
             this.txtFullName.Size = new System.Drawing.Size(260, 26);
             this.txtFullName.TabIndex = 16;
@@ -84,7 +84,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(28, 64);
+            this.label5.Location = new System.Drawing.Point(28, 51);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(128, 20);
@@ -96,7 +96,7 @@
             this.txtPhoneNumber.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.txtPhoneNumber.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.txtPhoneNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPhoneNumber.Location = new System.Drawing.Point(166, 48);
+            this.txtPhoneNumber.Location = new System.Drawing.Point(163, 51);
             this.txtPhoneNumber.Name = "txtPhoneNumber";
             this.txtPhoneNumber.Size = new System.Drawing.Size(260, 26);
             this.txtPhoneNumber.TabIndex = 20;
@@ -105,10 +105,10 @@
             // btnSelect
             // 
             this.btnSelect.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSelect.Location = new System.Drawing.Point(374, 309);
+            this.btnSelect.Location = new System.Drawing.Point(225, 290);
             this.btnSelect.Margin = new System.Windows.Forms.Padding(4);
             this.btnSelect.Name = "btnSelect";
-            this.btnSelect.Size = new System.Drawing.Size(93, 42);
+            this.btnSelect.Size = new System.Drawing.Size(124, 52);
             this.btnSelect.TabIndex = 22;
             this.btnSelect.Text = "Xác nhận ";
             this.btnSelect.UseVisualStyleBackColor = true;
@@ -117,7 +117,7 @@
             // btnExit
             // 
             this.btnExit.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExit.Location = new System.Drawing.Point(533, 309);
+            this.btnExit.Location = new System.Drawing.Point(369, 290);
             this.btnExit.Margin = new System.Windows.Forms.Padding(4);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(124, 52);
@@ -137,7 +137,7 @@
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(28, 20);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(465, 214);
+            this.groupBox1.Size = new System.Drawing.Size(465, 244);
             this.groupBox1.TabIndex = 24;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Thông tin khách hàng";
@@ -145,7 +145,7 @@
             // btnNoInfor
             // 
             this.btnNoInfor.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnNoInfor.Location = new System.Drawing.Point(156, 309);
+            this.btnNoInfor.Location = new System.Drawing.Point(28, 290);
             this.btnNoInfor.Name = "btnNoInfor";
             this.btnNoInfor.Size = new System.Drawing.Size(180, 52);
             this.btnNoInfor.TabIndex = 25;
@@ -157,7 +157,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(531, 337);
+            this.ClientSize = new System.Drawing.Size(544, 375);
             this.Controls.Add(this.btnNoInfor);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnExit);
