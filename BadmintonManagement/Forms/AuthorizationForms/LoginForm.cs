@@ -19,13 +19,15 @@ namespace BadmintonManagement
         {
             InitializeComponent();
         }
-
+        
+        //sự kiện xảy ra khi nhấn quên mật khẩu
         private void lblForgotPass_Click(object sender, EventArgs e)
         {
             ForgotPasswordForm form = new ForgotPasswordForm(); 
             form.Show();  
         }
 
+        //sự kiện xảy ra khi nhấn vào nút đăng nhập
         private void btnLogin_Click(object sender, EventArgs e)
         {
             try
@@ -49,7 +51,7 @@ namespace BadmintonManagement
 
         }
 
-        // Change text in textbox  
+       
         private void txtUser_Enter(object sender, EventArgs e)
         {
             if (txtUser.Text == "Username")
@@ -104,6 +106,7 @@ namespace BadmintonManagement
                 txtPassword.PasswordChar = '\0';
         }
 
+        //sự kiện xayr a khi nhấn nút thoát
         private void btnExit_Click(object sender, EventArgs e)
         {
             this.Close();

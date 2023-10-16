@@ -1,6 +1,7 @@
 ﻿using BadmintonManagement.Forms.Service.ServiceReceipt.Print;
 using BadmintonManagement.Models;
 using System;
+using System.Activities.Statements;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -57,6 +58,7 @@ namespace BadmintonManagement.Forms.Service.ServiceReceipt
         private void ServiceReciept_Load(object sender, EventArgs e)
         {
             btnPayment.Enabled = false;
+            
             if (isNew == true) 
             {
                 txtRecNo.Text = GenerateServiceRecNo();
@@ -66,6 +68,7 @@ namespace BadmintonManagement.Forms.Service.ServiceReceipt
             }
             else
             {
+                grbPayment.Enabled = false;
                 if (serviceRecNo == null)
                 {
                     MessageBox.Show("Lỗi không tìm được hóa đơn", "Thông báo");
@@ -76,6 +79,10 @@ namespace BadmintonManagement.Forms.Service.ServiceReceipt
                 BindGrid(s.SERVICE_DETAIL.ToList());
                 txtRecNo.Text = s.ServiceReceiptNo;
                 txtUser.Text = s.Username;
+                if(s.Payment == rdbCash.Text)
+                    rdbCash.Checked = true;
+                else
+                    rdbCreditcard.Checked = true;
                 if (s.PhoneNumber == null)
                 {
                     txtPhoneNumber.Text = string.Empty;
@@ -166,50 +173,63 @@ namespace BadmintonManagement.Forms.Service.ServiceReceipt
         }
         private void btnPayment_Click(object sender, EventArgs e)
         {
-            if(MessageBox.Show("Ban có muốn xác nhận thanh toán?","Thông báo",MessageBoxButtons.YesNo)==DialogResult.Yes)
+            try 
             {
-                if (CheckExistPhoneNumber() == false)
+                if (!rdbCash.Checked && !rdbCreditcard.Checked)
+                    throw new Exception("Vui lòng chọn hình thức thanh toán");
+                if (MessageBox.Show("Ban có muốn xác nhận thanh toán?", "Thông báo", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
-                    if (txtPhoneNumber.Text != string.Empty)
+                    if (CheckExistPhoneNumber() == false)
                     {
-                        CUSTOMER c = new CUSTOMER();
-                        c.PhoneNumber = txtPhoneNumber.Text;
-                        c.FullName = txtCustomerName.Text;
-                        c.Email = txtEmail.Text;
-                        context.CUSTOMER.Add(c);
+                        if (txtPhoneNumber.Text != string.Empty)
+                        {
+                            CUSTOMER c = new CUSTOMER();
+                            c.PhoneNumber = txtPhoneNumber.Text;
+                            c.FullName = txtCustomerName.Text;
+                            c.Email = txtEmail.Text;
+                            context.CUSTOMER.Add(c);
+                            context.SaveChanges();
+                        }
+                    }
+                    SERVICE_RECEIPT sr = new SERVICE_RECEIPT();
+                    sr.ServiceReceiptNo = txtRecNo.Text;
+                    sr.Username = Properties.Settings.Default.Username;
+                    sr.CreateDate = DateTime.Now;
+                    sr.Total = GetTheTotal();
+                    sr.Payment = rdbCash.Checked ? rdbCash.Text : rdbCreditcard.Text;
+                    if (txtPhoneNumber.Text != string.Empty)
+                        sr.PhoneNumber = txtPhoneNumber.Text;
+                    context.SERVICE_RECEIPT.Add(sr);
+                    context.SaveChanges();
+                    foreach (DataGridViewRow row in dgvServiceDetail.Rows)
+                    {
+                        if (row.Cells[0].Value == null)
+                            break;
+                        SERVICE_DETAIL sd = new SERVICE_DETAIL();
+                        sd.ServiceReceiptNo = sr.ServiceReceiptNo;
+                        string serviceName = row.Cells[0].Value.ToString();
+                        sd.ServiceID = context.C_SERVICE.FirstOrDefault(p => p.ServiceName == serviceName).ServiceID;
+                        sd.Quantity = int.Parse(row.Cells[1].Value.ToString());
+                        context.SERVICE_DETAIL.Add(sd);
+                        context.SaveChanges();
+                        C_SERVICE ser = context.C_SERVICE.FirstOrDefault(p => p.ServiceName == serviceName);
+                        ser.Quantity = ser.Quantity - sd.Quantity.Value;
+                        context.C_SERVICE.AddOrUpdate(ser);
                         context.SaveChanges();
                     }
+                    ReloadShowServiceReceipt(1);
+                    SerRecPrint frm = new SerRecPrint(txtRecNo.Text);
+                    frm.ShowDialog();
+                    this.Close();
                 }
-                SERVICE_RECEIPT sr = new SERVICE_RECEIPT();
-                sr.ServiceReceiptNo = txtRecNo.Text;
-                sr.Username = Properties.Settings.Default.Username;
-                sr.CreateDate = DateTime.Now;
-                sr.Total = GetTheTotal();
-                if(txtPhoneNumber.Text != string.Empty)
-                    sr.PhoneNumber = txtPhoneNumber.Text;
-                context.SERVICE_RECEIPT.Add(sr);
-                context.SaveChanges();
-                foreach(DataGridViewRow row in dgvServiceDetail.Rows)
-                {
-                    if (row.Cells[0].Value == null)
-                        break;
-                    SERVICE_DETAIL sd = new SERVICE_DETAIL();
-                    sd.ServiceReceiptNo = sr.ServiceReceiptNo;
-                    string serviceName = row.Cells[0].Value.ToString();
-                    sd.ServiceID = context.C_SERVICE.FirstOrDefault(p => p.ServiceName == serviceName).ServiceID;
-                    sd.Quantity = int.Parse(row.Cells[1].Value.ToString());
-                    context.SERVICE_DETAIL.Add(sd);
-                    context.SaveChanges();
-                    C_SERVICE ser = context.C_SERVICE.FirstOrDefault(p => p.ServiceName == serviceName);
-                    ser.Quantity = ser.Quantity - sd.Quantity.Value;
-                    context.C_SERVICE.AddOrUpdate(ser);
-                    context.SaveChanges();
-                }
-                ReloadShowServiceReceipt(1);
-                SerRecPrint frm = new SerRecPrint(txtRecNo.Text);
-                frm.ShowDialog();
-                this.Close();
+               
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+            
         }
         private void btnClose_Click(object sender, EventArgs e)
         {

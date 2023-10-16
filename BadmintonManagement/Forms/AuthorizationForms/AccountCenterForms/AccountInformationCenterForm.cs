@@ -20,6 +20,7 @@ namespace BadmintonManagement.Forms.AuthorizationForms
             LoadData();
         }
 
+        //load data khi mở form
         private void LoadData()
         {
             txtUsername.Text = Properties.Settings.Default.Username;

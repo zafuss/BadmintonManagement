@@ -9,6 +9,7 @@ namespace BadmintonManagement
 {
     internal static class Security
     {
+        // mã hoá mật khẩu
         public static string Encrypt(string text)
         {
             var b = Encoding.UTF8.GetBytes(text);
@@ -16,13 +17,7 @@ namespace BadmintonManagement
             return Convert.ToBase64String(encrypted);
         }
 
-        public static string Decrypt(string encrypted)
-        {
-            var b = Convert.FromBase64String(encrypted);
-            var decrypted = getAes().CreateDecryptor().TransformFinalBlock(b, 0, b.Length);
-            return Encoding.UTF8.GetString(decrypted);
-        }
-
+        //get Aes
         static Aes getAes()
         {
             var keyBytes = new byte[16];

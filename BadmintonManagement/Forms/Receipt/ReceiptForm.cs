@@ -142,5 +142,21 @@ namespace BadmintonManagement.Forms.Receipt
             foreach(DataGridViewRow row in dgvInfo.Rows)
                 row.Visible= true;
         }
+
+        private void panelHeader_SizeChanged(object sender, EventArgs e)
+        {
+            panelHeader.Controls.Clear();
+            double width = (panelHeader.Width);
+            double height = (panelHeader.Height) / 4;
+
+            Label label = new Label();
+            label.Location = new Point(0, Convert.ToInt32(height));
+            label.Size = new Size(Convert.ToInt32(width), 50);
+            label.TextAlign = ContentAlignment.MiddleCenter;
+            label.Text = "Danh Sách Hóa Đơn";
+            label.Font = new Font("Segoe UI", 24, FontStyle.Bold);
+
+            panelHeader.Controls.Add(label);
+        }
     }
 }

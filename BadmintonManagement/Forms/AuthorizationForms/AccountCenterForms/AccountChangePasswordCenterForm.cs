@@ -124,6 +124,7 @@ namespace BadmintonManagement.Forms.AuthorizationForms
         }
 
 
+        //sự kiện xảy ra khi bấm lưu
         private void btnSave_Click(object sender, EventArgs e)
         {
             try

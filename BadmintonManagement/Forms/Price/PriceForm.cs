@@ -7,9 +7,11 @@ using System.Data;
 using System.Data.Entity.Migrations;
 using System.Drawing;
 using System.Linq;
+using System.Reflection.Emit;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Label = System.Windows.Forms.Label;
 
 namespace BadmintonManagement.Forms.Price
 {
@@ -104,42 +106,52 @@ namespace BadmintonManagement.Forms.Price
 
         private void btnUsedPrice_Click(object sender, EventArgs e)
         {
-            int i = dgvPrices.SelectedRows.Count - 1;
-            if (dgvPrices.SelectedRows[i].Cells[4].Value.ToString() == "Áp dụng")
+            try
             {
-                MessageBox.Show("Giá đã được áp dụng","Thông báo");
-                return;
-            }
-            ModelBadmintonManage context = new ModelBadmintonManage();
-            PRICE pr = new PRICE();
-            string str = dgvPrices.SelectedRows[i].Cells[0].Value.ToString();
-            pr = context.PRICE.FirstOrDefault(p => p.PriceID == str);
-            pr.C_Status = 1;
-            dgvPrices.SelectedRows[i].Cells[4].Value = "Áp dụng";
-            GBPriceID = pr.PriceID;
-            cmbStatus.SelectedIndex = 1;
-            context.PRICE.AddOrUpdate(pr);
-            context.SaveChanges();
-            List<PRICE> listPR = context.PRICE.Where(p=>p.PriceID!=pr.PriceID).ToList();
-            foreach(PRICE item in listPR)
-            {
-                if(item.C_Status==1)
+                if (txtPriceID.Text == "")
+                    throw new Exception("Vui Lòng Điền Mã Giá");
+                int i = dgvPrices.SelectedRows.Count - 1;
+                if (dgvPrices.SelectedRows[i].Cells[4].Value.ToString() == "Áp dụng")
                 {
-                    item.C_Status = 0;
-                    context.PRICE.AddOrUpdate(item);
-                    context.SaveChanges();
-                    str = item.PriceID;
-                    break;
+                    MessageBox.Show("Giá đã được áp dụng", "Thông báo");
+                    return;
+                }
+                ModelBadmintonManage context = new ModelBadmintonManage();
+                PRICE pr = new PRICE();
+                string str = dgvPrices.SelectedRows[i].Cells[0].Value.ToString();
+                pr = context.PRICE.FirstOrDefault(p => p.PriceID == str);
+                pr.C_Status = 1;
+                dgvPrices.SelectedRows[i].Cells[4].Value = "Áp dụng";
+                GBPriceID = pr.PriceID;
+                cmbStatus.SelectedIndex = 1;
+                context.PRICE.AddOrUpdate(pr);
+                context.SaveChanges();
+                List<PRICE> listPR = context.PRICE.Where(p => p.PriceID != pr.PriceID).ToList();
+                foreach (PRICE item in listPR)
+                {
+                    if (item.C_Status == 1)
+                    {
+                        item.C_Status = 0;
+                        context.PRICE.AddOrUpdate(item);
+                        context.SaveChanges();
+                        str = item.PriceID;
+                        break;
+                    }
+                }
+                foreach (DataGridViewRow row in dgvPrices.Rows)
+                {
+                    if (row.Cells[0].Value.ToString() == str)
+                    {
+                        row.Cells[4].Value = "Không áp dụng";
+                        break;
+                    }
                 }
             }
-            foreach(DataGridViewRow row in dgvPrices.Rows) 
+            catch(Exception ex)
             {
-                if (row.Cells[0].Value.ToString() == str)
-                {
-                    row.Cells[4].Value = "Không áp dụng";
-                    break;
-                }
+                MessageBox.Show(ex.Message);
             }
+           
             //BindGrid();
         }
 
@@ -147,6 +159,29 @@ namespace BadmintonManagement.Forms.Price
         {
             ApplyFactor frm = new ApplyFactor();
             frm.ShowDialog();
+        }
+
+        private void panel3_SizeChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                panel3.Controls.Clear();
+                double width = (panel3.Width);
+                double height = (panel3.Height) / 4;
+
+                Label  label = new Label();
+                label.Location = new Point(0, Convert.ToInt32(height));
+                label.Size = new Size(Convert.ToInt32(width), 50);
+                label.TextAlign = ContentAlignment.MiddleCenter;
+                label.Text = "Bảng Giá";
+                label.Font = new Font("Segoe UI", 24, FontStyle.Bold);
+
+                panel3.Controls.Add(label);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }

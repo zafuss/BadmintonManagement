@@ -15,34 +15,45 @@ namespace BadmintonManagement.Database
     {
         static ModelBadmintonManage context = new ModelBadmintonManage();
 
+        //lấy tất cả user từ db
         public static List<C_USER> GetAllUser()
         {
             return context.C_USER.ToList();
         }
 
+        //lấy user từ db bằng username
         public static C_USER GetUser(string username)
         {
 
             return context.C_USER.FirstOrDefault(x => x.Username == username);
         }
+
+        //lấy user từ db bằng email
         public static C_USER GetUserByEmail(string email)
         {
 
             return context.C_USER.FirstOrDefault(x => x.Email == email);
         }
 
+        //kiểm tra username truyền vào đã tồn tại ở một user khác trong csdl hay chưa
         public static bool IS_UsernameExist(string username)
         {
             return context.C_USER.Any(x => x.Username == username);
         }
+
+        //kiểm tra email trueyefn vào đã tồn tại ở một user khác trong csdl hay chưa
         public static bool IS_EmailExist(string email)
         {
             return context.C_USER.Any(x => x.Email == email);
         }
+
+        //kiểm tra số điện thoại truyền vào đã tồn tại ở một user khác trong csdl hay chưa
         public static bool IS_PhoneNumberExist(string phoneNumber)
         {
             return context.C_USER.Any(x => x.PhoneNumber == phoneNumber);
         }
+
+        //thêm user vào db
         public static void AddUser(C_USER user, Action bindGrid)
         {
             try
@@ -84,6 +95,7 @@ namespace BadmintonManagement.Database
 
         }
 
+        //chỉnh sửa user
         public static void UpdateUser(C_USER user, string currentEmail, string currentUsername, string currentPhoneNumber, bool isPasswordChanged)
         {
             string newPassword = null;
@@ -109,6 +121,7 @@ namespace BadmintonManagement.Database
             OTPService.SendChangedInformationMail(user.Email, newPassword);
         }
 
+        //vô hiệu hoá user
         public static void DisableUser(string username)
         {
             C_USER tmpUser = GetUser(username);
@@ -119,6 +132,8 @@ namespace BadmintonManagement.Database
             context.SaveChanges();
             OTPService.SendDisabledMail(tmpUser.Email);
         }
+
+        //kích hoạt user
         public static void EnableUser(C_USER user)
         {
             C_USER tmpUser = GetUser(user.Username);
@@ -127,6 +142,8 @@ namespace BadmintonManagement.Database
             context.SaveChanges();
         }
 
+
+        //lưu user đã đăng nhập vào app properties
         private static void SaveCurrentUser(string username)
         {
             var userList = GetAllUser();
@@ -143,6 +160,8 @@ namespace BadmintonManagement.Database
                 }
             }
         }
+
+        //xoá thông tin user đã đăng nhập tại app properties
         public static void DeleteCurrentUser()
         {
 
@@ -154,6 +173,8 @@ namespace BadmintonManagement.Database
             Properties.Settings.Default.Save();
         }
 
+
+        // đăng nhập tài khoản
         public static void LoginUser(string username, string password)
         {
             if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
@@ -179,6 +200,7 @@ namespace BadmintonManagement.Database
             }
         }
 
+        // đăng xuất tài khoản
         public static void LogoutUser()
         {
             DeleteCurrentUser();
