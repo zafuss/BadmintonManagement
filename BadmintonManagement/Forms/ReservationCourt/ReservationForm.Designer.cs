@@ -29,21 +29,11 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgvReservation = new System.Windows.Forms.DataGridView();
-            this.clnRevNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clnUserName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clnPhoneNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clnCustomer = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clnDeposite = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clnCreateDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clnBookingDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clnStartime = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clnEndTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clnStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dtpEndDay = new System.Windows.Forms.DateTimePicker();
             this.dtpStartDay = new System.Windows.Forms.DateTimePicker();
             this.txtSearchByPhoneNumber = new System.Windows.Forms.TextBox();
@@ -71,6 +61,16 @@
             this.btnAdd = new System.Windows.Forms.Button();
             this.btnFunction = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.clnRevNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clnUserName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clnPhoneNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clnCustomer = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clnDeposite = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clnCreateDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clnBookingDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clnStartime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clnEndTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clnStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvReservation)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -95,115 +95,17 @@
             this.clnEndTime,
             this.clnStatus});
             this.dgvReservation.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvReservation.Location = new System.Drawing.Point(6, 29);
+            this.dgvReservation.Location = new System.Drawing.Point(6, 34);
             this.dgvReservation.Margin = new System.Windows.Forms.Padding(6, 7, 6, 7);
             this.dgvReservation.MultiSelect = false;
             this.dgvReservation.Name = "dgvReservation";
             this.dgvReservation.ReadOnly = true;
             this.dgvReservation.RowHeadersWidth = 51;
             this.dgvReservation.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvReservation.Size = new System.Drawing.Size(1585, 899);
+            this.dgvReservation.Size = new System.Drawing.Size(1585, 894);
             this.dgvReservation.TabIndex = 0;
             this.dgvReservation.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvReservation_CellClick);
             this.dgvReservation.SelectionChanged += new System.EventHandler(this.dgvReservation_SelectionChanged);
-            // 
-            // clnRevNo
-            // 
-            this.clnRevNo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.clnRevNo.HeaderText = "Số phiếu";
-            this.clnRevNo.MinimumWidth = 6;
-            this.clnRevNo.Name = "clnRevNo";
-            this.clnRevNo.ReadOnly = true;
-            this.clnRevNo.Width = 140;
-            // 
-            // clnUserName
-            // 
-            this.clnUserName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.clnUserName.HeaderText = "Tên nhân viên";
-            this.clnUserName.MinimumWidth = 100;
-            this.clnUserName.Name = "clnUserName";
-            this.clnUserName.ReadOnly = true;
-            // 
-            // clnPhoneNumber
-            // 
-            this.clnPhoneNumber.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.clnPhoneNumber.HeaderText = "Số điện thoại";
-            this.clnPhoneNumber.MinimumWidth = 6;
-            this.clnPhoneNumber.Name = "clnPhoneNumber";
-            this.clnPhoneNumber.ReadOnly = true;
-            this.clnPhoneNumber.Width = 243;
-            // 
-            // clnCustomer
-            // 
-            this.clnCustomer.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.clnCustomer.HeaderText = "Tên Khách hàng";
-            this.clnCustomer.MinimumWidth = 100;
-            this.clnCustomer.Name = "clnCustomer";
-            this.clnCustomer.ReadOnly = true;
-            // 
-            // clnDeposite
-            // 
-            this.clnDeposite.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.clnDeposite.HeaderText = "Đặt cọc";
-            this.clnDeposite.MinimumWidth = 6;
-            this.clnDeposite.Name = "clnDeposite";
-            this.clnDeposite.ReadOnly = true;
-            this.clnDeposite.Width = 125;
-            // 
-            // clnCreateDate
-            // 
-            this.clnCreateDate.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle9.Format = "dd/MM/yy";
-            this.clnCreateDate.DefaultCellStyle = dataGridViewCellStyle9;
-            this.clnCreateDate.HeaderText = "Ngày đặt";
-            this.clnCreateDate.MinimumWidth = 6;
-            this.clnCreateDate.Name = "clnCreateDate";
-            this.clnCreateDate.ReadOnly = true;
-            this.clnCreateDate.Width = 125;
-            // 
-            // clnBookingDate
-            // 
-            this.clnBookingDate.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle10.Format = "dd/MM/yy";
-            this.clnBookingDate.DefaultCellStyle = dataGridViewCellStyle10;
-            this.clnBookingDate.HeaderText = "Ngày nhận";
-            this.clnBookingDate.MinimumWidth = 6;
-            this.clnBookingDate.Name = "clnBookingDate";
-            this.clnBookingDate.ReadOnly = true;
-            this.clnBookingDate.Width = 125;
-            // 
-            // clnStartime
-            // 
-            this.clnStartime.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle11.Format = "HH:mm";
-            dataGridViewCellStyle11.NullValue = null;
-            this.clnStartime.DefaultCellStyle = dataGridViewCellStyle11;
-            this.clnStartime.HeaderText = "Bắt đầu";
-            this.clnStartime.MinimumWidth = 6;
-            this.clnStartime.Name = "clnStartime";
-            this.clnStartime.ReadOnly = true;
-            this.clnStartime.Width = 70;
-            // 
-            // clnEndTime
-            // 
-            this.clnEndTime.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle12.Format = "HH:mm";
-            dataGridViewCellStyle12.NullValue = null;
-            this.clnEndTime.DefaultCellStyle = dataGridViewCellStyle12;
-            this.clnEndTime.HeaderText = "Kết thúc";
-            this.clnEndTime.MinimumWidth = 6;
-            this.clnEndTime.Name = "clnEndTime";
-            this.clnEndTime.ReadOnly = true;
-            this.clnEndTime.Width = 70;
-            // 
-            // clnStatus
-            // 
-            this.clnStatus.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.clnStatus.HeaderText = "Tình trạng";
-            this.clnStatus.MinimumWidth = 6;
-            this.clnStatus.Name = "clnStatus";
-            this.clnStatus.ReadOnly = true;
-            this.clnStatus.Width = 150;
             // 
             // dtpEndDay
             // 
@@ -212,7 +114,7 @@
             this.dtpEndDay.Location = new System.Drawing.Point(267, 84);
             this.dtpEndDay.Margin = new System.Windows.Forms.Padding(6, 7, 6, 7);
             this.dtpEndDay.Name = "dtpEndDay";
-            this.dtpEndDay.Size = new System.Drawing.Size(120, 26);
+            this.dtpEndDay.Size = new System.Drawing.Size(120, 30);
             this.dtpEndDay.TabIndex = 4;
             this.dtpEndDay.ValueChanged += new System.EventHandler(this.dtpEndDay_ValueChanged);
             // 
@@ -223,7 +125,7 @@
             this.dtpStartDay.Location = new System.Drawing.Point(70, 85);
             this.dtpStartDay.Margin = new System.Windows.Forms.Padding(6, 7, 6, 7);
             this.dtpStartDay.Name = "dtpStartDay";
-            this.dtpStartDay.Size = new System.Drawing.Size(120, 26);
+            this.dtpStartDay.Size = new System.Drawing.Size(120, 30);
             this.dtpStartDay.TabIndex = 5;
             this.dtpStartDay.ValueChanged += new System.EventHandler(this.dtpStartDay_ValueChanged);
             // 
@@ -233,7 +135,7 @@
             this.txtSearchByPhoneNumber.Location = new System.Drawing.Point(463, 84);
             this.txtSearchByPhoneNumber.Margin = new System.Windows.Forms.Padding(6, 7, 6, 7);
             this.txtSearchByPhoneNumber.Name = "txtSearchByPhoneNumber";
-            this.txtSearchByPhoneNumber.Size = new System.Drawing.Size(322, 26);
+            this.txtSearchByPhoneNumber.Size = new System.Drawing.Size(322, 30);
             this.txtSearchByPhoneNumber.TabIndex = 1;
             this.txtSearchByPhoneNumber.Text = "Tìm kiếm";
             this.txtSearchByPhoneNumber.Click += new System.EventHandler(this.txtSearchByPhoneNumber_Click);
@@ -246,7 +148,7 @@
             this.label2.Location = new System.Drawing.Point(216, 89);
             this.label2.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(39, 20);
+            this.label2.Size = new System.Drawing.Size(48, 25);
             this.label2.TabIndex = 12;
             this.label2.Text = "Đến";
             // 
@@ -257,7 +159,7 @@
             this.label3.Location = new System.Drawing.Point(31, 90);
             this.label3.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(27, 20);
+            this.label3.Size = new System.Drawing.Size(36, 25);
             this.label3.TabIndex = 13;
             this.label3.Text = "Từ";
             // 
@@ -268,7 +170,7 @@
             this.chbThisMonth.Location = new System.Drawing.Point(42, 43);
             this.chbThisMonth.Margin = new System.Windows.Forms.Padding(6, 7, 6, 7);
             this.chbThisMonth.Name = "chbThisMonth";
-            this.chbThisMonth.Size = new System.Drawing.Size(229, 24);
+            this.chbThisMonth.Size = new System.Drawing.Size(278, 29);
             this.chbThisMonth.TabIndex = 14;
             this.chbThisMonth.Text = "Danh sách phiếu theo tháng";
             this.chbThisMonth.UseVisualStyleBackColor = true;
@@ -611,9 +513,107 @@
             this.panel3.Size = new System.Drawing.Size(1597, 1055);
             this.panel3.TabIndex = 17;
             // 
+            // clnRevNo
+            // 
+            this.clnRevNo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.clnRevNo.HeaderText = "Số phiếu";
+            this.clnRevNo.MinimumWidth = 6;
+            this.clnRevNo.Name = "clnRevNo";
+            this.clnRevNo.ReadOnly = true;
+            this.clnRevNo.Width = 140;
+            // 
+            // clnUserName
+            // 
+            this.clnUserName.HeaderText = "Tên nhân viên";
+            this.clnUserName.MinimumWidth = 100;
+            this.clnUserName.Name = "clnUserName";
+            this.clnUserName.ReadOnly = true;
+            this.clnUserName.Width = 180;
+            // 
+            // clnPhoneNumber
+            // 
+            this.clnPhoneNumber.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.clnPhoneNumber.HeaderText = "Số điện thoại";
+            this.clnPhoneNumber.MinimumWidth = 6;
+            this.clnPhoneNumber.Name = "clnPhoneNumber";
+            this.clnPhoneNumber.ReadOnly = true;
+            this.clnPhoneNumber.Width = 120;
+            // 
+            // clnCustomer
+            // 
+            this.clnCustomer.HeaderText = "Tên Khách hàng";
+            this.clnCustomer.MinimumWidth = 100;
+            this.clnCustomer.Name = "clnCustomer";
+            this.clnCustomer.ReadOnly = true;
+            this.clnCustomer.Width = 180;
+            // 
+            // clnDeposite
+            // 
+            this.clnDeposite.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.clnDeposite.HeaderText = "Đặt cọc";
+            this.clnDeposite.MinimumWidth = 6;
+            this.clnDeposite.Name = "clnDeposite";
+            this.clnDeposite.ReadOnly = true;
+            this.clnDeposite.Width = 120;
+            // 
+            // clnCreateDate
+            // 
+            this.clnCreateDate.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            dataGridViewCellStyle1.Format = "dd/MM/yy";
+            this.clnCreateDate.DefaultCellStyle = dataGridViewCellStyle1;
+            this.clnCreateDate.HeaderText = "Ngày đặt";
+            this.clnCreateDate.MinimumWidth = 6;
+            this.clnCreateDate.Name = "clnCreateDate";
+            this.clnCreateDate.ReadOnly = true;
+            this.clnCreateDate.Width = 110;
+            // 
+            // clnBookingDate
+            // 
+            this.clnBookingDate.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            dataGridViewCellStyle2.Format = "dd/MM/yy";
+            this.clnBookingDate.DefaultCellStyle = dataGridViewCellStyle2;
+            this.clnBookingDate.HeaderText = "Ngày nhận";
+            this.clnBookingDate.MinimumWidth = 6;
+            this.clnBookingDate.Name = "clnBookingDate";
+            this.clnBookingDate.ReadOnly = true;
+            this.clnBookingDate.Width = 110;
+            // 
+            // clnStartime
+            // 
+            this.clnStartime.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            dataGridViewCellStyle3.Format = "HH:mm";
+            dataGridViewCellStyle3.NullValue = null;
+            this.clnStartime.DefaultCellStyle = dataGridViewCellStyle3;
+            this.clnStartime.HeaderText = "Bắt đầu";
+            this.clnStartime.MinimumWidth = 6;
+            this.clnStartime.Name = "clnStartime";
+            this.clnStartime.ReadOnly = true;
+            this.clnStartime.Width = 85;
+            // 
+            // clnEndTime
+            // 
+            this.clnEndTime.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            dataGridViewCellStyle4.Format = "HH:mm";
+            dataGridViewCellStyle4.NullValue = null;
+            this.clnEndTime.DefaultCellStyle = dataGridViewCellStyle4;
+            this.clnEndTime.HeaderText = "Kết thúc";
+            this.clnEndTime.MinimumWidth = 6;
+            this.clnEndTime.Name = "clnEndTime";
+            this.clnEndTime.ReadOnly = true;
+            this.clnEndTime.Width = 85;
+            // 
+            // clnStatus
+            // 
+            this.clnStatus.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.clnStatus.HeaderText = "Tình trạng";
+            this.clnStatus.MinimumWidth = 6;
+            this.clnStatus.Name = "clnStatus";
+            this.clnStatus.ReadOnly = true;
+            this.clnStatus.Width = 150;
+            // 
             // ReservationForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 28F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1924, 1055);
             this.Controls.Add(this.panel3);

@@ -39,6 +39,9 @@
             this.btnClose = new System.Windows.Forms.Button();
             this.btnPrint = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.grbPayment = new System.Windows.Forms.GroupBox();
+            this.rdbCash = new System.Windows.Forms.RadioButton();
+            this.rdbCreditcard = new System.Windows.Forms.RadioButton();
             this.txtEmail = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.txtTotal = new System.Windows.Forms.TextBox();
@@ -52,14 +55,11 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.grbPayment = new System.Windows.Forms.GroupBox();
-            this.rdbCreditcard = new System.Windows.Forms.RadioButton();
-            this.rdbCash = new System.Windows.Forms.RadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.dgvServiceDetail)).BeginInit();
             this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            this.panel3.SuspendLayout();
             this.grbPayment.SuspendLayout();
+            this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // dgvServiceDetail
@@ -191,11 +191,44 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Thông tin hóa đơn";
             // 
+            // grbPayment
+            // 
+            this.grbPayment.Controls.Add(this.rdbCash);
+            this.grbPayment.Controls.Add(this.rdbCreditcard);
+            this.grbPayment.Location = new System.Drawing.Point(29, 353);
+            this.grbPayment.Name = "grbPayment";
+            this.grbPayment.Size = new System.Drawing.Size(424, 78);
+            this.grbPayment.TabIndex = 17;
+            this.grbPayment.TabStop = false;
+            this.grbPayment.Text = "Chọn hình thức thanh toán";
+            // 
+            // rdbCash
+            // 
+            this.rdbCash.AutoSize = true;
+            this.rdbCash.Location = new System.Drawing.Point(212, 34);
+            this.rdbCash.Name = "rdbCash";
+            this.rdbCash.Size = new System.Drawing.Size(109, 29);
+            this.rdbCash.TabIndex = 1;
+            this.rdbCash.TabStop = true;
+            this.rdbCash.Text = "Tiền mặt";
+            this.rdbCash.UseVisualStyleBackColor = true;
+            // 
+            // rdbCreditcard
+            // 
+            this.rdbCreditcard.AutoSize = true;
+            this.rdbCreditcard.Location = new System.Drawing.Point(18, 34);
+            this.rdbCreditcard.Name = "rdbCreditcard";
+            this.rdbCreditcard.Size = new System.Drawing.Size(161, 29);
+            this.rdbCreditcard.TabIndex = 0;
+            this.rdbCreditcard.TabStop = true;
+            this.rdbCreditcard.Text = "Chuyển khoản";
+            this.rdbCreditcard.UseVisualStyleBackColor = true;
+            // 
             // txtEmail
             // 
             this.txtEmail.Location = new System.Drawing.Point(206, 249);
             this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(247, 26);
+            this.txtEmail.Size = new System.Drawing.Size(247, 30);
             this.txtEmail.TabIndex = 15;
             // 
             // label6
@@ -203,7 +236,7 @@
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(25, 252);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(48, 20);
+            this.label6.Size = new System.Drawing.Size(60, 25);
             this.label6.TabIndex = 14;
             this.label6.Text = "Email";
             // 
@@ -212,14 +245,14 @@
             this.txtTotal.Location = new System.Drawing.Point(206, 307);
             this.txtTotal.Name = "txtTotal";
             this.txtTotal.ReadOnly = true;
-            this.txtTotal.Size = new System.Drawing.Size(247, 26);
+            this.txtTotal.Size = new System.Drawing.Size(247, 30);
             this.txtTotal.TabIndex = 9;
             // 
             // txtCustomerName
             // 
             this.txtCustomerName.Location = new System.Drawing.Point(206, 188);
             this.txtCustomerName.Name = "txtCustomerName";
-            this.txtCustomerName.Size = new System.Drawing.Size(247, 26);
+            this.txtCustomerName.Size = new System.Drawing.Size(247, 30);
             this.txtCustomerName.TabIndex = 8;
             // 
             // txtPhoneNumber
@@ -228,7 +261,7 @@
             this.txtPhoneNumber.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.txtPhoneNumber.Location = new System.Drawing.Point(206, 128);
             this.txtPhoneNumber.Name = "txtPhoneNumber";
-            this.txtPhoneNumber.Size = new System.Drawing.Size(247, 26);
+            this.txtPhoneNumber.Size = new System.Drawing.Size(247, 30);
             this.txtPhoneNumber.TabIndex = 7;
             this.txtPhoneNumber.TextChanged += new System.EventHandler(this.txtPhoneNumber_TextChanged);
             // 
@@ -237,7 +270,7 @@
             this.txtUser.Location = new System.Drawing.Point(206, 76);
             this.txtUser.Name = "txtUser";
             this.txtUser.ReadOnly = true;
-            this.txtUser.Size = new System.Drawing.Size(247, 26);
+            this.txtUser.Size = new System.Drawing.Size(247, 30);
             this.txtUser.TabIndex = 6;
             // 
             // txtRecNo
@@ -245,7 +278,7 @@
             this.txtRecNo.Location = new System.Drawing.Point(206, 33);
             this.txtRecNo.Name = "txtRecNo";
             this.txtRecNo.ReadOnly = true;
-            this.txtRecNo.Size = new System.Drawing.Size(247, 26);
+            this.txtRecNo.Size = new System.Drawing.Size(247, 30);
             this.txtRecNo.TabIndex = 5;
             // 
             // label5
@@ -253,7 +286,7 @@
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(25, 194);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(123, 20);
+            this.label5.Size = new System.Drawing.Size(154, 25);
             this.label5.TabIndex = 4;
             this.label5.Text = "Tên khách hàng";
             // 
@@ -262,7 +295,7 @@
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(20, 131);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(128, 20);
+            this.label4.Size = new System.Drawing.Size(160, 25);
             this.label4.TabIndex = 3;
             this.label4.Text = "SDT khách hàng";
             // 
@@ -271,7 +304,7 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(25, 82);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(79, 20);
+            this.label3.Size = new System.Drawing.Size(100, 25);
             this.label3.TabIndex = 2;
             this.label3.Text = "Nhân viên";
             // 
@@ -280,7 +313,7 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(25, 307);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(75, 20);
+            this.label2.Size = new System.Drawing.Size(94, 25);
             this.label2.TabIndex = 1;
             this.label2.Text = "Tổng tiền";
             // 
@@ -289,7 +322,7 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(25, 33);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(91, 20);
+            this.label1.Size = new System.Drawing.Size(113, 25);
             this.label1.TabIndex = 0;
             this.label1.Text = "Số hóa đơn";
             // 
@@ -302,42 +335,9 @@
             this.panel3.Size = new System.Drawing.Size(495, 535);
             this.panel3.TabIndex = 18;
             // 
-            // grbPayment
-            // 
-            this.grbPayment.Controls.Add(this.rdbCash);
-            this.grbPayment.Controls.Add(this.rdbCreditcard);
-            this.grbPayment.Location = new System.Drawing.Point(29, 353);
-            this.grbPayment.Name = "grbPayment";
-            this.grbPayment.Size = new System.Drawing.Size(424, 78);
-            this.grbPayment.TabIndex = 17;
-            this.grbPayment.TabStop = false;
-            this.grbPayment.Text = "Chọn hình thức thanh toán";
-            // 
-            // rdbCreditcard
-            // 
-            this.rdbCreditcard.AutoSize = true;
-            this.rdbCreditcard.Location = new System.Drawing.Point(18, 34);
-            this.rdbCreditcard.Name = "rdbCreditcard";
-            this.rdbCreditcard.Size = new System.Drawing.Size(129, 24);
-            this.rdbCreditcard.TabIndex = 0;
-            this.rdbCreditcard.TabStop = true;
-            this.rdbCreditcard.Text = "Chuyển khoản";
-            this.rdbCreditcard.UseVisualStyleBackColor = true;
-            // 
-            // rdbCash
-            // 
-            this.rdbCash.AutoSize = true;
-            this.rdbCash.Location = new System.Drawing.Point(212, 34);
-            this.rdbCash.Name = "rdbCash";
-            this.rdbCash.Size = new System.Drawing.Size(88, 24);
-            this.rdbCash.TabIndex = 1;
-            this.rdbCash.TabStop = true;
-            this.rdbCash.Text = "Tiền mặt";
-            this.rdbCash.UseVisualStyleBackColor = true;
-            // 
             // ServiceRec
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightGray;
             this.ClientSize = new System.Drawing.Size(1285, 535);
@@ -353,9 +353,9 @@
             this.panel1.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            this.panel3.ResumeLayout(false);
             this.grbPayment.ResumeLayout(false);
             this.grbPayment.PerformLayout();
+            this.panel3.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

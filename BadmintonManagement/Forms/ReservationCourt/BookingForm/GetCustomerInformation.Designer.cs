@@ -53,7 +53,8 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(21, 155);
+            this.label7.Location = new System.Drawing.Point(28, 194);
+            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(48, 20);
             this.label7.TabIndex = 18;
@@ -63,7 +64,8 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(21, 97);
+            this.label6.Location = new System.Drawing.Point(28, 124);
+            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(123, 20);
             this.label6.TabIndex = 17;
@@ -82,7 +84,8 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(21, 48);
+            this.label5.Location = new System.Drawing.Point(28, 64);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(128, 20);
             this.label5.TabIndex = 15;
@@ -102,7 +105,8 @@
             // btnSelect
             // 
             this.btnSelect.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSelect.Location = new System.Drawing.Point(278, 251);
+            this.btnSelect.Location = new System.Drawing.Point(374, 309);
+            this.btnSelect.Margin = new System.Windows.Forms.Padding(4);
             this.btnSelect.Name = "btnSelect";
             this.btnSelect.Size = new System.Drawing.Size(93, 42);
             this.btnSelect.TabIndex = 22;
@@ -113,9 +117,10 @@
             // btnExit
             // 
             this.btnExit.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExit.Location = new System.Drawing.Point(410, 251);
+            this.btnExit.Location = new System.Drawing.Point(533, 309);
+            this.btnExit.Margin = new System.Windows.Forms.Padding(4);
             this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(83, 42);
+            this.btnExit.Size = new System.Drawing.Size(124, 52);
             this.btnExit.TabIndex = 23;
             this.btnExit.Text = "Thoát";
             this.btnExit.UseVisualStyleBackColor = true;
@@ -140,10 +145,9 @@
             // btnNoInfor
             // 
             this.btnNoInfor.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnNoInfor.Location = new System.Drawing.Point(121, 251);
-            this.btnNoInfor.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnNoInfor.Location = new System.Drawing.Point(156, 309);
             this.btnNoInfor.Name = "btnNoInfor";
-            this.btnNoInfor.Size = new System.Drawing.Size(131, 42);
+            this.btnNoInfor.Size = new System.Drawing.Size(180, 52);
             this.btnNoInfor.TabIndex = 25;
             this.btnNoInfor.Text = "Khách vãng lai";
             this.btnNoInfor.UseVisualStyleBackColor = true;

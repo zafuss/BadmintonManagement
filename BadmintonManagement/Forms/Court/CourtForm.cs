@@ -49,20 +49,6 @@ namespace BadmintonManagement.Forms.Court
             btnUser.BackColor = SystemColors.ButtonShadow;
         }
 
-        //private void Title()
-        //{
-        //    pnlFunction.Controls.Clear();
-        //    double width = (pnlFunction.Width);
-        //    double height = (pnlFunction.Height) / 12;
-        //    Label label = new Label();
-        //    label.Location = new Point(0, Convert.ToInt32(height));
-        //    label.Size = new Size(Convert.ToInt32(width), 50);
-        //    label.TextAlign = ContentAlignment.MiddleCenter;
-        //    label.Text = "Chức Năng";
-        //    label.Font = new Font("Segoe UI", 14, FontStyle.Bold);
-        //    pnlFunction.Controls.Add(label);
-        //}
-
 
         //Hàm để kiểm tra thời gian hiện tại có trong thời gian đặt sân không
         private void tmrCountDown_Tick(object sender, EventArgs e)
@@ -315,23 +301,37 @@ namespace BadmintonManagement.Forms.Court
         }
 
         //Hàm để làm mới lại giao diện nhân viên
+        List<InfoCourt> listInfoRT = new RFDetailService().getCourtByRF();
         public void ReLoad()
         {
             pnlDisplayCourt.Controls.Clear();
             pnlDisplayCourt.Refresh();
+            if (flagAdmin == true)
+            {
+                newCourt = new CourtService().getListCourtWithOutDisable();
+                count = newCourt.Count();
+                ShowCourt(newCourt, count);
+            }
+            else
+            {
+                listInfo = new RFDetailService().getCourtByRF();
+                count = listInfo.Count();
+                UserShow(listInfo, count);
+            }
+            //listInfoRT = new RFDetailService().getCourtByRF();
+            //count = listInfoRT.Count();
+            //UserShow(listInfoRT, count);
+        }
 
-            RFDetailService rf = new RFDetailService();
-            List<InfoCourt> listInfo = rf.getCourtByRF();
-            count = listInfo.Count();
-            UserShow(listInfo, count);
+        public void AddBooking()
+        {
+
         }
 
         //Hàm để hiện thị giao diện nhân viên
         public void UserShow(List<InfoCourt> infoCourts,int count)
         {
-            flagUser = true;
-            flagAdmin = false;
-
+                       
             double width = this.pnlDisplayCourt.Width;
             double heigth = this.pnlDisplayCourt.Height;
             for (int i = 0; i < count; i++)
@@ -356,8 +356,6 @@ namespace BadmintonManagement.Forms.Court
         //Hàm để hiện thị giao diện nhân viên
         public void ShowCourt(List<COURT> newCourt, int count)
         {
-            flagAdmin = true;
-            flagUser = false;
             
             double width = this.pnlDisplayCourt.Width;
             double heigth = this.pnlDisplayCourt.Height;
@@ -394,6 +392,9 @@ namespace BadmintonManagement.Forms.Court
         //Khi nhấn vào button user thì sẽ hiện thị ra form user
         private void btnUser_Click(object sender, EventArgs e)
         {
+            flagUser = true;
+            flagAdmin = false;
+
             pnlDisplayCourt.Controls.Clear();
             pnlDisplayCourt.Refresh();
             showSubMenu(pnlUser);
@@ -408,6 +409,9 @@ namespace BadmintonManagement.Forms.Court
         //Khi nhấn vào nút admin thì hiện thị form admin
         private void btnAdmin_Click(object sender, EventArgs e)
         {
+            flagAdmin = true;
+            flagUser = false;
+
             pnlDisplayCourt.Controls.Clear();
             pnlDisplayCourt.Refresh();
             showSubMenu(pnlAdmin);
