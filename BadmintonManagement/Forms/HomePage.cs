@@ -31,7 +31,7 @@ namespace BadmintonManagement.Forms.AuthorizationForms
             InitializeComponent();
         }
 
-        
+
         // Đóng ứng dụng khi form HomePage được đóng.
         private void HomePage_FormClosed(object sender, FormClosedEventArgs e)
         {
@@ -106,9 +106,14 @@ namespace BadmintonManagement.Forms.AuthorizationForms
                 btnUser.Visible = true;
                 btnPrice.Visible = true;
                 toolStripSeparator1.Visible = true;
+                mnPrice.Visible = true;
+                mnUser.Visible = true;
             }
             else
             {
+                mnPrice.Visible = false;
+                mnUser.ShortcutKeys = Keys.None;
+                mnUser.Visible = false;
                 btnUser.Visible = false;
                 btnPrice.Visible = false;
                 toolStripSeparator1.Visible = false;
@@ -172,7 +177,7 @@ namespace BadmintonManagement.Forms.AuthorizationForms
         {
             UserServices.LogoutUser();
         }
-        
+
 
         // kiểm tra xem có sự thay đổi trong trạng thái đặt sân không
         private bool RealTimeCaptureStatusReservation()
@@ -224,7 +229,7 @@ namespace BadmintonManagement.Forms.AuthorizationForms
         // Cập nhật thời gian thực trạng thái đặt sân
         private void timerRealTimeStatusCapture_Tick(object sender, EventArgs e)
         {
-           
+
             bool t = RealTimeCaptureStatusReservation();
         }
         // Cập nhật hiển thị thời gian trên Homepage
@@ -235,12 +240,12 @@ namespace BadmintonManagement.Forms.AuthorizationForms
 
         private void thoátToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            DialogResult result = MessageBox.Show("bạn có muốn thoát?","YES/NO",MessageBoxButtons.YesNo);
+            DialogResult result = MessageBox.Show("bạn có muốn thoát?", "YES/NO", MessageBoxButtons.YesNo);
             if (result == DialogResult.Yes)
             {
                 this.Close();
             }
-            
+
         }
 
         private void tabControl_DrawItem(object sender, DrawItemEventArgs e)

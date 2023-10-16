@@ -124,6 +124,8 @@ namespace BadmintonManagement.Database
         //vô hiệu hoá user
         public static void DisableUser(string username)
         {
+            if (username == "admin")
+                throw new Exception("Không thể vô hiệu hoá admin");
             C_USER tmpUser = GetUser(username);
             if (tmpUser.C_Status == "Enabled")
                 tmpUser.C_Status = "Disabled";
