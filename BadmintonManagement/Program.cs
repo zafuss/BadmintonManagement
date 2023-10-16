@@ -16,6 +16,7 @@ using System.Configuration;
 using BadmintonManagement.Properties;
 using BadmintonManagement.Forms.Service.ServiceReceipt;
 using BadmintonManagement.Forms.Court;
+using BadmintonManagement.Forms.Price;
 
 namespace BadmintonManagement
 {

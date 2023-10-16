@@ -1,4 +1,5 @@
-﻿using BadmintonManagement.Models;
+﻿using BadmintonManagement.Forms.Price;
+using BadmintonManagement.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -184,19 +185,57 @@ namespace BadmintonManagement.Forms.ReservationCourt.BookingForm
             else
                 btnSave.Enabled = true;
         }
-        private decimal DepositeCalculation()
+        private decimal GetTheExactTimeFactoredMinutes(DateTime st , DateTime se)
+        {
+            decimal d1 = st.Hour*60 + st.Minute;
+            decimal d2 = se.Hour * 60 + se.Minute;
+            decimal timeFactor = (decimal)context.PRICE.FirstOrDefault(p => p.PriceID == PriceForm.GBPriceID).TimeFactor;
+            decimal dayFactor;
+            if (ApplyFactor.weekDay.Any(p => p.Day == DateTime.Now.DayOfWeek))
+                dayFactor = (decimal)context.PRICE.FirstOrDefault(p => p.PriceID == PriceForm.GBPriceID).DateFactor;
+            else
+                dayFactor = 1;
+            foreach (TimeApplyFactor item in ApplyFactor.timeApplyFactors)
+            {
+                decimal d3 = item.StartTime;
+                decimal d4 = item.EndTime;
+                if (d1 > d4 || d2 < d3)
+                    continue;
+                if(d1 <= d3)
+                {
+                    if (d2 >= d4)
+                        return (d2 - d1 + (d4 - d3) * (timeFactor - 1)) * dayFactor;
+                    else
+                        return (d2 - d1 + (d2 - d3) * (timeFactor-1)) * dayFactor;
+                }
+                else
+                {
+                    if(d2 >= d4)
+                        return (d2 - d1 + (d4 - d1) * (timeFactor-1)) * dayFactor;
+                    else
+                        return (d2-d1)*timeFactor * dayFactor;
+                }
+            }
+            return d2 - d1;
+        }
+        private decimal ProvisionOfTotal()
         {
             if (dgvRF_Detail.Rows.Count == 1)
                 return 0;
             decimal total = 0;
             DateTime d1 = dtpStartTime.Value;
             DateTime d2 = dtpEndTime.Value;
-            decimal p = (decimal)(d2.Hour * 60 + d2.Minute - d1.Hour * 60 - d1.Minute) / 60;
-            for(int i=0;i<dgvRF_Detail.Rows.Count-1;i++)
+            decimal p = GetTheExactTimeFactoredMinutes(dtpStartTime.Value, dtpEndTime.Value);
+            for (int i = 0; i < dgvRF_Detail.Rows.Count - 1; i++)
             {
-                total += (decimal)dgvRF_Detail.Rows[i].Cells[2].Value * p;
+                total += (decimal)dgvRF_Detail.Rows[i].Cells[2].Value * p/60;
             }
-            return Math.Round(total * 30 / 100);
+            return Math.Round(total);
+        }
+        private decimal DepositeCalculation()
+        {
+            
+            return Math.Round(ProvisionOfTotal()*25/100);
         }
         private void btnAcept_Click(object sender, EventArgs e)
         {          
