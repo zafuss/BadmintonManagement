@@ -38,7 +38,7 @@
             this.rpvPrint.Location = new System.Drawing.Point(0, 0);
             this.rpvPrint.Name = "rpvPrint";
             this.rpvPrint.ServerReport.BearerToken = null;
-            this.rpvPrint.Size = new System.Drawing.Size(800, 450);
+            this.rpvPrint.Size = new System.Drawing.Size(800, 843);
             this.rpvPrint.TabIndex = 0;
             this.rpvPrint.ZoomMode = Microsoft.Reporting.WinForms.ZoomMode.PageWidth;
             this.rpvPrint.Load += new System.EventHandler(this.rpvPrint_Load);
@@ -47,11 +47,11 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(800, 843);
             this.Controls.Add(this.rpvPrint);
             this.Name = "RevReceiptPrint";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "RevRecPrint";
+            this.Text = "Hóa đơn sân";
             this.Load += new System.EventHandler(this.RevRecPrint_Load);
             this.ResumeLayout(false);
 

@@ -6,9 +6,11 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Reflection.Emit;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Label = System.Windows.Forms.Label;
 
 namespace BadmintonManagement.Forms.Service
 {
@@ -72,6 +74,25 @@ namespace BadmintonManagement.Forms.Service
             
 
 
+        }
+
+        private void panel1_SizeChanged(object sender, EventArgs e)
+        {
+            panel1.Controls.Clear();
+
+            panel1.Controls.Add(label2);
+            panel1.Controls.Add(txtSearch);
+            double width = (panel1.Width);
+            double height = (panel1.Height) / 4;
+
+            Label label = new Label();
+            label.Location = new Point(0, Convert.ToInt32(height));
+            label.Size = new Size(Convert.ToInt32(width), 50);
+            label.TextAlign = ContentAlignment.MiddleCenter;
+            label.Text = "Danh Sách Hóa Đơn Dịch Vụ";
+            label.Font = new Font("Segoe UI", 24, FontStyle.Bold);
+
+            panel1.Controls.Add(label);
         }
     }
 }

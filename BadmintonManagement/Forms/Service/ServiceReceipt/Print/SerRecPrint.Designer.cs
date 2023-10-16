@@ -38,7 +38,7 @@
             this.rpvPrint.Location = new System.Drawing.Point(0, 0);
             this.rpvPrint.Name = "rpvPrint";
             this.rpvPrint.ServerReport.BearerToken = null;
-            this.rpvPrint.Size = new System.Drawing.Size(800, 450);
+            this.rpvPrint.Size = new System.Drawing.Size(800, 767);
             this.rpvPrint.TabIndex = 0;
             this.rpvPrint.ZoomMode = Microsoft.Reporting.WinForms.ZoomMode.PageWidth;
             // 
@@ -46,11 +46,11 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(800, 767);
             this.Controls.Add(this.rpvPrint);
             this.Name = "SerRecPrint";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "SerRecPrint";
+            this.Text = "Hóa đơn dịch vụ";
             this.Load += new System.EventHandler(this.SerRecPrint_Load);
             this.ResumeLayout(false);
 

@@ -7,9 +7,11 @@ using System.Data;
 using System.Data.Entity.Migrations;
 using System.Drawing;
 using System.Linq;
+using System.Reflection.Emit;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Label = System.Windows.Forms.Label;
 
 namespace BadmintonManagement.Forms.Price
 {
@@ -157,6 +159,29 @@ namespace BadmintonManagement.Forms.Price
         {
             ApplyFactor frm = new ApplyFactor();
             frm.ShowDialog();
+        }
+
+        private void panel3_SizeChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                panel3.Controls.Clear();
+                double width = (panel3.Width);
+                double height = (panel3.Height) / 4;
+
+                Label  label = new Label();
+                label.Location = new Point(0, Convert.ToInt32(height));
+                label.Size = new Size(Convert.ToInt32(width), 50);
+                label.TextAlign = ContentAlignment.MiddleCenter;
+                label.Text = "Bảng Giá";
+                label.Font = new Font("Segoe UI", 24, FontStyle.Bold);
+
+                panel3.Controls.Add(label);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }

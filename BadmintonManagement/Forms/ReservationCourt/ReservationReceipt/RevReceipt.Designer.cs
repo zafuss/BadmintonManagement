@@ -47,14 +47,20 @@
             this.grpPayment = new System.Windows.Forms.GroupBox();
             this.rdoEBanking = new System.Windows.Forms.RadioButton();
             this.rdoCash = new System.Windows.Forms.RadioButton();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.panel2 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.dgvRF_Detail)).BeginInit();
             this.grpPayment.SuspendLayout();
+            this.panel1.SuspendLayout();
+            this.groupBox1.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(66, 53);
+            this.label1.Location = new System.Drawing.Point(13, 44);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(91, 20);
@@ -63,16 +69,16 @@
             // 
             // txtReceiptNo
             // 
-            this.txtReceiptNo.Location = new System.Drawing.Point(222, 47);
+            this.txtReceiptNo.Location = new System.Drawing.Point(169, 38);
             this.txtReceiptNo.Name = "txtReceiptNo";
             this.txtReceiptNo.ReadOnly = true;
-            this.txtReceiptNo.Size = new System.Drawing.Size(200, 26);
+            this.txtReceiptNo.Size = new System.Drawing.Size(175, 26);
             this.txtReceiptNo.TabIndex = 1;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(66, 96);
+            this.label2.Location = new System.Drawing.Point(13, 87);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(70, 20);
@@ -83,15 +89,15 @@
             // 
             this.dtpTimePublish.Enabled = false;
             this.dtpTimePublish.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpTimePublish.Location = new System.Drawing.Point(222, 90);
+            this.dtpTimePublish.Location = new System.Drawing.Point(169, 81);
             this.dtpTimePublish.Name = "dtpTimePublish";
-            this.dtpTimePublish.Size = new System.Drawing.Size(200, 26);
+            this.dtpTimePublish.Size = new System.Drawing.Size(175, 26);
             this.dtpTimePublish.TabIndex = 3;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(66, 150);
+            this.label3.Location = new System.Drawing.Point(13, 141);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(135, 20);
@@ -100,16 +106,16 @@
             // 
             // txtExtraTime
             // 
-            this.txtExtraTime.Location = new System.Drawing.Point(222, 144);
+            this.txtExtraTime.Location = new System.Drawing.Point(169, 135);
             this.txtExtraTime.Name = "txtExtraTime";
             this.txtExtraTime.ReadOnly = true;
-            this.txtExtraTime.Size = new System.Drawing.Size(100, 26);
+            this.txtExtraTime.Size = new System.Drawing.Size(175, 26);
             this.txtExtraTime.TabIndex = 5;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(66, 261);
+            this.label4.Location = new System.Drawing.Point(13, 252);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(132, 20);
@@ -118,10 +124,10 @@
             // 
             // txtTotal
             // 
-            this.txtTotal.Location = new System.Drawing.Point(222, 255);
+            this.txtTotal.Location = new System.Drawing.Point(169, 246);
             this.txtTotal.Name = "txtTotal";
             this.txtTotal.ReadOnly = true;
-            this.txtTotal.Size = new System.Drawing.Size(100, 26);
+            this.txtTotal.Size = new System.Drawing.Size(175, 26);
             this.txtTotal.TabIndex = 7;
             // 
             // dgvRF_Detail
@@ -131,10 +137,10 @@
             this.clnRevNo,
             this.clnCourtName,
             this.clnMoney});
-            this.dgvRF_Detail.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.dgvRF_Detail.Location = new System.Drawing.Point(0, 307);
+            this.dgvRF_Detail.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvRF_Detail.Location = new System.Drawing.Point(0, 0);
             this.dgvRF_Detail.Name = "dgvRF_Detail";
-            this.dgvRF_Detail.Size = new System.Drawing.Size(899, 367);
+            this.dgvRF_Detail.Size = new System.Drawing.Size(691, 498);
             this.dgvRF_Detail.TabIndex = 8;
             // 
             // clnRevNo
@@ -160,16 +166,16 @@
             // 
             // txtDeposite
             // 
-            this.txtDeposite.Location = new System.Drawing.Point(222, 202);
+            this.txtDeposite.Location = new System.Drawing.Point(169, 193);
             this.txtDeposite.Name = "txtDeposite";
             this.txtDeposite.ReadOnly = true;
-            this.txtDeposite.Size = new System.Drawing.Size(100, 26);
+            this.txtDeposite.Size = new System.Drawing.Size(175, 26);
             this.txtDeposite.TabIndex = 10;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(66, 208);
+            this.label5.Location = new System.Drawing.Point(13, 199);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(68, 20);
@@ -178,7 +184,7 @@
             // 
             // btnPayment
             // 
-            this.btnPayment.Location = new System.Drawing.Point(772, 261);
+            this.btnPayment.Location = new System.Drawing.Point(217, 437);
             this.btnPayment.Name = "btnPayment";
             this.btnPayment.Size = new System.Drawing.Size(127, 40);
             this.btnPayment.TabIndex = 11;
@@ -188,7 +194,7 @@
             // 
             // btnPrint
             // 
-            this.btnPrint.Location = new System.Drawing.Point(772, 12);
+            this.btnPrint.Location = new System.Drawing.Point(25, 437);
             this.btnPrint.Name = "btnPrint";
             this.btnPrint.Size = new System.Drawing.Size(127, 40);
             this.btnPrint.TabIndex = 12;
@@ -201,9 +207,9 @@
             // 
             this.grpPayment.Controls.Add(this.rdoEBanking);
             this.grpPayment.Controls.Add(this.rdoCash);
-            this.grpPayment.Location = new System.Drawing.Point(477, 53);
+            this.grpPayment.Location = new System.Drawing.Point(17, 298);
             this.grpPayment.Name = "grpPayment";
-            this.grpPayment.Size = new System.Drawing.Size(200, 228);
+            this.grpPayment.Size = new System.Drawing.Size(332, 100);
             this.grpPayment.TabIndex = 13;
             this.grpPayment.TabStop = false;
             this.grpPayment.Text = "Phương thức thanh toán";
@@ -230,25 +236,54 @@
             this.rdoCash.Text = "Tiền mặt";
             this.rdoCash.UseVisualStyleBackColor = true;
             // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.groupBox1);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(404, 498);
+            this.panel1.TabIndex = 14;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Controls.Add(this.btnPrint);
+            this.groupBox1.Controls.Add(this.grpPayment);
+            this.groupBox1.Controls.Add(this.btnPayment);
+            this.groupBox1.Controls.Add(this.txtReceiptNo);
+            this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.Controls.Add(this.dtpTimePublish);
+            this.groupBox1.Controls.Add(this.txtDeposite);
+            this.groupBox1.Controls.Add(this.label3);
+            this.groupBox1.Controls.Add(this.label5);
+            this.groupBox1.Controls.Add(this.txtExtraTime);
+            this.groupBox1.Controls.Add(this.label4);
+            this.groupBox1.Controls.Add(this.txtTotal);
+            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox1.Location = new System.Drawing.Point(0, 0);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(404, 498);
+            this.groupBox1.TabIndex = 0;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Thông tin hóa dơn";
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.dgvRF_Detail);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel2.Location = new System.Drawing.Point(404, 0);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(691, 498);
+            this.panel2.TabIndex = 15;
+            // 
             // RevReceipt
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(899, 674);
-            this.Controls.Add(this.grpPayment);
-            this.Controls.Add(this.btnPrint);
-            this.Controls.Add(this.btnPayment);
-            this.Controls.Add(this.txtDeposite);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.dgvRF_Detail);
-            this.Controls.Add(this.txtTotal);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.txtExtraTime);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.dtpTimePublish);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.txtReceiptNo);
-            this.Controls.Add(this.label1);
+            this.ClientSize = new System.Drawing.Size(1095, 498);
+            this.Controls.Add(this.panel2);
+            this.Controls.Add(this.panel1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "RevReceipt";
@@ -258,8 +293,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvRF_Detail)).EndInit();
             this.grpPayment.ResumeLayout(false);
             this.grpPayment.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
+            this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -284,5 +322,8 @@
         private System.Windows.Forms.GroupBox grpPayment;
         private System.Windows.Forms.RadioButton rdoEBanking;
         private System.Windows.Forms.RadioButton rdoCash;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Panel panel2;
     }
 }

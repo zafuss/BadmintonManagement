@@ -42,11 +42,11 @@ namespace BadmintonManagement.Forms.Price
             this.chbTuesday = new System.Windows.Forms.CheckBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.dgvTime = new System.Windows.Forms.DataGridView();
-            this.btnAdd = new System.Windows.Forms.Button();
-            this.btnCancel = new System.Windows.Forms.Button();
             this.clnNumericOrder = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clnStarTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clnEndTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnAdd = new System.Windows.Forms.Button();
+            this.btnCancel = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
             this.pnlWeekDay.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -59,6 +59,7 @@ namespace BadmintonManagement.Forms.Price
             this.dtpStarTime.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpStarTime.Location = new System.Drawing.Point(210, 128);
             this.dtpStarTime.Name = "dtpStarTime";
+            this.dtpStarTime.ShowUpDown = true;
             this.dtpStarTime.Size = new System.Drawing.Size(86, 26);
             this.dtpStarTime.TabIndex = 0;
             // 
@@ -68,6 +69,7 @@ namespace BadmintonManagement.Forms.Price
             this.dtpEndTime.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpEndTime.Location = new System.Drawing.Point(210, 170);
             this.dtpEndTime.Name = "dtpEndTime";
+            this.dtpEndTime.ShowUpDown = true;
             this.dtpEndTime.Size = new System.Drawing.Size(86, 26);
             this.dtpEndTime.TabIndex = 1;
             // 
@@ -94,7 +96,7 @@ namespace BadmintonManagement.Forms.Price
             this.pnlWeekDay.Dock = System.Windows.Forms.DockStyle.Left;
             this.pnlWeekDay.Location = new System.Drawing.Point(0, 0);
             this.pnlWeekDay.Name = "pnlWeekDay";
-            this.pnlWeekDay.Size = new System.Drawing.Size(182, 692);
+            this.pnlWeekDay.Size = new System.Drawing.Size(329, 424);
             this.pnlWeekDay.TabIndex = 3;
             // 
             // chbSunday
@@ -166,10 +168,10 @@ namespace BadmintonManagement.Forms.Price
             // panel2
             // 
             this.panel2.Controls.Add(this.dgvTime);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel2.Location = new System.Drawing.Point(426, 0);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel2.Location = new System.Drawing.Point(329, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(774, 692);
+            this.panel2.Size = new System.Drawing.Size(653, 424);
             this.panel2.TabIndex = 4;
             // 
             // dgvTime
@@ -181,31 +183,12 @@ namespace BadmintonManagement.Forms.Price
             this.clnNumericOrder,
             this.clnStarTime,
             this.clnEndTime});
-            this.dgvTime.Location = new System.Drawing.Point(82, 104);
+            this.dgvTime.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvTime.Location = new System.Drawing.Point(0, 0);
             this.dgvTime.Name = "dgvTime";
             this.dgvTime.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvTime.Size = new System.Drawing.Size(560, 440);
+            this.dgvTime.Size = new System.Drawing.Size(653, 424);
             this.dgvTime.TabIndex = 7;
-            // 
-            // btnAdd
-            // 
-            this.btnAdd.Location = new System.Drawing.Point(210, 207);
-            this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(86, 35);
-            this.btnAdd.TabIndex = 5;
-            this.btnAdd.Text = "Thẻm";
-            this.btnAdd.UseVisualStyleBackColor = true;
-            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
-            // 
-            // btnCancel
-            // 
-            this.btnCancel.Location = new System.Drawing.Point(210, 253);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(86, 35);
-            this.btnCancel.TabIndex = 6;
-            this.btnCancel.Text = "Hủy";
-            this.btnCancel.UseVisualStyleBackColor = true;
-            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // clnNumericOrder
             // 
@@ -227,6 +210,26 @@ namespace BadmintonManagement.Forms.Price
             this.clnEndTime.Name = "clnEndTime";
             this.clnEndTime.ReadOnly = true;
             // 
+            // btnAdd
+            // 
+            this.btnAdd.Location = new System.Drawing.Point(210, 207);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(86, 35);
+            this.btnAdd.TabIndex = 5;
+            this.btnAdd.Text = "Thêm";
+            this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+            // 
+            // btnCancel
+            // 
+            this.btnCancel.Location = new System.Drawing.Point(210, 253);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(86, 35);
+            this.btnCancel.TabIndex = 6;
+            this.btnCancel.Text = "Hủy";
+            this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            // 
             // btnClose
             // 
             this.btnClose.Location = new System.Drawing.Point(210, 301);
@@ -241,18 +244,19 @@ namespace BadmintonManagement.Forms.Price
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1200, 692);
+            this.ClientSize = new System.Drawing.Size(982, 424);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.panel2);
-            this.Controls.Add(this.pnlWeekDay);
             this.Controls.Add(this.dtpEndTime);
             this.Controls.Add(this.dtpStarTime);
+            this.Controls.Add(this.pnlWeekDay);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "ApplyFactor";
-            this.Text = "ApplyFactor";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Quản lý hệ số";
             this.Load += new System.EventHandler(this.ApplyFactor_Load);
             this.pnlWeekDay.ResumeLayout(false);
             this.pnlWeekDay.PerformLayout();
