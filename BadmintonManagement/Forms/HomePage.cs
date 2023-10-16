@@ -117,6 +117,9 @@ namespace BadmintonManagement.Forms.AuthorizationForms
             // kiểm tra và cập nhật trạng thái đặt sân thời gian thực
             bool t = RealTimeCaptureStatusReservation();
             AddTabPages(new CourtForm());
+            ApplyFactor.LoadFile();
+            ModelBadmintonManage context = new ModelBadmintonManage();
+            PriceForm.GBPriceID = context.PRICE.FirstOrDefault(p => p.C_Status == 1).PriceID;
 
         }
 

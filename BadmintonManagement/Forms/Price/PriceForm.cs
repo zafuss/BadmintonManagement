@@ -20,6 +20,7 @@ namespace BadmintonManagement.Forms.Price
         {
             InitializeComponent();
         }
+
         public static string GBPriceID;
         private void PriceForm_Load(object sender, EventArgs e)
         {
@@ -49,7 +50,6 @@ namespace BadmintonManagement.Forms.Price
                     dgvPrices.Rows[index].Cells[4].Value = "Áp dụng";
                     GBPriceID = price.PriceID;
                 }
-                  
             }
         }
 
@@ -141,6 +141,12 @@ namespace BadmintonManagement.Forms.Price
                 }
             }
             //BindGrid();
+        }
+
+        private void btnApplyFactor_Click(object sender, EventArgs e)
+        {
+            ApplyFactor frm = new ApplyFactor();
+            frm.ShowDialog();
         }
     }
 }
