@@ -10,7 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml.Linq;
-using System.Text.RegularExpressions;
+
 namespace BadmintonManagement.Forms.Customer
 {
     public partial class CustomerForm : Form
@@ -42,16 +42,7 @@ namespace BadmintonManagement.Forms.Customer
         {
             if (txtEmail.Text == "" || txtPhoneNumber.Text == "" || txtFullName.Text == "")
                 throw new Exception("Vui lòng nhập đầy đủ thông tin");
-            if (txtPhoneNumber.Text.Length < 9 || txtPhoneNumber.Text.Length > 11)
-                throw new Exception("Số điện thoại phải đủ 9 đến 11 kí tự !");
-            string name = txtFullName.Text;
-            Regex checkName = new Regex(@"^[a-zA-ZÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂẾưăạảấầẩẫậắằẳẵặẹẻẽềềểếỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ\s\W]");
-            if (!checkName.IsMatch(name))
-                throw new Exception("Tên không hợp lệ!");
-            string email = txtEmail.Text;
-            Regex checkEmail = new Regex(@"^[a-zA-Z][\w\.-]{2,28}[a-zA-Z0-9]@[a-zA-Z0-9][\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]$");
-            if (!checkEmail.IsMatch(email))
-                throw new Exception("Email không hợp lệ!");
+
         }
        
         private void Reset()
@@ -69,7 +60,6 @@ namespace BadmintonManagement.Forms.Customer
                     throw new Exception("Số điện thoại khách hàng đã tồn tại");
                 else
                 {
-                    CheckException();
                     customer = new CUSTOMER();
                     customer.PhoneNumber = txtPhoneNumber.Text;
                     customer.FullName = txtFullName.Text;
