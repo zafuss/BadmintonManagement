@@ -1,4 +1,5 @@
-﻿using BadmintonManagement.Forms.Price;
+﻿using BadmintonManagement.Forms.Court;
+using BadmintonManagement.Forms.Price;
 using BadmintonManagement.Models;
 using System;
 using System.Collections.Generic;
@@ -17,8 +18,10 @@ namespace BadmintonManagement.Forms.ReservationCourt.BookingForm
 {
     public partial class Booking : Form
     {
+        public static Booking Instance;
         public Booking()
         {
+            Instance = this;
             InitializeComponent();
         }
         public delegate void ChangeBK(int i);
@@ -130,9 +133,10 @@ namespace BadmintonManagement.Forms.ReservationCourt.BookingForm
         {
             cboCourt.Items.Clear();
             cboCourt.AutoCompleteCustomSource.Clear();
+            context = new ModelBadmintonManage();
             foreach (COURT item in context.COURT)
             {
-                if(Check_DB_Exist_Time_For_Court(item)==true||Check_dgvRF_DETAIL_Time_For_Court(item)==true||Check_Court_status(item))
+                if(Check_DB_Exist_Time_For_Court(item)==true||Check_dgvRF_DETAIL_Time_For_Court(item)==true||Check_Court_status(item) == true)
                     continue;
                 cboCourt.Items.Add(item.CourtName);
                 cboCourt.AutoCompleteCustomSource.Add(item.CourtName);
@@ -290,6 +294,10 @@ namespace BadmintonManagement.Forms.ReservationCourt.BookingForm
             int i = 1;
             ReloadBK(i);
             this.Close();
+            if (Application.OpenForms["CourtForm"] != null && !Application.OpenForms["CourtForm"].IsDisposed)
+            {
+                CourtForm.Instance.ReLoad();
+            }
         }
         private void dtpDate_ValueChanged(object sender, EventArgs e)
         {
