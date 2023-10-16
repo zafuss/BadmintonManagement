@@ -21,6 +21,7 @@ namespace BadmintonManagement.Forms.AuthorizationForms
             btnAccountInformation.BackColor = SystemColors.ButtonShadow;
         }
 
+        //sự kiện xảy ra khi mở form con
         private void OpenChildForm(Form childForm)
         {
             if (activeForm != null)
@@ -35,6 +36,7 @@ namespace BadmintonManagement.Forms.AuthorizationForms
             childForm.Show();
         }
 
+        //sự kiện xảy ra khi nhấn vào nút xem thông tin tài khoản
         private void btnAccountInformation_Click(object sender, EventArgs e)
         {
             OpenChildForm(new AccountInformationCenterForm());
@@ -42,6 +44,7 @@ namespace BadmintonManagement.Forms.AuthorizationForms
             btnChangePassword.BackColor = Color.LightGray;
         }
 
+        //sự kiện xảy ra khi bấm vào đổi mật khẩu
         private void btnChangePassword_Click(object sender, EventArgs e)
         {
             OpenChildForm(new AccountChangePasswordCenterForm());

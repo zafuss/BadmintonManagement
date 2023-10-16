@@ -30,6 +30,7 @@ namespace BadmintonManagement.Forms.AuthorizationForms
             txtName.Text = txtRegEmail.Text  = txtRegPhoneNumber.Text = txtRegUsername.Text = "";
         }
 
+        //đổ dữ liệu vào datagridview
         private void BindGrid()
         {
             dgvUsers.Rows.Clear();
@@ -48,6 +49,7 @@ namespace BadmintonManagement.Forms.AuthorizationForms
             refreshTextBox();
         }
 
+        //sự kiện xảy ra khi bấm vào thêm tài khoản
         private void btnReg_Click(object sender, EventArgs e)
         {
             try
@@ -75,18 +77,12 @@ namespace BadmintonManagement.Forms.AuthorizationForms
             }
         }
 
-        private void lblBackToLogin_Click(object sender, EventArgs e)
-        {
-            LoginForm loginForm = new LoginForm();
-            loginForm.Show();
-            this.Close();
-        }
-
         private void RegisterForm_Load(object sender, EventArgs e)
         {
             BindGrid();
         }
 
+        //hàm tự dộng tạo một password ngẫu nhiên cho user được tạo hoặc chỉnh sửa (optional)
         private static string GeneratePassword()
         {
             Random random = new Random();
@@ -130,6 +126,7 @@ namespace BadmintonManagement.Forms.AuthorizationForms
             return password;
         }
 
+        //sự kiện xảy ra khi click vào một cột trong dgv
         private void dgvUsers_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex > -1)
@@ -151,6 +148,7 @@ namespace BadmintonManagement.Forms.AuthorizationForms
             }
         }
 
+        //sự kiện xayr a khi nhấn vào nút update tài khoản
         private void btnUpdate_Click(object sender, EventArgs e)
         {
             try
@@ -184,6 +182,7 @@ namespace BadmintonManagement.Forms.AuthorizationForms
             }
         }
 
+        //sự kiện xảy ra khi nhấn vào nút kích hoạt/ vô hiệu hoá
         private void btnDelUser_Click(object sender, EventArgs e)
         {
             try
@@ -199,6 +198,7 @@ namespace BadmintonManagement.Forms.AuthorizationForms
             }
         }
 
+        //sự kiện xảy ra khi tìm kiếm 
         private void txtSearch_TextChanged(object sender, EventArgs e)
         {
             dgvUsers.CurrentCell = null;
@@ -219,7 +219,7 @@ namespace BadmintonManagement.Forms.AuthorizationForms
                 }
             }
         }
-
+        
         private void panel2_SizeChanged(object sender, EventArgs e)
         {
             panel2.Controls.Clear();
