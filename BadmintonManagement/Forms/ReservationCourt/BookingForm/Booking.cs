@@ -246,8 +246,10 @@ namespace BadmintonManagement.Forms.ReservationCourt.BookingForm
         }
         private decimal DepositeCalculation()
         {
-            
-            return Math.Round(ProvisionOfTotal()*25/100);
+            if(dgvRF_Detail.Rows.Count == 1)
+                return 0;
+            return (dgvRF_Detail.Rows.Count-1) * 40000;
+            //return Math.Round(ProvisionOfTotal()*20/100);
         }
         private void btnAcept_Click(object sender, EventArgs e)
         {          
