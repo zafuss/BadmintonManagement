@@ -6,6 +6,7 @@ using BadmintonManagement.Forms.Price;
 using BadmintonManagement.Forms.Receipt;
 using BadmintonManagement.Forms.Report;
 using BadmintonManagement.Forms.ReservationCourt;
+using BadmintonManagement.Forms.ReservationCourt.BookingForm;
 using BadmintonManagement.Forms.Service;
 using BadmintonManagement.Models;
 using System;
@@ -125,6 +126,7 @@ namespace BadmintonManagement.Forms.AuthorizationForms
             ApplyFactor.LoadFile();
             ModelBadmintonManage context = new ModelBadmintonManage();
             PriceForm.GBPriceID = context.PRICE.FirstOrDefault(p => p.C_Status == 1).PriceID;
+            Booking.LoadFileBooking();
 
         }
 
