@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnApplyFactor = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.cmbStatus = new System.Windows.Forms.ComboBox();
             this.btnUsedPrice = new System.Windows.Forms.Button();
@@ -61,6 +63,8 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.btnApplyFactor);
+            this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Controls.Add(this.cmbStatus);
             this.panel1.Controls.Add(this.btnUsedPrice);
@@ -80,6 +84,25 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(266, 578);
             this.panel1.TabIndex = 0;
+            // 
+            // btnApplyFactor
+            // 
+            this.btnApplyFactor.Location = new System.Drawing.Point(73, 499);
+            this.btnApplyFactor.Name = "btnApplyFactor";
+            this.btnApplyFactor.Size = new System.Drawing.Size(100, 36);
+            this.btnApplyFactor.TabIndex = 18;
+            this.btnApplyFactor.Text = "Điều chỉnh";
+            this.btnApplyFactor.UseVisualStyleBackColor = true;
+            this.btnApplyFactor.Click += new System.EventHandler(this.btnApplyFactor_Click);
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(0, 0);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 17;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
             // 
             // pictureBox1
             // 
@@ -346,5 +369,7 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Button btnApplyFactor;
+        private System.Windows.Forms.Button button1;
     }
 }
