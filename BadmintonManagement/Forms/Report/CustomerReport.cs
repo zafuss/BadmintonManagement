@@ -52,10 +52,13 @@ namespace BadmintonManagement.Forms.Report
                 string month1 = dtpMonth.Value.Month.ToString();
                 string year1 = dtpMonth.Value.Year.ToString();
                 //  truy vấn SQL để lấy dữ liệu lượt khách theo tháng
-                cmd.CommandText = @"select C.FullName,C.PhoneNumber,C.Email,convert (varchar,count(R.ReservationNo)) as SoLan
-                                    from RESERVATION R,CUSTOMER C,RECEIPT R1
-                                    where R.PhoneNumber = C.PhoneNumber and R1.ReservationNo = R.ReservationNo and CONVERT(varchar,month(R1._Date))= '"+month1+"'  and CONVERT(varchar,year(R1._Date))= '"+year1+
-                                    "' group by C.FullName,C.PhoneNumber,C.Email";
+                cmd.CommandText = @"select C.PhoneNumber,C.FullName,C.Email,T1.SoLan
+                                    from (
+                                    select R.PhoneNumber,convert (varchar,count(R.ReservationNo)) as SoLan
+                                    from RESERVATION R,RECEIPT R1
+                                    where R1.ReservationNo = R.ReservationNo and CONVERT(varchar,month(R1._Date))= '" + month1 + "'  and CONVERT(varchar,year(R1._Date))= '" + year1 +
+                                    @"'group by R.PhoneNumber) T1 left join CUSTOMER C
+                                    on C.PhoneNumber = T1.PhoneNumber";
             }
             else
             {
@@ -68,11 +71,13 @@ namespace BadmintonManagement.Forms.Report
                 cmd.Parameters.AddWithValue("@_date5", starDay);
                 cmd.Parameters.AddWithValue("@_date6", endDay);
                 //  truy vấn SQL để lấy dữ liệu lượt khách theo ngày
-                cmd.CommandText = @"select C.FullName,C.PhoneNumber,C.Email,convert (varchar,count(R.ReservationNo)) as SoLan
-                                    from RESERVATION R,CUSTOMER C,RECEIPT R1
-                                    where R.PhoneNumber = C.PhoneNumber and R1.ReservationNo = R.ReservationNo 
-	                                    and CONVERT(datetime,R1._Date,103) between @_date5 and @_date6 
-                                    group by C.FullName,C.PhoneNumber,C.Email ";
+                cmd.CommandText = @"select C.PhoneNumber,C.FullName,C.Email,T1.SoLan
+                                    from (
+                                    select R.PhoneNumber,convert (varchar,count(R.ReservationNo)) as SoLan
+                                    from RESERVATION R,RECEIPT R1
+                                    where R1.ReservationNo = R.ReservationNo and CONVERT(datetime,R1._Date,103) between @_date5 and @_date6 
+                                    group by R.PhoneNumber) T1 left join CUSTOMER C
+                                    on C.PhoneNumber = T1.PhoneNumber";
             }
 
             cmd.Connection = conn;
@@ -82,9 +87,18 @@ namespace BadmintonManagement.Forms.Report
             while (reader.Read())
             {
                 CountCustomer customer = new CountCustomer();
-                customer.FullName = reader.GetString(0);
-                customer.PhoneNumber = reader.GetString(1);
-                customer.Email  = reader.GetString(2);
+                if (reader.GetValue(0).ToString() == string.Empty)
+                    customer.FullName = "Khách vãng lai";
+                else
+                    customer.FullName = reader.GetString(0);
+                if (reader.GetValue(0).ToString() == string.Empty)
+                    customer.FullName = "Khách vãng lai";
+                else
+                    customer.PhoneNumber = reader.GetString(1);
+                if (reader.GetValue(0).ToString() == string.Empty)
+                    customer.FullName = "Khách vãng lai";
+                else
+                    customer.Email  = reader.GetString(2);
                 customer.Solan = reader.GetString(3);
 
                 list.Add(customer);

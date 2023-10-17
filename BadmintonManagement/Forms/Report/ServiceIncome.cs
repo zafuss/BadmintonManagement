@@ -51,10 +51,12 @@ namespace BadmintonManagement.Forms.Report
                 string month1 = dtpMonth.Value.Month.ToString();
                 string year1 = dtpMonth.Value.Year.ToString();
                 //  truy vấn SQL để lấy dữ liệu doanh thu 
-                cmd.CommandText = @"select S1.ServiceReceiptNo,convert(varchar,S1.CreateDate,105) as NgayLap,C.FullName,S1.PhoneNumber,U._Name,S1.Total
-                                    from SERVICE_RECEIPT S1,_USER U,CUSTOMER C
-                                    where  S1.PhoneNumber = C.PhoneNumber and U.Username = S1.Username
-		                                    and convert(varchar,month(s1.CreateDate)) = '"+month1+"' and convert(varchar,year(s1.CreateDate)) = '" + year1 +"'";
+                cmd.CommandText = @"select T1.ServiceReceiptNo,T1.NgayLap,C.PhoneNumber,C.FullName,T1._Name,T1.Total
+                                    from (select S1.ServiceReceiptNo,convert(varchar,S1.CreateDate,105) as NgayLap,U._Name,S1.Total, S1.PhoneNumber
+                                        from SERVICE_RECEIPT S1,_USER U
+                                        where  U.Username = S1.Username
+		                                    and convert(varchar,month(s1.CreateDate)) = '"+month1+@"' 
+									        and convert(varchar,year(s1.CreateDate)) = '"+year1+@"') T1 left join CUSTOMER C on C.PhoneNumber = T1.PhoneNumber";
             }
             else
             {
@@ -67,10 +69,12 @@ namespace BadmintonManagement.Forms.Report
                 cmd.Parameters.AddWithValue("@_date3", starDay);
                 cmd.Parameters.AddWithValue("@_date4", endDay);
                 //  truy vấn SQL để lấy dữ liệu doanh thu 
-                cmd.CommandText = @"select S1.ServiceReceiptNo,convert(varchar,S1.CreateDate,105) as NgayLap,C.FullName,S1.PhoneNumber,U._Name,S1.Total
-                                    from SERVICE_RECEIPT S1,_USER U,CUSTOMER C
-                                    where  S1.PhoneNumber = C.PhoneNumber and U.Username = S1.Username
-		                                    and  CONVERT(datetime,s1.CreateDate,103) between @_date3 and @_date4" ;
+                cmd.CommandText = @"select T1.ServiceReceiptNo,T1.NgayLap,C.PhoneNumber,C.FullName,T1._Name,T1.Total
+                                    from (select S1.ServiceReceiptNo,convert(varchar,S1.CreateDate,105) as NgayLap,U._Name,S1.Total, S1.PhoneNumber
+                                        from SERVICE_RECEIPT S1,_USER U
+                                        where  U.Username = S1.Username
+		                                    and CONVERT(datetime,s1.CreateDate,103) between @_date3 and @_date4 ) T1 left join CUSTOMER C on C.PhoneNumber = T1.PhoneNumber";
+		                                   
             }
           
             cmd.Connection = conn;
@@ -82,8 +86,14 @@ namespace BadmintonManagement.Forms.Report
                 CourtIncomeReport court = new CourtIncomeReport();
                 court.ReceiptNo = reader.GetString(0);
                 court.CreateDate = reader.GetString(1);
-                court.PhoneNumber = reader.GetString(2);
-                court.FullName = reader.GetString(3);
+                if (reader.GetValue(2).ToString() == string.Empty)
+                    court.PhoneNumber = "";
+                else
+                    court.PhoneNumber = reader.GetString(2);
+                if (reader.GetValue(3).ToString() == string.Empty)
+                    court.FullName = "";
+                else
+                    court.FullName = reader.GetString(3);
                 court.EmployeeName1 = reader.GetString(4);
                 court.Total = reader.GetDecimal(5);
 

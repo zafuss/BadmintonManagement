@@ -341,6 +341,7 @@ namespace BadmintonManagement.Forms.ReservationCourt
             context.SaveChanges();
             btnGot.Enabled = true;
             btnAcceptDeposition .Enabled = false;
+            btnRevReceipt.Enabled = true;
             MessageBox.Show("Đặt cọc thành công","Thông báo");
             
         }

@@ -364,7 +364,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=RunningValue(Fields!PhoneNumber.Value, Count, Nothing)</Value>
+                                  <Value>=RunningValue(Fields!FullName.Value, Count, Nothing)</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -542,7 +542,7 @@
             <Top>2.54042in</Top>
             <Left>1.20708in</Left>
             <Height>0.5in</Height>
-            <Width>7.71583in</Width>
+            <Width>7.71582in</Width>
             <ZIndex>2</ZIndex>
             <Style>
               <Border>

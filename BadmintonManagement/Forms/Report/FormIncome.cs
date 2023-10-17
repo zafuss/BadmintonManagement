@@ -34,6 +34,7 @@ namespace BadmintonManagement.Forms.Report
         // lấy dữ liệu doanh thu sân từ hóa đơn đưa lên reportviewer
         private void IncomeCourt()
         {
+            reportViewer1.LocalReport.DataSources.Clear();
             string year = dtpYear.Text;
             if (conn == null)
                 conn = new SqlConnection(str);
@@ -93,25 +94,33 @@ namespace BadmintonManagement.Forms.Report
         // lấy dữ liệu danh sách hóa đơn dịch vụ
         private void IncomeService1()
         {
+            
+            cmd1.Parameters.Clear();
+            string month = "";
             string year = dtpYear.Text;
-            string month = dtpMonth.Text;
+            month = dtpMonth.Text;
+            int t = int.Parse(month);
             if (conn1 == null)
                 conn1 = new SqlConnection(str);
             if (conn1.State == ConnectionState.Closed)
                 conn1.Open();
             // Set command type thành text, truy vấn SQL để lấy dữ liệu doanh thu 
+            
             cmd1.CommandType = CommandType.Text;
             cmd1.CommandText = @"select cast(round((T1.Total/(T1.Total+T.Total))*100,2) as decimal(18,2)) as San,cast((100-round((T1.Total/(T1.Total+T.Total))*100,2)) as decimal(18,2)) as dichvu
                              from (	select convert(int,Month(R._Date)) as Thang,sum(R.Total) as Total 
 		                            from RECEIPT R
-		                            where convert(varchar,year(R._Date)) = "+year+ @"
-		                            group by convert(int,Month(R._Date))) T1 , (select convert(int ,month(S.CreateDate)) as Thang,sum(S.Total) as Total 
+		                            where convert(varchar,year(R._Date)) = "+year+ 
+                                    @"group by convert(int,Month(R._Date))) T1 , (select convert(int ,month(S.CreateDate)) as Thang,sum(S.Total) as Total 
 													                            from SERVICE_RECEIPT S
 													                            where convert(varchar,year(S.CreateDate)) = "+year+ @"
 													                            group by convert(int,Month(S.CreateDate))) T
-                            where T1.Thang = T.Thang and T1.Thang =" + month;
+                            where T1.Thang = T.Thang and T1.Thang =  @thang";
+            
+            cmd1.Parameters.AddWithValue("@thang", t);
             cmd1.Connection = conn1;
             SqlDataReader reader1 = cmd1.ExecuteReader();
+            
             List<IncomeSer>  list1 = new List<IncomeSer>();
             // Đọc dữ liệu từ SqlDataReader và điền vào danh sách.
             while (reader1.Read())
