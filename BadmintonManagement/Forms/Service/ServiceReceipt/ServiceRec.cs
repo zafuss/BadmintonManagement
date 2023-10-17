@@ -1,6 +1,7 @@
 ﻿using BadmintonManagement.Forms.Service.ServiceReceipt.Print;
 using BadmintonManagement.Models;
 using System;
+using System.Activities.Expressions;
 using System.Activities.Statements;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -177,6 +178,11 @@ namespace BadmintonManagement.Forms.Service.ServiceReceipt
             {
                 if (!rdbCash.Checked && !rdbCreditcard.Checked)
                     throw new Exception("Vui lòng chọn hình thức thanh toán");
+                if(txtPhoneNumber.Text != string.Empty|| txtPhoneNumber.Text!=string.Empty||txtEmail.Text!=string.Empty )
+                {
+                    if(txtPhoneNumber.Text != string.Empty && txtPhoneNumber.Text != string.Empty && txtEmail.Text != string.Empty){}
+                    else throw new Exception("Vui lòng nhập đử thông tin khách hàng");
+                }
                 if (MessageBox.Show("Ban có muốn xác nhận thanh toán?", "Thông báo", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
                     if (CheckExistPhoneNumber() == false)
