@@ -115,7 +115,8 @@ namespace BadmintonManagement.Database
                 throw new Exception("Email đã tồn tại trong hệ thống");
             }
             var password = Security.Encrypt(user.C_Password);
-            user.C_Password = password;
+            if (isPasswordChanged)
+                user.C_Password = password;
             context.C_USER.AddOrUpdate(user);
             context.SaveChanges();
             OTPService.SendChangedInformationMail(user.Email, newPassword);
