@@ -181,7 +181,7 @@ namespace BadmintonManagement.Forms.Service.ServiceReceipt
                 if(txtPhoneNumber.Text != string.Empty|| txtPhoneNumber.Text!=string.Empty||txtEmail.Text!=string.Empty )
                 {
                     if(txtPhoneNumber.Text != string.Empty && txtPhoneNumber.Text != string.Empty && txtEmail.Text != string.Empty){}
-                    else throw new Exception("Vui lòng nhập đử thông tin khách hàng");
+                    else throw new Exception("Vui lòng nhập đủ thông tin khách hàng");
                 }
                 if (MessageBox.Show("Ban có muốn xác nhận thanh toán?", "Thông báo", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
